@@ -1,4 +1,4 @@
-package com.interview.notes.code.datastructure;
+package com.interview.notes.code.datastructure.Stack;
 
 import java.util.EmptyStackException;
 import java.util.Objects;
