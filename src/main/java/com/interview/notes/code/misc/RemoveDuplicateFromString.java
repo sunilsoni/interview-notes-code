@@ -6,8 +6,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class RemoveDuplicateFromString {
-
-
     String removeDuplicatesUsingCharArray(String str) {
 
         char[] chars = str.toCharArray();
