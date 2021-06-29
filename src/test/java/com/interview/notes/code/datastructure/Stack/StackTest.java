@@ -6,15 +6,16 @@ import org.junit.jupiter.api.Test;
 
 import java.util.EmptyStackException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 class StackTest {
 
-    static Stack<Integer> st ;
+    static Stack<Integer> st;
 
     @BeforeAll
-    public  static void setUp() {
+    public static void setUp() {
         st = new Stack<>();
         System.out.println(st.size());
         st.push(1);
@@ -22,6 +23,11 @@ class StackTest {
         st.push(100);
         st.push(null);
         System.out.println(st);
+    }
+
+    @AfterAll
+    static void done() {
+        st = null;
     }
 
     @Test
@@ -46,10 +52,5 @@ class StackTest {
 
         st.peek(); // Exception!
         assertEquals(exception.getMessage(), null);
-    }
-
-    @AfterAll
-    static void done() {
-        st=null;
     }
 }

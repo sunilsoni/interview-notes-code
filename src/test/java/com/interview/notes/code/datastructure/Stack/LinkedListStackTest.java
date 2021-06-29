@@ -4,13 +4,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class LinkedListStackTest {
-    LinkedListStack lls=null;
+    LinkedListStack lls = null;
+
     @BeforeEach
-    public  void setUp() {
-        lls=new LinkedListStack();
+    public void setUp() {
+        lls = new LinkedListStack();
         lls.push(20);
         lls.push(50);
         lls.push(80);
@@ -21,15 +20,15 @@ class LinkedListStackTest {
 
     @AfterEach
     public void tearDown() {
-        lls=null;
+        lls = null;
     }
 
     @Test
     void test() {
-        System.out.println("Element removed from LinkedList: "+lls.pop());
-        System.out.println("Element removed from LinkedList: "+lls.pop());
+        System.out.println("Element removed from LinkedList: " + lls.pop());
+        System.out.println("Element removed from LinkedList: " + lls.pop());
         lls.push(10);
-        System.out.println("Element removed from LinkedList: "+lls.pop());
-     //  lls.printList(lls.head);
+        System.out.println("Element removed from LinkedList: " + lls.pop());
+        //  lls.printList(lls.head);
     }
 }

@@ -3,12 +3,11 @@ package com.interview.notes.code.misc;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class FindLargestThreeTest {
     static FindLargestThree findLargestThree;
+
     @BeforeAll
-    public  static void setUp() {
+    public static void setUp() {
         findLargestThree = new FindLargestThree();
     }
 
