@@ -6,9 +6,10 @@ import org.junit.jupiter.api.Test;
 
 class MyLinkedListTest {
     static MyLinkedList linkedList;
+
     @BeforeAll
     public static void setUp() {
-        linkedList  = new MyLinkedList();
+        linkedList = new MyLinkedList();
         linkedList.insertFirst(100);
         linkedList.insertFirst(500);
         linkedList.insertFirst(300);
