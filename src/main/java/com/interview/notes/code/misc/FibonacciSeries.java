@@ -14,7 +14,4 @@ public class FibonacciSeries {
 			
 		}
 	}
-	public static void main(String[] args) {
-		FibonacciSeries.fibonaccSeries(10);
-	}
 }
