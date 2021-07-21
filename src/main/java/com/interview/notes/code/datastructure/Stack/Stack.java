@@ -1,12 +1,15 @@
 package com.interview.notes.code.datastructure.Stack;
 
 import java.util.EmptyStackException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Stack<T> {
 
     private StackNode<T> top;
     private int size;
+
 
     public void push(T val) {
         StackNode<T> cur = new StackNode<>(val);
