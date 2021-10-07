@@ -42,9 +42,7 @@ public class LambdaExample {
         return squareRoot.findSquareRoot(in);
     }
 
-
     private static double squareRootJava8BlockLambdaExpression(int in) {
-
         SquareRoot squareRoot = (n) -> {
             double result = Math.sqrt(n);
             return result;
@@ -56,22 +54,18 @@ public class LambdaExample {
     private static double squareRootJava8LambdaAsArgument(int i) {
         SquareRoot squareRoot = (n) -> (Math.sqrt(n));
         return displayData(squareRoot, i);
-
     }
 
     private static double displayData(SquareRoot squareRoot, int i) {
         return squareRoot.findSquareRoot(9);
-
     }
 
 }
 
 
 class SquareRootImpl implements SquareRoot {
-
     @Override
     public double findSquareRoot(int n) {
         return Math.sqrt(n);
     }
-
 }
