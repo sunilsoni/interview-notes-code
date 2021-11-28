@@ -1,17 +1,19 @@
 package com.interview.notes.code.LeetCode;
 
+import java.util.Arrays;
+
 /**
  * There are two sorted arrays nums1 and nums2 of size m and n respectively.
  * Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
- *
+ * <p>
  * Solution
  * Take minimum size of two array. Possible number of partitions are from 0 to m in m size array.
  * Try every cut in binary search way. When you cut first array at i then you cut second array at (m + n + 1)/2 - i
  * Now try to find the i where a[i-1] <= b[j] and b[j-1] <= a[i]. So this i is partition around which lies the median.
- *
+ * <p>
  * Time complexity is O(log(min(x,y))
  * Space complexity is O(1)
- *
+ * <p>
  * https://leetcode.com/problems/median-of-two-sorted-arrays/
  * https://discuss.leetcode.com/topic/4996/share-my-o-log-min-m-n-solution-with-explanation/4
  */
@@ -28,8 +30,8 @@ public class MedianOfTwoSortedArrayOfDifferentLength {
         int low = 0;
         int high = x;
         while (low <= high) {
-            int partitionX = (low + high)/2;
-            int partitionY = (x + y + 1)/2 - partitionX;
+            int partitionX = (low + high) / 2;
+            int partitionY = (x + y + 1) / 2 - partitionX;
 
             //if partitionX is 0 it means nothing is there on left side. Use -INF for maxLeftX
             //if partitionX is length of input then there is nothing on right side. Use +INF for minRightX
@@ -44,9 +46,9 @@ public class MedianOfTwoSortedArrayOfDifferentLength {
                 // Now get max of left elements and min of right elements to get the median in case of even length combined array size
                 // or get max of left for odd length combined array size.
                 if ((x + y) % 2 == 0) {
-                    return ((double)Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY))/2;
+                    return ((double) Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;
                 } else {
-                    return (double)Math.max(maxLeftX, maxLeftY);
+                    return (double) Math.max(maxLeftX, maxLeftY);
                 }
             } else if (maxLeftX > minRightY) { //we are too far on right side for partitionX. Go on left side.
                 high = partitionX - 1;
@@ -59,11 +61,43 @@ public class MedianOfTwoSortedArrayOfDifferentLength {
         throw new IllegalArgumentException();
     }
 
+    //https://www.java67.com/2021/11/how-to-find-median-of-two-sorted-arrays.html?m=0
+    public static double findMedianSortedArraysBruteForceApproach(int[] firstArray, int[] secondArray) {
+        int firstArrayLength = firstArray.length;
+        int secondArrayLength = secondArray.length;
+
+        int[] combinedArray = new int[firstArrayLength + secondArrayLength];
+        int k = 0;
+        for (int i : firstArray) {
+            combinedArray[k++] = i;
+        }
+
+        for (int i : secondArray) {
+            combinedArray[k++] = i;
+        }
+
+        Arrays.sort(combinedArray);
+        double median;
+        if (combinedArray.length % 2 == 0) {
+            median = combinedArray[combinedArray.length / 2];
+        } else {
+            median = (combinedArray[(combinedArray.length - 1) / 2]
+                    + combinedArray[(combinedArray.length + 1) / 2]) / 2;
+        }
+
+        return median;
+
+    }
+
     public static void main(String[] args) {
         int[] x = {1, 3, 8, 9, 15};
         int[] y = {7, 11, 19, 21, 18, 25};
 
         MedianOfTwoSortedArrayOfDifferentLength mm = new MedianOfTwoSortedArrayOfDifferentLength();
-        mm.findMedianSortedArrays(x, y);
+        double res = mm.findMedianSortedArrays(x, y);
+        System.out.println(res);//11.0
+        double res2 = mm.findMedianSortedArraysBruteForceApproach(x, y);
+        System.out.println(res);//11.0
     }
 }
+
