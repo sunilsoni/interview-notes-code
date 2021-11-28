@@ -69,5 +69,48 @@ class FindSubarraysWithGivenSum
         int target = 7;
  
         printAllSubarrays(nums, target);
+
+        subarraySum(nums,target);
+    }
+
+    public static int subarraySum(int[] nums, int k) {
+
+        // Time Complexity O(sq(n))
+        // int count=0;
+        // int sum=0;
+        // int n=nums.length;
+        // for(int i=0;i<n;i++){
+        //     sum=nums[i];
+        //     if(sum==k){
+        //         count++;
+        //     }
+        //     for(int j=i+1;j<n;j++){
+        //         sum=sum+nums[j];
+        //          if(sum==k){
+        //          count++;
+        //     }
+        //     }
+        // }
+        // return count;
+
+        // Time Complexity is O(n)
+        int n=nums.length;
+        int res=0;
+        int sum=0;
+        Map<Integer,Integer> pre=new HashMap<>();
+
+        pre.put(0,1);
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            if(pre.containsKey(sum-k)){
+                res+=pre.get(sum-k);
+            }
+            pre.put(sum,(pre.getOrDefault(sum,0)+1));
+
+        }
+
+
+        return res;
+
     }
 }
