@@ -11,6 +11,9 @@ public class ComposedFunctionExample {
         // Function<String, Address> first = empid -> EmployeeService.getEmployeesData().get(empid);
         Function<Address, Integer> second = addr -> addr.pincode;
         // extract("E101", first, second);
+
+         int x=8;
+        System.out.println(x++);
     }
 
     static <T, R, U> U extract(T input, Function<T, R> first, Function<R, U> second) {
