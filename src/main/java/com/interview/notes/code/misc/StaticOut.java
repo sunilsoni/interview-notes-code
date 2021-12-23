@@ -17,7 +17,7 @@ class StaticUse {
         int a = 2;
         obj1.add(a, a + 1);
         obj2.add(5, a);
-        System.out.println(obj1.x + " " + obj2.y);
+        System.out.println(obj1.x + " " + obj2.y);//7, 9
     }
 }
 
