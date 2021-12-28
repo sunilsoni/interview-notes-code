@@ -1,5 +1,6 @@
 package com.interview.notes.code.misc;
 
+//rearrange the array elements all the positives and zeros are moves to left and negatives  are moved to right.
 //https://www.geeksforgeeks.org/move-ve-elements-end-order-extra-space-allowed/
 class RearrangeArrayElements {
 
