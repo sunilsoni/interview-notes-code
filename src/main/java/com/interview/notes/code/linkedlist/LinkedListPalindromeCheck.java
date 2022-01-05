@@ -25,7 +25,6 @@ public class LinkedListPalindromeCheck {
                 fastPointer = fastPointer.next;
             }
         }
-
         return slowPointer;
     }
 
