@@ -8,6 +8,7 @@ public class Test2 {
       String s= "test";
 
         JpaRepository jpaRepository;
+        //JpaTemplate jpaTemplate;
     }
     //Object n Emp param
 }
