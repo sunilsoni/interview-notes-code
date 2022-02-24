@@ -37,7 +37,6 @@ public class LambdaExample {
     }
 
     private static double squareRootJava8LambdaExpressionWithType(int in) {
-
         SquareRoot squareRoot = (int n) -> (Math.sqrt(n));
         return squareRoot.findSquareRoot(in);
     }
