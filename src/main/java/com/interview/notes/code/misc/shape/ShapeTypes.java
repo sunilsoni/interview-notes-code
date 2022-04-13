@@ -9,4 +9,8 @@ public enum ShapeTypes {
      * ELLIPSE TYPES (circle, ellipse)
      */
 
+
+   public void isdd(){
+     // this == ShapeTypes.valueOf("")
+   }
 }
