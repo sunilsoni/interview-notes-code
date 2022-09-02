@@ -1,6 +1,7 @@
 package com.interview.notes.code.datastructure.Array;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 //Implement ArrayList using Array
 public class CustomArrayList<E> {
@@ -55,8 +56,12 @@ public class CustomArrayList<E> {
      * @param e
      */
     public boolean add(E e) {
+
+       // Stream.parallelStream
         ensureCapacity(size + 1);
         customArrayListElementData[size++] = e;
+
+        float f=0.0f;
         return true;
     }
 
