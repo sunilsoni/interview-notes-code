@@ -1,5 +1,6 @@
 package com.interview.notes.code.LeetCode;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ public class Test {
         System.out.println(numDecodings1("12"));
     }
 
-
+ //Serializable
         public static int numDecodings(String s) {
             if (s.charAt(0) == '0') {
                 return 0;
