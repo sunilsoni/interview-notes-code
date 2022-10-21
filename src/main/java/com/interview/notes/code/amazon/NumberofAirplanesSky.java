@@ -1,6 +1,7 @@
 package com.interview.notes.code.amazon;
 
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 //https://github.com/awangdev/leet-code/blob/master/Java/Number%20of%20Airplane%20in%20the%20sky.java
@@ -8,10 +9,11 @@ import java.util.List;
 //[LintCode] Number of Airplanes in the Sky
 public class NumberofAirplanesSky {
     /**
-     * @param intervals: An interval array
      * @return: Count of airplanes are in the sky.
      */
     public int countOfAirplanes(List<Interval> airplanes) {
+
+
         if (airplanes == null) {
             return 0;
         }
