@@ -6,7 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static java.util.Map.Entry.*;
+import static java.util.Map.Entry.comparingByValue;
+
 public class SortMapByValueExample {
 
     public static void main(String[] args) {
@@ -34,6 +35,7 @@ public class SortMapByValueExample {
 
     /**
      * You can see that the  sorted() method takes Comparator as an argument, making it possible to sort a map with any kind of value. For example,  sort can be written with the Comparator as:
+     *
      * @param wordCounts
      * @return
      */
@@ -47,11 +49,12 @@ public class SortMapByValueExample {
 
     /**
      * Here, I am usingLinkedHashMap to store the sorted result to preserve the order of the elements in the resulting map.
-     *
+     * <p>
      * The advantages of this approach are:
-     *
+     * <p>
      * It doesn't modify the original data wordCounts, making it more thread safe.
      * It is more readable.
+     *
      * @param wordCounts
      * @return
      */

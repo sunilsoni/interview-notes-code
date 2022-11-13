@@ -13,8 +13,8 @@ public class LambdaExample {
     }
 
     private static double suareRootWithImpl(int in) {
-        SquareRootImpl squareRootImpl = new SquareRootImpl();
-        return squareRootImpl.findSquareRoot(in);
+        //SquareRootImplTest squareRootImpl = new SquareRootImplTest();
+        return 0;//squareRootImpl.findSquareRoot(in);
     }
 
     private static double suareRootWithAnoymsImp(int in) {

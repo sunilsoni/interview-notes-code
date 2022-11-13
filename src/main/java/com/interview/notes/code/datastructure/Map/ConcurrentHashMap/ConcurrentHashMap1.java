@@ -12,11 +12,11 @@ not the segements. Concurrency level is associated with the number of segments.
 
  */
 public class ConcurrentHashMap1 {
- public static void main(String[] args) {
-  //What is the internal datastructure of ConcurrentHashMap
-  ConcurrentHashMap<Integer, String> cmap = new ConcurrentHashMap<>();
-  for (int i=0; i<10;i++){
-   cmap.put(i,String.valueOf(i));
-  }
- }
+    public static void main(String[] args) {
+        //What is the internal datastructure of ConcurrentHashMap
+        ConcurrentHashMap<Integer, String> cmap = new ConcurrentHashMap<>();
+        for (int i = 0; i < 10; i++) {
+            cmap.put(i, String.valueOf(i));
+        }
+    }
 }

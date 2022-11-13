@@ -11,7 +11,7 @@ public class FindLongestSubstring {
 
     }
 
-   static String   getUniqueCharacterSubstringBruteForce(String input) {
+    static String getUniqueCharacterSubstringBruteForce(String input) {
         String output = "";
         for (int start = 0; start < input.length(); start++) {
             Set<Character> visited = new HashSet<>();

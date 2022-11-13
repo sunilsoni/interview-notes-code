@@ -1,8 +1,6 @@
 package com.interview.notes.code.datastructure.Stack;
 
 import java.util.EmptyStackException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class Stack<T> {

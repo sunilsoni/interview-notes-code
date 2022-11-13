@@ -1,7 +1,6 @@
 package com.interview.notes.code.datastructure.Array;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 //Implement ArrayList using Array
 public class CustomArrayList<E> {
@@ -37,6 +36,18 @@ public class CustomArrayList<E> {
     }
 
     /**
+     * main method to test the custome array list
+     */
+    public static void main(String[] args) {
+        CustomArrayList<String> strList = new CustomArrayList<>();
+        strList.add("str1");
+        strList.add("str2");
+        System.out.println("after adding elements size =" + strList.size());
+        strList.remove(1);
+        System.out.println("after removing element size =" + strList.size());
+    }
+
+    /**
      * @return the size of the CustomArrayList
      */
     public int size() {
@@ -57,11 +68,11 @@ public class CustomArrayList<E> {
      */
     public boolean add(E e) {
 
-       // Stream.parallelStream
+        // Stream.parallelStream
         ensureCapacity(size + 1);
         customArrayListElementData[size++] = e;
 
-        float f=0.0f;
+        float f = 0.0f;
         return true;
     }
 
@@ -148,18 +159,6 @@ public class CustomArrayList<E> {
 
         if (minCapacity - customArrayListElementData.length > 0)
             growCustomArrayList(minCapacity);
-    }
-
-    /**
-     * main method to test the custome array list
-     */
-    public static void main(String[] args) {
-        CustomArrayList<String> strList = new CustomArrayList<>();
-        strList.add("str1");
-        strList.add("str2");
-        System.out.println("after adding elements size =" + strList.size());
-        strList.remove(1);
-        System.out.println("after removing element size =" + strList.size());
     }
 }
 
