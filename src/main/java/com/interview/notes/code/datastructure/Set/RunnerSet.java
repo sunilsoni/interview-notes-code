@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RunnerSet {
     public static void main(String[] args) {
-        CustomHashSet<Integer> set = new CustomHashSet<>();
+        CustomHashSet1<Integer> set = new CustomHashSet1<>();
 
         for (int i = 0; i < 50; i++) {
             if (i == 25) {

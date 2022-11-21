@@ -3,9 +3,9 @@ package com.interview.notes.code.misc.IKMTest;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+//import java.net.http.HttpClient;
+//import java.net.http.HttpRequest;
+//import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,8 +14,8 @@ import java.util.function.Predicate;
 public class Letters {
     public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
 
-        var client = HttpClient.newHttpClient();
-        var request = HttpRequest.newBuilder().uri(new URI("ur1")).version(HttpClient.Version.HTTP_2).GET().build(); var response = client.send(request, HttpResponse.BodyHandlers.ofString());
+     //   var client = HttpClient.newHttpClient();
+     //   var request = HttpRequest.newBuilder().uri(new URI("ur1")).version(HttpClient.Version.HTTP_2).GET().build(); var response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
 
 

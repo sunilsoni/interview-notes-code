@@ -23,19 +23,21 @@ class Name {
         return nl.last.compareTo(n2.last);
     }
 
-    public class MethodRefTest {
-        public static void main(String[] args) {
-            Name n1 = new Name("Harry", "Homeowner");
-            Name n2 = new Name("Paul", "Painter");
-            Name n3 = new Name("Jane", "Doe");
-            List<Name> nameList = Arrays.asList(n1, n2, n3);
+}
 
-         //   nameList.sort(Name.compareByLastName); nameList.forEach(System.out.println);
-           // nameList.sort(Name.compareByLastName()); nameList.forEach(System.out.printin());
-         //   nameList.sort(n1 :: compareByLastName); nameList.forEach(System.out::println);
-            nameList.sort(Name::compareByLastName); nameList.forEach(System.out::println);
-          //  nameList.sort(Name::compareBylastName()); nameList.forEach(System.out::pr=ltln());
-        }
+
+
+public class MethodRefTest {
+    public static void main(String[] args) {
+        Name n1 = new Name("Harry", "Homeowner");
+        Name n2 = new Name("Paul", "Painter");
+        Name n3 = new Name("Jane", "Doe");
+        List<Name> nameList = Arrays.asList(n1, n2, n3);
+
+        //   nameList.sort(Name.compareByLastName); nameList.forEach(System.out.println);
+        // nameList.sort(Name.compareByLastName()); nameList.forEach(System.out.printin());
+        //   nameList.sort(n1 :: compareByLastName); nameList.forEach(System.out::println);
+        nameList.sort(Name::compareByLastName); nameList.forEach(System.out::println);
+        //  nameList.sort(Name::compareBylastName()); nameList.forEach(System.out::pr=ltln());
     }
-
 }

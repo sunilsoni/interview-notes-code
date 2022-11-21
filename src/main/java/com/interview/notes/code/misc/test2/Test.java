@@ -19,7 +19,7 @@ public interface Test {
         }).sum();
     }
 
-    private int test(){
+    default int test(){
         try{
             return 1;
         }catch (Exception e){

@@ -2,7 +2,7 @@ package com.interview.notes.code.datastructure.Set;
 
 import java.util.Arrays;
 
-public class CustomHashSet<T> {
+public class CustomHashSet1<T> {
     private int capacity = 16;
     private double loadFactor = 0.75d;
     private int size = 0;
@@ -10,23 +10,23 @@ public class CustomHashSet<T> {
     private int countForBack = 4;
     private NodeSet[] buckets;
 
-    public CustomHashSet() {
+    public CustomHashSet1() {
         buckets = new NodeSet[capacity];
     }
 
-    public CustomHashSet(int capacity) {
+    public CustomHashSet1(int capacity) {
         this.capacity = capacity;
         buckets = new NodeSet[capacity];
     }
 
-    public CustomHashSet(int capacity, double loadFactor) {
+    public CustomHashSet1(int capacity, double loadFactor) {
         this.capacity = capacity;
         this.loadFactor = loadFactor;
         buckets = new NodeSet[capacity];
     }
 
     public static void main(String[] args) {
-        CustomHashSet<Integer> set = new CustomHashSet<>(4);
+        CustomHashSet1<Integer> set = new CustomHashSet1<>(4);
         set.add(new Integer(3));
         set.debug();
         set.add(new Integer(3));
