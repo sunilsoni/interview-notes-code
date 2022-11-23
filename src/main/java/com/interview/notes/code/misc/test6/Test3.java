@@ -6,9 +6,9 @@ public class Test3 {
     public static void main(String[] args) {
 
 
-        int i=5;
-        i=i++ + ++i;
-      //  System.out.println("%d",i);
+        int i = 5;
+        i = i++ + ++i;
+        //  System.out.println("%d",i);
 
 //        int sum = 0;
 //        for (int i = 0, j=0;  i < 5 & j < 5; ++i,j=i+1)

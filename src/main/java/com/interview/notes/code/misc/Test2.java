@@ -1,15 +1,7 @@
 package com.interview.notes.code.misc;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.Repository;
-
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.Year;
-import java.util.*;
 
 
 public class Test2 {

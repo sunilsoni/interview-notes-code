@@ -1,7 +1,5 @@
 package com.interview.notes.code.LeetCode;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Stack;
 
 public class TrappingRainWater {
@@ -27,7 +25,7 @@ public class TrappingRainWater {
             }
         }
 
-        System.out.println("water: "+water);
+        System.out.println("water: " + water);
         return water;
     }
 

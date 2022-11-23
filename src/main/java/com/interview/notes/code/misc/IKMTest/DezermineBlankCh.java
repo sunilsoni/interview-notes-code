@@ -11,12 +11,12 @@ public class DezermineBlankCh {
                 blank++;
             }
         }
-            System.out.println(blank);
+        System.out.println(blank);
 
 
         var numberList = java.util.List.of(8, 1, -3, 1, 2);
         var array = numberList.toArray(new Integer[numberList.size()]);
-        if(array instanceof Number []) {
+        if (array instanceof Number[]) {
             System.out.println("is array of numbers");
 
             System.out.println(java.util.Arrays.toString(array));

@@ -1,13 +1,10 @@
 package com.interview.notes.code.misc.test4;
 
-import com.interview.notes.code.datastructure.Map.ConcurrentHashMap.ConcurrentHashMap1;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -18,7 +15,7 @@ class Test {
         update(x);
         System.out.println(x);//3
 
-       // HashMap  map=new ;
+        // HashMap  map=new ;
     }
 
     private static void update(int x) {
@@ -36,7 +33,7 @@ class Test1 {
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println(charCount);
 
-        System.out.println('a'+'c');
+        System.out.println('a' + 'c');
         List<Integer> list1 = new ArrayList<Integer>();
         list1.add(10);
         list1.add(20);

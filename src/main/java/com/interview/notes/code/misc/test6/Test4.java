@@ -7,7 +7,7 @@ public class Test4 {
      * List permutation of a string
      *
      * @param s the input string
-     * @return  the list of permutation
+     * @return the list of permutation
      */
     public static ArrayList<String> permutation(String s) {
         // The result
@@ -31,7 +31,7 @@ public class Test4 {
     /**
      * @param list a result of permutation, e.g. {"ab", "ba"}
      * @param c    the last character
-     * @return     a merged new list, e.g. {"cab", "acb" ... }
+     * @return a merged new list, e.g. {"cab", "acb" ... }
      */
     public static ArrayList<String> merge(ArrayList<String> list, String c) {
         ArrayList<String> res = new ArrayList<String>();

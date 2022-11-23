@@ -5,15 +5,15 @@ public class Foo {
     int x = 10;
 
     public static void main(String[] args) {
-        int a=5,b=7;
-        int c=a+=2*3+b--;
-        int count =0,i=0;
-        do{
+        int a = 5, b = 7;
+        int c = a += 2 * 3 + b--;
+        int count = 0, i = 0;
+        do {
 
-            count+=i;
+            count += i;
             i++;
-            if(count>5 )break;
-        }while(i<=4);
+            if (count > 5) break;
+        } while (i <= 4);
 
         Foo foo = new Foo();
         System.out.println("Foo 1: " + c);

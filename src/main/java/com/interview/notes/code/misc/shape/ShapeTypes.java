@@ -1,7 +1,7 @@
 package com.interview.notes.code.misc.shape;
 
 public enum ShapeTypes {
-   SQUARE, CIRCLE, TRIANGLE,RECTANGLE;
+    SQUARE, CIRCLE, TRIANGLE, RECTANGLE;
 
     /*
      * FUTUTE USE
@@ -10,7 +10,7 @@ public enum ShapeTypes {
      */
 
 
-   public void isdd(){
-     // this == ShapeTypes.valueOf("")
-   }
+    public void isdd() {
+        // this == ShapeTypes.valueOf("")
+    }
 }

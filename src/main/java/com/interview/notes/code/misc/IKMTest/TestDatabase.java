@@ -14,6 +14,6 @@ public class TestDatabase {
         if (rs.first()) {
             value = rs.getInt(1);
         }
-         return value == 1;
+        return value == 1;
     }
 }

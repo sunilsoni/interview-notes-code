@@ -5,7 +5,7 @@ package com.interview.notes.code.linkedlist;
  * output:
  * 1 2 1 2 1
  * Linked list palidrome: true
- *
+ * <p>
  * Time complexity : O(n)
  * Space complexity : O(1)
  **/

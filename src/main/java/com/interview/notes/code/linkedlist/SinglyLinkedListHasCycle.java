@@ -1,16 +1,6 @@
 package com.interview.notes.code.linkedlist;
 
 public class SinglyLinkedListHasCycle {
-    //Definition for singly-linked list.
-    class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
-
     public boolean hasCycle(ListNode head) {
         if (head == null) return false;
         ListNode walker = head;
@@ -21,5 +11,16 @@ public class SinglyLinkedListHasCycle {
             if (walker == runner) return true;
         }
         return false;
+    }
+
+    //Definition for singly-linked list.
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
     }
 }

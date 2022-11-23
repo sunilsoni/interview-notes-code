@@ -1,12 +1,9 @@
 package com.interview.notes.code.misc.test5;
 
-import java.util.ArrayList;
-
 public class RemoveDuplicates2 {
     // Function to remove duplicate elements This function
     // returns new size of modified array.
-    static int removeDuplicates(int arr[], int n)
-    {
+    static int removeDuplicates(int arr[], int n) {
         // Return, if array is empty or contains a single
         // element
         if (n == 0 || n == 1) {
@@ -36,9 +33,8 @@ public class RemoveDuplicates2 {
         return j;
     }
 
-    public static void main(String[] args)
-    {
-        int arr[] = { 1, 2, 2, 3, 4, 4, 4, 5, 5 };
+    public static void main(String[] args) {
+        int arr[] = {1, 2, 2, 3, 4, 4, 4, 5, 5};
         int n = arr.length;
 
         n = removeDuplicates(arr, n);

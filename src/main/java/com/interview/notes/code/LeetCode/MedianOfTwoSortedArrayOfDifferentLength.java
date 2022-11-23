@@ -19,6 +19,45 @@ import java.util.Arrays;
  */
 public class MedianOfTwoSortedArrayOfDifferentLength {
 
+    //https://www.java67.com/2021/11/how-to-find-median-of-two-sorted-arrays.html?m=0
+    public static double findMedianSortedArraysBruteForceApproach(int[] firstArray, int[] secondArray) {
+        int firstArrayLength = firstArray.length;
+        int secondArrayLength = secondArray.length;
+
+        int[] combinedArray = new int[firstArrayLength + secondArrayLength];
+        int k = 0;
+        for (int i : firstArray) {
+            combinedArray[k++] = i;
+        }
+
+        for (int i : secondArray) {
+            combinedArray[k++] = i;
+        }
+
+        Arrays.sort(combinedArray);
+        double median;
+        if (combinedArray.length % 2 == 0) {
+            median = combinedArray[combinedArray.length / 2];
+        } else {
+            median = (combinedArray[(combinedArray.length - 1) / 2]
+                    + combinedArray[(combinedArray.length + 1) / 2]) / 2;
+        }
+
+        return median;
+
+    }
+
+    public static void main(String[] args) {
+        int[] x = {1, 3, 8, 9, 15};
+        int[] y = {7, 11, 19, 21, 18, 25};
+
+        MedianOfTwoSortedArrayOfDifferentLength mm = new MedianOfTwoSortedArrayOfDifferentLength();
+        double res = mm.findMedianSortedArrays(x, y);
+        System.out.println(res);//11.0
+        double res2 = mm.findMedianSortedArraysBruteForceApproach(x, y);
+        System.out.println(res);//11.0
+    }
+
     public double findMedianSortedArrays(int input1[], int input2[]) {
         //if input1 length is greater than switch them so that input1 is smaller than input2.
         if (input1.length > input2.length) {
@@ -59,45 +98,6 @@ public class MedianOfTwoSortedArrayOfDifferentLength {
 
         //Only we we can come here is if input arrays were not sorted. Throw in that scenario.
         throw new IllegalArgumentException();
-    }
-
-    //https://www.java67.com/2021/11/how-to-find-median-of-two-sorted-arrays.html?m=0
-    public static double findMedianSortedArraysBruteForceApproach(int[] firstArray, int[] secondArray) {
-        int firstArrayLength = firstArray.length;
-        int secondArrayLength = secondArray.length;
-
-        int[] combinedArray = new int[firstArrayLength + secondArrayLength];
-        int k = 0;
-        for (int i : firstArray) {
-            combinedArray[k++] = i;
-        }
-
-        for (int i : secondArray) {
-            combinedArray[k++] = i;
-        }
-
-        Arrays.sort(combinedArray);
-        double median;
-        if (combinedArray.length % 2 == 0) {
-            median = combinedArray[combinedArray.length / 2];
-        } else {
-            median = (combinedArray[(combinedArray.length - 1) / 2]
-                    + combinedArray[(combinedArray.length + 1) / 2]) / 2;
-        }
-
-        return median;
-
-    }
-
-    public static void main(String[] args) {
-        int[] x = {1, 3, 8, 9, 15};
-        int[] y = {7, 11, 19, 21, 18, 25};
-
-        MedianOfTwoSortedArrayOfDifferentLength mm = new MedianOfTwoSortedArrayOfDifferentLength();
-        double res = mm.findMedianSortedArrays(x, y);
-        System.out.println(res);//11.0
-        double res2 = mm.findMedianSortedArraysBruteForceApproach(x, y);
-        System.out.println(res);//11.0
     }
 }
 

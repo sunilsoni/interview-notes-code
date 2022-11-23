@@ -1,7 +1,6 @@
 package com.interview.notes.code.amazon;
 
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 //https://github.com/awangdev/leet-code/blob/master/Java/Number%20of%20Airplane%20in%20the%20sky.java

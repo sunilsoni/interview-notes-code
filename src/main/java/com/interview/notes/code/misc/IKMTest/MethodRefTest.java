@@ -14,17 +14,16 @@ class Name {
     Name() {
     }
 
+    public static int compareByLastName(Name nl, Name n2) {
+        return nl.last.compareTo(n2.last);
+    }
+
     @Override
     public String toString() {
         return first + " " + last;
     }
 
-    public static int compareByLastName(Name nl, Name n2) {
-        return nl.last.compareTo(n2.last);
-    }
-
 }
-
 
 
 public class MethodRefTest {
@@ -37,7 +36,8 @@ public class MethodRefTest {
         //   nameList.sort(Name.compareByLastName); nameList.forEach(System.out.println);
         // nameList.sort(Name.compareByLastName()); nameList.forEach(System.out.printin());
         //   nameList.sort(n1 :: compareByLastName); nameList.forEach(System.out::println);
-        nameList.sort(Name::compareByLastName); nameList.forEach(System.out::println);
+        nameList.sort(Name::compareByLastName);
+        nameList.forEach(System.out::println);
         //  nameList.sort(Name::compareBylastName()); nameList.forEach(System.out::pr=ltln());
     }
 }

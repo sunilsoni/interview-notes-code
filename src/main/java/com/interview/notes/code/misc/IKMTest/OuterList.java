@@ -17,12 +17,13 @@ class OuterList {
         OuterList.IntericrList classList3 = containClassList2.new IntericrList();
         classList3.list.add("string");
 
-      //  OuterList.IntericrList classList4 = (new OuterList).(new IntericrList());
-     //   classList4.list.add("string");
+        //  OuterList.IntericrList classList4 = (new OuterList).(new IntericrList());
+        //   classList4.list.add("string");
 
-       // OuterList.IntericrList classList5 = OuterList.new IntericrList();
-    //    classList5.list.add("string");
+        // OuterList.IntericrList classList5 = OuterList.new IntericrList();
+        //    classList5.list.add("string");
     }
+
     public class IntericrList {
         public List<String> list = new ArrayList<>();
     }

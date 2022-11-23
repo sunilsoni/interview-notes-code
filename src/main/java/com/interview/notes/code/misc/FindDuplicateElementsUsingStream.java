@@ -1,24 +1,22 @@
 package com.interview.notes.code.misc;
 
-import com.interview.notes.code.java.lambda.Employee;
-
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 //https://java2blog.com/find-duplicate-elements-in-stream-java/
 public class FindDuplicateElementsUsingStream {
-    public static void main(String[] args){
-        List<Employee> employees =  Arrays.asList(
-                new Employee(1,"john","doe"),
-                new Employee(2,"peter","parker"),
-                new Employee(3,"mary","public"),
-                new Employee(4,"charles","darwin"),
-                new Employee(1,"john","doe"),
-                new Employee(3,"mary","public")
+    public static void main(String[] args) {
+        List<Employee> employees = Arrays.asList(
+                new Employee(1, "john", "doe"),
+                new Employee(2, "peter", "parker"),
+                new Employee(3, "mary", "public"),
+                new Employee(4, "charles", "darwin"),
+                new Employee(1, "john", "doe"),
+                new Employee(3, "mary", "public")
         );
 
-        Set<Employee> duplicateEmployees= employees.stream()
+        Set<Employee> duplicateEmployees = employees.stream()
                 .collect(Collectors
                         .groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
@@ -50,7 +48,7 @@ public class FindDuplicateElementsUsingStream {
         //french
     }
 
-    static class Employee{
+    static class Employee {
         private int id;
         private String firstName;
         private String lastName;

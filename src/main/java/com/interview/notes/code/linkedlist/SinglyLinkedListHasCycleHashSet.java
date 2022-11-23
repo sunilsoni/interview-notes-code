@@ -4,16 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SinglyLinkedListHasCycleHashSet {
-    //Definition for singly-linked list.
-    class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
-
     public boolean hasCycle(ListNode head) {
         Set<ListNode> mp = new HashSet<>();
         while (head != null) {
@@ -24,5 +14,16 @@ public class SinglyLinkedListHasCycleHashSet {
             head = head.next;
         }
         return false;
+    }
+
+    //Definition for singly-linked list.
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
     }
 }

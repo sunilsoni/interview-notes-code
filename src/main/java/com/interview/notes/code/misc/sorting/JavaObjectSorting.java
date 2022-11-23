@@ -1,9 +1,6 @@
 package com.interview.notes.code.misc.sorting;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class JavaObjectSorting {
 
@@ -11,6 +8,7 @@ public class JavaObjectSorting {
     /**
      * This class shows how to sort custom objects array/list
      * implementing Comparable and Comparator interfaces
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -24,23 +22,23 @@ public class JavaObjectSorting {
 
         //sorting employees array using Comparable interface implementation
         Arrays.sort(empArr);
-        System.out.println("Default Sorting of Employees list:\n"+Arrays.toString(empArr));
+        System.out.println("Default Sorting of Employees list:\n" + Arrays.toString(empArr));
 
         //sort employees array using Comparator by Salary
         Arrays.sort(empArr, Employee.SalaryComparator);
-        System.out.println("Employees list sorted by Salary:\n"+Arrays.toString(empArr));
+        System.out.println("Employees list sorted by Salary:\n" + Arrays.toString(empArr));
 
         //sort employees array using Comparator by Age
         Arrays.sort(empArr, Employee.AgeComparator);
-        System.out.println("Employees list sorted by Age:\n"+Arrays.toString(empArr));
+        System.out.println("Employees list sorted by Age:\n" + Arrays.toString(empArr));
 
         //sort employees array using Comparator by Name
         Arrays.sort(empArr, Employee.NameComparator);
-        System.out.println("Employees list sorted by Name:\n"+Arrays.toString(empArr));
+        System.out.println("Employees list sorted by Name:\n" + Arrays.toString(empArr));
 
         //Employees list sorted by ID and then name using Comparator class
         empArr[0] = new Employee(1, "Mikey", 25, 10000);
         Arrays.sort(empArr, new EmployeeComparatorByIdAndName());
-        System.out.println("Employees list sorted by ID and Name:\n"+Arrays.toString(empArr));
+        System.out.println("Employees list sorted by ID and Name:\n" + Arrays.toString(empArr));
     }
 }

@@ -10,16 +10,6 @@ public class CustomHashSet<T> {
     private int countForBack = 4;
     private NodeSet[] buckets;
 
-    private class NodeSet<T> {
-        T value;
-        NodeSet next;
-
-        NodeSet(T elem, NodeSet next) {
-            this.value = elem;
-            this.next = next;
-        }
-    }
-
     public CustomHashSet() {
         buckets = new NodeSet[capacity];
     }
@@ -33,6 +23,37 @@ public class CustomHashSet<T> {
         this.capacity = capacity;
         this.loadFactor = loadFactor;
         buckets = new NodeSet[capacity];
+    }
+
+    public static void main(String[] args) {
+        CustomHashSet<Integer> set = new CustomHashSet<>(4);
+        set.add(new Integer(3));
+        set.debug();
+        set.add(new Integer(3));
+        set.debug();
+        set.add(new Integer(10));
+        set.debug();
+        set.add(new Integer(5));
+        set.debug();
+        set.add(new Integer(111));
+        set.debug();
+        set.add(new Integer(50));
+        set.debug();
+        set.delete(5);
+        set.debug();
+        set.add(null);
+        set.debug();
+        set.add(new Integer(23));
+        set.debug();
+        set.add(null);
+        set.debug();
+        System.out.println(set);
+        System.out.println("Length: " + set.length());
+        set.delete(50);
+        set.debug();
+        System.out.println(set);
+        System.out.println("Length: " + set.length());
+        System.out.println("Contains result: " + set.contains(23));
     }
 
     private int getBucket(T elem) {
@@ -360,35 +381,13 @@ public class CustomHashSet<T> {
         System.out.println(result);
     }
 
+    private class NodeSet<T> {
+        T value;
+        NodeSet next;
 
-    public static void main(String[] args) {
-        CustomHashSet<Integer> set = new CustomHashSet<>(4);
-        set.add(new Integer(3));
-        set.debug();
-        set.add(new Integer(3));
-        set.debug();
-        set.add(new Integer(10));
-        set.debug();
-        set.add(new Integer(5));
-        set.debug();
-        set.add(new Integer(111));
-        set.debug();
-        set.add(new Integer(50));
-        set.debug();
-        set.delete(5);
-        set.debug();
-        set.add(null);
-        set.debug();
-        set.add(new Integer(23));
-        set.debug();
-        set.add(null);
-        set.debug();
-        System.out.println(set);
-        System.out.println("Length: " + set.length());
-        set.delete(50);
-        set.debug();
-        System.out.println(set);
-        System.out.println("Length: " + set.length());
-        System.out.println("Contains result: " + set.contains(23));
+        NodeSet(T elem, NodeSet next) {
+            this.value = elem;
+            this.next = next;
+        }
     }
 }

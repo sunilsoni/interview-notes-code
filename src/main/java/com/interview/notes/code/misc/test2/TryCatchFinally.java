@@ -27,15 +27,15 @@ public class TryCatchFinally {
 
     }
 
-    public static int test(){
-        try{
-            return  1;
+    public static int test() {
+        try {
+            return 1;
 
-        }catch(Exception e){
-            return  2;
+        } catch (Exception e) {
+            return 2;
 
-        }finally {
-            return  3;
+        } finally {
+            return 3;
         }
     }
 }

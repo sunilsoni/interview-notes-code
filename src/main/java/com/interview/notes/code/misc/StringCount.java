@@ -8,15 +8,15 @@ import java.util.stream.Collectors;
 
 public class StringCount {
     public static void main(String[] args) {
-        List<String> names = Arrays.asList("Tomy","Rahul","Boboy","John","Rahul","John");
+        List<String> names = Arrays.asList("Tomy", "Rahul", "Boboy", "John", "Rahul", "John");
 
         //count for more than  1 occurence
-        Map<String, Long> nameCountMap =  names.stream()
-                .collect(Collectors.toMap(Function.identity(), v->1l,Long::sum) )
+        Map<String, Long> nameCountMap = names.stream()
+                .collect(Collectors.toMap(Function.identity(), v -> 1l, Long::sum))
                 .entrySet()
                 .stream()
-                .filter(v -> v.getValue()>1)
-                .collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue));
+                .filter(v -> v.getValue() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         System.out.println(nameCountMap);//{Rahul=2, John=2}
 

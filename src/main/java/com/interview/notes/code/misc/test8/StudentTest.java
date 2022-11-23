@@ -10,11 +10,11 @@ public class StudentTest {
 
         Map<Student, String> map = new HashMap<>();
 
-        Student s1 = new Student(1,"Ram");
-        Student s2 = new Student(1,"Ram");
+        Student s1 = new Student(1, "Ram");
+        Student s2 = new Student(1, "Ram");
 
-        map.put(s1,"Hello");
-        s1.id=2;
+        map.put(s1, "Hello");
+        s1.id = 2;
         System.out.println(map.get(s1));
 
 

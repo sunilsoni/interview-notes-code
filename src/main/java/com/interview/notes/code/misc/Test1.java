@@ -3,11 +3,11 @@ package com.interview.notes.code.misc;
 public class Test1 {
     public static void main(String[] args) {
 
-int x=3;
-int y=5;
-int z=12;
+        int x = 3;
+        int y = 5;
+        int z = 12;
 
-int r = ++z+y-y+z+x++;
+        int r = ++z + y - y + z + x++;
 
 //13
         System.out.println(r);
@@ -24,11 +24,11 @@ int r = ++z+y-y+z+x++;
         try {
             System.out.println("Inside try block");
             // below code throws divide by zero exception
-            int data=25/0;
+            int data = 25 / 0;
             System.out.println(data);
         }
         // handles the Arithmetic Exception / Divide by zero exception
-        catch (ArithmeticException e){
+        catch (ArithmeticException e) {
             System.out.println("Exception handled");
             System.out.println(e);
         }

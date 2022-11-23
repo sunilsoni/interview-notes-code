@@ -7,7 +7,7 @@ public class ShapeValidator {
     }
 
     public static Boolean isTriangle(double[] t) {
-        return t[2] < t[0] + t[1] && t[1] < t[0] + t[2]  && t[0] < t[1] + t[2] ;
+        return t[2] < t[0] + t[1] && t[1] < t[0] + t[2] && t[0] < t[1] + t[2];
     }
 
     public static Boolean isNotRectangle(double[] t) {

@@ -5,17 +5,17 @@ import com.interview.notes.code.misc.shape.ShapeTypes;
 
 public abstract class Triangle implements Shape {
 
-	// todoe
-	protected double[] sides;
+    // todoe
+    protected double[] sides;
 
-	public Enum<ShapeTypes> getShapeType() {
-		return ShapeTypes.TRIANGLE;
-	}
+    public Enum<ShapeTypes> getShapeType() {
+        return ShapeTypes.TRIANGLE;
+    }
 
-	public abstract double getArea() ;
+    public abstract double getArea();
 
-	public abstract double getCircumference();
+    public abstract double getCircumference();
 
-	public abstract TriangleTypes getTriangleType();
+    public abstract TriangleTypes getTriangleType();
 
 }

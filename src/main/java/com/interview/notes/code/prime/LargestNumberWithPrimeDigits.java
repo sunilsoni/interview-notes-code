@@ -4,22 +4,18 @@ package com.interview.notes.code.prime;
 public class LargestNumberWithPrimeDigits {
 
     // check if character is prime
-    public static boolean isPrime(char c)
-    {
+    public static boolean isPrime(char c) {
         return (c == '2' || c == '3' || c == '5' || c == '7');
     }
 
     // replace with previous prime character
-    public static void decrease(StringBuilder s, int i)
-    {
-        if (s.charAt(i) <= '2')
-        {
+    public static void decrease(StringBuilder s, int i) {
+        if (s.charAt(i) <= '2') {
 
             // if 2 erase s[i] and replace next with 7
             s.deleteCharAt(i);
             s.setCharAt(i, '7');
-        }
-        else if (s.charAt(i) == '3')
+        } else if (s.charAt(i) == '3')
             s.setCharAt(i, '2');
         else if (s.charAt(i) <= '5')
             s.setCharAt(i, '3');
@@ -31,22 +27,18 @@ public class LargestNumberWithPrimeDigits {
         return;
     }
 
-    public static String primeDigits(StringBuilder s)
-    {
-        for (int i = 0; i < s.length(); i++)
-        {
+    public static String primeDigits(StringBuilder s) {
+        for (int i = 0; i < s.length(); i++) {
 
             // find first non prime char
-            if (!isPrime(s.charAt(i)))
-            {
+            if (!isPrime(s.charAt(i))) {
 
                 // find first char greater than 2
                 while (i >= 0 && s.charAt(i) <= '2')
                     i--;
 
                 // like 20
-                if (i < 0)
-                {
+                if (i < 0) {
                     i = 0;
                     decrease(s, i);
                 }
@@ -66,8 +58,7 @@ public class LargestNumberWithPrimeDigits {
     }
 
     // Driver code
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         StringBuilder s = new StringBuilder("45");
         System.out.println(primeDigits(s));//37
 

@@ -34,7 +34,7 @@ public class TestApp {
                 i = vals[j];
             }
 
-            System.out.println(i + " "+counter +" "+firstOccurence);
+            System.out.println(i + " " + counter + " " + firstOccurence);
 
         }
     }

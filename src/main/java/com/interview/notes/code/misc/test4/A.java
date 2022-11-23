@@ -2,13 +2,7 @@ package com.interview.notes.code.misc.test4;
 
 public class A {
 
-        int x = 5;
-
-
-    public void fun(A b){
-        b.x=10;
-        System.out.println(b);
-    }
+    int x = 5;
 
     public static void main(String[] args) {
         A a = new A();
@@ -16,18 +10,23 @@ public class A {
         System.out.println("a.x: " + a.x);
         System.out.println(a);
 
-         int x =0;
-        try{
-            x=5;
+        int x = 0;
+        try {
+            x = 5;
             throw new Exception();
-           // x=10;
-        } catch(Exception e) {
-            x=15;
+            // x=10;
+        } catch (Exception e) {
+            x = 15;
         } finally {
-            x=20;
+            x = 20;
             System.out.println(x);
         }
 
+    }
+
+    public void fun(A b) {
+        b.x = 10;
+        System.out.println(b);
     }
 
 

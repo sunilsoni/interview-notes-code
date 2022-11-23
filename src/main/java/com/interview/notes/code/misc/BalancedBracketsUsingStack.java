@@ -3,10 +3,8 @@ package com.interview.notes.code.misc;
 import java.util.Stack;
 
 /**
- *
  * Problem Statement-
  * [Stacks: Balanced Brackets](https://www.hackerrank.com/challenges/ctci-balanced-brackets/problem)
- *
  */
 public class BalancedBracketsUsingStack {
 

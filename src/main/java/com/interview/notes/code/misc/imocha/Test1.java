@@ -1,10 +1,5 @@
 package com.interview.notes.code.misc.imocha;
 
-import org.aspectj.weaver.ast.Or;
-
-import java.util.Arrays;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 public class Test1 {
 
     public static void main(String[] args) {
@@ -19,4 +14,4 @@ public class Test1 {
 
 
     }
-            }
+}

@@ -19,16 +19,16 @@ public interface Test {
         }).sum();
     }
 
-    default int test(){
-        try{
+    default int test() {
+        try {
             return 1;
-        }catch (Exception e){
+        } catch (Exception e) {
             return 2;
-        }finally {
+        } finally {
             return 3;
         }
 
-       // return 4;
+        // return 4;
     }
 
 }

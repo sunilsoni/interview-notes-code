@@ -5,15 +5,15 @@ package com.interview.notes.code.misc.test3;
 public class Solution {
 
     public static void main(String[] args) {
-     int[] arr = {2,5,6,7,8,8,9};
-     int  target =5;
+        int[] arr = {2, 5, 6, 7, 8, 8, 9};
+        int target = 5;
 
-      int res =   closestNumber(arr,target);
-      System.out.println(res);
+        int res = closestNumber(arr, target);
+        System.out.println(res);
     }
 
     /**
-     * @param A an integer array sorted in ascending order
+     * @param A      an integer array sorted in ascending order
      * @param target an integer
      * @return an integer
      */
@@ -36,7 +36,7 @@ public class Solution {
         int right = Math.abs(A[end] - target);
         if (left <= right) {
             return start;
-        } 
+        }
         return end;
     }
 }
