@@ -12,7 +12,7 @@ public class ComposedFunctionExample {
         Function<Address, Integer> second = addr -> addr.pincode;
         // extract("E101", first, second);
 
-         int x=8;
+        int x = 8;
         System.out.println(x++);
     }
 
