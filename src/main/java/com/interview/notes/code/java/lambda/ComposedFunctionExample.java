@@ -8,6 +8,8 @@ public class ComposedFunctionExample {
      * Find the Addrees of given employee from database and return pincode
      */
     public static void main(String[] args) {
+
+        double v = 12.00 / 0.0;
         // Function<String, Address> first = empid -> EmployeeService.getEmployeesData().get(empid);
         Function<Address, Integer> second = addr -> addr.pincode;
         // extract("E101", first, second);
