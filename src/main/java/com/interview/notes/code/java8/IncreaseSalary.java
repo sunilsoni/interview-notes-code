@@ -51,11 +51,11 @@ class Employee {
 
 public class IncreaseSalary {
     public static void main(String[] args) {
-        List<Employee> employees = Arrays.asList(
-                new Employee(1, "John Doe", 75000, "IT"),
-                new Employee(2, "Jane Doe", 80000, "IT"),
-                new Employee(3, "Jim Smith", 65000, "HR"),
-                new Employee(4, "Lisa Smith", 90000, "IT")
+        List<Employee1> employees = Arrays.asList(
+                new Employee1(1, "John Doe", 75000, "IT"),
+                new Employee1(2, "Jane Doe", 80000, "IT"),
+                new Employee1(3, "Jim Smith", 65000, "HR"),
+                new Employee1(4, "Lisa Smith", 90000, "IT")
         );
 
         employees.stream()

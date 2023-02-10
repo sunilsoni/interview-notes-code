@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 //list of employees from specific city(key) whose age is more than 40
 public class EmployeeFilter {
 
-    public static Map<String, List<Employee>> filterEmployees(List<Department> departments) {
+    public static Map<String, List<Employee1>> filterEmployees(List<Department> departments) {
         return departments.stream()
                 .flatMap(department -> department.getEmployee().stream())
                 .filter(employee -> employee.getAge() > 40)
-                .collect(Collectors.groupingBy(Employee::getCity));
+                .collect(Collectors.groupingBy(Employee1::getCity));
     }
 
 }
