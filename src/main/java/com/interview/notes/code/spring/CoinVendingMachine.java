@@ -31,7 +31,3 @@ public class CoinVendingMachine {
     }
   }
 }
-
-
-
-
