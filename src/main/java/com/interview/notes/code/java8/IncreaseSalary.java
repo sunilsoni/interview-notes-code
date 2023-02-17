@@ -51,6 +51,15 @@ class Employee {
 
 public class IncreaseSalary {
     public static void main(String[] args) {
+
+        StringBuffer sb = new StringBuffer("aaaaa");
+      //  System.out.println(sb.insert(3, false));
+       // System.out.println(sb.insert(5, 3.3).insert(7, "One"));
+        System.out.println(sb.insert(3, false).insert(5, 3.3).insert(7, "One"));
+
+
+
+
         List<Employee1> employees = Arrays.asList(
                 new Employee1(1, "John Doe", 75000, "IT"),
                 new Employee1(2, "Jane Doe", 80000, "IT"),
@@ -62,6 +71,6 @@ public class IncreaseSalary {
                 .filter(e -> e.getDepartment().equals("IT"))
                 .forEach(e -> e.setSalary(e.getSalary() * 1.2));
 
-        employees.forEach(e -> System.out.println(e.getName() + ": $" + e.getSalary()));
+       // employees.forEach(e -> System.out.println(e.getName() + ": $" + e.getSalary()));
     }
 }
