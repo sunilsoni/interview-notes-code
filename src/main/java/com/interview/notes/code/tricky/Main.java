@@ -38,6 +38,8 @@ public class Main {
         System.out.println("Max consecutive char is " + maxChar);
         System.out.printf("It starts at position %d, length is %d", maxIndex, maxCount);
     }
+
+
 }
 
 /**
