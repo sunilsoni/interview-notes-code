@@ -1,9 +1,9 @@
 package com.interview.notes.code.test.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.LinkedHashMap;
 import java.util.function.Function;
- 
+import java.util.stream.Collectors;
+
 public class JavaHungry {
     public static void main(String args[]) {
         String input = "Java Hungry Blog Alive is Awesome";

@@ -1,7 +1,6 @@
 package com.interview.notes.code.test.test1;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class DistinctElementsArray {
 

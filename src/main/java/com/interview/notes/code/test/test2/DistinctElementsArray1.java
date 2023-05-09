@@ -1,6 +1,7 @@
 package com.interview.notes.code.test.test2;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DistinctElementsArray1 {
 
@@ -29,7 +30,7 @@ public class DistinctElementsArray1 {
         int R = 6;
         int[] A = {8, 6, 3, 8, 4, 4, 1, 9};
 
-        int result = distinctElements(A,  L, R);
+        int result = distinctElements(A, L, R);
         System.out.println(result);
         //int distinct = distinctElements(A, L, R);
 

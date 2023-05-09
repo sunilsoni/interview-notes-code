@@ -1,7 +1,6 @@
 package com.interview.notes.code.test.test1;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class DistinctElementsArray1 {
 
@@ -22,9 +21,9 @@ public class DistinctElementsArray1 {
 
         int result = distinctElements(A, N, L, R);
         System.out.println(result);
-       // int result = distinctElements(A, N, L, R);
-       // System.out.println(result);
-       // sc.close();
+        // int result = distinctElements(A, N, L, R);
+        // System.out.println(result);
+        // sc.close();
     }
 
     public static int distinctElements(int[] A, int N, int L, int R) {

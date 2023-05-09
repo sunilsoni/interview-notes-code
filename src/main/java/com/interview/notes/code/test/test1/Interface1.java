@@ -6,13 +6,13 @@ public interface Interface1 {
     }
 }
 
- interface Interface2 {
+interface Interface2 {
     default void myMethod() {
         System.out.println("Default method in Interface2");
     }
 }
 
-  class MyClass implements Interface1 {
+class MyClass implements Interface1 {
     public void myMethod() {
         Interface1.super.myMethod(); // Calling the default implementation from Interface1
     }

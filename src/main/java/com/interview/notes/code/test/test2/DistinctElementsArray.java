@@ -1,6 +1,8 @@
 package com.interview.notes.code.test.test2;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 
 public class DistinctElementsArray {
 

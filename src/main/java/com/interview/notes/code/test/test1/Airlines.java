@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * Various travel routes are available as strings (ex. "Mangalore -> Bangalore", "Bangalore -> Chennai", "Chennai -> Bhubaneshwar")
- *
+ * <p>
  * find if the given paths help us to realize a travel route
  * Good : "Bangalore->Bhubaneshwar"
  * Invalid: "Patna->Mumbai"
