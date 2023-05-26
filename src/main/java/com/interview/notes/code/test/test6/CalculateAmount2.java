@@ -1,5 +1,22 @@
 package com.interview.notes.code.test.test6;
+/*
+Java Vending Machine:
 
+Pck higest denomination first and return change
+
+Vending machine:-
+
+Item 1 - $0.10
+Item 2 - $0.20
+Item 3 - $0.30
+Item 4 - $0.40
+
+Available coins:- $0.01, $0.05, $0.10, $0.25
+
+Input - $1, Item 3
+
+70 25+25=50
+ */
 public class CalculateAmount2 {
 
     public static int calculateAmount(int[] prices) {
