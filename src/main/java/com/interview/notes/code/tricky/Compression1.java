@@ -5,15 +5,12 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 /**
- *
- In java
-
- We want to implement a compression algorithm for byte sequences with a lot of Os using the following algorithm: -
-
- M consecutive zeros: encode as 1 byte with first bit set to 0 and remaining seven bits to indicate the number of zeros (M) -
- N consecutive non-zeros: encode as 1 byte with first bit set to 1 and remaining seven bits to indicate the number of bytes (N), then copy the N bytes
-
-
+ * In java
+ * <p>
+ * We want to implement a compression algorithm for byte sequences with a lot of Os using the following algorithm: -
+ * <p>
+ * M consecutive zeros: encode as 1 byte with first bit set to 0 and remaining seven bits to indicate the number of zeros (M) -
+ * N consecutive non-zeros: encode as 1 byte with first bit set to 1 and remaining seven bits to indicate the number of bytes (N), then copy the N bytes
  */
 public class Compression1 {
     public static byte[] compress(byte[] input) {

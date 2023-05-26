@@ -1,7 +1,5 @@
 package com.interview.notes.code.spring;
 
-import java.util.LinkedList;
-
 /*
 
 Given an array of strings, return all groups of strings that are anagrams. Represent a group by a list of integers representing the index in the original list. Look at the sample case for clarification.
@@ -33,8 +31,8 @@ public class Test {
         String s2 = new String("hello");
         String s3 = "hello";
 
-        System.out.println(s1==s3);
-        System.out.println(s2==s1);
+        System.out.println(s1 == s3);
+        System.out.println(s2 == s1);
         System.out.println(s3);
     }
 

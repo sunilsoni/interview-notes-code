@@ -1,6 +1,8 @@
 package com.interview.notes.code.test.test5;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,8 +20,8 @@ public class Main {
         }
 
         PriorityQueue<String> pq = new PriorityQueue<>(
-            (w1, w2) -> map.get(w1).equals(map.get(w2)) ?
-            w2.compareTo(w1) : map.get(w1) - map.get(w2)
+                (w1, w2) -> map.get(w1).equals(map.get(w2)) ?
+                        w2.compareTo(w1) : map.get(w1) - map.get(w2)
         );
 
         for (String word : map.keySet()) {

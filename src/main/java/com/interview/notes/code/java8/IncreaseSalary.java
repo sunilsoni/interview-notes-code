@@ -32,12 +32,12 @@ class Employee {
         return salary;
     }
 
-    public String getDepartment() {
-        return department;
-    }
-
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public String getDepartment() {
+        return department;
     }
 
     public int getAge() {
@@ -53,11 +53,9 @@ public class IncreaseSalary {
     public static void main(String[] args) {
 
         StringBuffer sb = new StringBuffer("aaaaa");
-      //  System.out.println(sb.insert(3, false));
-       // System.out.println(sb.insert(5, 3.3).insert(7, "One"));
+        //  System.out.println(sb.insert(3, false));
+        // System.out.println(sb.insert(5, 3.3).insert(7, "One"));
         System.out.println(sb.insert(3, false).insert(5, 3.3).insert(7, "One"));
-
-
 
 
         List<Employee1> employees = Arrays.asList(
@@ -71,6 +69,6 @@ public class IncreaseSalary {
                 .filter(e -> e.getDepartment().equals("IT"))
                 .forEach(e -> e.setSalary(e.getSalary() * 1.2));
 
-       // employees.forEach(e -> System.out.println(e.getName() + ": $" + e.getSalary()));
+        // employees.forEach(e -> System.out.println(e.getName() + ": $" + e.getSalary()));
     }
 }

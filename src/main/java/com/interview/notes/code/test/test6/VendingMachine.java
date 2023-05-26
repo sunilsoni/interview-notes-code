@@ -17,6 +17,11 @@ class VendingMachine {
         coins = Arrays.asList(0.25, 0.10, 0.05, 0.01);
     }
 
+    public static void main(String[] args) {
+        VendingMachine vm = new VendingMachine();
+        vm.purchaseItem("Item 3", 1.00);
+    }
+
     public void purchaseItem(String item, double moneyInserted) {
         if (!items.containsKey(item)) {
             System.out.println("This item doesn't exist.");
@@ -43,10 +48,5 @@ class VendingMachine {
             changeMap.put(coin, count);
         }
         return changeMap;
-    }
-
-    public static void main(String[] args) {
-        VendingMachine vm = new VendingMachine();
-        vm.purchaseItem("Item 3", 1.00);
     }
 }

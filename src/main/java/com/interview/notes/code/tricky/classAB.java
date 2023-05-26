@@ -8,7 +8,7 @@ package com.interview.notes.code.tricky;
  * which method implementation should be used. By requiring implementation of the default method, the Java
  * language can ensure that there is a clear implementation and avoid any confusion or ambiguity in this scenario.
  */
-public class classAB implements InterfaceA,InterfaceB{
+public class classAB implements InterfaceA, InterfaceB {
     @Override
     public String getGreeting() {
         return InterfaceA.super.getGreeting();

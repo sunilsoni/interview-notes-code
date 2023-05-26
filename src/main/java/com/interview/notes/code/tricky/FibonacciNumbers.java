@@ -19,8 +19,8 @@ public class FibonacciNumbers {
         fib.add(0);
         fib.add(1);
         int i = 2;
-        while (fib.get(i-1) < n) {
-            int nextFib = fib.get(i-1) + fib.get(i-2);
+        while (fib.get(i - 1) < n) {
+            int nextFib = fib.get(i - 1) + fib.get(i - 2);
             fib.add(nextFib);
             i++;
         }
@@ -32,6 +32,7 @@ public class FibonacciNumbers {
         }
         return false;
     }
+
     public static void main(String[] args) {
         System.out.println(solution(1)); // true
         System.out.println(solution(10)); // true

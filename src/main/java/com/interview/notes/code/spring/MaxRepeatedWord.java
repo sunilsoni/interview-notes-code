@@ -1,6 +1,7 @@
 package com.interview.notes.code.spring;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MaxRepeatedWord {
     public static void main(String[] args) {

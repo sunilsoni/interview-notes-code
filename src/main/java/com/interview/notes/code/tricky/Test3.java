@@ -3,25 +3,25 @@ package com.interview.notes.code.tricky;
 
 /**
  * In java
- *
+ * <p>
  * You are given three integers in the form of strings: firstnum , secondnum , and thirdnum . Your task is to check whether it is possible to erase at most one digit from firstnum , so that the resulting string contains at least one digit, has no leading zeros and the value of thirdnum is equal to the sum of the values of firstnum and secondnum .
  * Return true if it's possible, otherwise return false . Note: All three strings are provided without leading zeros.
- *
- *
+ * <p>
+ * <p>
  * Example
- *
+ * <p>
  * • For firstnum = "10534" , secondnum = "67" , and thirdnum = "1120" , the output should be solution(firstnum, secondnum, thirdnum) = true . By erasing the 5th digit of firstnum , the result is 1053 , and 1053 + 67 = 1120. So the answer is true . •
- *
+ * <p>
  * For firstnum = "10000" , secondnum = "67" , and thirdnum = "1120" , the output should be solution(firstnum, secondnum, thirdnum) = false . The only possible modified values of
  * firstnum would be l0000 (nothing was deleted), 0000 (first digit was deleted), and l000 (any zero was deleted); none of
  * which would produce the required sum, so the answer is false .
- *
+ * <p>
  * • For firstnum = "1067" , secondnum = "33" , and thirdnum = "100" , the output should be solution (firstnum, secondnum, thirdnum) = false . We could delete the first digit of firstnum , resulting in 067 (and 67 + 33 = 100 ), but since in this case new firstnum value has a leading zero, it's
  * considered invalid. So the answer is false .
- *
+ * <p>
  * • For firstnum = "153" , secondnum = "153" , and thirdnum = "306" , the output should be solution (firstnum, secondnum, thirdnum) = true .
- *
- *
+ * <p>
+ * <p>
  * Input/Output
  * • [execution time limit] 3 seconds (Java)
  * • [input] string firstnum A string representing an integer. Guaranteed constraints:
@@ -32,15 +32,15 @@ package com.interview.notes.code.tricky;
  * 1 S thirdnum.length S 9 .
  * • [output] boolean Return true if it's possible to erase at most one digit from firstnum such that the value of thirdnum is equal to the sum of the values of firstnum and
  * secondnum . Otherwise return false .
- *
+ * <p>
  * Inn Java
- *
+ * <p>
  * Given a string of lowercase English letters, find the length of its longest contiguous substring that doesn't contain any character more than once.
- *
+ * <p>
  * Example For s = "abcabba" , the output should be solution(s) = 3 .
- *
+ * <p>
  * The longest substrings with unique characters are abc , bca , and cab , so the answer should be 3 .
- *
+ * <p>
  * Input/Output
  * • [execution time limit] 1 seconds (java) • [input] string s A string containing only lowercase English letters. Guaranteed constraints:
  * 3 < s.length 106. • [output] integer [Java] Syntax Tips
@@ -48,12 +48,12 @@ package com.interview.notes.code.tricky;
 public class Test3 {
     public static void main(String[] args) {
 
-      //  System.out.println(solution1("10534","67" ,"1120"));
-       // System.out.println(solution2("10534","67" ,"1120"));
-       // System.out.println(solution3("10534","67" ,"1120"));
+        //  System.out.println(solution1("10534","67" ,"1120"));
+        // System.out.println(solution2("10534","67" ,"1120"));
+        // System.out.println(solution3("10534","67" ,"1120"));
 
-        System.out.println(solution6("10534","67" ,"1120"));//true
-        System.out.println(solution6("1067","33" ,"100"));//true
+        System.out.println(solution6("10534", "67", "1120"));//true
+        System.out.println(solution6("1067", "33", "100"));//true
 
 
     }
@@ -123,10 +123,10 @@ public class Test3 {
             }
             if (k < len3 - 1 && digit != (thirdnum.charAt(k) - '0')) {
                 // If the current digit in thirdnum does not match the sum of the digits, we can try deleting one digit from firstnum and try again
-                if (i < len1 && solution2(firstnum.substring(0, i-1) + firstnum.substring(i), secondnum, thirdnum.substring(k+1))) {
+                if (i < len1 && solution2(firstnum.substring(0, i - 1) + firstnum.substring(i), secondnum, thirdnum.substring(k + 1))) {
                     return true;
                 }
-                if (j < len2 && solution2(firstnum.substring(0, i), secondnum.substring(0, j-1) + secondnum.substring(j), thirdnum.substring(k+1))) {
+                if (j < len2 && solution2(firstnum.substring(0, i), secondnum.substring(0, j - 1) + secondnum.substring(j), thirdnum.substring(k + 1))) {
                     return true;
                 }
                 return false;
@@ -146,7 +146,7 @@ public class Test3 {
         // try deleting one digit from firstnum and check if the sum equals thirdnum
         for (int i = 0; i < firstnum.length(); i++) {
             if (firstnum.charAt(i) != '0') {
-                String newFirstNum = firstnum.substring(0, i) + firstnum.substring(i+1);
+                String newFirstNum = firstnum.substring(0, i) + firstnum.substring(i + 1);
                 if (isValid(newFirstNum, secondnum, thirdnum)) {
                     return true;
                 }
@@ -156,7 +156,7 @@ public class Test3 {
         // try deleting one digit from secondnum and check if the sum equals thirdnum
         for (int i = 0; i < secondnum.length(); i++) {
             if (secondnum.charAt(i) != '0') {
-                String newSecondNum = secondnum.substring(0, i) + secondnum.substring(i+1);
+                String newSecondNum = secondnum.substring(0, i) + secondnum.substring(i + 1);
                 if (isValid(firstnum, newSecondNum, thirdnum)) {
                     return true;
                 }

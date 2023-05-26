@@ -39,8 +39,8 @@ public class SuspiciousActivityDetector {
     }
 
     public static void main(String[] args) {
-       // String[] logs = {"88 99 200", "88 99 300", "99 32 100", "12 12 157"};
-        String[] logs = { "9 7 50", "22 7 20", "33 7 55","22 7 30"};
+        // String[] logs = {"88 99 200", "88 99 300", "99 32 100", "12 12 157"};
+        String[] logs = {"9 7 50", "22 7 20", "33 7 55", "22 7 30"};
         int threshold = 3;
         List<String> suspiciousUsers = processLogs(logs, threshold);
         for (String user : suspiciousUsers) {

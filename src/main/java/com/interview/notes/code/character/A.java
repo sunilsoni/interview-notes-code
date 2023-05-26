@@ -1,8 +1,8 @@
 package com.interview.notes.code.character;
 
-public class A extends B{
+public class A extends B {
 
-    public int add(){
+    public int add() {
         return -1;
     }
 }

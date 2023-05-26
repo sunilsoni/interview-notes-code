@@ -10,22 +10,22 @@ public interface MyInterface {
     }
 }
 
- class MyClass implements MyInterface {
+class MyClass implements MyInterface {
     @Override
     public void defaultMethod1() {
         System.out.println("Overridden default method 1");
     }
 }
 
- class Main1 {
+class Main1 {
     public static void main(String[] args) {
 
         StringBuffer s1 = new StringBuffer("Hello");
-         StringBuilder s2 = new StringBuilder(s1);
+        StringBuilder s2 = new StringBuilder(s1);
         String s3 = s1.toString();
 
         System.out.println(s1.equals(s3));
-       System.out.println(s1.equals(s2));
+        System.out.println(s1.equals(s2));
         MyClass myObject = new MyClass();
         myObject.defaultMethod1(); // Output: Overridden default method 1
         myObject.defaultMethod2(); // Output: Default method 2

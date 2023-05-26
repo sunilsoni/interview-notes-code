@@ -14,7 +14,7 @@ public class SuspiciousActivityDetector1 {
                 counts.put(recipient, counts.getOrDefault(recipient, 0) + 1);
             }
         }
-        
+
         List<String> suspiciousUsers = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : counts.entrySet()) {
             String user = entry.getKey();
@@ -23,14 +23,14 @@ public class SuspiciousActivityDetector1 {
                 suspiciousUsers.add(user);
             }
         }
-        
+
         Collections.sort(suspiciousUsers, new Comparator<String>() {
             @Override
             public int compare(String user1, String user2) {
                 return Integer.parseInt(user1) - Integer.parseInt(user2);
             }
         });
-        
+
         return suspiciousUsers;
     }
 

@@ -1,7 +1,7 @@
 package com.interview.notes.code.character;
 
 public class B {
-    public int add(){
+    public int add() {
         return -1;
     }
 }

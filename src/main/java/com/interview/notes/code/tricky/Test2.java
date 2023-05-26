@@ -10,8 +10,8 @@ public class Test2 {
         list.add(5);
         list.add(10);
         list.add(15);
-        for(Integer ar: list){
-            if(ar == 10){
+        for (Integer ar : list) {
+            if (ar == 10) {
                 list.remove(1);
             }
         }
@@ -25,7 +25,7 @@ public class Test2 {
         int c = 0;
 
 
-        while(true){
+        while (true) {
             c = a + b;
         }
     }

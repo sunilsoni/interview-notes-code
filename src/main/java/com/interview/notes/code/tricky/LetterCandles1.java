@@ -1,6 +1,8 @@
 package com.interview.notes.code.tricky;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class LetterCandles1 {
     public static void main(String[] args) {

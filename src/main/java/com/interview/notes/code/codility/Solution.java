@@ -9,17 +9,18 @@ class Solution {
      * Write a function:
      * class Solution { public int solution(int N, int K); }
      * that, given two integers N and K, returns the minimum number of glasses that are needed to contain exactly K liters of water. If it is not possible to pour exactly K liters of water into glasses then the function should return -1.
-     *
-     *
+     * <p>
+     * <p>
      * Examples:
      * 1. Given N = 5 and K = 8, the function should return 2. There are five glasses of capacity 1, 2, 3, 4 and 5. You can use two glasses with capacity 3 and 5 to hold 8 liters of water.
      * 2. Given N = 4 and K = 10, the function should return 4. You must use all the glasses to contain 10 liters of water.
-     *
-     *
+     * <p>
+     * <p>
      * 3. Given N = 1 and K = 2, the function should return -1. There is only one glass with capacity 1, so you cannot pour 2 liters of water.
      * 4. Given N = 10 and K = 5, the function should return 1. You can use the glass with capacity 5.
      * Write an efficient algorithm for the following assumptions:
      * • N is an integer within the range [1..1,000,000]; • K is an integer within the range [1..1,000,000,000].
+     *
      * @param N
      * @param K
      * @return
@@ -44,13 +45,14 @@ class Solution {
      * Write a function:
      * class Solution { public boolean solution(int[] A); }
      * that, given an array A consisting of N integers, returns whether it is possible to split all integers into pairs.
-     *
+     * <p>
      * Examples:
      * 1. Given A = [1, 2, 2, 1], your function should return True, as the pairs are (A[0], A[3]) (both have value 1) and (A[1], A[2]) (both have value 2).
      * 2. Given A = [7, 7, 7], your function should return False, as you can make one pair of numbers 7, but you still have a single 7 left.
      * 3. Given A = [1, 2, 2, 3], your function should return False, as there's nothing that A[0] can be paired with.
      * Write an efficient algorithm for the following assumptions:
      * • N is an integer within the range [1..100,000]; • each element of array A is an integer within the range I-1,000,000..1,000,000].
+     *
      * @param A
      * @return
      */
@@ -77,7 +79,7 @@ class Solution {
 
     public static void main(String[] args) {
 
-int a[] = {1,2,2,1};
+        int a[] = {1, 2, 2, 1};
 
         System.out.println(solution2(a));
         System.out.println(solution(1, 2));

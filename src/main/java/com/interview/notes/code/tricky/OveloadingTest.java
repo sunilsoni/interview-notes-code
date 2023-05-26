@@ -6,12 +6,12 @@ public class OveloadingTest {
         todo(new String("Test"));
     }
 
-    public static void todo(String s){
+    public static void todo(String s) {
 
     }
 
 
-    public static void todo(Object s){
+    public static void todo(Object s) {
 
     }
 }

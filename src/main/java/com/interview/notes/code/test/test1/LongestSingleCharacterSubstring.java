@@ -1,6 +1,8 @@
 package com.interview.notes.code.test.test1;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class LongestSingleCharacterSubstring {
 

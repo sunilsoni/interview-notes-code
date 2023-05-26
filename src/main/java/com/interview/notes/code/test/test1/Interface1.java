@@ -12,7 +12,7 @@ interface Interface2 {
     }
 }
 
-class MyClass implements Interface1 ,Interface2{
+class MyClass implements Interface1, Interface2 {
     public void myMethod() {
         Interface1.super.myMethod(); // Calling the default implementation from Interface1
     }

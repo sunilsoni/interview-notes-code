@@ -5,10 +5,11 @@ public class CommonSmallest {
 
     /**
      * The approach used here is similar to the previous program, but with a couple of key differences:
-     *
+     * <p>
      * The if-else conditions used to check which pointer to increment have been modified to ensure that we always increment the pointer for the smallest current element among the three arrays.
-     *
+     * <p>
      * The equality check for the current elements at the three pointers has been moved to the beginning of the while loop. This is to ensure that we exit the loop as soon as we find a common element, rather than continuing to increment pointers unnecessarily.
+     *
      * @param arr1
      * @param arr2
      * @param arr3
@@ -32,12 +33,13 @@ public class CommonSmallest {
 
     /**
      * Here's how the function works:
-     *
+     * <p>
      * Initialize three pointers, one for each array.
      * While all three pointers are within their respective arrays:
      * a. If the current element at all three pointers is the same, return that element.
      * b. Otherwise, increment the pointer for the array with the smallest current element.
      * If no common smallest element is found, return -1.
+     *
      * @param arr1
      * @param arr2
      * @param arr3

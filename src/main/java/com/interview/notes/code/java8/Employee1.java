@@ -48,9 +48,11 @@ public class Employee1 {
     public void setDepartment(String department) {
         this.department = department;
     }
+
     public String getCity() {
         return city;
     }
+
     @Override
     public String toString() {
         return "Employee{" +

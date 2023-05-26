@@ -7,12 +7,12 @@ public class ReverseString {
         System.out.println("Original string: " + original);
         System.out.println("Reversed string: " + reversed);
     }
-    
+
     public static String reverseString(String input) {
         char[] characters = input.toCharArray();
         int start = 0;
         int end = input.length() - 1;
-        
+
         while (start < end) {
             char temp = characters[start];
             characters[start] = characters[end];
@@ -20,7 +20,7 @@ public class ReverseString {
             start++;
             end--;
         }
-        
+
         return new String(characters);
     }
 }

@@ -1,6 +1,9 @@
 package com.interview.notes.code.tricky;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Scanner;
 
 public class LetterCandles5 {
     public static void main(String[] args) {

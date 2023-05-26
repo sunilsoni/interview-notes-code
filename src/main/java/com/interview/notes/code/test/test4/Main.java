@@ -16,16 +16,16 @@ public class Main {
     }
 
     private static void generate(List<String> result, String combination, int leftRemaining, int rightRemaining) {
-        if(leftRemaining == 0 && rightRemaining == 0) {
+        if (leftRemaining == 0 && rightRemaining == 0) {
             result.add(combination);
             return;
         }
-        
-        if(leftRemaining > 0) {
+
+        if (leftRemaining > 0) {
             generate(result, combination + "(", leftRemaining - 1, rightRemaining);
         }
-        
-        if(rightRemaining > leftRemaining) {
+
+        if (rightRemaining > leftRemaining) {
             generate(result, combination + ")", leftRemaining, rightRemaining - 1);
         }
     }

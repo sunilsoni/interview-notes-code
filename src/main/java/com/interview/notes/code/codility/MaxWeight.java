@@ -1,32 +1,30 @@
 package com.interview.notes.code.codility;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.*;
 
 /**
  * Max Weight   COmplete in Java
- *
+ * <p>
  * Adam was given N bags of Nuts. Each bag has a sticker on it. The contents of the sticker are two integers X and Y, denoting the type of nut and total weight of nuts (in kilograms) present in that bag respectively. Adam being a shopkeeper wanted to keep the nuts to sell, but as there were many types of nuts and each customer takes a sample of nuts to taste before buying, Adam feared that the customers will finish all the nuts by taking just the sample. So he decided to keep only 2 types of nuts in the shop, and the rest all the nutbags will go to the storehouse.
- *
+ * <p>
  * Also, the nutbags should be arranged alternatively. This means if he decided to keep the nutbag on type 2 & 3, then he will keep them in the shop in order 232323...... (keeping the bags alternatively). Find out the maximum sum of weights of bags he will keep in the store.
  * Function Description  In the provided code snippet, implement the provided maxWeight ( .. . ) method using the variables to print the maximum sum of weights of bags he will keep in the store. You can write your code in the space below the phrase "WRITE YOUR LOGIC HERE".
- *
- *
+ * <p>
+ * <p>
  * There will be multiple test cases running so the Input and Output should match exactly as provided. The base Output variable result is set to a default value of -404 which can be modified. Additionally, you can add or remove these output variables.
  * Input Format  The first line contains N the number of bags.
  * Next, N lines contain two integers X and Y type of nut & the weight of the ith bag res
- *
+ * <p>
  * Sample Input
- *
+ * <p>
  * 5 --- denotes N 15 14 22 35 26
- *
+ * <p>
  * Constraints  2 <= N <= 105 1<= /X/ <= 105. 1<= /y/ <= 109.
- *
+ * <p>
  * each denoting the pectively.
  */
 public class MaxWeight {
-    public static int maxWeight1(int N,int[] X,int[] Y) {
+    public static int maxWeight1(int N, int[] X, int[] Y) {
         // this is the default output. You can change it.
         int result = -404;
         // Create a map to store the nut type and its weight
@@ -58,6 +56,7 @@ public class MaxWeight {
         result = firstLargest + secondLargest;
         return result;
     }
+
     public static int maxWeight2(int N, int[] X, int[] Y) {
         int result = -404;
 
@@ -101,8 +100,8 @@ public class MaxWeight {
         return result;
     }
 
-    public static void main (String[] args) {
-        Scanner sc = new Scanner (System.in);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         // INPUT [uncomment & modify if required]
         int N = sc.nextInt();
         int X[] = new int[N];
@@ -114,16 +113,6 @@ public class MaxWeight {
         sc.close();
         // OUTPUT [uncomment & modify if required]
         System.out.println(maxWeight(N, X, Y));
-    }
-
-    private static class Bag {
-        int type;
-        int weight;
-
-        public Bag(int type, int weight) {
-            this.type = type;
-            this.weight = weight;
-        }
     }
 
     public static int maxWeight(int N, int[] X, int[] Y) {
@@ -153,5 +142,15 @@ public class MaxWeight {
         }
         result = max1 + max2;
         return result;
+    }
+
+    private static class Bag {
+        int type;
+        int weight;
+
+        public Bag(int type, int weight) {
+            this.type = type;
+            this.weight = weight;
+        }
     }
 }

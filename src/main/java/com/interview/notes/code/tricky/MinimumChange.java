@@ -31,8 +31,7 @@ public class MinimumChange {
  * The findMinChange method takes an array of coins as input, sorts them in ascending order,
  * and then iterates through them to find the minimum change that cannot be constructed.
  * We initialize the minimum change to 1 and then update it to be the next value that cannot be made using the coins we have.
- *
+ * <p>
  * In the main method, we create an array of coins and call the findMinChange method to find the minimum change that cannot be constructed.
  * The program then outputs the result, which is 10 for the given set of coins {1, 1, 2, 5, 11}.
- *
  */

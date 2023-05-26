@@ -1,6 +1,7 @@
 package com.interview.notes.code.thread;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 final class Employee {
     private int employeeId;
@@ -14,7 +15,7 @@ final class Employee {
         return employeeId;
     }
 
- @Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee)) return false;
@@ -31,9 +32,10 @@ final class Employee {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId){
-        this.employeeId=employeeId;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
+
     @Override
     public String toString() {
         return String.valueOf(employeeId);
@@ -47,7 +49,7 @@ public class Main {
         map.put(new Employee(10), "krishna");
         map.put(e, "Hari");
         e.setEmployeeId(100);
-       map.put(new Employee(20), "Hari");
+        map.put(new Employee(20), "Hari");
         System.out.println(map.get(e));
     }
 }

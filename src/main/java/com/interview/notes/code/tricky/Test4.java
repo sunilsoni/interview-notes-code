@@ -45,6 +45,7 @@ public class Test4 {
         }
         return ans;
     }
+
     public static int solution3(String s) {
         int n = s.length();
         int ans = 0;

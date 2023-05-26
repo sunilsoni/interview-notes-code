@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class StreamSortExample {
     public static void main(String[] args) {
         String[] nameArray = {"David", "Scott", "Aravind", "Raman", "Harshita"};
-        
+
         String[] sortedNames = Arrays.stream(nameArray)
                 .sorted()
                 .toArray(String[]::new);

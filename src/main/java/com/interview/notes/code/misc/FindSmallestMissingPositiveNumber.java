@@ -30,14 +30,11 @@ public class FindSmallestMissingPositiveNumber {
         System.out.println(myset);
 
         HashMap<Integer, String> map = new HashMap<>();
-        map.put(1,"Java");
-        map.put(null,"SQL");
-        map.put(1,"spring");
-        map.put(null,"MS");
+        map.put(1, "Java");
+        map.put(null, "SQL");
+        map.put(1, "spring");
+        map.put(null, "MS");
         System.out.println(map);//{null=MS, 1=spring}
-
-
-
 
 
         int[] nums = {1, 4, 2, -1, 6, 5};

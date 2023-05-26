@@ -22,8 +22,8 @@ public class LongestSingleCharacterSubstring1 {
     }
 
     public static void main(String[] args) {
-        String input =  "aaaabaaa";
-       // String input = "aabbcccddddd";
+        String input = "aaaabaaa";
+        // String input = "aabbcccddddd";
         int longestSubstringLength = findLongestSubstring(input);
         System.out.println("Length of the longest single character substring: " + longestSubstringLength);
     }

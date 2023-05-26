@@ -15,14 +15,15 @@ public class Median {
     public static void main(String[] args) {
 
     }
+
     public class Solution {
         public static double solution(int[] sequence) {
             Arrays.sort(sequence);
             int n = sequence.length;
             if (n % 2 == 0) {
-                return (sequence[n/2-1] + sequence[n/2]) / 2.0;
+                return (sequence[n / 2 - 1] + sequence[n / 2]) / 2.0;
             } else {
-                return sequence[n/2];
+                return sequence[n / 2];
             }
         }
     }

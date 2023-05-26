@@ -10,28 +10,29 @@ class MissingSpaces {
         String s = "pineapplepenapple";
         List<String> wordDict = Arrays.asList("apple", "pen", "applepen", "pine", "pineapple");
 
-        System.out.println(wordBreak(s,wordDict));
+        System.out.println(wordBreak(s, wordDict));
     }
+
     public static List<String> wordBreak(String s, List<String> wordDict) {
         List<String>[] dp = new List[s.length() + 1];
         int len = s.length();
         dp[0] = new ArrayList<>();
-        if(len == 0) return dp[0];
+        if (len == 0) return dp[0];
         Set<Integer> set = new HashSet<>();
-        for(String ss : wordDict) {
+        for (String ss : wordDict) {
             set.add(ss.length());
         }
-        for(int i = 1; i <= len; i++){
+        for (int i = 1; i <= len; i++) {
             dp[i] = new ArrayList<>();
-            for(Integer in : set){
-                if(i - in >= 0){
+            for (Integer in : set) {
+                if (i - in >= 0) {
                     String sub = s.substring(i - in, i);
-                    if(wordDict.contains(sub)){
+                    if (wordDict.contains(sub)) {
                         List<String> tmp = dp[i - in];
-                        if(i - in == 0)
+                        if (i - in == 0)
                             dp[i].add(sub);
-                        else{
-                            for(String ss : tmp){
+                        else {
+                            for (String ss : tmp) {
                                 dp[i].add(ss + " " + sub);
                             }
                         }
