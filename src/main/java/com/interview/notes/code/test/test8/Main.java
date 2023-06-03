@@ -1,27 +1,32 @@
 package com.interview.notes.code.test.test8;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        String str = "examplestring";
-        countCharacters(str);
-    }
+        BoxManager boxManager = new BoxManager();
 
-    static void countCharacters(String str) {
-        // Assuming ASCII, create an array to hold counts for each character
-        int[] count = new int[256];
+        // Add boxes
+        boxManager.addBox(new Box(24, 20, 16));
+        boxManager.addBox(new Box(20, 16, 12));
+        boxManager.addBox(new Box(50, 40, 2));
+        boxManager.addBox(new Box(40, 30, 2));
+        boxManager.addBox(new Box(60, 3, 3));
+        boxManager.addBox(new Box(15, 3, 3));
 
-        // For each character in the string
-        for (int i = 0; i < str.length(); i++) {
-            // Increment the count for this character
-            count[str.charAt(i)]++;
-        }
+        FitChecker fitChecker = new FitChecker(boxManager);
 
-        // Now, print out the counts
-        for (int i = 0; i < 256; i++) {
-            // If this character is in the string
-            if (count[i] > 0) {
-                // Print its count
-                System.out.println((char) i + ": " + count[i]);
+        int[][] items = {
+                {10, 10, 10},
+                {60, 5, 5}
+        };
+
+        for (int[] item : items) {
+            Arrays.sort(item);
+            if (fitChecker.canItemBeHidden(item)) {
+                System.out.println("Yes, can be hidden");
+            } else {
+                System.out.println("No, cannot be hidden");
             }
         }
     }

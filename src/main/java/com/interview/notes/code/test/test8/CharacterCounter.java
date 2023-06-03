@@ -1,5 +1,6 @@
 package com.interview.notes.code.test.test8;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -12,6 +13,18 @@ public class CharacterCounter {
     }
 
     public static void main(String[] args) {
+
+        try{
+            countCharacters("s");
+        } catch(Exception e)
+        {
+
+        }
+        finally
+        {
+            System.out.println("finally");
+        }
+
         String str = "Hello, World!";
         Map<Character, Long> characterCount = countCharacters(str);
 
