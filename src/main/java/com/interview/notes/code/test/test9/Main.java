@@ -1,51 +1,20 @@
 package com.interview.notes.code.test.test9;
 
 import java.util.Arrays;
-
-class Box {
-    int[] dimensions;
-
-    Box(int length, int width, int height) {
-        dimensions = new int[]{length, width, height};
-        Arrays.sort(dimensions);  // sort the dimensions
-    }
-
-    boolean canFit(int[] itemDimensions) {
-        for (int i = 0; i < 3; i++) {
-            if (itemDimensions[i] > dimensions[i]) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Box[] boxes = {
-                new Box(24, 20, 16),
-                new Box(20, 16, 12),
-                new Box(50, 40, 2),
-                new Box(40, 30, 2),
-                new Box(60, 3, 3),
-                new Box(15, 3, 3)
-        };
-
-        int[][] items = {
-                {10, 10, 10},
-                {60, 5, 5}
-        };
-
-        for (int[] item : items) {
-            Arrays.sort(item);
-            boolean canBeHidden = false;
-            for (Box box : boxes) {
-                if (box.canFit(item)) {
-                    canBeHidden = true;
-                    break;
-                }
-            }
-            System.out.println(canBeHidden ? "Yes, can be hidden" : "No, cannot be hidden");
-        }
+        List<Integer> salaries = Arrays.asList(10000, 5000, 15000, 8000, 12000, 10000, 15000);
+        
+        int thirdHighestSalary = salaries.stream()
+                .sorted((s1, s2) -> s2.compareTo(s1)) // Sort in descending order
+                .distinct() // Remove duplicates
+                .skip(2) // Skip first two highest salaries
+                .limit(1) // Limit the result to the first element
+                .findFirst() // Retrieve the third-highest salary
+                .orElse(-1); // Default value if no third-highest salary found
+        
+        System.out.println("Third highest salary: " + thirdHighestSalary);
     }
 }
