@@ -3,7 +3,7 @@ package com.interview.notes.code.test.test9;
 import java.util.Arrays;
 import java.util.List;
 
-public class Main {
+public class ThirdHighestSalary {
     public static void main(String[] args) {
         List<Integer> salaries = Arrays.asList(10000, 5000, 15000, 8000, 12000, 10000, 15000);
         
