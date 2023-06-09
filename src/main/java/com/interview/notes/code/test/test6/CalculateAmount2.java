@@ -1,4 +1,5 @@
 package com.interview.notes.code.test.test6;
+
 /*
 Java Vending Machine:
 

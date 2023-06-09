@@ -62,6 +62,7 @@ public class MaxSumSubArrayOfSizeK {
         }
         return maxSum;
     }
+
     public static int findMaximumSum(int[] array, int k) {
         int maxSum = Integer.MIN_VALUE;
         int currentSum = 0;

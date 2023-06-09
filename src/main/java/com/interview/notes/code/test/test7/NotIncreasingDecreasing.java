@@ -1,18 +1,16 @@
 package com.interview.notes.code.test.test7;
 
-import java.util.*;
-
 public class NotIncreasingDecreasing {
 
     public static void main(String[] args) {
 
-       int n =5;
+        int n = 5;
 
-       int[] arr = { 1,2,4,1,2};
+        int[] arr = {1, 2, 4, 1, 2};
 
 
-       // int[] arr = {1, 2, 4, 1, 2};
-       // int n = 5;
+        // int[] arr = {1, 2, 4, 1, 2};
+        // int n = 5;
         int minRemove = Integer.MAX_VALUE;
         for (int i = 0; i < n; i++) {
             int count = 0;

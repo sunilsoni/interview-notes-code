@@ -7,11 +7,11 @@ public abstract class A {
         instanceCount++;
     }
 
-    protected void dispose() {
-        instanceCount--;
-    }
-
     public static boolean isFirstInstanceCreated() {
         return instanceCount == 1;
+    }
+
+    protected void dispose() {
+        instanceCount--;
     }
 }

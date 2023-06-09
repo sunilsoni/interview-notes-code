@@ -3,16 +3,14 @@ package com.interview.notes.code.test.test9;
 import java.util.*;
 
 /**
-
- In Java Provide solution
- Below are flight details
- Source destination cost
- Dfw nyc 100
- NYC bos 30
- BoS Dfw 200
-
- DFW to BOS there is no direct flight how to make connection between this
-
+ * In Java Provide solution
+ * Below are flight details
+ * Source destination cost
+ * Dfw nyc 100
+ * NYC bos 30
+ * BoS Dfw 200
+ * <p>
+ * DFW to BOS there is no direct flight how to make connection between this
  */
 class Flight {
     String source;

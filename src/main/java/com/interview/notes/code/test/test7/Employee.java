@@ -6,22 +6,6 @@ public class Employee {
     private int employeeId;
     private String name;
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public static void main(String[] args) {
         Employee employee1 = new Employee();
         employee1.setEmployeeId(1);
@@ -41,9 +25,9 @@ public class Employee {
 
         TreeSet<Employee> treeset = new TreeSet<>();
 
-        Employee e1= new Employee();
+        Employee e1 = new Employee();
 
-        Employee e2= new Employee();
+        Employee e2 = new Employee();
 
         e1.setEmployeeId(1);
         e1.setName("B");
@@ -56,6 +40,21 @@ public class Employee {
         System.out.println(treeset);
 
 
+    }
 
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

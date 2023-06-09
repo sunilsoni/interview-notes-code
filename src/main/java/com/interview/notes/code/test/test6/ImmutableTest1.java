@@ -11,16 +11,6 @@ public class ImmutableTest1 {
         this.lst = list;
     }
 
-    public String toString() {
-        StringBuffer sb = new StringBuffer("Numbers are: ");
-        for (int i = 0; i < lst.size(); i++) {
-            sb.append(lst.get(i) + " ");
-
-        }
-
-        return sb.toString();
-    }
-
     public static void main(String[] args) {
         ArrayList<Integer> newList = new ArrayList<Integer>();
         newList.add(2);
@@ -29,6 +19,16 @@ public class ImmutableTest1 {
         System.out.println("Before constructing " + myImmutableRef);
         newList.add(1, 5); // change (i.e. mutate) the element
         System.out.println("After constructing " + myImmutableRef);
+    }
+
+    public String toString() {
+        StringBuffer sb = new StringBuffer("Numbers are: ");
+        for (int i = 0; i < lst.size(); i++) {
+            sb.append(lst.get(i) + " ");
+
+        }
+
+        return sb.toString();
     }
 
 }

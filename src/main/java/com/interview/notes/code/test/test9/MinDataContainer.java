@@ -11,6 +11,23 @@ public class MinDataContainer<T extends Comparable<T>> {
         minStack = new Stack<>();
     }
 
+    public static void main(String[] args) {
+        MinDataContainer<Integer> container = new MinDataContainer<>();
+        container.storeData(10);
+        container.storeData(20);
+        container.storeData(5);
+        container.storeData(5);
+        container.storeData(15);
+
+        System.out.println("Minimum element so far: " + container.getMin());
+
+        while (!container.isEmpty()) {
+            int data = container.readData();
+            System.out.println("Data: " + data);
+            container.removeData();
+        }
+    }
+
     public void storeData(T data) {
         stack.push(data);
         if (minStack.isEmpty() || data.compareTo(minStack.peek()) <= 0) {
@@ -45,22 +62,5 @@ public class MinDataContainer<T extends Comparable<T>> {
 
     public boolean isEmpty() {
         return stack.isEmpty();
-    }
-
-    public static void main(String[] args) {
-        MinDataContainer<Integer> container = new MinDataContainer<>();
-        container.storeData(10);
-        container.storeData(20);
-        container.storeData(5);
-        container.storeData(5);
-        container.storeData(15);
-
-        System.out.println("Minimum element so far: " + container.getMin());
-
-        while (!container.isEmpty()) {
-            int data = container.readData();
-            System.out.println("Data: " + data);
-            container.removeData();
-        }
     }
 }

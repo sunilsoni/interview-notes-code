@@ -12,10 +12,6 @@ public class Employee {
         this.salary = salary;
     }
 
-    public int getSalary() {
-        return salary;
-    }
-
     public static void main(String[] args) {
         List<Employee> employees = new ArrayList<>();
         employees.add(new Employee(50000));
@@ -36,5 +32,9 @@ public class Employee {
         } else {
             System.out.println("No third highest salary found.");
         }
+    }
+
+    public int getSalary() {
+        return salary;
     }
 }

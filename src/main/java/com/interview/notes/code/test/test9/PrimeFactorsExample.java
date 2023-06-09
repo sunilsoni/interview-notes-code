@@ -3,7 +3,7 @@ package com.interview.notes.code.test.test9;
 
 /**
  * Write a program to print all prime factors of a given number.
- *
+ * <p>
  * For example, if the input number is 12, then the output should be “2 2 3”. And if the input number is 315, then the output should be “3 3 5 7”.
  */
 public class PrimeFactorsExample {
