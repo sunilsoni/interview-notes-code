@@ -1,9 +1,9 @@
 package com.interview.notes.code.test.test10;
 
-public class B extends A {
+public class ClassB extends ClassA {
     private static boolean isFirstInstance = true;
 
-    public B() {
+    public ClassB() {
         if (isFirstInstance) {
             isFirstInstance = false;
             System.out.println("Creating instance of B");

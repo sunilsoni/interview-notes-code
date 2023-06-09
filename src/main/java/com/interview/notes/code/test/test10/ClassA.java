@@ -1,9 +1,9 @@
 package com.interview.notes.code.test.test10;
 
-public class A {
+public class ClassA {
     private static boolean isFirstInstance = true;
 
-    public A() {
+    public ClassA() {
         if (isFirstInstance) {
             isFirstInstance = false;
             System.out.println("Creating instance of A");
