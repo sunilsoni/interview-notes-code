@@ -1,16 +1,15 @@
 package com.interview.notes.code.misc.shape.triangle;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-
+import com.interview.notes.code.misc.shape.Shape;
+import com.interview.notes.code.misc.shape.ShapeFactory;
+import com.interview.notes.code.misc.shape.ShapeTypes;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.interview.notes.code.misc.shape.Shape;
-import com.interview.notes.code.misc.shape.ShapeFactory;
-import com.interview.notes.code.misc.shape.ShapeTypes;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 class TriangleTest {
 

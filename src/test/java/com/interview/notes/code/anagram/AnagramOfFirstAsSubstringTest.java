@@ -3,10 +3,9 @@ package com.interview.notes.code.anagram;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class AnagramOfFirstAsSubstringTest {
-    AnagramOfFirstAsSubstring ana ;
+    AnagramOfFirstAsSubstring ana;
+
     @BeforeEach
     void setUp() {
         ana = new AnagramOfFirstAsSubstring();
