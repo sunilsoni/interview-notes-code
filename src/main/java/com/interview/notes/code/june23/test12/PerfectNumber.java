@@ -8,7 +8,7 @@ package com.interview.notes.code.june23.test12;
  * from that list: so if you add 1 + 2 + 3: you get 6! So 6 is a perfect number
  * Problem Statement: Wnte a program to find all perfect numbers between 1 and
  * given number N
- *
+ * <p>
  * Interesting tidbits: Check out this interesting relationship between Perfect Numbers
  * and Mersenne Primes:
  * www.youtubecom/watch?v=ToxKHwQH-4l

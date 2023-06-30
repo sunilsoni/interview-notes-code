@@ -12,32 +12,32 @@ import java.util.Scanner;
  * The emphasis of the task is to observe how you collaborate with others over completion of task.
  * This session will last up to 90 minutes. You will be pairing for 60 minutes, and the remainder of the time will be spent
  * discussing your solution. You will be pairing with one of our developers, and the other will be taking notes.
- *
- *   Objective
+ * <p>
+ * Objective
  * Below we've defined a problem for you to solve. We're interested in finding out how you approach the issues and interact
  * with your partner whilst you answer the problem, not how complete your answer is.
  * This is your project and **you can modify or delete any of the files**.J
  * I
  * You can use the internet for research purposes and add third party libraries to the dependencies in the ’build.gradle’.
- *
- *  The exercise
+ * <p>
+ * The exercise
  * An advert's click through rate tells us how often an advert was opened from search results-it is the ratio of views to
  * search appearances i.e. click through rate = advert views / search appearances’ (a decimal number typically between
  * zero and one). This is used at Dealer Auction as a metric representing how attractive the advert is.
  * The file data/advert-performance.csv’ contains a number of results from our advert performance analysis. The columns
  * labelled ’search appearances' and 'advert views* contain the aggregated counts for users interactions with each advert.
- *
- *
+ * <p>
+ * <p>
  * * 'csv
  * advert id,advertiser id,summary,days on site,search appearances,advert views,dwell time
  * 2b603783-4c7c-49cl-a7e5-dcfae435ff46,cec47c02c7b7406691ab6f0e214eed91,"GUARDS RED, Very Competitive HP & PCP Rates on Offer Please Ask for a Quote.",19 days,30374,9634.3 minutes
  * 7042b4c7-albf-4e58-8aae-c35b8f3a62al,cle90ca6dll443db93c33e0fl4e67572,"Service history, RED, Celebrating 29 Years In Business",2 months,88833,43384,2 minutes
- *
+ * <p>
  * advert-performance.csv
  * advert id,advertiser id,summary,days on site,search appearances,advert views,dwell time
  * 2b603783-4c7c-49c1-a7e5-dcfae435ff46,cec47c02c7b7406691ab6f0e214eed91,"GUARDS RED, Very Competitive HP & PCP Rates on Offer Please Ask for a Quote.",19 days,30374,9634,3 minutes
  * 7042b4c7-a1bf-4e58-8aae-c35b8f3a62a1,c1e90ca6d11443db93c33e0f14e67572,"Service history, RED, Celebrating 29 Years In Business",2 months,88833,43304,2 minutes
- *
+ * <p>
  * Write a program that finds the ID of the advert with the largest click through rate. In reality, there may be multiple
  * adverts with the same CTR, but in this data set you do not need to consider this.
  */

@@ -7,7 +7,7 @@ public class Factors {
         int number = 75;
 
         System.out.println("Factors of " + number + " are:");
-        for(int i = 1; i <= number; ++i) {
+        for (int i = 1; i <= number; ++i) {
             if (number % i == 0) {
                 System.out.println(i);
             }

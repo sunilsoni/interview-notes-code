@@ -1,6 +1,12 @@
 package com.interview.notes.code.june23.test11;
 
 public class LongestPalindrome {
+    public static void main(String[] args) {
+        LongestPalindrome lp = new LongestPalindrome();
+        System.out.println(lp.findLongestPalindrome("babad"));
+        System.out.println(lp.findLongestPalindrome("cbbd"));
+    }
+
     public String findLongestPalindrome(String s) {
         if (s == null || s.length() < 1) {
             return "";
@@ -23,11 +29,5 @@ public class LongestPalindrome {
             }
         }
         return s.substring(start, end + 1);
-    }
-
-    public static void main(String[] args) {
-        LongestPalindrome lp = new LongestPalindrome();
-        System.out.println(lp.findLongestPalindrome("babad"));
-        System.out.println(lp.findLongestPalindrome("cbbd"));
     }
 }
