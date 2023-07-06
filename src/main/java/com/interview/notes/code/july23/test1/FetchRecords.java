@@ -1,10 +1,6 @@
 package com.interview.notes.code.july23.test1;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 //Write java program to fetch records from Database Product table which has two columns - (id and name)?
 public class FetchRecords {
