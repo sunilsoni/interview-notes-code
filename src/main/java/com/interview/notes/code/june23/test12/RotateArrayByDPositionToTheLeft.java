@@ -15,7 +15,7 @@ package com.interview.notes.code.june23.test12;
  * Input: arr[] = {1. 6. 7. 8}. d = 3
  * Output: 8. 1, 6. 7
  */
-public class Main {
+public class RotateArrayByDPositionToTheLeft {
 
     // Function to reverse array from start to end
     public static void reverseArray(int arr[], int start, int end) {
