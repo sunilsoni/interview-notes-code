@@ -15,7 +15,7 @@ class MyClass implements Interface1, Interface2 {
     }
 }
 
-public class Main {
+public class MultipleInterfaceSameMethodTest {
     public static void main(String[] args) {
         MyClass myClass = new MyClass();
         myClass.abstractMethod();
