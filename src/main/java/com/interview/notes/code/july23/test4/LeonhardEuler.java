@@ -54,6 +54,6 @@ public class LeonhardEuler {
 
         pi *= 6.0;
 
-         return pi;
+        return pi;
     }
 }
