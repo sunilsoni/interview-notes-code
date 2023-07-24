@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 
 @FunctionalInterface
 interface MyCustomConsumer extends Consumer<String> {
-   // void consume(String value);
+    // void consume(String value);
 
     @Override
     void accept(String s);

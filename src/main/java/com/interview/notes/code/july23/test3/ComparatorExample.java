@@ -1,12 +1,5 @@
 package com.interview.notes.code.july23.test3;
 
-import com.interview.notes.code.june23.test1.Person;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 public class ComparatorExample {
     public static void main(String[] args) {
       /*   List<Person> persons = new ArrayList<>();

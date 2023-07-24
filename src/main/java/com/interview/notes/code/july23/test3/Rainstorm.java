@@ -5,7 +5,7 @@ public class Rainstorm extends Storm {
         super(eyeRadius, eyePositionX, eyePositionY);
     }
 
-    public double amountOfRain() { 
+    public double amountOfRain() {
         return eyeRadius * 20;
     }
 }

@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 class Solution {
     public static void main(String[] args) {
-        int[] numbers = {11,9,5,8,21,6,3,10};
+        int[] numbers = {11, 9, 5, 8, 21, 6, 3, 10};
         List<Integer> result = Arrays.stream(numbers)
                 .boxed()
 

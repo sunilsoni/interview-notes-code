@@ -10,14 +10,14 @@ public class TaxCalculator {
         this.deduction = deduction;
     }
 
-    public float getPayableTax() {
-        return (TaxCalculator.taxRate / 100) * (this.grossincome - this.deduction);
-    }
-
     public static void main(String[] args) {
         TaxCalculator taxCalculator = new TaxCalculator(1000, 100);
         float payableTax = taxCalculator.getPayableTax();
         System.out.println("Payable tax: " + payableTax);
+    }
+
+    public float getPayableTax() {
+        return (TaxCalculator.taxRate / 100) * (this.grossincome - this.deduction);
     }
 }
 

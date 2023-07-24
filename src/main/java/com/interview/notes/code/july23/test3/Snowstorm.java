@@ -5,7 +5,7 @@ public class Snowstorm extends Storm {
 
     public Snowstorm(double eyeRadius, double eyePositionX, double eyePositionY, double amountOfSnow) {
         super(eyeRadius, eyePositionX, eyePositionY);
-        this.amountOfSnow = amountOfSnow; 
+        this.amountOfSnow = amountOfSnow;
     }
 
     public double getAmountOfSnow() {
