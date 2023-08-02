@@ -27,5 +27,5 @@ public class GroupAnagrams {
 
     public static void main(String[] args) {
         String[] words = {"tea", "eat", "apple", "ate", "vaja", "cut", "java"};
-        }
     }
+}

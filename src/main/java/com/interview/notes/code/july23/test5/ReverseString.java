@@ -39,7 +39,7 @@ public class ReverseString {
         String str = "I am from California";
         String[] words = str.split(" ");
         for (int i = 0; i < words.length; i++) {
-            switch(words[i]) {
+            switch (words[i]) {
                 case "I":
                     words[i] = "a";
                     break;

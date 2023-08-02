@@ -1,9 +1,5 @@
 package com.interview.notes.code.july23.test5;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 public class ReverseWords {
     public static void main1(String[] args) {
         String str = "I am from California";

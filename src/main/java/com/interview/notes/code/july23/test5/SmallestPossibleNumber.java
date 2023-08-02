@@ -3,6 +3,14 @@ package com.interview.notes.code.july23.test5;
 import java.util.Stack;
 
 public class SmallestPossibleNumber {
+    public static void main(String[] args) {
+        SmallestPossibleNumber s = new SmallestPossibleNumber();
+        System.out.println(s.smallestPossibleNumber("IIIDIDDD"));  // Output: "123549876"
+        System.out.println(s.smallestPossibleNumber("DDD"));  // Output: "4321"
+        System.out.println(s.smallestPossibleNumber("IIIDIDDD"));  // Output: "986723451"
+
+    }
+
     public String smallestPossibleNumber(String pattern) {
         // Create two stacks
         Stack<Integer> increasingStack = new Stack<>();
@@ -40,13 +48,5 @@ public class SmallestPossibleNumber {
         }
 
         return sb.toString();
-    }
-
-    public static void main(String[] args) {
-        SmallestPossibleNumber s = new SmallestPossibleNumber();
-        System.out.println(s.smallestPossibleNumber("IIIDIDDD"));  // Output: "123549876"
-        System.out.println(s.smallestPossibleNumber("DDD"));  // Output: "4321"
-        System.out.println(s.smallestPossibleNumber("IIIDIDDD"));  // Output: "986723451"
-
     }
 }

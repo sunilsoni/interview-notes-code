@@ -1,7 +1,6 @@
 package com.interview.notes.code.july23.test5;
 
 
-
 public class IamfromCalifornia {
 
 
@@ -9,16 +8,16 @@ public class IamfromCalifornia {
         String str = "I am from California";
         StringBuilder reversedString = new StringBuilder(str);
         StringBuilder sb = new StringBuilder();
-        reversedString= reversedString.reverse();
+        reversedString = reversedString.reverse();
         String strWithoutSpaces = str.replaceAll("\\s", "");
 
         String reversedStr = reversedString.toString().replaceAll("\\s", "");
         String[] words = str.split(" ");
         System.out.println("words: " + words.length);
-        for (String word: words) {
+        for (String word : words) {
             int index1 = strWithoutSpaces.indexOf(word);
-            int index2 = word.length()+index1;
-            sb.append( reversedStr.substring(index1,index2));
+            int index2 = word.length() + index1;
+            sb.append(reversedStr.substring(index1, index2));
             sb.append(" ");
         }
 
@@ -27,9 +26,9 @@ public class IamfromCalifornia {
 
     public static void main1(String[] args) {
 
-        String sl="1";
+        String sl = "1";
         Integer i = Integer.parseInt(sl);
-        Float f=Float.valueOf(i.intValue()); //line 3
+        Float f = Float.valueOf(i.intValue()); //line 3
         System.out.println(f);
 
         System.out.println("Test");
@@ -43,26 +42,26 @@ public class IamfromCalifornia {
 
         StringBuilder reversedString = new StringBuilder(str);
         StringBuilder sb = new StringBuilder();
-        reversedString= reversedString.reverse();
+        reversedString = reversedString.reverse();
         System.out.println("reversedString string: " + reversedString);
 
 
         String strWithoutSpaces = str.replaceAll("\\s", "");
 
-         String reversedStr = reversedString.toString().replaceAll("\\s", "");
+        String reversedStr = reversedString.toString().replaceAll("\\s", "");
         System.out.println("Original string: " + str);
         System.out.println("String without spaces: " + strWithoutSpaces);
 
         String[] words = str.split(" ");
         System.out.println("words: " + words.length);
-        for (String word: words) {
+        for (String word : words) {
 
             int index1 = strWithoutSpaces.indexOf(word);
-            int index2 = word.length()+index1;
+            int index2 = word.length() + index1;
 
-            System.out.println("word: " + word + " index1: " + index1+" : index2: "+index2);
+            System.out.println("word: " + word + " index1: " + index1 + " : index2: " + index2);
 
-            sb.append( reversedStr.substring(index1,index2));
+            sb.append(reversedStr.substring(index1, index2));
             sb.append(" ");
 
         }
