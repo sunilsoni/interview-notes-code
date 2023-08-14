@@ -1,6 +1,6 @@
 package com.interview.notes.code.july23.test11;
 
-class Solution {
+class Solution4 {
     public String longestCommonPrefix(String[] strs) {
         if (strs == null || strs.length == 0) {
             return "";
@@ -40,7 +40,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution4 solution = new Solution4();
         System.out.println(solution.longestCommonPrefix(new String[]{"flower", "flow", "flight"})); // Output: "fl"
         System.out.println(solution.longestCommonPrefix(new String[]{"dog", "racecar", "car"})); // Output: ""
 
