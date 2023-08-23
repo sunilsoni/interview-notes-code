@@ -1,6 +1,7 @@
 package com.interview.notes.code.july23.test12;
 
-import java.util.*;
+import java.util.List;
+import java.util.Random;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

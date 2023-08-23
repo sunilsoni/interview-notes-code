@@ -10,10 +10,10 @@ public class DynamicFizzBuzz {
         rules.put(3, "Fizz");
         rules.put(5, "Buzz");
         rules.put(7, "Wizz");
-        
+
         printFizzBuzz(rules, 100);
     }
-    
+
     public static void printFizzBuzz(Map<Integer, String> rules, int limit) {
         // Loop through numbers from 1 to the specified limit
         for (int i = 1; i <= limit; i++) {

@@ -28,10 +28,10 @@ public class CommonZipCodes {
 
         // Alternatively, using Java 8 Streams
         commonZipCodes = m1.keySet().stream()
-            .filter(m2.keySet()::contains)
-            .filter(m3.keySet()::contains)
-            .filter(m4.keySet()::contains)
-            .collect(Collectors.toSet());
+                .filter(m2.keySet()::contains)
+                .filter(m3.keySet()::contains)
+                .filter(m4.keySet()::contains)
+                .collect(Collectors.toSet());
 
         // Printing the common zip codes
         System.out.println("Common Zip Codes: " + commonZipCodes);

@@ -7,6 +7,14 @@ class HexNumber {
         _val = val;
     }
 
+    public static void main(String[] args) {
+        HexNumber operandA = new HexNumber(new char[]{'3', 'f', '5'});
+        HexNumber operandB = new HexNumber(new char[]{'0', 'a', 'c'});
+        HexNumber sum = operandA.add(operandB);
+        System.out.println(sum);
+        // 4a1
+    }
+
     public String toString() {
         return new String(_val);
     }
@@ -32,7 +40,8 @@ class HexNumber {
         }
         return this;
     }
-    HexNumber add (HexNumber operand) {
+
+    HexNumber add(HexNumber operand) {
         // initialize an array to store the result
         char[] result = new char[_val.length];
         // initialize a carry variable to store the carry over
@@ -51,12 +60,5 @@ class HexNumber {
         }
         // return a new HexNumber with the result array
         return new HexNumber(result);
-    }
-    public static void main(String[] args) {
-        HexNumber operandA = new HexNumber(new char[] {'3', 'f', '5'});
-        HexNumber operandB = new HexNumber(new char[] {'0', 'a', 'c'});
-        HexNumber sum = operandA.add(operandB);
-        System.out.println(sum);
-        // 4a1
     }
 }

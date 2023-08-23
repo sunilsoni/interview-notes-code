@@ -1,6 +1,28 @@
 package com.interview.notes.code.july23.test9;
 
 class Solution {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test 1
+        int[] nums1 = {4, 5, 6, 7, 0, 1, 2};
+        int target1 = 0;
+        int result1 = solution.search(nums1, target1);
+        System.out.println(result1); // Expected output is 4
+
+        // Test 2
+        int[] nums2 = {4, 5, 6, 7, 0, 1, 2};
+        int target2 = 3;
+        int result2 = solution.search(nums2, target2);
+        System.out.println(result2); // Expected output is -1
+
+        // Test 3
+        int[] nums3 = {1};
+        int target3 = 0;
+        int result3 = solution.search(nums3, target3);
+        System.out.println(result3); // Expected output is -1
+    }
+
     public int search(int[] nums, int target) {
         int pivot = findPivot(nums);
 
@@ -60,29 +82,6 @@ class Solution {
 
         return -1;
     }
-
-
-        public static void main(String[] args) {
-            Solution solution = new Solution();
-
-            // Test 1
-            int[] nums1 = {4,5,6,7,0,1,2};
-            int target1 = 0;
-            int result1 = solution.search(nums1, target1);
-            System.out.println(result1); // Expected output is 4
-
-            // Test 2
-            int[] nums2 = {4,5,6,7,0,1,2};
-            int target2 = 3;
-            int result2 = solution.search(nums2, target2);
-            System.out.println(result2); // Expected output is -1
-
-            // Test 3
-            int[] nums3 = {1};
-            int target3 = 0;
-            int result3 = solution.search(nums3, target3);
-            System.out.println(result3); // Expected output is -1
-        }
 
 
 }

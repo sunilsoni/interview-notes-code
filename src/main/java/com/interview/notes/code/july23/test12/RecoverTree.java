@@ -3,14 +3,14 @@ package com.interview.notes.code.july23.test12;
 /**
  * You are given the root of a binary search tree (BST) where the values of exactly two nodes
  * of the tree were swapped by mistake. Recover the tree without changing its structure.
- *
+ * <p>
  * Example 1:
  * Input: root = [1,3,null,null,2]
  * Output: [3,1,null,null,2]
  * Explanation: 3 cannot be a left child of 1 because 3 > 1. Swapping 1
  * and 3 makes the BST valid.
- *
- *
+ * <p>
+ * <p>
  * Example 2:
  * Input: root = [3,1,4,null,null,2]
  * Output: [2,1,4,0011,0011,3]
@@ -26,10 +26,10 @@ class RecoverTree {
     public void recoverTree(TreeNode root) {
         // Initialize pointers to keep track of the two nodes to swap and the previous node in traversal
         TreeNode first = null, second = null, prev = null;
-        
+
         // Current node in traversal
         TreeNode current = root;
-        
+
         while (current != null) {
             // If the left node is null, we visit the current node
             if (current.left == null) {
@@ -66,7 +66,7 @@ class RecoverTree {
                 }
             }
         }
-        
+
         // Swap the values of the first and second nodes
         if (first != null && second != null) {
             int temp = first.val;

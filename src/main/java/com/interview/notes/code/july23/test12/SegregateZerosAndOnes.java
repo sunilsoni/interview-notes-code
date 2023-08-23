@@ -10,9 +10,9 @@ output: {0,0,0,0,1,1,1,1,1}
  */
 public class SegregateZerosAndOnes {
     public static void main(String[] args) {
-        int[] arr = { 1, 0, 0, 0, 1, 0, 1, 1, 1 };
+        int[] arr = {1, 0, 0, 0, 1, 0, 1, 1, 1};
         segregate(arr);
-        
+
         // print the segregated array
         for (int i : arr) {
             System.out.print(i + " ");
@@ -22,7 +22,7 @@ public class SegregateZerosAndOnes {
     public static void segregate(int[] arr) {
         int left = 0;
         int right = arr.length - 1;
-        
+
         while (left < right) {
             // Move left pointer to the right until a 1 is found
             while (arr[left] == 0 && left < right) {
@@ -40,7 +40,7 @@ public class SegregateZerosAndOnes {
                 int temp = arr[left];
                 arr[left] = arr[right];
                 arr[right] = temp;
-                
+
                 // Move the pointers
                 left++;
                 right--;

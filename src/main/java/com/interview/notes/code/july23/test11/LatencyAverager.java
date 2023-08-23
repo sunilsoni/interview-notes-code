@@ -27,6 +27,21 @@ public class LatencyAverager {
         this.topLatencies = new PriorityQueue<>((a, b) -> b - a);  // max-heap
     }
 
+    public static void main(String[] args) {
+        LatencyAverager averager = new LatencyAverager(40);
+
+        // Test values, adjust accordingly
+        for (int j = 60; j < 100; j++) {
+            averager.addLatency(j);
+        }
+
+        averager.addLatency(100);
+        averager.addLatency(10);
+
+        System.out.println("Average (95th percentile): " + averager.getAverage());
+        averager.printWindow();
+    }
+
     public void addLatency(int latency) {
         allLatencies.add(latency);
         topLatencies.add(latency);
@@ -55,20 +70,5 @@ public class LatencyAverager {
 
     public void printWindow() {
         System.out.println(allLatencies);
-    }
-
-    public static void main(String[] args) {
-        LatencyAverager averager = new LatencyAverager(40);
-
-        // Test values, adjust accordingly
-        for (int j = 60; j < 100; j++) {
-            averager.addLatency(j);
-        }
-
-        averager.addLatency(100);
-        averager.addLatency(10);
-
-        System.out.println("Average (95th percentile): " + averager.getAverage());
-        averager.printWindow();
     }
 }

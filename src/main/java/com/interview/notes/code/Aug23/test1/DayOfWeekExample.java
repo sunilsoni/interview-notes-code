@@ -2,11 +2,6 @@ package com.interview.notes.code.Aug23.test1;
 
 public class DayOfWeekExample {
 
-    // Define the enumeration for days of the week
-    enum DayOfWeek {
-        SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
-    }
-
     // Method to get the next day
     public static DayOfWeek getNextDay(DayOfWeek currentDay) {
         DayOfWeek[] days = DayOfWeek.values();
@@ -20,5 +15,10 @@ public class DayOfWeekExample {
         DayOfWeek nextDay = getNextDay(today);
         System.out.println("Today is " + today);
         System.out.println("Next day is " + nextDay);
+    }
+
+    // Define the enumeration for days of the week
+    enum DayOfWeek {
+        SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
     }
 }

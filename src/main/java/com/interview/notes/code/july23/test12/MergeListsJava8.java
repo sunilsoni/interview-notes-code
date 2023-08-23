@@ -1,6 +1,5 @@
 package com.interview.notes.code.july23.test12;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

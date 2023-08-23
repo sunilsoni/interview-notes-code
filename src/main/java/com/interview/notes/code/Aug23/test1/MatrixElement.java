@@ -14,7 +14,7 @@ public class MatrixElement {
     }
 }
 
- class KthSmallestElement {
+class KthSmallestElement {
     public static int kthSmallest(int[][] matrix, int k) {
         int n = matrix.length; // Get the number of rows
         PriorityQueue<MatrixElement> minHeap = new PriorityQueue<>((a, b) -> a.value - b.value);
@@ -45,9 +45,9 @@ public class MatrixElement {
 
     public static void main(String[] args) {
         int[][] matrix = {
-            {1, 5, 9},
-            {10, 11, 13},
-            {12, 13, 15}
+                {1, 5, 9},
+                {10, 11, 13},
+                {12, 13, 15}
         };
         int k = 8;
         System.out.println(kthSmallest(matrix, k)); // Output: 13

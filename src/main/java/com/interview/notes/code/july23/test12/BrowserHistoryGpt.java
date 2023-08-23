@@ -20,8 +20,8 @@ import java.util.List;
  * [7]]
  * Output:
  * [null,null,null,null,"facebook.com","google.com","facebook.com",null,"linkedin.com","google.com","leetcode.c
- *
- *
+ * <p>
+ * <p>
  * Explanation:
  * BrowserHistory browserHistory = new BrowserHistory("leetcode.com");
  * browserHistory.visit("google.com");                                              //  You   are    in    "leetcode.com". Visit "google.com"
@@ -40,9 +40,9 @@ import java.util.List;
  * "facebook.com” then to "google.com”. return "google.com"
  * browserHistory.back(7);                                                              // You are in "google.com", you can move back only one step to
  * "leetcode.com”. return "leetcode.com"
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * Constraints:
  * •     1 <= homepage.length <= 20
  * •     1 <= url.length <= 20
@@ -59,6 +59,21 @@ public class BrowserHistoryGpt {
         history = new ArrayList<>();
         history.add(homepage);
         current = 0;
+    }
+
+    public static void main(String[] args) {
+        BrowserHistoryGpt browserHistory = new BrowserHistoryGpt("leetcode.com");
+        System.out.println(browserHistory.back(7)); // You are in "leetcode.com", you can move back only 0 step, so it returns "leetcode.com".
+        browserHistory.visit("google.com");
+        browserHistory.visit("facebook.com");
+        browserHistory.visit("youtube.com");
+        System.out.println(browserHistory.back(1)); // You are in "youtube.com", move back to "facebook.com" return "facebook.com”
+        System.out.println(browserHistory.back(1)); // You are in "facebook.com", move back to "google.com" return "google.com"
+        System.out.println(browserHistory.forward(1)); // You are in "google.com", move forward to "facebook.com" return "facebook.com"
+        browserHistory.visit("linkedin.com");
+        System.out.println(browserHistory.forward(2)); // You are in "linkedin.com", you cannot move forward any steps, so it returns "linkedin.com".
+        System.out.println(browserHistory.back(2)); // You are in "linkedin.com", move back two steps to "facebook.com" then to "google.com". return "google.com"
+        System.out.println(browserHistory.back(7)); // You are in "google.com", you can move back only one step to "leetcode.com". return "leetcode.com"
     }
 
     // Visits a URL from the current page and clears up all the forward history
@@ -88,20 +103,5 @@ public class BrowserHistoryGpt {
         current += actualSteps;
         // Return the current URL
         return history.get(current);
-    }
-
-    public static void main(String[] args) {
-        BrowserHistoryGpt browserHistory = new BrowserHistoryGpt("leetcode.com");
-        System.out.println(browserHistory.back(7)); // You are in "leetcode.com", you can move back only 0 step, so it returns "leetcode.com".
-        browserHistory.visit("google.com");
-        browserHistory.visit("facebook.com");
-        browserHistory.visit("youtube.com");
-        System.out.println(browserHistory.back(1)); // You are in "youtube.com", move back to "facebook.com" return "facebook.com”
-        System.out.println(browserHistory.back(1)); // You are in "facebook.com", move back to "google.com" return "google.com"
-        System.out.println(browserHistory.forward(1)); // You are in "google.com", move forward to "facebook.com" return "facebook.com"
-        browserHistory.visit("linkedin.com");
-        System.out.println(browserHistory.forward(2)); // You are in "linkedin.com", you cannot move forward any steps, so it returns "linkedin.com".
-        System.out.println(browserHistory.back(2)); // You are in "linkedin.com", move back two steps to "facebook.com" then to "google.com". return "google.com"
-        System.out.println(browserHistory.back(7)); // You are in "google.com", you can move back only one step to "leetcode.com". return "leetcode.com"
     }
 }

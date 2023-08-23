@@ -8,6 +8,6 @@ public class RandomNumberExample {
 
         // Generate and print 10 random numbers
         random.ints(10) // Generates a stream of 10 random integers
-            .forEach(number -> System.out.println("Random Number: " + number));
+                .forEach(number -> System.out.println("Random Number: " + number));
     }
 }

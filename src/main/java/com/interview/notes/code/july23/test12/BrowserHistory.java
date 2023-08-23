@@ -15,6 +15,22 @@ class BrowserHistory {
         this.history.push(homepage);
     }
 
+    public static void main(String[] args) {
+        BrowserHistory browserHistory = new BrowserHistory("leetcode.com");
+        System.out.println(browserHistory.back(0)); // null, since the browser is currently on the homepage
+        browserHistory.visit("google.com");
+        System.out.println(browserHistory.back(0)); // null, since the browser is currently on "google.com"
+        browserHistory.visit("facebook.com");
+        System.out.println(browserHistory.back(1)); // "google.com"
+        browserHistory.visit("youtube.com");
+        System.out.println(browserHistory.back(2)); // "facebook.com"
+        System.out.println(browserHistory.forward(1)); // "youtube.com"
+        browserHistory.visit("linkedin.com");
+        System.out.println(browserHistory.forward(2)); // null, since the browser is currently on "linkedin.com"
+        System.out.println(browserHistory.back(2)); // "facebook.com"
+        System.out.println(browserHistory.back(7)); // "leetcode.com"
+    }
+
     public void visit(String url) {
         history.push(url);
         forward.clear();
@@ -38,21 +54,5 @@ class BrowserHistory {
             history.push(forward.pop());
         }
         return history.peek();
-    }
-
-    public static void main(String[] args) {
-        BrowserHistory browserHistory = new BrowserHistory("leetcode.com");
-        System.out.println(browserHistory.back(0)); // null, since the browser is currently on the homepage
-        browserHistory.visit("google.com");
-        System.out.println(browserHistory.back(0)); // null, since the browser is currently on "google.com"
-        browserHistory.visit("facebook.com");
-        System.out.println(browserHistory.back(1)); // "google.com"
-        browserHistory.visit("youtube.com");
-        System.out.println(browserHistory.back(2)); // "facebook.com"
-        System.out.println(browserHistory.forward(1)); // "youtube.com"
-        browserHistory.visit("linkedin.com");
-        System.out.println(browserHistory.forward(2)); // null, since the browser is currently on "linkedin.com"
-        System.out.println(browserHistory.back(2)); // "facebook.com"
-        System.out.println(browserHistory.back(7)); // "leetcode.com"
     }
 }

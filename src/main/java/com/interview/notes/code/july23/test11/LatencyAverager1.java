@@ -24,6 +24,24 @@ public class LatencyAverager1 {
         this.currentSum = 0.0;
     }
 
+    public static void main(String[] args) {
+        LatencyAverager1 averager = new LatencyAverager1(5);
+
+        averager.addLatency(50);
+        averager.addLatency(60);
+        averager.addLatency(70);
+        averager.addLatency(50);
+        averager.addLatency(100);
+        averager.addLatency(10);
+
+        System.out.println("Average: " + averager.getAverage());
+        averager.printWindow();
+
+        averager.addLatency(40);
+        System.out.println("Average: " + averager.getAverage());
+        averager.printWindow();
+    }
+
     // This method is called each time a new latency value is received.
     public void addLatency(int latency) {
         latencies.add(latency);
@@ -44,23 +62,5 @@ public class LatencyAverager1 {
     // Utility function to print the current window
     public void printWindow() {
         System.out.println(latencies);
-    }
-
-    public static void main(String[] args) {
-        LatencyAverager1 averager = new LatencyAverager1(5);
-
-        averager.addLatency(50);
-        averager.addLatency(60);
-        averager.addLatency(70);
-        averager.addLatency(50);
-        averager.addLatency(100);
-        averager.addLatency(10);
-
-        System.out.println("Average: " + averager.getAverage());
-        averager.printWindow();
-
-        averager.addLatency(40);
-        System.out.println("Average: " + averager.getAverage());
-        averager.printWindow();
     }
 }

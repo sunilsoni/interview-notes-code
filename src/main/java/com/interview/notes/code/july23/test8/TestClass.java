@@ -1,7 +1,5 @@
 package com.interview.notes.code.july23.test8;
 
-import com.interview.notes.code.array.Int;
-
 public class TestClass {
     public static void main(String[] args) {
 
@@ -14,15 +12,18 @@ test
 (Integer)
 in TestClass match
          */
-       // test(null);
+        // test(null);
     }
-    public static void test(String s){
+
+    public static void test(String s) {
         System.out.println("String");
     }
-    public static void test(Integer s){
+
+    public static void test(Integer s) {
         System.out.println("String");
     }
-    public static void test(int s){
+
+    public static void test(int s) {
         System.out.println("String");
     }
 }

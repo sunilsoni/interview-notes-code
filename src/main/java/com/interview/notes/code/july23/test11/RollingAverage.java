@@ -24,21 +24,6 @@ public class RollingAverage {
         this.sum = 0;
     }
 
-    public void add(int latency) {
-        sum += latency;
-        window.add(latency);
-        if (window.size() > k) {
-            sum -= window.remove();
-        }
-    }
-
-    public double getAverage() {
-        if (window.isEmpty()) {
-            return 0.0;
-        }
-        return (double) sum / window.size();
-    }
-
     public static void main(String[] args) {
         RollingAverage rollingAverage = new RollingAverage(5);
         rollingAverage.add(50);
@@ -57,5 +42,20 @@ public class RollingAverage {
 The current rolling average is: 58.0
 The current rolling average is: 54.0
          */
+    }
+
+    public void add(int latency) {
+        sum += latency;
+        window.add(latency);
+        if (window.size() > k) {
+            sum -= window.remove();
+        }
+    }
+
+    public double getAverage() {
+        if (window.isEmpty()) {
+            return 0.0;
+        }
+        return (double) sum / window.size();
     }
 }
