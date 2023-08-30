@@ -16,6 +16,24 @@ class MinStack {
         minStack = new Stack<>();
     }
 
+    public static void main(String[] args) {
+        MinStack minStack = new MinStack();
+
+        minStack.push(5);
+        minStack.push(2);
+        minStack.push(8);
+        minStack.push(1);
+
+        System.out.println("Top Element: " + minStack.top()); // Output: 1
+        System.out.println("Minimum Element: " + minStack.minPeek()); // Output: 1
+
+        minStack.pop();
+        System.out.println("Minimum Element after popping: " + minStack.minPeek()); // Output: 2
+
+        minStack.push(0);
+        System.out.println("Minimum Element after pushing 0: " + minStack.minPeek()); // Output: 0
+    }
+
     // Pushes element x onto the stack
     public void push(int x) {
         stack.push(x); // Push to the main stack
@@ -42,24 +60,6 @@ class MinStack {
     // Returns the minimum element in the stack without removing it
     public int minPeek() {
         return minStack.peek(); // Top of minStack is the minimum element
-    }
-
-    public static void main(String[] args) {
-        MinStack minStack = new MinStack();
-
-        minStack.push(5);
-        minStack.push(2);
-        minStack.push(8);
-        minStack.push(1);
-
-        System.out.println("Top Element: " + minStack.top()); // Output: 1
-        System.out.println("Minimum Element: " + minStack.minPeek()); // Output: 1
-
-        minStack.pop();
-        System.out.println("Minimum Element after popping: " + minStack.minPeek()); // Output: 2
-
-        minStack.push(0);
-        System.out.println("Minimum Element after pushing 0: " + minStack.minPeek()); // Output: 0
     }
 
 }

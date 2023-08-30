@@ -20,28 +20,28 @@ public class ReverseVowels {
         char[] chars = s.toCharArray(); // Convert the string to a character array for easy manipulation
         int i = 0, j = chars.length - 1; // Initialize the pointers
         String vowels = "aeiouAEIOU"; // Define the vowels
-        
+
         while (i < j) {
             // Find the next vowel from the beginning
             while (i < j && vowels.indexOf(chars[i]) == -1) {
                 i++;
             }
-            
+
             // Find the next vowel from the end
             while (i < j && vowels.indexOf(chars[j]) == -1) {
                 j--;
             }
-            
+
             // Swap the vowels
             char temp = chars[i];
             chars[i] = chars[j];
             chars[j] = temp;
-            
+
             // Move both pointers
             i++;
             j--;
         }
-        
+
         return new String(chars); // Convert the character array back to a string and return
     }
 }
