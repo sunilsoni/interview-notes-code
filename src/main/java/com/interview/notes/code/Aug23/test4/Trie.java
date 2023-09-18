@@ -24,6 +24,25 @@ class Trie {
         root = new TrieNode();
     }
 
+    public static void main(String[] args) {
+        Trie trie = new Trie();
+
+        // Insert words into Trie
+        trie.insert("apple");
+        trie.insert("bad");
+        trie.insert("lad");
+        trie.insert("lead");
+
+        // Test findMatchingWords
+        String input = "abpplead";
+        List<String> result = trie.findMatchingWords(input);
+
+        // Print result
+        for (String word : result) {
+            System.out.println(word);
+        }
+    }
+
     // Insert a word into Trie
     public void insert(String word) {
         TrieNode node = root;
@@ -53,24 +72,5 @@ class Trie {
         List<String> result = new ArrayList<>();
         dfs(root, "", s, result);
         return result;
-    }
-
-    public static void main(String[] args) {
-        Trie trie = new Trie();
-
-        // Insert words into Trie
-        trie.insert("apple");
-        trie.insert("bad");
-        trie.insert("lad");
-        trie.insert("lead");
-
-        // Test findMatchingWords
-        String input = "abpplead";
-        List<String> result = trie.findMatchingWords(input);
-
-        // Print result
-        for (String word : result) {
-            System.out.println(word);
-        }
     }
 }

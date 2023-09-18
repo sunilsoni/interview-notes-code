@@ -1,7 +1,7 @@
 package com.interview.notes.code.Aug23.test4;
 
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class RemoveDuplicatesExample {

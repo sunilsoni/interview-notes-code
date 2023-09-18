@@ -15,7 +15,7 @@ public class ArraySequence2 {
                 sequence.append(arr[i]).append(",");
             }
         }
-        
+
         if (sequence.length() > 0) {
             System.out.println(sequence.toString().substring(0, sequence.length() - 1)); // for the last sequence if no zero at the end
         }

@@ -31,7 +31,7 @@ public class BigNumbersAddition {
 
             carry = sum / 10;  // Calculate carry for next step
             sum = sum % 10;  // Get the last digit of sum
-            
+
             // Append sum to the left of the result string
             result.insert(0, Integer.toString(sum));
         }

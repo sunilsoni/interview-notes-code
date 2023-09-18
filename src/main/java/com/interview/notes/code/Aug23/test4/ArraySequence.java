@@ -3,10 +3,10 @@ package com.interview.notes.code.Aug23.test4;
 public class ArraySequence {
     public static void main(String[] args) {
         int[] arr = {1, 2, 0, 22, 23, 5, 0, 0, -100, 100};
-        
+
         StringBuilder currentSequence = new StringBuilder();
         StringBuilder maxSequence = new StringBuilder();
-        
+
         int currentSum = 0;
         int maxSum = Integer.MIN_VALUE;
 

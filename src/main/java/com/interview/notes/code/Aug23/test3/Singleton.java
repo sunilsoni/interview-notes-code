@@ -14,10 +14,6 @@ public class Singleton {
         return instance;
     }
 
-    public void showMessage() {
-        System.out.println("Singleton instance is working.");
-    }
-
     public static void main(String[] args) {
         // Getting the Singleton instance
         Singleton singleton1 = Singleton.getInstance();
@@ -29,5 +25,9 @@ public class Singleton {
         // Testing the method of the Singleton instance
         singleton1.showMessage();
         singleton2.showMessage();
+    }
+
+    public void showMessage() {
+        System.out.println("Singleton instance is working.");
     }
 }

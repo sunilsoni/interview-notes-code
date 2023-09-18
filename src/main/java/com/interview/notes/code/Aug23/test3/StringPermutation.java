@@ -11,9 +11,9 @@ public class StringPermutation {
     /**
      * Generate and print all permutations of a string.
      *
-     * @param str     The string for which to generate permutations
-     * @param start   The start index for permutation
-     * @param end     The end index for permutation
+     * @param str   The string for which to generate permutations
+     * @param start The start index for permutation
+     * @param end   The end index for permutation
      */
     public static void generatePermutations(String str, int start, int end) {
         // Base case: when start and end pointers are the same, print the permutation
