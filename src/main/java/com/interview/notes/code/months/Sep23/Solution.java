@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Solution {
-    
+
     public static int playlist(int[] songs) {
         Map<Integer, Integer> remainderCount = new HashMap<>();
         int pairs = 0;
@@ -15,7 +15,7 @@ public class Solution {
             pairs += remainderCount.getOrDefault(complement, 0); // find pairs for this song
             remainderCount.put(remainder, remainderCount.getOrDefault(remainder, 0) + 1); // update count of this remainder
         }
-        
+
         return pairs;
     }
 

@@ -76,6 +76,7 @@ public class DuplicateTest {
         // Return the new array.
         return uniqueArr;
     }
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 2, 4, 5, 5};
         int[] result = removeDuplicates(arr);

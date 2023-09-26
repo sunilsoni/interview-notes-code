@@ -26,7 +26,7 @@ public class PizzaTreats2 {
         } else {
             System.out.println("YES");
         }
-        
+
         sc.close();
     }
 }

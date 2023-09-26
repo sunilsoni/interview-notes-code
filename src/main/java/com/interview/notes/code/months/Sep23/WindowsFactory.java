@@ -1,7 +1,5 @@
 package com.interview.notes.code.months.Sep23;
 
-import java.awt.*;
-
 // Concrete Factory for Windows
 class WindowsFactory implements GUIFactory {
     @Override

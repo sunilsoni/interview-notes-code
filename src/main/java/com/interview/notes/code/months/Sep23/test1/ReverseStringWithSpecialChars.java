@@ -10,7 +10,7 @@ public class ReverseStringWithSpecialChars {
 
     public static String reverseString(String s) {
         Stack<Character> stack = new Stack<>();
-        
+
         // Push all the English letters onto the stack
         for (char ch : s.toCharArray()) {
             if (Character.isLetter(ch)) {

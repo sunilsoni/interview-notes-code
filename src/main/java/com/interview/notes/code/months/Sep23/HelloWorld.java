@@ -6,10 +6,10 @@ public class HelloWorld {
 
     public static int CountingMinutesI(int num) {
         char[] digits = Integer.toString(num).toCharArray();
-        
+
         // Find the first pair of adjacent digits (i, i-1) where digit[i] > digit[i-1]
         int i = digits.length - 1;
-        while (i > 0 && digits[i] <= digits[i-1]) {
+        while (i > 0 && digits[i] <= digits[i - 1]) {
             i--;
         }
 
@@ -20,18 +20,18 @@ public class HelloWorld {
 
         // Find the smallest digit to the right of digits[i-1] that's greater than digits[i-1]
         int j = digits.length - 1;
-        while (digits[j] <= digits[i-1]) {
+        while (digits[j] <= digits[i - 1]) {
             j--;
         }
 
         // Swap digits[i-1] and digits[j]
-        char temp = digits[i-1];
-        digits[i-1] = digits[j];
+        char temp = digits[i - 1];
+        digits[i - 1] = digits[j];
         digits[j] = temp;
 
         // Reverse the sequence of digits after position i-1
         reverse(digits, i, digits.length - 1);
-        
+
         return Integer.parseInt(new String(digits));
     }
 

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Stock Sale:
- *
+ * <p>
  * You are given an array of positive integers, where each integer represents the price of a
  * stock on a given day. You want to maximize your profit by choosing a single day to buy the
  * stock and choosing a different day in the future to sell that stock. Return the maximum
