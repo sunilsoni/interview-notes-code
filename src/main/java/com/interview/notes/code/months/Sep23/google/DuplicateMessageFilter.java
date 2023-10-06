@@ -9,17 +9,6 @@ public class DuplicateMessageFilter {
 
     private Map<String, Long> messageSeenTimes = new HashMap<>();
 
-    public boolean shouldDisplayMessage(Status status) {
-        long now = System.currentTimeMillis();
-        Long lastSeenTime = messageSeenTimes.get(status.message);
-        if (lastSeenTime == null || now - lastSeenTime > WINDOW_SIZE_MILLIS) {
-            messageSeenTimes.put(status.message, now);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public static void main(String[] args) {
         DuplicateMessageFilter filter = new DuplicateMessageFilter();
 
@@ -57,6 +46,17 @@ public class DuplicateMessageFilter {
 
         if (filter.shouldDisplayMessage(status7)) {
             System.out.println(status7.message);
+        }
+    }
+
+    public boolean shouldDisplayMessage(Status status) {
+        long now = System.currentTimeMillis();
+        Long lastSeenTime = messageSeenTimes.get(status.message);
+        if (lastSeenTime == null || now - lastSeenTime > WINDOW_SIZE_MILLIS) {
+            messageSeenTimes.put(status.message, now);
+            return true;
+        } else {
+            return false;
         }
     }
 }

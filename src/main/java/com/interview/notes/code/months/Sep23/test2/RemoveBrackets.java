@@ -19,7 +19,7 @@ public class RemoveBrackets {
     public static String RemoveBrackets1(String str) {
         Deque<Character> stack = new ArrayDeque<>();
         int unmatchedClosing = 0;
-        
+
         for (char c : str.toCharArray()) {
             if (BRACKET_PAIRS.containsKey(c)) {
                 stack.push(c);
@@ -34,6 +34,7 @@ public class RemoveBrackets {
 
         return Integer.toString(stack.size() + unmatchedClosing);
     }
+
     public static String RemoveBrackets(String str) {
         int open = 0, remove = 0;
         for (char ch : str.toCharArray()) {

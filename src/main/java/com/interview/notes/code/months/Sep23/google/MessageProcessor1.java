@@ -9,6 +9,24 @@ public class MessageProcessor1 {
     // HashMap to store the last seen timestamp for each message
     private HashMap<String, Integer> lastSeen = new HashMap<>();
 
+    public static void main(String[] args) {
+        MessageProcessor1 processor = new MessageProcessor1();
+        List<String> messages = List.of(
+                "10 solar panel activated",
+                "11 low battery warning",
+                "12 tire one: low air pressure",
+                "13 solar panel activated",
+                "14 low battery warning",
+                "21 solar panel activated",
+                "35 solar panel activated"
+        );
+
+        List<String> output = processor.processMessages(messages);
+        for (String msg : output) {
+            System.out.println(msg);
+        }
+    }
+
     // Function to process a list of messages with timestamps
     public List<String> processMessages(List<String> messages) {
         List<String> result = new LinkedList<>();
@@ -30,23 +48,5 @@ public class MessageProcessor1 {
         }
 
         return result;
-    }
-
-    public static void main(String[] args) {
-        MessageProcessor1 processor = new MessageProcessor1();
-        List<String> messages = List.of(
-                "10 solar panel activated",
-                "11 low battery warning",
-                "12 tire one: low air pressure",
-                "13 solar panel activated",
-                "14 low battery warning",
-                "21 solar panel activated",
-                "35 solar panel activated"
-        );
-
-        List<String> output = processor.processMessages(messages);
-        for (String msg : output) {
-            System.out.println(msg);
-        }
     }
 }

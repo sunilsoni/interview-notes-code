@@ -4,16 +4,24 @@ public class DoublyLinkedList<T> {
     private Node<T> head;
     private Node<T> tail;
 
-    private static class Node<T> {
-        T data;
-        Node<T> next;
-        Node<T> prev;
+    public static void main(String[] args) {
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
 
-        Node(T data) {
-            this.data = data;
-            next = null;
-            prev = null;
-        }
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        list.insert(4);
+
+        System.out.println("List after insertion:");
+        list.print();
+
+        list.delete(2);
+        System.out.println("\nList after deleting 2:");
+        list.print();
+
+        list.delete(4);
+        System.out.println("\nList after deleting 4:");
+        list.print();
     }
 
     // Insert at the end
@@ -65,23 +73,15 @@ public class DoublyLinkedList<T> {
         System.out.println("null");
     }
 
-    public static void main(String[] args) {
-        DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
-        
-        list.insert(1);
-        list.insert(2);
-        list.insert(3);
-        list.insert(4);
+    private static class Node<T> {
+        T data;
+        Node<T> next;
+        Node<T> prev;
 
-        System.out.println("List after insertion:");
-        list.print();
-
-        list.delete(2);
-        System.out.println("\nList after deleting 2:");
-        list.print();
-
-        list.delete(4);
-        System.out.println("\nList after deleting 4:");
-        list.print();
+        Node(T data) {
+            this.data = data;
+            next = null;
+            prev = null;
+        }
     }
 }

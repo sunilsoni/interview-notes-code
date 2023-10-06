@@ -11,39 +11,18 @@ class MessageProcessor2 implements Runnable {
         this.lastSeen = new HashMap<>();
     }
 
-    public void run() {
-        while (true) {
-            Status status = receiver.getRawMessage();
-
-            if (shouldDisplay(status)) {
-                System.out.println(status.toString());
-                lastSeen.put(status.message, status.timestamp);
-            }
-        }
-    }
-
-    private boolean shouldDisplay(Status status) {
-        if (status != null && status.message != null) {
-            // Access the message field or do further processing
-        } else {
-            // Handle the scenario where status or its message field is null
-        }
-
-        return !lastSeen.containsKey(status.message) || (status.timestamp - lastSeen.get(status.message) > 10);
-    }
-
     public static void main(String[] args) {
         // Example implementation of the StatusReceiver for demonstration
         StatusReceiver receiver = new StatusReceiver() {
             private int counter = 0;
             private String[] testMessages = {
-                "solar panel activated",
-                "low battery warning",
-                "tire one: low air pressure",
-                "solar panel activated",
-                "low battery warning",
-                "solar panel activated",
-                "solar panel activated"
+                    "solar panel activated",
+                    "low battery warning",
+                    "tire one: low air pressure",
+                    "solar panel activated",
+                    "low battery warning",
+                    "solar panel activated",
+                    "solar panel activated"
             };
             private int[] testTimestamps = {10, 11, 12, 13, 14, 21, 35};
 
@@ -64,5 +43,26 @@ class MessageProcessor2 implements Runnable {
 
         MessageProcessor2 processor = new MessageProcessor2(receiver);
         new Thread(processor).start();
+    }
+
+    public void run() {
+        while (true) {
+            Status status = receiver.getRawMessage();
+
+            if (shouldDisplay(status)) {
+                System.out.println(status.toString());
+                lastSeen.put(status.message, status.timestamp);
+            }
+        }
+    }
+
+    private boolean shouldDisplay(Status status) {
+        if (status != null && status.message != null) {
+            // Access the message field or do further processing
+        } else {
+            // Handle the scenario where status or its message field is null
+        }
+
+        return !lastSeen.containsKey(status.message) || (status.timestamp - lastSeen.get(status.message) > 10);
     }
 }

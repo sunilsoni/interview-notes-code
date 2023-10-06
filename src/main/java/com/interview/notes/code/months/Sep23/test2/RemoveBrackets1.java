@@ -7,7 +7,7 @@ public class RemoveBrackets1 {
     public static String RemoveBrackets(String str) {
         Stack<Character> stack = new Stack<>();
         int unmatchedClosing = 0;
-        
+
         for (char c : str.toCharArray()) {
             if (c == '(' || c == '{' || c == '[') {
                 stack.push(c);
@@ -20,15 +20,15 @@ public class RemoveBrackets1 {
             }
         }
 
-        return Integer.toString(stack.size() + unmatchedClosing); 
+        return Integer.toString(stack.size() + unmatchedClosing);
     }
-    
+
     public static boolean isMatchingPair(char open, char close) {
-        return (open == '(' && close == ')') || 
-               (open == '{' && close == '}') || 
-               (open == '[' && close == ']');
+        return (open == '(' && close == ')') ||
+                (open == '{' && close == '}') ||
+                (open == '[' && close == ']');
     }
-    
+
     public static void main(String[] args) {
         System.out.println("Test 1 passing: " + (RemoveBrackets("{[()]>[{{[(((").equals("6"))); // Example test, should print true
     }
