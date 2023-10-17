@@ -5,15 +5,15 @@ import java.util.HashMap;
 
 /**
  * In Java
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * Please explain the questions and requirements, and provide a step-by-step plan for solving them.
- *
+ * <p>
  * Additionally, include code with explanations, and calculate time and space complexity at each step.
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * You are given an array of integers. Your task is to create pairs of them, such that every pair consists
  * of equal numbers. Each array element may belong to one pair only. Is it possible to use all of the
  * integers?
@@ -34,10 +34,15 @@ import java.util.HashMap;
  * Copyright 2009-2023 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
  */
 class Solution1 {
+    public static void main(String[] args) {
+        Solution1 sol = new Solution1();
+        System.out.println(sol.solution(new int[]{1, 2, 2, 1})); // Output should be true
+    }
+
     public boolean solution(int[] A) {
         // Step 1: Initialize a HashMap to store frequency of each integer
         HashMap<Integer, Integer> frequencyMap = new HashMap<>();
-        
+
         // Step 2: Traverse through array and update frequencies
         for (int num : A) {
             frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
@@ -49,12 +54,7 @@ class Solution1 {
                 return false;
             }
         }
-        
+
         return true;
-    }
-    
-    public static void main(String[] args) {
-        Solution1 sol = new Solution1();
-        System.out.println(sol.solution(new int[]{1, 2, 2, 1})); // Output should be true
     }
 }

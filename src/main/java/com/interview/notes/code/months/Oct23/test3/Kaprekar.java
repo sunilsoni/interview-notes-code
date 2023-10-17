@@ -9,17 +9,17 @@ public class Kaprekar {
     public static int stepsTo6174(int number) {
         // Check if the number has all identical digits
         if (allSameDigits(number)) return 0;
-        
+
         int steps = 0;
         // A set to detect loops
         Set<Integer> seen = new HashSet<>();
-        
+
         while (number != 6174 && !seen.contains(number)) {
             seen.add(number);
             number = nextNumber(number);
             steps++;
         }
-        
+
         if (number == 6174) return steps;
         else return -1;  // -1 indicates that 6174 is not reachable
     }

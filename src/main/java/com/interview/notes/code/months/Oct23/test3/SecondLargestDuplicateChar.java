@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 
 /**
  * Program on anagram with input parameter will be take from user like size
- *
+ * <p>
  * Anagram example:
  * LISTEN = SILENT
- *
- *
+ * <p>
+ * <p>
  * write a program in Java how to find 2nd largest dupilcate character from given string 'abbcccddddcc' .
  */
 public class SecondLargestDuplicateChar {
@@ -54,9 +54,10 @@ public class SecondLargestDuplicateChar {
         if (minHeap.size() == 2) {
             return minHeap.poll().getKey();
         }
-        
+
         return '\0';
     }
+
     public static Optional<Character> findSecondLargestDuplicateChar1(String str) {
         return Optional.ofNullable(
                 str.chars()

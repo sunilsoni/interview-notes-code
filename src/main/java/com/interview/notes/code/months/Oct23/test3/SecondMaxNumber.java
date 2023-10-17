@@ -12,10 +12,10 @@ public class SecondMaxNumber {
         // Step 3: Sort the elements
         // Step 4: Skip all but the second max element and find it
         OptionalInt secondMax = Arrays.stream(arr)
-                                      .distinct()  // Remove duplicates
-                                      .sorted()     // Sort the array
-                                      .skip(arr.length - 2)  // Skip all but the second max
-                                      .findFirst();  // Retrieve the second max element
+                .distinct()  // Remove duplicates
+                .sorted()     // Sort the array
+                .skip(arr.length - 2)  // Skip all but the second max
+                .findFirst();  // Retrieve the second max element
 
         // Check if a second max exists and display it
         if (secondMax.isPresent()) {

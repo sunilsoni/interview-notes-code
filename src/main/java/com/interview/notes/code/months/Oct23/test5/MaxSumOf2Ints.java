@@ -26,9 +26,15 @@ import java.util.*;
  * Copyright 2009-2023 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited
  */
 public class MaxSumOf2Ints {
+    public static void main(String[] args) {
+        MaxSumOf2Ints solution = new MaxSumOf2Ints();
+        int[] test = {30, 909, 3190, 99, 3990, 9009};
+        System.out.println(solution.solution(test));  // Expected: 9918
+    }
+
     public int solution(int[] A) {
         Map<String, List<Integer>> map = new HashMap<>();
-        
+
         for (int num : A) {
             String numStr = String.valueOf(num);
             char firstDigit = numStr.charAt(0);
@@ -47,11 +53,5 @@ public class MaxSumOf2Ints {
             }
         }
         return maxSum;
-    }
-    
-    public static void main(String[] args) {
-        MaxSumOf2Ints solution = new MaxSumOf2Ints();
-        int[] test = {30, 909, 3190, 99, 3990, 9009};
-        System.out.println(solution.solution(test));  // Expected: 9918
     }
 }

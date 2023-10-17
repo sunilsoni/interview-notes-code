@@ -4,6 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RestoreIPAddresses {
+    public static void main(String[] args) {
+        RestoreIPAddresses solution = new RestoreIPAddresses();
+        String s1 = "25525511135";
+        String s2 = "0000";
+        String s3 = "101023";
+
+        List<String> result1 = solution.restoreIpAddresses(s1);
+        System.out.println(result1); // ["255.255.11.135","255.255.111.35"]
+
+        List<String> result2 = solution.restoreIpAddresses(s2);
+        System.out.println(result2); // ["0.0.0.0"]
+
+        List<String> result3 = solution.restoreIpAddresses(s3);
+        System.out.println(result3); // ["1.0.10.23","1.0.102.3","10.1.0.23","10.10.2.3","101.0.2.3"]
+    }
+
     public List<String> restoreIpAddresses(String s) {
         List<String> validIPs = new ArrayList<>();
         if (s == null || s.length() < 4 || s.length() > 12) {
@@ -31,21 +47,5 @@ public class RestoreIPAddresses {
             String newCurrent = current.isEmpty() ? part : current + "." + part;
             restoreIPHelper(s, start + i, newCurrent, parts + 1, validIPs);
         }
-    }
-
-    public static void main(String[] args) {
-        RestoreIPAddresses solution = new RestoreIPAddresses();
-        String s1 = "25525511135";
-        String s2 = "0000";
-        String s3 = "101023";
-
-        List<String> result1 = solution.restoreIpAddresses(s1);
-        System.out.println(result1); // ["255.255.11.135","255.255.111.35"]
-
-        List<String> result2 = solution.restoreIpAddresses(s2);
-        System.out.println(result2); // ["0.0.0.0"]
-
-        List<String> result3 = solution.restoreIpAddresses(s3);
-        System.out.println(result3); // ["1.0.10.23","1.0.102.3","10.1.0.23","10.10.2.3","101.0.2.3"]
     }
 }

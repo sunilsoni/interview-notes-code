@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RestoreIPAddresses1 {
-    
+
     public List<String> restoreIpAddresses(String s) {
         List<String> result = new ArrayList<>();
         if (s.length() < 4 || s.length() > 12) {
@@ -13,7 +13,7 @@ public class RestoreIPAddresses1 {
         backtrack(s, "", 0, result);
         return result;
     }
-    
+
     private void backtrack(String s, String currentIP, int currentSegment, List<String> result) {
         if (currentSegment == 4 && s.isEmpty()) {
             result.add(currentIP.substring(1));  // Remove the leading dot
@@ -29,7 +29,7 @@ public class RestoreIPAddresses1 {
             }
         }
     }
-    
+
     private boolean isValidSegment(String segment) {
         if (segment.length() > 1 && segment.startsWith("0")) {
             return false;

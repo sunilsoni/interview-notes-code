@@ -1,10 +1,6 @@
 package com.interview.notes.code.months.Oct23.test3;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Lexigraphical Angrams in Java
@@ -22,16 +18,16 @@ import java.util.Map;
  * Input Format
  * The first line contains a single woman
  * Contain N space seperated strings, denoting the array of strings s[i].
- *
- *
+ * <p>
+ * <p>
  * Sample Input
  * 5           — denotes Q
  * ow no      — denotes array of strings S[i]
- *
- *
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * Constraints
  * 10 <= AZ <= 104892
  * 0 <= S[i] <= 1293

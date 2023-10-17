@@ -17,6 +17,41 @@ class BrowserHistory2 {
         lastIndex = 0;
     }
 
+    public static void main(String[] args) {
+        // Initialize with homepage "leetcode.com"
+        BrowserHistory2 browserHistory = new BrowserHistory2("leetcode.com");
+
+        // Visit "google.com"
+        browserHistory.visit("google.com");
+
+        // Visit "facebook.com"
+        browserHistory.visit("facebook.com");
+
+        // Visit "youtube.com"
+        browserHistory.visit("youtube.com");
+
+        // Test Back
+        System.out.println(browserHistory.back(1));  // Should print "facebook.com"
+
+        // Test another Back
+        System.out.println(browserHistory.back(1));  // Should print "google.com"
+
+        // Test Forward
+        System.out.println(browserHistory.forward(1)); // Should print "facebook.com"
+
+        // Visit "linkedin.com"
+        browserHistory.visit("linkedin.com");
+
+        // Test Forward with no forward history
+        System.out.println(browserHistory.forward(2));  // Should print "linkedin.com"
+
+        // Test Back twice
+        System.out.println(browserHistory.back(2));  // Should print "google.com"
+
+        // Test Back more steps than available
+        System.out.println(browserHistory.back(7));  // Should print "leetcode.com"
+    }
+
     // Visit a new URL
     public void visit(String url) {
         // Remove forward history if any
@@ -45,42 +80,6 @@ class BrowserHistory2 {
         // Return the URL at the current index
         return historyList.get(currentIndex);
     }
-
-
-        public static void main(String[] args) {
-            // Initialize with homepage "leetcode.com"
-            BrowserHistory2 browserHistory = new BrowserHistory2("leetcode.com");
-
-            // Visit "google.com"
-            browserHistory.visit("google.com");
-
-            // Visit "facebook.com"
-            browserHistory.visit("facebook.com");
-
-            // Visit "youtube.com"
-            browserHistory.visit("youtube.com");
-
-            // Test Back
-            System.out.println(browserHistory.back(1));  // Should print "facebook.com"
-
-            // Test another Back
-            System.out.println(browserHistory.back(1));  // Should print "google.com"
-
-            // Test Forward
-            System.out.println(browserHistory.forward(1)); // Should print "facebook.com"
-
-            // Visit "linkedin.com"
-            browserHistory.visit("linkedin.com");
-
-            // Test Forward with no forward history
-            System.out.println(browserHistory.forward(2));  // Should print "linkedin.com"
-
-            // Test Back twice
-            System.out.println(browserHistory.back(2));  // Should print "google.com"
-
-            // Test Back more steps than available
-            System.out.println(browserHistory.back(7));  // Should print "leetcode.com"
-        }
-    }
+}
 
 

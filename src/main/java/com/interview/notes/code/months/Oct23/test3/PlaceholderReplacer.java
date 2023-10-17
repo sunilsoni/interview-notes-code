@@ -5,13 +5,13 @@ import java.util.Map;
 
 /**
  * Write a function that takes 2 arguments:
- *
+ * <p>
  * For exmaple like below
  * -String ; "this is a {foo} {bar}"
  * -•HashMap : {"foo": "template”, "bar": "string"}
  * Returns a string:
  * this is a template” string
- *
+ * <p>
  * it replace placeholder with values from map
  */
 public class PlaceholderReplacer {
@@ -22,7 +22,7 @@ public class PlaceholderReplacer {
             String key = entry.getKey();
             String value = entry.getValue();
             String placeholder = "{" + key + "}";
-            
+
             int index = result.indexOf(placeholder);
             while (index != -1) {
                 result.replace(index, index + placeholder.length(), value);

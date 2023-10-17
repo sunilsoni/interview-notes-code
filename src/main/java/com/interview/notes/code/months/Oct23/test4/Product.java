@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.Oct23.test4;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 class Product {
@@ -13,37 +16,6 @@ class Product {
         this.price = price;
         this.quantity = quantity;
         this.name = name;
-    }
-
-    // Getters
-    public int getPrice() {
-        return price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    // Setters
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" + "price=" + price + ", quantity=" + quantity + ", name='" + name + '\'' + '}';
     }
 
     public static void main(String[] args) {
@@ -66,5 +38,36 @@ class Product {
         Map<Integer, List<Product>> map = list.stream()
                 .collect(Collectors.groupingBy(Product::getPrice));
 
+    }
+
+    // Getters
+    public int getPrice() {
+        return price;
+    }
+
+    // Setters
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "price=" + price + ", quantity=" + quantity + ", name='" + name + '\'' + '}';
     }
 }

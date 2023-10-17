@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * Program on anagram with input parameter will be take from user like size
- *
+ * <p>
  * Anagram example:
  * LISTEN = SILENT
  */

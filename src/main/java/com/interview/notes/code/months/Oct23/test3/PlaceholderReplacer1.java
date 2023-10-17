@@ -4,23 +4,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
- Please clarify the questions and requirements, and provide a step-by-step plan for solving them.
-
- Additionally, include code with explanations, and calculate time and space complexity at each step.
-
- IN Java
-
- Write a function that takes 2 arguments:
-
- For exmaple like below
- -String ; "this is a {foo} {bar}"
- -•HashMap : {"foo": "template”, "bar": "string"}
- Returns a string:
- this is a template” string
-
- it replace placeholder with values from map
-
+ * Please clarify the questions and requirements, and provide a step-by-step plan for solving them.
+ * <p>
+ * Additionally, include code with explanations, and calculate time and space complexity at each step.
+ * <p>
+ * IN Java
+ * <p>
+ * Write a function that takes 2 arguments:
+ * <p>
+ * For exmaple like below
+ * -String ; "this is a {foo} {bar}"
+ * -•HashMap : {"foo": "template”, "bar": "string"}
+ * Returns a string:
+ * this is a template” string
+ * <p>
+ * it replace placeholder with values from map
  */
 public class PlaceholderReplacer1 {
 

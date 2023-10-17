@@ -2,8 +2,6 @@ package com.interview.notes.code.months.Oct23.test3;
 
 import redis.clients.jedis.Jedis;
 
-import java.util.stream.Stream;
-
 public class Throttler1 {
     private Jedis jedis;
     private int capacity;
@@ -12,7 +10,6 @@ public class Throttler1 {
 
     public Throttler1(String redisHost, int redisPort, int capacity, int refillRate, String key) {
         this.jedis = new Jedis(redisHost, redisPort);
-
 
 
         this.capacity = capacity;
