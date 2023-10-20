@@ -5,7 +5,7 @@ public class MaxCount {
     public static void main(String[] args) {
         int[] arr = {5, 10, 4, 3, 1, 5, 10, 5};
         int maxCount = getMaxCount(arr);
-        System.out.println(maxCount);  // Output: 2
+        //System.out.println(maxCount);  // Output: 2
     }
 
     public static int getMaxCount(int[] arr) {
