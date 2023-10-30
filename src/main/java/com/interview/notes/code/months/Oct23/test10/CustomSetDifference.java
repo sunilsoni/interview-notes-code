@@ -1,8 +1,7 @@
 package com.interview.notes.code.months.Oct23.test10;
 
-import java.util.HashSet;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 

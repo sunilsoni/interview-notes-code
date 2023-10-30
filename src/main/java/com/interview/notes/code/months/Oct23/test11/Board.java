@@ -1,9 +1,9 @@
 package com.interview.notes.code.months.Oct23.test11;
 
 class Board {
-   // private int[] squares = {1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6};
+    // private int[] squares = {1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6};
 
-    private int[] squares = {1 , 2 , 3 , 4 , 5 , 6 , 1 , 2 , 3 , 4 , 5 , 6 , 1 , 2 , 3 , 4 , 5 , 6 , 1 , 2 , 3 , 4 , 5 , 6};
+    private int[] squares = {1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6};
 
     public int getNextPosition(int currentPosition, int dice1, int dice2) {
         int targetNumber = (dice1 == dice2) ? dice1 : Math.max(dice1, dice2);

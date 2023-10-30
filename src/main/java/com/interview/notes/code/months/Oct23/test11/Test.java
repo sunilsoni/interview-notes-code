@@ -2,18 +2,19 @@ package com.interview.notes.code.months.Oct23.test11;
 
 class BaseClass {
     protected static int counterOne = 1;
-    protected int counterTwo = 1;
 
     static {
         System.out.println("BaseClass static block");
     }
+
+    protected int counterTwo = 1;
 
     BaseClass() {
         System.out.println("BaseClass constructor");
     }
 
     public void demo() {
-         System.out.println(counterOne + counterTwo + " - BaseClass demo method - " + (++counterOne + counterTwo++));
+        System.out.println(counterOne + counterTwo + " - BaseClass demo method - " + (++counterOne + counterTwo++));
     }
 
     public void anotherDemo() {
@@ -58,7 +59,7 @@ public class Test {
         System.out.println("");
 
         DerivedClass d1 = new DerivedClass();
-        System.out.println(d1.sum(10,20));
+        System.out.println(d1.sum(10, 20));
         System.out.println(d1.sum(10, 10.5));
     }
 }

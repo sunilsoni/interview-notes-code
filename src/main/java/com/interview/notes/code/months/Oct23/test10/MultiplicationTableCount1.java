@@ -2,10 +2,10 @@ package com.interview.notes.code.months.Oct23.test10;
 
 /**
  * Time Complexity Analysis:
- *
+ * <p>
  * The nested loops iterate through all rows and columns of the N by N multiplication table, which results in a time complexity of O(N^2).
  * Space Complexity Analysis:
- *
+ * <p>
  * The algorithm uses a constant amount of extra space, so the space complexity is O(1).
  */
 public class MultiplicationTableCount1 {

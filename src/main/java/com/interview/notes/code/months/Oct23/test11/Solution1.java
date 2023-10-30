@@ -2,10 +2,18 @@ package com.interview.notes.code.months.Oct23.test11;
 
 class Solution1 {
 
+    public static void main(String[] args) {
+        Solution1 solver = new Solution1();
+        System.out.println(solver.solution(5, 8));  // 2
+        System.out.println(solver.solution(4, 10));  // 4
+        System.out.println(solver.solution(1, 2));  // -1
+        System.out.println(solver.solution(10, 5));  // 1
+    }
+
     public int solution(int totalGlasses, int desiredVolume) {
         // If no water is needed, we don't need any glasses.
         if (desiredVolume == 0) return 0;
-        
+
         // If there are no glasses, it's impossible.
         if (totalGlasses == 0) return -1;
 
@@ -33,15 +41,7 @@ class Solution1 {
                 numberOfGlassesUsed++;
             }
         }
-        
-        return numberOfGlassesUsed;
-    }
 
-    public static void main(String[] args) {
-        Solution1 solver = new Solution1();
-        System.out.println(solver.solution(5, 8));  // 2
-        System.out.println(solver.solution(4, 10));  // 4
-        System.out.println(solver.solution(1, 2));  // -1
-        System.out.println(solver.solution(10, 5));  // 1
+        return numberOfGlassesUsed;
     }
 }

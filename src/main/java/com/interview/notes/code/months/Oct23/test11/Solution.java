@@ -24,6 +24,20 @@ import java.util.Map;
  */
 class Solution {
 
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        int[] test1 = {130, 191, 200, 10};
+        int[] test2 = {405, 45, 300, 300};
+        int[] test3 = {50, 222, 49, 52, 25};
+        int[] test4 = {30, 909, 3190, 99, 3990, 9009};
+
+        System.out.println(solution.solution(test1));  // Expected: 140
+        System.out.println(solution.solution(test2));  // Expected: 600
+        System.out.println(solution.solution(test3));  // Expected: -1
+        System.out.println(solution.solution(test4));  // Expected: 9918
+    }
+
     private String getFirstAndLastDigit(int num) {
         String strNum = String.valueOf(num);
         return strNum.charAt(0) + "" + strNum.charAt(strNum.length() - 1);
@@ -34,7 +48,7 @@ class Solution {
 
         for (int num : array) {
             String key = getFirstAndLastDigit(num);
-            int[] currentMaxes = map.getOrDefault(key, new int[] { -1, -1 });
+            int[] currentMaxes = map.getOrDefault(key, new int[]{-1, -1});
 
             if (num > currentMaxes[0]) {
                 currentMaxes[1] = currentMaxes[0];
@@ -54,19 +68,5 @@ class Solution {
         }
 
         return maxSum;
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        
-        int[] test1 = {130, 191, 200, 10};
-        int[] test2 = {405, 45, 300, 300};
-        int[] test3 = {50, 222, 49, 52, 25};
-        int[] test4 = {30, 909, 3190, 99, 3990, 9009};
-
-        System.out.println(solution.solution(test1));  // Expected: 140
-        System.out.println(solution.solution(test2));  // Expected: 600
-        System.out.println(solution.solution(test3));  // Expected: -1
-        System.out.println(solution.solution(test4));  // Expected: 9918
     }
 }

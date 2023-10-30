@@ -8,6 +8,16 @@ public class CandylandDiceGame {
     private int currentPlayer = 0;
     private Random random = new Random();
 
+    public static void main(String[] args) {
+        CandylandDiceGame game = new CandylandDiceGame();
+
+        String result;
+        do {
+            result = game.playTurn();
+            System.out.println(result);
+        } while (!result.contains("wins"));
+    }
+
     // Rolls a dice and returns a number between 1 and 6
     private int rollDice() {
         return 1 + random.nextInt(6); // [1,6]
@@ -45,15 +55,5 @@ public class CandylandDiceGame {
 
         currentPlayer = 1 - currentPlayer; // Switch player
         return "Player " + (currentPlayer + 1) + "'s turn next!";
-    }
-
-    public static void main(String[] args) {
-        CandylandDiceGame game = new CandylandDiceGame();
-
-        String result;
-        do {
-            result = game.playTurn();
-            System.out.println(result);
-        } while (!result.contains("wins"));
     }
 }

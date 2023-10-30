@@ -20,25 +20,6 @@ import java.util.HashMap;
  */
 class Solution2 {
 
-    public boolean solution(int[] array) {
-        // Using a HashMap
-        HashMap<Integer, Integer> countMap = new HashMap<>();
-        
-        for (int num : array) {
-            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
-        }
-
-        // Checking for Odd Counts
-        for (int count : countMap.values()) {
-            if (count % 2 != 0) {
-                return false;
-            }
-        }
-        
-        // Return Result
-        return true;
-    }
-
     public static void main(String[] args) {
         Solution2 solution = new Solution2();
 
@@ -50,5 +31,24 @@ class Solution2 {
         System.out.println(solution.solution(test1));  // Expected output: true
         System.out.println(solution.solution(test2));  // Expected output: false
         System.out.println(solution.solution(test3));  // Expected output: false
+    }
+
+    public boolean solution(int[] array) {
+        // Using a HashMap
+        HashMap<Integer, Integer> countMap = new HashMap<>();
+
+        for (int num : array) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        // Checking for Odd Counts
+        for (int count : countMap.values()) {
+            if (count % 2 != 0) {
+                return false;
+            }
+        }
+
+        // Return Result
+        return true;
     }
 }

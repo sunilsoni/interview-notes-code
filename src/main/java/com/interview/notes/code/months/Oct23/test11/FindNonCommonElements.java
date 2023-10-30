@@ -17,11 +17,11 @@ public class FindNonCommonElements {
 
     public static int[] findNonCommonElements(int[] arr1, int[] arr2) {
         int maxElement = Integer.MIN_VALUE;
-        
+
         for (int num : arr1) {
             maxElement = Math.max(maxElement, num);
         }
-        
+
         for (int num : arr2) {
             maxElement = Math.max(maxElement, num);
         }

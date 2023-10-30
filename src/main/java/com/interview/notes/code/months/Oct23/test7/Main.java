@@ -30,7 +30,7 @@ public class Main {
                 tempStack.push(c);
             }
         }
-        
+
         // Step 5: Prepare the final word
         StringBuilder finalWord = new StringBuilder();
         for (char c : finalStack) {

@@ -2,6 +2,17 @@ package com.interview.notes.code.months.Oct23.test13;
 
 public class CustomSort {
 
+    public static void main(String[] args) {
+        CustomSort sorter = new CustomSort();
+        int[] array = {10, 7, 8, 9, 1, 5};
+        sorter.quickSort(array, 0, array.length - 1);
+
+        System.out.println("Sorted array:");
+        for (int value : array) {
+            System.out.print(value + " ");
+        }
+    }
+
     private void quickSort(int[] arr, int start, int end) {
         if (start < end) {
             int partitionIndex = partition(arr, start, end);
@@ -30,16 +41,5 @@ public class CustomSort {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-    }
-
-    public static void main(String[] args) {
-        CustomSort sorter = new CustomSort();
-        int[] array = {10, 7, 8, 9, 1, 5};
-        sorter.quickSort(array, 0, array.length - 1);
-
-        System.out.println("Sorted array:");
-        for (int value : array) {
-            System.out.print(value + " ");
-        }
     }
 }

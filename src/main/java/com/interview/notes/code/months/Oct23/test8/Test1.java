@@ -4,6 +4,7 @@ public class Test1 {
     public static void main(String[] args) {
 
     }
+
     public int solution(int[] A) {
         int moments = 0;
         int maxBulb = 0;

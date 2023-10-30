@@ -1,8 +1,22 @@
 package com.interview.notes.code.months.Oct23.test9;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AirportCodes {
+
+    public static void main(String[] args) {
+        AirportCodes ac = new AirportCodes();
+        String[] airportNames = {"NEWYORK", "NEWJERSEY", "NEWPORT", "NEUSTADT"};
+        String[] generatedCodes = ac.generateAirportCodes(airportNames);
+
+        System.out.println("Airport Codes:");
+        for (int i = 0; i < airportNames.length; i++) {
+            System.out.println(airportNames[i] + " -> " + generatedCodes[i]);
+        }
+    }
 
     private List<String> possibleCodes(String airportName) {
         List<String> codes = new ArrayList<>();
@@ -43,16 +57,5 @@ public class AirportCodes {
             }
         }
         return codes;
-    }
-
-    public static void main(String[] args) {
-        AirportCodes ac = new AirportCodes();
-        String[] airportNames = {"NEWYORK", "NEWJERSEY", "NEWPORT", "NEUSTADT"};
-        String[] generatedCodes = ac.generateAirportCodes(airportNames);
-
-        System.out.println("Airport Codes:");
-        for (int i = 0; i < airportNames.length; i++) {
-            System.out.println(airportNames[i] + " -> " + generatedCodes[i]);
-        }
     }
 }

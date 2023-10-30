@@ -26,7 +26,7 @@ public class ValidParentheses {
     public static void main(String[] args) {
         String s1 = "[{()}]";
         String s2 = "[{()";
-        
+
         System.out.println("s1 is valid: " + isValid(s1)); // Output: true
         System.out.println("s2 is valid: " + isValid(s2)); // Output: false
     }

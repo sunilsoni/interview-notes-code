@@ -23,14 +23,14 @@ import java.util.Set;
  * <p>
  * Each airport code should be 3 unique chars appearing in the same order in the AirportName (may or may not be consecutive).
  * <p>
-* Each airport code should be unique across the given set of airportNames in the input criteria. That is it should NOT be possible to generate the same code for a different airport name in the given array of airportNames.
- * */
+ * Each airport code should be unique across the given set of airportNames in the input criteria. That is it should NOT be possible to generate the same code for a different airport name in the given array of airportNames.
+ */
 public class AirportCodes2 {
 
     public static void main(String[] args) {
         AirportCodes2 ac = new AirportCodes2();
 
-       // String[] airportNames = {"LONDON", "NEWYORK", "LOSANGELES", "SANFRANCISCO", "BOSTON"};
+        // String[] airportNames = {"LONDON", "NEWYORK", "LOSANGELES", "SANFRANCISCO", "BOSTON"};
 
         String[] airportNames = {"NEWYORK", "NEWJERSEY", "NEWPORT", "NEUSTADT"};
 

@@ -5,6 +5,14 @@ import java.util.Map;
 
 public class TwoSum {
 
+    public static void main(String[] args) {
+        TwoSum solution = new TwoSum();
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
+        int[] result = solution.findTwoSum(nums, target);
+        System.out.println(result[0] + ", " + result[1]);
+    }
+
     public int[] findTwoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
@@ -15,13 +23,5 @@ public class TwoSum {
             map.put(nums[i], i);
         }
         throw new IllegalArgumentException("No two sum solution");
-    }
-
-    public static void main(String[] args) {
-        TwoSum solution = new TwoSum();
-        int[] nums = {2, 7, 11, 15};
-        int target = 9;
-        int[] result = solution.findTwoSum(nums, target);
-        System.out.println(result[0] + ", " + result[1]);
     }
 }

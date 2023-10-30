@@ -26,6 +26,15 @@ public class TypingCorrection1 {
         return finalWord.toString();
     }
 
+    public static void main(String[] args) {
+        String[] inputs = {"comn..pany", "mmm..aieee...n"};
+
+        for (String input : inputs) {
+            Thread thread = new Thread(new CorrectTypingTask(input));
+            thread.start();
+        }
+    }
+
     public static class CorrectTypingTask implements Runnable {
         private final String input;
 
@@ -37,15 +46,6 @@ public class TypingCorrection1 {
         public void run() {
             String output = correctTyping(input);
             System.out.println(output);
-        }
-    }
-
-    public static void main(String[] args) {
-        String[] inputs = {"comn..pany", "mmm..aieee...n"};
-
-        for (String input : inputs) {
-            Thread thread = new Thread(new CorrectTypingTask(input));
-            thread.start();
         }
     }
 }

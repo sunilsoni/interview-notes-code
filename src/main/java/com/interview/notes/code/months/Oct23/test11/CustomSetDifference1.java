@@ -20,7 +20,7 @@ public class CustomSetDifference1 {
 
     public static int[] getSetDifference(int[] arr1, int[] arr2) {
         List<Integer> differenceList = new ArrayList<>();
-        
+
         for (int num : arr1) {
             if (!contains(arr2, num)) {
                 differenceList.add(num);
