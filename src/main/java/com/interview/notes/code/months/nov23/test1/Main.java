@@ -2,7 +2,6 @@ package com.interview.notes.code.months.nov23.test1;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,13 +10,13 @@ public class Main {
 
         // Find the maximum age among employees
         employees.stream()
-                 .mapToInt(Employee::getAge)
-                 .max()
-                 .ifPresent(oldestAge -> {
-                     // Print employees with the oldest age
-                     employees.stream()
-                              .filter(emp -> emp.getAge() == oldestAge)
-                              .forEach(emp -> System.out.println(emp.getName() + " - " + emp.getAge()));
-                 });
+                .mapToInt(Employee::getAge)
+                .max()
+                .ifPresent(oldestAge -> {
+                    // Print employees with the oldest age
+                    employees.stream()
+                            .filter(emp -> emp.getAge() == oldestAge)
+                            .forEach(emp -> System.out.println(emp.getName() + " - " + emp.getAge()));
+                });
     }
 }

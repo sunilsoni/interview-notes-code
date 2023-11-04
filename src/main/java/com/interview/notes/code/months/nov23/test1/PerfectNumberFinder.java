@@ -5,6 +5,12 @@ import java.util.List;
 
 public class PerfectNumberFinder {
 
+    public static void main(String[] args) {
+        PerfectNumberFinder finder = new PerfectNumberFinder();
+        List<Integer> result = finder.findPerfectNumbers(1000);
+        System.out.println("Perfect numbers up to 1000: " + result);
+    }
+
     // Method to find perfect numbers up to a given limit
     public List<Integer> findPerfectNumbers(int upperLimit) {
         List<Integer> perfectNumbersList = new ArrayList<>();
@@ -20,11 +26,5 @@ public class PerfectNumberFinder {
             }
         }
         return perfectNumbersList;
-    }
-
-    public static void main(String[] args) {
-        PerfectNumberFinder finder = new PerfectNumberFinder();
-        List<Integer> result = finder.findPerfectNumbers(1000);
-        System.out.println("Perfect numbers up to 1000: " + result);
     }
 }

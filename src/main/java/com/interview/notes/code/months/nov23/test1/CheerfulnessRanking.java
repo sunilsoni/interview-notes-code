@@ -5,7 +5,7 @@ public class CheerfulnessRanking {
     public static void main(String[] args) {
         String words1 = "Akin to cheat";
         String words2 = "Atrides still with deep resentment raged To wait his will two sacred heralds stood Talthibius and Eurybates the good";
-        
+
         System.out.println(mostCheerfulWord(words1));  // Expected: Akin
         System.out.println(mostCheerfulWord(words2));  // Expected: Atrides
     }

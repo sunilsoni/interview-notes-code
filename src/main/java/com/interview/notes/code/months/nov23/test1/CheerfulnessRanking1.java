@@ -11,7 +11,6 @@ public class CheerfulnessRanking1 {
         System.out.println(mostCheerfulWord(words1));
 
 
-
         String words2 = "Atrides still with deep resentment raged To wait his will two sacred heralds stood Talthibius and Eurybates the good";
         System.out.println(mostCheerfulWord(words2));
     }

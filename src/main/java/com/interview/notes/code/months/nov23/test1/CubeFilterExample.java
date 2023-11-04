@@ -10,9 +10,9 @@ public class CubeFilterExample {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         List<Integer> result = numbers.stream()
-                                      .map(n -> n * n * n)          // Cube each element
-                                      .filter(n -> n > 50)         // Filter numbers greater than 50
-                                      .collect(Collectors.toList());
+                .map(n -> n * n * n)          // Cube each element
+                .filter(n -> n > 50)         // Filter numbers greater than 50
+                .collect(Collectors.toList());
 
         System.out.println(result);  // This will print: [64, 125, 216, 343, 512, 729, 1000]
     }

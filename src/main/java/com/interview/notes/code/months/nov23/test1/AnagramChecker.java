@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.nov23.test1;
 
 public class AnagramChecker {
-    
+
     public static boolean areAnagrams(String string1, String string2) {
         if (string1 == null || string2 == null || string1.length() != string2.length()) {
             return false;
@@ -28,7 +28,7 @@ public class AnagramChecker {
     }
 
     public static void main(String[] args) {
-        System.out.println("listen,silent "+ areAnagrams("listen","silent"));
-        System.out.println("listen,silenl "+ areAnagrams("listen","silenl"));
+        System.out.println("listen,silent " + areAnagrams("listen", "silent"));
+        System.out.println("listen,silenl " + areAnagrams("listen", "silenl"));
     }
 }
