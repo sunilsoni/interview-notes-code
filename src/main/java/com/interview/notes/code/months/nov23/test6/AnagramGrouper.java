@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.nov23.test6;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * EAT ATE TEA CAT RAT
@@ -32,6 +33,7 @@ public class AnagramGrouper {
 
     // Prints the groups of anagrams
     private static void printAnagramGroups(Map<String, List<String>> anagramGroups) {
+
         for (List<String> group : anagramGroups.values()) {
             System.out.println("Group: " + group);
         }
