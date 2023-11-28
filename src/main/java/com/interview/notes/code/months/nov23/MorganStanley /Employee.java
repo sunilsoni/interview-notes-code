@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.nov23.MorganStanley;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Employee {
@@ -10,10 +12,6 @@ public class Employee {
     public Employee(String name, String department) {
         this.name = name;
         this.department = department;
-    }
-
-    public String getDepartment() {
-        return department;
     }
 
     public static void main(String[] args) {
@@ -29,5 +27,9 @@ public class Employee {
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
 
         System.out.println(departmentCount);
+    }
+
+    public String getDepartment() {
+        return department;
     }
 }

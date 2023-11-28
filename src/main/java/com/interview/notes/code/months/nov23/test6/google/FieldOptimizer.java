@@ -1,44 +1,42 @@
 package com.interview.notes.code.months.nov23.test6.google;
 
 /**
- *
- The farmer owns an N by M meter field and is facing financial challenges.
- He's considering selling most of the field but wants to keep
- a 3x3 section while conserving water usage.
- Each 1x1 plot needs a specific amount of water.
- Your task is to identify the optimal 3x3 slot for him,
- considering water efficiency.
- (Given a NxM matrix, find the minimum sum of 3x3 submatrix.)
- Example: Given matrix:
- [
- 1.2.3.4.5.4,
- 3,1,2,1,0,4,
- 2,6,7,0,1,1,
- 4,6,7,0,0,1,
- 1,2,4,6,2,3,
- 2.7.9.8.1.5,
- 1
- for the sub-matrix [ xl = 3, x2 = 5, y1= 1, y2 = 3 ], the sum is 8 and this is the minimum 3x3 cells.
- All the numbers in the matrix are between 0-255. 0 <= N ,M <= MAX_INTEGER
-
-
- =======Follow up==========
- Consider a situation where you are given matrix sizes NxM, but some plots have a value of zero.
- Your task is to find the minimum 3x3 plot on this grid where all 9 plots have a non-zero value.'
-
+ * The farmer owns an N by M meter field and is facing financial challenges.
+ * He's considering selling most of the field but wants to keep
+ * a 3x3 section while conserving water usage.
+ * Each 1x1 plot needs a specific amount of water.
+ * Your task is to identify the optimal 3x3 slot for him,
+ * considering water efficiency.
+ * (Given a NxM matrix, find the minimum sum of 3x3 submatrix.)
+ * Example: Given matrix:
+ * [
+ * 1.2.3.4.5.4,
+ * 3,1,2,1,0,4,
+ * 2,6,7,0,1,1,
+ * 4,6,7,0,0,1,
+ * 1,2,4,6,2,3,
+ * 2.7.9.8.1.5,
+ * 1
+ * for the sub-matrix [ xl = 3, x2 = 5, y1= 1, y2 = 3 ], the sum is 8 and this is the minimum 3x3 cells.
+ * All the numbers in the matrix are between 0-255. 0 <= N ,M <= MAX_INTEGER
+ * <p>
+ * <p>
+ * =======Follow up==========
+ * Consider a situation where you are given matrix sizes NxM, but some plots have a value of zero.
+ * Your task is to find the minimum 3x3 plot on this grid where all 9 plots have a non-zero value.'
  */
 public class FieldOptimizer {
 
     public static void main(String[] args) {
         // Example matrix
         int[][] field = {
-            {1, 2, 3, 4, 5, 4},
-            {3, 1, 2, 1, 0, 4},
-            {2, 6, 7, 0, 1, 1},
-            {4, 6, 7, 0, 0, 1},
-            {1, 2, 4, 6, 2, 3},
-            {2, 7, 9, 8, 1, 5},
-            {1, 0, 0, 0, 0, 0}
+                {1, 2, 3, 4, 5, 4},
+                {3, 1, 2, 1, 0, 4},
+                {2, 6, 7, 0, 1, 1},
+                {4, 6, 7, 0, 0, 1},
+                {1, 2, 4, 6, 2, 3},
+                {2, 7, 9, 8, 1, 5},
+                {1, 0, 0, 0, 0, 0}
         };
 
         int[] result = findOptimal3x3NonZero(field);

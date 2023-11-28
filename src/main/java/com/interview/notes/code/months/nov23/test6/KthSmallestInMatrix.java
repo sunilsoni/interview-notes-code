@@ -4,16 +4,16 @@ import java.util.Arrays;
 
 /**
  * Find Kth smallest element in a two dimensional matrix.
- *
+ * <p>
  * Input: Two dimensional array of integers and integer k Output: kth smallest number (integer)
  */
 public class KthSmallestInMatrix {
     // Main method for example execution
     public static void main(String[] args) {
         int[][] matrix = {
-            {10, 20, 30},
-            {15, 25, 35},
-            {5, 15, 25}
+                {10, 20, 30},
+                {15, 25, 35},
+                {5, 15, 25}
         };
         int k = 4;  // Example: Find the 4th smallest element
         System.out.println("The " + k + "th smallest element is: " + findKthSmallest(matrix, k));
@@ -34,7 +34,7 @@ public class KthSmallestInMatrix {
     // Helper method to flatten the matrix
     private static int[] flattenMatrix(int[][] matrix) {
         return Arrays.stream(matrix)
-                     .flatMapToInt(Arrays::stream)
-                     .toArray();
+                .flatMapToInt(Arrays::stream)
+                .toArray();
     }
 }

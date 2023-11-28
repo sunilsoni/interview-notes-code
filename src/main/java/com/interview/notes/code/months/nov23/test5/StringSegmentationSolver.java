@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.nov23.test5;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * String segmentation

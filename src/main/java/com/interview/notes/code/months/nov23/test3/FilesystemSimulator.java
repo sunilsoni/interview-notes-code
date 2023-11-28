@@ -46,11 +46,11 @@ public class FilesystemSimulator {
 
     public static void main(String[] args) {
         String[] commands = {
-            "goto bucketA", "create fileA", "create fileB",
-            "goto bucketB", "create fileA", "goto bucketC",
-            "create fileA", "create fileB", "create fileC"
+                "goto bucketA", "create fileA", "create fileB",
+                "goto bucketB", "create fileA", "goto bucketC",
+                "create fileA", "create fileB", "create fileC"
         };
-        
+
         System.out.println("The bucket with the most files is: " + solution(commands));
     }
 }

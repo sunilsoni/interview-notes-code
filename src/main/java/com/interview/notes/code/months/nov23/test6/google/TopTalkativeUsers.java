@@ -9,9 +9,9 @@ import java.util.PriorityQueue;
 
 /**
  * Complexity Analysis
- *
+ * <p>
  * Space Complexity: O(N), where N is the total number of words in the log file. This is due to the storage requirements of the user dictionary.
- *
+ * <p>
  * Time Complexity: O(N log N), where N is the total number of words in the log file. The main bottleneck is the sorting of the user dictionary by word count, which uses a heapsort algorithm with a worst-case time complexity of O(N
  */
 public class TopTalkativeUsers {

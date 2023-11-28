@@ -17,7 +17,10 @@ package com.interview.notes.code.months.nov23.test6;
  * Example: Input: [’♦lA*. '+3E', ‘-lA*. "mF’, ’nA", "-3E’] Output: '1A‘ Explanation: 1A as
  * it has been booked 2 times.
  */
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 public class HotelBookingTracker1 {
     public static void main(String[] args) {

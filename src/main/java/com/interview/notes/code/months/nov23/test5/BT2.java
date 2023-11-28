@@ -14,16 +14,14 @@ class BT2 {
         if (!dangling.containsKey(child)) {
             childNode = new Node(child);
             dangling.put(child, childNode);
-        }
-        else {
+        } else {
             childNode = dangling.get(child);
         }
 
         if (!dangling.containsKey(parent)) {
             parentNode = new Node(parent);
             dangling.put(parent, parentNode);
-        }
-        else {
+        } else {
             parentNode = dangling.get(parent);
         }
 
@@ -33,13 +31,12 @@ class BT2 {
 
         if (direction == 'L') {
             parentNode.left = childNode;
-        }
-        else {
+        } else {
             parentNode.right = childNode;
         }
     }
 
-    int[] getLevelSpiral(){
+    int[] getLevelSpiral() {
         if (root == null) {
             return new int[0];
         }

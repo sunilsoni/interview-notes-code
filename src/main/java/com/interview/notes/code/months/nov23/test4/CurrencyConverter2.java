@@ -10,6 +10,12 @@ public class CurrencyConverter2 {
         parseAndStoreRates(input);
     }
 
+    public static void main(String[] args) {
+        CurrencyConverter2 converter = new CurrencyConverter2("AUD:USD:0.75,USD:CAD:1.26,JPY:USD:0.129,EUR:GBP:1.156");
+        System.out.println("AUD to USD: " + converter.getConversionRate("AUD", "USD")); // should print 0.75
+        System.out.println("USD to AUD: " + converter.getConversionRate("USD", "AUD")); // should print 1.333
+    }
+
     private void parseAndStoreRates(String input) {
         String[] entries = input.split(",");
         for (String entry : entries) {
@@ -38,11 +44,5 @@ public class CurrencyConverter2 {
         } else {
             throw new IllegalArgumentException("Conversion rate for " + key + " not available.");
         }
-    }
-
-    public static void main(String[] args) {
-        CurrencyConverter2 converter = new CurrencyConverter2("AUD:USD:0.75,USD:CAD:1.26,JPY:USD:0.129,EUR:GBP:1.156");
-        System.out.println("AUD to USD: " + converter.getConversionRate("AUD", "USD")); // should print 0.75
-        System.out.println("USD to AUD: " + converter.getConversionRate("USD", "AUD")); // should print 1.333
     }
 }

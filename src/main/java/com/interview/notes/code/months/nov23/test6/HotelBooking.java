@@ -21,10 +21,10 @@ public class HotelBooking {
             // Extract room and operation from the booking string
             String room = booking.substring(1);
             char operation = booking.charAt(0);
-            
+
             // Update the booking count based on the operation
             bookingCounts.put(room, bookingCounts.getOrDefault(room, 0) + (operation == '+' ? 1 : -1));
-            
+
             // Check if the current room has more bookings than the current max
             if (bookingCounts.get(room) > maxBookings) {
                 mostBookedRoom = room;

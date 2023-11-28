@@ -1,7 +1,6 @@
 package com.interview.notes.code.months.nov23.test6;
 
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * EAT ATE TEA CAT RAT

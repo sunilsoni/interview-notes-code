@@ -11,7 +11,7 @@ public class UniqueCharsSubstring {
         // Iterate through all possible substrings
         for (int start = 0; start < n; start++) {
             Set<Character> uniqueChars = new HashSet<>();
-            
+
             for (int end = start; end < n; end++) {
                 // Add characters to the set to count unique characters
                 char c = s.charAt(end);
@@ -21,7 +21,7 @@ public class UniqueCharsSubstring {
                 }
             }
         }
-        
+
         return totalUniqueCount;
     }
 

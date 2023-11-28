@@ -39,6 +39,13 @@ public class TransformationChecker {
         return "No";
     }
 
+    public static void main(String[] args) {
+        System.out.println(isPossible(1, 1, 5, 2)); // Expected output: Yes
+        System.out.println(isPossible(1, 4, 5, 9)); // Expected output: Yes
+        System.out.println(isPossible(1, 2, 3, 6)); // Expected output: No
+        // System.out.println(isPossible(1, 2
+    }
+
     private static class Pair {
         int x;
         int y;
@@ -60,12 +67,5 @@ public class TransformationChecker {
         public int hashCode() {
             return Objects.hash(x, y);
         }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(isPossible(1, 1, 5, 2)); // Expected output: Yes
-        System.out.println(isPossible(1, 4, 5, 9)); // Expected output: Yes
-        System.out.println(isPossible(1, 2, 3, 6)); // Expected output: No
-       // System.out.println(isPossible(1, 2
     }
 }

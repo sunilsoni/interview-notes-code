@@ -4,7 +4,8 @@ class TrieNode {
     TrieNode[] children = new TrieNode[26];
     boolean isWord = false; // Flag to mark the end of a word
 
-    public TrieNode() {}
+    public TrieNode() {
+    }
 
     public void insert(String word) {
         TrieNode node = this;

@@ -9,8 +9,8 @@ import java.util.*;
  * 10:01 <maria> hello!
  * 10:07  <john> can you link the design?
  * where  john said 6 total words and maria said 1.
- *
- *
+ * <p>
+ * <p>
  * Your goal is to find the top N most talkative users in descending order. You need to write a function that takes an integer N and a filepath.
  * You are provided a helper function, parse_log, which returns a list of usernames and word counts for each message parsed from the provided file
  * ((('john', 1), ('maria', 1), ('john', 5)] in the example above).

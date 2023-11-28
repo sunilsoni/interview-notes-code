@@ -2,6 +2,16 @@ package com.interview.notes.code.months.nov23.test4;
 
 public class CurrencyConverterTest {
 
+    // Main method to run the tests
+    public static void main(String[] args) {
+        CurrencyConverterTest test = new CurrencyConverterTest();
+        test.testSuccessfulConversions();
+        test.testNonExistentCurrencyPair();
+        test.testNullInput();
+        test.testEmptyInput();
+        test.testInvalidCurrencyCodes();
+    }
+
     // Helper method to create a CurrencyConverter with default rates for testing
     private CurrencyConverter setupDefaultConverter() {
         return new CurrencyConverter("AUD:USD:0.75,USD:CAD:1.26,JPY:USD:0.129,EUR:GBP:1.156");
@@ -60,15 +70,5 @@ public class CurrencyConverterTest {
             assert e.getMessage().contains("not available") : "Unexpected exception message for invalid currency codes";
         }
         System.out.println("Test case testInvalidCurrencyCodes passed.");
-    }
-
-    // Main method to run the tests
-    public static void main(String[] args) {
-        CurrencyConverterTest test = new CurrencyConverterTest();
-        test.testSuccessfulConversions();
-        test.testNonExistentCurrencyPair();
-        test.testNullInput();
-        test.testEmptyInput();
-        test.testInvalidCurrencyCodes();
     }
 }

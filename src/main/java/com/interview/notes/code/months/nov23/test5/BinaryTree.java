@@ -15,16 +15,14 @@ class BinaryTree {
         if (!dangling.containsKey(child)) {
             childNode = new Node(child);
             dangling.put(child, childNode);
-        }
-        else {
+        } else {
             childNode = dangling.get(child);
         }
 
         if (!dangling.containsKey(parent)) {
             parentNode = new Node(parent);
             dangling.put(parent, parentNode);
-        }
-        else {
+        } else {
             parentNode = dangling.get(parent);
         }
 
@@ -34,8 +32,7 @@ class BinaryTree {
 
         if (direction == 'L') {
             parentNode.left = childNode;
-        }
-        else {
+        } else {
             parentNode.right = childNode;
         }
     }
@@ -53,7 +50,7 @@ class BinaryTree {
         if (root == null || root.data == parent) root = parentNode;
     }
 
-    int[]  getLevelSpiral() {
+    int[] getLevelSpiral() {
         List<Integer> result = new ArrayList<>();
         if (root == null) {
             return new int[0];

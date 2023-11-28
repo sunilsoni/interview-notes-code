@@ -6,8 +6,6 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class WordFrequencyCounter {
 
@@ -21,9 +19,9 @@ public class WordFrequencyCounter {
         Map<String, Long> wordCountMap = new ConcurrentHashMap<>();
         try {
             Files.lines(Paths.get(filePath))
-                .parallel() // Enables parallel stream
-                .flatMap(line -> Arrays.stream(line.trim().split("\\s+")))
-                .forEach(word -> wordCountMap.merge(word, 1L, Long::sum));
+                    .parallel() // Enables parallel stream
+                    .flatMap(line -> Arrays.stream(line.trim().split("\\s+")))
+                    .forEach(word -> wordCountMap.merge(word, 1L, Long::sum));
         } catch (IOException e) {
             e.printStackTrace();
         }

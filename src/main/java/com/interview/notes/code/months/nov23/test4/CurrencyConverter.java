@@ -13,6 +13,20 @@ public class CurrencyConverter {
         parseAndStoreRates(input.toUpperCase()); // Convert input to upper case to handle case sensitivity
     }
 
+    public static void main(String[] args) {
+        try {
+            CurrencyConverter converter = new CurrencyConverter("AUD:USD:0.75,USD:CAD:1.26,JPY:USD:0.129,EUR:GBP:1.156");
+            System.out.println("AUD to USD: " + converter.getConversionRate("AUD", "USD")); // should print 0.75
+            System.out.println("USD to AUD: " + converter.getConversionRate("USD", "AUD")); // should print 1.333
+
+
+            System.out.println("AUD to USD: " + converter.getConversionRateUpdated("AUD", "USD")); // should print 0.75
+            System.out.println("USD to AUD: " + converter.getConversionRateUpdated("USD", "AUD")); // should print 1.333
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void parseAndStoreRates(String input) {
         String[] entries = input.split(",");
         for (String entry : entries) {
@@ -82,20 +96,5 @@ public class CurrencyConverter {
         }
 
         throw new IllegalArgumentException("Conversion rate for " + fromCurrency + " to " + toCurrency + " is not available");
-    }
-
-
-    public static void main(String[] args) {
-        try {
-            CurrencyConverter converter = new CurrencyConverter("AUD:USD:0.75,USD:CAD:1.26,JPY:USD:0.129,EUR:GBP:1.156");
-            System.out.println("AUD to USD: " + converter.getConversionRate("AUD", "USD")); // should print 0.75
-            System.out.println("USD to AUD: " + converter.getConversionRate("USD", "AUD")); // should print 1.333
-
-
-            System.out.println("AUD to USD: " + converter.getConversionRateUpdated("AUD", "USD")); // should print 0.75
-            System.out.println("USD to AUD: " + converter.getConversionRateUpdated("USD", "AUD")); // should print 1.333
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -16,13 +16,18 @@ import java.util.Map;
  * Write a function that can look up direct conversions from the input list. For instance,
  * f("AUD", "USD") should return 0.75
  * f("USD", "AUD") should return 1.333
- *
  */
 public class CurrencyConverter1 {
     private Map<String, Double> conversionRatesMap = new HashMap<>();
 
     public CurrencyConverter1(String input) {
         parseAndStoreRates(input);
+    }
+
+    public static void main(String[] args) {
+        CurrencyConverter1 converter = new CurrencyConverter1("AUD:USD:0.75,USD:CAD:1.26,JPY:USD:0.129,EUR:GBP:1.156");
+        System.out.println("AUD to USD: " + converter.getConversionRate("AUD", "USD")); // should print 0.75
+        System.out.println("USD to AUD: " + converter.getConversionRate("USD", "AUD")); // should print approximately 1.3333
     }
 
     private void parseAndStoreRates(String input) {
@@ -50,17 +55,11 @@ public class CurrencyConverter1 {
             throw new IllegalArgumentException("Conversion rate for " + key + " not available.");
         }
     }
-
-    public static void main(String[] args) {
-        CurrencyConverter1 converter = new CurrencyConverter1("AUD:USD:0.75,USD:CAD:1.26,JPY:USD:0.129,EUR:GBP:1.156");
-        System.out.println("AUD to USD: " + converter.getConversionRate("AUD", "USD")); // should print 0.75
-        System.out.println("USD to AUD: " + converter.getConversionRate("USD", "AUD")); // should print approximately 1.3333
-    }
 }
 
 /**
  * OUTPUT:
- *
+ * <p>
  * AUD to USD: 0.75
  * USD to AUD: 1.3333333333333333
  */

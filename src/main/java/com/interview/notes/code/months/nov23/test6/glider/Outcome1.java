@@ -1,10 +1,11 @@
 package com.interview.notes.code.months.nov23.test6.glider;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 class Outcome1 {
     // Helper function to find the pivot
-    static   int findPivot (List < Integer > arr,int low, int high){
+    static int findPivot(List<Integer> arr, int low, int high) {
         if (high < low) return -1;
         if (high == low) return low;
 
@@ -14,6 +15,7 @@ class Outcome1 {
         if (arr.get(low) >= arr.get(mid)) return findPivot(arr, low, mid - 1);
         return findPivot(arr, mid + 1, high);
     }
+
     public static int solve(List<Integer> ar, int K) {
         // Main search function that uses the above two helper functions
         int n = ar.size();
@@ -24,8 +26,9 @@ class Outcome1 {
         if (ar.get(0) <= K) return binarySearch(ar, 0, pivot - 1, K);
         return binarySearch(ar, pivot + 1, n - 1, K);
     }
+
     // Helper function for standard binary search
-    static int binarySearch (List < Integer > arr,int low, int high, int key){
+    static int binarySearch(List<Integer> arr, int low, int high, int key) {
         if (high < low) return -1;
 
         int mid = low + (high - low) / 2;
@@ -39,10 +42,10 @@ class Outcome1 {
     public static void main(String[] args) {
         List<Integer> exampleList1 = Arrays.asList(3, 4, 5, 6, 7, 10, 2);
         int result1 = solve(exampleList1, 10);
-        
+
         List<Integer> exampleList2 = Arrays.asList(20, 33, 44, 1);
         int result2 = solve(exampleList2, 11);
-        
+
         System.out.println("Example 1 Result: " + result1);
         System.out.println("Example 2 Result: " + result2);
     }

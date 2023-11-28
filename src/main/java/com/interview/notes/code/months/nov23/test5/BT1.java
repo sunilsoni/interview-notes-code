@@ -2,8 +2,7 @@ package com.interview.notes.code.months.nov23.test5;
 
 import java.util.*;
 
-class BT1
-{
+class BT1 {
     Node root;
     Map<Integer, Node> dangling = new HashMap<>();
 
@@ -12,27 +11,24 @@ class BT1
         if (!dangling.containsKey(child)) {
             childNode = new Node(child);
             dangling.put(child, childNode);
-        } 
-        else {
+        } else {
             childNode = dangling.get(child);
         }
 
         if (!dangling.containsKey(parent)) {
             parentNode = new Node(parent);
             dangling.put(parent, parentNode);
-        } 
-        else {
+        } else {
             parentNode = dangling.get(parent);
         }
 
         if (root == null) {
             root = parentNode;
         }
-        
+
         if (direction == 'L') {
             parentNode.left = childNode;
-        } 
-        else {
+        } else {
             parentNode.right = childNode;
         }
     }

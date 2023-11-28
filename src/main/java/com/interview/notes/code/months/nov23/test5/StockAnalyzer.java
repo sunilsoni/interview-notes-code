@@ -2,13 +2,13 @@ package com.interview.notes.code.months.nov23.test5;
 
 /**
  * A team of analysts at Amazon needs to analyze the stock prices of Amazon over a period of several months. A group of consecutively chosen months is said to be maximum profitable if the price in its first or last month is the maximum for the group. More formally, a group of consecutive months [l, r] (1 ≤ l < r < n) is said to be maximum profitable if either:
- *
+ * <p>
  * stockPrice[l] = max(stockPrice[l], stockPrice[l + 1], ..., stockPrice[r])
  * or, stockPrice[r] = max(stockPrice[l], stockPrice[l + 1], ..., stockPrice[r])
  * Given prices over n consecutive months, find the number of maximum profitable groups which can be formed. Note that the months chosen must be consecutive, i.e., you must choose a subarray of the given array.
- *
+ * <p>
  * Example:
- *
+ * <p>
  * Consider there are n = 3 months of data, stockPrice = [2, 3, 2]. All possible groups are shown in the leftmost column
  */
 
@@ -32,7 +32,7 @@ public class StockAnalyzer {
             for (int j = i; j < n; j++) {
                 // Find the maximum in the current subarray
                 int max = findMax(prices, i, j);
-                
+
                 // Check if the subarray is maximum profitable
                 if (prices[i] == max || prices[j] == max) {
                     count++;

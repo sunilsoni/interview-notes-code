@@ -6,25 +6,25 @@ import java.util.stream.Collectors;
 public class UniqueNumbersPerName {
     // Define the Person class
 
-/*
-    public static void main(String[] args) {
-        List<UniqueNumbersPerName1.Person> people = new ArrayList<>();
-        people.add(new Person("Jim", "111"));
-        people.add(new Person("Bob", "222"));
-        people.add(new Person("Dan", "333"));
-        people.add(new Person("Jim", "222"));
-        people.add(new Person("Jim", "333"));
-        people.add(new Person("Dan", "111"));
-        people.add(new Person("Jim", "222"));
-        people.add(new Person("Jim", "111"));
-        people.add(new Person("Bob", "111"));
-        people.add(new Person("Jim", "111"));
-        people.add(new Person("Dan", "444"));
-        people.add(new Person("Dan", "555"));
+    /*
+        public static void main(String[] args) {
+            List<UniqueNumbersPerName1.Person> people = new ArrayList<>();
+            people.add(new Person("Jim", "111"));
+            people.add(new Person("Bob", "222"));
+            people.add(new Person("Dan", "333"));
+            people.add(new Person("Jim", "222"));
+            people.add(new Person("Jim", "333"));
+            people.add(new Person("Dan", "111"));
+            people.add(new Person("Jim", "222"));
+            people.add(new Person("Jim", "111"));
+            people.add(new Person("Bob", "111"));
+            people.add(new Person("Jim", "111"));
+            people.add(new Person("Dan", "444"));
+            people.add(new Person("Dan", "555"));
 
-        printUniqueNumbersPerName(people);
-    }
-*/
+            printUniqueNumbersPerName(people);
+        }
+    */
     public static void printUniqueNumbersPerName(List<Person> people) {
         Map<String, Set<String>> nameToPhones = new HashMap<>();
 

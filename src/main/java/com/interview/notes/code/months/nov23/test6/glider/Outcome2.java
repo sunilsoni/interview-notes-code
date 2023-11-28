@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.nov23.test6.glider;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Outcome2 {
     public static int solve(List<Integer> ar, int K) {

@@ -5,13 +5,13 @@ public class FieldOptimizer1 {
     // Main method to execute an example
     public static void main(String[] args) {
         int[][] field = {
-            {1, 2, 3, 4, 5, 4},
-            {3, 1, 2, 1, 0, 4},
-            {2, 6, 7, 0, 1, 1},
-            {4, 6, 7, 0, 0, 1},
-            {1, 2, 4, 6, 2, 3},
-            {2, 7, 9, 8, 1, 5},
-            {1, 0, 0, 0, 0, 0}
+                {1, 2, 3, 4, 5, 4},
+                {3, 1, 2, 1, 0, 4},
+                {2, 6, 7, 0, 1, 1},
+                {4, 6, 7, 0, 0, 1},
+                {1, 2, 4, 6, 2, 3},
+                {2, 7, 9, 8, 1, 5},
+                {1, 0, 0, 0, 0, 0}
         };
         int[] result = findOptimal3x3(field);
         System.out.println("Optimal 3x3 Submatrix Coordinates: (" + result[0] + ", " + result[1] + ")");

@@ -2,26 +2,24 @@ package com.interview.notes.code.months.nov23.test5;
 
 import java.util.Scanner;
 
-class Solution1
-{
-    public static void main (String[] args) throws java.lang.Exception
-    {
+class Solution1 {
+    public static void main(String[] args) throws java.lang.Exception {
         //BT1 bt = new BT1();
         BinaryTree bt = new BinaryTree();
         Scanner in = new Scanner(System.in);
         int edges, parent, child;
         char direction;
         int[] levelSpiral;
-        edges = in.nextInt();       
-        for(int i=0; i<edges; i++){
+        edges = in.nextInt();
+        for (int i = 0; i < edges; i++) {
             parent = in.nextInt();
             child = in.nextInt();
             direction = in.next().charAt(0);
             bt.addNode(parent, child, direction);
         }
         levelSpiral = bt.getLevelSpiral();
-        for (int i=0; i<levelSpiral.length; i++){
-            System.out.print(levelSpiral[i]+" ");
+        for (int i = 0; i < levelSpiral.length; i++) {
+            System.out.print(levelSpiral[i] + " ");
         }
     }
 

@@ -1,51 +1,50 @@
 package com.interview.notes.code.months.nov23.test6.glider;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
- *
- Organized Shuffle
-
- You are given a sorted-then-rotated array (left/right
- shifted by some unknown value) ar[ ] and an
- element K.
- Find the index of the given element Kin the array ar[
- ] in O(log n) time. If the element does not exist in
- the array, print -1.
- Note:
- •  The array has no duplicate elements.
- •  Indexing starts from 0.
- Input
- The first line of input contains an integer N,
- representing the size of the array.
- The second line of input contains N space-separated
- integers, representing the array elements.
- The third line of input contains an integer K,
- representing the element to be searched in the
- array.
- Output
- Print the index of the element found in the array. If
- the element is not present, then print -1.
-
-
- constraints
- 1 SNS 100005
- 0<ar[i]s 10000005
- 1 <KS 100005
- Example #1
- Input
- Output
- 5
- 4
- 20 33 44 1
- 11
- Explanation: 10 is present at index 5.
- Example #2
- Input
- Output
- -1
- Explanation: 11 does not exist in the given array.
-
+ * Organized Shuffle
+ * <p>
+ * You are given a sorted-then-rotated array (left/right
+ * shifted by some unknown value) ar[ ] and an
+ * element K.
+ * Find the index of the given element Kin the array ar[
+ * ] in O(log n) time. If the element does not exist in
+ * the array, print -1.
+ * Note:
+ * •  The array has no duplicate elements.
+ * •  Indexing starts from 0.
+ * Input
+ * The first line of input contains an integer N,
+ * representing the size of the array.
+ * The second line of input contains N space-separated
+ * integers, representing the array elements.
+ * The third line of input contains an integer K,
+ * representing the element to be searched in the
+ * array.
+ * Output
+ * Print the index of the element found in the array. If
+ * the element is not present, then print -1.
+ * <p>
+ * <p>
+ * constraints
+ * 1 SNS 100005
+ * 0<ar[i]s 10000005
+ * 1 <KS 100005
+ * Example #1
+ * Input
+ * Output
+ * 5
+ * 4
+ * 20 33 44 1
+ * 11
+ * Explanation: 10 is present at index 5.
+ * Example #2
+ * Input
+ * Output
+ * -1
+ * Explanation: 11 does not exist in the given array.
  */
 class Outcome {
 
