@@ -25,9 +25,9 @@ public class PiCalculation {
         }
 
 
-        try{
+        try {
 
-        }catch(Exception e){
+        } catch (Exception e) {
 
         }
 

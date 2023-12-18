@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.dec23.test3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 //N-Queens problem using backtracking
 public class NQueensSolver {

@@ -15,8 +15,8 @@ public class RemoveDuplicatesFromArrayList {
 
         // Remove duplicates using Java Streams
         List<Integer> resultList = originalList.stream()
-            .distinct()
-            .collect(Collectors.toList());
+                .distinct()
+                .collect(Collectors.toList());
 
         // Print the result
         System.out.println("Original List: " + originalList);

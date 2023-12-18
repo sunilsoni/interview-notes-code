@@ -1,16 +1,22 @@
 package com.interview.notes.code.months.dec23.test1;// Correct option: B. Use a sliding time window.
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class BasicRateLimiter {
-
-    // This HashMap will hold the timestamps of the last few requests per user
-    private final Map<String, Deque<Long>> accessTimes = new ConcurrentHashMap<>();
 
     // Constants
     private static final long TIME_LIMIT = 60000; // 60 seconds in milliseconds
     private static final int REQUEST_LIMIT = 5; // Users can make 5 requests in 60 seconds
+    // This HashMap will hold the timestamps of the last few requests per user
+    private final Map<String, Deque<Long>> accessTimes = new ConcurrentHashMap<>();
+
+    public static void main(String[] args) {
+        BasicRateLimiter rateLimiter = new BasicRateLimiter();
+        System.out.println(rateLimiter.getWeatherData("User123"));
+    }
 
     public boolean isAllowed(String userId) {
         long currentTime = System.currentTimeMillis();
@@ -35,10 +41,5 @@ public class BasicRateLimiter {
         } else {
             return "Rate limit exceeded";
         }
-    }
-
-    public static void main(String[] args) {
-        BasicRateLimiter rateLimiter = new BasicRateLimiter();
-        System.out.println(rateLimiter.getWeatherData("User123"));
     }
 }

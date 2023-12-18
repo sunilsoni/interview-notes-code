@@ -4,6 +4,13 @@ import java.util.Stack;
 
 public class ValidParentheses {
 
+    // Example execution
+    public static void main(String[] args) {
+        ValidParentheses vp = new ValidParentheses();
+        String testString = "({[]})";
+        System.out.println("Is the string \"" + testString + "\" valid? " + vp.isValid(testString));
+    }
+
     public boolean isValid(String s) {
         // Stack to hold opening parentheses
         Stack<Character> stack = new Stack<>();
@@ -28,12 +35,5 @@ public class ValidParentheses {
     private boolean isMatchingPair(char opening, char closing) {
         // Check if the opening and closing parentheses match
         return (opening == '(' && closing == ')') || (opening == '{' && closing == '}') || (opening == '[' && closing == ']');
-    }
-
-    // Example execution
-    public static void main(String[] args) {
-        ValidParentheses vp = new ValidParentheses();
-        String testString = "({[]})";
-        System.out.println("Is the string \"" + testString + "\" valid? " + vp.isValid(testString));
     }
 }

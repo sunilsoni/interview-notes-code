@@ -23,8 +23,8 @@ public class BalancedParenthesesWithList {
 
     private static boolean isMatchingPair(char opening, char closing) {
         return (opening == '(' && closing == ')') ||
-               (opening == '{' && closing == '}') ||
-               (opening == '[' && closing == ']');
+                (opening == '{' && closing == '}') ||
+                (opening == '[' && closing == ']');
     }
 
     public static void main(String[] args) {

@@ -13,6 +13,19 @@ class TreeNode {
 public class BinaryTree {
     TreeNode root;
 
+    // Main method for demonstration
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root = new TreeNode(1);
+        tree.root.left = new TreeNode(2);
+        tree.root.right = new TreeNode(3);
+        tree.root.left.left = new TreeNode(4);
+        tree.root.left.right = new TreeNode(5);
+
+        System.out.println("DFS Traversal of binary tree is: ");
+        tree.dfs(tree.root);
+    }
+
     // DFS Traversal (Pre-order as an example: Root, Left, Right)
     void dfs(TreeNode node) {
         if (node == null) {
@@ -27,18 +40,5 @@ public class BinaryTree {
 
         // Traversing the right subtree
         dfs(node.right);
-    }
-
-    // Main method for demonstration
-    public static void main(String[] args) {
-        BinaryTree tree = new BinaryTree();
-        tree.root = new TreeNode(1);
-        tree.root.left = new TreeNode(2);
-        tree.root.right = new TreeNode(3);
-        tree.root.left.left = new TreeNode(4);
-        tree.root.left.right = new TreeNode(5);
-
-        System.out.println("DFS Traversal of binary tree is: ");
-        tree.dfs(tree.root);
     }
 }

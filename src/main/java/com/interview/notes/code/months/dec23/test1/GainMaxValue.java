@@ -18,6 +18,7 @@ public class GainMaxValue {
 
         return maxSum;
     }
+
     public static void main1(String[] args) {
         int n = 6;
         int[] security_val = {3, 5, -2, -4, 9, 16};
@@ -42,6 +43,7 @@ public class GainMaxValue {
 
         return maxSum;
     }
+
     public static int gainMaxValue(List<Integer> security_val, int k) {
         int n = security_val.size();
         int[] max_sum_up_to = new int[n];
@@ -102,13 +104,12 @@ public class GainMaxValue {
         System.out.println(result);
 
 
+        security_val = Arrays.asList(6, 5, 3, -2, -4, 9, 16, 2);
+        k = 2;
 
-         security_val = Arrays.asList(6, 5, 3, -2, -4, 9, 16,2);
-          k = 2;
+        int maxSecurityValue = gainMaxValue(security_val, k);
 
-            int maxSecurityValue = gainMaxValue(security_val, k);
-
-            System.out.println("Maximum Security Value: " + maxSecurityValue);
+        System.out.println("Maximum Security Value: " + maxSecurityValue);
 
 
     }

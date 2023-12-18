@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EntityProcessor {
+    private final EntityValidator validator;
     private int totalEntitiesProcessed = 0;
     private int totalEntitiesValid = 0;
     private int totalEntitiesInvalid = 0;
-    private final EntityValidator validator;
 
     public EntityProcessor(EntityValidator validator) {
         this.validator = validator;
@@ -24,11 +24,13 @@ public class EntityProcessor {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             if (entityType == EntityType.PAYEE) {
-                List<Payee> entityList = objectMapper.readValue(new File(inputFileName), new TypeReference<List<Payee>>() {});
+                List<Payee> entityList = objectMapper.readValue(new File(inputFileName), new TypeReference<List<Payee>>() {
+                });
                 List<Payee> processedPayeeList = processPayeeList(entityList);
                 objectMapper.writeValue(new File(outputFileName), processedPayeeList);
             } else {
-                List<Business> entityList = objectMapper.readValue(new File(inputFileName), new TypeReference<List<Business>>() {});
+                List<Business> entityList = objectMapper.readValue(new File(inputFileName), new TypeReference<List<Business>>() {
+                });
                 List<Business> processedBusinessList = processBusinessList(entityList);
                 objectMapper.writeValue(new File(outputFileName), processedBusinessList);
             }

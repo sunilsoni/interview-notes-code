@@ -3,17 +3,17 @@ package com.interview.notes.code.months.dec23.test4;
 
 /**
  * Given an m x n matrix board containing 'X' and 'O', capture all regions that are 4-directionally surrounded by 'X'.
- *
+ * <p>
  * A region is captured by flipping all 'O's into 'X's in that surrounded region.
- *
+ * <p>
  * Example 1:
- *
+ * <p>
  * Input               Output
  * X X X X         X X X X
  * X O O X  => X X X X
  * X X O X         X X X X
  * X O X X         X O X X
- *
+ * <p>
  * Explanation: Notice that an 'O' should not be flipped if:
  * - It is on the border, or
  * - It is adjacent to an 'O' that should not be flipped.
@@ -24,10 +24,10 @@ public class RegionCapturer {
 
     public static void main(String[] args) {
         char[][] board = {
-            {'X', 'X', 'X', 'X'},
-            {'X', 'O', 'O', 'X'},
-            {'X', 'X', 'O', 'X'},
-            {'X', 'O', 'X', 'X'}
+                {'X', 'X', 'X', 'X'},
+                {'X', 'O', 'O', 'X'},
+                {'X', 'X', 'O', 'X'},
+                {'X', 'O', 'X', 'X'}
         };
 
         captureRegions(board);

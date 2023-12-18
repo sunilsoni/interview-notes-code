@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 /**
  * Find common elements between below 2
- *
+ * <p>
  * Integer[] integers1 = {2, 4, 7, 9, 10, 17};
  * Integer[] integers2 = {3, 5, 7, 10};
  */
@@ -19,8 +19,8 @@ public class CommonElements {
         List<Integer> list2 = Arrays.asList(integers2);
 
         List<Integer> commonElements = list1.stream()
-                                            .filter(list2::contains)
-                                            .collect(Collectors.toList());
+                .filter(list2::contains)
+                .collect(Collectors.toList());
 
         System.out.println("Common elements: " + commonElements);
     }

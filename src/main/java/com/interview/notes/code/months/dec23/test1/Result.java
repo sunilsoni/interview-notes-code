@@ -36,7 +36,7 @@ public class Result {
 
         return maxSum;
     }
-    
+
     public static void main(String[] args) {
         List<Integer> security_val = Arrays.asList(5, 2, 5, -8, -6, -7, 3);
         int k = 2;

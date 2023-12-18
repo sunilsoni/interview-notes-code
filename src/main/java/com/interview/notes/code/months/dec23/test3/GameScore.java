@@ -4,7 +4,7 @@ public class GameScore {
 
     public static void main(String[] args) {
         // Example 1
-        int[] cell1 = {0,-10,100,-20};
+        int[] cell1 = {0, -10, 100, -20};
         System.out.println("Max score for example 1: " + maxGameScore(cell1));
 
         // Example 2

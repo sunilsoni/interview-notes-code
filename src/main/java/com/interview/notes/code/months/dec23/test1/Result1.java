@@ -18,7 +18,7 @@ class Result1 {
         int n = security_val.size();
         int[] dp = new int[n];
         int max = Integer.MIN_VALUE;
-        
+
         for (int i = 0; i < n; i++) {
             if (i < k) {
                 dp[i] = security_val.get(i);
@@ -34,9 +34,10 @@ class Result1 {
                 max = Math.max(max, dp[j]);
             }
         }
-        
+
         return max;
     }
+
     public static void main(String[] args) {
         List<Integer> security_val = Arrays.asList(3, 5, -2, -4, 6, 1);
         int k = 2;

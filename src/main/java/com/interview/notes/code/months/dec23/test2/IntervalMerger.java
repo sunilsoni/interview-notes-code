@@ -6,6 +6,15 @@ import java.util.List;
 
 public class IntervalMerger {
 
+    // Example execution
+    public static void main(String[] args) {
+        IntervalMerger merger = new IntervalMerger();
+        int[][] intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
+        int[][] mergedIntervals = merger.merge(intervals);
+
+        System.out.println("Merged Intervals: " + Arrays.deepToString(mergedIntervals));
+    }
+
     public int[][] merge(int[][] intervals) {
         // Sort intervals based on the start time
         Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
@@ -26,14 +35,5 @@ public class IntervalMerger {
 
         // Convert merged list to array and return
         return merged.toArray(new int[merged.size()][]);
-    }
-
-    // Example execution
-    public static void main(String[] args) {
-        IntervalMerger merger = new IntervalMerger();
-        int[][] intervals = {{1,3},{2,6},{8,10},{15,18}};
-        int[][] mergedIntervals = merger.merge(intervals);
-
-        System.out.println("Merged Intervals: " + Arrays.deepToString(mergedIntervals));
     }
 }

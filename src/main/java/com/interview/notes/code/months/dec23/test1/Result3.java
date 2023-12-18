@@ -19,7 +19,7 @@ public class Result3 {
 
         return maxSum;
     }
-    
+
     public static void main(String[] args) {
         List<Integer> security_val = Arrays.asList(3, 5, -2, -4, 9, 16);
         int k = 2;

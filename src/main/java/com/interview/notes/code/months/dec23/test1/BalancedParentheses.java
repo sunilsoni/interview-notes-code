@@ -23,9 +23,9 @@ public class BalancedParentheses {
     }
 
     private static boolean isMatchingPair(char character1, char character2) {
-        return (character1 == '(' && character2 == ')') || 
-               (character1 == '{' && character2 == '}') || 
-               (character1 == '[' && character2 == ']');
+        return (character1 == '(' && character2 == ')') ||
+                (character1 == '{' && character2 == '}') ||
+                (character1 == '[' && character2 == ']');
     }
 
     public static void main(String[] args) {

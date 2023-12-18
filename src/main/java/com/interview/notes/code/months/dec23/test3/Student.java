@@ -1,8 +1,5 @@
 package com.interview.notes.code.months.dec23.test3;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class Student {
     private static int nextEnrollmentNumber = 1;
     private int enrollmentNumber;
@@ -15,6 +12,6 @@ class Student {
 
     @Override
     public String toString() {
-        return  this.enrollmentNumber + ": " + this.name;
+        return this.enrollmentNumber + ": " + this.name;
     }
 }

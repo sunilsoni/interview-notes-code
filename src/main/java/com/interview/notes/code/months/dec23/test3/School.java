@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-
  * Implement a student registration and student information retrieval system for a school using a simple class roster in Java. When a student is registered, the system must assign an integer ID (enrollmentNumber), starting at 1 and adding 1 as each student is registered. The student's name is stored with the assigned enrollmentNumber. The retrieval request should return a student's registration information.
  * The Student class should implement:
  * • The constructor. Student(String name)
@@ -16,10 +15,10 @@ import java.util.List;
  * • Input Format For Custom Testing
  * The first line contains the value of numberOfStudents that describes the total number of students being registered.
  * Each of the next numberOfStudents lines contains the student name.
- *
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * • Sample Case 0
  * Sample Input For Custom Testing
  * STDIN
@@ -55,16 +54,6 @@ public class School {
         students = new ArrayList<>();
     }
 
-    public void registerStudent(String name) {
-        students.add(new Student(name));
-    }
-
-    public void printStudentsInformation() {
-        for (Student student : students) {
-            System.out.println(student);
-        }
-    }
-
     public static void main(String[] args) {
         // Simulation of the registration process
         School school = new School();
@@ -74,5 +63,15 @@ public class School {
 
         // Print all students' information
         school.printStudentsInformation();
+    }
+
+    public void registerStudent(String name) {
+        students.add(new Student(name));
+    }
+
+    public void printStudentsInformation() {
+        for (Student student : students) {
+            System.out.println(student);
+        }
     }
 }

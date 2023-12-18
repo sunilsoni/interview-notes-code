@@ -4,13 +4,21 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
 public class PiParallelComputation extends RecursiveTask<Double> {
+    private static final int THRESHOLD = 1000;
     private int start;
     private int end;
-    private static final int THRESHOLD = 1000;
 
     public PiParallelComputation(int start, int end) {
         this.start = start;
         this.end = end;
+    }
+
+    public static void main(String[] args) {
+        ForkJoinPool pool = new ForkJoinPool();
+        int terms = 1000000;
+        PiParallelComputation task = new PiParallelComputation(1, terms);
+        double pi = pool.invoke(task);
+        System.out.println("π computed in parallel: " + pi);
     }
 
     @Override
@@ -30,13 +38,5 @@ public class PiParallelComputation extends RecursiveTask<Double> {
             double leftResult = left.join();
             return leftResult + rightResult;
         }
-    }
-
-    public static void main(String[] args) {
-        ForkJoinPool pool = new ForkJoinPool();
-        int terms = 1000000;
-        PiParallelComputation task = new PiParallelComputation(1, terms);
-        double pi = pool.invoke(task);
-        System.out.println("π computed in parallel: " + pi);
     }
 }

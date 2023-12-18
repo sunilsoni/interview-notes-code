@@ -25,8 +25,8 @@ public class BalancedParentheses1 {
 
     private static boolean isMatchingPair(char opening, char closing) {
         return (opening == '(' && closing == ')') ||
-               (opening == '{' && closing == '}') ||
-               (opening == '[' && closing == ']');
+                (opening == '{' && closing == '}') ||
+                (opening == '[' && closing == ']');
     }
 
     // Example execution

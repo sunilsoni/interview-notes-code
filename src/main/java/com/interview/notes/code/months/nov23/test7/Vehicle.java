@@ -15,6 +15,6 @@ class Vehicle {
         this.numberOfTimesFinedImposed = 0;
         this.finesEpochTimes = new ArrayList<>();
     }
-    
+
     // Additional methods and logic as needed...
 }

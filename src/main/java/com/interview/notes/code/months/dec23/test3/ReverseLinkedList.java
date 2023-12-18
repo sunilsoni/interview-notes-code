@@ -17,7 +17,7 @@ public class ReverseLinkedList {
         return prev; // The new head of the reversed list
     }
 
-    public static  ListNode reverseListRecursiveApproach(ListNode head) {
+    public static ListNode reverseListRecursiveApproach(ListNode head) {
         if (head == null || head.next == null) {
             return head; // If the list is empty or has only one node, it's already reversed
         }
@@ -43,22 +43,22 @@ public class ReverseLinkedList {
 
     public static void main(String[] args) {
 
-            // Create a sample linked list: 1 -> 2 -> 3 -> 4 -> 5
-            ListNode head = new ListNode(1);
-            head.next = new ListNode(2);
-            head.next.next = new ListNode(3);
-            head.next.next.next = new ListNode(4);
-            head.next.next.next.next = new ListNode(5);
+        // Create a sample linked list: 1 -> 2 -> 3 -> 4 -> 5
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
 
-            System.out.println("Original List:");
-            printList(head);
+        System.out.println("Original List:");
+        printList(head);
 
-            // Reverse the linked list
-           // head = reverseListIterativeApproach(head);
-            head = reverseListRecursiveApproach(head);
+        // Reverse the linked list
+        // head = reverseListIterativeApproach(head);
+        head = reverseListRecursiveApproach(head);
 
-            System.out.println("Reversed List:");
-            printList(head);
+        System.out.println("Reversed List:");
+        printList(head);
 
     }
 }

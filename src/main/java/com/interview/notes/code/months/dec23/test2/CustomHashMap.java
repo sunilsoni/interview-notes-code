@@ -14,6 +14,19 @@ public class CustomHashMap<K, V> {
         size = 0;
     }
 
+    public static void main(String[] args) {
+        CustomHashMap<String, Integer> customHashMap = new CustomHashMap<>();
+        customHashMap.put("one", 1);
+        customHashMap.put("two", 2);
+        customHashMap.put("three", 3);
+
+        System.out.println("Size: " + customHashMap.size());
+        System.out.println("Value for 'two': " + customHashMap.get("two"));
+
+        customHashMap.remove("two");
+        System.out.println("Size after removing 'two': " + customHashMap.size());
+    }
+
     public void put(K key, V value) {
         if (key == null)
             throw new IllegalArgumentException("Key cannot be null");
@@ -102,18 +115,5 @@ public class CustomHashMap<K, V> {
             this.key = key;
             this.value = value;
         }
-    }
-
-    public static void main(String[] args) {
-        CustomHashMap<String, Integer> customHashMap = new CustomHashMap<>();
-        customHashMap.put("one", 1);
-        customHashMap.put("two", 2);
-        customHashMap.put("three", 3);
-
-        System.out.println("Size: " + customHashMap.size());
-        System.out.println("Value for 'two': " + customHashMap.get("two"));
-
-        customHashMap.remove("two");
-        System.out.println("Size after removing 'two': " + customHashMap.size());
     }
 }

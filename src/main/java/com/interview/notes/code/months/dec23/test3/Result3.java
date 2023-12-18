@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.dec23.test3;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Result3 {
 
@@ -55,7 +55,7 @@ public class Result3 {
         List<Integer> example = List.of(0, -10, -20, -30, 50);
         System.out.println(maxGameScore(example));  // Expected output: 40
 
-        List<Integer> example1 = List.of(0,-10,100,-20);
+        List<Integer> example1 = List.of(0, -10, 100, -20);
         System.out.println(maxGameScore(example1));  // Expected output: 40
 
         // Add more test cases if needed

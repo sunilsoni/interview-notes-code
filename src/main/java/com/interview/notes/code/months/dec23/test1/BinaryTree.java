@@ -16,6 +16,19 @@ class TreeNode {
 public class BinaryTree {
     TreeNode root;
 
+    // Main method for demonstration
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root = new TreeNode(1);
+        tree.root.left = new TreeNode(2);
+        tree.root.right = new TreeNode(3);
+        tree.root.left.left = new TreeNode(4);
+        tree.root.left.right = new TreeNode(5);
+
+        System.out.println("BFS Traversal of binary tree is: ");
+        tree.bfs(tree.root);
+    }
+
     // BFS Traversal
     void bfs(TreeNode root) {
         if (root == null) {
@@ -37,18 +50,5 @@ public class BinaryTree {
                 queue.add(current.right);
             }
         }
-    }
-
-    // Main method for demonstration
-    public static void main(String[] args) {
-        BinaryTree tree = new BinaryTree();
-        tree.root = new TreeNode(1);
-        tree.root.left = new TreeNode(2);
-        tree.root.right = new TreeNode(3);
-        tree.root.left.left = new TreeNode(4);
-        tree.root.left.right = new TreeNode(5);
-
-        System.out.println("BFS Traversal of binary tree is: ");
-        tree.bfs(tree.root);
     }
 }

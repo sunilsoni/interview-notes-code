@@ -2,20 +2,20 @@ package com.interview.notes.code.months.nov23.test7;
 
 /**
  * Consider the input integer as seat number. Based on the seat number, we need to return the type of the seat.
- *  In flights, the seat number will be like
- *
+ * In flights, the seat number will be like
+ * <p>
  * 1  2  3     4  5  6
  * 12 11 10    9  8  7
  * 13 14 15    16 17 18
  * ....
  * 97 98 99    100
- *
+ * <p>
  * Input : 15
  * Output : Asile Seat
- *
+ * <p>
  * Input : 1
  * Output : Window Seat
- *
+ * <p>
  * Input : 2
  * Output : Middle Seat
  */

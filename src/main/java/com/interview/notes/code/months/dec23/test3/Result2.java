@@ -38,16 +38,16 @@ class Result2 {
     }
 
 
-        public static void main(String[] args) {
-            int[] cell1 = {0, -10, 100, -20};
-            int[] cell2 = {0, -100, -100, -100, -100, -1, -1, -1, 0, -11};
+    public static void main(String[] args) {
+        int[] cell1 = {0, -10, 100, -20};
+        int[] cell2 = {0, -100, -100, -100, -100, -1, -1, -1, 0, -11};
 
-            int maxScore1 = Result2.maxGameScore(cell1);
-            int maxScore2 = Result2.maxGameScore(cell2);
+        int maxScore1 = Result2.maxGameScore(cell1);
+        int maxScore2 = Result2.maxGameScore(cell2);
 
-            System.out.println("Max Score 1: " + maxScore1); // Output: 70
-            System.out.println("Max Score 2: " + maxScore2); // Output: -2
-        }
+        System.out.println("Max Score 1: " + maxScore1); // Output: 70
+        System.out.println("Max Score 2: " + maxScore2); // Output: -2
+    }
 
 
 }

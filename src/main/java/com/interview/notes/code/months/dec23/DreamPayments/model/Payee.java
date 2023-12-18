@@ -10,8 +10,7 @@ public class Payee extends Entity {
     // Constructor
     public Payee(String entityId, String entityCreationDate, String entityName, EntityStatus entityStatus, String entityBirthDateStr, int verificationCode) {
 
-        super(entityId,entityCreationDate,entityName,null,entityStatus,null);
-
+        super(entityId, entityCreationDate, entityName, null, entityStatus, null);
 
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");

@@ -11,7 +11,7 @@ import java.math.MathContext;
  * mathematics such as analytic number theory, complex analysis, and infinitesimal
  * calculus.
  * Euler provided a proof to calculate value of pi using (yet another) infinite sum, expressed
- *
+ * <p>
  * Your job is to write a program to calculate value of pi using first N steps using above
  * formula.
  * To test the code, give value of N = 1000 or 10,000 or 100,000 or 1,000,000 and see how
@@ -34,26 +34,26 @@ public class PiDataTypesComparison {
         BigDecimal pi = BigDecimal.ZERO;
         BigDecimal one = BigDecimal.ONE;
         BigDecimal negativeOne = new BigDecimal("-1");
-        
+
         for (int i = 1; i <= terms; i++) {
             BigDecimal term = negativeOne.pow(i + 1).divide(new BigDecimal(2 * i - 1), mc);
             pi = pi.add(term);
         }
         return pi.multiply(new BigDecimal("4"));
     }
-    
+
     public static void main(String[] args) {
         int terms = 10000; // Test with 10,000 terms
         System.out.println("π using double: " + calculatePiDouble(terms));
         System.out.println("π using BigDecimal: " + calculatePiBigDecimal(terms));
 
 
-            // Test the method with different numbers of terms
-            int[] testTerms = {1000, 10000, 100000, 1000000};
-            for (int term : testTerms) {
-                double pi = calculatePiDouble(term);
-                System.out.printf("π with %d terms: %.15f\n", term, pi);
-            }
+        // Test the method with different numbers of terms
+        int[] testTerms = {1000, 10000, 100000, 1000000};
+        for (int term : testTerms) {
+            double pi = calculatePiDouble(term);
+            System.out.printf("π with %d terms: %.15f\n", term, pi);
+        }
 
     }
 }
