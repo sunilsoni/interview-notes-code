@@ -3,7 +3,7 @@ package com.interview.notes.code.months.dec23.test5;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Main {
+public class GroupOrdersByZipCodeAndFindMaximumOrder {
     public static void main(String[] args) {
         // Sample list of orders (replace with your actual data)
         List<OrderObj> orders = Arrays.asList(
