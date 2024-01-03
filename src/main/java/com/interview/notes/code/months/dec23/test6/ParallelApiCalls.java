@@ -1,5 +1,8 @@
 package com.interview.notes.code.months.dec23.test6;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -52,6 +55,8 @@ public class ParallelApiCalls {
 }
 
 // Assuming a simple EmployeeDetails class
+@Data
+@AllArgsConstructor
 class EmployeeDetails {
     private String employeeId;
     private String name;
