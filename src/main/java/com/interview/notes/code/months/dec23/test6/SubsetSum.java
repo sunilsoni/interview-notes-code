@@ -21,7 +21,7 @@ public class SubsetSum {
         List<Integer> currentSubset = new ArrayList<>();
 
         findSubsets(nums, targetSum, 0, currentSubset, result);
-       // Runnable
+        // Runnable
         return result;
     }
 

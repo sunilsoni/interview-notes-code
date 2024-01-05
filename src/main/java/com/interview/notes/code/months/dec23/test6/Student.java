@@ -9,14 +9,6 @@ public class Student {
         this.rollNumber = rollNumber;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getRollNumber() {
-        return rollNumber;
-    }
-
     public static void main(String[] args) {
         // Create a Student object using a constructor reference
         Student student = createStudent("John Doe", 12345);
@@ -38,6 +30,14 @@ public class Student {
         };
 
         infoPrinter.print(student);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getRollNumber() {
+        return rollNumber;
     }
 
     // Functional interface for printing Student information

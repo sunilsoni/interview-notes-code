@@ -6,9 +6,9 @@ public class KthSmallestInMatrix {
     // Main method to test the functionality
     public static void main(String[] args) {
         int[][] matrix = {
-            {10, 20, 30},
-            {5, 15, 25},
-            {1, 9, 11}
+                {10, 20, 30},
+                {5, 15, 25},
+                {1, 9, 11}
         };
         int k = 4; // Example: Find the 4th smallest element
         int result = findKthSmallest(matrix, k);

@@ -39,9 +39,9 @@ public class KthSmallestInMatrix1 {
 
     public static void main(String[] args) {
         int[][] matrix = {
-            {1,  5,  9},
-            {10, 11, 13},
-            {12, 13, 15}
+                {1, 5, 9},
+                {10, 11, 13},
+                {12, 13, 15}
         };
 
         int k = 8; // Example: Find the 8th smallest element

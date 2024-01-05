@@ -29,7 +29,7 @@ public class ParallelFileProcessing {
     private static void processFile(Path filePath) {
         try (Stream<String> lines = Files.lines(filePath, StandardCharsets.UTF_8)) {
             System.out.println("Processing file: " + filePath.getFileName());
-            
+
             // Process each line in the file
             lines.forEach(line -> {
                 // Replace this with your specific processing logic

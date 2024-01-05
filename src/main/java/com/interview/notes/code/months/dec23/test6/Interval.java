@@ -12,6 +12,20 @@ public class Interval {
         this.end = end;
     }
 
+    public static void main(String[] args) {
+        Interval interval1 = new Interval(1.0, 5.0);
+        Interval interval2 = new Interval(4.0, 7.0);
+
+        System.out.println("Interval 1: " + interval1);
+        System.out.println("Interval 2: " + interval2);
+
+        System.out.println("Length of Interval 1: " + interval1.length());
+        System.out.println("Length of Interval 2: " + interval2.length());
+
+        System.out.println("Does Interval 1 contain 3.0? " + interval1.contains(3.0));
+        System.out.println("Do Interval 1 and Interval 2 overlap? " + interval1.overlaps(interval2));
+    }
+
     public double getStart() {
         return start;
     }
@@ -35,19 +49,5 @@ public class Interval {
     @Override
     public String toString() {
         return "[" + start + ", " + end + "]";
-    }
-
-    public static void main(String[] args) {
-        Interval interval1 = new Interval(1.0, 5.0);
-        Interval interval2 = new Interval(4.0, 7.0);
-
-        System.out.println("Interval 1: " + interval1);
-        System.out.println("Interval 2: " + interval2);
-
-        System.out.println("Length of Interval 1: " + interval1.length());
-        System.out.println("Length of Interval 2: " + interval2.length());
-
-        System.out.println("Does Interval 1 contain 3.0? " + interval1.contains(3.0));
-        System.out.println("Do Interval 1 and Interval 2 overlap? " + interval1.overlaps(interval2));
     }
 }

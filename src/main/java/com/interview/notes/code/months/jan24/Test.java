@@ -11,13 +11,13 @@ public class Test {
         update(b1);
     }
 
+    public static void main(String args[]) {
+        new Test();
+    }
+
     private void update(Bar bar) {
         bar.x = 20;
         System.out.println(bar.x);
-    }
-
-    public static void main(String args[]) {
-        new Test();
     }
 
     private class Bar {

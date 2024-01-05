@@ -4,15 +4,15 @@ import java.util.*;
 
 /**
  * Find Kth smallest element in a two dimensional matrix.
- *
+ * <p>
  * Input: Two dimensional array of integers and integer k
  */
 public class KthSmallestUniqueInMatrix {
     public static void main(String[] args) {
         int[][] matrix = {
-            {10, 20, 30},
-            {5, 15, 25},
-            {10, 5, 15}
+                {10, 20, 30},
+                {5, 15, 25},
+                {10, 5, 15}
         };
         int k = 4; // Example: Find the 4th smallest unique element
         int result = findKthSmallestUnique(matrix, k);
@@ -21,7 +21,7 @@ public class KthSmallestUniqueInMatrix {
 
     public static int findKthSmallestUnique(int[][] matrix, int k) {
         Set<Integer> uniqueElements = new HashSet<>();
-        
+
         // Flatten the matrix and remove duplicates
         for (int[] row : matrix) {
             for (int element : row) {
