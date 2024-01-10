@@ -1,4 +1,4 @@
-package com.interview.notes.code.months.jan24;
+package com.interview.notes.code.months.jan24.test1;
 
 import java.util.HashMap;
 
