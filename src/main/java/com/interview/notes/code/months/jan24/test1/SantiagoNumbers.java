@@ -1,6 +1,6 @@
 package com.interview.notes.code.months.jan24.test1;
 
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * Section: 7 of 8| Coding

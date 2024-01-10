@@ -37,7 +37,7 @@ class Outcome3 {
     }
 
     public static void main(String[] args) {
-        System.out.println(solve(4,1,2,4));//draw
-        System.out.println(solve(3,1,2,2));//steve
+        System.out.println(solve(4, 1, 2, 4));//draw
+        System.out.println(solve(3, 1, 2, 2));//steve
     }
 }

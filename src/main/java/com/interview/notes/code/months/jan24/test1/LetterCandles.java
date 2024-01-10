@@ -1,53 +1,49 @@
 package com.interview.notes.code.months.jan24.test1;
 
 /**
- *
-
- Letter Candles : Java
- Your friend Alice has a box with N letter candles in it.
- The cost of the box is determined as follows - Find the number of occurrences of each characters in the box and sum up the squares of these numbers.
- Alice wants to reduce the cost of the box by removing some candles from it. However, she is allowed to remove at most M candles from the box.
- Can you help Alice determine the minimum cost of the box?
- Input
- The first line of the input contains the integer
- N, representing the number of letter candles.
- The second line of the input contains the integer
- M, representing the number of candles Alice can remove.
- The third line of the input contains an N-lettered string S, which contains lowercase English letters, representing the letter candles in the box.
- Output
- Print the minimum possible cost of the box.
- Example #1
- Input
- 6
- 2
- bacaco
- Output
- 6
-
- Example #1
- Input
- 6
- 2
- bacacc
- Output
- 6
- Explanation: There are two As, one B, and three Cs in
- the box. Current cost of the box is 22 + 12 + 32 = 14.
- The best way to minimize the cost of the box is to remove two C-shaped candles from it. The new
- minimal cost will be 22 + 12 + 12 = 6. The answer is 6.
- Example #2
- Input
- 15
- 3
- XXXXXXXXXXXXXXX
- Output
- 144
- Explanation: There are 15 X5. The current cost of the
- box is 152 = 225. The only way to minimize the cost
- is by reducing three X-shaped candles from it. The
- new minimal cost will be 122 = 144. The answer is 144.
-
-
+ * Letter Candles : Java
+ * Your friend Alice has a box with N letter candles in it.
+ * The cost of the box is determined as follows - Find the number of occurrences of each characters in the box and sum up the squares of these numbers.
+ * Alice wants to reduce the cost of the box by removing some candles from it. However, she is allowed to remove at most M candles from the box.
+ * Can you help Alice determine the minimum cost of the box?
+ * Input
+ * The first line of the input contains the integer
+ * N, representing the number of letter candles.
+ * The second line of the input contains the integer
+ * M, representing the number of candles Alice can remove.
+ * The third line of the input contains an N-lettered string S, which contains lowercase English letters, representing the letter candles in the box.
+ * Output
+ * Print the minimum possible cost of the box.
+ * Example #1
+ * Input
+ * 6
+ * 2
+ * bacaco
+ * Output
+ * 6
+ * <p>
+ * Example #1
+ * Input
+ * 6
+ * 2
+ * bacacc
+ * Output
+ * 6
+ * Explanation: There are two As, one B, and three Cs in
+ * the box. Current cost of the box is 22 + 12 + 32 = 14.
+ * The best way to minimize the cost of the box is to remove two C-shaped candles from it. The new
+ * minimal cost will be 22 + 12 + 12 = 6. The answer is 6.
+ * Example #2
+ * Input
+ * 15
+ * 3
+ * XXXXXXXXXXXXXXX
+ * Output
+ * 144
+ * Explanation: There are 15 X5. The current cost of the
+ * box is 152 = 225. The only way to minimize the cost
+ * is by reducing three X-shaped candles from it. The
+ * new minimal cost will be 122 = 144. The answer is 144.
  */
 public class LetterCandles {
     public static int solve(int N, int M, String S) {

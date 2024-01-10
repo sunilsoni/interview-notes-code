@@ -6,38 +6,38 @@ public class Outcome1 {
     public static int solve1(int N, int M, String S) {
         // Create an array to count the occurrences of each character
         int[] charCount = new int[26]; // Assuming only lowercase English letters
-        
+
         // Count the occurrences of each character
         for (char c : S.toCharArray()) {
             charCount[c - 'a']++;
         }
-        
+
         // Create an array to store the frequencies of occurrences
         int[] frequencies = new int[N + 1];
-        
+
         // Calculate the frequencies of occurrences
         for (int count : charCount) {
             if (count > 0) {
                 frequencies[count]++;
             }
         }
-        
+
         int cost = 0;
         int candlesToRemove = 0;
-        
+
         // Iterate from the highest frequency towards the lowest
         for (int i = N; i > 0; i--) {
             if (frequencies[i] > 0) {
                 int numToRemove = Math.min(M - candlesToRemove, frequencies[i]);
                 cost += i * i * numToRemove;
                 candlesToRemove += numToRemove;
-                
+
                 if (candlesToRemove >= M) {
                     break;
                 }
             }
         }
-        
+
         return cost;
     }
 

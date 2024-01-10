@@ -9,7 +9,7 @@ class Outcome {
         if (P == X) {
             return "Draw";
         }
-        
+
         // If the gold key is one move away from the winning position, Steve wins because he goes first.
         if (Math.abs(X - P) < M) {
             return "Steve";

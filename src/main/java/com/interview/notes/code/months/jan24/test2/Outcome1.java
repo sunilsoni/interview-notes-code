@@ -38,6 +38,6 @@ class Outcome1 {
 
     public static void main(String[] args) {
 
-        System.out.println(solve(4,1,2,4));
+        System.out.println(solve(4, 1, 2, 4));
     }
 }
