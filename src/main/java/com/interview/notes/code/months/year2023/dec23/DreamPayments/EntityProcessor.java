@@ -2,7 +2,6 @@ package com.interview.notes.code.months.year2023.dec23.DreamPayments;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.interview.notes.code.months.dec23.DreamPayments.model.*;
 import com.interview.notes.code.months.year2023.dec23.DreamPayments.model.*;
 import com.interview.notes.code.months.year2023.dec23.DreamPayments.validation.EntityValidator;
 
