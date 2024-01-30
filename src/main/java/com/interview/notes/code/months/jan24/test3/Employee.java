@@ -2,11 +2,6 @@ package com.interview.notes.code.months.jan24.test3;
 
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Data
 class Employee {
     private int id;

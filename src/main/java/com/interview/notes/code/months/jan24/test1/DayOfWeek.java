@@ -5,6 +5,14 @@ import java.util.Arrays;
 public enum DayOfWeek {
     MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
 
+    public static void main(String[] args) {
+        // Example usage:
+        DayOfWeek today = DayOfWeek.MONDAY;
+        DayOfWeek nextDay = today.getNextDay();
+        System.out.println("Today is " + today);
+        System.out.println("Next day is " + nextDay);
+    }
+
     // Define a method to get the next day in the sequence
     public DayOfWeek getNextDay() {
         // Get the values of the enum as an array
@@ -18,13 +26,5 @@ public enum DayOfWeek {
 
         // Return the next day in the sequence
         return days[nextDayIndex];
-    }
-
-    public static void main(String[] args) {
-        // Example usage:
-        DayOfWeek today = DayOfWeek.MONDAY;
-        DayOfWeek nextDay = today.getNextDay();
-        System.out.println("Today is " + today);
-        System.out.println("Next day is " + nextDay);
     }
 }

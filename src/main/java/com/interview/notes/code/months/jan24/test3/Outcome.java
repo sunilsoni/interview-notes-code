@@ -1,8 +1,11 @@
 package com.interview.notes.code.months.jan24.test3;
 
 
-import java.util.*;
-import java.text.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Outcome {
 
@@ -78,15 +81,15 @@ public class Outcome {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        
+
         Date firstMeetingDate = null;
         boolean firstMeetingFound = false;
-        
+
         for (String meet : meeting) {
             String[] parts = meet.split("_");
             String meetDateStr = parts[0];
             String meetName = parts[1];
-            
+
             try {
                 Date meetDate = sdf.parse(meetDateStr);
                 if (meetDate.compareTo(currentDate) > 0) {
@@ -99,7 +102,7 @@ public class Outcome {
                 e.printStackTrace();
             }
         }
-        
+
         if (firstMeetingFound) {
             return sdf.format(firstMeetingDate);
         } else {
@@ -114,7 +117,7 @@ public class Outcome {
 //        meeting.add("02/03_Jack");
         String S = "04/16";
         List<String> meeting = new ArrayList<>();
-       // meeting.add("1");
+        // meeting.add("1");
         meeting.add("09/04_Ann");
         String result1 = solve1(S, meeting);
         String result2 = solve2(S, meeting);

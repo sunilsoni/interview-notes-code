@@ -5,11 +5,11 @@ public class PalindromeChecker {
     public static boolean isPalindrome(String str) {
         // Remove spaces and convert to lowercase
         str = str.replaceAll("\\s+", "").toLowerCase();
-        
+
         // Initialize pointers at the beginning and end
         int left = 0;
         int right = str.length() - 1;
-        
+
         // Compare characters while moving pointers
         while (left < right) {
             if (str.charAt(left) != str.charAt(right)) {
@@ -18,7 +18,7 @@ public class PalindromeChecker {
             left++;
             right--;
         }
-        
+
         return true; // Palindrome
     }
 

@@ -1,7 +1,5 @@
 package com.interview.notes.code.months.jan24.test3;
 
-import com.interview.notes.code.array.Int;
-
 public class StringReverser {
 
     public static String reverseString(String str) {
@@ -14,7 +12,7 @@ public class StringReverser {
             char temp = charArray[left];
             charArray[left] = charArray[right];
             charArray[right] = temp;
-            
+
             // Move pointers towards each other
             left++;
             right--;

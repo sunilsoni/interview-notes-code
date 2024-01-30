@@ -1,11 +1,6 @@
 package com.interview.notes.code.months.jan24.test3;
 
 public class DayOfWeekDemo {
-    // Enum for days of the week
-    public enum DayOfWeek {
-        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
-    }
-
     // Method to get the next day
     public static DayOfWeek getNextDay(DayOfWeek currentDay) {
         // Find the next day by incrementing the ordinal value and using modulo for wrap-around
@@ -17,6 +12,11 @@ public class DayOfWeekDemo {
         DayOfWeek today = DayOfWeek.MONDAY;
         DayOfWeek tomorrow = getNextDay(today);
         System.out.println("If today is " + today + ", then tomorrow is " + tomorrow + ".");
+    }
+
+    // Enum for days of the week
+    public enum DayOfWeek {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
     }
 }
 

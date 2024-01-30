@@ -1,8 +1,8 @@
 package com.interview.notes.code.months.jan24.test3;
 
-import java.util.Set;
-import java.util.HashSet;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class WordSplitter {
 
@@ -37,7 +37,7 @@ public class WordSplitter {
         System.out.println("Can be split: " + canBeSplit(input, dictionary));
 
         input = "helloworld";
-        dictionary = new String[]{"hello", "world","me"};
+        dictionary = new String[]{"hello", "world", "me"};
         System.out.println("Can be split: " + canBeSplit(input, dictionary));
     }
 }

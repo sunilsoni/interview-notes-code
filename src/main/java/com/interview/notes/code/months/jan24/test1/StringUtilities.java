@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.jan24.test1;
 
 public class StringUtilities {
-    
+
     // Method to reverse a string
     public static String reverseString(String s) {
         StringBuilder reversed = new StringBuilder();
