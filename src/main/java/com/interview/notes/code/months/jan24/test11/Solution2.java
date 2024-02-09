@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.jan24.test11;
 
 public class Solution2 {
-    
+
     public static int solution(int A, int B) {
         // The maximum length of the square's side is the total length of the sticks divided by 4,
         // because we need 4 sides of equal length.
@@ -21,9 +21,9 @@ public class Solution2 {
         // If no square can be formed, return 0.
         return 0;
     }
-    
+
     public static void main(String[] args) {
-        Solution2 solution=new Solution2();
+        Solution2 solution = new Solution2();
         // Example test cases
         System.out.println("Example test: (10, 21) | Expected output: 7 | Actual output: " + solution.solution(10, 21));
         System.out.println("Example test: (13, 11) | Expected output: 5 | Actual output: " + solution.solution(13, 11));

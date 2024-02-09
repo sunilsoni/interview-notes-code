@@ -10,9 +10,9 @@ class Solution {
     public static void runTests() {
         int[] testCase1 = {2, 5, 2, 6, 8, 5, 8, 8};
         int[] expectedResponse = {8, 8, 8, 2, 2, 5, 5, 6};
-        
+
         int[] actualResponse = new Solution().sortByOccurrence(testCase1);
-        
+
         if (!Arrays.equals(expectedResponse, actualResponse)) {
             System.out.println("Test Case Failed.");
             return;

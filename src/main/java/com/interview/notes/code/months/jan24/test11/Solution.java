@@ -19,6 +19,16 @@ package com.interview.notes.code.months.jan24.test11;
  * • A and B are integers within the range [1.1,000,000,000].
  */
 class Solution {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test the solution with example test cases
+        System.out.println("Example test: (10, 21) | Expected output: 7 | Actual output: " + solution.solution(10, 21));
+        System.out.println("Example test: (13, 11) | Expected output: 5 | Actual output: " + solution.solution(13, 11));
+        System.out.println("Example test: (2, 1) | Expected output: 0 | Actual output: " + solution.solution(2, 1));
+        System.out.println("Example test: (1, 8) | Expected output: 2 | Actual output: " + solution.solution(1, 8));
+    }
+
     public int solution(int A, int B) {
         // The possible side length of the square can't be larger than the sum of A and B divided by 4.
         int maxSideLength = (A + B) / 4;
@@ -41,15 +51,5 @@ class Solution {
 
         // If we can't make a square, return 0
         return 0;
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-
-        // Test the solution with example test cases
-        System.out.println("Example test: (10, 21) | Expected output: 7 | Actual output: " + solution.solution(10, 21));
-        System.out.println("Example test: (13, 11) | Expected output: 5 | Actual output: " + solution.solution(13, 11));
-        System.out.println("Example test: (2, 1) | Expected output: 0 | Actual output: " + solution.solution(2, 1));
-        System.out.println("Example test: (1, 8) | Expected output: 2 | Actual output: " + solution.solution(1, 8));
     }
 }

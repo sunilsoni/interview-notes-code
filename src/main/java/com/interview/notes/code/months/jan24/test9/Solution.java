@@ -5,12 +5,14 @@ import java.util.Scanner;
 // Define the Animal interface
 interface Animal {
     void eat();
+
     void makeSound();
 }
 
 // Define the Bird interface with default legs value
 interface Bird {
     int legs = 2;
+
     void fly();
 }
 
@@ -19,11 +21,11 @@ class Parrot implements Animal, Bird {
     public void eat() {
         System.out.println("Parrots can eat up to 100 gms in a day");
     }
-    
+
     public void makeSound() {
         System.out.println("Parrots make sound of screech");
     }
-    
+
     public void fly() {
         System.out.println("Parrots can fly up to 50 miles in a day");
     }
@@ -36,11 +38,11 @@ public class Solution {
         for (int i = 0; i < 3; i++) {
             String name = sc.nextLine();
             Parrot p = new Parrot();
-            if(name.equals("eat")) {
+            if (name.equals("eat")) {
                 p.eat();
-            } else if(name.equals("makeSound")) {
+            } else if (name.equals("makeSound")) {
                 p.makeSound();
-            } else if(name.equals("fly")) {
+            } else if (name.equals("fly")) {
                 p.fly();
             }
         }

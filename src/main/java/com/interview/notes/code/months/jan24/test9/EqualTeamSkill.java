@@ -44,9 +44,9 @@ public class EqualTeamSkill {
      * Constraints
      * • 1≤n, m≤ 103
      * • 0 ≤ teamA[il, teamB[i] ≤ 104
-     *
-     *
-     *
+     * <p>
+     * <p>
+     * <p>
      * Sample Input For Custom Testing
      * STDIN
      * 4
@@ -88,6 +88,7 @@ public class EqualTeamSkill {
      * -1
      * Explanation
      * There is no way to replace the zero in teamB such that the sums are equal.
+     *
      * @param args
      */
     public static void main(String[] args) {

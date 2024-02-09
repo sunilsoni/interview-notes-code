@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.jan24.bank3;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,7 +10,7 @@ public class Main {
         String expr = s.next();
         System.out.println(isBalanced(expr) ? "Balanced" : "Not Balanced");
     }
-    
+
     public static boolean isBalanced(String expr) {
         Deque<Character> stack = new ArrayDeque<>();
         for (char c : expr.toCharArray()) {

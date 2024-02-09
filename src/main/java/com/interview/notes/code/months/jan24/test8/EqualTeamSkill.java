@@ -61,12 +61,12 @@ public class EqualTeamSkill {
 
         // Sample Test Case 1
         int[] teamA1 = {1, 2, 3, 0};
-        int[] teamB1 = { 5, 0, 0};
+        int[] teamB1 = {5, 0, 0};
         System.out.println(equalTeamSkill(teamA, teamB)); // Should output 7
 
         // Sample Test Case 2
         List<Integer> teamA2 = List.of(1, 2, 3);
         List<Integer> teamB2 = List.of(0, 10);
-       // System.out.println(equalTeamSkill(teamA2, teamB2)); // Should output -1
+        // System.out.println(equalTeamSkill(teamA2, teamB2)); // Should output -1
     }
 }

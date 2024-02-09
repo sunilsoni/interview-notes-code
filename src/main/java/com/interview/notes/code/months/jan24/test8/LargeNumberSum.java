@@ -20,8 +20,8 @@ public class LargeNumberSum {
         int carry = 0;
         for (int i = 0; i < n1; i++) {
             // Sum the digits including carry
-            int sum = ((int)(str1.charAt(i) - '0') + (int)(str2.charAt(i) - '0') + carry);
-            result.append((char)(sum % 10 + '0'));
+            int sum = ((int) (str1.charAt(i) - '0') + (int) (str2.charAt(i) - '0') + carry);
+            result.append((char) (sum % 10 + '0'));
 
             // Calculate carry for the next step
             carry = sum / 10;
@@ -29,14 +29,14 @@ public class LargeNumberSum {
 
         // Add remaining digits of the longer number
         for (int i = n1; i < n2; i++) {
-            int sum = ((int)(str2.charAt(i) - '0') + carry);
-            result.append((char)(sum % 10 + '0'));
+            int sum = ((int) (str2.charAt(i) - '0') + carry);
+            result.append((char) (sum % 10 + '0'));
             carry = sum / 10;
         }
 
         // Add remaining carry
         if (carry > 0) {
-            result.append((char)(carry + '0'));
+            result.append((char) (carry + '0'));
         }
 
         // Reverse the result string and return it

@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.jan24.test8;
 
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
 
 class Result {
 
@@ -18,18 +18,18 @@ class Result {
         // Calculate the differences and find the minimum additional skill required
         int diff = Math.abs(sumA - sumB);
         int minAdditionalSkill = Integer.MAX_VALUE;
-        
+
         // Sort teamA and teamB to start trying to add the largest skills available
         Collections.sort(teamA, Collections.reverseOrder());
         Collections.sort(teamB, Collections.reverseOrder());
-        
+
         // Try to add skills from teamB to teamA and vice versa to balance the teams
         for (int skill : teamA) {
             if (skill > 0 && diff >= skill && (sumB + skill) <= sumA) {
                 minAdditionalSkill = Math.min(minAdditionalSkill, sumA);
             }
         }
-        
+
         for (int skill : teamB) {
             if (skill > 0 && diff >= skill && (sumA + skill) <= sumB) {
                 minAdditionalSkill = Math.min(minAdditionalSkill, sumB);
@@ -100,7 +100,7 @@ class Result {
         List<Integer> teamA1 = List.of(1, 2, 3, 0);
         List<Integer> teamB1 = List.of(5, 0, 0);
         System.out.println(equalTeamSkill(teamA1, teamB1)); // Should output 7
-        
+
         // Sample Test Case 2
         List<Integer> teamA2 = List.of(1, 2, 3);
         List<Integer> teamB2 = List.of(0, 10);

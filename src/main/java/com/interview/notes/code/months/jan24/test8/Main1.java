@@ -1,8 +1,8 @@
 package com.interview.notes.code.months.jan24.test8;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Main1 {
     public static void main(String[] args) {
@@ -29,10 +29,10 @@ public class Main1 {
         int diff = Math.abs(sumA - sumB);
 
         // If the difference is zero, no additional players are needed
-        if(diff == 0) return 0;
+        if (diff == 0) return 0;
 
         // If the sum of team A is larger, we'll try to add players to team B, and vice versa
-        if(sumA > sumB) {
+        if (sumA > sumB) {
             return findMinimumSkillToAdd(teamB, diff);
         } else {
             return findMinimumSkillToAdd(teamA, diff);
@@ -42,14 +42,14 @@ public class Main1 {
     private static int findMinimumSkillToAdd(List<Integer> team, int diff) {
         // Find the minimum skill that needs to be added to a team to equalize the sum with the other team
         int minSkillToAdd = -1; // Start with -1, which indicates it's not possible to equalize the teams
-        for(int i = 0; i < team.size(); i++) {
-            if(team.get(i) == 0) {
+        for (int i = 0; i < team.size(); i++) {
+            if (team.get(i) == 0) {
                 // We can only add a player to an empty spot (denoted by 0)
-                for(int skillToAdd = 1; skillToAdd <= 10; skillToAdd++) {
+                for (int skillToAdd = 1; skillToAdd <= 10; skillToAdd++) {
                     // Check if adding this skill will equalize or exceed the skill difference
-                    if(skillToAdd >= diff) {
+                    if (skillToAdd >= diff) {
                         // If we haven't set the minSkillToAdd yet or we've found a smaller skill value to add
-                        if(minSkillToAdd == -1 || skillToAdd < minSkillToAdd) {
+                        if (minSkillToAdd == -1 || skillToAdd < minSkillToAdd) {
                             minSkillToAdd = skillToAdd;
                         }
                         break; // No need to check higher skills for this position

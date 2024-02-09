@@ -1,7 +1,6 @@
 package com.interview.notes.code.months.jan24.bank2;
 
 
-
 import com.interview.notes.code.months.jan24.bank.AccountFactory;
 
 import java.util.ArrayList;
@@ -9,10 +8,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ATM {
+    private static ATM instance = new ATM();
     private List<ATMObserver> observers = new ArrayList<>();
-
-    private static  ATM instance = new  ATM();
-    private  BankService bankService;
+    private BankService bankService;
     private Account currentAccount;
     private Scanner scanner;
 
@@ -22,7 +20,7 @@ public class ATM {
         this.scanner = new Scanner(System.in);
     }
 
-    public static  ATM getInstance() {
+    public static ATM getInstance() {
         return instance;
     }
 
@@ -39,7 +37,7 @@ public class ATM {
     private void performTransaction() {
         // Transaction logic...
         // After a successful withdrawal
-       // notifyObservers("WITHDRAWAL", amount);
+        // notifyObservers("WITHDRAWAL", amount);
         //notifyObservers("BALANCE_CHANGE", -amount);
     }
 }

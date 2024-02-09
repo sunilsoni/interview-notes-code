@@ -6,6 +6,6 @@ public class ATMApplication {
         ATM atm = ATM.getInstance();
         BankService bankService = new BankService();
         atm.addObserver(bankService);
-       // atm.start();
+        // atm.start();
     }
 }

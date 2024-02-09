@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.jan24.test8;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,10 +18,10 @@ public class Main {
     public static int equalTeamSkill(List<Integer> teamA, List<Integer> teamB) {
         int sumA = teamA.stream().mapToInt(Integer::intValue).sum();
         int sumB = teamB.stream().mapToInt(Integer::intValue).sum();
-        
-        if(sumA == sumB) return 0;
 
-        if(sumA > sumB) return minSkill(teamA, teamB, sumA - sumB);
+        if (sumA == sumB) return 0;
+
+        if (sumA > sumB) return minSkill(teamA, teamB, sumA - sumB);
         else return minSkill(teamB, teamA, sumB - sumA);
     }
 
