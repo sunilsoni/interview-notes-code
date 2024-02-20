@@ -1,8 +1,8 @@
 package com.interview.notes.code.months.jan24.test14;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.regex.Matcher;
@@ -72,9 +72,8 @@ public class DiscountedPriceFetcher3 {
         // Add more test cases if necessary
         int barcode1 = 74001777; // Replace with actual barcode to test
         System.out.println(getDiscountedPrice(barcode1));
-       // https://jsonmock.hackerrank.com/api/inventory?barcode=74002314
+        // https://jsonmock.hackerrank.com/api/inventory?barcode=74002314
         //content: {"page":1,"per_page":500,"total":1,"total_pages":1,"data":[{"barcode":"74002314","item":"Nightgown","category":"Underwear","price":3705,"discount":20,"available":1}]}
-
 
 
     }

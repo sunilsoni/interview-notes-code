@@ -1,9 +1,12 @@
 package com.interview.notes.code.months.jan24.test14;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class CommonSubstringChecker2 {
-    
+
     public static void commonSubstring(List<String> a, List<String> b) {
         for (int i = 0; i < a.size(); i++) {
             if (hasCommonSubstring(a.get(i), b.get(i))) {

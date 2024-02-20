@@ -7,7 +7,7 @@ public class Main {
         egg.getMacroNutrients();
         System.out.println("Taste: " + egg.getTaste());
         System.out.println("Type: " + ((Egg) egg).getType());
-        
+
         Food bread = new Bread(4.0, 1.1, 13.8);
         bread.getMacroNutrients();
         System.out.println("Taste: " + bread.getTaste());

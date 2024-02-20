@@ -2,10 +2,8 @@ package com.interview.notes.code.months.feb24.test3;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class CourseFinder {
 
@@ -44,17 +42,17 @@ public class CourseFinder {
     // Main method for testing
     public static void main(String[] args) {
         String[][] enrollments1 = {
-            {"58", "Linear Algebra"},
-            {"94", "Art History"},
-            {"94", "Operating Systems"},
-            {"17", "Software Design"},
-            {"58", "Mechanics"},
-            {"58", "Economics"},
-            {"17", "Linear Algebra"},
-            {"17", "Political Science"},
-            {"94", "Economics"},
-            {"25", "Economics"},
-            {"58", "Software Design"}
+                {"58", "Linear Algebra"},
+                {"94", "Art History"},
+                {"94", "Operating Systems"},
+                {"17", "Software Design"},
+                {"58", "Mechanics"},
+                {"58", "Economics"},
+                {"17", "Linear Algebra"},
+                {"17", "Political Science"},
+                {"94", "Economics"},
+                {"25", "Economics"},
+                {"58", "Software Design"}
         };
 
         Map<String, List<String>> result = findPairs(enrollments1);

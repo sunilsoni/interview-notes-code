@@ -1,30 +1,10 @@
 package com.interview.notes.code.months.jan24.test14;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class EmployeeBatchProcessor {
-    
-    public static class BatchDetails {
-        private String batchName;
-        private List<String> processedEmployees;
 
-        public BatchDetails(String batchName, List<String> processedEmployees) {
-            this.batchName = batchName;
-            this.processedEmployees = processedEmployees;
-        }
-
-        public String getBatchName() {
-            return batchName;
-        }
-
-        public List<String> getProcessedEmployees() {
-            return processedEmployees;
-        }
-    }
-    
     public static List<BatchDetails> processEmployees(List<String> employees) {
         List<BatchDetails> batches = new ArrayList<>();
         int batchSize = 10;
@@ -53,12 +33,30 @@ public class EmployeeBatchProcessor {
         }
 
         List<BatchDetails> processedBatches = processEmployees(employees);
-        
+
         // Print details of processed batches
         for (BatchDetails batch : processedBatches) {
             System.out.println("Batch Name: " + batch.getBatchName());
             System.out.println("Processed Employees: " + batch.getProcessedEmployees());
             System.out.println();
+        }
+    }
+
+    public static class BatchDetails {
+        private String batchName;
+        private List<String> processedEmployees;
+
+        public BatchDetails(String batchName, List<String> processedEmployees) {
+            this.batchName = batchName;
+            this.processedEmployees = processedEmployees;
+        }
+
+        public String getBatchName() {
+            return batchName;
+        }
+
+        public List<String> getProcessedEmployees() {
+            return processedEmployees;
         }
     }
 }

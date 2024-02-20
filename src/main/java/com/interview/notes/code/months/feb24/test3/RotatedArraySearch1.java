@@ -6,8 +6,8 @@ public class RotatedArraySearch1 {
         int[] nums = {4, 5, 6, 7, 0, 1, 2};
         int target = 0;
         int result = findElement(nums, target);
-        
-        if(result != -1) {
+
+        if (result != -1) {
             System.out.println("Element found at index: " + result);
         } else {
             System.out.println("Element not found.");

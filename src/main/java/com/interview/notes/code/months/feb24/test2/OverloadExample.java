@@ -2,21 +2,6 @@ package com.interview.notes.code.months.feb24.test2;
 
 public class OverloadExample {
 
-    public int add(int a, int b) {
-        System.out.println("inside int add");
-        return a + b;
-    }
-
-    public float add(float a, float b) {
-        System.out.println("inside float add");
-        return a + b;
-    }
-
-    public double add(double a, double b) {
-        System.out.println("inside double add");
-        return a + b;
-    }
-
     public static void main(String[] args) {
         OverloadExample example = new OverloadExample();
 
@@ -31,5 +16,20 @@ public class OverloadExample {
         // Calling the add method with double arguments
         double result3 = example.add(1.0, 2.0);
         System.out.println("Result (double): " + result3);
+    }
+
+    public int add(int a, int b) {
+        System.out.println("inside int add");
+        return a + b;
+    }
+
+    public float add(float a, float b) {
+        System.out.println("inside float add");
+        return a + b;
+    }
+
+    public double add(double a, double b) {
+        System.out.println("inside double add");
+        return a + b;
     }
 }

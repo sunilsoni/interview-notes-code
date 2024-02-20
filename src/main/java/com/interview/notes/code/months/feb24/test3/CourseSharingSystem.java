@@ -41,17 +41,17 @@ public class CourseSharingSystem {
 
     public static void main(String[] args) {
         List<Pair<String, String>> enrollments1 = Arrays.asList(
-            new Pair<>("58", "Linear Algebra"),
-            new Pair<>("94", "Art History"),
-            new Pair<>("94", "Operating Systems"),
-            new Pair<>("17", "Software Design"),
-            new Pair<>("58", "Mechanics"),
-            new Pair<>("58", "Economics"),
-            new Pair<>("17", "Linear Algebra"),
-            new Pair<>("17", "Political Science"),
-            new Pair<>("94", "Economics"),
-            new Pair<>("25", "Economics"),
-            new Pair<>("58", "Software Design")
+                new Pair<>("58", "Linear Algebra"),
+                new Pair<>("94", "Art History"),
+                new Pair<>("94", "Operating Systems"),
+                new Pair<>("17", "Software Design"),
+                new Pair<>("58", "Mechanics"),
+                new Pair<>("58", "Economics"),
+                new Pair<>("17", "Linear Algebra"),
+                new Pair<>("17", "Political Science"),
+                new Pair<>("94", "Economics"),
+                new Pair<>("25", "Economics"),
+                new Pair<>("58", "Software Design")
         );
 
         Map<String, List<String>> result = findPairs(enrollments1);
@@ -78,8 +78,8 @@ public class CourseSharingSystem {
 
         Map<String, List<String>> pairs2 = findPairs(enrollments2);
 
-        for(Map.Entry<String, List<String>> entry:pairs2.entrySet()){
-            System.out.println(entry.getKey()+" : " + entry.getValue());
+        for (Map.Entry<String, List<String>> entry : pairs2.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
 
         }
     }

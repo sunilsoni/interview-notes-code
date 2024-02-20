@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.jan24.test13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
 
 public class Solution {
 
@@ -22,6 +25,7 @@ public class Solution {
         // The size of the stack is the minimum length of the array after merging
         return stack.size();
     }
+
     public static int getMinLength1(List<Integer> a, int k) {
         // We will keep merging elements until no more merges are possible
         boolean canMerge = true;

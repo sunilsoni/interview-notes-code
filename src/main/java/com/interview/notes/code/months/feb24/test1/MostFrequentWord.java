@@ -4,14 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
-
- In Java : Java find unique no in array without using exsiting  methods use cusotme one
-
-
- *. If you- need-more classes, simply define them- inline.
- Find• unique numbers in array without-using hash- map
- • For example, if given input array-is {1,2,4,2,3,5,1, 6,3,8} then output may-be - {4,5,6,8}
+ * In Java : Java find unique no in array without using exsiting  methods use cusotme one
+ * <p>
+ * <p>
+ * . If you- need-more classes, simply define them- inline.
+ * Find• unique numbers in array without-using hash- map
+ * • For example, if given input array-is {1,2,4,2,3,5,1, 6,3,8} then output may-be - {4,5,6,8}
  */
 public class MostFrequentWord {
 

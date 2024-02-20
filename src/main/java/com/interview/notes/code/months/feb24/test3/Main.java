@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.feb24.test3;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {

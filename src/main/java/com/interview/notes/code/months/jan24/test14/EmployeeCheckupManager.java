@@ -9,6 +9,22 @@ public class EmployeeCheckupManager {
     private Map<Integer, List<Integer>> batchToEmployeesMap = new HashMap<>();
     private List<Integer> completedBatches = new ArrayList<>();
 
+    public static void main(String[] args) {
+        EmployeeCheckupManager manager = new EmployeeCheckupManager();
+
+        // Assuming employee IDs range from 1 to 30 for example
+        List<Integer> employeeIds = new ArrayList<>();
+        for (int i = 1; i <= 30; i++) {
+            employeeIds.add(i);
+        }
+
+        manager.createBatches(employeeIds);
+        manager.completeBatch(1); // Mark the first batch as completed
+
+        // Get details for batch 1
+        System.out.println(manager.getBatchDetails(1));
+    }
+
     // Method to create batches from the list of employee IDs
     public void createBatches(List<Integer> employeeIds) {
         int batchNumber = 1;
@@ -31,21 +47,5 @@ public class EmployeeCheckupManager {
         details.put("Employees", batchToEmployeesMap.get(batchNumber));
         details.put("Completed", completedBatches.contains(batchNumber));
         return details;
-    }
-
-    public static void main(String[] args) {
-        EmployeeCheckupManager manager = new EmployeeCheckupManager();
-
-        // Assuming employee IDs range from 1 to 30 for example
-        List<Integer> employeeIds = new ArrayList<>();
-        for (int i = 1; i <= 30; i++) {
-            employeeIds.add(i);
-        }
-
-        manager.createBatches(employeeIds);
-        manager.completeBatch(1); // Mark the first batch as completed
-
-        // Get details for batch 1
-        System.out.println(manager.getBatchDetails(1));
     }
 }

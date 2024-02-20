@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.feb24.test2;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class TreeNode {
     int val;
@@ -12,6 +13,21 @@ class TreeNode {
 }
 
 public class MaximumNodesLevel {
+    public static void main(String[] args) {
+        // Example usage:
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
+
+        MaximumNodesLevel solver = new MaximumNodesLevel();
+        int maxLevel = solver.maxNodesLevel(root);
+        System.out.println("Level with maximum number of nodes: " + maxLevel);
+    }
+
     public int maxNodesLevel(TreeNode root) {
         if (root == null)
             return 0;
@@ -40,20 +56,5 @@ public class MaximumNodesLevel {
         }
 
         return maxLevel + 1; // Levels are 0-indexed, so add 1 to get the actual level number
-    }
-
-    public static void main(String[] args) {
-        // Example usage:
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-        root.right.left = new TreeNode(6);
-        root.right.right = new TreeNode(7);
-
-        MaximumNodesLevel solver = new MaximumNodesLevel();
-        int maxLevel = solver.maxNodesLevel(root);
-        System.out.println("Level with maximum number of nodes: " + maxLevel);
     }
 }

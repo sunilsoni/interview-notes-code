@@ -7,12 +7,12 @@ import java.util.List;
 class GetMatchingProducts {
 
     /* Complete the 'getMatchingProducts' function below.
-    *
-    * The function is expected to return a 2D_STRING_ARRAY.
-    * The function accepts following parameters:
-    *  1. 2D_STRING_ARRAY products
-    *  2. 2D_STRING_ARRAY queries
-    */
+     *
+     * The function is expected to return a 2D_STRING_ARRAY.
+     * The function accepts following parameters:
+     *  1. 2D_STRING_ARRAY products
+     *  2. 2D_STRING_ARRAY queries
+     */
 
     public static List<List<String>> getMatchingProducts(List<List<String>> products, List<List<String>> queries) {
         List<List<String>> result = new ArrayList<>();

@@ -16,7 +16,7 @@ public class MoveZeros {
                 nonZeroIndex++;
             }
         }
-        
+
         // No need to explicitly move zeros to the end, as they are already there
     }
 

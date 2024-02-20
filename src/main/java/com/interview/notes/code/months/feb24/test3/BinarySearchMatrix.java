@@ -2,7 +2,7 @@ package com.interview.notes.code.months.feb24.test3;
 
 //ServiceNow
 public class BinarySearchMatrix {
-    
+
     // Binary search on each row that returns the position of the target if found
     private static String binarySearchRow(int[][] matrix, int target, int row) {
         int left = 0, right = matrix[0].length - 1;
@@ -29,21 +29,21 @@ public class BinarySearchMatrix {
         }
         return "Target " + target + " not found";
     }
-    
+
     public static void main(String[] args) {
         int[][] matrix = {
-            {9, 19, 29, 39},
-            {14, 24, 34, 44},
-            {26, 28, 36, 47},
-            {31, 32, 38, 491}
+                {9, 19, 29, 39},
+                {14, 24, 34, 44},
+                {26, 28, 36, 47},
+                {31, 32, 38, 491}
         };
-        
+
         int target1 = 28;
         int target2 = 100;
-        
+
         String found1 = searchMatrix(matrix, target1);
         String found2 = searchMatrix(matrix, target2);
-        
+
         System.out.println(found1); // Should print the position of target1
         System.out.println(found2); // Should indicate target2 is not found
     }

@@ -18,6 +18,7 @@ public class UniqueIDGenerator {
     /**
      * Generates a unique ID consisting of 6 characters.
      * It randomly selects characters from the defined CHAR_SET until a unique combination is created.
+     *
      * @return A unique ID string
      */
     public static String generateUniqueID() {

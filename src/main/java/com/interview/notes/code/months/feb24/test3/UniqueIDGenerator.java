@@ -6,9 +6,9 @@ import java.util.Random;
 public class UniqueIDGenerator {
 
     private static final String CHAR_SET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final Random random = new Random();
     private static long lastTime = -1;
     private static int counter = 0;
-    private static final Random random = new Random();
 
     public static synchronized String generateUniqueID() {
         long currentTime = System.currentTimeMillis();

@@ -15,8 +15,8 @@ public class UniqueNumbersFinderWithSort {
         List<Integer> uniqueList = new ArrayList<>();
         for (int i = 0; i < input.length; i++) {
             // Check if the current element is unique
-            if ((i == 0 || input[i] != input[i - 1]) && 
-                (i == input.length - 1 || input[i] != input[i + 1])) {
+            if ((i == 0 || input[i] != input[i - 1]) &&
+                    (i == input.length - 1 || input[i] != input[i + 1])) {
                 uniqueList.add(input[i]);
             }
         }
