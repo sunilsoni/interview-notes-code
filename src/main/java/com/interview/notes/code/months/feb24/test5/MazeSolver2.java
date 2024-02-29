@@ -9,10 +9,10 @@ class MazeSolver2 {
         int rows = maze.length, cols = maze[0].length;
         boolean[][] visited = new boolean[rows][cols];
         int[][] distance = new int[rows][cols];
-        
+
         Queue<int[]> queue = new LinkedList<>();
         List<int[]> path = new ArrayList<>();
-        
+
         // Start BFS from the entrance at (0, 0)
         queue.offer(new int[]{0, 0});
         visited[0][0] = true;
@@ -47,8 +47,8 @@ class MazeSolver2 {
             path.addFirst(new int[]{r, c});
             for (int i = 0; i < 4; i++) { // Look for the previous cell
                 int nr = r + directions[i], nc = c + directions[i + 1];
-                if (nr >= 0 && nr < distance.length && nc >= 0 && nc < distance[0].length && 
-                    distance[nr][nc] == distance[r][c] - 1) {
+                if (nr >= 0 && nr < distance.length && nc >= 0 && nc < distance[0].length &&
+                        distance[nr][nc] == distance[r][c] - 1) {
                     r = nr;
                     c = nc;
                     break;
@@ -61,13 +61,13 @@ class MazeSolver2 {
 
     public static void main(String[] args) {
         int[][] maze = {
-            {0, 0, 0, 0, 0, 0},
-            {0, 1, 1, 1, 1, 0},
-            {0, 1, 1, 1, 0, 0},
-            {0, 1, 1, 0, 1, 0},
-            {0, 1, 0, 0, 0, 0}
+                {0, 0, 0, 0, 0, 0},
+                {0, 1, 1, 1, 1, 0},
+                {0, 1, 1, 1, 0, 0},
+                {0, 1, 1, 0, 1, 0},
+                {0, 1, 0, 0, 0, 0}
         };
-        
+
         List<int[]> shortestPath = findShortestPath(maze);
         for (int[] step : shortestPath) {
             System.out.println(Arrays.toString(step));

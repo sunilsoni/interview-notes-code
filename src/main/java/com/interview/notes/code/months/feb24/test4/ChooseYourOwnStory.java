@@ -35,8 +35,8 @@ public class ChooseYourOwnStory {
     public static void main(String[] args) {
         List<Integer> endings1 = Arrays.asList(6, 15, 21, 30);
         List<List<Integer>> choices1_1 = Arrays.asList(
-            Arrays.asList(3, 7, 8),
-            Arrays.asList(9, 4, 2)
+                Arrays.asList(3, 7, 8),
+                Arrays.asList(9, 4, 2)
         );
 
         int result1 = stories(endings1, choices1_1, 1);

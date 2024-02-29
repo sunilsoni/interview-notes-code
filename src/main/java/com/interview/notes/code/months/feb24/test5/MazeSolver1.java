@@ -50,7 +50,7 @@ public class MazeSolver1 {
     // Helper method to check if the new position is valid
     private static boolean isValid(int x, int y, int[][] maze, boolean[][] visited) {
         return x >= 0 && y >= 0 && x < maze.length && y < maze[0].length &&
-               !visited[x][y] && maze[x][y] == 0;
+                !visited[x][y] && maze[x][y] == 0;
     }
 
     // Helper method to backtrack the path from the exit to the entrance
