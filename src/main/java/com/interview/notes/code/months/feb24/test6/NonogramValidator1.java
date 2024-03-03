@@ -23,7 +23,7 @@ public class NonogramValidator1 {
     private static boolean validateLine(char[] line, List<Integer> instructions) {
         List<Integer> runLengths = new ArrayList<>();
         int count = 0;
-        
+
         for (char c : line) {
             if (c == 'B') {
                 count++;

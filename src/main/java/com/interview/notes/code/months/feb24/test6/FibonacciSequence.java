@@ -6,9 +6,9 @@ public class FibonacciSequence {
             System.out.println("Please enter a positive integer greater than 0.");
             return;
         }
-        
+
         int first = 1, second = 1;
-        
+
         // Handle edge cases
         if (n == 1) {
             System.out.println(first);
@@ -18,7 +18,7 @@ public class FibonacciSequence {
             return;
         } else {
             System.out.print(first + ", " + second); // Print the first two terms
-            
+
             // Loop to calculate the rest of the sequence
             for (int i = 3; i <= n; i++) {
                 int nextTerm = first + second;
@@ -28,7 +28,7 @@ public class FibonacciSequence {
             }
         }
     }
-    
+
     public static void main(String[] args) {
         int n = 10; // Example: Print first 10 terms of Fibonacci sequence
         printFibonacci(n);

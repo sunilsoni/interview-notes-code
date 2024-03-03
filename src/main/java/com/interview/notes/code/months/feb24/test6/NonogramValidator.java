@@ -50,7 +50,7 @@ public class NonogramValidator {
         return runLengths.equals(instructions);
     }
     // ... (rest of the NonogramValidator class remains unchanged)
-    
+
     // Main method for execution and testing with the new input format
     public static void main(String[] args) {
         char[][] matrix3 = {
@@ -59,7 +59,7 @@ public class NonogramValidator {
         int[][] rows3_2 = {{1, 2, 2}};
         int[][] columns3_2 = {{1}, {}, {1}, {1}, {}, {1}};
 
-        System.out.println("validateNonogram(matrix3, rows3_2, columns3_2) => " + 
+        System.out.println("validateNonogram(matrix3, rows3_2, columns3_2) => " +
                 validateNonogram(matrix3, rows3_2, columns3_2));
         // The matrix3 data should be filled in accordingly.
     }

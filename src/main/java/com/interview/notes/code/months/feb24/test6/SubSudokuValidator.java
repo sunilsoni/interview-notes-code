@@ -14,13 +14,13 @@ public class SubSudokuValidator {
         }
 
         int size = grid.length;
-        
+
         for (int i = 0; i < size; i++) {
             if (!hasAllNumbers(grid[i], size) || !hasAllNumbers(colToArray(grid, i), size)) {
                 return false;
             }
         }
-        
+
         return true;
     }
 

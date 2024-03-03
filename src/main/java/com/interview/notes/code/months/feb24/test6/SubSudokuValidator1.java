@@ -6,9 +6,9 @@ public class SubSudokuValidator1 {
         if (grid == null || grid.length == 0 || grid.length != grid[0].length) {
             return false;
         }
-        
+
         int size = grid.length;
-        
+
         // Step 2: Iterate over the grid to check rows and columns
         for (int i = 0; i < size; i++) {
             // Step 3 & 4: Validate rows and columns
@@ -16,11 +16,11 @@ public class SubSudokuValidator1 {
                 return false;
             }
         }
-        
+
         // If all rows and columns are valid
         return true;
     }
-    
+
     // Helper method to check if a list contains all numbers from 1 to N
     private static boolean hasAllNumbers(int[] array, int size) {
         boolean[] found = new boolean[size];
@@ -32,7 +32,7 @@ public class SubSudokuValidator1 {
         }
         return true;
     }
-    
+
     // Helper method to convert a column to an array
     private static int[] colToArray(int[][] grid, int col) {
         int[] colArray = new int[grid.length];
@@ -41,7 +41,7 @@ public class SubSudokuValidator1 {
         }
         return colArray;
     }
-    
+
     // A "main" method for easy execution and testing
     public static void main(String[] args) {
         int[][] grid1 = {{2, 3, 1}, {1, 2, 3}, {3, 1, 2}};

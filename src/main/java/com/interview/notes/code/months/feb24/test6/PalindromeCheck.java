@@ -12,11 +12,11 @@ public class PalindromeCheck {
         }
         return true;
     }
-    
+
     // Method to find which character to remove to make the string a palindrome
     public static String makePalindrome(String s) {
         int left = 0, right = s.length() - 1;
-        
+
         while (left < right) {
             if (s.charAt(left) != s.charAt(right)) {
                 // If removing the left or right character makes it a palindrome
@@ -31,7 +31,7 @@ public class PalindromeCheck {
         }
         return "Already a palindrome.";
     }
-    
+
     public static void main(String[] args) {
         String input = "racebcar";
         System.out.println(makePalindrome(input));
