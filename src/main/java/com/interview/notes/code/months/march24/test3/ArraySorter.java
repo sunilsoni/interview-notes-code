@@ -6,7 +6,7 @@ public class ArraySorter {
     public static void main(String[] args) {
         String[] words = {"a", "b", "chase", "c", "chase", "d"};
         String targetWord = "chase"; // The word to move to the end and sort the rest
-        
+
         sortArrayExcludingTarget(words, targetWord);
         System.out.println(Arrays.toString(words));
     }

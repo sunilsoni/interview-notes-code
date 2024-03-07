@@ -40,6 +40,7 @@ class Result1 {
         }
         return new String(digits);
     }
+
     public static String getLargestNumber(String num) {
         char[] digits = num.toCharArray();
         // Arrays to track the last indices of even and odd digits.
@@ -69,6 +70,7 @@ class Result1 {
         }
         return new String(digits);
     }
+
     public static void main(String[] args) {
         System.out.println(Result1.getLargestNumber("7596801")); // Example 1
         System.out.println(Result1.getLargestNumber("1806579")); // Example 1860795

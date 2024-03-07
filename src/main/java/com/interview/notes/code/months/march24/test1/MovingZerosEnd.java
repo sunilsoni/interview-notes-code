@@ -1,6 +1,5 @@
 package com.interview.notes.code.months.march24.test1;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ import java.util.List;
  * Constraints
  * 1 <= N <= 104
  * -231 <= nums|i] <= 231 - 1
- *
- *
+ * <p>
+ * <p>
  * Example #1
  * Input
  * 5
@@ -31,15 +30,15 @@ import java.util.List;
  * 0
  */
 public class MovingZerosEnd {
-    public static List<Integer> solve(List<Integer> nums){
+    public static List<Integer> solve(List<Integer> nums) {
         int j = 0;
-        for(int i = 0; i < nums.size(); i++){
-            if(nums.get(i) != 0){
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums.get(i) != 0) {
                 nums.set(j, nums.get(i));
                 j++;
             }
         }
-        for(int i = j; i < nums.size(); i++){
+        for (int i = j; i < nums.size(); i++) {
             nums.set(i, 0);
         }
         return nums;

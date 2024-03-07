@@ -1,10 +1,10 @@
 package com.interview.notes.code.months.march24.test3;
 
-import java.util.List;
 import java.util.HashSet;
+import java.util.List;
 
 public class Solution {
-    
+
     static boolean hasDistinctDigits(int number) {
         HashSet<Character> digits = new HashSet<>();
         char[] numChars = String.valueOf(number).toCharArray();

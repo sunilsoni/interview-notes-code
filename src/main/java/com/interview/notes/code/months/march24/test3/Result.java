@@ -62,6 +62,7 @@ class Result {
         }
         return num;
     }
+
     public static void main(String[] args) {
         System.out.println(Result.getLargestNumber("0082663")); // Test Case 1
         System.out.println(Result.getLargestNumber("1806579")); // Test Case 2
@@ -85,6 +86,7 @@ class Result {
         }
         return new String(chars);
     }
+
     public static String getLargestNumber5(String num) {
         char[] characters = num.toCharArray();
         for (int i = 0; i < characters.length; i++) {

@@ -22,10 +22,10 @@ public class Main3 {
     public static void main(String[] args) {
         List<Integer> arr = List.of(2, 3, 4, 5);
         System.out.println(getNumPairs(arr, 5, 7)); // Expected output: 4
-        
+
         arr = List.of(6, 2, 3);
         System.out.println(getNumPairs(arr, 7, 10)); // Expected output: 2
-        
+
         arr = List.of(100, 100);
         System.out.println(getNumPairs(arr, 200, 200)); // Expected output: 1
     }

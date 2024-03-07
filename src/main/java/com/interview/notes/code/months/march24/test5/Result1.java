@@ -9,7 +9,7 @@ public class Result1 {
         // Separate digits into odd and even groups
         StringBuilder oddDigits = new StringBuilder();
         StringBuilder evenDigits = new StringBuilder();
-        
+
         // Iterate through each digit in the input number
         for (char digit : num.toCharArray()) {
             if ((digit - '0') % 2 == 0) {
@@ -18,21 +18,21 @@ public class Result1 {
                 oddDigits.append(digit);
             }
         }
-        
+
         // Sort each group in descending order
         char[] oddArray = oddDigits.toString().toCharArray();
         java.util.Arrays.sort(oddArray);
         char[] evenArray = evenDigits.toString().toCharArray();
         java.util.Arrays.sort(evenArray);
-        
+
         // Reverse the arrays to get descending order
         oddDigits = new StringBuilder(new String(oddArray)).reverse();
         evenDigits = new StringBuilder(new String(evenArray)).reverse();
-        
+
         // Merge the two groups, maintaining the original order of parity
         StringBuilder largestNumber = new StringBuilder();
         int oddIndex = 0, evenIndex = 0;
-        
+
         for (char digit : num.toCharArray()) {
             if ((digit - '0') % 2 == 0) {
                 largestNumber.append(evenDigits.charAt(evenIndex++));
@@ -40,7 +40,7 @@ public class Result1 {
                 largestNumber.append(oddDigits.charAt(oddIndex++));
             }
         }
-        
+
         return largestNumber.toString();
     }
 
@@ -116,7 +116,7 @@ public class Result1 {
         String num = "0082663";
         System.out.println(getLargestNumber(num)); // Output should be "9758601"
 
-          num = "1806579";
+        num = "1806579";
         System.out.println(getLargestNumber(num)); // Output should be "1860975"
 
 
@@ -125,8 +125,6 @@ public class Result1 {
 
         num = "0082663";
         System.out.println(getLargestNumber(num)); // Output should be "9758601"
-
-
 
 
     }

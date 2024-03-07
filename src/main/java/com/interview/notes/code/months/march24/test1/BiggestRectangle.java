@@ -20,7 +20,8 @@ public class BiggestRectangle {
         System.out.println("Max Area for example1: " + maxArea(example1));
         System.out.println("Max Area for example2: " + maxArea(example2));
     }
-    public static int maxArea(List<Integer> B){
+
+    public static int maxArea(List<Integer> B) {
         Deque<Integer> stack = new ArrayDeque<>();
         int maxArea = 0;
         int index = 0;

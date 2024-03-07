@@ -57,8 +57,5 @@ class Result {
         System.out.println(getLargestNumber(num)); // Output should be "1860975"
 
 
-
-
-
     }
 }

@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.march24.test2;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 class Result1 {
     public static List<Integer> kthOccurrence(int X, List<Integer> arr, List<Integer> query_values) {
@@ -28,7 +28,7 @@ class Result1 {
         int X = 8;
         List<Integer> query_values = List.of(100, 4, 2);
         System.out.println(kthOccurrence(X, arr, query_values)); // Should output [-1, -1, 5]
-        
+
         arr = List.of(9, 8, 9, 9);
         X = 9;
         query_values = List.of(7, 3, 7, 6);

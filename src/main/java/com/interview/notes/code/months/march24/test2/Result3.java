@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.march24.test2;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -22,20 +22,20 @@ import java.util.ArrayList;
  * Constraints
  * • 1 < n, q <=2 * 105
  * • 0 <= arr, X, query_values <= 109
- *
- *
+ * <p>
+ * <p>
  * • Input Format For Custom Testing
- *
+ * <p>
  * The first line contains an integer, the value of X.
- *
+ * <p>
  * Next line contains a single integer n, the size of arr.
- *
+ * <p>
  * The next n lines each contain an integer, arr[il.
- *
+ * <p>
  * The next line contains a single integer q, the size of query_values.
- *
+ * <p>
  * The next q lines each contain an integer, query_values].
- *
+ * <p>
  * • Sample Case 0
  * Sample Input For Custom Testing
  * STDIN
@@ -63,17 +63,17 @@ import java.util.ArrayList;
  * ->
  * query_values] size q = 5
  * query_values [] = [100, 2, 1, 3, 41
- *
+ * <p>
  * -1
- *
+ * <p>
  * 5
- *
+ * <p>
  * 4
- *
+ * <p>
  * 9
- *
+ * <p>
  * -1
- *
+ * <p>
  * Sample Output
  * Explanation
  * There is no 100th or 4th occurrence of 8, hence, for those queries, the answer is -1. For the rest,
@@ -105,14 +105,13 @@ import java.util.ArrayList;
  * -1
  * Sample Explanation
  * There is no 6th or 7th occurrence of 9. The 3rd occurrence is at index 4.
- *
- *
+ * <p>
+ * <p>
  * Error:
- *
+ * <p>
  * Time limit exceeded
  * Allowed time limit:4 secs
  * Your code did not execute in time. Please optimize your code. For more details on runtime
- *
  */
 class Result3 {
 
@@ -140,7 +139,7 @@ class Result3 {
         int X = 8;
         List<Integer> query_values = List.of(100, 4, 2);
         System.out.println(kthOccurrence(X, arr, query_values)); // Expected: [-1, -1, 5]
-        
+
         arr = List.of(9, 8, 9, 9);
         X = 9;
         query_values = List.of(7, 3, 7, 6);

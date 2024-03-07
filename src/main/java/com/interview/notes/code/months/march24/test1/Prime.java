@@ -20,23 +20,23 @@ import java.util.Arrays;
  * Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
  */
 public class Prime {
-    public static int solve(int N){
+    public static int solve(int N) {
         boolean[] prime = new boolean[N];
-        if(N >= 2){
+        if (N >= 2) {
             Arrays.fill(prime, true);
             prime[0] = false;
             prime[1] = false;
-            for(int i = 2; i * i < N; i++){
-                if(prime[i]){
-                    for(int j = i * i; j < N; j += i){
+            for (int i = 2; i * i < N; i++) {
+                if (prime[i]) {
+                    for (int j = i * i; j < N; j += i) {
                         prime[j] = false;
                     }
                 }
             }
         }
         int primeCount = 0;
-        for(int i = 2; i < N; i++){
-            if(prime[i]) primeCount++;
+        for (int i = 2; i < N; i++) {
+            if (prime[i]) primeCount++;
         }
         return primeCount;
     }

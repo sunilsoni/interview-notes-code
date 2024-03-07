@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.march24.test2;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 class Result2 {
 
@@ -34,7 +34,7 @@ class Result2 {
         for (int result : results) {
             System.out.println(result);
         }
-        
+
         // Additional test cases based on the given examples
         arr = List.of(9, 8, 9, 9);
         X = 9;
