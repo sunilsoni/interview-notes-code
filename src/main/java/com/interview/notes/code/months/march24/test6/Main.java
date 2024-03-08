@@ -1,42 +1,18 @@
 package com.interview.notes.code.months.march24.test6;
 
-import java.util.List;
+// Functional interface with two parameters
+@FunctionalInterface
+interface TwoArgFunction<T, U, R> {
+    R apply(T arg1, U arg2);
+}
 
 public class Main {
     public static void main(String[] args) {
-        List<List<String>> commands1 = List.of(
-                List.of("Insert", "addthis"),
-                List.of("Print", "5"),
-                List.of("Left", "4"),
-                List.of("Right", "2"),
-                List.of("Backspace", "1"),
-                List.of("Delete", "1"),
-                List.of("Print", "10")
-        );
-
-        List<List<String>> commands2 = List.of(
-                List.of("Insert", "present"),
-                List.of("Print", "5"),
-                List.of("Left", "4"),
-                List.of("Insert", "test"),
-                List.of("Print", "8"),
-                List.of("Delete", "4"),
-                List.of("Print", "7")
-        );
-
-        List<List<String>> commands3 = List.of(
-                List.of("Insert", "xgpuamkx"),
-                List.of("Print", "1"),
-                List.of("Insert", "kbpph"),
-                List.of("Left", "5"),
-                List.of("Insert", "ezpl"),
-                List.of("Print", "1"),
-                List.of("Print", "2"),
-                List.of("Insert", "op")
-        );
-
-        System.out.println("Example 1 Output: " + Result2.getPrintedStrings(commands1));
-        System.out.println("Example 2 Output: " + Result2.getPrintedStrings(commands2));
-        System.out.println("Example 3 Output: " + Result2.getPrintedStrings(commands3));
+        // Define a lambda expression to add two integers
+        TwoArgFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
+        
+        // Test the lambda expression
+        int result = add.apply(3, 5);
+        System.out.println("Result of addition: " + result); // Output: Result of addition: 8
     }
 }
