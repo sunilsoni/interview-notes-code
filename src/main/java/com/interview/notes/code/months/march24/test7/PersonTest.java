@@ -1,7 +1,8 @@
 package com.interview.notes.code.months.march24.test7;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 class Person {
     String name;

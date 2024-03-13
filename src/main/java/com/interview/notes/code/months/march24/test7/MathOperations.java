@@ -4,8 +4,8 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class MathOperations {
-    static int number2 = getValue();
     static int number1 = 10;
+    static int number2 = getValue();
 
     static int getValue() {
         return number1;

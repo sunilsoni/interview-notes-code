@@ -1,7 +1,8 @@
 package com.interview.notes.code.months.march24.test7;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.TreeMap;
+import java.util.stream.Collector;
+import java.util.stream.Stream;
 
 public class TestMyCollector {
     public static void main(String[] args) {

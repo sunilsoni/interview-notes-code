@@ -9,6 +9,7 @@ class Result {
         String input1 = "a?rt?????";
         System.out.println(getSmallestPalindrome(input1));
     }
+
     public static String getSmallestPalindrome(String s) {
         int n = s.length();
         StringBuilder sb = new StringBuilder(s);

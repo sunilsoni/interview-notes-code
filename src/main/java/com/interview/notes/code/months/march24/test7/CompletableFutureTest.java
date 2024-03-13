@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.march24.test7;
 
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.ExecutionException;
 
 public class CompletableFutureTest {
     public static int gradeSchoolFinished() {
