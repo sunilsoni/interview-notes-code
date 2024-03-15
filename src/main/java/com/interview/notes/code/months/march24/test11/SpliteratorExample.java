@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.march24.test11;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Spliterator;
 
 public class SpliteratorExample {
     public static void main(String[] args) {

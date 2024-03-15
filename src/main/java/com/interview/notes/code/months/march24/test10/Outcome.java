@@ -1,8 +1,8 @@
 package com.interview.notes.code.months.march24.test10;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import java.math.BigInteger;
 
 public class Outcome {
 
@@ -14,7 +14,7 @@ public class Outcome {
                 result.add(i);
             }
         }
-        
+
         // If no factorials start with an even number, return a list containing only 0
         if (result.isEmpty()) {
             result.add(0);
@@ -40,7 +40,7 @@ public class Outcome {
     public static void main(String[] args) {
         List<Integer> result1 = solve(1, 10);
         System.out.println(result1); // Expected: [2, 3, 4, 8]
-        
+
         List<Integer> result2 = solve(5, 7);
         System.out.println(result2); // Expected: [0]
     }

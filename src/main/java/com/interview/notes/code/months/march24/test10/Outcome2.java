@@ -14,35 +14,35 @@ class Outcome2 {
      * return List<Integer>.
      */
 
-    public static List<Integer> solve(int m, int n){
+    public static List<Integer> solve(int m, int n) {
         //Write your code here
         List<Integer> result = new ArrayList<>();
-        for(int i=m; i<=n;i++){
+        for (int i = m; i <= n; i++) {
             BigInteger fact = calculateFact(i);
-            
-            if(isFirstDigitEven(fact)){
+
+            if (isFirstDigitEven(fact)) {
                 result.add(i);
             }
-            
+
         }
 
-        return result; 
+        return result;
     }
-    
-    private static boolean isFirstDigitEven(BigInteger num){
-        while(num.compareTo(BigInteger.TEN) >=0 ){
+
+    private static boolean isFirstDigitEven(BigInteger num) {
+        while (num.compareTo(BigInteger.TEN) >= 0) {
             num = num.divide(BigInteger.TEN);
         }
-        return num.intValue()%2==0;
+        return num.intValue() % 2 == 0;
     }
 
-private static BigInteger calculateFact(int num){
-    BigInteger factorial = BigInteger.ONE;
-    for(int i=2; i<=num;i++){
-       factorial = factorial.multiply(BigInteger.valueOf(i));
+    private static BigInteger calculateFact(int num) {
+        BigInteger factorial = BigInteger.ONE;
+        for (int i = 2; i <= num; i++) {
+            factorial = factorial.multiply(BigInteger.valueOf(i));
+        }
+        return factorial;
     }
-    return factorial;
-}
 
     public static void main(String[] args) {
         // Example #1

@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.march24.test13;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class RussianDolls {
 
@@ -19,7 +21,7 @@ public class RussianDolls {
 
         return count;
     }
-    
+
     public static void main(String[] args) {
         // Example 1
         List<Integer> dolls1 = Arrays.asList(2, 2, 3, 3);

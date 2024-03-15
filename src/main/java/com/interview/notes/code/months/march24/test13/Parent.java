@@ -15,12 +15,12 @@ class Parent {
 }
 
 class Child extends Parent {
-    {
-        System.out.println("Child initialization block");
-    }
-
     static {
         System.out.println("Child static block");
+    }
+
+    {
+        System.out.println("Child initialization block");
     }
 
     public Child() {

@@ -17,13 +17,13 @@ class Outcome2 {
         return result;
     }
 
-    public static List<Integer> solve1(int m,int n){
+    public static List<Integer> solve1(int m, int n) {
         //Write your code here
         List<Integer> result = new ArrayList<>();
-        for(int i=m; i<=n;i++){
+        for (int i = m; i <= n; i++) {
             BigInteger fact = calculateFactorial(i);
             String factString = fact.toString();
-            if((factString.charAt(0)-'0') % 2 == 0){
+            if ((factString.charAt(0) - '0') % 2 == 0) {
                 result.add(i);
             }
         }

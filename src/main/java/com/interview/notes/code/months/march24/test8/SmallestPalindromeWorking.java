@@ -171,6 +171,7 @@ class SmallestPalindromeWorking {
 
         return new String(str);
     }
+
     public static String getSmallestPalindrome5(String s) {
         char[] arr = s.toCharArray();
         int questionMarks = 0; // To count the number of question marks
@@ -205,6 +206,7 @@ class SmallestPalindromeWorking {
 
         return new String(arr); // Return the smallest lexicographic palindrome
     }
+
     public static String getSmallestPalindrome6(String s) {
         char[] chars = s.toCharArray();
         int left = 0;

@@ -8,18 +8,18 @@ public class Solution {
         int n = chars.length;
         int[] indices = new int[n];
         int count = 0;
-        
+
         // Find the indices of '?' characters
         for (int i = 0; i < n; i++) {
             if (chars[i] == '?') {
                 indices[count++] = i;
             }
         }
-        
+
         // Try all possible replacements
         for (int mask = 0; mask < (1 << count); mask++) {
             char[] candidate = chars.clone();
-            
+
             // Replace '?' with 'a' and check for palindrome
             for (int i = 0; i < count; i++) {
                 if ((mask & (1 << i)) == 0) {
@@ -28,15 +28,15 @@ public class Solution {
                     candidate[indices[i]] = 'b';
                 }
             }
-            
+
             if (isPalindrome(candidate)) {
                 return new String(candidate);
             }
         }
-        
+
         return "-1";
     }
-    
+
     private static boolean isPalindrome(char[] chars) {
         int left = 0, right = chars.length - 1;
         while (left < right) {

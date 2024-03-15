@@ -8,7 +8,7 @@ public class Main4 {
         Consumer<String> processInput = input -> {
             int maxLength = 10;
             StringBuilder resultBuilder = new StringBuilder();
-            
+
             // Truncate the input string if it's longer than maxLength
             if (input.length() > maxLength) {
                 resultBuilder.append(input, 0, maxLength);

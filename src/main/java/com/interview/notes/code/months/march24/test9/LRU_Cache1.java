@@ -11,25 +11,6 @@ public class LRU_Cache1 {
         this.cache = new LinkedHashMap<>();
     }
 
-    public int get(int key) {
-        if (!cache.containsKey(key)) {
-            return -1;
-        }
-        int value = cache.remove(key);
-        cache.put(key, value); // move to end (most recently used)
-        return value;
-    }
-
-    public void put(int key, int value) {
-        if (cache.containsKey(key)) {
-            cache.remove(key);
-        } else if (cache.size() == capacity) {
-            Integer firstKey = cache.keySet().iterator().next();
-            cache.remove(firstKey);
-        }
-        cache.put(key, value);
-    }
-
     public static List<Integer> solve(int capacity, List<String> ar) {
         LRU_Cache1 lru = new LRU_Cache1(capacity);
         List<Integer> result = new ArrayList<>();
@@ -62,5 +43,24 @@ public class LRU_Cache1 {
         List<String> operations2 = Arrays.asList("PUT, 11,25", "PUT, 22,50", "PUT, 11,75", "GET, 11", "GET, 22");
         List<Integer> output2 = LRU_Cache1.solve(capacity2, operations2);
         System.out.println(output2); // Expected output: [75, 50]
+    }
+
+    public int get(int key) {
+        if (!cache.containsKey(key)) {
+            return -1;
+        }
+        int value = cache.remove(key);
+        cache.put(key, value); // move to end (most recently used)
+        return value;
+    }
+
+    public void put(int key, int value) {
+        if (cache.containsKey(key)) {
+            cache.remove(key);
+        } else if (cache.size() == capacity) {
+            Integer firstKey = cache.keySet().iterator().next();
+            cache.remove(firstKey);
+        }
+        cache.put(key, value);
     }
 }

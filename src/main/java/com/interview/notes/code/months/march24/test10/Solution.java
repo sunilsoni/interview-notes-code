@@ -27,6 +27,7 @@ class BinaryTree {
         nodeMap.put(child, childNode);
         root = nodeMap.getOrDefault(1, null);
     }
+
     int[] getLevelSpiral() {
         if (root == null) return new int[0];
 
@@ -59,7 +60,7 @@ class BinaryTree {
 }
 
 public class Solution {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         BinaryTree tree = new BinaryTree();

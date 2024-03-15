@@ -18,7 +18,7 @@ public class Outcome1 {
 
         return result.toString();
     }
-    
+
     public static void main(String[] args) {
         // Example #1
         System.out.println(solve("11", "1")); // Output: 100

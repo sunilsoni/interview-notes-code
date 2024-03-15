@@ -81,6 +81,7 @@ class Result {
         }
         return true;
     }
+
     public static void main(String[] args) {
         System.out.println(getSmallestPalindrome("ai?a??u")); // should output "aaiuiaa"
         System.out.println(getSmallestPalindrome("a?rt???")); // should output "aartraa"

@@ -20,7 +20,7 @@ public class CompletableFuture3Threads {
                 String result1 = future1.get();
                 String result2 = future2.get();
                 String result3 = future3.get();
-                
+
                 System.out.println("All tasks completed successfully:");
                 System.out.println("Result 1: " + result1);
                 System.out.println("Result 2: " + result2);
