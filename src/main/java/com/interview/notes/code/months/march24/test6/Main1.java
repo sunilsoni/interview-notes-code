@@ -35,8 +35,8 @@ public class Main1 {
                 List.of("Insert", "op")
         );
 
-        System.out.println("Example 1 Output: " + Result2.getPrintedStrings(commands1));
-        System.out.println("Example 2 Output: " + Result2.getPrintedStrings(commands2));
-        System.out.println("Example 3 Output: " + Result2.getPrintedStrings(commands3));
+        System.out.println("Example 1 Output: " + PrintedStrings.getPrintedStrings(commands1));
+        System.out.println("Example 2 Output: " + PrintedStrings.getPrintedStrings(commands2));
+        System.out.println("Example 3 Output: " + PrintedStrings.getPrintedStrings(commands3));
     }
 }

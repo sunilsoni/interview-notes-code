@@ -11,7 +11,8 @@ import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-class Result3 {
+//WOKRING
+class HealthCheckupMedicalRecord {
     private static final HttpClient httpClient = HttpClient.newHttpClient();
 
     public static int healthCheckup(int lowerlimit, int upperlimit) {

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class Solution1 {
+public class GetMinLength {
     public static int getMinLength(List<Integer> a, int k) {
         int i = 0;
         while (i < a.size() - 1) {

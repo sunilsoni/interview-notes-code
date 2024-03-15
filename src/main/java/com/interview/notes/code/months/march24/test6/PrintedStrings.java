@@ -3,7 +3,8 @@ package com.interview.notes.code.months.march24.test6;
 import java.util.ArrayList;
 import java.util.List;
 
-class Result2 {
+//FINAL WORKING
+class PrintedStrings {
     public static List<String> getPrintedStrings(List<List<String>> commands) {
         StringBuilder sb = new StringBuilder();
         List<String> result = new ArrayList<>();
