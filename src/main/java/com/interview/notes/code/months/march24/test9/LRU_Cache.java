@@ -84,6 +84,7 @@ public class LRU_Cache {
 
     private final int capacity;
     private final Map<Integer, Integer> cache;
+
     public LRU_Cache(int capacity) {
         this.capacity = capacity;
         this.cache = new LinkedHashMap<>(capacity, 0.75f, true) {

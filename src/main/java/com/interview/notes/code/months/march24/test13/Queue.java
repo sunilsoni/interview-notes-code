@@ -1,20 +1,10 @@
 package com.interview.notes.code.months.march24.test13;
 
-import java.util.*;
-import java.lang.*;
-import java.io.*;
+import java.util.Scanner;
 
 class Queue {
     Node head;
-    class Node {
-        int data;
-        Node next;
 
-        Node(int d) {
-            data = d;
-            next = null;
-        }
-    }
     public void push(int new_data) {
         // new data contains the value to be pushed into the queue
         Node temp = new Node(new_data);
@@ -26,6 +16,7 @@ class Queue {
             temp1.next = temp;
         }
     }
+
     public int pop() {
         // returns the popped element
         // returns -1 if the queue is empty
@@ -33,6 +24,16 @@ class Queue {
         int value = head.data;
         head = head.next;
         return value;
+    }
+
+    class Node {
+        int data;
+        Node next;
+
+        Node(int d) {
+            data = d;
+            next = null;
+        }
     }
 }
 

@@ -20,8 +20,8 @@ public class Main {
 
         // Merge lists and get unique values
         List<String> mergedList = Stream.concat(list1.stream(), list2.stream())
-                                        .distinct()
-                                        .collect(Collectors.toList());
+                .distinct()
+                .collect(Collectors.toList());
 
         // Print the result
         System.out.println("Merged list with unique values: " + mergedList);
