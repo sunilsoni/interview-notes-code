@@ -8,7 +8,7 @@ package com.interview.notes.code.months.march24.test17;
 public class Solution {
     public TreeNode1 deleteNode(TreeNode1 root, int key) {
         if (root == null) return null;
-        
+
         // Search for the node.
         if (key < root.val) { // Go left
             root.left = deleteNode(root.left, key);
@@ -20,13 +20,13 @@ public class Solution {
             } else if (root.right == null) {
                 return root.left; // Handle case 1 and 2
             }
-            
+
             // Case 3: Node has two children
             TreeNode1 minNode = findMin(root.right);
             root.val = minNode.val; // Replace with in-order successor
             root.right = deleteNode(root.right, root.val); // Delete the in-order successor
         }
-        
+
         return root;
     }
 

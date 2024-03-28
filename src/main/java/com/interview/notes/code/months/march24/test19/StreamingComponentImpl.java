@@ -5,21 +5,10 @@ import java.util.Queue;
 import java.util.TreeMap;
 
 public class StreamingComponentImpl implements StreamingComponent {
-    // A class to hold the data point information
-    private static class DataPoint {
-        long timestamp;
-        double number;
-
-        public DataPoint(long timestamp, double number) {
-            this.timestamp = timestamp;
-            this.number = number;
-        }
-    }
-
+    private static final long FIVE_MINUTES_MS = 5 * 60 * 1000;
     private Queue<DataPoint> dataPoints = new LinkedList<>();
     private TreeMap<Double, Integer> numberFrequency = new TreeMap<>();
     private double totalSum = 0;
-    private static final long FIVE_MINUTES_MS = 5 * 60 * 1000;
 
     @Override
     public void load(long timestamp, double number) {
@@ -52,5 +41,16 @@ public class StreamingComponentImpl implements StreamingComponent {
     public double getHigher() {
         if (numberFrequency.isEmpty()) return 0;
         return numberFrequency.lastKey();
+    }
+
+    // A class to hold the data point information
+    private static class DataPoint {
+        long timestamp;
+        double number;
+
+        public DataPoint(long timestamp, double number) {
+            this.timestamp = timestamp;
+            this.number = number;
+        }
     }
 }

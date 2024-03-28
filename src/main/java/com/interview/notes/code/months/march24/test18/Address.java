@@ -22,6 +22,6 @@ public class Address {
     public int getZipcode() {
         return zipcode;
     }
-    
+
     // Additional getters and setters could be implemented here.
 }

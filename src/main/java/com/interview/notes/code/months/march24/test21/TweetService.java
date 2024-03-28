@@ -11,7 +11,9 @@ import java.util.List;
 
 public interface TweetService {
     void postTweet(User user, String content);
+
     void replyToTweet(long tweetId, String content, User replier);
+
     List<Tweet> getAllTweets();
     // Additional methods as needed
 }

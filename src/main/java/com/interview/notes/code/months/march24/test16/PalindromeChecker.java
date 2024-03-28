@@ -4,11 +4,11 @@ public class PalindromeChecker {
     public static boolean isPalindrome(String str) {
         // Remove non-alphanumeric characters and convert to lowercase
         String cleanStr = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        
+
         // Compare characters from both ends inward
         int left = 0;
         int right = cleanStr.length() - 1;
-        
+
         while (left < right) {
             if (cleanStr.charAt(left) != cleanStr.charAt(right)) {
                 return false; // Characters don't match, not a palindrome
@@ -18,7 +18,7 @@ public class PalindromeChecker {
         }
         return true; // All characters matched, it's a palindrome
     }
-    
+
     public static void main(String[] args) {
         String input = "A man, a plan, a canal, Panama!";
         if (isPalindrome(input)) {

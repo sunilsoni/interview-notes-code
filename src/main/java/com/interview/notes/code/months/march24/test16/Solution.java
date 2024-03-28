@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String[] words = {"bella", "label", "roller"};
+        List<Character> result = solution.commonChars(words);
+        System.out.println(result);
+    }
+
     public List<Character> commonChars(String[] words) {
         int[] globalCount = new int[26]; // There are 26 letters in the alphabet
         for (char c : words[0].toCharArray()) { // Initialize with the first word
@@ -32,12 +39,5 @@ public class Solution {
         }
 
         return result;
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        String[] words = {"bella", "label", "roller"};
-        List<Character> result = solution.commonChars(words);
-        System.out.println(result);
     }
 }

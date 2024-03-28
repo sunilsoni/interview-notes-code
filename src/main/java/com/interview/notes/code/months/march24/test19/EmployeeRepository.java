@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.march24.test19;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {

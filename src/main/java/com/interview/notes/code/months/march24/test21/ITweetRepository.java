@@ -5,7 +5,9 @@ import java.util.Optional;
 
 public interface ITweetRepository {
     Tweet save(Tweet tweet);
+
     Optional<Tweet> findById(long id);
+
     List<Tweet> findAll();
     // Additional data access methods as needed
 }

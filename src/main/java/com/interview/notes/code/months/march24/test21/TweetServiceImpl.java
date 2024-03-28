@@ -2,7 +2,7 @@ package com.interview.notes.code.months.march24.test21;
 
 import java.util.List;
 
-public class TweetServiceImpl implements TweetService  {
+public class TweetServiceImpl implements TweetService {
     @Override
     public void postTweet(User user, String content) {
 

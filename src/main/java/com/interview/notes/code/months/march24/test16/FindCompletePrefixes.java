@@ -22,8 +22,8 @@ import java.util.stream.Collectors;
  * • 2 ≤ length of names[i], query[i] ≤ 30,
  * • 1 ≤ sum of the lengths of all names ≤ 5 × 105
  * • 1 sq≤ 200
- *
- *
+ * <p>
+ * <p>
  * • Input Format For Custom Testing
  * Input from stdin will be processed as follows and passed to the function.
  * The first line contains an integer n, the size of the array names.
@@ -59,8 +59,8 @@ import java.util.stream.Collectors;
  * sizen = 10
  * names
  * = ['steve', 'stevens', 'danny', 'steves', 'dan', 'john', 'johnny', 'joe', 'alex', 'alexander']
- *
- *
+ * <p>
+ * <p>
  * import java.io.*;.
  * class Result {
  * /*
@@ -72,9 +72,9 @@ import java.util.stream.Collectors;
  * * 2. STRING_ARRAY query
  * * /
  * public static List<integer› findComp LetePretixes (List<String)
- *
- *  }
- *  }
+ * <p>
+ * }
+ * }
  */
 //WORKING
 
@@ -100,13 +100,15 @@ class FindCompletePrefixes {
 
         return results;
     }
+
     public static List<Integer> findCompletePrefixes1(List<String> names, List<String> query) {
         return query.stream()
-                    .map(q -> (int) names.stream()
-                    .filter(name -> name.startsWith(q) && name.length() == q.length() + 1)
-                    .count())
-                    .collect(Collectors.toList());
+                .map(q -> (int) names.stream()
+                        .filter(name -> name.startsWith(q) && name.length() == q.length() + 1)
+                        .count())
+                .collect(Collectors.toList());
     }
+
     public static void main(String[] args) throws IOException {
         List<String> names = Arrays.asList("steve", "stevens", "danny", "steves", "dan", "john", "johnny", "joe", "alex", "alexander");
         List<String> query = Arrays.asList("steve", "alex", "joe", "john", "dan");

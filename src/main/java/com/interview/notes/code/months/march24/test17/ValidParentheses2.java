@@ -1,10 +1,25 @@
 package com.interview.notes.code.months.march24.test17;
 
-import java.util.Stack;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
 
 public class ValidParentheses2 {
+
+    // Main method to test the isValid function
+    public static void main(String[] args) {
+        ValidParentheses2 validator = new ValidParentheses2();
+
+        // Test cases
+        String input1 = "()";
+        String input2 = "()[]{}";
+        String input3 = "(]";
+
+        // Output the results of the validation
+        System.out.println("Input: " + input1 + " - Output: " + validator.isValid(input1));
+        System.out.println("Input: " + input2 + " - Output: " + validator.isValid(input2));
+        System.out.println("Input: " + input3 + " - Output: " + validator.isValid(input3));
+    }
 
     // Method to validate the string of parentheses
     public boolean isValid(String s) {
@@ -35,20 +50,5 @@ public class ValidParentheses2 {
 
         // The string is valid if the stack is empty at the end
         return stack.isEmpty();
-    }
-
-    // Main method to test the isValid function
-    public static void main(String[] args) {
-        ValidParentheses2 validator = new ValidParentheses2();
-
-        // Test cases
-        String input1 = "()";
-        String input2 = "()[]{}";
-        String input3 = "(]";
-
-        // Output the results of the validation
-        System.out.println("Input: " + input1 + " - Output: " + validator.isValid(input1));
-        System.out.println("Input: " + input2 + " - Output: " + validator.isValid(input2));
-        System.out.println("Input: " + input3 + " - Output: " + validator.isValid(input3));
     }
 }

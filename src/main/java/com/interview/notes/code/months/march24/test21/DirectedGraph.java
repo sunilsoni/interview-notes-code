@@ -1,10 +1,14 @@
 package com.interview.notes.code.months.march24.test21;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 class Node {
     int id;
     List<Node> neighbors;
+
     public Node(int id) {
         this.id = id;
         this.neighbors = new ArrayList<>();

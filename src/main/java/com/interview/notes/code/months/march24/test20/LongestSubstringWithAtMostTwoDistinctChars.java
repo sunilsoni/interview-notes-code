@@ -4,6 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LongestSubstringWithAtMostTwoDistinctChars {
+    public static void main(String[] args) {
+        LongestSubstringWithAtMostTwoDistinctChars solution = new LongestSubstringWithAtMostTwoDistinctChars();
+
+        // Test cases
+        String s1 = "eceba";
+        String s2 = "ccaabbb";
+
+        System.out.println("Output for '" + s1 + "': " + solution.lengthOfLongestSubstringTwoDistinct(s1)); // Output: 3
+        System.out.println("Output for '" + s2 + "': " + solution.lengthOfLongestSubstringTwoDistinct(s2)); // Output: 5
+    }
+
     public int lengthOfLongestSubstringTwoDistinct(String s) {
         if (s == null || s.length() == 0) {
             return 0;
@@ -32,16 +43,5 @@ public class LongestSubstringWithAtMostTwoDistinctChars {
         }
 
         return maxLength;
-    }
-
-    public static void main(String[] args) {
-        LongestSubstringWithAtMostTwoDistinctChars solution = new LongestSubstringWithAtMostTwoDistinctChars();
-
-        // Test cases
-        String s1 = "eceba";
-        String s2 = "ccaabbb";
-
-        System.out.println("Output for '" + s1 + "': " + solution.lengthOfLongestSubstringTwoDistinct(s1)); // Output: 3
-        System.out.println("Output for '" + s2 + "': " + solution.lengthOfLongestSubstringTwoDistinct(s2)); // Output: 5
     }
 }

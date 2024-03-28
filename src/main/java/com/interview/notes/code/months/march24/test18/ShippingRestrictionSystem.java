@@ -25,6 +25,6 @@ public class ShippingRestrictionSystem {
 
         // Output the range for verification
         System.out.println("Created a geographical area with the zipcode range: [" +
-                           startZipcode + ", " + endZipcode + "]");
+                startZipcode + ", " + endZipcode + "]");
     }
 }

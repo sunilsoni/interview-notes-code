@@ -13,12 +13,12 @@ import java.util.Set;
 class Node {
     int id;
     List<Node> neighbors;
-    
+
     Node(int id) {
         this.id = id;
         this.neighbors = new ArrayList<>();
     }
-    
+
     // Add neighbor to the node
     void addNeighbor(Node neighbor) {
         this.neighbors.add(neighbor);
@@ -26,14 +26,14 @@ class Node {
 }
 
 public class GraphCycleDetector {
-    
+
     public boolean doesContainDirectedCycles(Node startingNode) {
         Set<Node> visited = new HashSet<>();
         Set<Node> recursionStack = new HashSet<>();
-        
+
         return isCyclic(startingNode, visited, recursionStack);
     }
-    
+
     private boolean isCyclic(Node node, Set<Node> visited, Set<Node> recursionStack) {
         if (recursionStack.contains(node)) {
             // Node is in recursion stack, cycle detected
@@ -43,16 +43,16 @@ public class GraphCycleDetector {
             // Node has been visited and did not lead to a cycle earlier
             return false;
         }
-        
+
         visited.add(node);
         recursionStack.add(node);
-        
+
         for (Node neighbor : node.neighbors) {
             if (isCyclic(neighbor, visited, recursionStack)) {
                 return true;
             }
         }
-        
+
         recursionStack.remove(node);
         return false;
     }
