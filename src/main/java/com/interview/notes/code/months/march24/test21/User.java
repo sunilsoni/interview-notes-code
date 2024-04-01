@@ -13,8 +13,8 @@ public class User {
     }
 
     public void postTweet(String content) {
-        Tweet tweet = new Tweet(content, this);
-        tweets.add(tweet);
+//        Tweet tweet = new Tweet(content, this);
+//        tweets.add(tweet);
         // Possibly notify followers about the new tweet here
     }
 
