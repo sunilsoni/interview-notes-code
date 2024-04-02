@@ -13,10 +13,10 @@ class Result2 {
         // Get the middle digit if the number's length is odd, otherwise, it's an empty string
         String middle = len % 2 == 1 ? numStr.substring(len / 2, len / 2 + 1) : "";
         // We don't need the right half, we will recreate it by mirroring the left half
-        
+
         // Check if simply mirroring the left half will create a palindrome greater than 'n'
         String palindrome = leftHalf + middle + new StringBuilder(leftHalf).reverse().toString();
-        
+
         // If the newly formed palindrome is greater than 'n', we're done
         if (Long.parseLong(palindrome) > n) {
             return Integer.parseInt(palindrome);
@@ -56,7 +56,7 @@ class Result2 {
         int exampleOutput1 = NextSmallestPalindrome(exampleInput1);
         // Print the result
         System.out.println("Next smallest palindrome after " + exampleInput1 + " is " + exampleOutput1);
-        
+
         // Another example input
         int exampleInput2 = 1234;
         // Calculate the next smallest palindrome greater than the second example input

@@ -8,10 +8,10 @@ class Result1 {
         String leftHalf = numStr.substring(0, len / 2);
         String middle = len % 2 == 1 ? numStr.substring(len / 2, len / 2 + 1) : "";
         String rightHalf = numStr.substring(len / 2 + len % 2);
-        
+
         // Convert leftHalf to a number and mirror it to form a palindrome.
         String palindrome = leftHalf + middle + new StringBuilder(leftHalf).reverse().toString();
-        
+
         if (Long.parseLong(palindrome) > n) {
             return Integer.parseInt(palindrome);
         }
