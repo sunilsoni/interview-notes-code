@@ -1,69 +1,69 @@
 package com.interview.notes.code.months.march24.test22;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
- *
-
- Java:
-
-
- 5. Largest Subset Sum
- For each number in an array, get the sum of its factors. Return an array of results.
- Example
- arr = [12]
- The factors of arr[0] = 12 are [1, 2, 3, 4, 6, 12). The sum of these factors is 28. Return the array [28].
- Function Description
- Complete the function maxSubsetSum in the editor below.
- maxSubsetSum has the following parameters):
- int arr[n]: an array of integers
- Returns
- long[n]: the sums calculated for each arr[i]
- Constraints
- • 1≤n≤ 103
- ・ 1≤arrly≤ 109
- • Input Format For Custom Testing
- Input from stdin will be processed as follows and passed to the function.
- The first line contains an integer n, the number of elements in arr.
- Each of the next n lines contains an integer describing arr[i].
-
-
-
-
- • Sample Case 0
-
- STDIN
- ーーーー
- 2
- 2
- 4
- Function
- ---
- ーー
- arr[] size n = 2
- arr = [2, 4]
- Sample Output 0
- 3
- 7
- Explanation 0
- Factors of arr[0] = 2 are [1, 2] and their sum is 3.
- Factors of arr[1] = 4 are [1, 2, 4] and their sum is 7.
-
-
- class Result {
- /*
+ * Java:
+ * <p>
+ * <p>
+ * 5. Largest Subset Sum
+ * For each number in an array, get the sum of its factors. Return an array of results.
+ * Example
+ * arr = [12]
+ * The factors of arr[0] = 12 are [1, 2, 3, 4, 6, 12). The sum of these factors is 28. Return the array [28].
+ * Function Description
+ * Complete the function maxSubsetSum in the editor below.
+ * maxSubsetSum has the following parameters):
+ * int arr[n]: an array of integers
+ * Returns
+ * long[n]: the sums calculated for each arr[i]
+ * Constraints
+ * • 1≤n≤ 103
+ * ・ 1≤arrly≤ 109
+ * • Input Format For Custom Testing
+ * Input from stdin will be processed as follows and passed to the function.
+ * The first line contains an integer n, the number of elements in arr.
+ * Each of the next n lines contains an integer describing arr[i].
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * • Sample Case 0
+ * <p>
+ * STDIN
+ * ーーーー
+ * 2
+ * 2
+ * 4
+ * Function
+ * ---
+ * ーー
+ * arr[] size n = 2
+ * arr = [2, 4]
+ * Sample Output 0
+ * 3
+ * 7
+ * Explanation 0
+ * Factors of arr[0] = 2 are [1, 2] and their sum is 3.
+ * Factors of arr[1] = 4 are [1, 2, 4] and their sum is 7.
+ * <p>
+ * <p>
+ * class Result {
+ * /*
  * Complete the 'maxSubsetSum' function below.
- *
+ * <p>
  * The function is expected to return a LONG_INTEGER_ARRAY.
  * The function accepts INTEGER_ARRAY k as parameter.
  * /
- public static List<Long› maxSubsetSum(List«Integerk f
- // Write your code here
-
-
- }
- }
+ * public static List<Long› maxSubsetSum(List«Integerk f
+ * // Write your code here
+ * <p>
+ * <p>
+ * }
+ * }
  */
 //WORKING
 class Result1 {
@@ -98,7 +98,7 @@ class Result1 {
         System.out.println("Result 2: " + result2); // Output: Result 2: [28, 39, 42]
 
 
-        List<Integer> arr3 = Arrays.asList(2,5,6);
+        List<Integer> arr3 = Arrays.asList(2, 5, 6);
         List<Long> result3 = Result1.maxSubsetSum(arr2);
         System.out.println("Result 3: " + result3); // Output: Result 2: [28, 39, 42]
     }

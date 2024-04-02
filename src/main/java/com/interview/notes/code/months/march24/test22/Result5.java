@@ -7,7 +7,6 @@ import java.util.List;
 class Result5 {
 
 
-
     public static void main(String[] args) {
         List<Integer> arr1 = Arrays.asList(2, 4);
         List<Long> result1 = maxSubsetSum(arr1);
@@ -18,10 +17,11 @@ class Result5 {
         System.out.println("Result 2: " + result2); // Output: Result 2: [28, 39, 42]
 
 
-        List<Integer> arr3 = Arrays.asList(2,5,6);
+        List<Integer> arr3 = Arrays.asList(2, 5, 6);
         List<Long> result3 = maxSubsetSum(arr2);
         System.out.println("Result 3: " + result3); // Output: Result 2: [6,12]
     }
+
     public static List<Long> maxSubsetSum(List<Integer> arr) {
         List<Long> result = new ArrayList<>();
 

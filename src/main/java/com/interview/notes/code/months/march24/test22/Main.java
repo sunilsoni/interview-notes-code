@@ -15,6 +15,23 @@ class Car {
         this.price = builder.price;
     }
 
+    // Getters for Car properties
+    public String getModel() {
+        return model;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
     // Static nested Builder class
     static class Builder {
         private String model;
@@ -47,23 +64,6 @@ class Car {
         public Car build() {
             return new Car(this);
         }
-    }
-
-    // Getters for Car properties
-    public String getModel() {
-        return model;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public double getPrice() {
-        return price;
     }
 }
 

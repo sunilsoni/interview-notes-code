@@ -42,7 +42,7 @@ class Result4 {
         System.out.println("Result 2: " + result2); // Output: Result 2: [25]
 
 
-        List<Integer> arr3 = Arrays.asList(2,5,6);
+        List<Integer> arr3 = Arrays.asList(2, 5, 6);
         List<Long> result3 = maxSubsetSum(arr2);
         System.out.println("Result 3: " + result3); // Output: Result 2: [6,12]
     }
