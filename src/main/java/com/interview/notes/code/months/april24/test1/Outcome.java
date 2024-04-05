@@ -10,14 +10,14 @@ public class Outcome {
         int removals = 0;
         for (int i = 0; i < ar.size() - 2 && ar.size() - removals > 2; ++i) {
             if (ar.get(i) < ar.get(i + 1) && ar.get(i + 1) < ar.get(i + 2) ||
-                ar.get(i) > ar.get(i + 1) && ar.get(i + 1) > ar.get(i + 2)) {
+                    ar.get(i) > ar.get(i + 1) && ar.get(i + 1) > ar.get(i + 2)) {
                 removals++;
                 i++;
             }
         }
         return removals;
     }
-    
+
     public static void main(String[] args) {
         // Example usage:
         List<Integer> input = List.of(1, 2, 3, 6, 5, 4, 8);

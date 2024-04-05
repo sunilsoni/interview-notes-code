@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.april24.test2;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 class Outcome1 {
     public static int solve(List<Integer> ar) {
@@ -18,6 +19,7 @@ class Outcome1 {
         }
         return count;
     }
+
     public static void main(String[] args) {
         // Example usage:
         List<Integer> input = Arrays.asList(1, 2, 3, 6, 5, 4, 8);

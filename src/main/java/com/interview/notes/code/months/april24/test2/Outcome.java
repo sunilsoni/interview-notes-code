@@ -8,7 +8,7 @@ public class Outcome {
         int removals = 0;
         for (int i = 2; i < ar.size(); i++) {
             if (ar.get(i) > ar.get(i - 1) && ar.get(i - 1) > ar.get(i - 2) ||
-                ar.get(i) < ar.get(i - 1) && ar.get(i - 1) < ar.get(i - 2)) {
+                    ar.get(i) < ar.get(i - 1) && ar.get(i - 1) < ar.get(i - 2)) {
                 removals++;
                 i++; // Skip the next element as it's part of a triplet that caused removal.
             }
