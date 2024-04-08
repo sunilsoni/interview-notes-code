@@ -12,10 +12,6 @@ public enum Location {
         this.displayName = displayName;
     }
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
     // You might also include a method to get a Location enum from a string.
     public static Location fromString(String text) {
         for (Location loc : Location.values()) {
@@ -24,5 +20,9 @@ public enum Location {
             }
         }
         throw new IllegalArgumentException("Unknown location: " + text);
+    }
+
+    public String getDisplayName() {
+        return displayName;
     }
 }

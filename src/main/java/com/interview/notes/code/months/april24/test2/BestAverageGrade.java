@@ -6,27 +6,25 @@ import java.util.Map;
 
 /**
  * The code in the screenshot seems to be a programming exercise or test question. Here’s the task as presented in the images you provided:
- *
+ * <p>
  * **Instructions:**
- *
+ * <p>
  * Given a list of student test scores, find the best average grade. Each student may have more than one test score in the list.
- *
+ * <p>
  * Complete the `bestAverageGrade` function in the editor below. It has one parameter, `scores`, which is an array of student test scores. Each element in the array is a two-element array of the form `[student name, test score]`, e.g., `["Bobby", "87"]`. Test scores may be positive or negative integers.
- *
+ * <p>
  * If you end up with an average grade that is not an integer, you should use a floor function to return the largest integer less than or equal to the average. Return 0 for an empty input.
- *
+ * <p>
  * **Example:**
- *
+ * <p>
  * Input:
  * ```java
  * [["Bobby", "87"], ["Charles", "100"], ["Eric", "64"], ["Charles", "22"]]
  * ```
- *
+ * <p>
  * Expected output: 87
- *
+ * <p>
  * Explanation: The average scores are 87, 61, and 64 for Bobby, Charles, and Eric, respectively. 87 is the highest.
- *
- *
  */
 
 class BestAverageGrade {
@@ -59,9 +57,10 @@ class BestAverageGrade {
 
         return lowestAverage;
     }
+
     public static int bestAverageGrade(String[][] scores) {
         Map<String, int[]> scoreMap = new HashMap<>();
-        
+
         // Summing scores and counting the number of scores for each student
         for (String[] score : scores) {
             String name = score[0];
@@ -89,12 +88,12 @@ class BestAverageGrade {
 
     public static void main(String[] args) {
         String[][] example1 = {
-            {"Bobby", "87"},
-            {"Charles", "100"},
-            {"Eric", "64"},
-            {"Charles", "22"}
+                {"Bobby", "87"},
+                {"Charles", "100"},
+                {"Eric", "64"},
+                {"Charles", "22"}
         };
-        
+
         System.out.println("The best average grade is: " + bestAverageGrade(example1));
 
         String[][] example2 = {

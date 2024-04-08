@@ -4,7 +4,7 @@ class Main4 {
     public static String StringChallenge(String str) {
         String pattern = "";
         String input = "";
-        
+
         int i = 0;
         while (i < str.length()) {
             if (str.charAt(i) == '+') {
@@ -34,7 +34,7 @@ class Main4 {
                 i = j + 2;
             }
         }
-        
+
         return input.equals(pattern) ? "true" : "false";
     }
 

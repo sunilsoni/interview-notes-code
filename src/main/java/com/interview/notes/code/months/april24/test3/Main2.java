@@ -6,7 +6,7 @@ class Main2 {
         String[] parts = str.split("\\s+");
         String pattern = parts[0];
         String secondString = parts[1];
-        
+
         // Iterate through the pattern and match it with the second string
         int index = 0;
         for (int i = 0; i < pattern.length(); i++) {
@@ -38,7 +38,7 @@ class Main2 {
                 }
             }
         }
-        
+
         // Check if there are remaining characters in the second string
         return index == secondString.length() ? "true" : "false";
     }

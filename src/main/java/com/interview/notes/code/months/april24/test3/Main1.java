@@ -5,7 +5,7 @@ class Main1 {
         // code goes here
         String pattern = "";
         String input = "";
-        
+
         int i = 0;
         while (i < str.length()) {
             if (str.charAt(i) == '+') {
@@ -27,7 +27,7 @@ class Main1 {
                 i = j + 1 + count;
             }
         }
-        
+
         return input.equals(pattern) ? "true" : "false";
     }
 

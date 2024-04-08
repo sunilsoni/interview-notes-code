@@ -9,24 +9,6 @@ public class Table {
     private Map<Integer, List<Record>> recordsById = new HashMap<>();
     private LocationRegistry locationRegistry = new LocationRegistry();
 
-    public void insert(int id, float salary, String location) {
-        int locationId = locationRegistry.getIdForLocation(location);
-        Record newRecord = new Record(salary, locationId);
-        recordsById.computeIfAbsent(id, k -> new ArrayList<>()).add(newRecord);
-    }
-
-    // Retrieve records and convert location IDs back to strings for presentation or processing.
-    public List<String> getRecordsAsString(int id) {
-        List<Record> records = recordsById.getOrDefault(id, new ArrayList<>());
-        List<String> recordStrings = new ArrayList<>();
-        for (Record record : records) {
-            String location = locationRegistry.getLocationFromId(record.locationId);
-            recordStrings.add("ID: " + id + ", Salary: " + record.salary + ", Location: " + location);
-        }
-        return recordStrings;
-    }
-
-
     public static void main(String[] args) {
         // Create the table instance.
         Table table = new Table();
@@ -50,5 +32,22 @@ public class Table {
 //        for (Map.Entry<Integer, String> entry : table.locationRegistry.idToLocation.entrySet()) {
 //            System.out.printf("ID: %d, Location: %s\n", entry.getKey(), entry.getValue());
 //        }
+    }
+
+    public void insert(int id, float salary, String location) {
+        int locationId = locationRegistry.getIdForLocation(location);
+        Record newRecord = new Record(salary, locationId);
+        recordsById.computeIfAbsent(id, k -> new ArrayList<>()).add(newRecord);
+    }
+
+    // Retrieve records and convert location IDs back to strings for presentation or processing.
+    public List<String> getRecordsAsString(int id) {
+        List<Record> records = recordsById.getOrDefault(id, new ArrayList<>());
+        List<String> recordStrings = new ArrayList<>();
+        for (Record record : records) {
+            String location = locationRegistry.getLocationFromId(record.locationId);
+            recordStrings.add("ID: " + id + ", Salary: " + record.salary + ", Location: " + location);
+        }
+        return recordStrings;
     }
 }
