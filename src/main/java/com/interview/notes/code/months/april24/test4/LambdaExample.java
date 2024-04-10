@@ -10,7 +10,7 @@ public class LambdaExample {
         // Using method chaining to process the value if present,
         // or print a message if absent
         optionalValue.map(value -> "Uppercase value: " + value.toUpperCase())
-                    .ifPresentOrElse(System.out::println, () -> System.out.println("Value is absent"));
+                .ifPresentOrElse(System.out::println, () -> System.out.println("Value is absent"));
     }
 
     // Method that may or may not return a value

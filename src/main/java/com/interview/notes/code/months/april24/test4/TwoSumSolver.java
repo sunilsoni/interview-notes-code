@@ -5,26 +5,17 @@ import java.util.Map;
 
 public class TwoSumSolver {
 
-    // Result class to handle outcomes and error messages
-    public static class Result {
-        public final int[] indices;
-        public final String errorMessage;
+    public static void main(String[] args) {
+        TwoSumSolver solver = new TwoSumSolver();
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
 
-        private Result(int[] indices, String errorMessage) {
-            this.indices = indices;
-            this.errorMessage = errorMessage;
-        }
+        Result result = solver.findTwoSum(nums, target);
 
-        public static Result success(int[] indices) {
-            return new Result(indices, null);
-        }
-
-        public static Result error(String errorMessage) {
-            return new Result(null, errorMessage);
-        }
-
-        public boolean isSuccess() {
-            return errorMessage == null;
+        if (result.isSuccess()) {
+            System.out.println("Indices found: [" + result.indices[0] + ", " + result.indices[1] + "]");
+        } else {
+            System.err.println("Error: " + result.errorMessage);
         }
     }
 
@@ -49,17 +40,26 @@ public class TwoSumSolver {
         return Result.error("No two numbers add up to the target.");
     }
 
-    public static void main(String[] args) {
-        TwoSumSolver solver = new TwoSumSolver();
-        int[] nums = {2, 7, 11, 15};
-        int target = 9;
+    // Result class to handle outcomes and error messages
+    public static class Result {
+        public final int[] indices;
+        public final String errorMessage;
 
-        Result result = solver.findTwoSum(nums, target);
+        private Result(int[] indices, String errorMessage) {
+            this.indices = indices;
+            this.errorMessage = errorMessage;
+        }
 
-        if (result.isSuccess()) {
-            System.out.println("Indices found: [" + result.indices[0] + ", " + result.indices[1] + "]");
-        } else {
-            System.err.println("Error: " + result.errorMessage);
+        public static Result success(int[] indices) {
+            return new Result(indices, null);
+        }
+
+        public static Result error(String errorMessage) {
+            return new Result(null, errorMessage);
+        }
+
+        public boolean isSuccess() {
+            return errorMessage == null;
         }
     }
 }

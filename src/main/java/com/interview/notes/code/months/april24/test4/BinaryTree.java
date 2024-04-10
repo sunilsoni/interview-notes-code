@@ -14,6 +14,20 @@ public class BinaryTree {
     TreeNode root;
     TreeNode prev = null;
 
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root = new TreeNode(4);
+        tree.root.left = new TreeNode(2);
+        tree.root.right = new TreeNode(5);
+        tree.root.left.left = new TreeNode(1);
+        tree.root.left.right = new TreeNode(3);
+
+        if (tree.isBST())
+            System.out.println("This tree is a BST");
+        else
+            System.out.println("This tree is not a BST");
+    }
+
     boolean isBST() {
         return isBSTUtil(root);
     }
@@ -32,19 +46,5 @@ public class BinaryTree {
 
         // Check the right subtree
         return isBSTUtil(node.right);
-    }
-
-    public static void main(String[] args) {
-        BinaryTree tree = new BinaryTree();
-        tree.root = new TreeNode(4);
-        tree.root.left = new TreeNode(2);
-        tree.root.right = new TreeNode(5);
-        tree.root.left.left = new TreeNode(1);
-        tree.root.left.right = new TreeNode(3);
-
-        if (tree.isBST())
-            System.out.println("This tree is a BST");
-        else
-            System.out.println("This tree is not a BST");
     }
 }
