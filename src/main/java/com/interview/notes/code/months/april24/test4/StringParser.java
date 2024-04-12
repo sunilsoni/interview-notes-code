@@ -6,6 +6,6 @@ public class StringParser {
     public static void main(String[] args) {
         String input = "Hello, world!";
         IntStream.range(0, input.length())
-                 .forEach(i -> System.out.println("Character " + i + ": " + input.charAt(i)));
+                .forEach(i -> System.out.println("Character " + i + ": " + input.charAt(i)));
     }
 }
