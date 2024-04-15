@@ -73,7 +73,7 @@ import java.util.Set;
  * • [3]: uniqueness = 1
  * subarray_uniqueness is [1, 2, 3, 1, 2, 1], and after sorting it is [1, 1, 1, 2, 2, 3).
  */
-class Result {
+class Result2 {
     public static int findMedianOfSubarrayUniqueness(List<Integer> arr) {
         int[] uniqueFrequency = new int[arr.size() + 1];
         for (int start = 0; start < arr.size(); start++) {

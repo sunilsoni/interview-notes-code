@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class Solution {
+class Solution1 {
     public static int findMedianOfSubarrayUniqueness(List<Integer> arr) {
         int n = arr.size();
 
