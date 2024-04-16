@@ -22,7 +22,8 @@ public class PersonalLoanDept implements Bank {
         if (!isUpdated) {
             updateStatistics();
         }
-        return averageLoan;
+        // return averageLoan;
+        return 0;
     }
 
     @Override

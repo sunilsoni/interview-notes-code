@@ -20,6 +20,30 @@ public class PerfectBinaryTree {
     }
 
     /**
+     * The main method to run the example, demonstrating the clearBits functionality.
+     */
+    public static void main(String[] args) {
+        // Instantiate the binary tree object.
+        PerfectBinaryTree binaryTree = new PerfectBinaryTree();
+
+        // Initialize all the leaf nodes to 1 to simulate a starting tree state.
+        for (int i = 0; i < tree[NUM_LEVELS - 1].length; i++) {
+            tree[NUM_LEVELS - 1][i] = 1;
+        }
+
+        // Print the initial state of the tree to the console.
+        System.out.println("Initial Tree:");
+        binaryTree.printTree();
+
+        // Perform the clearBits operation to clear a range of leaf nodes and update the tree.
+        binaryTree.clearBits(2, 3);
+
+        // Print the final state of the tree after performing the clearBits operation.
+        System.out.println("\nTree after clearBits operation:");
+        binaryTree.printTree();
+    }
+
+    /**
      * Method to clear a range of leaf nodes and update parent nodes accordingly.
      *
      * @param index The starting index of the range of leaf nodes to clear.
@@ -76,30 +100,6 @@ public class PerfectBinaryTree {
             // Print a newline to separate levels of the tree.
             System.out.println();
         }
-    }
-
-    /**
-     * The main method to run the example, demonstrating the clearBits functionality.
-     */
-    public static void main(String[] args) {
-        // Instantiate the binary tree object.
-        PerfectBinaryTree binaryTree = new PerfectBinaryTree();
-
-        // Initialize all the leaf nodes to 1 to simulate a starting tree state.
-        for (int i = 0; i < tree[NUM_LEVELS - 1].length; i++) {
-            tree[NUM_LEVELS - 1][i] = 1;
-        }
-
-        // Print the initial state of the tree to the console.
-        System.out.println("Initial Tree:");
-        binaryTree.printTree();
-
-        // Perform the clearBits operation to clear a range of leaf nodes and update the tree.
-        binaryTree.clearBits(2, 3);
-
-        // Print the final state of the tree after performing the clearBits operation.
-        System.out.println("\nTree after clearBits operation:");
-        binaryTree.printTree();
     }
 
     /**

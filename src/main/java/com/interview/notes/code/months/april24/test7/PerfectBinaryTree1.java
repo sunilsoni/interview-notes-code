@@ -15,8 +15,31 @@ public class PerfectBinaryTree1 {
     }
 
     /**
+     * Main method to run the example.
+     */
+    public static void main(String[] args) {
+        PerfectBinaryTree1 binaryTree = new PerfectBinaryTree1();
+
+        // Set all leaf nodes to 1 initially.
+        for (int i = 0; i < tree[NUM_LEVELS - 1].length; i++) {
+            tree[NUM_LEVELS - 1][i] = 1;
+        }
+
+        // Print the initial state of the tree.
+        System.out.println("Initial Tree:");
+        binaryTree.printTree();
+
+        // Clear a range of bits at the leaf level and update the tree.
+        binaryTree.clearBits(2, 3);
+
+        // Print the final state of the tree after the clearBits operation.
+        System.out.println("\nTree after clearBits operation:");
+        binaryTree.printTree();
+    }
+
+    /**
      * Clears a consecutive range of bits in the leaf nodes and updates the entire tree accordingly.
-     * 
+     *
      * @param index The starting index at the leaf level where bits will be cleared.
      * @param len   The number of bits to clear.
      */
@@ -37,7 +60,7 @@ public class PerfectBinaryTree1 {
 
     /**
      * Recursively updates the parent nodes' values based on the values of their children.
-     * 
+     *
      * @param index The index of the parent at the current level to update.
      * @param level The current level being updated.
      */
@@ -65,28 +88,5 @@ public class PerfectBinaryTree1 {
             }
             System.out.println();
         }
-    }
-
-    /**
-     * Main method to run the example.
-     */
-    public static void main(String[] args) {
-        PerfectBinaryTree1 binaryTree = new PerfectBinaryTree1();
-
-        // Set all leaf nodes to 1 initially.
-        for (int i = 0; i < tree[NUM_LEVELS - 1].length; i++) {
-            tree[NUM_LEVELS - 1][i] = 1;
-        }
-
-        // Print the initial state of the tree.
-        System.out.println("Initial Tree:");
-        binaryTree.printTree();
-
-        // Clear a range of bits at the leaf level and update the tree.
-        binaryTree.clearBits(2, 3);
-
-        // Print the final state of the tree after the clearBits operation.
-        System.out.println("\nTree after clearBits operation:");
-        binaryTree.printTree();
     }
 }
