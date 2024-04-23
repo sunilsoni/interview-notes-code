@@ -15,10 +15,10 @@ public class CourseFinder {
 
         // Create a map to store the shared courses between each pair of students
         Map<String, List<String>> sharedCourses = new HashMap<>();
-        
+
         // Convert the student IDs to a list to access by index
         List<String> studentIds = new ArrayList<>(studentsCourses.keySet());
-        
+
         // Compare each pair of students
         for (int i = 0; i < studentIds.size(); i++) {
             for (int j = i + 1; j < studentIds.size(); j++) {
@@ -63,6 +63,6 @@ public class CourseFinder {
  * 58,17 => [Software Design, Linear Algebra]
  * 25,94 => [Economics]
  * 17,94 => []
- *
+ * <p>
  * Process finished with exit code 0
  */

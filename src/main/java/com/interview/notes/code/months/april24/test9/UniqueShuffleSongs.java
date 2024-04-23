@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.april24.test9;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 /**
  * This is just a simple shared plaintext pad, with no execution capabilities.
@@ -8,7 +11,7 @@ import java.util.*;
  * You can also change the default language your pads are created with in your account settings: https://app.coderpad.io/settings
  * Enjoy your interview!
  * ーニーーー
- * songlist = [a,b,c,d,e, f, g,h] 
+ * songlist = [a,b,c,d,e, f, g,h]
  */
 public class UniqueShuffleSongs {
     private static List<String> history = new ArrayList<>();
@@ -25,7 +28,7 @@ public class UniqueShuffleSongs {
             }
             representation = Arrays.toString(songList);
         } while (history.contains(representation));
-        
+
         history.add(representation); // Add the new unique shuffle to the history
         System.out.println("Shuffled list: " + representation);
     }

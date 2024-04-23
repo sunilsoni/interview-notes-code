@@ -30,11 +30,11 @@ public class CourseOrder {
 
     public static void main(String[] args) {
         String[][] pairs = {
-            {"Algorithms", "Foundations of Computer Science"},
-            {"Data Structures", "Algorithms"},
-            {"Foundations of Computer Science", "Logic"},
-            {"Logic", "Compilers"},
-            {"Compilers", "Distributed Systems"}
+                {"Algorithms", "Foundations of Computer Science"},
+                {"Data Structures", "Algorithms"},
+                {"Foundations of Computer Science", "Logic"},
+                {"Logic", "Compilers"},
+                {"Compilers", "Distributed Systems"}
         };
 
         String firstCourse = findFirstCourse(pairs);

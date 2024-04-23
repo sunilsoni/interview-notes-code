@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.april24.test8;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CourseFinder1 {
     public static Map<String, List<String>> findPairs(String[][] enrollments) {
@@ -41,26 +44,26 @@ public class CourseFinder1 {
 
     public static void main(String[] args) {
         String[][] enrollments1 = {
-            {"58", "Linear Algebra"},
-            {"94", "Art History"},
-            {"94", "Operating Systems"},
-            {"17", "Software Design"},
-            {"58", "Mechanics"},
-            {"58", "Economics"},
-            {"17", "Linear Algebra"},
-            {"17", "Political Science"},
-            {"94", "Economics"},
-            {"25", "Economics"},
-            {"58", "Software Design"}
+                {"58", "Linear Algebra"},
+                {"94", "Art History"},
+                {"94", "Operating Systems"},
+                {"17", "Software Design"},
+                {"58", "Mechanics"},
+                {"58", "Economics"},
+                {"17", "Linear Algebra"},
+                {"17", "Political Science"},
+                {"94", "Economics"},
+                {"25", "Economics"},
+                {"58", "Software Design"}
         };
 
         String[][] enrollments2 = {
-            {"®", "Advanced Mechanics"},
-            {"0", "Art History"},
-            {"1", "Course 1"}, {"1", "Course 2"},
-            {"2", "Computer Architecture"},
-            {"3", "Course 1"}, {"3", "Course 2"},
-            {"4", "Algorithms"}
+                {"®", "Advanced Mechanics"},
+                {"0", "Art History"},
+                {"1", "Course 1"}, {"1", "Course 2"},
+                {"2", "Computer Architecture"},
+                {"3", "Course 1"}, {"3", "Course 2"},
+                {"4", "Algorithms"}
         };
 
         Map<String, List<String>> result1 = findPairs(enrollments1);
@@ -84,9 +87,9 @@ public class CourseFinder1 {
  * 58,25: [Economics]
  * 58,17: [Linear Algebra, Software Design]
  * 25,94: [Economics]
- *
+ * <p>
  * Result for enrollments2:
  * 1,3: [Course 1, Course 2]
- *
+ * <p>
  * Process finished with exit code 0
  */
