@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.april24.test13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Messed-Up Array
@@ -16,8 +19,8 @@ import java.util.*;
  * Constraints
  * 1 ≤ n ≤ 100
  * 1 ≤ A[i] ≤n
- *
- *
+ * <p>
+ * <p>
  * Example #1
  * Input
  * 3
@@ -42,28 +45,28 @@ public class Outcome {
     public static List<Integer> missingAndDouble(List<Integer> A) {
         List<Integer> result = new ArrayList<>();
         Collections.sort(A);
-        
+
         int repeat = -1;
         int missing = -1;
         int n = A.size();
-        
+
         for (int i = 0; i < n - 1; i++) {
             if (A.get(i).equals(A.get(i + 1))) {
                 repeat = A.get(i);
                 break;
             }
         }
-        
+
         for (int i = 0; i < n; i++) {
             if (A.get(i) != i + 1) {
                 missing = i + 1;
                 break;
             }
         }
-        
+
         result.add(repeat);
         result.add(missing);
-        
+
         return result;
     }
 

@@ -1,27 +1,29 @@
 package com.interview.notes.code.months.april24.test13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 class Outcome2 {
     public static List<Integer> missingAndDouble(List<Integer> A) {
         List<Integer> result = new ArrayList<>();
         int[] count = new int[A.size() + 1];
         int repeated = -1, missing = -1;
-        
+
         for (int num : A) {
             count[num]++;
             if (count[num] == 2) {
                 repeated = num;
             }
         }
-        
+
         for (int i = 1; i <= A.size(); i++) {
             if (count[i] == 0) {
                 missing = i;
                 break;
             }
         }
-        
+
         result.add(repeated);
         result.add(missing);
         return result;

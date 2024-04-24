@@ -13,7 +13,7 @@ public class ZigzagPatternSorted {
                 arr[i + 1] = temp;
             }
         }
-        
+
         return arr;
     }
 

@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.april24.test13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 class Outcome5 {
     public static List<Integer> missingAndDouble(List<Integer> A) {

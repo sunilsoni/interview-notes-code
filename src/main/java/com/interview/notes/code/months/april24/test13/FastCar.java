@@ -13,10 +13,6 @@ class FastCar {
         this.speed = speed;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getProperty("OUTPUT_FILE_PATH")));
@@ -42,5 +38,9 @@ class FastCar {
 
     private static FastCar findFastestCar(List<FastCar> carList) {
         return Collections.max(carList, Comparator.comparing(FastCar::getSpeed));
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 }

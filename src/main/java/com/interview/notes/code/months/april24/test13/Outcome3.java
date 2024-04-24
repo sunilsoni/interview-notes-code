@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.april24.test13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 class Outcome3 {
     public static List<Integer> missingAndDouble(List<Integer> A) {
@@ -8,7 +11,7 @@ class Outcome3 {
         List<Integer> result = new ArrayList<>();
         int doubleNum = -1;
         int missingNum = 1;
-        
+
         for (int i = 0; i < A.size() - 1; i++) {
             if (A.get(i).equals(A.get(i + 1))) {
                 doubleNum = A.get(i);
@@ -16,11 +19,11 @@ class Outcome3 {
                 missingNum = A.get(i) + 1;
             }
         }
-        
+
         if (A.get(A.size() - 1) != A.size()) {
             missingNum = A.size();
         }
-        
+
         result.add(doubleNum);
         result.add(missingNum);
         return result;
@@ -29,7 +32,7 @@ class Outcome3 {
 
     public static void main(String[] args) {
         List<Integer> sample1 = Arrays.asList(3, 2, 3);
-        List<Integer> sample2 = Arrays.asList(4,6,7,3,5,4,7,8);//41
+        List<Integer> sample2 = Arrays.asList(4, 6, 7, 3, 5, 4, 7, 8);//41
 
         List<Integer> result1 = missingAndDouble(sample1);
         List<Integer> result2 = missingAndDouble(sample2);

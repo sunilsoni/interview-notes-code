@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.april24.test9;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,11 +9,11 @@ public class Main {
         set.add(1);
         set.add(2);
         set.add(3);
-        
+
         // Adding a duplicate element
         boolean added = set.add(2); // Attempting to add 2 again
         System.out.println("Element added: " + added); // Output: Element added: false
-        
+
         // Print the Set
         System.out.println("Set: " + set); // Output: Set: [1, 2, 3]
     }

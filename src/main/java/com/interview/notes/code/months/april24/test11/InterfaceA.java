@@ -12,7 +12,7 @@ class MyClass implements InterfaceA, InterfaceB {
     @Override
     public void commonMethod() {
         // Call InterfaceA's commonMethod
-       // InterfaceA.super.commonMethod();
+        // InterfaceA.super.commonMethod();
         // Add your implementation specific to InterfaceB here
         System.out.println("Implementing commonMethod() from InterfaceB");
     }
