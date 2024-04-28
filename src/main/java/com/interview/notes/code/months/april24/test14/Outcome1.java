@@ -1,51 +1,10 @@
-package com.interview.notes.code.months.april24.test12;
+package com.interview.notes.code.months.april24.test14;
 
 import java.util.*;
 
-public class Outcome {
+public class Outcome1 {
 
     public static int solve(int P, List<Integer> a) {
-        int collectedGarbage = 0;
-        int left = P - 1;
-        int right = P - 1;
-        int n = a.size();
-
-        while (left >= 0 || right < n) {
-            if (left >= 0 && right < n && a.get(left) == 1 && a.get(right) == 1) {
-                collectedGarbage += 2;
-            } else if (left >= 0 && a.get(left) == 1) {
-                collectedGarbage++;
-            } else if (right < n && a.get(right) == 1) {
-                collectedGarbage++;
-            }
-
-            left--;
-            right++;
-        }
-
-        return collectedGarbage;
-    }
-    public static int solve2(int P, List<Integer> a) {
-        int collectedGarbage = 0;
-        int left = P - 1;
-        int right = P - 1;
-
-        while (left >= 0 || right < a.size()) {
-            if (left >= 0 && right < a.size() && a.get(left) == 1 && a.get(right) == 1) {
-                collectedGarbage += 2;
-            } else if (left >= 0 && a.get(left) == 1) {
-                collectedGarbage++;
-            } else if (right < a.size() && a.get(right) == 1) {
-                collectedGarbage++;
-            }
-
-            left--;
-            right++;
-        }
-
-        return collectedGarbage;
-    }
-    public static int solve1(int P, List<Integer> a) {
         int collectedGarbage = 0;
 
         // Check the position P itself first
