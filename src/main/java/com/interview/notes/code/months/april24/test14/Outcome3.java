@@ -1,12 +1,13 @@
 package com.interview.notes.code.months.april24.test14;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 class Outcome3 {
     public static int solve(int P, List<Integer> a) {
         int collectedGarbage = 0;
         int distance = 1;
-        
+
         for (int position : a) {
             if (position == 1) { // If there's garbage at this position
                 if (P - distance > 0 && a.get(P - distance - 1) == 1) {
@@ -18,7 +19,7 @@ class Outcome3 {
             }
             distance++;
         }
-        
+
         return collectedGarbage;
     }
 

@@ -4,36 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
-    public static class Employee {
-        private String name;
-        private String title;
-        private String department;
-        private Double salary;
-
-        public Employee(String name, String title, String department, Double salary) {
-            this.name = name;
-            this.title = title;
-            this.department = department;
-            this.salary = salary;
-        }
-
-        public String getDepartment() {
-            return this.department;
-        }
-
-        public String getName() {
-            return this.name;
-        }
-
-        public Double getSalary() {
-            return this.salary;
-        }
-
-        public String getTitle() {
-            return this.title;
-        }
-    }
-
     public static Employee[] employees;
 
     // Return all employees that work for a given department and earn a given salary
@@ -76,6 +46,36 @@ public class Solution {
             System.out.println("CEO: " + ceo.getName());
         } else {
             System.out.println("No CEO found.");
+        }
+    }
+
+    public static class Employee {
+        private String name;
+        private String title;
+        private String department;
+        private Double salary;
+
+        public Employee(String name, String title, String department, Double salary) {
+            this.name = name;
+            this.title = title;
+            this.department = department;
+            this.salary = salary;
+        }
+
+        public String getDepartment() {
+            return this.department;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public Double getSalary() {
+            return this.salary;
+        }
+
+        public String getTitle() {
+            return this.title;
         }
     }
 }

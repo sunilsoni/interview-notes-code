@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.april24.test14;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Outcome2 {
 

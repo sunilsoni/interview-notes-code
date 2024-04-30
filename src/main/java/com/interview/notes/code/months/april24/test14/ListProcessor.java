@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.april24.test14;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ListProcessor {
@@ -10,23 +13,23 @@ public class ListProcessor {
 
         // 1) Filter out even numbers using a lambda expression
         List<Integer> evenNumbers = numbers.stream()
-                                           .filter(n -> n % 2 == 0)
-                                           .collect(Collectors.toList());
+                .filter(n -> n % 2 == 0)
+                .collect(Collectors.toList());
 
         System.out.println("Even Numbers: " + evenNumbers);
 
         // 2) Find the second max and second min numbers
         Optional<Integer> secondMax = numbers.stream()
-                                             .sorted(Comparator.reverseOrder())
-                                             .distinct()
-                                             .skip(1)
-                                             .findFirst();
+                .sorted(Comparator.reverseOrder())
+                .distinct()
+                .skip(1)
+                .findFirst();
 
         Optional<Integer> secondMin = numbers.stream()
-                                             .sorted()
-                                             .distinct()
-                                             .skip(1)
-                                             .findFirst();
+                .sorted()
+                .distinct()
+                .skip(1)
+                .findFirst();
 
         secondMax.ifPresent(max -> System.out.println("Second Max: " + max));
         secondMin.ifPresent(min -> System.out.println("Second Min: " + min));

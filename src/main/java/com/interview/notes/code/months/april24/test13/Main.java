@@ -14,9 +14,9 @@ public class Main {
         employees.add(new Employee(90000));
 
         Optional<Employee> thirdHighestSalary = employees.stream()
-            .sorted((e1, e2) -> Double.compare(e2.getSalary(), e1.getSalary())) // Sort in descending order
-            .skip(2)  // Skip the two highest salaries
-            .findFirst();  // Get the third one
+                .sorted((e1, e2) -> Double.compare(e2.getSalary(), e1.getSalary())) // Sort in descending order
+                .skip(2)  // Skip the two highest salaries
+                .findFirst();  // Get the third one
 
         thirdHighestSalary.ifPresent(e -> System.out.println("Third highest salary: " + e.getSalary()));
     }

@@ -5,36 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class Solution {
-    public static class Employee {
-        private String name;
-        private String title;
-        private String department;
-        private Double salary;
-
-        public Employee(String name, String title, String department, Double salary) {
-            this.name = name;
-            this.title = title;
-            this.department = department;
-            this.salary = salary;
-        }
-
-        public String getDepartment() {
-            return this.department;
-        }
-
-        public String getName() {
-            return this.name;
-        }
-
-        public Double getSalary() {
-            return this.salary;
-        }
-
-        public String getTitle() {
-            return this.title;
-        }
-    }
-
     public static Employee[] employees;
 
     // Return all employees that work for a given department and earn a given salary
@@ -66,5 +36,35 @@ public class Solution {
         Optional<Employee> ceo = findCEO();
         ceo.ifPresentOrElse(employee -> System.out.println("CEO: " + employee.getName()),
                 () -> System.out.println("No CEO found."));
+    }
+
+    public static class Employee {
+        private String name;
+        private String title;
+        private String department;
+        private Double salary;
+
+        public Employee(String name, String title, String department, Double salary) {
+            this.name = name;
+            this.title = title;
+            this.department = department;
+            this.salary = salary;
+        }
+
+        public String getDepartment() {
+            return this.department;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public Double getSalary() {
+            return this.salary;
+        }
+
+        public String getTitle() {
+            return this.title;
+        }
     }
 }

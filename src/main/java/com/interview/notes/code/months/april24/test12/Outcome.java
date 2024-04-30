@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.april24.test12;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Outcome {
 
@@ -25,6 +26,7 @@ public class Outcome {
 
         return collectedGarbage;
     }
+
     public static int solve2(int P, List<Integer> a) {
         int collectedGarbage = 0;
         int left = P - 1;
@@ -45,6 +47,7 @@ public class Outcome {
 
         return collectedGarbage;
     }
+
     public static int solve1(int P, List<Integer> a) {
         int collectedGarbage = 0;
 
