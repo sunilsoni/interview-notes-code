@@ -7,23 +7,11 @@ package com.interview.notes.code.months.june24.test3;
  Roman numerals are as follows:
 
  1 = 1
-
-
  V = 5
-
-
  X = 10
-
-
  L = 50
-
-
  C = 100
-
-
  D = 500
-
-
  M = 1000
 
  NOTE: In Roman numeral representation, if a letter is immediately followed by one of equal or lesser value, the two values are added. If a letter is immediately followed by one of greater value, the value of the first letter is subtracted from the second.
