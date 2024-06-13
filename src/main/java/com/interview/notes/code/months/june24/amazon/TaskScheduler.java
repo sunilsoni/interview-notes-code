@@ -3,9 +3,8 @@ package com.interview.notes.code.months.june24.amazon;
 import java.util.PriorityQueue;
 
 /**
- *
- Implement a task scheduler class that supports 3 methods such as addask(), which takes in a task that takes a specific amount of time to complete and getNextTask() which is called by workers to get the next task to work on, and finally completeTask() that is used to complete a scheduled task.
- stores it for scheduling,
+ * Implement a task scheduler class that supports 3 methods such as addask(), which takes in a task that takes a specific amount of time to complete and getNextTask() which is called by workers to get the next task to work on, and finally completeTask() that is used to complete a scheduled task.
+ * stores it for scheduling,
  */
 public class TaskScheduler {
 
@@ -14,6 +13,36 @@ public class TaskScheduler {
     public TaskScheduler() {
         // Initialize the priority queue with a comparator that orders tasks by their time to complete
         taskQueue = new PriorityQueue<>((t1, t2) -> Long.compare(t1.getTimeToComplete(), t2.getTimeToComplete()));
+    }
+
+    public static void main(String[] args) {
+        TaskScheduler scheduler = new TaskScheduler();
+
+        Task task1 = new Task(5000, "Task 1");
+        Task task2 = new Task(3000, "Task 2");
+        Task task3 = new Task(1000, "Task 3");
+
+        scheduler.addTask(task1);
+        scheduler.addTask(task2);
+        scheduler.addTask(task3);
+
+        // Test edge cases
+        scheduler.addTask(null);  // Should print an error message
+
+        Task nextTask = scheduler.getNextTask();
+        scheduler.completeTask(nextTask);
+
+        nextTask = scheduler.getNextTask();
+        scheduler.completeTask(nextTask);
+
+        nextTask = scheduler.getNextTask();
+        scheduler.completeTask(nextTask);
+
+        // Attempt to get a task from an empty queue
+        nextTask = scheduler.getNextTask();  // Should print an error message
+
+        // Attempt to complete a null task
+        scheduler.completeTask(null);  // Should print an error message
     }
 
     // Adds a task to the scheduler
@@ -95,35 +124,5 @@ public class TaskScheduler {
                     ", status=" + status +
                     '}';
         }
-    }
-
-    public static void main(String[] args) {
-        TaskScheduler scheduler = new TaskScheduler();
-
-        Task task1 = new Task(5000, "Task 1");
-        Task task2 = new Task(3000, "Task 2");
-        Task task3 = new Task(1000, "Task 3");
-
-        scheduler.addTask(task1);
-        scheduler.addTask(task2);
-        scheduler.addTask(task3);
-
-        // Test edge cases
-        scheduler.addTask(null);  // Should print an error message
-
-        Task nextTask = scheduler.getNextTask();
-        scheduler.completeTask(nextTask);
-
-        nextTask = scheduler.getNextTask();
-        scheduler.completeTask(nextTask);
-
-        nextTask = scheduler.getNextTask();
-        scheduler.completeTask(nextTask);
-
-        // Attempt to get a task from an empty queue
-        nextTask = scheduler.getNextTask();  // Should print an error message
-
-        // Attempt to complete a null task
-        scheduler.completeTask(null);  // Should print an error message
     }
 }

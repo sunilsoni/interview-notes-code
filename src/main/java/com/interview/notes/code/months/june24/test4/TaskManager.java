@@ -12,6 +12,54 @@ public class TaskManager {
         subtasks = new HashMap<>();
     }
 
+    public static void main(String[] args) {
+        TaskManager manager = new TaskManager();
+
+        manager.addTask("a", "Task A", "Description A");
+        manager.addTask("b", "Task B", "Description B");
+        manager.addTask("c", "Task C", "Description C");
+        manager.addTask("d", "Task D", "Description D");
+
+        manager.addSubtask("a", "b");
+        manager.addSubtask("a", "c");
+        manager.addSubtask("b", "d");
+
+        manager.addDependency("b", "c");
+        manager.addDependency("d", "c");
+
+        System.out.println("Before marking complete:");
+        System.out.println(manager.tasks);
+
+        try {
+            manager.markComplete("a");
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        System.out.println("After attempting to mark complete:");
+        System.out.println(manager.tasks);
+
+        // Marking dependencies as complete
+        try {
+            manager.markComplete("c");
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        System.out.println("After marking dependencies complete:");
+        System.out.println(manager.tasks);
+
+        // Now attempting to mark "a" complete again
+        try {
+            manager.markComplete("a");
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        System.out.println("After marking 'a' complete:");
+        System.out.println(manager.tasks);
+    }
+
     // Adds a new task to the manager
     public void addTask(String id, String title, String description) {
         tasks.put(id, new Task(id, title, description));
@@ -69,14 +117,20 @@ public class TaskManager {
         }
     }
 
+    // Enum representing task statuses
+    public enum TaskStatus {
+        COMPLETED,
+        NOT_COMPLETED
+    }
+
     // Task class representing a task with ID, title, description, status, and dependencies
     public static class Task {
         private final String id;
         private final String title;
         private final String description;
+        private final Set<String> dependencies;
         private TaskStatus status;
         private String parentId;
-        private final Set<String> dependencies;
 
         public Task(String id, String title, String description) {
             this.id = id;
@@ -134,59 +188,5 @@ public class TaskManager {
                     ", dependencies=" + dependencies +
                     '}';
         }
-    }
-
-    // Enum representing task statuses
-    public enum TaskStatus {
-        COMPLETED,
-        NOT_COMPLETED
-    }
-
-    public static void main(String[] args) {
-        TaskManager manager = new TaskManager();
-
-        manager.addTask("a", "Task A", "Description A");
-        manager.addTask("b", "Task B", "Description B");
-        manager.addTask("c", "Task C", "Description C");
-        manager.addTask("d", "Task D", "Description D");
-
-        manager.addSubtask("a", "b");
-        manager.addSubtask("a", "c");
-        manager.addSubtask("b", "d");
-
-        manager.addDependency("b", "c");
-        manager.addDependency("d", "c");
-
-        System.out.println("Before marking complete:");
-        System.out.println(manager.tasks);
-
-        try {
-            manager.markComplete("a");
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-
-        System.out.println("After attempting to mark complete:");
-        System.out.println(manager.tasks);
-
-        // Marking dependencies as complete
-        try {
-            manager.markComplete("c");
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-
-        System.out.println("After marking dependencies complete:");
-        System.out.println(manager.tasks);
-
-        // Now attempting to mark "a" complete again
-        try {
-            manager.markComplete("a");
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-
-        System.out.println("After marking 'a' complete:");
-        System.out.println(manager.tasks);
     }
 }

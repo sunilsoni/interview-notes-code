@@ -11,6 +11,26 @@ public class TaskScheduler {
         taskQueue = new PriorityQueue<>((t1, t2) -> Long.compare(t1.getTimeToComplete(), t2.getTimeToComplete()));
     }
 
+    public static void main(String[] args) {
+        TaskScheduler scheduler = new TaskScheduler();
+
+        Task task1 = new Task(5000, "Task 1");
+        Task task2 = new Task(3000, "Task 2");
+        Task task3 = new Task(1000, "Task 3");
+
+        scheduler.addTask(task1);
+        scheduler.addTask(task2);
+        scheduler.addTask(task3);
+
+        System.out.println("Next Task: " + scheduler.getNextTask());
+        System.out.println("Next Task: " + scheduler.getNextTask());
+        System.out.println("Next Task: " + scheduler.getNextTask());
+
+        scheduler.completeTask(task1);
+        scheduler.completeTask(task2);
+        scheduler.completeTask(task3);
+    }
+
     // Adds a task to the scheduler
     public void addTask(Task task) {
         task.setStatus(TaskStatus.PENDING);
@@ -76,25 +96,5 @@ public class TaskScheduler {
                     ", status=" + status +
                     '}';
         }
-    }
-
-    public static void main(String[] args) {
-        TaskScheduler scheduler = new TaskScheduler();
-
-        Task task1 = new Task(5000, "Task 1");
-        Task task2 = new Task(3000, "Task 2");
-        Task task3 = new Task(1000, "Task 3");
-
-        scheduler.addTask(task1);
-        scheduler.addTask(task2);
-        scheduler.addTask(task3);
-
-        System.out.println("Next Task: " + scheduler.getNextTask());
-        System.out.println("Next Task: " + scheduler.getNextTask());
-        System.out.println("Next Task: " + scheduler.getNextTask());
-
-        scheduler.completeTask(task1);
-        scheduler.completeTask(task2);
-        scheduler.completeTask(task3);
     }
 }

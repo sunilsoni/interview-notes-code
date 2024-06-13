@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.june24.amazon;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class TaskManager {
 
@@ -10,6 +13,27 @@ public class TaskManager {
     public TaskManager() {
         tasks = new HashMap<>();
         subtasks = new HashMap<>();
+    }
+
+    public static void main(String[] args) {
+        TaskManager manager = new TaskManager();
+
+        manager.addTask("a", "Task A", "Description A");
+        manager.addTask("b", "Task B", "Description B");
+        manager.addTask("c", "Task C", "Description C");
+        manager.addTask("d", "Task D", "Description D");
+
+        manager.addSubtask("a", "b");
+        manager.addSubtask("a", "c");
+        manager.addSubtask("b", "d");
+
+        System.out.println("Before marking complete:");
+        System.out.println(manager.tasks);
+
+        manager.markComplete("a");
+
+        System.out.println("After marking complete:");
+        System.out.println(manager.tasks);
     }
 
     // Adds a new task to the manager
@@ -45,6 +69,12 @@ public class TaskManager {
                 markCompleteRecursive(subtaskId);
             }
         }
+    }
+
+    // Enum representing task statuses
+    public enum TaskStatus {
+        COMPLETED,
+        NOT_COMPLETED
     }
 
     // Task class representing a task with ID, title, description, and status
@@ -101,32 +131,5 @@ public class TaskManager {
                     ", parentId='" + parentId + '\'' +
                     '}';
         }
-    }
-
-    // Enum representing task statuses
-    public enum TaskStatus {
-        COMPLETED,
-        NOT_COMPLETED
-    }
-
-    public static void main(String[] args) {
-        TaskManager manager = new TaskManager();
-
-        manager.addTask("a", "Task A", "Description A");
-        manager.addTask("b", "Task B", "Description B");
-        manager.addTask("c", "Task C", "Description C");
-        manager.addTask("d", "Task D", "Description D");
-
-        manager.addSubtask("a", "b");
-        manager.addSubtask("a", "c");
-        manager.addSubtask("b", "d");
-
-        System.out.println("Before marking complete:");
-        System.out.println(manager.tasks);
-
-        manager.markComplete("a");
-
-        System.out.println("After marking complete:");
-        System.out.println(manager.tasks);
     }
 }
