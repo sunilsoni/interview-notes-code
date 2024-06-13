@@ -11,8 +11,8 @@ public class DuplicateCharactersString {
 
         // Count occurrences of each character in the string
         s.chars()
-         .mapToObj(c -> (char) c)
-         .forEach(c -> charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1));
+                .mapToObj(c -> (char) c)
+                .forEach(c -> charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1));
 
         // Print duplicate characters
         System.out.println("Duplicate characters in the string '" + s + "':");

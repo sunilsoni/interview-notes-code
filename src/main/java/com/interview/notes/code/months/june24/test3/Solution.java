@@ -1,15 +1,37 @@
 package com.interview.notes.code.months.june24.test3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Solution {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Example 1
+        String s1 = "leetcode";
+        List<String> wordDict1 = Arrays.asList("leet", "code");
+        System.out.println(solution.wordBreak(s1, wordDict1));  // Output: true
+
+        // Example 2
+        String s2 = "applepenapple";
+        List<String> wordDict2 = Arrays.asList("apple", "pen");
+        System.out.println(solution.wordBreak(s2, wordDict2));  // Output: true
+
+        // Example 3
+        String s3 = "catsandog";
+        List<String> wordDict3 = Arrays.asList("cats", "dog", "sand", "and", "cat");
+        System.out.println(solution.wordBreak(s3, wordDict3));  // Output: false
+    }
+
     public boolean wordBreak(String s, List<String> wordDict) {
         // Convert list to a hash set for faster lookups.
         Set<String> wordSet = new HashSet<>(wordDict);
-        
+
         // Create a memoization array to store results of subproblems.
         Boolean[] memo = new Boolean[s.length()];
-        
+
         return wordBreakRecursive(s, wordSet, 0, memo);
     }
 
@@ -39,24 +61,5 @@ public class Solution {
         // Store the result in memoization array
         memo[start] = false;
         return false;
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        
-        // Example 1
-        String s1 = "leetcode";
-        List<String> wordDict1 = Arrays.asList("leet", "code");
-        System.out.println(solution.wordBreak(s1, wordDict1));  // Output: true
-        
-        // Example 2
-        String s2 = "applepenapple";
-        List<String> wordDict2 = Arrays.asList("apple", "pen");
-        System.out.println(solution.wordBreak(s2, wordDict2));  // Output: true
-        
-        // Example 3
-        String s3 = "catsandog";
-        List<String> wordDict3 = Arrays.asList("cats", "dog", "sand", "and", "cat");
-        System.out.println(solution.wordBreak(s3, wordDict3));  // Output: false
     }
 }

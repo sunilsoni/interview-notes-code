@@ -28,7 +28,7 @@ public class WordBreak {
         if (s.isEmpty()) {
             return true;
         }
-        
+
         if (memo.containsKey(s)) {
             return memo.get(s);
         }

@@ -5,6 +5,11 @@ public class ThreadSimple extends Thread {
         super(threadName);
     }
 
+    public static void main(String[] args) {
+        Thread thread = new ThreadSimple("Test 1");
+        thread.start();  // Launch the thread for execution
+    }
+
     @Override
     public void run() {
         System.out.println("New thread is working");
@@ -13,10 +18,5 @@ public class ThreadSimple extends Thread {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        Thread thread = new ThreadSimple("Test 1");
-        thread.start();  // Launch the thread for execution
     }
 }

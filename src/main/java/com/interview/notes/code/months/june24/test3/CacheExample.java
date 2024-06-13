@@ -1,6 +1,5 @@
 package com.interview.notes.code.months.june24.test3;
 
-import org.hibernate.boot.model.Caching;
 /*
 import javax.cache.Caching;
 import javax.cache.Cache;
