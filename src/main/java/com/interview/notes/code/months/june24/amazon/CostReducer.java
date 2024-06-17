@@ -4,6 +4,11 @@ import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Write a function to take a string and decrease all costs in the string by 15% and returns the modified string.
+ * Example:
+ * Input: "Mary spent $5.25 and bo spent $5.25 on books." Output: "Mary spent $4.46 and bo spent $4.46 on books."
+ */
 public class CostReducer {
 
     public static String reduceCosts(String input) {
