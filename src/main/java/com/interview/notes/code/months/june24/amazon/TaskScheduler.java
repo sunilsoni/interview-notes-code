@@ -3,7 +3,9 @@ package com.interview.notes.code.months.june24.amazon;
 import java.util.PriorityQueue;
 
 /**
- * Implement a task scheduler class that supports 3 methods such as addask(), which takes in a task that takes a specific amount of time to complete and getNextTask() which is called by workers to get the next task to work on, and finally completeTask() that is used to complete a scheduled task.
+ * Implement a task scheduler class that supports 3 methods such as addask(), which takes in a task that takes a specific amount of time to complete and getNextTask() which is called by workers to get the next task to work on,
+ *
+ * and finally completeTask() that is used to complete a scheduled task.
  * stores it for scheduling,
  */
 public class TaskScheduler {
