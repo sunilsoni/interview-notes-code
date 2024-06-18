@@ -7,6 +7,7 @@ class LRUCache {
     private HashMap<Integer, Node> map;
     private Node head;
     private Node tail;
+
     public LRUCache(int capacity) {
         this.capacity = capacity;
         this.map = new HashMap<>();
