@@ -9,7 +9,7 @@ import java.util.Arrays;
  * //So {1, 0, 0, 1} becomes {0 ,0, 1, 1}. You may modify and return the given array or make a new array.
  */
 public class ZeroFront {
-    
+
     public static int[] zeroFront(int[] nums) {
         int[] result = new int[nums.length];
         int zeroCount = 0;
