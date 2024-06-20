@@ -12,9 +12,9 @@ package com.interview.notes.code.months.june24.test7;
  * // "xyx" is not balanced because the first "x' has no matching "y'.
  * // Now, let's write a function that checks whether a given string is xy-balanced.
  */
-public class MyClass {
+public class XYBalance {
     public static void main(String[] args) {
-        MyClass myClass = new MyClass();
+        XYBalance myClass = new XYBalance();
         // Test cases
         System.out.println(myClass.xyBalance("aaxbby")); // Output: true
         System.out.println(myClass.xyBalance("xxbxy")); // Output: true
