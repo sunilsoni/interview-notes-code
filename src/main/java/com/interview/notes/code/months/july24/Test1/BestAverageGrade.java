@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Solution {
+public class BestAverageGrade {
 
     public static int bestAverageGrade(String[][] scores) {
         if (scores == null || scores.length == 0) {
