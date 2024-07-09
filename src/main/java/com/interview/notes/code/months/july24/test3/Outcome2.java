@@ -33,8 +33,8 @@ public class Outcome2 {
     public static void main(String[] args) {
         // Example 1
         List<List<Character>> input1 = Arrays.asList(
-            Arrays.asList('.', 'B'),
-            Arrays.asList('B', '.')
+                Arrays.asList('.', 'B'),
+                Arrays.asList('B', '.')
         );
         List<List<Character>> output1 = solve(input1);
         for (List<Character> row : output1) {
@@ -47,9 +47,9 @@ public class Outcome2 {
         // Example 2
         System.out.println();
         List<List<Character>> input2 = Arrays.asList(
-            Arrays.asList('.', '.', '.', '.', 'W'),
-            Arrays.asList('.', '.', '.', '.', '.'),
-            Arrays.asList('.', '.', '.', '.', '.')
+                Arrays.asList('.', '.', '.', '.', 'W'),
+                Arrays.asList('.', '.', '.', '.', '.'),
+                Arrays.asList('.', '.', '.', '.', '.')
         );
         List<List<Character>> output2 = solve(input2);
         for (List<Character> row : output2) {

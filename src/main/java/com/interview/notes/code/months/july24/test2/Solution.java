@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.july24.test2;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Solution {
     public static int solve(List<Integer> ar) {

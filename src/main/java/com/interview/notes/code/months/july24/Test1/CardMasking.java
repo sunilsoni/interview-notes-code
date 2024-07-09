@@ -21,7 +21,7 @@ public class CardMasking {
 
     /**
      * Masks the middle 8 characters of a 16-digit card number.
-     * 
+     *
      * @param cardNumber the card number to mask
      * @return a string with the middle 8 characters replaced by 'x'
      */

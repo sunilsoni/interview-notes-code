@@ -1,16 +1,15 @@
 package com.interview.notes.code.months.july24.test3;
 
-import java.util.*;
-import java.io.*;
+import java.util.Arrays;
 
 public class Main {
     public static int findMinimumCost(int N, int K, int[] arr) {
         int result = 0;
         for (int i = 0; i < N - 1; i++) {
-            int currentSum = arr[i] + arr[i+1];
+            int currentSum = arr[i] + arr[i + 1];
             if (currentSum < K) {
                 int deficit = K - currentSum;
-                arr[i+1] += deficit;  // Add the deficit to the next day
+                arr[i + 1] += deficit;  // Add the deficit to the next day
                 result += deficit;   // Increase the cost by the deficit amount
             }
         }

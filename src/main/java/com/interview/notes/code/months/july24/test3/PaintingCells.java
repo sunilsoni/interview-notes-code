@@ -3,6 +3,7 @@ package com.interview.notes.code.months.july24.test3;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /*
 
 Painting Cells
@@ -77,17 +78,17 @@ public class PaintingCells {
             for (int j = 0; j < m; j++) {
                 if (result.get(i).get(j) != '.') {
                     // Check and adjust neighboring cells
-                    if (i > 0 && result.get(i-1).get(j) == result.get(i).get(j)) {
-                        result.get(i-1).set(j, result.get(i).get(j) == 'W' ? 'B' : 'W');
+                    if (i > 0 && result.get(i - 1).get(j) == result.get(i).get(j)) {
+                        result.get(i - 1).set(j, result.get(i).get(j) == 'W' ? 'B' : 'W');
                     }
-                    if (j > 0 && result.get(i).get(j-1) == result.get(i).get(j)) {
-                        result.get(i).set(j-1, result.get(i).get(j) == 'W' ? 'B' : 'W');
+                    if (j > 0 && result.get(i).get(j - 1) == result.get(i).get(j)) {
+                        result.get(i).set(j - 1, result.get(i).get(j) == 'W' ? 'B' : 'W');
                     }
-                    if (i < n-1 && result.get(i+1).get(j) == result.get(i).get(j)) {
-                        result.get(i+1).set(j, result.get(i).get(j) == 'W' ? 'B' : 'W');
+                    if (i < n - 1 && result.get(i + 1).get(j) == result.get(i).get(j)) {
+                        result.get(i + 1).set(j, result.get(i).get(j) == 'W' ? 'B' : 'W');
                     }
-                    if (j < m-1 && result.get(i).get(j+1) == result.get(i).get(j)) {
-                        result.get(i).set(j+1, result.get(i).get(j) == 'W' ? 'B' : 'W');
+                    if (j < m - 1 && result.get(i).get(j + 1) == result.get(i).get(j)) {
+                        result.get(i).set(j + 1, result.get(i).get(j) == 'W' ? 'B' : 'W');
                     }
                 }
             }
@@ -99,8 +100,8 @@ public class PaintingCells {
     public static void main(String[] args) {
         // Example 1
         List<List<Character>> input1 = Arrays.asList(
-            Arrays.asList('.', 'B'),
-            Arrays.asList('B', '.')
+                Arrays.asList('.', 'B'),
+                Arrays.asList('B', '.')
         );
         List<List<Character>> output1 = solve(input1);
         for (List<Character> row : output1) {
@@ -113,9 +114,9 @@ public class PaintingCells {
         // Example 2
         System.out.println();
         List<List<Character>> input2 = Arrays.asList(
-            Arrays.asList('.', '.', '.', '.', 'W'),
-            Arrays.asList('.', '.', '.', '.', '.'),
-            Arrays.asList('.', '.', '.', '.', '.')
+                Arrays.asList('.', '.', '.', '.', 'W'),
+                Arrays.asList('.', '.', '.', '.', '.'),
+                Arrays.asList('.', '.', '.', '.', '.')
         );
         List<List<Character>> output2 = solve(input2);
         for (List<Character> row : output2) {

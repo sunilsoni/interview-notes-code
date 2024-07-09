@@ -1,4 +1,5 @@
 package com.interview.notes.code.months.july24.test3;
+
 /*
 
 Square Numbers
@@ -46,7 +47,7 @@ public class SquareNumbers {
         // Calculate the starting and ending square roots
         long start = (long) Math.ceil(Math.sqrt(M));
         long end = (long) Math.floor(Math.sqrt(N));
-        
+
         int count = 0;
         for (long i = start; i <= end; i++) {
             long square = i * i;
@@ -56,7 +57,7 @@ public class SquareNumbers {
         }
         return count;
     }
-    
+
     // Helper method to check if a number has the zigzag digit pattern
     private static boolean hasZigzagPattern(long num) {
         String s = Long.toString(num);

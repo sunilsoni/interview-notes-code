@@ -1,11 +1,12 @@
 package com.interview.notes.code.months.july24.test3;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TwoSum {
     public static int[] findTwoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
-        
+
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (map.containsKey(complement)) {
@@ -13,7 +14,7 @@ public class TwoSum {
             }
             map.put(nums[i], i);
         }
-        
+
         return new int[0]; // If no such pair is found
     }
 

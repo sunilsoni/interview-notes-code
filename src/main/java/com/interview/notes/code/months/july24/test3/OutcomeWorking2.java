@@ -5,7 +5,7 @@ public class OutcomeWorking2 {
         // Define the vowels to be removed
         String vowels = "aeiouAEIOU";
         StringBuilder result = new StringBuilder();
-        
+
         // Iterate over each character in the string
         for (int i = 0; i < n; i++) {
             char c = s.charAt(i);
@@ -14,7 +14,7 @@ public class OutcomeWorking2 {
                 result.append(c);
             }
         }
-        
+
         // Convert StringBuilder to String and trim any leading/trailing spaces
         return result.toString().trim();
     }

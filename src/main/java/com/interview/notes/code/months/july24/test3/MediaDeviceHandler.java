@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.july24.test3;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
 /*
 Create and implement the given interfaces
 You need to create 3 interfaces:
