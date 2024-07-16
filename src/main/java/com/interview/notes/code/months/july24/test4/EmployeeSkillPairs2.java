@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.july24.test4;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class EmployeeSkillPairs2 {
 
@@ -33,26 +35,26 @@ public class EmployeeSkillPairs2 {
             } else {
                 // When sum is within the range, count all valid pairs with current left and right
                 int countLeft = 1, countRight = 1;
-                
+
                 // Count duplicates at the left
                 while (left + 1 < right && skill.get(left).equals(skill.get(left + 1))) {
                     countLeft++;
                     left++;
                 }
-                
+
                 // Count duplicates at the right
                 while (right - 1 > left && skill.get(right).equals(skill.get(right - 1))) {
                     countRight++;
                     right--;
                 }
-                
+
                 // If left and right meet and are the same, adjust the count
                 if (left == right) {
                     count += (countLeft * (countLeft - 1)) / 2;
                 } else {
                     count += countLeft * countRight;
                 }
-                
+
                 // Move pointers past the current numbers
                 left++;
                 right--;

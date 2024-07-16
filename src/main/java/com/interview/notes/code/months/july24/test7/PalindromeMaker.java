@@ -21,22 +21,22 @@ In your solution, focus on correctness. The performance of your solution will no
 public class PalindromeMaker {
     public static void main(String[] args) {
         PalindromeMaker maker = new PalindromeMaker();
-        
+
         // Example 1
         String example1 = "?ab??a";
         System.out.println("Input: " + example1);
         System.out.println("Output: " + maker.solution(example1)); // Expected: "aabbaa"
-        
+
         // Example 2
         String example2 = "bab??a";
         System.out.println("Input: " + example2);
         System.out.println("Output: " + maker.solution(example2)); // Expected: "NO"
-        
+
         // Example 3
         String example3 = "?a?";
         System.out.println("Input: " + example3);
         System.out.println("Output: " + maker.solution(example3)); // Expected: "aaa" or any other valid palindrome like "zaz"
-        
+
         // Additional Example
         String example4 = "??";
         System.out.println("Input: " + example4);
@@ -46,10 +46,10 @@ public class PalindromeMaker {
     public String solution(String S) {
         char[] chars = S.toCharArray();
         int n = chars.length;
-        
+
         for (int i = 0; i < n / 2; i++) {
             int j = n - i - 1;
-            
+
             if (chars[i] == '?' && chars[j] == '?') {
                 chars[i] = chars[j] = 'a';
             } else if (chars[i] == '?') {
@@ -60,11 +60,11 @@ public class PalindromeMaker {
                 return "NO";
             }
         }
-        
+
         if (n % 2 == 1 && chars[n / 2] == '?') {
             chars[n / 2] = 'a';
         }
-        
+
         return new String(chars);
     }
 }

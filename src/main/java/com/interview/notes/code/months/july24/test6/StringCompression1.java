@@ -10,7 +10,7 @@ public class StringCompression1 {
 
         StringBuilder sb = new StringBuilder();
         int count = 0;
-        int n= str.length();
+        int n = str.length();
 
         for (int i = 0; i < n; i++) {
             count++;
@@ -30,8 +30,8 @@ public class StringCompression1 {
         String str2 = "aabbcc";
         String str3 = "aaaa";
 
-        System.out.println(str1+" : "+compressString(str1)); // Output: a2b1c5a3
-        System.out.println(str2+" : "+compressString(str2)); // Output: aabbcc
-        System.out.println(str3+" : "+compressString(str3)); // Output: a4
+        System.out.println(str1 + " : " + compressString(str1)); // Output: a2b1c5a3
+        System.out.println(str2 + " : " + compressString(str2)); // Output: aabbcc
+        System.out.println(str3 + " : " + compressString(str3)); // Output: a4
     }
 }

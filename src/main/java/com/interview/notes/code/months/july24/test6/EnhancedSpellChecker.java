@@ -14,6 +14,14 @@ public class EnhancedSpellChecker {
         preprocessDictionary(dictionary);
     }
 
+    public static void main(String[] args) {
+        List<String> dictionary = List.of("gap", "dog", "cat", "tiger", "bat", "rat", "get", "fish", "giraffe");
+        EnhancedSpellChecker spellChecker = new EnhancedSpellChecker(dictionary);
+        String inputWord = "gat";
+        List<String> similarWords = spellChecker.findSimilarWords(inputWord);
+        System.out.println("Words similar to '" + inputWord + "': " + similarWords);
+    }
+
     private void preprocessDictionary(List<String> dictionary) {
         for (String word : dictionary) {
             int length = word.length();
@@ -44,13 +52,5 @@ public class EnhancedSpellChecker {
             }
         }
         return diffCount == 1;
-    }
-
-    public static void main(String[] args) {
-        List<String> dictionary = List.of("gap", "dog", "cat", "tiger", "bat", "rat", "get", "fish", "giraffe");
-        EnhancedSpellChecker spellChecker = new EnhancedSpellChecker(dictionary);
-        String inputWord = "gat";
-        List<String> similarWords = spellChecker.findSimilarWords(inputWord);
-        System.out.println("Words similar to '" + inputWord + "': " + similarWords);
     }
 }

@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.july24.test4;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class EmployeeSkillPairs13 {
 
@@ -44,7 +46,7 @@ public class EmployeeSkillPairs13 {
                 while (left < rightTemp && skill.get(left) + skill.get(rightTemp) >= minSkill && skill.get(left) + skill.get(rightTemp) <= maxSkill) {
                     rightTemp--;
                 }
-                
+
                 count += (long) (rightTemp - left + 1) * (right - leftTemp + 1);
 
                 left++;

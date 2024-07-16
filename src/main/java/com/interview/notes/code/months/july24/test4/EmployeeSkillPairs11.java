@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.july24.test4;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class EmployeeSkillPairs11 {
 
@@ -21,7 +22,7 @@ public class EmployeeSkillPairs11 {
     public static long getNumTeams(List<Integer> skill, int minSkill, int maxSkill) {
         long count = 0;
         int n = skill.size();
-        
+
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 int sum = skill.get(i) + skill.get(j);
@@ -30,7 +31,7 @@ public class EmployeeSkillPairs11 {
                 }
             }
         }
-        
+
         return count;
     }
 }

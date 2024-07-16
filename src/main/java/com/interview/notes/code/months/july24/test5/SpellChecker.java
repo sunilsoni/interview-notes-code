@@ -10,6 +10,24 @@ public class SpellChecker {
         this.dictionary = dictionary;
     }
 
+    public static void main(String[] args) {
+        Set<String> dictionary = new HashSet<>();
+        dictionary.add("gap");
+        dictionary.add("dog");
+        dictionary.add("cat");
+        dictionary.add("tiger");
+        dictionary.add("bat");
+        dictionary.add("rat");
+        dictionary.add("get");
+        dictionary.add("fish");
+        dictionary.add("giraffe");
+
+        SpellChecker spellChecker = new SpellChecker(dictionary);
+        String inputWord = "gat";
+        Set<String> output = spellChecker.findSimilarWords(inputWord);
+        System.out.println("Words in the dictionary that are the same length as '" + inputWord + "' and differ by exactly one letter: " + output);
+    }
+
     public Set<String> findSimilarWords(String word) {
         Set<String> similarWords = new HashSet<>();
         // Iterate over each word in the dictionary
@@ -34,23 +52,5 @@ public class SpellChecker {
             }
         }
         return diffCount == 1;
-    }
-
-    public static void main(String[] args) {
-        Set<String> dictionary = new HashSet<>();
-        dictionary.add("gap");
-        dictionary.add("dog");
-        dictionary.add("cat");
-        dictionary.add("tiger");
-        dictionary.add("bat");
-        dictionary.add("rat");
-        dictionary.add("get");
-        dictionary.add("fish");
-        dictionary.add("giraffe");
-
-        SpellChecker spellChecker = new SpellChecker(dictionary);
-        String inputWord = "gat";
-        Set<String> output = spellChecker.findSimilarWords(inputWord);
-        System.out.println("Words in the dictionary that are the same length as '" + inputWord + "' and differ by exactly one letter: " + output);
     }
 }

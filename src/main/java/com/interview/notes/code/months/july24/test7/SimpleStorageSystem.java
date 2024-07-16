@@ -2,6 +2,7 @@ package com.interview.notes.code.months.july24.test7;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /*
 The simple storage system should support adding files as well as deleting files.
 Operations:
@@ -22,10 +23,19 @@ public class SimpleStorageSystem {
         fileStorage = new HashMap<>();
     }
 
+    public static void main(String[] args) {
+        SimpleStorageSystem storage = new SimpleStorageSystem();
+        System.out.println(storage.addFile("document.txt", "This is the content of the document."));  // Output: true
+        System.out.println(storage.addFile("document.txt", "This is the content of the document."));  // Output: false
+        System.out.println(storage.deleteFile("document.txt"));  // Output: true
+        System.out.println(storage.deleteFile("document.txt"));  // Output: false
+    }
+
     /**
      * Adds a file and its content to the storage.
+     *
      * @param fileName the name of the file to add
-     * @param content the content of the file
+     * @param content  the content of the file
      * @return "true" if the file was added successfully, "false" if the file already exists
      */
     public String addFile(String fileName, String content) {
@@ -40,6 +50,7 @@ public class SimpleStorageSystem {
 
     /**
      * Deletes a file from the storage.
+     *
      * @param fileName the name of the file to delete
      * @return "true" if the file was deleted successfully, "false" if the file does not exist
      */
@@ -47,13 +58,5 @@ public class SimpleStorageSystem {
         // Remove the file from the map if it exists
         String removedContent = fileStorage.remove(fileName);
         return removedContent != null ? "true" : "false";
-    }
-
-    public static void main(String[] args) {
-        SimpleStorageSystem storage = new SimpleStorageSystem();
-        System.out.println(storage.addFile("document.txt", "This is the content of the document."));  // Output: true
-        System.out.println(storage.addFile("document.txt", "This is the content of the document."));  // Output: false
-        System.out.println(storage.deleteFile("document.txt"));  // Output: true
-        System.out.println(storage.deleteFile("document.txt"));  // Output: false
     }
 }

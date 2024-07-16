@@ -36,7 +36,7 @@ public class EmployeeSkillPairs14 {
         for (int i = 0; i < skillCount.length; i++) {
             // Partner each skill level with its complement to reach the target range
             int complement = maxSkill - i;
-            if (complement >= minSkill) { 
+            if (complement >= minSkill) {
                 // Consider only valid complements within the range
                 count += (long) skillCount[i] * skillCount[complement];
             }

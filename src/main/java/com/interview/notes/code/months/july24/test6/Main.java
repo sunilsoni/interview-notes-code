@@ -2,6 +2,15 @@ package com.interview.notes.code.months.july24.test6;
 
 import java.util.ArrayList;
 
+// Interface definition for MyList (assuming basic structure as per the description)
+interface MyList {
+    void convert(String[] a) throws InvalidStringException;
+
+    void replace(int idx) throws InvalidStringException;
+
+    ArrayList<String> compact();
+}
+
 // Custom Exception class for handling invalid strings
 class InvalidStringException extends Exception {
     public InvalidStringException() {
@@ -11,13 +20,6 @@ class InvalidStringException extends Exception {
     public InvalidStringException(String message) {
         super(message);  // Call the constructor of the parent Exception class with a message
     }
-}
-
-// Interface definition for MyList (assuming basic structure as per the description)
-interface MyList {
-    void convert(String[] a) throws InvalidStringException;
-    void replace(int idx) throws InvalidStringException;
-    ArrayList<String> compact();
 }
 
 // Class that implements MyList, using an ArrayList to manage strings

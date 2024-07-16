@@ -2,6 +2,7 @@ package com.interview.notes.code.months.july24.test7;
 
 import java.util.HashSet;
 import java.util.Set;
+
 /*
 The simple storage system should support adding files as well as deleting files.
 Operations:
@@ -22,8 +23,17 @@ public class SimpleStorageSystem1 {
         files = new HashSet<>();
     }
 
+    public static void main(String[] args) {
+        SimpleStorageSystem1 storage = new SimpleStorageSystem1();
+        System.out.println(storage.addFile("document.txt"));  // Output: true
+        System.out.println(storage.addFile("document.txt"));  // Output: false
+        System.out.println(storage.deleteFile("document.txt"));  // Output: true
+        System.out.println(storage.deleteFile("document.txt"));  // Output: false
+    }
+
     /**
      * Adds a file to the storage.
+     *
      * @param fileName the name of the file to add
      * @return "true" if the file was added successfully, "false" if the file already exists
      */
@@ -35,6 +45,7 @@ public class SimpleStorageSystem1 {
 
     /**
      * Deletes a file from the storage.
+     *
      * @param fileName the name of the file to delete
      * @return "true" if the file was deleted successfully, "false" if the file does not exist
      */
@@ -42,13 +53,5 @@ public class SimpleStorageSystem1 {
         // Attempt to remove the file from the set
         boolean removed = files.remove(fileName);
         return removed ? "true" : "false";
-    }
-
-    public static void main(String[] args) {
-        SimpleStorageSystem1 storage = new SimpleStorageSystem1();
-        System.out.println(storage.addFile("document.txt"));  // Output: true
-        System.out.println(storage.addFile("document.txt"));  // Output: false
-        System.out.println(storage.deleteFile("document.txt"));  // Output: true
-        System.out.println(storage.deleteFile("document.txt"));  // Output: false
     }
 }
