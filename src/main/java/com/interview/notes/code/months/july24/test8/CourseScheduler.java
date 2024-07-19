@@ -3,6 +3,26 @@ package com.interview.notes.code.months.july24.test8;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+There are a total of n courses you have to take, labeled from o to n - 1. You are
+given an array prerequisites where prerequisites[7] = lai, bil indicates that you must
+take course bi first if you want to take course ai.
+ For example, the pair [0, 1], indicates that to take course O you have to first take
+course 1.
+ Return true if you can finish all courses. Otherwise, return false.
+  Example 1:
+ Input: n= 2, prerequisites = [[1, 0]]
+ Output: true
+ Explanation: There are a total of 2 courses to take.
+ I To take course 1 you should have finished course 0. So it is possible.
+ Example 2:
+  Input: n = 2, prerequisites = [[1, 0], [0, 11]
+  Output: false
+  Explanation: There are a total of 2 courses to take.
+  To take course 1 you should have finished course O, and to take course O you should
+also have finished course 1. So it is impossible.
+
+ */
 public class CourseScheduler {
     public static void main(String[] args) {
         CourseScheduler scheduler = new CourseScheduler();
