@@ -24,7 +24,7 @@ public class Main {
      * If x is smaller than the smallest number in the array, it returns -1.
      *
      * @param arr The sorted array of integers.
-     * @param x The target number.
+     * @param x   The target number.
      * @return The largest number in arr that is <= x, or -1 if no such number exists.
      */
     public static int findFloor(int[] arr, int x) {

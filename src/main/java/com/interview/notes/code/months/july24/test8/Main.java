@@ -1,7 +1,8 @@
 package com.interview.notes.code.months.july24.test8;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Scanner;
 
 class Node {
     int data;
