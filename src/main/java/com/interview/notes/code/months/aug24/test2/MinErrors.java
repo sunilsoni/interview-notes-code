@@ -23,12 +23,12 @@ public class MinErrors {
 
             for (int prev = 0; prev < 4; prev++) {
                 if (c == '0' || c == '!') {
-                    int errors = dp[i-1][prev];
+                    int errors = dp[i - 1][prev];
                     if ((prev & 2) != 0) errors = (errors + y) % MOD;
                     dp[i][prev & 2] = Math.min(dp[i][prev & 2], errors);
                 }
                 if (c == '1' || c == '!') {
-                    int errors = dp[i-1][prev];
+                    int errors = dp[i - 1][prev];
                     if ((prev & 1) != 0) errors = (errors + x) % MOD;
                     dp[i][(prev & 2) | 1] = Math.min(dp[i][(prev & 2) | 1], errors);
                 }

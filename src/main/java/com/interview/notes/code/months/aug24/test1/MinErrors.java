@@ -23,7 +23,7 @@ public class MinErrors {
                 arr[i] = replacement;
             }
         }
-        
+
         long count01 = 0;
         long count10 = 0;
         long result = 0;

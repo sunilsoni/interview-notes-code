@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.aug24.test6;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.PriorityQueue;
 
 class Result {
     public static int reduceGifts(List<Integer> prices, int k, int threshold) {

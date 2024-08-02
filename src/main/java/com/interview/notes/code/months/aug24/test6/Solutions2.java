@@ -34,11 +34,6 @@ public class Solutions2 {
         System.out.println("Expected: 3, Actual: " + solutions.solution6(10, 3));
     }
 
-    // Solution 0
-    public int solution0(int A, int B) {
-        return A / 4;
-    }
-
     public static void answerSolution0() {
         System.out.println("1 3");
     }
@@ -153,5 +148,10 @@ public class Solutions2 {
 
     public static void answerSolution6() {
         System.out.println("10 3");
+    }
+
+    // Solution 0
+    public int solution0(int A, int B) {
+        return A / 4;
     }
 }

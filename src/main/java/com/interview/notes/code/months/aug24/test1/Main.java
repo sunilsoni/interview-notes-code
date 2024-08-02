@@ -26,7 +26,7 @@ class Result {
         while (sum > threshold && !maxHeap.isEmpty()) {
             int highestRemaining = maxHeap.poll();
             int lowestInSum = maxHeap.peek() != null ? maxHeap.peek() : 0;
-            
+
             sum = sum - lowestInSum + highestRemaining;
             itemsToRemove++;
         }

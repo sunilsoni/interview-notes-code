@@ -17,15 +17,6 @@ public class RunningAverage {
         this.sum = 0.0;
     }
 
-    public double next(double val) {
-        if (window.size() == windowSize) {
-            sum -= window.removeFirst();
-        }
-        window.addLast(val);
-        sum += val;
-        return sum / window.size();
-    }
-
     public static void main(String[] args) {
         // Test case 1: Basic functionality
         RunningAverage ra1 = new RunningAverage(3);
@@ -68,5 +59,14 @@ public class RunningAverage {
         System.out.println(ra6.next(2.7)); // Expected: 2.1
         System.out.println(ra6.next(3.2)); // Expected: 2.4666666666666666
         System.out.println(ra6.next(4.1)); // Expected: 3.3333333333333335
+    }
+
+    public double next(double val) {
+        if (window.size() == windowSize) {
+            sum -= window.removeFirst();
+        }
+        window.addLast(val);
+        sum += val;
+        return sum / window.size();
     }
 }

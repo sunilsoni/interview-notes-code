@@ -1,13 +1,16 @@
 package com.interview.notes.code.months.aug24.test4;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Result1 {
 
     public static int reduceGifts(List<Integer> prices, int k, int threshold) {
         // Sort prices in descending order
         Collections.sort(prices, Collections.reverseOrder());
-        
+
         // Initialize the removal count
         int removalCount = 0;
 

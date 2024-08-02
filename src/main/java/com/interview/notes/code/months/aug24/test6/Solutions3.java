@@ -1,11 +1,6 @@
 package com.interview.notes.code.months.aug24.test6;
 
 class Solutions3 {
-    // Solution 0
-    public int solution0(int A, int B) {
-        return A / 4;
-    }
-
     public static void answerSolution0() {
         System.out.println("1 3");
     }
@@ -181,5 +176,10 @@ class Solutions3 {
         System.out.println("\nSolution 6 Test:");
         answerSolution6();
         System.out.println(sol.solution6(1, 5));
+    }
+
+    // Solution 0
+    public int solution0(int A, int B) {
+        return A / 4;
     }
 }

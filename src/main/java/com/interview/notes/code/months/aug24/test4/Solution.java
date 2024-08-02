@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.aug24.test4;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Solution {
     public static int reduceGifts(List<Integer> prices, int k, int threshold) {

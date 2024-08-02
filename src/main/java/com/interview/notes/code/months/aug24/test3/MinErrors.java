@@ -1,11 +1,9 @@
 package com.interview.notes.code.months.aug24.test3;
 
 /**
- *
-
- Time limit exceeded
- Allowed time limit:4 secs
- Your code did not execute in 4 seconds
+ * Time limit exceeded
+ * Allowed time limit:4 secs
+ * Your code did not execute in 4 seconds
  */
 public class MinErrors {
 
@@ -30,7 +28,7 @@ public class MinErrors {
                 arr[i] = replacement;
             }
         }
-        
+
         long count01 = 0;
         long count10 = 0;
         long result = 0;

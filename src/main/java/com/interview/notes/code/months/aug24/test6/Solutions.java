@@ -2,10 +2,6 @@ package com.interview.notes.code.months.aug24.test6;
 
 public class Solutions {
 
-    public String solution0(int A, int B) {
-        return A + " " + B;
-    }
-
     public static void answerSolution0() {
         System.out.println("1 3");
     }
@@ -34,14 +30,6 @@ public class Solutions {
         System.out.println("CORRECT");
     }
 
-    public String solution3(int A, int B) {
-        if (A == B) {
-            return "CORRECT";
-        } else {
-            return "INCORRECT";
-        }
-    }
-
     public static void answerSolution3() {
         System.out.println("5 5");
     }
@@ -58,22 +46,8 @@ public class Solutions {
         System.out.println("CORRECT");
     }
 
-    public String solution5(int A, int B) {
-        if (A < 1 || A > 9 || B < 1 || B > 9) {
-            return "INCORRECT";
-        }
-        return "CORRECT";
-    }
-
     public static void answerSolution5() {
         System.out.println("5 5");
-    }
-
-    public String solution6(int A, int B) {
-        if (A < 1 || A > 9 || B < 1 || B > 9) {
-            return "INCORRECT";
-        }
-        return A + " " + B;
     }
 
     public static void answerSolution6() {
@@ -136,5 +110,31 @@ public class Solutions {
         answerSolution6();
         System.out.println("Test case 5 5: " + solutions.solution6(5, 5));
         System.out.println("Test case 1 10: " + solutions.solution6(1, 10));
+    }
+
+    public String solution0(int A, int B) {
+        return A + " " + B;
+    }
+
+    public String solution3(int A, int B) {
+        if (A == B) {
+            return "CORRECT";
+        } else {
+            return "INCORRECT";
+        }
+    }
+
+    public String solution5(int A, int B) {
+        if (A < 1 || A > 9 || B < 1 || B > 9) {
+            return "INCORRECT";
+        }
+        return "CORRECT";
+    }
+
+    public String solution6(int A, int B) {
+        if (A < 1 || A > 9 || B < 1 || B > 9) {
+            return "INCORRECT";
+        }
+        return A + " " + B;
     }
 }

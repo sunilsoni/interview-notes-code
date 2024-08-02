@@ -15,6 +15,24 @@ public class RunningAverage {
         this.sum = 0;
     }
 
+    public static void main(String[] args) {
+        RunningAverage ra = new RunningAverage();
+
+        System.out.println("Initial average: " + ra.getAverage());
+
+        System.out.println("Add 1: " + ra.add(1));
+        System.out.println("Add 2: " + ra.add(2));
+        System.out.println("Add 3: " + ra.add(3));
+        System.out.println("Add 76: " + ra.add(76));
+        System.out.println("Add 7: " + ra.add(7));
+
+        System.out.println("Final average: " + ra.getAverage());
+
+        // Test with large number
+        RunningAverage ra2 = new RunningAverage();
+        System.out.println("Add MAX_VALUE: " + ra2.add(Integer.MAX_VALUE));
+    }
+
     public float add(int number) {
         count++;
         sum += number;
@@ -26,23 +44,5 @@ public class RunningAverage {
             return 0f;
         }
         return (float) sum / count;
-    }
-
-    public static void main(String[] args) {
-        RunningAverage ra = new RunningAverage();
-        
-        System.out.println("Initial average: " + ra.getAverage());
-        
-        System.out.println("Add 1: " + ra.add(1));
-        System.out.println("Add 2: " + ra.add(2));
-        System.out.println("Add 3: " + ra.add(3));
-        System.out.println("Add 76: " + ra.add(76));
-        System.out.println("Add 7: " + ra.add(7));
-        
-        System.out.println("Final average: " + ra.getAverage());
-        
-        // Test with large number
-        RunningAverage ra2 = new RunningAverage();
-        System.out.println("Add MAX_VALUE: " + ra2.add(Integer.MAX_VALUE));
     }
 }

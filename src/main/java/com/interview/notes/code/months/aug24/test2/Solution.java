@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.aug24.test2;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Solution {
     public static int reduceGifts(List<Integer> prices, int k, int threshold) {
@@ -23,8 +25,8 @@ public class Solution {
         }
 
         // Same logic as before for cases where k < n
-        int[] freq = new int[n]; 
-        int maxRemovals = 0; 
+        int[] freq = new int[n];
+        int maxRemovals = 0;
 
         for (int i = 0; i <= n - k; i++) {
             int sum = 0;

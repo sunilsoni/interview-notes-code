@@ -7,7 +7,7 @@ public class Result3 {
     public static int reduceGifts(List<Integer> prices, int k, int threshold) {
         // Sort prices in descending order
         Collections.sort(prices, Collections.reverseOrder());
-        
+
         // Calculate initial sum for the first k elements
         int removalCount = 0;
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
