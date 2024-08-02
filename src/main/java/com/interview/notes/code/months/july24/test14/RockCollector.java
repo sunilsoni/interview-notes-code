@@ -1,4 +1,5 @@
 package com.interview.notes.code.months.july24.test14;
+
 /*
 
 ‹ Instructions to candidate.
@@ -34,26 +35,26 @@ public class RockCollector {
         int[][] dp = new int[rows][cols];
 
         // Initialize the starting point
-        dp[rows-1][0] = grid[rows-1][0];
+        dp[rows - 1][0] = grid[rows - 1][0];
 
         // Initialize the first column
         for (int i = rows - 2; i >= 0; i--) {
-            dp[i][0] = dp[i+1][0] + grid[i][0];
+            dp[i][0] = dp[i + 1][0] + grid[i][0];
         }
 
         // Initialize the last row
         for (int j = 1; j < cols; j++) {
-            dp[rows-1][j] = dp[rows-1][j-1] + grid[rows-1][j];
+            dp[rows - 1][j] = dp[rows - 1][j - 1] + grid[rows - 1][j];
         }
 
         // Fill the dp table
         for (int i = rows - 2; i >= 0; i--) {
             for (int j = 1; j < cols; j++) {
-                dp[i][j] = Math.max(dp[i+1][j], dp[i][j-1]) + grid[i][j];
+                dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]) + grid[i][j];
             }
         }
 
-        return dp[0][cols-1];
+        return dp[0][cols - 1];
     }
 
     public static boolean doTestsPass() {
@@ -61,9 +62,9 @@ public class RockCollector {
 
         // Base test case
         result &= optimalPath(new int[][]{
-            {0, 0, 0, 0, 5},
-            {0, 1, 1, 1, 0},
-            {2, 0, 0, 0, 0}
+                {0, 0, 0, 0, 5},
+                {0, 1, 1, 1, 0},
+                {2, 0, 0, 0, 0}
         }) == 10;
 
         // Test case 1: Empty grid
@@ -80,8 +81,8 @@ public class RockCollector {
 
         // Test case 5: Grid with negative numbers
         result &= optimalPath(new int[][]{
-            {0, -1, 0},
-            {-2, 3, 1}
+                {0, -1, 0},
+                {-2, 3, 1}
         }) == 3;
 
         // Test case 6: Large grid
@@ -103,12 +104,12 @@ public class RockCollector {
     }
 
     public static void main(String[] args) {
-        boolean result =  optimalPath(new int[][]{
+        boolean result = optimalPath(new int[][]{
                 {1, 3, 2, 0, 2, 1, 8},
                 {3, 4, 1, 2, 0, 1, 1},
                 {1, 1, 1, 2, 3, 2, 1},
                 {1, 0, 1, 1, 4, 2, 1}}) == 25;
         System.out.println(result);
-       // doTestsPass();
+        // doTestsPass();
     }
 }
