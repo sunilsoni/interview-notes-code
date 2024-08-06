@@ -1,8 +1,7 @@
 package com.interview.notes.code.months.aug24.test8;
 
 /**
- *
- /*• Problem Name• is &&& Median Two Sorted Arrays &od PLEASE • DO NOT •
+ * /*• Problem Name• is &&& Median Two Sorted Arrays &od PLEASE • DO NOT •
  */
 public class FindMedianSortedArraysFinal {
     public static double findMedianSortedArrays(int[] A, int[] B) {

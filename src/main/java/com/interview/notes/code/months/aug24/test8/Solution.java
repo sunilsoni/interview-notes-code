@@ -1,8 +1,6 @@
 package com.interview.notes.code.months.aug24.test8;
 
-import java.io.*;
-import java.util.*;
-import java.lang.Math;
+import java.util.Scanner;
 
 public class Solution {
 
@@ -34,7 +32,7 @@ public class Solution {
         for (int i = 0; i < S.length(); i++) {
             char ch = S.charAt(i);
             if (ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' ||
-                ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                    ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
                 out.append('3');
             } else {
                 out.append(ch);
