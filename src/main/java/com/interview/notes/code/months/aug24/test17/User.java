@@ -1,8 +1,11 @@
 package com.interview.notes.code.months.aug24.test17;
 
-import java.util.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 class User {
     private int id;
@@ -24,43 +27,6 @@ class User {
     private double credit;
     private String status;
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-    public String getIdentityNumber() { return identityNumber; }
-    public void setIdentityNumber(String identityNumber) { this.identityNumber = identityNumber; }
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
-    public int getAge() { return age; }
-    public void setAge(int age) { this.age = age; }
-    public LocalDate getBirthDate() { return birthDate; }
-    public void setBirthDate(LocalDate birthDate) { this.birthDate = birthDate; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-    public String getGender() { return gender; }
-    public void setGender(String gender) { this.gender = gender; }
-    public String getCountry() { return country; }
-    public void setCountry(String country) { this.country = country; }
-    public String getCity() { return city; }
-    public void setCity(String city) { this.city = city; }
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
-    public String getZipCode() { return zipCode; }
-    public void setZipCode(String zipCode) { this.zipCode = zipCode; }
-    public String getPhoneNumber() { return phoneNumber; }
-    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
-    public String getDepartment() { return department; }
-    public void setDepartment(String department) { this.department = department; }
-    public String getRoles() { return roles; }
-    public void setRoles(String roles) { this.roles = roles; }
-    public LocalDate getJoinDate() { return joinDate; }
-    public void setJoinDate(LocalDate joinDate) { this.joinDate = joinDate; }
-    public double getCredit() { return credit; }
-    public void setCredit(double credit) { this.credit = credit; }
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
-
     public User(String[] data) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
         setId(Integer.parseInt(data[0]));
@@ -81,6 +47,150 @@ class User {
         setJoinDate(LocalDate.parse(data[15], formatter));
         setCredit(Double.parseDouble(data[16]));
         setStatus(data[17]);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getIdentityNumber() {
+        return identityNumber;
+    }
+
+    public void setIdentityNumber(String identityNumber) {
+        this.identityNumber = identityNumber;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public LocalDate getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(LocalDate joinDate) {
+        this.joinDate = joinDate;
+    }
+
+    public double getCredit() {
+        return credit;
+    }
+
+    public void setCredit(double credit) {
+        this.credit = credit;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
@@ -117,22 +227,22 @@ class UserManager {
 
     private static boolean compareUserAttributes(User existingUser, User newUser) {
         return existingUser.getIdentityNumber().equals(newUser.getIdentityNumber()) &&
-               existingUser.getFirstName().equals(newUser.getFirstName()) &&
-               existingUser.getLastName().equals(newUser.getLastName()) &&
-               existingUser.getAge() == newUser.getAge() &&
-               existingUser.getBirthDate().equals(newUser.getBirthDate()) &&
-               existingUser.getEmail().equals(newUser.getEmail()) &&
-               existingUser.getGender().equals(newUser.getGender()) &&
-               existingUser.getCountry().equals(newUser.getCountry()) &&
-               existingUser.getCity().equals(newUser.getCity()) &&
-               existingUser.getAddress().equals(newUser.getAddress()) &&
-               existingUser.getZipCode().equals(newUser.getZipCode()) &&
-               existingUser.getPhoneNumber().equals(newUser.getPhoneNumber()) &&
-               existingUser.getDepartment().equals(newUser.getDepartment()) &&
-               existingUser.getRoles().equals(newUser.getRoles()) &&
-               existingUser.getJoinDate().equals(newUser.getJoinDate()) &&
-               existingUser.getCredit() == newUser.getCredit() &&
-               existingUser.getStatus().equals(newUser.getStatus());
+                existingUser.getFirstName().equals(newUser.getFirstName()) &&
+                existingUser.getLastName().equals(newUser.getLastName()) &&
+                existingUser.getAge() == newUser.getAge() &&
+                existingUser.getBirthDate().equals(newUser.getBirthDate()) &&
+                existingUser.getEmail().equals(newUser.getEmail()) &&
+                existingUser.getGender().equals(newUser.getGender()) &&
+                existingUser.getCountry().equals(newUser.getCountry()) &&
+                existingUser.getCity().equals(newUser.getCity()) &&
+                existingUser.getAddress().equals(newUser.getAddress()) &&
+                existingUser.getZipCode().equals(newUser.getZipCode()) &&
+                existingUser.getPhoneNumber().equals(newUser.getPhoneNumber()) &&
+                existingUser.getDepartment().equals(newUser.getDepartment()) &&
+                existingUser.getRoles().equals(newUser.getRoles()) &&
+                existingUser.getJoinDate().equals(newUser.getJoinDate()) &&
+                existingUser.getCredit() == newUser.getCredit() &&
+                existingUser.getStatus().equals(newUser.getStatus());
     }
 
     public static void main(String[] args) {

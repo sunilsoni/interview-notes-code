@@ -1,7 +1,10 @@
 package com.interview.notes.code.months.aug24.test17;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 class VisitCounter {
     Map<Long, Long> count(Map<String, UserStats>... visits) {
@@ -10,13 +13,13 @@ class VisitCounter {
         }
 
         return Arrays.stream(visits)
-            .filter(Objects::nonNull)
-            .flatMap(map -> map.entrySet().stream())
-            .filter(entry -> isValidEntry(entry.getKey(), entry.getValue()))
-            .collect(Collectors.groupingBy(
-                entry -> Long.parseLong(entry.getKey()),
-                Collectors.summingLong(entry -> entry.getValue().getVisitCount().get())
-            ));
+                .filter(Objects::nonNull)
+                .flatMap(map -> map.entrySet().stream())
+                .filter(entry -> isValidEntry(entry.getKey(), entry.getValue()))
+                .collect(Collectors.groupingBy(
+                        entry -> Long.parseLong(entry.getKey()),
+                        Collectors.summingLong(entry -> entry.getValue().getVisitCount().get())
+                ));
     }
 
     private boolean isValidEntry(String key, UserStats value) {

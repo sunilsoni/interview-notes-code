@@ -7,7 +7,7 @@ import java.util.function.Function;
 public class Test {
     public static void main(String[] args) {
         Function<char[], String> obj = String::new; // Line 5
-        String ss = obj.apply(new char[] {'j', 'a', 'v', 'a'}); // Line 6
+        String ss = obj.apply(new char[]{'j', 'a', 'v', 'a'}); // Line 6
         System.out.println(ss);
 
 

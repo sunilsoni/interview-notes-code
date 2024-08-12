@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.aug24.test15;
-import java.util.*;
+
 import com.interview.notes.code.months.july24.test17.UserStats;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {

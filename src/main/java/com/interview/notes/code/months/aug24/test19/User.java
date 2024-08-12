@@ -1,8 +1,11 @@
 package com.interview.notes.code.months.aug24.test19;
 
-import java.util.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 class User {
     int id;
@@ -80,22 +83,22 @@ class UserManager {
 
     private static boolean compareUserAttributes(User existingUser, User newUser) {
         return existingUser.internalId == newUser.internalId &&
-               existingUser.firstName.equals(newUser.firstName) &&
-               existingUser.lastName.equals(newUser.lastName) &&
-               existingUser.age == newUser.age &&
-               existingUser.dateOfBirth.equals(newUser.dateOfBirth) &&
-               existingUser.email.equals(newUser.email) &&
-               existingUser.gender.equals(newUser.gender) &&
-               existingUser.country.equals(newUser.country) &&
-               existingUser.city.equals(newUser.city) &&
-               existingUser.address.equals(newUser.address) &&
-               existingUser.zipCode.equals(newUser.zipCode) &&
-               existingUser.phoneNumber.equals(newUser.phoneNumber) &&
-               existingUser.department.equals(newUser.department) &&
-               existingUser.role.equals(newUser.role) &&
-               existingUser.joiningDate.equals(newUser.joiningDate) &&
-               existingUser.salary == newUser.salary &&
-               existingUser.status.equals(newUser.status);
+                existingUser.firstName.equals(newUser.firstName) &&
+                existingUser.lastName.equals(newUser.lastName) &&
+                existingUser.age == newUser.age &&
+                existingUser.dateOfBirth.equals(newUser.dateOfBirth) &&
+                existingUser.email.equals(newUser.email) &&
+                existingUser.gender.equals(newUser.gender) &&
+                existingUser.country.equals(newUser.country) &&
+                existingUser.city.equals(newUser.city) &&
+                existingUser.address.equals(newUser.address) &&
+                existingUser.zipCode.equals(newUser.zipCode) &&
+                existingUser.phoneNumber.equals(newUser.phoneNumber) &&
+                existingUser.department.equals(newUser.department) &&
+                existingUser.role.equals(newUser.role) &&
+                existingUser.joiningDate.equals(newUser.joiningDate) &&
+                existingUser.salary == newUser.salary &&
+                existingUser.status.equals(newUser.status);
     }
 
     public static void main(String[] args) {
