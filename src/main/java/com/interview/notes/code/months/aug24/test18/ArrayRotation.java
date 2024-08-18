@@ -95,7 +95,7 @@ public class ArrayRotation {
         System.out.println("Rotated " + n5 + " times: " + Arrays.toString(arr5));
 
         // Example 5 (Edge case: single element array)
-        int[] arr6 = {8,5,6,7,9,0,4,2,5};
+        int[] arr6 = {8, 5, 6, 7, 9, 0, 4, 2, 5};
         int n6 = 3;
         System.out.println("\nExample 5 - Original: " + Arrays.toString(arr6));
         rotateLeft(arr5, n5);
