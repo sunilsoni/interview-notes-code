@@ -3,14 +3,14 @@ package com.interview.notes.code.months.aug24.test22;
 public class Solution {
     public static String solution(String text) {
         StringBuilder result = new StringBuilder();
-        
+
         for (char c : text.toCharArray()) {
             if (c == 'F' || c == 'f') {
                 result.append('K');
             }
             result.append(c);
         }
-        
+
         return result.toString();
     }
 
