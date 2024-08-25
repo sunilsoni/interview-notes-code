@@ -1,19 +1,13 @@
-package com.interview.notes.code.months.aug24.test1;
-
-import java.util.*;
+package com.interview.notes.code.months.aug24.test28;
 
 public class Solution {
     private int[][] matrix;
     private boolean[][] visited;
     private int rows, cols;
-    private final int[] rowOffset = {-1, 1, 0, 0};
-    private final int[] colOffset = {0, 0, -1, 1};
+    private int[] dx = {-1, 1, 0, 0};
+    private int[] dy = {0, 0, -1, 1};
 
     public int solution(int[][] A) {
-        if (A == null || A.length == 0 || A[0].length == 0) {
-            return 0;
-        }
-
         matrix = A;
         rows = A.length;
         cols = A[0].length;
@@ -23,7 +17,7 @@ public class Solution {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (!visited[i][j]) {
-                    int groupSize = dfs(i, j, A[i][j]);
+                    int groupSize = dfs(i, j, matrix[i][j], matrix[i][j]);
                     maxGroupSize = Math.max(maxGroupSize, groupSize);
                 }
             }
@@ -32,13 +26,13 @@ public class Solution {
         return maxGroupSize;
     }
 
-    private int dfs(int x, int y, int initialValue) {
+    private int dfs(int x, int y, int minVal, int maxVal) {
         if (x < 0 || x >= rows || y < 0 || y >= cols || visited[x][y]) {
             return 0;
         }
 
-        int currentValue = matrix[x][y];
-        if (Math.abs(currentValue - initialValue) > 1) {
+        int currentVal = matrix[x][y];
+        if (currentVal < minVal - 1 || currentVal > maxVal + 1) {
             return 0;
         }
 
@@ -46,9 +40,9 @@ public class Solution {
         int size = 1;
 
         for (int i = 0; i < 4; i++) {
-            int newX = x + rowOffset[i];
-            int newY = y + colOffset[i];
-            size += dfs(newX, newY, initialValue);
+            int newX = x + dx[i];
+            int newY = y + dy[i];
+            size += dfs(newX, newY, Math.min(minVal, currentVal), Math.max(maxVal, currentVal));
         }
 
         return size;
@@ -71,6 +65,7 @@ public class Solution {
             {1, 2, 3, 4}
         };
         System.out.println("Test case 2 result: " + solution.solution(A2));
+        //Test case 2 result: 10 but expected is 8
 
         // Test case 3
         int[][] A3 = {{4, 4, 2, 4, 4, 4}};

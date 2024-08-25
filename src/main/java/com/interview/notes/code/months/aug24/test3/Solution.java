@@ -3,88 +3,86 @@ package com.interview.notes.code.months.aug24.test3;
 import java.util.*;
 
 public class Solution {
-    public static int reduceGifts(List<Integer> prices, int k, int threshold) {
-        if (prices == null || prices.isEmpty() || k <= 0 || threshold < 0) {
-            return 0; // Handle invalid inputs
+    private int[][] matrix;
+    private boolean[][] visited;
+    private int rows, cols;
+    private final int[] rowOffset = {-1, 1, 0, 0};
+    private final int[] colOffset = {0, 0, -1, 1};
+
+    public int solution(int[][] A) {
+        if (A == null || A.length == 0 || A[0].length == 0) {
+            return 0;
         }
 
-        int n = prices.size();
-        if (n < k) {
-            return 0; // No need to remove any items if there are fewer items than k
+        matrix = A;
+        rows = A.length;
+        cols = A[0].length;
+        int maxGroupSize = 0;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                visited = new boolean[rows][cols]; // Reset visited array for each starting point
+                int groupSize = bfs(i, j);
+                maxGroupSize = Math.max(maxGroupSize, groupSize);
+            }
         }
 
-        // Sort prices in descending order
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-        maxHeap.addAll(prices);
-
-        int sum = 0;
-        int itemsToRemove = 0;
-        Queue<Integer> window = new LinkedList<>();
-
-        // Calculate sum of k highest prices
-        for (int i = 0; i < k; i++) {
-            int price = maxHeap.poll();
-            sum += price;
-            window.offer(price);
-        }
-
-        // Remove items until sum is less than or equal to threshold
-        while (sum > threshold && !maxHeap.isEmpty()) {
-            int removed = window.poll();
-            int added = maxHeap.poll();
-            sum = sum - removed + added;
-            window.offer(added);
-            itemsToRemove++;
-        }
-
-        // If we've removed all items and sum is still greater than threshold
-        while (sum > threshold && !window.isEmpty()) {
-            sum -= window.poll();
-            itemsToRemove++;
-        }
-
-        return itemsToRemove;
+        return maxGroupSize;
     }
 
+    private int bfs(int startX, int startY) {
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{startX, startY});
+        visited[startX][startY] = true;
+        int size = 1;
+
+        while (!queue.isEmpty()) {
+            int[] current = queue.poll();
+            int x = current[0], y = current[1];
+
+            for (int i = 0; i < 4; i++) {
+                int newX = x + rowOffset[i];
+                int newY = y + colOffset[i];
+                if (isValid(newX, newY) && !visited[newX][newY] && 
+                    Math.abs(matrix[newX][newY] - matrix[x][y]) <= 1) {
+                    queue.offer(new int[]{newX, newY});
+                    visited[newX][newY] = true;
+                    size++;
+                }
+            }
+        }
+
+        return size;
+    }
+
+    private boolean isValid(int x, int y) {
+        return x >= 0 && x < rows && y >= 0 && y < cols;
+    }
+
+    // Main method for testing
     public static void main(String[] args) {
+        Solution solution = new Solution();
+        
         // Test case 1
-        List<Integer> prices1 = Arrays.asList(3, 2, 1, 4, 6, 5);
-        int k1 = 3;
-        int threshold1 = 14;
-        System.out.println(reduceGifts(prices1, k1, threshold1)); // Expected: 1
+        int[][] A1 = {{3, 4, 6}, {2, 7, 6}};
+        System.out.println("Test case 1 result: " + solution.solution(A1));
 
         // Test case 2
-        List<Integer> prices2 = Arrays.asList(9, 6, 7, 2, 7, 2);
-        int k2 = 2;
-        int threshold2 = 13;
-        System.out.println(reduceGifts(prices2, k2, threshold2)); // Expected: 2
+        int[][] A2 = {
+            {3, 3, 5, 6},
+            {6, 7, 2, 2},
+            {5, 2, 3, 8},
+            {5, 9, 2, 3},
+            {1, 2, 3, 4}
+        };
+        System.out.println("Test case 2 result: " + solution.solution(A2));
 
-        // Test case 3: Large input
-        List<Integer> prices3 = new ArrayList<>();
-        for (int i = 0; i < 100000; i++) {
-            prices3.add(i + 1);
-        }
-        int k3 = 1000;
-        int threshold3 = 10000;
-        System.out.println(reduceGifts(prices3, k3, threshold3)); // Expected: 99501
+        // Test case 3
+        int[][] A3 = {{4, 4, 2, 4, 4, 4}};
+        System.out.println("Test case 3 result: " + solution.solution(A3));
 
-        // Test case 4: Edge case - all prices are the same
-        List<Integer> prices4 = Arrays.asList(5, 5, 5, 5, 5);
-        int k4 = 3;
-        int threshold4 = 10;
-        System.out.println(reduceGifts(prices4, k4, threshold4)); // Expected: 2
-
-        // Test case 5: Edge case - k equals n
-        List<Integer> prices5 = Arrays.asList(1, 2, 3, 4, 5);
-        int k5 = 5;
-        int threshold5 = 10;
-        System.out.println(reduceGifts(prices5, k5, threshold5)); // Expected: 2
-
-
-        // Test case 5: Edge case - k equals n
-        List<Integer> prices6 = Arrays.asList(9, 6, 3, 2, 9, 10, 10, 11);
-        int k6 = 4;
-        int threshold6 = 1;
-        System.out.println(reduceGifts(prices6, k6, threshold6)); // Expected: 5
+        // Test case 4
+        int[][] A4 = {{0}, {3}, {5}};
+        System.out.println("Test case 4 result: " + solution.solution(A4));
     }
 }
