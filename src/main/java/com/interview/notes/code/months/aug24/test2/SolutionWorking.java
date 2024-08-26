@@ -12,6 +12,7 @@ class Solution { public int solution (int[lll A); }
 that, given a matrix A of N rows and M columns containing integers from the range 0-9, returns the maximal size of the group, fulfilling the above criteria.
 Examples:
  */
+
 public class SolutionWorking {
     private int[][] matrix;
     private boolean[][] visited;
