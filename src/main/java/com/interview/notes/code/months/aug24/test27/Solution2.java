@@ -1,6 +1,16 @@
 package com.interview.notes.code.months.aug24.test27;
 
 class Solution2 {
+    public static void main(String[] args) {
+        Solution2 sol = new Solution2();
+
+        // Test cases
+        System.out.println(sol.solution(11)); // Expected: "dba"
+        System.out.println(sol.solution(1));  // Expected: "a"
+        System.out.println(sol.solution(67108876)); // Expected: "zzdc"
+
+    }
+
     public String solution(int N) {
         StringBuilder sb = new StringBuilder("a".repeat(N));
 
@@ -8,7 +18,7 @@ class Solution2 {
             boolean transformed = false;
             for (int i = 0; i < sb.length() - 1; i++) {
                 if (sb.charAt(i) == sb.charAt(i + 1)) {
-                    sb.setCharAt(i, (char)(sb.charAt(i) + 1));
+                    sb.setCharAt(i, (char) (sb.charAt(i) + 1));
                     sb.deleteCharAt(i + 1);
                     transformed = true;
                     break;
@@ -22,6 +32,7 @@ class Solution2 {
 
         return sb.toString();
     }
+
     public String solution2(int N) {
         if (N == 1) {
             return "a";
@@ -38,15 +49,5 @@ class Solution2 {
             }
         }
         return result.reverse().toString();
-    }
-
-    public static void main(String[] args) {
-        Solution2 sol = new Solution2();
-        
-        // Test cases
-        System.out.println(sol.solution(11)); // Expected: "dba"
-        System.out.println(sol.solution(1));  // Expected: "a"
-        System.out.println(sol.solution(67108876)); // Expected: "zzdc"
-
     }
 }

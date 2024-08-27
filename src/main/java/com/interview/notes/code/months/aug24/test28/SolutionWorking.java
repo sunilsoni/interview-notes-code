@@ -23,6 +23,24 @@ Write an efficient algorithm for the following assumptions:
 
  */
 class SolutionWorking {
+    public static void main(String[] args) {
+        SolutionWorking sol = new SolutionWorking();
+
+        // Test cases
+        System.out.println(sol.solution(11)); // Expected: "dba"
+        System.out.println(sol.solution(1));  // Expected: "a"
+        System.out.println(sol.solution(67108876)); // Expected: "zzdc"
+
+        // Additional test cases
+        System.out.println(sol.solution(1000000000)); // Max input
+
+        // Performance test
+        long startTime = System.nanoTime();
+        sol.solution(1000000000);
+        long endTime = System.nanoTime();
+        System.out.println("Time taken for max input: " + (endTime - startTime) / 1000000.0 + " ms");
+    }
+
     public String solution(int N) {
         if (N == 1) return "a";
 
@@ -42,23 +60,5 @@ class SolutionWorking {
         }
 
         return result.toString();
-    }
-
-    public static void main(String[] args) {
-        SolutionWorking sol = new SolutionWorking();
-        
-        // Test cases
-        System.out.println(sol.solution(11)); // Expected: "dba"
-        System.out.println(sol.solution(1));  // Expected: "a"
-        System.out.println(sol.solution(67108876)); // Expected: "zzdc"
-        
-        // Additional test cases
-        System.out.println(sol.solution(1000000000)); // Max input
-        
-        // Performance test
-        long startTime = System.nanoTime();
-        sol.solution(1000000000);
-        long endTime = System.nanoTime();
-        System.out.println("Time taken for max input: " + (endTime - startTime) / 1000000.0 + " ms");
     }
 }

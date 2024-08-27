@@ -1,11 +1,33 @@
 package com.interview.notes.code.months.aug24.test28;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Solution2 {
 
     private static final int[] DIR_X = {0, 0, 1, -1}; // Directions: Right, Left, Down, Up
     private static final int[] DIR_Y = {1, -1, 0, 0};
+
+    public static void main(String[] args) {
+        Solution2 sol = new Solution2();
+
+        int[][] matrix1 = {
+                {3, 4, 6},
+                {2, 7, 6}
+        };
+        System.out.println(sol.solution(matrix1)); // Expected output: 3
+
+        int[][] matrix2 = {
+                {3, 3, 5, 6},
+                {6, 7, 2, 2},
+                {5, 2, 3, 3},
+                {5, 9, 3, 2},
+                {1, 2, 3, 4}
+        };
+        System.out.println(sol.solution(matrix2)); // Expected output: 8
+
+        // Add more test cases as needed to ensure the solution handles all scenarios.
+    }
 
     public int solution(int[][] A) {
         int n = A.length;
@@ -20,7 +42,7 @@ public class Solution2 {
                 }
             }
         }
-        
+
         return maxGroupSize;
     }
 
@@ -45,7 +67,7 @@ public class Solution2 {
                     int newValue = A[newX][newY];
                     int newMinVal = Math.min(minVal, newValue);
                     int newMaxVal = Math.max(maxVal, newValue);
-                    
+
                     if (newMaxVal - newMinVal <= 1) {
                         queue.add(new int[]{newX, newY});
                         visited[newX][newY] = true;
@@ -57,26 +79,5 @@ public class Solution2 {
         }
 
         return groupSize;
-    }
-
-    public static void main(String[] args) {
-        Solution2 sol = new Solution2();
-        
-        int[][] matrix1 = {
-            {3, 4, 6},
-            {2, 7, 6}
-        };
-        System.out.println(sol.solution(matrix1)); // Expected output: 3
-
-        int[][] matrix2 = {
-            {3, 3, 5, 6},
-            {6, 7, 2, 2},
-            {5, 2, 3, 3},
-            {5, 9, 3, 2},
-            {1, 2, 3, 4}
-        };
-        System.out.println(sol.solution(matrix2)); // Expected output: 8
-
-        // Add more test cases as needed to ensure the solution handles all scenarios.
     }
 }

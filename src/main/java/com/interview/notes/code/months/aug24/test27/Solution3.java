@@ -1,6 +1,13 @@
 package com.interview.notes.code.months.aug24.test27;
 
 class Solution3 {
+    public static void main(String[] args) {
+        Solution3 sol = new Solution3();
+        System.out.println(sol.solution(11)); // Expected: "dba"
+        System.out.println(sol.solution(1));  // Expected: "a"
+        System.out.println(sol.solution(67108876)); // Expected: "zzdc"
+    }
+
     public String solution(int N) {
         if (N == 1) {
             return "a";
@@ -22,12 +29,5 @@ class Solution3 {
             }
         }
         return sb.reverse().toString();
-    }
-
-    public static void main(String[] args) {
-        Solution3 sol = new Solution3();
-        System.out.println(sol.solution(11)); // Expected: "dba"
-        System.out.println(sol.solution(1));  // Expected: "a"
-        System.out.println(sol.solution(67108876)); // Expected: "zzdc"
     }
 }

@@ -1,13 +1,38 @@
 package com.interview.notes.code.months.aug24.test1;
 
-import java.util.*;
-
 public class Solution {
+    private final int[] rowOffset = {-1, 1, 0, 0};
+    private final int[] colOffset = {0, 0, -1, 1};
     private int[][] matrix;
     private boolean[][] visited;
     private int rows, cols;
-    private final int[] rowOffset = {-1, 1, 0, 0};
-    private final int[] colOffset = {0, 0, -1, 1};
+
+    // Main method for testing
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test case 1
+        int[][] A1 = {{3, 4, 6}, {2, 7, 6}};
+        System.out.println("Test case 1 result: " + solution.solution(A1));
+
+        // Test case 2
+        int[][] A2 = {
+                {3, 3, 5, 6},
+                {6, 7, 2, 2},
+                {5, 2, 3, 8},
+                {5, 9, 2, 3},
+                {1, 2, 3, 4}
+        };
+        System.out.println("Test case 2 result: " + solution.solution(A2));
+
+        // Test case 3
+        int[][] A3 = {{4, 4, 2, 4, 4, 4}};
+        System.out.println("Test case 3 result: " + solution.solution(A3));
+
+        // Test case 4
+        int[][] A4 = {{0}, {3}, {5}};
+        System.out.println("Test case 4 result: " + solution.solution(A4));
+    }
 
     public int solution(int[][] A) {
         if (A == null || A.length == 0 || A[0].length == 0) {
@@ -52,32 +77,5 @@ public class Solution {
         }
 
         return size;
-    }
-
-    // Main method for testing
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        
-        // Test case 1
-        int[][] A1 = {{3, 4, 6}, {2, 7, 6}};
-        System.out.println("Test case 1 result: " + solution.solution(A1));
-
-        // Test case 2
-        int[][] A2 = {
-            {3, 3, 5, 6},
-            {6, 7, 2, 2},
-            {5, 2, 3, 8},
-            {5, 9, 2, 3},
-            {1, 2, 3, 4}
-        };
-        System.out.println("Test case 2 result: " + solution.solution(A2));
-
-        // Test case 3
-        int[][] A3 = {{4, 4, 2, 4, 4, 4}};
-        System.out.println("Test case 3 result: " + solution.solution(A3));
-
-        // Test case 4
-        int[][] A4 = {{0}, {3}, {5}};
-        System.out.println("Test case 4 result: " + solution.solution(A4));
     }
 }

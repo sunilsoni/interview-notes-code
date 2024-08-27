@@ -1,8 +1,18 @@
 package com.interview.notes.code.months.aug24.test28;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class Solution3 {
+    public static void main(String[] args) {
+        Solution3 sol = new Solution3();
+        int[][] matrix1 = {{3, 4, 6}, {2, 7, 6}};
+        System.out.println("Expected output: 3, Actual output: " + sol.solution(matrix1));
+
+        int[][] matrix2 = {{3, 3, 5, 6}, {6, 7, 2, 2}, {5, 2, 3, 8}, {5, 9, 2, 3}, {1, 2, 3, 4}};
+        System.out.println("Expected output: 8, Actual output: " + sol.solution(matrix2));
+    }
+
     public int solution(int[][] A) {
         int n = A.length;
         if (n == 0) return 0;
@@ -19,7 +29,7 @@ class Solution3 {
         }
         return maxSize;
     }
-    
+
     private int exploreGroup(int[][] A, boolean[][] visited, int x, int y, int n, int m) {
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{x, y});
@@ -44,14 +54,5 @@ class Solution3 {
             }
         }
         return size;
-    }
-
-    public static void main(String[] args) {
-        Solution3 sol = new Solution3();
-        int[][] matrix1 = {{3, 4, 6}, {2, 7, 6}};
-        System.out.println("Expected output: 3, Actual output: " + sol.solution(matrix1));
-
-        int[][] matrix2 = {{3, 3, 5, 6}, {6, 7, 2, 2}, {5, 2, 3, 8}, {5, 9, 2, 3}, {1, 2, 3, 4}};
-        System.out.println("Expected output: 8, Actual output: " + sol.solution(matrix2));
     }
 }

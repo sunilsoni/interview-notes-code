@@ -3,7 +3,39 @@ package com.interview.notes.code.months.aug24.test27;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class Solution {
+class Solution4 {
+    public static void main(String[] args) {
+        Solution4 sol = new Solution4();
+
+        int[][] testCase1 = {
+                {3, 4, 6},
+                {2, 7, 6}
+        };
+        System.out.println(sol.solution(testCase1)); // Expected output: 3
+
+        int[][] testCase2 = {
+                {3, 3, 5, 6},
+                {6, 7, 2, 2},
+                {5, 2, 3, 8},
+                {5, 9, 2, 3},
+                {1, 2, 3, 4}
+        };
+        System.out.println(sol.solution(testCase2)); // Expected output: 8
+
+        int[][] testCase3 = {
+                {4, 4, 2, 4, 4, 4},
+                {4, 4, 4, 4, 4, 4}
+        };
+        System.out.println(sol.solution(testCase3)); // Expected output: 3
+
+        int[][] testCase4 = {
+                {0},
+                {3},
+                {5}
+        };
+        System.out.println(sol.solution(testCase4)); // Expected output: 1
+    }
+
     public int solution(int[][] A) {
         if (A == null || A.length == 0 || A[0].length == 0) return 0;
 
@@ -56,37 +88,5 @@ class Solution {
 
         // Check if the group meets the criteria
         return (maxValue - minValue <= 1) ? groupSize : 0;
-    }
-
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-
-        int[][] testCase1 = {
-            {3, 4, 6},
-            {2, 7, 6}
-        };
-        System.out.println(sol.solution(testCase1)); // Expected output: 3
-
-        int[][] testCase2 = {
-            {3, 3, 5, 6},
-            {6, 7, 2, 2},
-            {5, 2, 3, 8},
-            {5, 9, 2, 3},
-            {1, 2, 3, 4}
-        };
-        System.out.println(sol.solution(testCase2)); // Expected output: 8
-
-        int[][] testCase3 = {
-            {4, 4, 2, 4, 4, 4},
-            {4, 4, 4, 4, 4, 4}
-        };
-        System.out.println(sol.solution(testCase3)); // Expected output: 3
-
-        int[][] testCase4 = {
-            {0},
-            {3},
-            {5}
-        };
-        System.out.println(sol.solution(testCase4)); // Expected output: 1
     }
 }
