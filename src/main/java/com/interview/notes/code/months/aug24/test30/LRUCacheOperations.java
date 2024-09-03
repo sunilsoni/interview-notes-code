@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.aug24.test30;
 
 import java.util.*;
+
 /*
 
 LRU Cache Operations
@@ -80,15 +81,6 @@ class LRUCache {
     private HashMap<Integer, Node> cache;
     private Node head, tail;
 
-    private class Node {
-        int key, value;
-        Node prev, next;
-        Node(int key, int value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
-
     public LRUCache(int capacity) {
         this.capacity = capacity;
         this.cache = new HashMap<>();
@@ -130,6 +122,16 @@ class LRUCache {
         cache.remove(node.key);
         node.prev.next = node.next;
         node.next.prev = node.prev;
+    }
+
+    private class Node {
+        int key, value;
+        Node prev, next;
+
+        Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
     }
 }
 

@@ -32,14 +32,14 @@ public class BrothersGame {
         dp[1] = 0;
 
         for (int i = 2; i < n; i++) {
-            dp[i] = dp[i-1] + 1;  // Remove current element by default
+            dp[i] = dp[i - 1] + 1;  // Remove current element by default
 
-            if (!isMonotonic(ar.get(i-2), ar.get(i-1), ar.get(i))) {
-                dp[i] = Math.min(dp[i], dp[i-2]);
+            if (!isMonotonic(ar.get(i - 2), ar.get(i - 1), ar.get(i))) {
+                dp[i] = Math.min(dp[i], dp[i - 2]);
             }
         }
 
-        return dp[n-1];
+        return dp[n - 1];
     }
 
     private static boolean isMonotonic(int a, int b, int c) {

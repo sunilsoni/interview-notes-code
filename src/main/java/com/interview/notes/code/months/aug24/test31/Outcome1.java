@@ -13,24 +13,24 @@ class Outcome1 {
 
         for (int i = 2; i < n; i++) {
             // Option 1: Remove current element
-            int opt1 = 1 + dp[i-1];
-            
+            int opt1 = 1 + dp[i - 1];
+
             // Option 2: Remove previous element
-            int opt2 = 1 + dp[i-2];
-            
+            int opt2 = 1 + dp[i - 2];
+
             // Option 3: Remove element two positions ago
-            int opt3 = (i >= 3 ? 1 + dp[i-3] : 1);
+            int opt3 = (i >= 3 ? 1 + dp[i - 3] : 1);
 
             // Check if current three elements are strictly increasing or decreasing
-            if ((ar.get(i) > ar.get(i-1) && ar.get(i-1) > ar.get(i-2)) ||
-                (ar.get(i) < ar.get(i-1) && ar.get(i-1) < ar.get(i-2))) {
+            if ((ar.get(i) > ar.get(i - 1) && ar.get(i - 1) > ar.get(i - 2)) ||
+                    (ar.get(i) < ar.get(i - 1) && ar.get(i - 1) < ar.get(i - 2))) {
                 dp[i] = Math.min(opt1, Math.min(opt2, opt3));
             } else {
-                dp[i] = dp[i-1];
+                dp[i] = dp[i - 1];
             }
         }
 
-        return dp[n-1];
+        return dp[n - 1];
     }
 
     public static void main(String[] args) {

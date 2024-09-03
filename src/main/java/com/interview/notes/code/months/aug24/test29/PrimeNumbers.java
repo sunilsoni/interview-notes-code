@@ -6,12 +6,12 @@ public class PrimeNumbers {
         if (N <= 2) {
             return 0;
         }
-        
+
         boolean[] isPrime = new boolean[N];
         for (int i = 2; i < N; i++) {
             isPrime[i] = true;
         }
-        
+
         for (int i = 2; i * i < N; i++) {
             if (isPrime[i]) {
                 for (int j = i * i; j < N; j += i) {
@@ -19,14 +19,14 @@ public class PrimeNumbers {
                 }
             }
         }
-        
+
         int primeCount = 0;
         for (int i = 2; i < N; i++) {
             if (isPrime[i]) {
                 primeCount++;
             }
         }
-        
+
         return primeCount;
     }
 

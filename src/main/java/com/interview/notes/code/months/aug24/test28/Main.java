@@ -6,9 +6,9 @@ import java.util.stream.*;
 public class Main {
     public static void main(String[] args) {
 
-        String s1="Alice";
-        String s2="Alice";
-        String s3="Bob";
+        String s1 = "Alice";
+        String s2 = "Alice";
+        String s3 = "Bob";
 
 
         // Define multiple lists
@@ -21,26 +21,26 @@ public class Main {
 
         // Process all teams in one stream operation
         List<String> allNamesStartingWithA = allTeams.stream()
-            .flatMap(Collection::stream)
-            .filter(name -> name.startsWith("A"))
-            .collect(Collectors.toList());
+                .flatMap(Collection::stream)
+                .filter(name -> name.startsWith("A"))
+                .collect(Collectors.toList());
 
         System.out.println("All names starting with A across all teams: " + allNamesStartingWithA);
 
         // Process each team separately
         for (int i = 0; i < allTeams.size(); i++) {
             List<String> teamNamesStartingWithA = allTeams.get(i).stream()
-                .filter(name -> name.startsWith("A"))
-                .collect(Collectors.toList());
-            System.out.println("Team " + (i+1) + " names starting with A: " + teamNamesStartingWithA);
+                    .filter(name -> name.startsWith("A"))
+                    .collect(Collectors.toList());
+            System.out.println("Team " + (i + 1) + " names starting with A: " + teamNamesStartingWithA);
         }
 
         // Additional test case: empty team
         List<String> emptyTeam = new ArrayList<>();
         allTeams.add(emptyTeam);
         List<String> emptyTeamResult = emptyTeam.stream()
-            .filter(name -> name.startsWith("A"))
-            .collect(Collectors.toList());
+                .filter(name -> name.startsWith("A"))
+                .collect(Collectors.toList());
         System.out.println("Empty team result: " + emptyTeamResult);
     }
 }
