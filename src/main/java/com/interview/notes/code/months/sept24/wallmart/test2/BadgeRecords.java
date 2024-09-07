@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.sept24.wallmart.test2;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class BadgeRecords {
 

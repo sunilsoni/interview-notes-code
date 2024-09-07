@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.aug24.test32;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 class Result {
     public static List<Integer> getMinimumCost(List<Integer> cost, List<String> featureAvailability) {

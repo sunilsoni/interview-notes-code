@@ -14,14 +14,14 @@ public class EmployeeBonusProcessor {
 
         // Process bonuses using parallel stream
         List<Employees> processedEmployees = employees.parallelStream()
-            .filter(employee -> employee.getJoiningDate().isBefore(twoYearsAgo))
-            .map(EmployeeBonusProcessor::calculateBonus)
-            .collect(Collectors.toList());
+                .filter(employee -> employee.getJoiningDate().isBefore(twoYearsAgo))
+                .map(EmployeeBonusProcessor::calculateBonus)
+                .collect(Collectors.toList());
 
         // Print results
-        processedEmployees.forEach(e -> System.out.println("Employee " + e.getId() + 
-                     " joined on " + e.getJoiningDate() + 
-                     ", new salary: " + e.getSalary()));
+        processedEmployees.forEach(e -> System.out.println("Employee " + e.getId() +
+                " joined on " + e.getJoiningDate() +
+                ", new salary: " + e.getSalary()));
 
         System.out.println("Total employees processed: " + processedEmployees.size());
     }
@@ -37,11 +37,11 @@ public class EmployeeBonusProcessor {
         // Implement your database query here
         // For now, we'll return a dummy list with various joining dates
         return List.of(
-            new Employees(1, "John", 50000, LocalDate.of(2020, 1, 1)),
-            new Employees(2, "Alice", 60000, LocalDate.of(2021, 6, 15)),
-            new Employees(3, "Bob", 55000, LocalDate.of(2019, 3, 10)),
-            new Employees(4, "Carol", 65000, LocalDate.of(2022, 2, 28)),
-            new Employees(5, "David", 70000, LocalDate.of(2018, 11, 5))
+                new Employees(1, "John", 50000, LocalDate.of(2020, 1, 1)),
+                new Employees(2, "Alice", 60000, LocalDate.of(2021, 6, 15)),
+                new Employees(3, "Bob", 55000, LocalDate.of(2019, 3, 10)),
+                new Employees(4, "Carol", 65000, LocalDate.of(2022, 2, 28)),
+                new Employees(5, "David", 70000, LocalDate.of(2018, 11, 5))
         );
     }
 }

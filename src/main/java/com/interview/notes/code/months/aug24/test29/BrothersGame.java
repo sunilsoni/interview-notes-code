@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.aug24.test29;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 /*
 Brothers' Game

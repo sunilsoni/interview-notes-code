@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.aug24.test31;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 class Outcome1 {
     public static int solve(List<Integer> ar) {

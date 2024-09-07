@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.sept24.amz;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Battleship {
     private static final int GRID_SIZE = 20;
@@ -19,6 +21,36 @@ public class Battleship {
         }
         ships = new ArrayList<>();
         placeShips();
+    }
+
+    public static void main1(String[] args) {
+        Battleship game = new Battleship();
+
+        // Test cases
+        System.out.println("Hit at (0, 0): " + game.check_hit(0, 0));
+        System.out.println("Hit at (0, 1): " + game.check_hit(0, 1));
+        System.out.println("Hit at (5, 5): " + game.check_hit(5, 5));
+        System.out.println("Hit at (19, 19): " + game.check_hit(19, 19));
+
+
+    }
+
+    public static void main(String[] args) {
+        Battleship1 game = new Battleship1();
+
+        // Test cases
+        testHit(game, 0, 0, true, false, false);
+        testHit(game, 0, 1, true, true, false);  // Sinks the 2-size ship
+        testHit(game, 5, 5, true, false, false);
+        testHit(game, 19, 19, false, false, false);
+
+        // Add more test cases as needed
+    }
+
+    private static void testHit(Battleship1 game, int row, int col, boolean expectedHit, boolean expectedSunk, boolean expectedGameOver) {
+        Battleship1.HitResult result = game.check_hit(row, col);
+        System.out.printf("Hit at (%d, %d): %s\n", row, col,
+                result.isHit == expectedHit && result.isSunk == expectedSunk && result.isGameOver == expectedGameOver ? "PASS" : "FAIL");
     }
 
     private void placeShips() {
@@ -73,6 +105,11 @@ public class Battleship {
         return ships.stream().allMatch(Ship::isSunk);
     }
 
+    // For testing purposes
+    public char[][] getGrid() {
+        return grid;
+    }
+
     private static class Ship {
         int size;
         int hits;
@@ -103,6 +140,7 @@ public class Battleship {
 
     private static class Point {
         int row, col;
+
         Point(int row, int col) {
             this.row = row;
             this.col = col;
@@ -119,41 +157,5 @@ public class Battleship {
             this.isSunk = isSunk;
             this.isGameOver = isGameOver;
         }
-    }
-
-    // For testing purposes
-    public char[][] getGrid() {
-        return grid;
-    }
-
-    public static void main1(String[] args) {
-        Battleship game = new Battleship();
-        
-        // Test cases
-        System.out.println("Hit at (0, 0): " + game.check_hit(0, 0));
-        System.out.println("Hit at (0, 1): " + game.check_hit(0, 1));
-        System.out.println("Hit at (5, 5): " + game.check_hit(5, 5));
-        System.out.println("Hit at (19, 19): " + game.check_hit(19, 19));
-
-
-    }
-
-
-    public static void main(String[] args) {
-        Battleship1 game = new Battleship1();
-
-        // Test cases
-        testHit(game, 0, 0, true, false, false);
-        testHit(game, 0, 1, true, true, false);  // Sinks the 2-size ship
-        testHit(game, 5, 5, true, false, false);
-        testHit(game, 19, 19, false, false, false);
-
-        // Add more test cases as needed
-    }
-
-    private static void testHit(Battleship1 game, int row, int col, boolean expectedHit, boolean expectedSunk, boolean expectedGameOver) {
-        Battleship1.HitResult result = game.check_hit(row, col);
-        System.out.printf("Hit at (%d, %d): %s\n", row, col,
-                result.isHit == expectedHit && result.isSunk == expectedSunk && result.isGameOver == expectedGameOver ? "PASS" : "FAIL");
     }
 }

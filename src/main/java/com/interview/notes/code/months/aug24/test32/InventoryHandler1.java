@@ -1,9 +1,5 @@
 package com.interview.notes.code.months.aug24.test32;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-
 class Car {
     private String name;
     private int year;

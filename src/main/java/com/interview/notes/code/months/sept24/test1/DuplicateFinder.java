@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.sept24.test1;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -13,17 +14,17 @@ public class DuplicateFinder {
 
         // Extract the subarray
         List<Integer> subList = IntStream.range(startIndex, endIndex + 1)
-                                        .mapToObj(i -> array[i])
-                                        .collect(Collectors.toList());
+                .mapToObj(i -> array[i])
+                .collect(Collectors.toList());
 
         // Find duplicates in the subarray
         Map<Integer, Long> elementCounts = subList.stream()
-                                                  .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+                .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
 
         return elementCounts.entrySet().stream()
-                            .filter(entry -> entry.getValue() > 1)  // Keep only duplicates
-                            .map(Map.Entry::getKey)                  // Extract the elements
-                            .collect(Collectors.toList());
+                .filter(entry -> entry.getValue() > 1)  // Keep only duplicates
+                .map(Map.Entry::getKey)                  // Extract the elements
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {

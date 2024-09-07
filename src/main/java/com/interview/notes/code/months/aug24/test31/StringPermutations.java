@@ -1,6 +1,6 @@
 package com.interview.notes.code.months.aug24.test31;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class StringPermutations {
     public static void printPermutations(String str) {

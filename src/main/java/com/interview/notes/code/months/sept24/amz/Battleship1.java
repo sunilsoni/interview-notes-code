@@ -44,6 +44,24 @@ public class Battleship1 {
         placeShips();
     }
 
+    public static void main(String[] args) {
+        Battleship1 game = new Battleship1();
+
+        // Test cases
+        testHit(game, 0, 0, true, false, false);
+        testHit(game, 0, 1, true, true, false);  // Sinks the 2-size ship
+        testHit(game, 5, 5, true, false, false);
+        testHit(game, 19, 19, false, false, false);
+
+        // Add more test cases as needed
+    }
+
+    private static void testHit(Battleship1 game, int row, int col, boolean expectedHit, boolean expectedSunk, boolean expectedGameOver) {
+        HitResult result = game.check_hit(row, col);
+        System.out.printf("Hit at (%d, %d): %s\n", row, col,
+                result.isHit == expectedHit && result.isSunk == expectedSunk && result.isGameOver == expectedGameOver ? "PASS" : "FAIL");
+    }
+
     private void initializeGrid() {
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
@@ -141,23 +159,5 @@ public class Battleship1 {
             this.isSunk = isSunk;
             this.isGameOver = isGameOver;
         }
-    }
-
-    public static void main(String[] args) {
-        Battleship1 game = new Battleship1();
-
-        // Test cases
-        testHit(game, 0, 0, true, false, false);
-        testHit(game, 0, 1, true, true, false);  // Sinks the 2-size ship
-        testHit(game, 5, 5, true, false, false);
-        testHit(game, 19, 19, false, false, false);
-
-        // Add more test cases as needed
-    }
-
-    private static void testHit(Battleship1 game, int row, int col, boolean expectedHit, boolean expectedSunk, boolean expectedGameOver) {
-        HitResult result = game.check_hit(row, col);
-        System.out.printf("Hit at (%d, %d): %s\n", row, col,
-                result.isHit == expectedHit && result.isSunk == expectedSunk && result.isGameOver == expectedGameOver ? "PASS" : "FAIL");
     }
 }

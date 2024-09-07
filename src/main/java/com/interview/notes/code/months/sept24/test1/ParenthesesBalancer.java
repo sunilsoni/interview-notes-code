@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.sept24.test1;
 
 import java.util.Stack;
+
 /*
 * If you need more classes, simply define them inline.
 balance("() ") → "()"
@@ -15,8 +16,8 @@ balance (") ()) (()()(").->
 public class ParenthesesBalancer {
     public static void main(String[] args) {
         String[] testCases = {
-            "() ", "a (b)c)", ") (", " (((((",
-            "(() ()(", ") ( ())(", ") ()) (()()(", "(()())"
+                "() ", "a (b)c)", ") (", " (((((",
+                "(() ()(", ") ( ())(", ") ()) (()()(", "(()())"
         };
 
         for (String testCase : testCases) {

@@ -1,9 +1,9 @@
 package com.interview.notes.code.months.aug24.test31;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.Arrays;
 
 public class InventoryHandler {
 

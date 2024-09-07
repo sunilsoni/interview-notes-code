@@ -15,11 +15,11 @@ You've given an array. Of integers. So each integer is unique. Okay, your goals 
 public class LocalMinimumFinder {
     public static void main(String[] args) {
         int[][] testCases = {
-            {15, 9, 7, 10, 12},
-            {5, 3, 1, 7, 9},
-            {1, 2, 3, 4, 5},
-            {5, 4, 3, 2, 1},
-            {2, 1, 3}
+                {15, 9, 7, 10, 12},
+                {5, 3, 1, 7, 9},
+                {1, 2, 3, 4, 5},
+                {5, 4, 3, 2, 1},
+                {2, 1, 3}
         };
 
         for (int i = 0; i < testCases.length; i++) {

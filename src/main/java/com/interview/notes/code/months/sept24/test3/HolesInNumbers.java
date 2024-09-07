@@ -3,29 +3,30 @@ package com.interview.notes.code.months.sept24.test3;
 public class HolesInNumbers {
     public static String solve(int K) {
         if (K == 0) return "1"; // No holes needed
-        
+
         StringBuilder result = new StringBuilder();
         int remainingHoles = K;
-        
+
         // Start with 8 if we need at least 2 holes
         if (K >= 2) {
             result.append("8");
             remainingHoles -= 2;
         }
-        
+
         // Add 0's for remaining holes
         while (remainingHoles > 0) {
             result.append("0");
             remainingHoles--;
         }
-        
+
         // If we haven't added any digits yet, add a 4 or 6
         if (result.length() == 0) {
             result.append("4");
         }
-        
+
         return result.toString();
     }
+
     /**
      * Finds the minimum positive integer with K holes in it.
      *

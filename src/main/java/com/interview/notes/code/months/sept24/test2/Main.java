@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.sept24.test2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 Java Assessment
 Given an array nums that represents a permutation of integers from 1 to n. We are going to construct a binary search tree (BST) by inserting the elements of nums in order into an initially empty BST. Find the number of different ways to reorder nums so that the constructed BST is identical to
@@ -54,24 +56,24 @@ class Solution {
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        
+
         // Test case 1
-        int[] nums1 = {2,1,3};
+        int[] nums1 = {2, 1, 3};
         int result1 = solution.numOfWays(nums1);
         System.out.println("Test case 1: " + (result1 == 1 ? "PASS" : "FAIL") + " (Expected: 1, Got: " + result1 + ")");
 
         // Test case 2
-        int[] nums2 = {3,4,5,1,2};
+        int[] nums2 = {3, 4, 5, 1, 2};
         int result2 = solution.numOfWays(nums2);
         System.out.println("Test case 2: " + (result2 == 5 ? "PASS" : "FAIL") + " (Expected: 5, Got: " + result2 + ")");
 
         // Test case 3
-        int[] nums3 = {1,2,3};
+        int[] nums3 = {1, 2, 3};
         int result3 = solution.numOfWays(nums3);
         System.out.println("Test case 3: " + (result3 == 0 ? "PASS" : "FAIL") + " (Expected: 0, Got: " + result3 + ")");
 
         // Additional test case
-        int[] nums4 = {4,2,1,3,5};
+        int[] nums4 = {4, 2, 1, 3, 5};
         int result4 = solution.numOfWays(nums4);
         System.out.println("Test case 4: " + (result4 == 4 ? "PASS" : "FAIL") + " (Expected: 4, Got: " + result4 + ")");
     }

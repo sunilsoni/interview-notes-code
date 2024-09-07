@@ -5,34 +5,36 @@ import java.math.BigInteger;
 
 public class Main1 {
     static final int MOD = 1000000007;
+
     public static void main(String[] args) {
         Main1 solution = new Main1();
 
         // Test case 1
-        int[] nums1 = {2,1,3};
+        int[] nums1 = {2, 1, 3};
         int result1 = solution.numOfWays(nums1);
         System.out.println("Test case 1: " + (result1 == 1 ? "PASS" : "FAIL") + " (Expected: 1, Got: " + result1 + ")");
 
         // Test case 2
-        int[] nums2 = {3,4,5,1,2};
+        int[] nums2 = {3, 4, 5, 1, 2};
         int result2 = solution.numOfWays(nums2);
         System.out.println("Test case 2: " + (result2 == 5 ? "PASS" : "FAIL") + " (Expected: 5, Got: " + result2 + ")");
 
         // Test case 3
-        int[] nums3 = {1,2,3};
+        int[] nums3 = {1, 2, 3};
         int result3 = solution.numOfWays(nums3);
         System.out.println("Test case 3: " + (result3 == 0 ? "PASS" : "FAIL") + " (Expected: 0, Got: " + result3 + ")");
 
         // Additional test case
-        int[] nums4 = {4,2,1,3,5};
+        int[] nums4 = {4, 2, 1, 3, 5};
         int result4 = solution.numOfWays(nums4);
         System.out.println("Test case 4: " + (result4 == 4 ? "PASS" : "FAIL") + " (Expected: 4, Got: " + result4 + ")");
     }
+
     public static void main1(String[] args) {
         // Example test cases
         int[] nums1 = {2, 1, 3};
         int[] nums2 = {1, 2, 3};
-        int[] nums4 = {4,2,1,3,5};
+        int[] nums4 = {4, 2, 1, 3, 5};
 
         System.out.println(numOfWays(nums1)); // Expected output: 2
         System.out.println(numOfWays(nums2)); // Expected output: 1
@@ -69,9 +71,9 @@ public class Main1 {
 
         int leftSize = size(node.left);
         int rightSize = size(node.right);
-        
-        int ways = (int)comb(leftSize + rightSize, leftSize);
-        ways = (int)((ways * (long)countWays(node.left) % MOD) * countWays(node.right) % MOD);
+
+        int ways = (int) comb(leftSize + rightSize, leftSize);
+        ways = (int) ((ways * (long) countWays(node.left) % MOD) * countWays(node.right) % MOD);
         return ways;
     }
 
@@ -96,5 +98,8 @@ class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
-    TreeNode(int x) { val = x; }
+
+    TreeNode(int x) {
+        val = x;
+    }
 }

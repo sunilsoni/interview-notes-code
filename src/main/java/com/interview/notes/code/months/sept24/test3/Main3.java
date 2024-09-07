@@ -29,7 +29,7 @@ public class Main3 {
 
     public static String solve(int K) {
         int num = 1;
-        
+
         // Iterate over numbers starting from 1
         while (true) {
             if (countHoles(Integer.toString(num)) == K) {
