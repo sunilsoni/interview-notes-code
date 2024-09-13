@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class Main {
+public class CanRunAllJobs {
     public static void main(String[] args) {
         // Test Case 1
         int n1 = 2;
