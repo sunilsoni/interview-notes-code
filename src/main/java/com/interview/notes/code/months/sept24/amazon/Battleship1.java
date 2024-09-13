@@ -1,4 +1,4 @@
-package com.interview.notes.code.months.sept24.amz;
+package com.interview.notes.code.months.sept24.amazon;
 
 import java.util.ArrayList;
 import java.util.List;
