@@ -6,29 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class PizzaPriceCalculator {
-    enum Base {
-        THIN(8), REGULAR(10), CHEESY_CRUST(12);
-        private final double price;
-        Base(double price) {
-            this.price = price;
-        }
-        public double getPrice() {
-            return price;
-        }
-    }
-
-    enum Size {
-        SMALL(0.75), MEDIUM(1.0), LARGE(1.25);
-        private final double multiplier;
-        Size(double multiplier) {
-            this.multiplier = multiplier;
-        }
-        public double getMultiplier() {
-            return multiplier;
-        }
-    }
-
     private static final Map<String, Double> TOPPINGS_PRICES = new HashMap<>();
+
     static {
         TOPPINGS_PRICES.put("cheese", 2.0);
         TOPPINGS_PRICES.put("mushrooms", 1.5);
@@ -38,8 +17,8 @@ public class PizzaPriceCalculator {
     public static double calculatePizzaPrice(Base base, Size size, List<String> toppings) {
         double basePrice = base.getPrice();
         double toppingsPrice = toppings.stream()
-                                       .mapToDouble(topping -> TOPPINGS_PRICES.getOrDefault(topping, 0.0))
-                                       .sum();
+                .mapToDouble(topping -> TOPPINGS_PRICES.getOrDefault(topping, 0.0))
+                .sum();
         return (basePrice + toppingsPrice) * size.getMultiplier();
     }
 
@@ -59,5 +38,31 @@ public class PizzaPriceCalculator {
         List<String> toppings4 = Arrays.asList("olives", "mushrooms");
         double price4 = calculatePizzaPrice(Base.CHEESY_CRUST, Size.SMALL, toppings4);
         System.out.println("Test Case 4: " + (price4 == 10.875 ? "Pass" : "Fail"));
+    }
+
+    enum Base {
+        THIN(8), REGULAR(10), CHEESY_CRUST(12);
+        private final double price;
+
+        Base(double price) {
+            this.price = price;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+    }
+
+    enum Size {
+        SMALL(0.75), MEDIUM(1.0), LARGE(1.25);
+        private final double multiplier;
+
+        Size(double multiplier) {
+            this.multiplier = multiplier;
+        }
+
+        public double getMultiplier() {
+            return multiplier;
+        }
     }
 }
