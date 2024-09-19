@@ -6,26 +6,16 @@ public class InventoryOptimization {
         int inventoryWidth = 5;
         int inventoryHeight = 4;
         Item[] items = {
-            new Item(1, 1, 30),
-            new Item(3, 1, 150),
-            new Item(2, 2, 300),
-            new Item(1, 3, 120),
-            new Item(2, 3, 540),
-            new Item(20, 10, 1337) // This item won't fit
+                new Item(1, 1, 30),
+                new Item(3, 1, 150),
+                new Item(2, 2, 300),
+                new Item(1, 3, 120),
+                new Item(2, 3, 540),
+                new Item(20, 10, 1337) // This item won't fit
         };
 
         int maxValue = optimizeInventory(inventoryWidth, inventoryHeight, items);
         System.out.println("Maximum Value: " + maxValue);
-    }
-
-    static class Item {
-        int width, height, value;
-
-        Item(int width, int height, int value) {
-            this.width = width;
-            this.height = height;
-            this.value = value;
-        }
     }
 
     public static int optimizeInventory(int width, int height, Item[] items) {
@@ -39,5 +29,15 @@ public class InventoryOptimization {
             }
         }
         return dp[width][height];
+    }
+
+    static class Item {
+        int width, height, value;
+
+        Item(int width, int height, int value) {
+            this.width = width;
+            this.height = height;
+            this.value = value;
+        }
     }
 }

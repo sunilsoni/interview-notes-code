@@ -1,6 +1,6 @@
 package com.interview.notes.code.months.sept24.test8;
 
-import java.util.Arrays; // Importing the Arrays utility class for sorting.
+import java.util.Arrays;
 
 public class MinimumPlatforms { // Declaring the class.
 

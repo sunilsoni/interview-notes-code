@@ -1,16 +1,17 @@
 package com.interview.notes.code.months.sept24.test6;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         // Test cases
         List<List<Integer>> testCases = Arrays.asList(
-            Arrays.asList(3, 5),  // Example #1
-            Arrays.asList(10, 10, 10),  // Example #2
-            Arrays.asList(1, 2, 3),
-            Arrays.asList(5, 5, 5, 5),
-            Arrays.asList()
+                Arrays.asList(3, 5),  // Example #1
+                Arrays.asList(10, 10, 10),  // Example #2
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(5, 5, 5, 5),
+                Arrays.asList()
         );
 
         for (int i = 0; i < testCases.size(); i++) {

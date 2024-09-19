@@ -1,14 +1,18 @@
 package com.interview.notes.code.months.sept24.test7;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WordCounter {
     public static void main(String[] args) {
         // Replace "path/to/your/book.txt" with the actual file path
         File file = new File("path/to/your/book.txt");
         Map<String, Integer> wordCount = new HashMap<>();
-        
+
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {

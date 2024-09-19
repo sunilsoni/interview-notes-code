@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.sept24.test5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
 
@@ -111,23 +113,23 @@ Andrea ends with 1 point, and Maria with -1. Andrea wins.
 
  */
 public class Winner {
-    
+
     public static String winner(List<Integer> andrea, List<Integer> maria, String s) {
         int andreaScore = 0;
         int mariaScore = 0;
         int n = andrea.size();
-        
+
         // Determine starting index based on the called word
         int startIndex = s.equals("Even") ? 0 : 1;
-        
+
         for (int i = startIndex; i < n; i += 2) {
             int andreaCard = andrea.get(i);
             int mariaCard = maria.get(i);
-            
+
             andreaScore += andreaCard - mariaCard;
             mariaScore += mariaCard - andreaCard;
         }
-        
+
         if (andreaScore > mariaScore) {
             return "Andrea";
         } else if (mariaScore > andreaScore) {
@@ -136,26 +138,26 @@ public class Winner {
             return "Tie";
         }
     }
-    
+
     public static void main(String[] args) {
         // Test Case 1: Sample Case 0
         List<Integer> andrea1 = Arrays.asList(1, 2, 3);
         List<Integer> maria1 = Arrays.asList(2, 1, 3);
         String s1 = "Even";
         System.out.println("Test Case 1: " + (winner(andrea1, maria1, s1).equals("Maria") ? "Passed" : "Failed"));
-        
+
         // Test Case 2: Sample Case 1
         List<Integer> andrea2 = Arrays.asList(1, 2, 3);
         List<Integer> maria2 = Arrays.asList(2, 1, 3);
         String s2 = "Odd";
         System.out.println("Test Case 2: " + (winner(andrea2, maria2, s2).equals("Andrea") ? "Passed" : "Failed"));
-        
+
         // Test Case 3: Edge case - Empty lists
         List<Integer> andrea3 = new ArrayList<>();
         List<Integer> maria3 = new ArrayList<>();
         String s3 = "Even";
         System.out.println("Test Case 3: " + (winner(andrea3, maria3, s3).equals("Tie") ? "Passed" : "Failed"));
-        
+
         // Test Case 4: Large input
         List<Integer> andrea4 = new ArrayList<>();
         List<Integer> maria4 = new ArrayList<>();
@@ -168,7 +170,7 @@ public class Winner {
         String result = winner(andrea4, maria4, s4);
         long endTime = System.currentTimeMillis();
         System.out.println("Test Case 4: " + (result.equals("Tie") && (endTime - startTime) < 3000 ? "Passed" : "Failed"));
-        
+
         // Test Case 5: Edge case - Tie with different card values
         List<Integer> andrea5 = Arrays.asList(1, 5, 3);
         List<Integer> maria5 = Arrays.asList(2, 4, 3);

@@ -1,14 +1,17 @@
 package com.interview.notes.code.months.sept24.test6;
 
-import java.util.*; // Import utilities for data structures
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 public class MergeKSortedArrays { // Main class
 
     public static void main(String[] args) { // Main method
         List<int[]> lists = Arrays.asList( // Initialize list of arrays
-            new int[]{1, 4, 7},
-            new int[]{2, 5, 8},
-            new int[]{3, 6, 9}
+                new int[]{1, 4, 7},
+                new int[]{2, 5, 8},
+                new int[]{3, 6, 9}
         );
 
         int[] result = mergeKSortedArrays(lists); // Call merge function
@@ -37,9 +40,9 @@ public class MergeKSortedArrays { // Main class
 
             if (current.index + 1 < lists.get(current.arrayIndex).length) {
                 minHeap.offer(new Element(
-                    current.arrayIndex,
-                    current.index + 1,
-                    lists.get(current.arrayIndex)[current.index + 1]
+                        current.arrayIndex,
+                        current.index + 1,
+                        lists.get(current.arrayIndex)[current.index + 1]
                 )); // Add next element of the same array
             }
         }

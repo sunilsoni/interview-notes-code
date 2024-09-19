@@ -29,24 +29,24 @@ public class RailwayStation {
 
     public static int findMinimumPlatforms(String[] arr, String[] dep) {
         int n = arr.length;
-        
+
         // Convert time to minutes since midnight
         int[] arrival = new int[n];
         int[] departure = new int[n];
-        
+
         for (int i = 0; i < n; i++) {
             arrival[i] = convertToMinutes(arr[i]);
             departure[i] = convertToMinutes(dep[i]);
         }
-        
+
         // Sort both arrays
         Arrays.sort(arrival);
         Arrays.sort(departure);
-        
+
         int maxPlatforms = 0;
         int platformsNeeded = 0;
         int i = 0, j = 0;
-        
+
         // Use two pointers to traverse the arrival and departure arrays
         while (i < n && j < n) {
             if (arrival[i] <= departure[j]) {
@@ -58,7 +58,7 @@ public class RailwayStation {
             }
             maxPlatforms = Math.max(maxPlatforms, platformsNeeded);
         }
-        
+
         return maxPlatforms;
     }
 

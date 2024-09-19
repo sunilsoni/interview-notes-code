@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.sept24.test6;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 public class SubarraySum {
     public static void main(String[] args) {
@@ -8,7 +11,7 @@ public class SubarraySum {
         int targetSum = 5;
 
         List<List<Integer>> result = findAllSubarraysWithSum(ints, targetSum);
-        
+
         if (result.isEmpty()) {
             System.out.println("No subarrays found with sum " + targetSum);
         } else {
@@ -36,8 +39,8 @@ public class SubarraySum {
 
     /**
      * Finds all subarrays with the given target sum.
-     * 
-     * @param nums The input list of integers
+     *
+     * @param nums      The input list of integers
      * @param targetSum The target sum to find
      * @return A list of lists containing all subarrays with the target sum
      */

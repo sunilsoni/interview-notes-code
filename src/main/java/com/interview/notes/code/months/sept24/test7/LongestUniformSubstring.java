@@ -1,12 +1,13 @@
 package com.interview.notes.code.months.sept24.test7;
 
 public class LongestUniformSubstring {
-    
+
     /**
      * Finds the longest uniform substring in the given input string.
+     *
      * @param input The input string to search
      * @return An integer array where the first element is the starting index
-     *         of the longest uniform substring and the second element is its length
+     * of the longest uniform substring and the second element is its length
      */
     public static int[] longestUniformSubstring(String input) {
         if (input == null || input.isEmpty()) {
@@ -37,12 +38,12 @@ public class LongestUniformSubstring {
     public static void main(String[] args) {
         // Test cases
         String[] testCases = {
-            "abbbccda",
-            "aabbbbbCdAA",
-            "",
-            "a",
-            "aa",
-            "aabbbcccc"
+                "abbbccda",
+                "aabbbbbCdAA",
+                "",
+                "a",
+                "aa",
+                "aabbbcccc"
         };
 
         for (String testCase : testCases) {

@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.sept24.google.test1;
 
 import java.util.*;
+
 /*
 • Imagine you have a robot that sends status messages that humans will read in real time.
 • The raw messages are hard to read for a human because there are often many messages produced in short periods of time. One idea to make them more readable is to remove the duplicate messages over a sliding 10 second window.
@@ -23,13 +24,13 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         List<Message> messages = Arrays.asList(
-            new Message(10, "solar panel activated"),
-            new Message(11, "low battery warning"),
-            new Message(12, "tire one: low air pressure"),
-            new Message(13, "solar panel activated"),
-            new Message(14, "low battery warning"),
-            new Message(21, "solar panel activated"),
-            new Message(35, "solar panel activated")
+                new Message(10, "solar panel activated"),
+                new Message(11, "low battery warning"),
+                new Message(12, "tire one: low air pressure"),
+                new Message(13, "solar panel activated"),
+                new Message(14, "low battery warning"),
+                new Message(21, "solar panel activated"),
+                new Message(35, "solar panel activated")
         );
 
         List<Message> displayedMessages = processMessages(messages);

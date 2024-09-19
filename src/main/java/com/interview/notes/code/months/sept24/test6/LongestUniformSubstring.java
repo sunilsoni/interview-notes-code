@@ -20,6 +20,7 @@ public class LongestUniformSubstring {
             System.out.println();
         }
     }
+
     public static void main1(String[] args) {
         String input = "abbbcda";
         int[] result = longestUniformSubstring(input);

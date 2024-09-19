@@ -3,7 +3,7 @@ package com.interview.notes.code.months.sept24.test7;
 import java.util.ArrayList;
 
 public class Solution1 {
-    
+
     public static int solve(int n) {
         long result = 0;
         // Initialize the list of targets
@@ -11,7 +11,7 @@ public class Solution1 {
         for (int i = 1; i <= n; i++) {
             targets.add(i);
         }
-        
+
         // Keep removing every alternate target until one is left
         while (targets.size() > 1) {
             ArrayList<Integer> remainingTargets = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Solution1 {
             // Update the targets list for the next iteration
             targets = remainingTargets;
         }
-        
+
         // Print total score (result)
         return (int) result;
     }

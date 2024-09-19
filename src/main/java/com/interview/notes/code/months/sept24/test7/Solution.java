@@ -1,9 +1,10 @@
 package com.interview.notes.code.months.sept24.test7;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Solution {
-    
+
     // Helper function to compute GCD of two numbers
     private static int gcd(int a, int b) {
         if (b == 0) return a;
@@ -13,19 +14,19 @@ public class Solution {
     public static int maxBalls(int N, List<Integer> marks) {
         int[] prefixGCD = new int[N];
         int[] suffixGCD = new int[N];
-        
+
         // Step 1: Compute prefix GCDs
         prefixGCD[0] = marks.get(0);
         for (int i = 1; i < N; i++) {
             prefixGCD[i] = gcd(prefixGCD[i - 1], marks.get(i));
         }
-        
+
         // Step 2: Compute suffix GCDs
         suffixGCD[N - 1] = marks.get(N - 1);
         for (int i = N - 2; i >= 0; i--) {
             suffixGCD[i] = gcd(suffixGCD[i + 1], marks.get(i));
         }
-        
+
         // Step 3: Determine the maximum possible GCD after changing at most one student's marks
         int maxGCD = 0;
         for (int i = 0; i < N; i++) {
@@ -39,9 +40,10 @@ public class Solution {
             }
             maxGCD = Math.max(maxGCD, currentGCD);
         }
-        
+
         return maxGCD;
     }
+
     public static void main(String[] args) {
         // Test cases
         System.out.println(maxBalls(3, Arrays.asList(12, 3, 11))); // Expected: 3

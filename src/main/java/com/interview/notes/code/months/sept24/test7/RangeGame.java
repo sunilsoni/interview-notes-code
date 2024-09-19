@@ -26,7 +26,7 @@ public class RangeGame {
                 }
             }
         }
-        
+
         return (int) totalPoints;
     }
 }

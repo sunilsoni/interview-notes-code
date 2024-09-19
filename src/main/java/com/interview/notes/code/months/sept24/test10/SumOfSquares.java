@@ -10,8 +10,8 @@ public class SumOfSquares {
         long startTime = System.nanoTime();
 
         int sumOfSquares = numbers.stream()
-                                  .map(n -> n * n)
-                                  .reduce(0, Integer::sum);
+                .map(n -> n * n)
+                .reduce(0, Integer::sum);
 
         long endTime = System.nanoTime();
 

@@ -24,6 +24,7 @@ Try to code a generic solution that works with other inventory sizes and item ty
 
 
  */
+
 /**
  * InventoryOptimizer class to maximize the total value of items placed in an inventory grid.
  */
@@ -78,10 +79,21 @@ class Item {
     }
 
     // Getters
-    public String getName() { return name; }
-    public int getWidth() { return width; }
-    public int getHeight() { return height; }
-    public int getValue() { return value; }
+    public String getName() {
+        return name;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getValue() {
+        return value;
+    }
 }
 
 /**
@@ -161,9 +173,17 @@ class Inventory {
     }
 
     // Getters
-    public int getWidth() { return width; }
-    public int getHeight() { return height; }
-    public long getGridState() { return gridState; }
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public long getGridState() {
+        return gridState;
+    }
 }
 
 /**
@@ -181,9 +201,17 @@ class Placement {
     }
 
     // Getters
-    public Item getItem() { return item; }
-    public int getX() { return x; }
-    public int getY() { return y; }
+    public Item getItem() {
+        return item;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }
 
 /**
@@ -199,8 +227,13 @@ class Result {
     }
 
     // Getters
-    public int getTotalValue() { return totalValue; }
-    public List<Placement> getPlacements() { return placements; }
+    public int getTotalValue() {
+        return totalValue;
+    }
+
+    public List<Placement> getPlacements() {
+        return placements;
+    }
 }
 
 /**

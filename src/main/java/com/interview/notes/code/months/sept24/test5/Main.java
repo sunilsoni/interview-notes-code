@@ -6,11 +6,11 @@ public class Main {
     public static void main(String[] args) {
         // Test cases
         String[][] testCases = {
-            {"abc", "pqr"},
-            {"ab", "pqrs"},
-            {"abcd", "pq"},
-            {"", "pqr"},
-            {"abc", ""}
+                {"abc", "pqr"},
+                {"ab", "pqrs"},
+                {"abcd", "pq"},
+                {"", "pqr"},
+                {"abc", ""}
         };
 
         for (int i = 0; i < testCases.length; i++) {
@@ -26,6 +26,7 @@ public class Main {
 
     /**
      * Merges two strings alternately.
+     *
      * @param s1 The first string
      * @param s2 The second string
      * @return The merged string

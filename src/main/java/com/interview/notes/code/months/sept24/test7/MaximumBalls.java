@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.sept24.test7;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class MaximumBalls {
     public static void main(String[] args) {

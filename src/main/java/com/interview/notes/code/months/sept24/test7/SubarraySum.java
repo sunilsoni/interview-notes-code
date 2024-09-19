@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubarraySum {
-    
+
     // Method to find the subarray with the target sum
     public static List<Integer> findSubarrayWithTargetSum(List<Integer> nums, int target) {
         int start = 0;

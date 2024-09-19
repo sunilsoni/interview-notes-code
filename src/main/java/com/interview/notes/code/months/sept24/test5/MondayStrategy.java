@@ -8,5 +8,4 @@ public class MondayStrategy implements DayStrategy {
 }
 
 
-
 // ... and so on for other days

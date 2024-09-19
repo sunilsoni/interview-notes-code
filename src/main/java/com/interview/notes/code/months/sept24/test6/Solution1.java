@@ -1,22 +1,6 @@
 package com.interview.notes.code.months.sept24.test6;
 
 class Solution1 {
-    public int solution(int[] S) {
-        int max_sum = 0;
-        int current_sum = 0;
-        int n = S.length;
-        for (int i = 0; i < n; ++i) {
-            if (current_sum < 0) {
-                current_sum = 0;
-            }
-            current_sum += S[i];
-            if (current_sum > max_sum) {
-                max_sum = current_sum;
-            }
-        }
-        return max_sum > 0 ? max_sum : -1;
-    }
-
     // Test cases
     public static void main(String[] args) {
         Solution1 sol = new Solution1();
@@ -48,5 +32,21 @@ class Solution1 {
         // Test case 7: Array with only zeros
         int[] A7 = {0, 0, 0};
         System.out.println("Test case 7: " + sol.solution(A7)); // Expected output: -1
+    }
+
+    public int solution(int[] S) {
+        int max_sum = 0;
+        int current_sum = 0;
+        int n = S.length;
+        for (int i = 0; i < n; ++i) {
+            if (current_sum < 0) {
+                current_sum = 0;
+            }
+            current_sum += S[i];
+            if (current_sum > max_sum) {
+                max_sum = current_sum;
+            }
+        }
+        return max_sum > 0 ? max_sum : -1;
     }
 }

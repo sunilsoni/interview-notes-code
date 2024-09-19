@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.sept24.wallmart.test3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /*
 
@@ -17,23 +20,23 @@ public class BadgeSystemFinalWorking {
     public static void main(String[] args) {
         // Test cases
         String[][] records1 = {
-            {"Paul", "enter"}, {"Pauline", "exit"}, {"Paul", "enter"}, {"Paul", "exit"},
-            {"Martha", "exit"}, {"Joe", "enter"}, {"Martha", "enter"}, {"Steve", "enter"},
-            {"Martha", "exit"}, {"Jennifer", "enter"}, {"Joe", "enter"}, {"Curtis", "exit"},
-            {"Curtis", "enter"}, {"Joe", "exit"}, {"Martha", "enter"}, {"Martha", "exit"},
-            {"Jennifer", "exit"}, {"Joe", "enter"}, {"Joe", "enter"}, {"Martha", "exit"},
-            {"Joe", "exit"}, {"Joe", "exit"}
+                {"Paul", "enter"}, {"Pauline", "exit"}, {"Paul", "enter"}, {"Paul", "exit"},
+                {"Martha", "exit"}, {"Joe", "enter"}, {"Martha", "enter"}, {"Steve", "enter"},
+                {"Martha", "exit"}, {"Jennifer", "enter"}, {"Joe", "enter"}, {"Curtis", "exit"},
+                {"Curtis", "enter"}, {"Joe", "exit"}, {"Martha", "enter"}, {"Martha", "exit"},
+                {"Jennifer", "exit"}, {"Joe", "enter"}, {"Joe", "enter"}, {"Martha", "exit"},
+                {"Joe", "exit"}, {"Joe", "exit"}
         };
 
         String[][] records2 = {{"Paul", "enter"}, {"Paul", "exit"}};
 
         String[][] records3 = {
-            {"Paul", "enter"}, {"Paul", "enter"}, {"Paul", "exit"}, {"Paul", "exit"}
+                {"Paul", "enter"}, {"Paul", "enter"}, {"Paul", "exit"}, {"Paul", "exit"}
         };
 
         String[][] records4 = {
-            {"Raj", "enter"}, {"Paul", "enter"}, {"Paul", "exit"}, {"Paul", "exit"},
-            {"Paul", "enter"}, {"Raj", "enter"}
+                {"Raj", "enter"}, {"Paul", "enter"}, {"Paul", "exit"}, {"Paul", "exit"},
+                {"Paul", "enter"}, {"Raj", "enter"}
         };
 
         // Run test cases

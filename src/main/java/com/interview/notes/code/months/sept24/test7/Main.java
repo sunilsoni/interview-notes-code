@@ -8,10 +8,10 @@ public class Main {
     public static void main(String[] args) {
         // Test cases
         int[][] testCases = {
-            {2, 3, 2, 2, 3, 4},
-            {1, 1, 1, 1},
-            {5, 4, 3, 2, 1},
-            {}
+                {2, 3, 2, 2, 3, 4},
+                {1, 1, 1, 1},
+                {5, 4, 3, 2, 1},
+                {}
         };
 
         for (int i = 0; i < testCases.length; i++) {
@@ -25,7 +25,7 @@ public class Main {
 
     /**
      * Counts the occurrences of each element in the given array using Java 8 streams.
-     * 
+     *
      * @param arr The input integer array
      * @return A Map with elements as keys and their counts as values
      */

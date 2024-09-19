@@ -7,55 +7,55 @@ public class BadgeAccessSystem {
     public static void main(String[] args) {
         // Test Case 1
         String[][] records1 = {
-            {"Paul", "enter"},
-            {"Pauline", "exit"},
-            {"Paul", "enter"},
-            {"Paul", "exit"},
-            {"Martha", "exit"},
-            {"Joe", "enter"},
-            {"Martha", "enter"},
-            {"Steve", "enter"},
-            {"Martha", "exit"},
-            {"Jennifer", "enter"},
-            {"Joe", "enter"},
-            {"Curtis", "exit"},
-            {"Curtis", "enter"},
-            {"Joe", "exit"},
-            {"Martha", "enter"},
-            {"Martha", "exit"},
-            {"Jennifer", "exit"},
-            {"Joe", "enter"},
-            {"Joe", "enter"},
-            {"Martha", "exit"},
-            {"Joe", "exit"},
-            {"Joe", "exit"}
+                {"Paul", "enter"},
+                {"Pauline", "exit"},
+                {"Paul", "enter"},
+                {"Paul", "exit"},
+                {"Martha", "exit"},
+                {"Joe", "enter"},
+                {"Martha", "enter"},
+                {"Steve", "enter"},
+                {"Martha", "exit"},
+                {"Jennifer", "enter"},
+                {"Joe", "enter"},
+                {"Curtis", "exit"},
+                {"Curtis", "enter"},
+                {"Joe", "exit"},
+                {"Martha", "enter"},
+                {"Martha", "exit"},
+                {"Jennifer", "exit"},
+                {"Joe", "enter"},
+                {"Joe", "enter"},
+                {"Martha", "exit"},
+                {"Joe", "exit"},
+                {"Joe", "exit"}
         };
         testMismatch(records1, "Test Case 1");
 
         // Test Case 2
         String[][] records2 = {
-            {"Paul", "enter"},
-            {"Paul", "exit"}
+                {"Paul", "enter"},
+                {"Paul", "exit"}
         };
         testMismatch(records2, "Test Case 2");
 
         // Test Case 3
         String[][] records3 = {
-            {"Paul", "enter"},
-            {"Paul", "enter"},
-            {"Paul", "exit"},
-            {"Paul", "exit"}
+                {"Paul", "enter"},
+                {"Paul", "enter"},
+                {"Paul", "exit"},
+                {"Paul", "exit"}
         };
         testMismatch(records3, "Test Case 3");
 
         // Test Case 4
         String[][] records4 = {
-            {"Raj", "enter"},
-            {"Paul", "enter"},
-            {"Paul", "exit"},
-            {"Paul", "exit"},
-            {"Paul", "enter"},
-            {"Raj", "enter"}
+                {"Raj", "enter"},
+                {"Paul", "enter"},
+                {"Paul", "exit"},
+                {"Paul", "exit"},
+                {"Paul", "enter"},
+                {"Raj", "enter"}
         };
         testMismatch(records4, "Test Case 4");
     }

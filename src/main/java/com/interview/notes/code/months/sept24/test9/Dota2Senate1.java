@@ -40,9 +40,9 @@ public class Dota2Senate1 {
 
         for (int i = 0; i < testCases.length; i++) {
             String result = predictPartyVictory(testCases[i]);
-            System.out.println("Test Case " + (i + 1) + ": " + 
-                               (result.equals(expectedOutputs[i]) ? "PASS" : "FAIL") +
-                               " (Expected: " + expectedOutputs[i] + ", Got: " + result + ")");
+            System.out.println("Test Case " + (i + 1) + ": " +
+                    (result.equals(expectedOutputs[i]) ? "PASS" : "FAIL") +
+                    " (Expected: " + expectedOutputs[i] + ", Got: " + result + ")");
         }
     }
 }

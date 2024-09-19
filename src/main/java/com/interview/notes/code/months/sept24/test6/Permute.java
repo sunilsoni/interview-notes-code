@@ -4,6 +4,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 class Permute {
+    public static void main(String[] args) {
+        Permute solution = new Permute();
+
+        // Test cases
+        System.out.println(solution.solution(1, 8, 3, 2) == 6 ? "Test case 1 passed" : "Test case 1 failed");
+        System.out.println(solution.solution(2, 3, 3, 2) == 3 ? "Test case 2 passed" : "Test case 2 failed");
+        System.out.println(solution.solution(6, 2, 4, 7) == 0 ? "Test case 3 passed" : "Test case 3 failed");
+
+        // Additional test cases
+        System.out.println(solution.solution(0, 0, 0, 0) == 1 ? "Test case 4 passed" : "Test case 4 failed");
+        System.out.println(solution.solution(2, 4, 0, 0) == 4 ? "Test case 5 passed" : "Test case 5 failed");
+    }
+
     public int solution(int A, int B, int C, int D) {
         int[] digits = {A, B, C, D};
         Set<String> validTimes = new HashSet<>();
@@ -40,18 +53,5 @@ class Permute {
             String time = String.format("%02d:%02d", hours, minutes);
             validTimes.add(time);
         }
-    }
-
-    public static void main(String[] args) {
-        Permute solution = new Permute();
-
-        // Test cases
-        System.out.println(solution.solution(1, 8, 3, 2) == 6 ? "Test case 1 passed" : "Test case 1 failed");
-        System.out.println(solution.solution(2, 3, 3, 2) == 3 ? "Test case 2 passed" : "Test case 2 failed");
-        System.out.println(solution.solution(6, 2, 4, 7) == 0 ? "Test case 3 passed" : "Test case 3 failed");
-
-        // Additional test cases
-        System.out.println(solution.solution(0, 0, 0, 0) == 1 ? "Test case 4 passed" : "Test case 4 failed");
-        System.out.println(solution.solution(2, 4, 0, 0) == 4 ? "Test case 5 passed" : "Test case 5 failed");
     }
 }

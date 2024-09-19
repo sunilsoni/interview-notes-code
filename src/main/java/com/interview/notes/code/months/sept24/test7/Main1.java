@@ -1,6 +1,6 @@
 package com.interview.notes.code.months.sept24.test7;
 
-import java.util.*;
+import java.util.Arrays;
 
 /*
 
@@ -67,9 +67,9 @@ public class Main1 {
     public static void main(String[] args) {
         // Test cases
         int[][] testCases = {
-            {1, 5, 11, 5},
-            {1, 2, 3, 5},
-            {2, 2, 3, 5}
+                {1, 5, 11, 5},
+                {1, 2, 3, 5},
+                {2, 2, 3, 5}
         };
         boolean[] expectedResults = {true, false, false};
 

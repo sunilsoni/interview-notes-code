@@ -5,6 +5,53 @@ import java.util.Queue;
 
 public class Dota2Senate1 {
 
+    public static void main(String[] args) {
+        Dota2Senate1 solution = new Dota2Senate1();
+        boolean allTestsPassed = true;
+
+        // Test cases
+        String[] testCases = {
+                "RD",
+                "RDD",
+                "RDRD",
+                "RRDDD",
+                "DDRRR",
+                "R",
+                "D",
+                "RRRR",
+                "DDDD",
+                "RDRDRDRD"
+        };
+        String[] expectedResults = {
+                "Radiant",
+                "Dire",
+                "Radiant",
+                "Dire",
+                "Radiant",
+                "Radiant",
+                "Dire",
+                "Radiant",
+                "Dire",
+                "Radiant"
+        };
+
+        // Process each test case
+        for (int i = 0; i < testCases.length; i++) {
+            String result = solution.predictPartyVictory(testCases[i]);
+            boolean passed = result.equals(expectedResults[i]);
+            allTestsPassed &= passed;
+            System.out.println("Test case " + (i + 1) + ": Input: \"" + testCases[i] + "\" Expected: \"" + expectedResults[i]
+                    + "\" Output: \"" + result + "\" Result: " + (passed ? "Pass" : "Fail"));
+        }
+
+        // Summary of test results
+        if (allTestsPassed) {
+            System.out.println("All test cases passed.");
+        } else {
+            System.out.println("Some test cases failed.");
+        }
+    }
+
     /**
      * Predicts which party will win in the Dota2 senate.
      *
@@ -43,52 +90,5 @@ public class Dota2Senate1 {
 
         // Determine the winning party
         return radiantQueue.isEmpty() ? "Dire" : "Radiant";
-    }
-
-    public static void main(String[] args) {
-        Dota2Senate1 solution = new Dota2Senate1();
-        boolean allTestsPassed = true;
-
-        // Test cases
-        String[] testCases = {
-            "RD",
-            "RDD",
-            "RDRD",
-            "RRDDD",
-            "DDRRR",
-            "R",
-            "D",
-            "RRRR",
-            "DDDD",
-            "RDRDRDRD"
-        };
-        String[] expectedResults = {
-            "Radiant",
-            "Dire",
-            "Radiant",
-            "Dire",
-            "Radiant",
-            "Radiant",
-            "Dire",
-            "Radiant",
-            "Dire",
-            "Radiant"
-        };
-
-        // Process each test case
-        for (int i = 0; i < testCases.length; i++) {
-            String result = solution.predictPartyVictory(testCases[i]);
-            boolean passed = result.equals(expectedResults[i]);
-            allTestsPassed &= passed;
-            System.out.println("Test case " + (i + 1) + ": Input: \"" + testCases[i] + "\" Expected: \"" + expectedResults[i]
-                    + "\" Output: \"" + result + "\" Result: " + (passed ? "Pass" : "Fail"));
-        }
-
-        // Summary of test results
-        if (allTestsPassed) {
-            System.out.println("All test cases passed.");
-        } else {
-            System.out.println("Some test cases failed.");
-        }
     }
 }

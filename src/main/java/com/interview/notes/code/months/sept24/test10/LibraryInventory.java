@@ -26,35 +26,35 @@ public class LibraryInventory {
 
         // Grouping books by category and counting them
         Map<String, Long> inventory = books.stream()
-            .collect(Collectors.groupingBy(
-                Book::getCategory,
-                Collectors.counting()
-            ));
+                .collect(Collectors.groupingBy(
+                        Book::getCategory,
+                        Collectors.counting()
+                ));
 
         // Printing the result
-        inventory.forEach((category, count) -> 
-            System.out.println(category + " = " + count));
+        inventory.forEach((category, count) ->
+                System.out.println(category + " = " + count));
     }
 
     private static List<Book> fetchBooksFromLibrary() {
         return new ArrayList<>(List.of(
-            new Book("Effective Java", "Java"),
-            new Book("Java Concurrency in Practice", "Java"),
-            new Book("The C Programming Language", "C"),
-            new Book("C++ Primer", "C++"),
-            new Book("Clean Code", "Java"),
-            new Book("C Programming Absolute Beginner's Guide", "C"),
-            new Book("C++ for Dummies", "C++"),
-            // Simulating additional books
-            new Book("Oracle Database 12c", "Oracle"),
-            new Book("Oracle PL/SQL Programming", "Oracle"),
-            new Book("Oracle Essentials", "Oracle"),
-            new Book("Oracle Performance Tuning", "Oracle"),
-            new Book("C Programming Language", "C"),
-            new Book("C Programming Language", "C"),
-            new Book("C++ Programming Language", "C++"),
-            new Book("C++ Programming Language", "C++"),
-            new Book("C++ Programming Language", "C++")
+                new Book("Effective Java", "Java"),
+                new Book("Java Concurrency in Practice", "Java"),
+                new Book("The C Programming Language", "C"),
+                new Book("C++ Primer", "C++"),
+                new Book("Clean Code", "Java"),
+                new Book("C Programming Absolute Beginner's Guide", "C"),
+                new Book("C++ for Dummies", "C++"),
+                // Simulating additional books
+                new Book("Oracle Database 12c", "Oracle"),
+                new Book("Oracle PL/SQL Programming", "Oracle"),
+                new Book("Oracle Essentials", "Oracle"),
+                new Book("Oracle Performance Tuning", "Oracle"),
+                new Book("C Programming Language", "C"),
+                new Book("C Programming Language", "C"),
+                new Book("C++ Programming Language", "C++"),
+                new Book("C++ Programming Language", "C++"),
+                new Book("C++ Programming Language", "C++")
         ));
     }
 }

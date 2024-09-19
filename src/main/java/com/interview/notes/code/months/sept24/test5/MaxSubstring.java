@@ -1,6 +1,5 @@
 package com.interview.notes.code.months.sept24.test5;
 
-import java.util.*;
 /*
 
 Maximum Substring
@@ -32,11 +31,11 @@ public class MaxSubstring {
         testCase("a", "a", 4);
         testCase("abcdefghijklmnopqrstuvwxyz", "z", 5);
         testCase("zyxwvutsrqponmlkjihgfedcba", "zyxwvutsrqponmlkjihgfedcba", 6);
-        
+
         // Large input test case
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 100; i++) {
-            sb.append((char)('a' + (i % 26)));
+            sb.append((char) ('a' + (i % 26)));
         }
         testCase(sb.toString(), "zyxwvutsrqponmlkjihgfedcba", 7);
     }
@@ -64,8 +63,8 @@ public class MaxSubstring {
 
     private static void testCase(String input, String expected, int testNumber) {
         String result = maxSubstring(input);
-        System.out.println("Test Case " + testNumber + ": " + 
-                           (result.equals(expected) ? "Passed" : "Failed"));
+        System.out.println("Test Case " + testNumber + ": " +
+                (result.equals(expected) ? "Passed" : "Failed"));
         if (!result.equals(expected)) {
             System.out.println("  Expected: " + expected);
             System.out.println("  Got: " + result);

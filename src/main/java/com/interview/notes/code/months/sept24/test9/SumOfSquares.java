@@ -8,8 +8,8 @@ public class SumOfSquares {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
 
         int sumOfSquares = numbers.stream()
-                                  .map(n -> n * n)
-                                  .reduce(0, Integer::sum);
+                .map(n -> n * n)
+                .reduce(0, Integer::sum);
 
         System.out.println(sumOfSquares);
     }

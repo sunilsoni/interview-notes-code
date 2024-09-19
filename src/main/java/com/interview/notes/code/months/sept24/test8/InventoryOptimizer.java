@@ -3,18 +3,6 @@ package com.interview.notes.code.months.sept24.test8;
 import java.util.*;
 
 public class InventoryOptimizer {
-    static class Item {
-        String name;
-        int width, height, value;
-
-        Item(String name, int width, int height, int value) {
-            this.name = name;
-            this.width = width;
-            this.height = height;
-            this.value = value;
-        }
-    }
-
     static int[][] inventory;
     static int maxValue;
     static List<Item> bestArrangement;
@@ -22,12 +10,12 @@ public class InventoryOptimizer {
 
     public static void main(String[] args) {
         List<Item> items = Arrays.asList(
-            new Item("Potion of Potionentiality", 1, 1, 30),
-            new Item("Jeweled Dog Draught Excluder", 3, 1, 150),
-            new Item("Spartan Shield", 2, 2, 300),
-            new Item("Palindromic Sword o' Drows", 1, 3, 120),
-            new Item("Unobsidian Armor", 2, 3, 540),
-            new Item("Wardrobe of Infinite Lions", 20, 10, 1337)
+                new Item("Potion of Potionentiality", 1, 1, 30),
+                new Item("Jeweled Dog Draught Excluder", 3, 1, 150),
+                new Item("Spartan Shield", 2, 2, 300),
+                new Item("Palindromic Sword o' Drows", 1, 3, 120),
+                new Item("Unobsidian Armor", 2, 3, 540),
+                new Item("Wardrobe of Infinite Lions", 20, 10, 1337)
         );
 
         optimizeInventory(5, 4, items);
@@ -76,9 +64,10 @@ public class InventoryOptimizer {
                 int valueWithItem = backtrack(items, nextRow, nextCol, currentValue + item.value, currentArrangement);
                 maxValueHere = Math.max(maxValueHere, valueWithItem);
                 removeItem(item, row, col);
-                currentArrangement.remove(currentArrangement.size() -1);
+                currentArrangement.remove(currentArrangement.size() - 1);
             }
-        }memo.put(key, maxValueHere);
+        }
+        memo.put(key, maxValueHere);
         return maxValueHere;
     }
 
@@ -119,6 +108,18 @@ public class InventoryOptimizer {
             System.out.println("- " + item.name);
         }
         System.out.println();
+    }
+
+    static class Item {
+        String name;
+        int width, height, value;
+
+        Item(String name, int width, int height, int value) {
+            this.name = name;
+            this.width = width;
+            this.height = height;
+            this.value = value;
+        }
     }
 }
 

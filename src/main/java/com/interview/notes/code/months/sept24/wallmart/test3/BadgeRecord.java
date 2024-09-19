@@ -1,7 +1,5 @@
 package com.interview.notes.code.months.sept24.wallmart.test3;
 
-import java.util.*;
-
 class BadgeRecord {
     private String employeeName;
     private String action; // "enter" or "exit"
