@@ -43,7 +43,7 @@ class Employee {
     }
 }
 
-public class Solution {
+public class SolutionTest {
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
                 new Employee(1, "Alice", "Engineering", 100000),
