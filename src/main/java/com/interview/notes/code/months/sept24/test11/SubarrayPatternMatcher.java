@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.sept24.test11;
 
 import java.util.Arrays;
+
 /*
 
 WORKING
@@ -73,7 +74,7 @@ public class SubarrayPatternMatcher {
         for (int i = 0; i < pattern.length; i++) {
             int current = numbers[startIndex + i + 1];
             int previous = numbers[startIndex + i];
-            
+
             if (pattern[i] == 1 && current <= previous) {
                 return false;
             }

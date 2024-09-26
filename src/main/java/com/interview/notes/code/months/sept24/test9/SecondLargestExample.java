@@ -17,7 +17,7 @@ public class SecondLargestExample {
     public static void main(String[] args) {
         int[] nums = {3, 1, 4, 4, 5, 2, 5};
         Optional<Integer> secondLargest = findSecondLargest(nums);
-        
+
         if (secondLargest.isPresent()) {
             System.out.println("Second largest element: " + secondLargest.get());
         } else {

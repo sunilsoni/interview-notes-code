@@ -4,20 +4,36 @@ class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
-    TreeNode(int x) { val = x; }
+
+    TreeNode(int x) {
+        val = x;
+    }
 }
 
 public class MaxPathSum {
 
     private int maxSum;
 
+    public static void main(String[] args) {
+        // Construct a tree as per the example provided:
+        //       -1
+        //     -9    -20
+        TreeNode root = new TreeNode(-1);
+        root.left = new TreeNode(-9);
+        root.right = new TreeNode(-20);
+
+        MaxPathSum solution = new MaxPathSum();
+        int result = solution.maxPathSum(root);
+        System.out.println("Max path sum is: " + result);  // Expected output: -1
+    }
+
     public int maxPathSum(TreeNode root) {
         // Initialize the maximum sum to the smallest possible value.
         maxSum = Integer.MIN_VALUE; // This ensures we correctly handle negative values.
-        
+
         // Start the recursive calculation from the root node.
         calculateMaxPath(root);
-        
+
         // Return the overall maximum path sum found.
         return maxSum;
     }
@@ -42,18 +58,5 @@ public class MaxPathSum {
         // Return the maximum sum path that can be extended upwards,
         // which is either the current node's value or the node plus the larger of its subtrees.
         return node.val + Math.max(left, right);
-    }
-
-    public static void main(String[] args) {
-        // Construct a tree as per the example provided:
-        //       -1
-        //     -9    -20
-        TreeNode root = new TreeNode(-1);
-        root.left = new TreeNode(-9);
-        root.right = new TreeNode(-20);
-
-        MaxPathSum solution = new MaxPathSum();
-        int result = solution.maxPathSum(root);
-        System.out.println("Max path sum is: " + result);  // Expected output: -1
     }
 }

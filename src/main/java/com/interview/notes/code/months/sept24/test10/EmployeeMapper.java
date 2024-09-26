@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.sept24.test10;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 class Employee {
@@ -29,13 +31,13 @@ class Employee {
 public class EmployeeMapper {
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
-            new Employee("Laura", "Gibbon"),
-            new Employee("Aaron", "Todd"),
-            new Employee("Brian", "Scott"),
-            new Employee("Neon", "Piper"),
-            new Employee("David", "Beckham"),
-            new Employee("Aaron", "Beckham"),
-            new Employee("Brian", "Todd")
+                new Employee("Laura", "Gibbon"),
+                new Employee("Aaron", "Todd"),
+                new Employee("Brian", "Scott"),
+                new Employee("Neon", "Piper"),
+                new Employee("David", "Beckham"),
+                new Employee("Aaron", "Beckham"),
+                new Employee("Brian", "Todd")
         );
 
         Map<String, List<Employee>> employeesByFirstName = groupEmployeesByFirstName(employees);

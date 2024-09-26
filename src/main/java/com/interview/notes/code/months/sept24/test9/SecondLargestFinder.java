@@ -4,11 +4,11 @@ public class SecondLargestFinder {
     public static void main(String[] args) {
         // Test cases
         int[][] testCases = {
-            {3, 5, 1, 2, 4},
-            {7, 7, 7, 7},
-            {1},
-            {-1, -2, -3, -4},
-            {5, 5, 6, 6, 7}
+                {3, 5, 1, 2, 4},
+                {7, 7, 7, 7},
+                {1},
+                {-1, -2, -3, -4},
+                {5, 5, 6, 6, 7}
         };
         for (int i = 0; i < testCases.length; i++) {
             try {
@@ -19,6 +19,7 @@ public class SecondLargestFinder {
             }
         }
     }
+
     public static int findSecondLargest(int[] nums) {
         if (nums == null || nums.length < 2) {
             throw new IllegalArgumentException("Array must contain at least two elements.");

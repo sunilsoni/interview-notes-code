@@ -96,26 +96,26 @@ public class MeetingScheduler {
     public static void main(String[] args) {
         // Test Case 1
         int[][][] schedules1 = {
-            {{60, 150}, {180, 240}},
-            {{0, 210}},
-            {{360, 420}}
+                {{60, 150}, {180, 240}},
+                {{0, 210}},
+                {{360, 420}}
         };
         int length1 = 120;
         System.out.println("Test Case 1: " + (solution(schedules1, length1) == 240 ? "PASS" : "FAIL"));
 
         // Test Case 2
         int[][][] schedules2 = {
-            {{480, 510}},
-            {{375, 400}}
+                {{480, 510}},
+                {{375, 400}}
         };
         int length2 = 180;
         System.out.println("Test Case 2: " + (solution(schedules2, length2) == 0 ? "PASS" : "FAIL"));
 
         // Test Case 3
         int[][][] schedules3 = {
-            {{0, 1439}},
-            {{0, 1439}},
-            {{0, 390}, {480, 510}}
+                {{0, 1439}},
+                {{0, 1439}},
+                {{0, 390}, {480, 510}}
         };
         int length3 = 90;
         System.out.println("Test Case 3: " + (solution(schedules3, length3) == -1 ? "PASS" : "FAIL"));
@@ -127,7 +127,7 @@ public class MeetingScheduler {
 
         // Additional Test Case: Meeting exactly fits between two existing meetings
         int[][][] schedules5 = {
-            {{0, 100}, {200, 300}}
+                {{0, 100}, {200, 300}}
         };
         int length5 = 100;
         System.out.println("Test Case 5: " + (solution(schedules5, length5) == 100 ? "PASS" : "FAIL"));
