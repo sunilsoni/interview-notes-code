@@ -29,7 +29,7 @@ class Car {
     }
 }
 
-public class Main {
+public class Main2 {
     public static void main(String[] args) {
         // Create a list of Car objects
         List<Car> cars = Arrays.asList(
@@ -46,7 +46,7 @@ public class Main {
                 .collect(Collectors.groupingBy(Car::getBrand, Collectors.counting()));
 
         // Print the result
-        carCountByBrand.forEach((brand, count) -> 
-            System.out.println("Brand: " + brand + ", Count: " + count));
+        carCountByBrand.forEach((brand, count) ->
+                System.out.println("Brand: " + brand + ", Count: " + count));
     }
 }

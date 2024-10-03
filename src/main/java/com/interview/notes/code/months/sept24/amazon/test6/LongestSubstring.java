@@ -16,10 +16,10 @@ public class LongestSubstring {
 
         int maxLength = 0;
         int n = s.length();
-        
+
         // Sliding window approach
         int start = 0; // Start of the current window
-        
+
         for (int end = 1; end < n; end++) {
             // Check if the first character in the current window is smaller than the last one
             if (s.charAt(start) < s.charAt(end)) {

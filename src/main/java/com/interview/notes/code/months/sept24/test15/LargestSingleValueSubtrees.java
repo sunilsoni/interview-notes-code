@@ -1,19 +1,6 @@
 package com.interview.notes.code.months.sept24.test15;
 
-import java.util.*;
-
 public class LargestSingleValueSubtrees {
-
-    // Class to represent a node in the binary tree
-    static class TreeNode {
-        int val;
-        TreeNode left, right;
-
-        TreeNode(int value) {
-            this.val = value;
-            left = right = null;
-        }
-    }
 
     // Variable to keep track of the count of largest single-valued subtrees
     int count = 0;
@@ -114,5 +101,16 @@ public class LargestSingleValueSubtrees {
         }
 
         return true;
+    }
+
+    // Class to represent a node in the binary tree
+    static class TreeNode {
+        int val;
+        TreeNode left, right;
+
+        TreeNode(int value) {
+            this.val = value;
+            left = right = null;
+        }
     }
 }

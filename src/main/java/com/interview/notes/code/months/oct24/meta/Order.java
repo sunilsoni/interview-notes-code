@@ -1,8 +1,5 @@
 package com.interview.notes.code.months.oct24.meta;
 
-import java.util.*;
-import java.util.concurrent.*;
-
 class Order {
     int orderId;
     String restaurant;

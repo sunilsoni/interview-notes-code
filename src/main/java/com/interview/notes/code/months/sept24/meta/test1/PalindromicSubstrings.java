@@ -8,14 +8,14 @@ public class PalindromicSubstrings {
     // Method to find all palindromic substrings
     public static List<String> findPalindromicSubstrings(String s) {
         List<String> result = new ArrayList<>();
-        
+
         // Edge case: if the string is empty, return an empty list
         if (s == null || s.length() == 0) {
             return result;
         }
 
         int n = s.length();
-        
+
         // Expand around each center (for both odd and even length palindromes)
         for (int i = 0; i < n; i++) {
             // Odd length palindromes (single character center)
@@ -40,7 +40,7 @@ public class PalindromicSubstrings {
     public static void main(String[] args) {
         String input = "aabbaab";
         List<String> palindromes = findPalindromicSubstrings(input);
-        
+
         // Print the result
         System.out.println("Palindromic substrings: " + palindromes);
     }

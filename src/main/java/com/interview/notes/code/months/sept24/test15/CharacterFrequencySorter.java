@@ -17,15 +17,15 @@ public class CharacterFrequencySorter {
     public static String frequencySort(String s) {
         // Map to store character frequencies
         Map<Character, Integer> frequencyMap = new HashMap<>();
-        
+
         // Count the frequency of each character
         for (char c : s.toCharArray()) {
             frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);
         }
-        
+
         // Create a list of characters from the map keys
         List<Character> characters = new ArrayList<>(frequencyMap.keySet());
-        
+
         // Sort the list based on frequency and then alphabetically
         characters.sort((a, b) -> {
             int freqCompare = frequencyMap.get(b) - frequencyMap.get(a); // Sort by frequency (descending)
@@ -34,7 +34,7 @@ public class CharacterFrequencySorter {
             }
             return freqCompare;
         });
-        
+
         // Build the result string
         StringBuilder result = new StringBuilder();
         for (char c : characters) {
@@ -43,7 +43,7 @@ public class CharacterFrequencySorter {
                 result.append(c);
             }
         }
-        
+
         return result.toString();
     }
 

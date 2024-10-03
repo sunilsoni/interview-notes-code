@@ -2,6 +2,7 @@ package com.interview.notes.code.months.sept24.test16;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /*
 Your task is to implement a simplified version of a banking system.
 Initially, the banking system does not contain any accounts, so implement operations to allow accounts creation as well as making deposits.
@@ -82,11 +83,11 @@ public class BankingApp {
     public static void main(String[] args) {
         // Sample operations
         String[][] operations = {
-            {"CREATE_ACCOUNT", "account1"},
-            {"CREATE_ACCOUNT", "account1"},
-            {"CREATE_ACCOUNT", "account2"},
-            {"DEPOSIT", "non-existing", "2700"},
-            {"DEPOSIT", "account1", "2700"}
+                {"CREATE_ACCOUNT", "account1"},
+                {"CREATE_ACCOUNT", "account1"},
+                {"CREATE_ACCOUNT", "account2"},
+                {"DEPOSIT", "non-existing", "2700"},
+                {"DEPOSIT", "account1", "2700"}
         };
 
         // Initialize the banking system

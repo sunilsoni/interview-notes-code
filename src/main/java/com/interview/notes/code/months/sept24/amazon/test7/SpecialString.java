@@ -83,6 +83,5 @@ public class SpecialString {
         System.out.println(getSpecialString("vbyetnoababababababababababababababababababababababababababcabababababababababababababcababababababa"));
 
 
-
     }
 }

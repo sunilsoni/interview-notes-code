@@ -19,8 +19,8 @@ public class OrganizationHierarchy {
         Map<String, List<String>> managerToSubordinatesMap = new HashMap<>();
         for (Contact contact : allOrganizationContacts) {
             managerToSubordinatesMap
-                .computeIfAbsent(contact.Manager_SID, k -> new ArrayList<>())
-                .add(contact.SID);
+                    .computeIfAbsent(contact.Manager_SID, k -> new ArrayList<>())
+                    .add(contact.SID);
         }
 
         // Step 2: Perform DFS to gather all SIDs in the hierarchy
@@ -47,13 +47,13 @@ public class OrganizationHierarchy {
     public static void main(String[] args) {
         // Example contacts list
         List<Contact> allOrganizationContacts = Arrays.asList(
-            new Contact("g705208", "a705208"),
-            new Contact("a705208", null),
-            new Contact("d705208", "g705208"),
-            new Contact("e705208", "b705208"),
-            new Contact("f705208", "b705208"),
-            new Contact("c705208", "g705208"),
-            new Contact("b705208", "a705208")
+                new Contact("g705208", "a705208"),
+                new Contact("a705208", null),
+                new Contact("d705208", "g705208"),
+                new Contact("e705208", "b705208"),
+                new Contact("f705208", "b705208"),
+                new Contact("c705208", "g705208"),
+                new Contact("b705208", "a705208")
         );
 
         // Test the hierarchy retrieval

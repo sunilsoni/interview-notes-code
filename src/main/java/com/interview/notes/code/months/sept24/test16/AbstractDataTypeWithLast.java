@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.sept24.test16;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 public class AbstractDataTypeWithLast<K, V> {
     private Map<K, V> map;              // To store key-value pairs
@@ -9,6 +11,21 @@ public class AbstractDataTypeWithLast<K, V> {
     public AbstractDataTypeWithLast() {
         map = new HashMap<>();
         accessOrder = new LinkedList<>();
+    }
+
+    // Example usage
+    public static void main(String[] args) {
+        AbstractDataTypeWithLast<String, Integer> data = new AbstractDataTypeWithLast<>();
+
+        data.put("a", 1);
+        data.put("b", 2);
+        System.out.println(data.last()); // => "b"
+
+        System.out.println(data.get("a")); // => 1
+        System.out.println(data.last()); // => "a"
+
+        data.remove("a");
+        System.out.println(data.last()); // => "b"
     }
 
     // Adds a value v to this data structure. It can be accessed by get() using key k.
@@ -44,20 +61,5 @@ public class AbstractDataTypeWithLast<K, V> {
     private void updateAccessOrder(K k) {
         accessOrder.remove(k); // Remove the key if it exists (to avoid duplicates)
         accessOrder.addLast(k); // Add the key to the end (most recent)
-    }
-
-    // Example usage
-    public static void main(String[] args) {
-        AbstractDataTypeWithLast<String, Integer> data = new AbstractDataTypeWithLast<>();
-        
-        data.put("a", 1); 
-        data.put("b", 2);
-        System.out.println(data.last()); // => "b"
-        
-        System.out.println(data.get("a")); // => 1
-        System.out.println(data.last()); // => "a"
-        
-        data.remove("a");
-        System.out.println(data.last()); // => "b"
     }
 }

@@ -1,13 +1,11 @@
 package com.interview.notes.code.months.sept24.amazon.test4;
 
-import java.util.Scanner;
-
 public class SpecialStringGenerator {
 
     public static String getSpecialString(String s) {
         char[] arr = s.toCharArray();
         int n = arr.length;
-        
+
         // Try to increment from the last character backwards
         for (int i = n - 1; i >= 0; i--) {
             // Try to increment the current character
@@ -42,25 +40,25 @@ public class SpecialStringGenerator {
     public static void main(String[] args) {
         // Test cases
         String[] testCases = {
-            "abccde",  // Expected output: abcdab
-            "zzab",    // Expected output: -1
-            "a",       // Expected output: b
-            "zzzz",    // Expected output: -1
-            "abcde",   // Expected output: abcdf
-            "abab",    // Expected output: abac
-            "zzy",     // Expected output: zyz
-            "aaa",     // Expected output: aab
-            "xyzz",    // Expected output: -1
-            "abcdzz",  // Expected output: abceab
-            "aabbcc",  // Expected output: aabbcd
-            "xyxyxy",  // Expected output: xyxyxz
-            "xyxz",    // Expected output: xyya
-            "azbzcz",  // Expected output: azbdaa
-            "zzz",     // Expected output: -1
-            "z",       // Expected output: -1
-            "yzz",     // Expected output: -1
-            "xxy",     // Expected output: xya
-            "abcxyz",  // Expected output: abcyza
+                "abccde",  // Expected output: abcdab
+                "zzab",    // Expected output: -1
+                "a",       // Expected output: b
+                "zzzz",    // Expected output: -1
+                "abcde",   // Expected output: abcdf
+                "abab",    // Expected output: abac
+                "zzy",     // Expected output: zyz
+                "aaa",     // Expected output: aab
+                "xyzz",    // Expected output: -1
+                "abcdzz",  // Expected output: abceab
+                "aabbcc",  // Expected output: aabbcd
+                "xyxyxy",  // Expected output: xyxyxz
+                "xyxz",    // Expected output: xyya
+                "azbzcz",  // Expected output: azbdaa
+                "zzz",     // Expected output: -1
+                "z",       // Expected output: -1
+                "yzz",     // Expected output: -1
+                "xxy",     // Expected output: xya
+                "abcxyz",  // Expected output: abcyza
         };
 
         // Iterate through test cases

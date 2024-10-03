@@ -80,23 +80,23 @@ public class OrganizationHierarchy {
 
         // Step 1: Build a manager-to-subordinates map
         Map<String, List<String>> managerToSubordinates = new HashMap<>();
-        
+
         for (Contact contact : allOrganizationContacts) {
             if (contact.Manager_SID != null) {
                 managerToSubordinates
-                    .computeIfAbsent(contact.Manager_SID, k -> new ArrayList<>())
-                    .add(contact.SID);
+                        .computeIfAbsent(contact.Manager_SID, k -> new ArrayList<>())
+                        .add(contact.SID);
             }
         }
 
         // Step 2: Perform DFS to gather all SIDs in the hierarchy
         Deque<String> stack = new ArrayDeque<>();
         stack.push(sid);
-        
+
         while (!stack.isEmpty()) {
             String currentSid = stack.pop();
             sidsInHierarchy.add(currentSid);
-            
+
             // Get the subordinates of the current SID and add them to the stack
             List<String> subordinates = managerToSubordinates.get(currentSid);
             if (subordinates != null) {
@@ -111,13 +111,13 @@ public class OrganizationHierarchy {
 
     public static void main(String[] args) {
         List<Contact> allOrganizationContacts = Arrays.asList(
-            new Contact("g705208", "a705208"),
-            new Contact("a705208", null),
-            new Contact("d705208", "g705208"),
-            new Contact("e705208", "b705208"),
-            new Contact("f705208", "b705208"),
-            new Contact("c705208", "g705208"),
-            new Contact("b705208", "a705208")
+                new Contact("g705208", "a705208"),
+                new Contact("a705208", null),
+                new Contact("d705208", "g705208"),
+                new Contact("e705208", "b705208"),
+                new Contact("f705208", "b705208"),
+                new Contact("c705208", "g705208"),
+                new Contact("b705208", "a705208")
         );
 
         // Test case 1: SID "a705208"

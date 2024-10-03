@@ -13,6 +13,30 @@ public class BankingSystem {
         accounts = new HashMap<>();
     }
 
+    // Main method to process input and output
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        BankingSystem1 bankingSystem = new BankingSystem1();
+
+        // Process input commands
+        while (scanner.hasNext()) {
+            String command = scanner.next();
+
+            if (command.equals("CREATE_ACCOUNT")) {
+                String accountId = scanner.next();
+                boolean result = bankingSystem.createAccount(accountId);
+                System.out.println(result);
+            } else if (command.equals("DEPOSIT")) {
+                String accountId = scanner.next();
+                int amount = scanner.nextInt();
+                // int result = bankingSystem.deposit(accountId, amount);
+                // System.out.println(result);
+            }
+        }
+
+        scanner.close();
+    }
+
     // Method to create a new account
     public boolean createAccount(String accountId) {
         if (accounts.containsKey(accountId)) {
@@ -32,29 +56,5 @@ public class BankingSystem {
             accounts.put(accountId, newBalance); // Update the account balance
             return newBalance;
         }
-    }
-
-    // Main method to process input and output
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        BankingSystem1 bankingSystem = new BankingSystem1();
-        
-        // Process input commands
-        while (scanner.hasNext()) {
-            String command = scanner.next();
-            
-            if (command.equals("CREATE_ACCOUNT")) {
-                String accountId = scanner.next();
-                boolean result = bankingSystem.createAccount(accountId);
-                System.out.println(result);
-            } else if (command.equals("DEPOSIT")) {
-                String accountId = scanner.next();
-                int amount = scanner.nextInt();
-               // int result = bankingSystem.deposit(accountId, amount);
-               // System.out.println(result);
-            }
-        }
-        
-        scanner.close();
     }
 }

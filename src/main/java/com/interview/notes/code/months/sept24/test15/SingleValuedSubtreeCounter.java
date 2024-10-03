@@ -1,19 +1,6 @@
 package com.interview.notes.code.months.sept24.test15;
 
-import java.util.*;
-
 class SingleValuedSubtreeCounter {
-
-    // TreeNode class definition
-    static class TreeNode {
-        int val;
-        TreeNode left, right;
-
-        TreeNode(int val) {
-            this.val = val;
-            left = right = null;
-        }
-    }
 
     // Main method to process test cases
     public static void main(String[] args) {
@@ -63,5 +50,16 @@ class SingleValuedSubtreeCounter {
             return true;
         }
         return false;
+    }
+
+    // TreeNode class definition
+    static class TreeNode {
+        int val;
+        TreeNode left, right;
+
+        TreeNode(int val) {
+            this.val = val;
+            left = right = null;
+        }
     }
 }

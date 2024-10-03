@@ -1,7 +1,5 @@
 package com.interview.notes.code.months.sept24.test15;
 
-import java.util.*;
-
 class Solution {
     private int count = 0;
 

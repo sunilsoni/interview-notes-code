@@ -1,7 +1,5 @@
 package com.interview.notes.code.months.sept24.amazon.test7;
 
-import java.lang.*;
-
 class Solution1 {
 
     /*

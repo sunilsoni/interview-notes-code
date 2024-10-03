@@ -1,24 +1,6 @@
 package com.interview.notes.code.months.sept24.test15;
 
 class BinaryTree {
-    // Definition for a binary tree node.
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        
-        TreeNode(int val) {
-            this.val = val;
-            left = null;
-            right = null;
-        }
-    }
-
-    // Class to store the result
-    static class Result {
-        int maxSize = 0; // To track the size of the largest single-valued subtree
-    }
-
     // Function to check if a tree is single-valued and calculate the size of the largest single-valued subtree
     private static int findLargestSingleValuedSubtree(TreeNode node, Result result) {
         // Base case: if the node is null, return 0 (no nodes in this subtree)
@@ -32,7 +14,7 @@ class BinaryTree {
 
         // Check if the current node forms a single-valued subtree
         if ((node.left == null || node.left.val == node.val) &&
-            (node.right == null || node.right.val == node.val)) {
+                (node.right == null || node.right.val == node.val)) {
 
             // The current node forms a single-valued subtree
             int subtreeSize = leftSize + rightSize + 1;
@@ -72,5 +54,23 @@ class BinaryTree {
 
         // The expected output is 2, as the largest single-valued subtree has 2 nodes
         System.out.println("Size of the largest single-valued subtree: " + largestSingleValuedSubtree(root));
+    }
+
+    // Definition for a binary tree node.
+    static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int val) {
+            this.val = val;
+            left = null;
+            right = null;
+        }
+    }
+
+    // Class to store the result
+    static class Result {
+        int maxSize = 0; // To track the size of the largest single-valued subtree
     }
 }

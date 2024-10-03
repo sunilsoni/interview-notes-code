@@ -17,6 +17,42 @@ public class CustomHashMap<K, V> {
         size = 0;
     }
 
+    public static void main(String[] args) {
+        // Create a new CustomHashMap instance
+        CustomHashMap<String, Integer> map = new CustomHashMap<>();
+
+        // Put some key-value pairs
+        map.put("one", 1);
+        map.put("two", 2);
+        map.put("three", 3);
+        map.put("four", 4);
+        map.put("five", 5);
+
+        // Get and print values
+        System.out.println("Value for 'two': " + map.get("two"));
+        System.out.println("Value for 'four': " + map.get("four"));
+        System.out.println("Value for 'six': " + map.get("six")); // Should print null
+
+        // Update an existing key
+        map.put("three", 33);
+        System.out.println("Updated value for 'three': " + map.get("three"));
+
+        // Print the size of the map
+        System.out.println("Size of the map: " + map.size());
+
+        // Add more elements to trigger resize
+        for (int i = 6; i <= 20; i++) {
+            map.put("key" + i, i);
+        }
+
+        // Print some values after resize
+        System.out.println("Value for 'key10': " + map.get("key10"));
+        System.out.println("Value for 'key20': " + map.get("key20"));
+
+        // Print the new size of the map
+        System.out.println("New size of the map: " + map.size());
+    }
+
     public void put(K key, V value) {
         if (key == null) {
             throw new IllegalArgumentException("Key cannot be null");
@@ -83,6 +119,10 @@ public class CustomHashMap<K, V> {
         buckets = newBuckets;
     }
 
+    public int size() {
+        return size;
+    }
+
     private static class Entry<K, V> {
         K key;
         V value;
@@ -92,45 +132,5 @@ public class CustomHashMap<K, V> {
             this.key = key;
             this.value = value;
         }
-    }
-
-    public int size() {
-        return size;
-    }
-
-    public static void main(String[] args) {
-        // Create a new CustomHashMap instance
-        CustomHashMap<String, Integer> map = new CustomHashMap<>();
-
-        // Put some key-value pairs
-        map.put("one", 1);
-        map.put("two", 2);
-        map.put("three", 3);
-        map.put("four", 4);
-        map.put("five", 5);
-
-        // Get and print values
-        System.out.println("Value for 'two': " + map.get("two"));
-        System.out.println("Value for 'four': " + map.get("four"));
-        System.out.println("Value for 'six': " + map.get("six")); // Should print null
-
-        // Update an existing key
-        map.put("three", 33);
-        System.out.println("Updated value for 'three': " + map.get("three"));
-
-        // Print the size of the map
-        System.out.println("Size of the map: " + map.size());
-
-        // Add more elements to trigger resize
-        for (int i = 6; i <= 20; i++) {
-            map.put("key" + i, i);
-        }
-
-        // Print some values after resize
-        System.out.println("Value for 'key10': " + map.get("key10"));
-        System.out.println("Value for 'key20': " + map.get("key20"));
-
-        // Print the new size of the map
-        System.out.println("New size of the map: " + map.size());
     }
 }

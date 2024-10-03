@@ -4,19 +4,6 @@ import java.util.PriorityQueue;
 
 public class KthSmallestInSortedArrays {
 
-    // Class to represent an element in the heap
-    static class Element {
-        int value;  // The value of the element
-        int arrayIndex;  // The index of the array it belongs to
-        int elementIndex;  // The index of the element in its array
-
-        public Element(int value, int arrayIndex, int elementIndex) {
-            this.value = value;
-            this.arrayIndex = arrayIndex;
-            this.elementIndex = elementIndex;
-        }
-    }
-
     public static int findKthSmallest(int[][] arrays, int k) {
         // Min-heap to store elements from the arrays
         PriorityQueue<Element> minHeap = new PriorityQueue<>((a, b) -> a.value - b.value);
@@ -54,12 +41,25 @@ public class KthSmallestInSortedArrays {
 
     public static void main(String[] args) {
         int[][] arrays = {
-            {1, 3, 5, 7},
-            {2, 4, 6},
-            {8, 9}
+                {1, 3, 5, 7},
+                {2, 4, 6},
+                {8, 9}
         };
         int k = 5;
         int result = findKthSmallest(arrays, k);
         System.out.println("The " + k + "-th smallest element is: " + result);
+    }
+
+    // Class to represent an element in the heap
+    static class Element {
+        int value;  // The value of the element
+        int arrayIndex;  // The index of the array it belongs to
+        int elementIndex;  // The index of the element in its array
+
+        public Element(int value, int arrayIndex, int elementIndex) {
+            this.value = value;
+            this.arrayIndex = arrayIndex;
+            this.elementIndex = elementIndex;
+        }
     }
 }

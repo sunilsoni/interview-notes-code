@@ -61,7 +61,7 @@ public class Trie {
     //todo: fragment within the diagnosis string isn't detected.
     //since tries are prefix data structures, I would need to come up with a different data structure
 
-    ///solution here.
+    /// solution here.
     public Collection<String> autoComplete(String prefix) {
         Trie Trienode = this;
         for (char c : prefix.toCharArray()) {

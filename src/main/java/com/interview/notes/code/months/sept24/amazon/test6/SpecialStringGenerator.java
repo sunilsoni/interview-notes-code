@@ -9,12 +9,12 @@ public class SpecialStringGenerator {
         testCase("abbd", "abca");
         testCase("abccde", "abcdab");
         testCase("zzab", "-1");
-        testCase("abc", "abd"); 
-        testCase("zzz", "-1"); 
-        testCase("aaab", "abaa"); 
+        testCase("abc", "abd");
+        testCase("zzz", "-1");
+        testCase("aaab", "abaa");
         testCase("a", "b");
         // Large data test case
-       // testCase(generateString(1000000, 'a'), generateAlternatingString(1000000, 'a', 'b'));
+        // testCase(generateString(1000000, 'a'), generateAlternatingString(1000000, 'a', 'b'));
     }
 
     /**
@@ -34,7 +34,7 @@ public class SpecialStringGenerator {
 
             // Find the smallest character greater than the current character (and different from the next)
             for (char c = (char) (currentChar + 1); c <= 'z'; c++) {
-                if (c != nextChar && (i == 0 || c != chars[i - 1])) { 
+                if (c != nextChar && (i == 0 || c != chars[i - 1])) {
                     chars[i] = c;
                     return generateSpecialStringFromIndex(chars, i + 1);
                 }
@@ -57,7 +57,7 @@ public class SpecialStringGenerator {
     private static String generateSpecialStringFromIndex(char[] chars, int index) {
         for (int i = index; i < chars.length; i++) {
             char prevChar = chars[i - 1];
-            chars[i] = prevChar == 'a' ? 'b' : 'a'; 
+            chars[i] = prevChar == 'a' ? 'b' : 'a';
         }
         return new String(chars);
     }
@@ -67,7 +67,7 @@ public class SpecialStringGenerator {
     /**
      * Tests a single case of the getSpecialString function.
      *
-     * @param input The input string for the test case.
+     * @param input    The input string for the test case.
      * @param expected The expected output string.
      */
     private static void testCase(String input, String expected) {
@@ -79,7 +79,7 @@ public class SpecialStringGenerator {
     /**
      * Generates a string of the specified length with the specified character.
      *
-     * @param length The desired length of the string.
+     * @param length    The desired length of the string.
      * @param character The character to repeat in the string.
      * @return The generated string.
      */
@@ -93,8 +93,8 @@ public class SpecialStringGenerator {
      * Generates an alternating string of the specified length using the given characters.
      *
      * @param length The desired length of the string.
-     * @param char1 The first character to alternate.
-     * @param char2 The second character to alternate.
+     * @param char1  The first character to alternate.
+     * @param char2  The second character to alternate.
      * @return The generated alternating string.
      */
     private static String generateAlternatingString(int length, char char1, char char2) {

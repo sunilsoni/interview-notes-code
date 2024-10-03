@@ -16,7 +16,7 @@ public class Solution2 {
         // Iterate from the end of the string to the beginning
         for (int i = n - 1; i >= 0; i--) {
             // Try to increment the current character
-            for (char c = (char)(arr[i] + 1); c <= 'z'; c++) {
+            for (char c = (char) (arr[i] + 1); c <= 'z'; c++) {
                 if ((i > 0 && c == arr[i - 1]) || (i < n - 1 && c == arr[i + 1])) {
                     continue; // Skip if it causes adjacent duplicates
                 }

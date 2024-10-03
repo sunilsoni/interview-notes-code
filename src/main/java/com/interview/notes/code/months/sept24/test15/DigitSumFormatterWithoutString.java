@@ -9,15 +9,15 @@ public class DigitSumFormatterWithoutString {
     public static void main(String[] args) {
         // Create a Scanner object to read input
         Scanner scanner = new Scanner(System.in);
-        
+
         // Read the input number
         System.out.print("Enter a number: ");
         int number = scanner.nextInt();
-        
+
         // Process the number and print the result
         String result = formatDigitSum(number);
         System.out.println(result);
-        
+
         // Close the scanner
         scanner.close();
     }
@@ -48,7 +48,7 @@ public class DigitSumFormatterWithoutString {
 
         // Build the output string
         StringBuilder output = new StringBuilder();
-        
+
         // Digits are stored in reverse order, so we need to reverse them for correct display
         for (int i = digits.size() - 1; i >= 0; i--) {
             output.append(digits.get(i));  // Append each digit
@@ -59,7 +59,7 @@ public class DigitSumFormatterWithoutString {
 
         // Append the sum at the end
         output.append("=").append(sum);
-        
+
         // Return the formatted string
         return output.toString();
     }

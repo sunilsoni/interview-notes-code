@@ -4,16 +4,6 @@ import java.util.HashSet;
 
 public class RemoveDuplicatesLinkedList {
 
-    // Definition for singly-linked list.
-    static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int val) {
-            this.val = val;
-            this.next = null;
-        }
-    }
-
     // Method to remove duplicates from the linked list
     public static ListNode removeDuplicates(ListNode head) {
         if (head == null) return null;
@@ -99,5 +89,16 @@ public class RemoveDuplicatesLinkedList {
         head5 = removeDuplicates(head5);
         System.out.println("After removing duplicates:");
         printList(head5);
+    }
+
+    // Definition for singly-linked list.
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int val) {
+            this.val = val;
+            this.next = null;
+        }
     }
 }
