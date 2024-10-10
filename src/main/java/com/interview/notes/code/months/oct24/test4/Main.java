@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.test4;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 class Customer {
@@ -51,28 +53,28 @@ public class Main {
         Customer raj = new Customer("Raj", rajAccounts);
         Customer john = new Customer("John", Arrays.asList(new Account("54321")));
         List<Customer> customers1 = Arrays.asList(raj, john);
-        
+
         List<String> result1 = getAccountNumbersOfRaj(customers1);
         assert result1.equals(Arrays.asList("12345", "67890")) : "Test Case 1 Failed";
 
         // Test case 2: No customer named "Raj"
         Customer alice = new Customer("Alice", Arrays.asList(new Account("11223")));
         List<Customer> customers2 = Arrays.asList(alice, john);
-        
+
         List<String> result2 = getAccountNumbersOfRaj(customers2);
         assert result2.isEmpty() : "Test Case 2 Failed";
 
         // Test case 3: Customer "Raj" with no accounts
         Customer rajNoAccounts = new Customer("Raj", new ArrayList<>());
         List<Customer> customers3 = Arrays.asList(rajNoAccounts, john);
-        
+
         List<String> result3 = getAccountNumbersOfRaj(customers3);
         assert result3.isEmpty() : "Test Case 3 Failed";
 
         // Test case 4: Multiple customers named "Raj"
         Customer raj2 = new Customer("Raj", Arrays.asList(new Account("98765")));
         List<Customer> customers4 = Arrays.asList(raj, raj2, john);
-        
+
         List<String> result4 = getAccountNumbersOfRaj(customers4);
         assert result4.equals(Arrays.asList("12345", "67890", "98765")) : "Test Case 4 Failed";
 

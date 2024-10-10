@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.oct24.test1;
 
 import java.util.Arrays;
+
 /*
 Minimum Number of Airport Gates
 You are managing an airport where multiple flights are scheduled to land and depart throughout the day. Each flight requires a dedicated gate at the airport for both arrival and departure.
@@ -20,19 +21,19 @@ public class AirportGates {
         // Sort both the arrival and departure arrays
         Arrays.sort(arrival);
         Arrays.sort(departure);
-        
+
         // Initialize pointers for arrival and departure arrays
         int gatesRequired = 0;
         int maxGates = 0;
         int i = 0, j = 0;
-        
+
         // Traverse both arrays
         while (i < n && j < n) {
             // If a flight is arriving before the next departure, we need a new gate
             if (arrival[i] < departure[j]) {
                 gatesRequired++;
                 i++;
-                
+
                 // Update the maximum number of gates required
                 maxGates = Math.max(maxGates, gatesRequired);
             } else {
@@ -41,7 +42,7 @@ public class AirportGates {
                 j++;
             }
         }
-        
+
         return maxGates;
     }
 

@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.oct24.amz.test4;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Result1 {
     public static int getMinimumOffBulbs(List<Integer> brightness) {

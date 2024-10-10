@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.oct24.amz.test2;
 
 public class DominantStringOptimized {
-    
+
     public static long getDominantStringCount(String s) {
         long count = 0;
 
@@ -53,8 +53,8 @@ public class DominantStringOptimized {
         String testCase2 = "aidfg";    // Expected: 4
         String testCase3 = "dfdffdfi"; // Expected: 13
 
-        System.out.println("Test Case 1 (Expected: 3): " + getDominantStringCount(testCase1));  
-        System.out.println("Test Case 2 (Expected: 4): " + getDominantStringCount(testCase2));  
-        System.out.println("Test Case 3 (Expected: 13): " + getDominantStringCount(testCase3));  
+        System.out.println("Test Case 1 (Expected: 3): " + getDominantStringCount(testCase1));
+        System.out.println("Test Case 2 (Expected: 4): " + getDominantStringCount(testCase2));
+        System.out.println("Test Case 3 (Expected: 13): " + getDominantStringCount(testCase3));
     }
 }

@@ -1,7 +1,12 @@
 package com.interview.notes.code.months.oct24.amz.test4;
 
-import java.util.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 WORKING:
 

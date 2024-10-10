@@ -13,13 +13,13 @@ public class DominantSubstring {
         for (int i = 0; i < n; i++) {
             // Frequency map to store character counts
             HashMap<Character, Integer> freqMap = new HashMap<>();
-            
+
             // Iterate over even-length substrings starting from i
             for (int j = i; j < n; j++) {
                 // Update frequency map for the current character
                 char currentChar = s.charAt(j);
                 freqMap.put(currentChar, freqMap.getOrDefault(currentChar, 0) + 1);
-                
+
                 // Check only for even-length substrings
                 int length = j - i + 1;
                 if (length % 2 == 0) {
@@ -30,7 +30,7 @@ public class DominantSubstring {
                 }
             }
         }
-        
+
         return dominantCount;
     }
 

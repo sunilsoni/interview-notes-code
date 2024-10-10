@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.oct24.amz.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Solution2 {
 

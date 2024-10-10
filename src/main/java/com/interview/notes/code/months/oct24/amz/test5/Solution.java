@@ -1,6 +1,5 @@
 package com.interview.notes.code.months.oct24.amz.test5;
 
-import java.io.*;
 import java.util.*;
 
 public class Solution {
@@ -85,8 +84,8 @@ public class Solution {
     /**
      * Helper method to generate a large test case.
      *
-     * @param size     The size of the PnL list.
-     * @param value    The PnL value to use for all entries.
+     * @param size  The size of the PnL list.
+     * @param value The PnL value to use for all entries.
      * @return A TestCase object with the generated PnL list and expected result.
      */
     private static TestCase generateLargeTestCase(int size, int value) {

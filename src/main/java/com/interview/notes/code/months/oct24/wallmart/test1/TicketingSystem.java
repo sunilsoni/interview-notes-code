@@ -4,37 +4,9 @@ import java.util.*;
 
 public class TicketingSystem {
 
-    // Class to represent a payment
-    static class Payment {
-        int id;
-        String email;
-        int amount;
-        
-        Payment(int id, String email, int amount) {
-            this.id = id;
-            this.email = email;
-            this.amount = amount;
-        }
-    }
-
-    // Class to represent a user
-    static class User {
-        String name;
-        String email;
-        String purchase;
-        int quantity;
-        
-        User(String name, String email, String purchase, int quantity) {
-            this.name = name;
-            this.email = email;
-            this.purchase = purchase;
-            this.quantity = quantity;
-        }
-    }
-
     // Ticket prices map
     static Map<String, Integer> ticketPrices = new HashMap<>();
-    
+
     static {
         ticketPrices.put("Economy", 4);
         ticketPrices.put("Top", 11);
@@ -51,7 +23,7 @@ public class TicketingSystem {
         Map<String, Payment> emailToPaymentMap = new HashMap<>();
         Map<Integer, Payment> amountToPaymentMap = new HashMap<>();
         Set<Integer> matchedPaymentIds = new HashSet<>();
-        
+
         // First, map payments by email
         for (Payment payment : payments) {
             if (!payment.email.equals("email not found")) {
@@ -91,34 +63,34 @@ public class TicketingSystem {
     public static void testMatchUsersToPayments() {
         // Test data for users
         List<User> users = Arrays.asList(
-            new User("John A.", "john.@mail.com", "Top", 3),
-            new User("James S.", "j.s@mail.com", "Economy", 2),
-            new User("Stacy C.", "stacy.c@test.com", "Economy", 2),
-            new User("Bobby B.", "bob@mail.com", "Medium", 10),
-            new User("Michelle X.", "mix@test.com", "Medium", 10),
-            new User("Linda F.", "l.f@mail.com", "Top", 10),
-            new User("Betty T.", "b.t@mail.com", "ThreeEco", 1),
-            new User("Nancy L.", "n.l@test.com", "TwoEco", 1),
-            new User("Daniel O.", "d.o@mail.com", "OneEco", 1),
-            new User("Mike E.", "m.e@mail.com", "FourEco", 1),
-            new User("Matthew R.", "mr@test.com", "OneEco", 5),
-            new User("Albert K.", "albert@test.com", "OneEco", 5)
+                new User("John A.", "john.@mail.com", "Top", 3),
+                new User("James S.", "j.s@mail.com", "Economy", 2),
+                new User("Stacy C.", "stacy.c@test.com", "Economy", 2),
+                new User("Bobby B.", "bob@mail.com", "Medium", 10),
+                new User("Michelle X.", "mix@test.com", "Medium", 10),
+                new User("Linda F.", "l.f@mail.com", "Top", 10),
+                new User("Betty T.", "b.t@mail.com", "ThreeEco", 1),
+                new User("Nancy L.", "n.l@test.com", "TwoEco", 1),
+                new User("Daniel O.", "d.o@mail.com", "OneEco", 1),
+                new User("Mike E.", "m.e@mail.com", "FourEco", 1),
+                new User("Matthew R.", "mr@test.com", "OneEco", 5),
+                new User("Albert K.", "albert@test.com", "OneEco", 5)
         );
 
         // Test data for payments
         List<Payment> payments = Arrays.asList(
-            new Payment(1, "john2@mail.com", 33),
-            new Payment(2, "michelle@mail.com", 60),
-            new Payment(4, "james@mail.com", 8),
-            new Payment(3, "stacy.c@test.com", 8),
-            new Payment(5, "bob@mail.com", 60),
-            new Payment(6, "email not found", 110),
-            new Payment(7, "email not found", 1),
-            new Payment(8, "email not found", 2),
-            new Payment(9, "email not found", 3),
-            new Payment(99, "email not found", 4),
-            new Payment(10, "mr@test.com", 5),
-            new Payment(11, "a@mail.com", 5)
+                new Payment(1, "john2@mail.com", 33),
+                new Payment(2, "michelle@mail.com", 60),
+                new Payment(4, "james@mail.com", 8),
+                new Payment(3, "stacy.c@test.com", 8),
+                new Payment(5, "bob@mail.com", 60),
+                new Payment(6, "email not found", 110),
+                new Payment(7, "email not found", 1),
+                new Payment(8, "email not found", 2),
+                new Payment(9, "email not found", 3),
+                new Payment(99, "email not found", 4),
+                new Payment(10, "mr@test.com", 5),
+                new Payment(11, "a@mail.com", 5)
         );
 
         // Expected results
@@ -149,5 +121,33 @@ public class TicketingSystem {
 
     public static void main(String[] args) {
         testMatchUsersToPayments();
+    }
+
+    // Class to represent a payment
+    static class Payment {
+        int id;
+        String email;
+        int amount;
+
+        Payment(int id, String email, int amount) {
+            this.id = id;
+            this.email = email;
+            this.amount = amount;
+        }
+    }
+
+    // Class to represent a user
+    static class User {
+        String name;
+        String email;
+        String purchase;
+        int quantity;
+
+        User(String name, String email, String purchase, int quantity) {
+            this.name = name;
+            this.email = email;
+            this.purchase = purchase;
+            this.quantity = quantity;
+        }
     }
 }

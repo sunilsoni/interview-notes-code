@@ -1,6 +1,6 @@
 package com.interview.notes.code.months.oct24.test1;
 
-import java.util.*;
+import java.util.Stack;
 
 /*
 Java Assessment

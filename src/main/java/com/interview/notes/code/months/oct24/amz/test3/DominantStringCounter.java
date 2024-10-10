@@ -1,6 +1,10 @@
 package com.interview.notes.code.months.oct24.amz.test3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class DominantStringCounter {
 
     public static void main(String[] args) {
@@ -76,7 +80,7 @@ public class DominantStringCounter {
     /**
      * Checks if any character in the counts array has the specified frequency.
      *
-     * @param counts The array of character counts.
+     * @param counts    The array of character counts.
      * @param frequency The frequency to check for.
      * @return True if any character has the specified frequency, false otherwise.
      */

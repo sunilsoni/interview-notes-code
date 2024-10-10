@@ -1,7 +1,5 @@
 package com.interview.notes.code.months.oct24.amz.test2;
 
-import java.util.*;
-
 /*
 
 PARTIAL WORKING 11/15

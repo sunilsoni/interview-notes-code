@@ -1,7 +1,5 @@
 package com.interview.notes.code.months.oct24.amz.test3;
 
-import java.util.*;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -14,6 +12,7 @@ public class Main {
         System.out.println("Test Case 2 (Expected: 4): " + getDominantStringCount(testCase2));
         System.out.println("Test Case 3 (Expected: 13): " + getDominantStringCount(testCase3));
     }
+
     public static long getDominantStringCount(String s) {
         int n = s.length();
         long result = 0;

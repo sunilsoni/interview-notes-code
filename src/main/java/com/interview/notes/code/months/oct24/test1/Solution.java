@@ -22,6 +22,23 @@ Write an efficient algorithm for the following assumptions:
 
  */
 public class Solution {
+    // Test cases to verify the solution
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        // Test case 1
+        String result = sol.solution(11);
+        System.out.println("Test Case 1: " + (result.equals("dba")) + " " + result);
+
+        // Test case 2
+        result = sol.solution(1);
+        System.out.println("Test Case 2: " + (result.equals("a")) + " " + result);
+
+        // Test case 3
+        result = sol.solution(67108876);
+        System.out.println("Test Case 3: " + (result.equals("zzdc")) + " " + result);
+    }
+
     public String solution(int N) {
         int[] counts = new int[26]; // counts for letters 'a' to 'z'
         counts[0] = N; // Start with N 'a's
@@ -44,22 +61,5 @@ public class Solution {
         }
 
         return result.toString();
-    }
-
-    // Test cases to verify the solution
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-
-        // Test case 1
-        String result = sol.solution(11);
-        System.out.println("Test Case 1: " + (result.equals("dba")) + " " + result);
-
-        // Test case 2
-        result = sol.solution(1);
-        System.out.println("Test Case 2: " + (result.equals("a")) + " " + result);
-
-        // Test case 3
-        result = sol.solution(67108876);
-        System.out.println("Test Case 3: " + (result.equals("zzdc")) + " " + result);
     }
 }
