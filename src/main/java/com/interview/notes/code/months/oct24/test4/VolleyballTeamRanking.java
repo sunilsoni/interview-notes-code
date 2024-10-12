@@ -1,7 +1,16 @@
 package com.interview.notes.code.months.oct24.test4;
 
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Random;
+
+interface GameTracker {
+    void addMatch(String team1, String team2, String score);
+
+    String findFirst();
+}
 
 /*
 
@@ -83,11 +92,6 @@ class Pair implements Comparable<Pair> {
     }
 }
 
-interface GameTracker {
-    void addMatch(String team1, String team2, String score);
-    String findFirst();
-}
-
 class VolleyballGameTracker implements GameTracker {
     private Map<String, Integer> teamScores;
     private PriorityQueue<Pair> maxHeap;
@@ -95,7 +99,7 @@ class VolleyballGameTracker implements GameTracker {
     public VolleyballGameTracker(int numTeams, String[] teamNames) {
         teamScores = new HashMap<>();
         maxHeap = new PriorityQueue<>();
-        
+
         for (String team : teamNames) {
             teamScores.put(team, 0);
             maxHeap.offer(new Pair(team, 0));
@@ -130,13 +134,13 @@ class VolleyballGameTracker implements GameTracker {
 public class VolleyballTeamRanking {
     public static void main(String[] args) {
         // Test cases
-        runTestCase(new String[]{"TeamA", "TeamB", "TeamC", "TeamD"}, 
-                    new String[]{"TeamA TeamB 20:19", "TeamC TeamD 25:25", "TeamA TeamC 23:25"}, 
-                    "TeamC");
+        runTestCase(new String[]{"TeamA", "TeamB", "TeamC", "TeamD"},
+                new String[]{"TeamA TeamB 20:19", "TeamC TeamD 25:25", "TeamA TeamC 23:25"},
+                "TeamC");
 
-        runTestCase(new String[]{"Team1", "Team2", "Team3"}, 
-                    new String[]{"Team1 Team2 25:20", "Team2 Team3 15:25", "Team3 Team1 20:25"}, 
-                    "Team1");
+        runTestCase(new String[]{"Team1", "Team2", "Team3"},
+                new String[]{"Team1 Team2 25:20", "Team2 Team3 15:25", "Team3 Team1 20:25"},
+                "Team1");
 
         // Large input test case
         String[] largeTeams = new String[10000];
@@ -160,7 +164,7 @@ public class VolleyballTeamRanking {
 
     private static void runTestCase(String[] teams, String[] matches, String expectedWinner) {
         long startTime = System.currentTimeMillis();
-        
+
         VolleyballGameTracker tracker = new VolleyballGameTracker(teams.length, teams);
         for (String match : matches) {
             String[] parts = match.split(" ");

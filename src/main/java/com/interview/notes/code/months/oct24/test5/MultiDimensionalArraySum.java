@@ -23,11 +23,11 @@ public class MultiDimensionalArraySum {
     public static void main(String[] args) {
         // Test cases
         Object[][] testCases = {
-            {new Object[]{1, 2, 3}, new Object[]{4}, new Object[]{5, 6}},
-            {new Object[]{1, 2}, new Object[]{3, 4, 5}},
-            {new Object[]{1}, new Object[]{2}, new Object[]{3}},
-            {new Object[]{}, new Object[]{1, 2, 3}, new Object[]{}},
-            {new Object[]{new Object[]{1, 2}, new Object[]{3, 4}}, new Object[]{5, 6}}
+                {new Object[]{1, 2, 3}, new Object[]{4}, new Object[]{5, 6}},
+                {new Object[]{1, 2}, new Object[]{3, 4, 5}},
+                {new Object[]{1}, new Object[]{2}, new Object[]{3}},
+                {new Object[]{}, new Object[]{1, 2, 3}, new Object[]{}},
+                {new Object[]{new Object[]{1, 2}, new Object[]{3, 4}}, new Object[]{5, 6}}
         };
 
         for (int i = 0; i < testCases.length; i++) {

@@ -4,29 +4,30 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+interface GameTracker {
+    void addMatch(String team1, String team2, String score);
+
+    String findFirst();
+}
+
 class Pair {
     String team;
     int score;
-    
+
     public Pair(String team, int score) {
         this.team = team;
         this.score = score;
     }
 }
 
-interface GameTracker {
-    void addMatch(String team1, String team2, String score);
-    String findFirst();
-}
-
 class VolleyballGameTracker implements GameTracker {
-    private Map<String, Integer> teamScores; 
+    private Map<String, Integer> teamScores;
     private PriorityQueue<Pair> maxHeap;
 
     public VolleyballGameTracker(String[] teamNames) {
         teamScores = new HashMap<>();
         maxHeap = new PriorityQueue<>((a, b) -> b.score - a.score);
-        
+
         // Initialize team scores
         for (String team : teamNames) {
             teamScores.put(team, 0); // Initially, all teams have 0 points
@@ -40,8 +41,8 @@ class VolleyballGameTracker implements GameTracker {
         int score2 = Integer.parseInt(scores[1]);
 
         // Update scores for both teams
-        int newScore1 = teamScores.get(team1) + (score1 > score2 ? 2 : 1); 
-        int newScore2 = teamScores.get(team2) + (score2 > score1 ? 2 : 1); 
+        int newScore1 = teamScores.get(team1) + (score1 > score2 ? 2 : 1);
+        int newScore2 = teamScores.get(team2) + (score2 > score1 ? 2 : 1);
 
         teamScores.put(team1, newScore1);
         teamScores.put(team2, newScore2);
