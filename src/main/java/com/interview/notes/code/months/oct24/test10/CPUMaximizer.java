@@ -126,5 +126,14 @@ public class CPUMaximizer {
         System.out.println("Expected: " + expected + ", Got: " + result);
         System.out.println(result == expected ? "PASS" : "FAIL");
         System.out.println();
+
+
+        try {
+            // Code that might throw an exception
+        } catch (ArithmeticException a) {
+            // Handle arithmetic exceptions
+        } catch (Exception e) {
+            // Handle all other exceptions
+        }
     }
 }
