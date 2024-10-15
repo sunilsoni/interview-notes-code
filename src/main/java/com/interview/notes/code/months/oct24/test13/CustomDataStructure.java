@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.oct24.test13;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Node class represents a key-value pair stored in the CustomHashMap.
@@ -129,56 +130,16 @@ class CustomHashMap<K, V> {
  */
 public class CustomDataStructure {
 
-    // Map to store elements with custom methods
-    private CustomHashMap<String, Object> elementsMap;
-
     // Dummy value to associate with keys
     private static final Object DUMMY = new Object();
+    // Map to store elements with custom methods
+    private CustomHashMap<String, Object> elementsMap;
 
     /**
      * Constructor initializes the data structure.
      */
     public CustomDataStructure() {
         elementsMap = new CustomHashMap<>();
-    }
-
-    /**
-     * Inserts an element into the data structure if not already present.
-     *
-     * @param element The string element to insert.
-     */
-    public void insert(String element) {
-        if (!elementsMap.search(element)) {
-            elementsMap.put(element, DUMMY);
-        }
-    }
-
-    /**
-     * Deletes an element from the data structure if present.
-     *
-     * @param element The string element to delete.
-     */
-    public void delete(String element) {
-        elementsMap.delete(element);
-    }
-
-    /**
-     * Searches for an element in the data structure.
-     *
-     * @param element The string element to search for.
-     * @return True if the element is present, false otherwise.
-     */
-    public boolean search(String element) {
-        return elementsMap.search(element);
-    }
-
-    /**
-     * Returns a set of all elements in the data structure.
-     *
-     * @return A set of strings.
-     */
-    public Set<String> getElements() {
-        return elementsMap.keySet();
     }
 
     /**
@@ -237,5 +198,44 @@ public class CustomDataStructure {
         assert ds.getElements().size() == 2 : "Large data deletion test failed";
 
         System.out.println("Large data test cases passed!");
+    }
+
+    /**
+     * Inserts an element into the data structure if not already present.
+     *
+     * @param element The string element to insert.
+     */
+    public void insert(String element) {
+        if (!elementsMap.search(element)) {
+            elementsMap.put(element, DUMMY);
+        }
+    }
+
+    /**
+     * Deletes an element from the data structure if present.
+     *
+     * @param element The string element to delete.
+     */
+    public void delete(String element) {
+        elementsMap.delete(element);
+    }
+
+    /**
+     * Searches for an element in the data structure.
+     *
+     * @param element The string element to search for.
+     * @return True if the element is present, false otherwise.
+     */
+    public boolean search(String element) {
+        return elementsMap.search(element);
+    }
+
+    /**
+     * Returns a set of all elements in the data structure.
+     *
+     * @return A set of strings.
+     */
+    public Set<String> getElements() {
+        return elementsMap.keySet();
     }
 }

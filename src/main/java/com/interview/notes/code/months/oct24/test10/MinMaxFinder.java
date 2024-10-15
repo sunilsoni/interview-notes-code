@@ -4,15 +4,6 @@ import java.util.Arrays;
 
 public class MinMaxFinder {
 
-    public static class Result {
-        int min;
-        int max;
-        public Result(int min, int max) {
-            this.min = min;
-            this.max = max;
-        }
-    }
-
     // Method to find minimum and maximum in array using minimum comparisons
     public static Result findMinMax(int[] arr) {
         int n = arr.length;
@@ -83,5 +74,15 @@ public class MinMaxFinder {
 
     public static void main(String[] args) {
         testFindMinMax();
+    }
+
+    public static class Result {
+        int min;
+        int max;
+
+        public Result(int min, int max) {
+            this.min = min;
+            this.max = max;
+        }
     }
 }

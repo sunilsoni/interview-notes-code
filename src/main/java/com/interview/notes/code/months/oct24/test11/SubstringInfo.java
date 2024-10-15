@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.test11;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class SubstringInfo {
 
@@ -44,7 +46,7 @@ public class SubstringInfo {
         testCases.put("aabbcccc", new int[]{4, 4}); // "cccc" starts at index 4
         testCases.put("abcdabcd", new int[]{0, 1}); // All are unique, take the first one
         testCases.put("zxyyyyyx", new int[]{2, 5}); // "yyyyy" starts at index 2
-        
+
         // Test large data inputs
         String largeInput = "a".repeat(1000000); // A million 'a's
         testCases.put(largeInput, new int[]{0, 1000000});

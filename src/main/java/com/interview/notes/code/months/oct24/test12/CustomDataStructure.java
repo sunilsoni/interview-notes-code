@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.oct24.test12;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * CustomDataStructure class implements a data structure that supports
@@ -19,55 +22,6 @@ public class CustomDataStructure {
     public CustomDataStructure() {
         elementIndexMap = new HashMap<>();
         elements = new ArrayList<>();
-    }
-
-    /**
-     * Inserts an element into the data structure if not already present.
-     *
-     * @param element The string element to insert.
-     */
-    public void insert(String element) {
-        if (!elementIndexMap.containsKey(element)) {
-            elements.add(element);
-            elementIndexMap.put(element, elements.size() - 1);
-        }
-    }
-
-    /**
-     * Deletes an element from the data structure if present.
-     *
-     * @param element The string element to delete.
-     */
-    public void delete(String element) {
-        Integer index = elementIndexMap.get(element);
-        if (index != null) {
-            String lastElement = elements.get(elements.size() - 1);
-            // Move the last element to the place of the element to delete
-            elements.set(index, lastElement);
-            elementIndexMap.put(lastElement, index);
-            // Remove the last element
-            elements.remove(elements.size() - 1);
-            elementIndexMap.remove(element);
-        }
-    }
-
-    /**
-     * Searches for an element in the data structure.
-     *
-     * @param element The string element to search for.
-     * @return True if the element is present, false otherwise.
-     */
-    public boolean search(String element) {
-        return elementIndexMap.containsKey(element);
-    }
-
-    /**
-     * Returns a list of all elements in the data structure.
-     *
-     * @return A list of strings.
-     */
-    public List<String> getElements() {
-        return new ArrayList<>(elements);
     }
 
     /**
@@ -126,5 +80,54 @@ public class CustomDataStructure {
         assert ds.elements.size() == 2 : "Large data deletion test failed";
 
         System.out.println("Large data test cases passed!");
+    }
+
+    /**
+     * Inserts an element into the data structure if not already present.
+     *
+     * @param element The string element to insert.
+     */
+    public void insert(String element) {
+        if (!elementIndexMap.containsKey(element)) {
+            elements.add(element);
+            elementIndexMap.put(element, elements.size() - 1);
+        }
+    }
+
+    /**
+     * Deletes an element from the data structure if present.
+     *
+     * @param element The string element to delete.
+     */
+    public void delete(String element) {
+        Integer index = elementIndexMap.get(element);
+        if (index != null) {
+            String lastElement = elements.get(elements.size() - 1);
+            // Move the last element to the place of the element to delete
+            elements.set(index, lastElement);
+            elementIndexMap.put(lastElement, index);
+            // Remove the last element
+            elements.remove(elements.size() - 1);
+            elementIndexMap.remove(element);
+        }
+    }
+
+    /**
+     * Searches for an element in the data structure.
+     *
+     * @param element The string element to search for.
+     * @return True if the element is present, false otherwise.
+     */
+    public boolean search(String element) {
+        return elementIndexMap.containsKey(element);
+    }
+
+    /**
+     * Returns a list of all elements in the data structure.
+     *
+     * @return A list of strings.
+     */
+    public List<String> getElements() {
+        return new ArrayList<>(elements);
     }
 }

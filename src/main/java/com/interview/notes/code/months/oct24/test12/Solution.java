@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.test12;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Solution {
     private static final Map<String, int[]> testCases = new HashMap<>();
