@@ -2,13 +2,20 @@ package com.interview.notes.code.months.oct24.test12;
 
 import java.util.*;
 
+/*
+Sort Version of the application.
+
+I/P   [“3.1.10”, “3.2.4”, “3.4.2”,”3.1.20”, “3.2.2”]
+O/P   [“3.1.10”, ”,”3.1.20”, ,“3.2.2” ,“3.2.4”, “3.4.2 ]
+
+ */
 public class VersionSorter {
 
     public static void main(String[] args) {
         // List of version strings to be sorted
         List<String> versions = Arrays.asList("3.1.10", "3.2.4", "3.4.2", "3.1.20", "3.2.2");
         List<String> expectedOutput = Arrays.asList("3.1.10", "3.1.20", "3.2.2", "3.2.4", "3.4.2");
-        
+
         // Sort and print the versions
         System.out.println("Original Versions: " + versions);
         List<String> sortedVersions = sortVersions(versions);
@@ -25,19 +32,19 @@ public class VersionSorter {
             // Split the version strings by '.' to get individual parts
             String[] v1Parts = v1.split("\\.");
             String[] v2Parts = v2.split("\\.");
-            
+
             // Find the maximum length between the two version parts
             int length = Math.max(v1Parts.length, v2Parts.length);
-            
+
             // Compare each part of the version
             for (int i = 0; i < length; i++) {
                 // If a part is missing, consider it as 0
                 int v1Part = i < v1Parts.length ? Integer.parseInt(v1Parts[i]) : 0;
                 int v2Part = i < v2Parts.length ? Integer.parseInt(v2Parts[i]) : 0;
-                
+
                 // Log the comparison of each part
                 System.out.println("Comparing parts: v1Part=" + v1Part + " v2Part=" + v2Part);
-                
+
                 // If the parts are not equal, return the difference
                 if (v1Part != v2Part) {
                     return v1Part - v2Part;

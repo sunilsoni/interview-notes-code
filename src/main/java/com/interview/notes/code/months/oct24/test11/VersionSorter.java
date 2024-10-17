@@ -8,7 +8,7 @@ public class VersionSorter {
         Collections.sort(versions, (v1, v2) -> {
             String[] parts1 = v1.split("\\.");
             String[] parts2 = v2.split("\\.");
-            
+
             for (int i = 0; i < Math.min(parts1.length, parts2.length); i++) {
                 int num1 = Integer.parseInt(parts1[i]);
                 int num2 = Integer.parseInt(parts2[i]);
@@ -16,10 +16,10 @@ public class VersionSorter {
                     return Integer.compare(num1, num2);
                 }
             }
-            
+
             return Integer.compare(parts1.length, parts2.length);
         });
-        
+
         return versions;
     }
 
