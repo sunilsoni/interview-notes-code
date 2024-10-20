@@ -1,7 +1,5 @@
 package com.interview.notes.code.months.oct24.amz.test7;
 
-import java.util.*;
-
 public class Solution {
 
     public static String solution(String a, String b) {
@@ -24,14 +22,14 @@ public class Solution {
     public static void main(String[] args) {
         // Test cases
         String[][] testCases = {
-            {"99", "99"},
-            {"11", "9"},
-            {"123", "456"},
-            {"999", "1"},
-            {"1", "999"},
-            {"0", "0"},
-            {"1000", "1"},
-            {"999999999", "1"}
+                {"99", "99"},
+                {"11", "9"},
+                {"123", "456"},
+                {"999", "1"},
+                {"1", "999"},
+                {"0", "0"},
+                {"1000", "1"},
+                {"999999999", "1"}
         };
 
         for (String[] test : testCases) {

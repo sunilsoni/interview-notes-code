@@ -29,18 +29,18 @@ public class LongestSubstringWithoutRepeats {
 
     public static void testLongestSubstring() {
         String[][] testCases = {
-            {"ABCDEFGABEF", "7"},
-            {"GEEKSFORGEEKS", "7"},
-            {"", "0"},
-            {"A", "1"},
-            {"AAAAA", "1"},
-            {"ABCABCBB", "3"},
-            {"PWWKEW", "3"},
-            {"ABBA", "2"},
-            {null, "0"},
-            {"aAbBcC", "6"}, // Case-sensitive
-            {"ThisIsAVeryLongStringToTestPerformance", "10"},
-            {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "62"}
+                {"ABCDEFGABEF", "7"},
+                {"GEEKSFORGEEKS", "7"},
+                {"", "0"},
+                {"A", "1"},
+                {"AAAAA", "1"},
+                {"ABCABCBB", "3"},
+                {"PWWKEW", "3"},
+                {"ABBA", "2"},
+                {null, "0"},
+                {"aAbBcC", "6"}, // Case-sensitive
+                {"ThisIsAVeryLongStringToTestPerformance", "10"},
+                {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "62"}
         };
 
         for (String[] testCase : testCases) {

@@ -5,25 +5,13 @@ import java.util.stream.Collectors;
 
 public class UserAgeFilter {
 
-    static class User {
-        String name;
-        int age;
-        String address;
-
-        User(String name, int age, String address) {
-            this.name = name;
-            this.age = age;
-            this.address = address;
-        }
-    }
-
     public static void main(String[] args) {
         List<User> users = Arrays.asList(
-            new User("Alice", 30, "123 Main St"),
-            new User("Bob", 45, "456 Elm St"),
-            new User("Charlie", 35, "789 Oak St"),
-            new User("David", 50, "101 Pine St"),
-            new User("Eve", 25, "202 Maple St")
+                new User("Alice", 30, "123 Main St"),
+                new User("Bob", 45, "456 Elm St"),
+                new User("Charlie", 35, "789 Oak St"),
+                new User("David", 50, "101 Pine St"),
+                new User("Eve", 25, "202 Maple St")
         );
 
         testAgeFilter(users);
@@ -72,5 +60,17 @@ public class UserAgeFilter {
         // Test case 4: Check if large dataset is processed correctly
         boolean test4 = filteredLargeUsers.get("over40").size() + filteredLargeUsers.get("under40").size() == largeUserList.size();
         System.out.println("Test 4 (Large dataset processed correctly): " + (test4 ? "PASS" : "FAIL"));
+    }
+
+    static class User {
+        String name;
+        int age;
+        String address;
+
+        User(String name, int age, String address) {
+            this.name = name;
+            this.age = age;
+            this.address = address;
+        }
     }
 }

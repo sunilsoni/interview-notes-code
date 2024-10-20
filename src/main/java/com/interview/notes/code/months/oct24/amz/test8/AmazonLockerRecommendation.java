@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.oct24.amz.test8;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 /*
 Amazon Lockers provide customers with the option of picking up packages at a secure location convenient to them. We want to build a service that will recommend the top k lockers based on a customer’s current location.
 
@@ -16,16 +19,6 @@ Output:
 Top k lockers
  */
 public class AmazonLockerRecommendation {
-
-    static class Locker {
-        int x, y;
-        double distance;
-
-        Locker(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
 
     public static List<Locker> findTopKLockers(List<Locker> lockers, int customerX, int customerY, int k) {
         // Calculate distances
@@ -49,7 +42,7 @@ public class AmazonLockerRecommendation {
         runTestCase(new int[][]{{1, 1}, {2, 2}, {3, 3}}, 0, 0, 2, "PASS");
         runTestCase(new int[][]{{1, 1}, {2, 2}, {3, 3}}, 1, 1, 1, "PASS");
         runTestCase(new int[][]{{1, 1}, {2, 2}, {3, 3}}, 4, 4, 3, "PASS");
-        
+
         // Large data input test case
         int[][] largeInput = new int[1000000][2];
         for (int i = 0; i < 1000000; i++) {
@@ -70,13 +63,23 @@ public class AmazonLockerRecommendation {
 
         boolean pass = result.size() == Math.min(k, lockerCoordinates.length);
         for (int i = 1; i < result.size(); i++) {
-            if (result.get(i).distance < result.get(i-1).distance) {
+            if (result.get(i).distance < result.get(i - 1).distance) {
                 pass = false;
                 break;
             }
         }
 
-        System.out.printf("Test case: %s, Time taken: %.3f ms\n", 
-            pass ? "PASS" : "FAIL", (endTime - startTime) / 1e6);
+        System.out.printf("Test case: %s, Time taken: %.3f ms\n",
+                pass ? "PASS" : "FAIL", (endTime - startTime) / 1e6);
+    }
+
+    static class Locker {
+        int x, y;
+        double distance;
+
+        Locker(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
     }
 }

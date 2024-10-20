@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.amz.test7;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CashDrawerController {
     private static final double[] DENOMINATIONS = {20.0, 11.0, 10.0, 5.0, 0.25, 0.10, 0.05, 0.01};

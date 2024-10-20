@@ -11,14 +11,48 @@ class AmazonWarehouseShipping1 {
         warehouseItems = new HashMap<>();
     }
 
-    private static class Warehouse {
-        String name;
-        String region;
+    public static void main(String[] args) {
+        AmazonWarehouseShipping1 aws = new AmazonWarehouseShipping1();
 
-        Warehouse(String name, String region) {
-            this.name = name;
-            this.region = region;
+        // Setup warehouses and inventory
+        aws.addWarehouse("North", "AB1");
+        aws.addWarehouse("North", "BD1");
+        aws.addWarehouse("West", "XY3");
+        aws.addWarehouse("West", "WD2");
+        aws.addWarehouse("South", "IU9");
+
+        aws.addItemToWarehouse("AB1", "item1", 5);
+        aws.addItemToWarehouse("AB1", "item2", 3);
+        aws.addItemToWarehouse("AB1", "item3", 2);
+        aws.addItemToWarehouse("BD1", "item3", 4);
+        aws.addItemToWarehouse("BD1", "item4", 1);
+        aws.addItemToWarehouse("XY3", "item1", 2);
+        aws.addItemToWarehouse("XY3", "item4", 3);
+        aws.addItemToWarehouse("WD2", "item2", 1);
+        aws.addItemToWarehouse("WD2", "item5", 4);
+        aws.addItemToWarehouse("IU9", "item4", 2);
+        aws.addItemToWarehouse("IU9", "item5", 3);
+
+        // Test cases
+        testCase(aws, "North", Arrays.asList("item1", "item2", "item3"));
+        testCase(aws, "West", Arrays.asList("item1", "item4", "item5"));
+        testCase(aws, "South", Arrays.asList("item4", "item5", "item6"));
+        testCase(aws, "North", Arrays.asList("item1", "item2", "item3", "item4", "item5"));
+    }
+
+    private static void testCase(AmazonWarehouseShipping1 aws, String customerRegion, List<String> orderedItems) {
+        System.out.println("Customer Region: " + customerRegion);
+        System.out.println("Ordered Items: " + orderedItems);
+        Map<String, List<String>> result = aws.getShippingWarehouses(customerRegion, orderedItems);
+        System.out.println("Result:");
+        for (Map.Entry<String, List<String>> entry : result.entrySet()) {
+            if (entry.getKey().equals("UNAVAILABLE")) {
+                System.out.println("  Unavailable items: " + entry.getValue());
+            } else {
+                System.out.println("  Warehouse " + entry.getKey() + ": " + entry.getValue());
+            }
         }
+        System.out.println();
     }
 
     public void addWarehouse(String region, String warehouseName) {
@@ -98,6 +132,7 @@ class AmazonWarehouseShipping1 {
         Map<String, Integer> inventory = warehouseItems.get(warehouseName);
         return items.stream().allMatch(item -> inventory.containsKey(item) && inventory.get(item) > 0);
     }
+
     private Map<String, List<String>> findMultiWarehouseFulfillment(String customerRegion, List<String> items) {
         Map<String, List<String>> result = new HashMap<>();
         List<String> remainingItems = new ArrayList<>(items);
@@ -141,7 +176,7 @@ class AmazonWarehouseShipping1 {
             }
 
             if (!fulfilledItems.isEmpty()) {
-               // result.put(warehouse.getId(), fulfilledItems);
+                // result.put(warehouse.getId(), fulfilledItems);
             }
 
             if (remainingItems.isEmpty()) {
@@ -150,47 +185,13 @@ class AmazonWarehouseShipping1 {
         }
     }
 
-    public static void main(String[] args) {
-        AmazonWarehouseShipping1 aws = new AmazonWarehouseShipping1();
+    private static class Warehouse {
+        String name;
+        String region;
 
-        // Setup warehouses and inventory
-        aws.addWarehouse("North", "AB1");
-        aws.addWarehouse("North", "BD1");
-        aws.addWarehouse("West", "XY3");
-        aws.addWarehouse("West", "WD2");
-        aws.addWarehouse("South", "IU9");
-
-        aws.addItemToWarehouse("AB1", "item1", 5);
-        aws.addItemToWarehouse("AB1", "item2", 3);
-        aws.addItemToWarehouse("AB1", "item3", 2);
-        aws.addItemToWarehouse("BD1", "item3", 4);
-        aws.addItemToWarehouse("BD1", "item4", 1);
-        aws.addItemToWarehouse("XY3", "item1", 2);
-        aws.addItemToWarehouse("XY3", "item4", 3);
-        aws.addItemToWarehouse("WD2", "item2", 1);
-        aws.addItemToWarehouse("WD2", "item5", 4);
-        aws.addItemToWarehouse("IU9", "item4", 2);
-        aws.addItemToWarehouse("IU9", "item5", 3);
-
-        // Test cases
-        testCase(aws, "North", Arrays.asList("item1", "item2", "item3"));
-        testCase(aws, "West", Arrays.asList("item1", "item4", "item5"));
-        testCase(aws, "South", Arrays.asList("item4", "item5", "item6"));
-        testCase(aws, "North", Arrays.asList("item1", "item2", "item3", "item4", "item5"));
-    }
-
-    private static void testCase(AmazonWarehouseShipping1 aws, String customerRegion, List<String> orderedItems) {
-        System.out.println("Customer Region: " + customerRegion);
-        System.out.println("Ordered Items: " + orderedItems);
-        Map<String, List<String>> result = aws.getShippingWarehouses(customerRegion, orderedItems);
-        System.out.println("Result:");
-        for (Map.Entry<String, List<String>> entry : result.entrySet()) {
-            if (entry.getKey().equals("UNAVAILABLE")) {
-                System.out.println("  Unavailable items: " + entry.getValue());
-            } else {
-                System.out.println("  Warehouse " + entry.getKey() + ": " + entry.getValue());
-            }
+        Warehouse(String name, String region) {
+            this.name = name;
+            this.region = region;
         }
-        System.out.println();
     }
 }

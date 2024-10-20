@@ -17,6 +17,14 @@ public class WarehouseManagementSystem {
         initializeData();
     }
 
+    // Main method for testing
+    public static void main(String[] args) {
+        WarehouseManagementSystem system = new WarehouseManagementSystem();
+        List<String> orderItems = Arrays.asList("Item1", "Item2", "Item3");
+        Map<String, List<String>> result = system.getShippingWarehouses("North", orderItems);
+        System.out.println("Order fulfillment: " + result);
+    }
+
     // Initialize sample data
     private void initializeData() {
         // Create regions
@@ -199,13 +207,5 @@ public class WarehouseManagementSystem {
         public String getName() {
             return name;
         }
-    }
-
-    // Main method for testing
-    public static void main(String[] args) {
-        WarehouseManagementSystem system = new WarehouseManagementSystem();
-        List<String> orderItems = Arrays.asList("Item1", "Item2", "Item3");
-        Map<String, List<String>> result = system.getShippingWarehouses("North", orderItems);
-        System.out.println("Order fulfillment: " + result);
     }
 }

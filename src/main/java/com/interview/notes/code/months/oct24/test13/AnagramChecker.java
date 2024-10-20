@@ -25,19 +25,19 @@ public class AnagramChecker {
 
     public static void testAnagramChecker() {
         String[][] testCases = {
-            {"listen", "silent", "true"},
-            {"hello", "world", "false"},
-            {"anagram", "nagaram", "true"},
-            {"rat", "car", "false"},
-            {"", "", "true"},
-            {"a", "a", "true"},
-            {"aab", "aba", "true"},
-            {"aaab", "aaba", "true"},
-            {null, "hello", "false"},
-            {"hello", null, "false"},
-            {"A", "a", "false"}, // Case-sensitive
-            {"abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqponmlkjihgfedcba", "true"},
-            {"ThisIsAVeryLongStringToTestPerformance", "stringThisIsAVeryLongToTestPerformance", "true"}
+                {"listen", "silent", "true"},
+                {"hello", "world", "false"},
+                {"anagram", "nagaram", "true"},
+                {"rat", "car", "false"},
+                {"", "", "true"},
+                {"a", "a", "true"},
+                {"aab", "aba", "true"},
+                {"aaab", "aaba", "true"},
+                {null, "hello", "false"},
+                {"hello", null, "false"},
+                {"A", "a", "false"}, // Case-sensitive
+                {"abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqponmlkjihgfedcba", "true"},
+                {"ThisIsAVeryLongStringToTestPerformance", "stringThisIsAVeryLongToTestPerformance", "true"}
         };
 
         for (String[] testCase : testCases) {

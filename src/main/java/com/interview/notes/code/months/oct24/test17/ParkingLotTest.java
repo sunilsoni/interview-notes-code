@@ -1,6 +1,12 @@
 package com.interview.notes.code.months.oct24.test17;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
+// Enums
+enum VehicleSize {
+    SMALL, MEDIUM, LARGE
+}
 
 // Vehicle hierarchy
 abstract class Vehicle {
@@ -48,11 +54,6 @@ class Van extends Vehicle {
     public VehicleSize getSize() {
         return VehicleSize.LARGE;
     }
-}
-
-// Enums
-enum VehicleSize {
-    SMALL, MEDIUM, LARGE
 }
 
 // Spot hierarchy

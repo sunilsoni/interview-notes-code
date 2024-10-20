@@ -3,13 +3,13 @@ package com.interview.notes.code.months.oct24.test16;
 import java.util.ArrayList;
 import java.util.List;
 
+enum VehicleSize {
+    MOTORCYCLE, COMPACT, LARGE
+}
+
 // Vehicle Class Hierarchy
 abstract class Vehicle {
     public abstract VehicleSize getSize();
-}
-
-enum VehicleSize {
-    MOTORCYCLE, COMPACT, LARGE
 }
 
 class Motorcycle extends Vehicle {

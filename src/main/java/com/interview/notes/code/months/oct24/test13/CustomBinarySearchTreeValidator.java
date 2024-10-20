@@ -1,20 +1,11 @@
 package com.interview.notes.code.months.oct24.test13;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class CustomBinarySearchTreeValidator {
-
-    // Define a TreeNode class for the binary tree structure
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-            left = right = null;
-        }
-    }
 
     // Method to build a binary tree from a list of integers
     public static TreeNode buildTree(List<Integer> nodes) {
@@ -90,5 +81,17 @@ public class CustomBinarySearchTreeValidator {
         List<Boolean> expectedResults = Arrays.asList(true, false, false, true, true, true, false);
 
         processTestCases(testCases, expectedResults);
+    }
+
+    // Define a TreeNode class for the binary tree structure
+    static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int val) {
+            this.val = val;
+            left = right = null;
+        }
     }
 }

@@ -1,6 +1,10 @@
 package com.interview.notes.code.months.oct24.test16;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /*
 You are monitoring the building density in a district of houses. The district is represented as a number line, where a house can be built at each numbered point on the line if at least one of the neighboring points is not occupied. Initially, there are no houses in the district.
 You are given queries, an array of integers representing the locations of new houses in the order in which they will be built. After each house is built, your task is to find the longest segment of contiguous houses in the district.
@@ -46,26 +50,26 @@ public class MainClass {
     public static void main(String[] args) {
         // Test cases
         int[][] testQueries = {
-            {2, 1, 3},
-            {1, 3, 0, 4},
-            {1},
-            {1, 3, 5, 7, 9}, // Non-contiguous houses
-            {1, 2, 3, 4, 5}, // Build contiguous houses
-            // Additional test case to reproduce the issue
-            {1, 2, 3, 4, 5, 50, 51},
-            // Large test case
-            generateLargeTestCase(100000)
+                {2, 1, 3},
+                {1, 3, 0, 4},
+                {1},
+                {1, 3, 5, 7, 9}, // Non-contiguous houses
+                {1, 2, 3, 4, 5}, // Build contiguous houses
+                // Additional test case to reproduce the issue
+                {1, 2, 3, 4, 5, 50, 51},
+                // Large test case
+                generateLargeTestCase(100000)
         };
 
         int[][] expectedOutputs = {
-            {1, 2, 3},
-            {1, 1, 2, 2},
-            {1},
-            {1, 1, 1, 1, 1},
-            {1, 2, 3, 4, 5},
-            {1, 2, 3, 4, 5, 5, 5},
-            // Expected output for the large test case will be tested by checking if the code runs without error
-            null
+                {1, 2, 3},
+                {1, 1, 2, 2},
+                {1},
+                {1, 1, 1, 1, 1},
+                {1, 2, 3, 4, 5},
+                {1, 2, 3, 4, 5, 5, 5},
+                // Expected output for the large test case will be tested by checking if the code runs without error
+                null
         };
 
         for (int i = 0; i < testQueries.length; i++) {

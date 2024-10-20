@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.oct24.amz.test8;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /*
 Imagine you're building a system for a small retail store that handles customer payments and returns change. Your task is to implement a flexible Cash Drawer Controller that can calculate the exact change based on available denominations. The store supports the following denominations:

@@ -1,6 +1,6 @@
 package com.interview.notes.code.months.oct24.test13;
 
-import java.util.*;
+import java.util.Arrays;
 
 /*
 MEDIUM Determine whether a tree is a valid customized binary search tree; i.e. every element to the left of a node is greater than the parent node and every element to the right of a node is less
@@ -56,13 +56,13 @@ public class CustomBinarySearchTree {
     public static void main(String[] args) {
         // Test cases
         int[][] testCases = {
-            {10, 20, 5, 30, 15, 7, 3, 40, 29, 19, 14, 9, 6, 4, 1},
-            {10, 3, 14},
-            {5, 7, 2, 8, 6, 4, 4},
-            {5, 7, 2, 8, 6, 4, 2},
-            {10, 14, 3},
-            {10},
-            {5, 2, 7, 2, 4, 6, 8}
+                {10, 20, 5, 30, 15, 7, 3, 40, 29, 19, 14, 9, 6, 4, 1},
+                {10, 3, 14},
+                {5, 7, 2, 8, 6, 4, 4},
+                {5, 7, 2, 8, 6, 4, 2},
+                {10, 14, 3},
+                {10},
+                {5, 2, 7, 2, 4, 6, 8}
         };
 
         String[] expectedResults = {"TRUE", "FALSE", "FALSE", "TRUE", "TRUE", "TRUE", "FALSE"};

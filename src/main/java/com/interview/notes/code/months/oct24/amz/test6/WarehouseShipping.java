@@ -4,16 +4,6 @@ import java.util.*;
 
 public class WarehouseShipping {
 
-    static class ItemLocation {
-        String region;
-        String warehouse;
-
-        ItemLocation(String region, String warehouse) {
-            this.region = region;
-            this.warehouse = warehouse;
-        }
-    }
-
     // Suitable data structure for storing warehouse and item information
     private static final Map<String, List<ItemLocation>> itemWarehouseMap = new HashMap<>();
     private static final Map<String, List<String>> regionWarehousesMap = new HashMap<>();
@@ -91,6 +81,16 @@ public class WarehouseShipping {
 
     public static void main(String[] args) {
         runTests();
+    }
+
+    static class ItemLocation {
+        String region;
+        String warehouse;
+
+        ItemLocation(String region, String warehouse) {
+            this.region = region;
+            this.warehouse = warehouse;
+        }
     }
 }
 

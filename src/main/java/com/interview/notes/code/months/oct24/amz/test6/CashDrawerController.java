@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.oct24.amz.test6;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class CashDrawerController {
 

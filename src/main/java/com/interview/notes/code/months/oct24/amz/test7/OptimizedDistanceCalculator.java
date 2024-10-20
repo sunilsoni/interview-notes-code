@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.oct24.amz.test7;
 
 import java.util.Arrays;
+
 /*
 Amazon Lockers provide customers with the option of picking up packages at a secure location convenient to them. We want to build a service that will recommend the top k lockers based on a customer’s current location.
 
@@ -65,8 +66,8 @@ public class OptimizedDistanceCalculator {
      */
     public static double distance(int x1, int y1, int x2, int y2) {
         int squaredDist = squaredDistanceLookup(x1, y1, x2, y2);
-        return (squaredDist <= MAX_COORD * MAX_COORD) ? 
-               Math.sqrt(SQUARE_LOOKUP[squaredDist]) : Math.sqrt(squaredDist);
+        return (squaredDist <= MAX_COORD * MAX_COORD) ?
+                Math.sqrt(SQUARE_LOOKUP[squaredDist]) : Math.sqrt(squaredDist);
     }
 
     /**
@@ -77,17 +78,17 @@ public class OptimizedDistanceCalculator {
         for (int i = 0; i < x1.length; i += 4) {
             int dx0 = x2[i] - x1[i];
             int dy0 = y2[i] - y1[i];
-            int dx1 = x2[i+1] - x1[i+1];
-            int dy1 = y2[i+1] - y1[i+1];
-            int dx2 = x2[i+2] - x1[i+2];
-            int dy2 = y2[i+2] - y1[i+2];
-            int dx3 = x2[i+3] - x1[i+3];
-            int dy3 = y2[i+3] - y1[i+3];
+            int dx1 = x2[i + 1] - x1[i + 1];
+            int dy1 = y2[i + 1] - y1[i + 1];
+            int dx2 = x2[i + 2] - x1[i + 2];
+            int dy2 = y2[i + 2] - y1[i + 2];
+            int dx3 = x2[i + 3] - x1[i + 3];
+            int dy3 = y2[i + 3] - y1[i + 3];
 
             result[i] = dx0 * dx0 + dy0 * dy0;
-            result[i+1] = dx1 * dx1 + dy1 * dy1;
-            result[i+2] = dx2 * dx2 + dy2 * dy2;
-            result[i+3] = dx3 * dx3 + dy3 * dy3;
+            result[i + 1] = dx1 * dx1 + dy1 * dy1;
+            result[i + 2] = dx2 * dx2 + dy2 * dy2;
+            result[i + 3] = dx3 * dx3 + dy3 * dy3;
         }
     }
 

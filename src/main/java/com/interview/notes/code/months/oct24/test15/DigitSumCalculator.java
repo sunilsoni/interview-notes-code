@@ -2,6 +2,11 @@ package com.interview.notes.code.months.oct24.test15;
 
 public class DigitSumCalculator {
 
+    public static void main(String[] args) {
+        DigitSumCalculator calculator = new DigitSumCalculator();
+        calculator.runTests();
+    }
+
     // Solution method to sum digits from two strings
     public String solution(String a, String b) {
         StringBuilder result = new StringBuilder();
@@ -35,8 +40,8 @@ public class DigitSumCalculator {
         for (int i = 0; i < testA.length; i++) {
             String result = solution(testA[i], testB[i]);
             boolean testPassed = result.equals(expectedResults[i]);
-            System.out.println("Test Case " + (i + 1) + ": " + (testPassed ? "PASS" : "FAIL") + 
-                               " (Expected: " + expectedResults[i] + ", Got: " + result + ")");
+            System.out.println("Test Case " + (i + 1) + ": " + (testPassed ? "PASS" : "FAIL") +
+                    " (Expected: " + expectedResults[i] + ", Got: " + result + ")");
             if (!testPassed) {
                 allTestsPassed = false;
             }
@@ -47,18 +52,13 @@ public class DigitSumCalculator {
         String largeB = "1".repeat(1000);
         String largeResult = solution(largeA, largeB);
         boolean largeTestPassed = largeResult.equals("110".repeat(500));
-        System.out.println("Large Data Test: " + (largeTestPassed ? "PASS" : "FAIL") + 
-                           " (Expected: 110 * 500, Got: " + largeResult.substring(0, 10) + "...)");
+        System.out.println("Large Data Test: " + (largeTestPassed ? "PASS" : "FAIL") +
+                " (Expected: 110 * 500, Got: " + largeResult.substring(0, 10) + "...)");
 
         if (!allTestsPassed || !largeTestPassed) {
             System.out.println("Some tests failed. Please check the implementation.");
         } else {
             System.out.println("All tests passed successfully.");
         }
-    }
-
-    public static void main(String[] args) {
-        DigitSumCalculator calculator = new DigitSumCalculator();
-        calculator.runTests();
     }
 }

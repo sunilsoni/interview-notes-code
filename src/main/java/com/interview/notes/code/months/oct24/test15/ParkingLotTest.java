@@ -1,7 +1,5 @@
 package com.interview.notes.code.months.oct24.test15;
 
-import java.util.*;
-
 public class ParkingLotTest {
     public static void main(String[] args) {
         runAllTests();

@@ -1,29 +1,32 @@
 package com.interview.notes.code.months.oct24.test14;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class MainClass {
 
     public static void main(String[] args) {
         // Test cases
         int[][] testQueries = {
-            {2, 1, 3},
-            {1, 3, 0, 4},
-            {1},
-            {1, 3, 5, 7, 9}, // Non-contiguous houses
-            {1, 2, 3, 4, 5}, // Build contiguous houses
-            // Large test case
-            generateLargeTestCase(100000)
+                {2, 1, 3},
+                {1, 3, 0, 4},
+                {1},
+                {1, 3, 5, 7, 9}, // Non-contiguous houses
+                {1, 2, 3, 4, 5}, // Build contiguous houses
+                // Large test case
+                generateLargeTestCase(100000)
         };
 
         int[][] expectedOutputs = {
-            {1, 2, 3},
-            {1, 1, 2, 2},
-            {1},
-            {1, 1, 1, 1, 1},
-            {1, 2, 3, 4, 5},
-            // Expected output for the large test case will be tested by checking if the code runs without error
-            null
+                {1, 2, 3},
+                {1, 1, 2, 2},
+                {1},
+                {1, 1, 1, 1, 1},
+                {1, 2, 3, 4, 5},
+                // Expected output for the large test case will be tested by checking if the code runs without error
+                null
         };
 
         for (int i = 0; i < testQueries.length; i++) {
