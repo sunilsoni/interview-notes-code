@@ -3,75 +3,6 @@ package com.interview.notes.code.months.oct24.amz.test10;
 import java.util.*;
 
 public class WordLadder {
-    // Function to find the length of the shortest transformation sequence
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        // Convert the wordList to a set for O(1) lookup
-        Set<String> wordSet = new HashSet<>(wordList);
-        if (!wordSet.contains(endWord)) {
-            // Early exit if the endWord is not in the dictionary
-            return 0;
-        }
-
-        // Initialize BFS
-        Queue<String> queue = new LinkedList<>();
-        queue.offer(beginWord);
-
-        // Visited set to prevent cycles
-        Set<String> visited = new HashSet<>();
-        visited.add(beginWord);
-
-        int level = 1; // Start from level 1
-
-        while (!queue.isEmpty()) {
-            int levelSize = queue.size(); // Number of elements at the current level
-
-            // Process all nodes at the current level
-            for (int i = 0; i < levelSize; i++) {
-                String currentWord = queue.poll(); // Get the next word in the queue
-                // If we have reached the endWord
-                if (currentWord.equals(endWord)) {
-                    return level; // Return the current level as the shortest path length
-                }
-
-                // Generate all possible transformations
-                for (String neighbor : getNeighbors(currentWord, wordSet)) {
-                    if (!visited.contains(neighbor)) {
-                        visited.add(neighbor); // Mark the neighbor as visited
-                        queue.offer(neighbor); // Add the neighbor to the queue
-                    }
-                }
-            }
-
-            level++; // Increment level after processing current level
-        }
-
-        // If endWord is not reachable
-        return 0;
-    }
-
-    // Helper function to generate all possible transformations of a word
-    private List<String> getNeighbors(String word, Set<String> wordSet) {
-        List<String> neighbors = new ArrayList<>();
-
-        char[] chars = word.toCharArray();
-        // For each character position in the word
-        for (int i = 0; i < chars.length; i++) {
-            char originalChar = chars[i]; // Store the original character
-            // Try all possible lowercase letters
-            for (char c = 'a'; c <= 'z'; c++) {
-                if (c == originalChar) continue; // Skip if the character is the same as the original
-                chars[i] = c; // Replace the character at position i
-                String transformedWord = new String(chars); // Create the transformed word
-                if (wordSet.contains(transformedWord)) {
-                    neighbors.add(transformedWord); // Add the transformed word if it is in the word set
-                }
-            }
-            chars[i] = originalChar; // Restore the original character
-        }
-
-        return neighbors;
-    }
-
     // Test method to check if all test cases pass or fail
     public static void main(String[] args) {
         WordLadder solver = new WordLadder();
@@ -158,5 +89,74 @@ public class WordLadder {
         wordSet.add(endWord);
 
         return new ArrayList<>(wordSet); // Convert the set to a list and return it
+    }
+
+    // Function to find the length of the shortest transformation sequence
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        // Convert the wordList to a set for O(1) lookup
+        Set<String> wordSet = new HashSet<>(wordList);
+        if (!wordSet.contains(endWord)) {
+            // Early exit if the endWord is not in the dictionary
+            return 0;
+        }
+
+        // Initialize BFS
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(beginWord);
+
+        // Visited set to prevent cycles
+        Set<String> visited = new HashSet<>();
+        visited.add(beginWord);
+
+        int level = 1; // Start from level 1
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size(); // Number of elements at the current level
+
+            // Process all nodes at the current level
+            for (int i = 0; i < levelSize; i++) {
+                String currentWord = queue.poll(); // Get the next word in the queue
+                // If we have reached the endWord
+                if (currentWord.equals(endWord)) {
+                    return level; // Return the current level as the shortest path length
+                }
+
+                // Generate all possible transformations
+                for (String neighbor : getNeighbors(currentWord, wordSet)) {
+                    if (!visited.contains(neighbor)) {
+                        visited.add(neighbor); // Mark the neighbor as visited
+                        queue.offer(neighbor); // Add the neighbor to the queue
+                    }
+                }
+            }
+
+            level++; // Increment level after processing current level
+        }
+
+        // If endWord is not reachable
+        return 0;
+    }
+
+    // Helper function to generate all possible transformations of a word
+    private List<String> getNeighbors(String word, Set<String> wordSet) {
+        List<String> neighbors = new ArrayList<>();
+
+        char[] chars = word.toCharArray();
+        // For each character position in the word
+        for (int i = 0; i < chars.length; i++) {
+            char originalChar = chars[i]; // Store the original character
+            // Try all possible lowercase letters
+            for (char c = 'a'; c <= 'z'; c++) {
+                if (c == originalChar) continue; // Skip if the character is the same as the original
+                chars[i] = c; // Replace the character at position i
+                String transformedWord = new String(chars); // Create the transformed word
+                if (wordSet.contains(transformedWord)) {
+                    neighbors.add(transformedWord); // Add the transformed word if it is in the word set
+                }
+            }
+            chars[i] = originalChar; // Restore the original character
+        }
+
+        return neighbors;
     }
 }

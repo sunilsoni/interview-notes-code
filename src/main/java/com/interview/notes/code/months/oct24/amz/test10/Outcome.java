@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.oct24.amz.test10;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 class Outcome {
     public static List<Long> solve(int d, int k) {
@@ -73,8 +74,8 @@ class Outcome {
         assertResult(5, 901, -1, -1);
 
         // Large inputs
-       // assertResult(100, 900, 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999L,
-          //                9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999L);
+        // assertResult(100, 900, 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999L,
+        //                9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999L);
 
         System.out.println("All test cases passed!");
     }
@@ -82,8 +83,8 @@ class Outcome {
     private static void assertResult(int d, int k, long expectedSmallest, long expectedLargest) {
         List<Long> result = solve(d, k);
         if (result.get(0) != expectedSmallest || result.get(1) != expectedLargest) {
-            throw new AssertionError(String.format("Test case failed for d=%d, k=%d. Expected: [%d, %d], Got: [%d, %d]", 
-                d, k, expectedSmallest, expectedLargest, result.get(0), result.get(1)));
+            throw new AssertionError(String.format("Test case failed for d=%d, k=%d. Expected: [%d, %d], Got: [%d, %d]",
+                    d, k, expectedSmallest, expectedLargest, result.get(0), result.get(1)));
         }
     }
 }

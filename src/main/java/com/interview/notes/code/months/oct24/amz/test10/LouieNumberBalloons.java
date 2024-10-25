@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.amz.test10;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
 WORKING

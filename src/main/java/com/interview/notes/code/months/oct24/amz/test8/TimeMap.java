@@ -34,10 +34,119 @@ public class TimeMap {
     // HashMap to store the key to TreeMap of timestamp-value mappings
     private Map<String, TreeMap<Integer, String>> map;
 
-    /** Initialize the TimeMap data structure */
+    /**
+     * Initialize the TimeMap data structure
+     */
     public TimeMap() {
         map = new HashMap<>();
         System.out.println("Initialized TimeMap data structure.");
+    }
+
+    /**
+     * Main method to run test cases and verify the correctness of the TimeMap implementation.
+     *
+     * @param args Command-line arguments (not used)
+     */
+    public static void main(String[] args) {
+        TimeMap timeMap = new TimeMap();
+
+        // List of test cases
+        List<TestCase> testCases = new ArrayList<>();
+
+        // Test Case 1
+        testCases.add(new TestCase("Test Case 1: Basic set and get",
+                () -> {
+                    timeMap.set("foo", "bar", 1);  // Set key "foo" with value "bar" at timestamp 1
+                },
+                () -> timeMap.get("foo", 1).equals("bar")));  // Get value for key "foo" at timestamp 1
+
+        // Test Case 2
+        testCases.add(new TestCase("Test Case 2: Get with timestamp greater than set",
+                () -> {
+                    // Already set in Test Case 1
+                },
+                () -> timeMap.get("foo", 3).equals("bar")));  // Get value for key "foo" at timestamp 3 (should return "bar")
+
+        // Test Case 3
+        testCases.add(new TestCase("Test Case 3: Overwrite with new timestamp",
+                () -> {
+                    timeMap.set("foo", "bar2", 4);  // Set key "foo" with value "bar2" at timestamp 4
+                },
+                () -> timeMap.get("foo", 4).equals("bar2")));  // Get value for key "foo" at timestamp 4 (should return "bar2")
+
+        // Test Case 4
+        testCases.add(new TestCase("Test Case 4: Get with timestamp greater than latest set",
+                () -> {
+                    // Already set in Test Case 3
+                },
+                () -> timeMap.get("foo", 5).equals("bar2")));  // Get value for key "foo" at timestamp 5 (should return "bar2")
+
+        // Test Case 5
+        testCases.add(new TestCase("Test Case 5: Get with timestamp earlier than any set",
+                () -> {
+                    // No operation needed
+                },
+                () -> timeMap.get("foo", 0).equals("")));  // Get value for key "foo" at timestamp 0 (should return empty string)
+
+        // Test Case 6: Non-existent key
+        testCases.add(new TestCase("Test Case 6: Get non-existent key",
+                () -> {
+                    // No operation needed
+                },
+                () -> timeMap.get("unknown", 1).equals("")));  // Get value for non-existent key "unknown" (should return empty string)
+
+        // Test Case 7: Multiple keys
+        testCases.add(new TestCase("Test Case 7: Multiple keys handling",
+                () -> {
+                    timeMap.set("key1", "value1", 10);  // Set key "key1" with value "value1" at timestamp 10
+                    timeMap.set("key2", "value2", 20);  // Set key "key2" with value "value2" at timestamp 20
+                },
+                () ->
+                        timeMap.get("key1", 10).equals("value1") &&  // Get value for key "key1" at timestamp 10
+                                timeMap.get("key2", 20).equals("value2") &&  // Get value for key "key2" at timestamp 20
+                                timeMap.get("key1", 15).equals("value1") &&  // Get value for key "key1" at timestamp 15
+                                timeMap.get("key2", 25).equals("value2")     // Get value for key "key2" at timestamp 25
+        ));
+
+        // Test Case 8: Large data input
+        testCases.add(new TestCase("Test Case 8: Large data input",
+                () -> {
+                    // Adding 100,000 entries for key "large"
+                    for (int i = 1; i <= 100000; i++) {
+                        timeMap.set("large", "val" + i, i);  // Set key "large" with value "val" + i at timestamp i
+                    }
+                },
+                () -> {
+                    // Perform some get operations to validate correctness
+                    boolean pass = true;
+                    pass &= timeMap.get("large", 50000).equals("val50000");  // Get value for key "large" at timestamp 50000
+                    pass &= timeMap.get("large", 100000).equals("val100000");  // Get value for key "large" at timestamp 100000
+                    pass &= timeMap.get("large", 100001).equals("val100000");  // Get value for key "large" at timestamp 100001 (should return the latest)
+                    pass &= timeMap.get("large", 1).equals("val1");
+                    return pass;
+                }));
+
+        // Test Case 9: Get last n values
+        testCases.add(new TestCase("Test Case 9: Get last n values",
+                () -> {
+                    timeMap.set("foo", "bar3", 6);  // Set key "foo" with value "bar3" at timestamp 6
+                },
+                () -> {
+                    List<String> lastValues = timeMap.getLastNValues("foo", 6, 2);  // Get last 2 values for key "foo" at timestamp 6
+                    return lastValues.equals(Arrays.asList("bar3", "bar2"));
+                }));
+
+        // Run all test cases
+        for (TestCase testCase : testCases) {
+            try {
+                testCase.setup.run();
+                boolean result = testCase.test.run();
+                System.out.println(testCase.name + ": " + (result ? "PASS" : "FAIL"));
+            } catch (Exception e) {
+                System.out.println(testCase.name + ": FAIL (Exception occurred)");
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -110,110 +219,11 @@ public class TimeMap {
     }
 
     /**
-     * Main method to run test cases and verify the correctness of the TimeMap implementation.
-     *
-     * @param args Command-line arguments (not used)
+     * Functional interface for test conditions.
      */
-    public static void main(String[] args) {
-        TimeMap timeMap = new TimeMap();
-
-        // List of test cases
-        List<TestCase> testCases = new ArrayList<>();
-
-        // Test Case 1
-        testCases.add(new TestCase("Test Case 1: Basic set and get",
-                () -> {
-                    timeMap.set("foo", "bar", 1);  // Set key "foo" with value "bar" at timestamp 1
-                },
-                () -> timeMap.get("foo", 1).equals("bar")));  // Get value for key "foo" at timestamp 1
-
-        // Test Case 2
-        testCases.add(new TestCase("Test Case 2: Get with timestamp greater than set",
-                () -> {
-                    // Already set in Test Case 1
-                },
-                () -> timeMap.get("foo", 3).equals("bar")));  // Get value for key "foo" at timestamp 3 (should return "bar")
-
-        // Test Case 3
-        testCases.add(new TestCase("Test Case 3: Overwrite with new timestamp",
-                () -> {
-                    timeMap.set("foo", "bar2", 4);  // Set key "foo" with value "bar2" at timestamp 4
-                },
-                () -> timeMap.get("foo", 4).equals("bar2")));  // Get value for key "foo" at timestamp 4 (should return "bar2")
-
-        // Test Case 4
-        testCases.add(new TestCase("Test Case 4: Get with timestamp greater than latest set",
-                () -> {
-                    // Already set in Test Case 3
-                },
-                () -> timeMap.get("foo", 5).equals("bar2")));  // Get value for key "foo" at timestamp 5 (should return "bar2")
-
-        // Test Case 5
-        testCases.add(new TestCase("Test Case 5: Get with timestamp earlier than any set",
-                () -> {
-                    // No operation needed
-                },
-                () -> timeMap.get("foo", 0).equals("")));  // Get value for key "foo" at timestamp 0 (should return empty string)
-
-        // Test Case 6: Non-existent key
-        testCases.add(new TestCase("Test Case 6: Get non-existent key",
-                () -> {
-                    // No operation needed
-                },
-                () -> timeMap.get("unknown", 1).equals("")));  // Get value for non-existent key "unknown" (should return empty string)
-
-        // Test Case 7: Multiple keys
-        testCases.add(new TestCase("Test Case 7: Multiple keys handling",
-                () -> {
-                    timeMap.set("key1", "value1", 10);  // Set key "key1" with value "value1" at timestamp 10
-                    timeMap.set("key2", "value2", 20);  // Set key "key2" with value "value2" at timestamp 20
-                },
-                () -> 
-                    timeMap.get("key1", 10).equals("value1") &&  // Get value for key "key1" at timestamp 10
-                    timeMap.get("key2", 20).equals("value2") &&  // Get value for key "key2" at timestamp 20
-                    timeMap.get("key1", 15).equals("value1") &&  // Get value for key "key1" at timestamp 15
-                    timeMap.get("key2", 25).equals("value2")     // Get value for key "key2" at timestamp 25
-        ));
-
-        // Test Case 8: Large data input
-        testCases.add(new TestCase("Test Case 8: Large data input",
-                () -> {
-                    // Adding 100,000 entries for key "large"
-                    for (int i = 1; i <= 100000; i++) {
-                        timeMap.set("large", "val" + i, i);  // Set key "large" with value "val" + i at timestamp i
-                    }
-                },
-                () -> {
-                    // Perform some get operations to validate correctness
-                    boolean pass = true;
-                    pass &= timeMap.get("large", 50000).equals("val50000");  // Get value for key "large" at timestamp 50000
-                    pass &= timeMap.get("large", 100000).equals("val100000");  // Get value for key "large" at timestamp 100000
-                    pass &= timeMap.get("large", 100001).equals("val100000");  // Get value for key "large" at timestamp 100001 (should return the latest)
-                    pass &= timeMap.get("large", 1).equals("val1");
-                    return pass;
-                }));
-
-        // Test Case 9: Get last n values
-        testCases.add(new TestCase("Test Case 9: Get last n values",
-                () -> {
-                    timeMap.set("foo", "bar3", 6);  // Set key "foo" with value "bar3" at timestamp 6
-                },
-                () -> {
-                    List<String> lastValues = timeMap.getLastNValues("foo", 6, 2);  // Get last 2 values for key "foo" at timestamp 6
-                    return lastValues.equals(Arrays.asList("bar3", "bar2"));
-                }));
-
-        // Run all test cases
-        for (TestCase testCase : testCases) {
-            try {
-                testCase.setup.run();
-                boolean result = testCase.test.run();
-                System.out.println(testCase.name + ": " + (result ? "PASS" : "FAIL"));
-            } catch (Exception e) {
-                System.out.println(testCase.name + ": FAIL (Exception occurred)");
-                e.printStackTrace();
-            }
-        }
+    @FunctionalInterface
+    private interface TestCondition {
+        boolean run();  // Method to run the test condition
     }
 
     /**
@@ -229,13 +239,5 @@ public class TimeMap {
             this.setup = setup;
             this.test = test;
         }
-    }
-
-    /**
-     * Functional interface for test conditions.
-     */
-    @FunctionalInterface
-    private interface TestCondition {
-        boolean run();  // Method to run the test condition
     }
 }

@@ -16,7 +16,7 @@ public class SecondMaxRepeatedCharacter {
     public static char findSecondMaxRepeatedCharacter(String str) {
         // Step 1: Create a frequency array for 256 ASCII characters
         int[] frequency = new int[256];
-        
+
         // Fill the frequency array manually without using loops
         int index = 0;
         while (index < str.length()) {

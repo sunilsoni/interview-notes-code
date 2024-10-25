@@ -1,9 +1,8 @@
 package com.interview.notes.code.months.oct24.test17;
 
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Random;
-import java.util.Arrays;
+import java.util.Set;
 
 /**
  * PairFinder class encapsulates the logic to find a pair in an array that sums up to a target value.
@@ -31,23 +30,6 @@ public class PairFinder {
     }
 
     /**
-     * Represents a test case with input array, target, expected output, and a description.
-     */
-    static class TestCase {
-        int[] nums;
-        int target;
-        String expected;
-        String description;
-
-        TestCase(int[] nums, int target, String expected, String description) {
-            this.nums = nums;
-            this.target = target;
-            this.expected = expected;
-            this.description = description;
-        }
-    }
-
-    /**
      * Main method to execute and verify all test cases.
      *
      * @param args Command-line arguments (not used).
@@ -55,49 +37,49 @@ public class PairFinder {
     public static void main(String[] args) {
         // Define all test cases
         TestCase[] testCases = new TestCase[]{
-            new TestCase(
-                new int[]{8, 7, 2, 5, 3, 1},
-                10,
-                "Pair found (8, 2)orPair found (7, 3)",
-                "Example Test Case 1"
-            ),
-            new TestCase(
-                new int[]{5, 2, 6, 8, 1, 9},
-                12,
-                "Pair not found",
-                "Example Test Case 2"
-            ),
-            // Additional test cases for edge scenarios
-            new TestCase(
-                new int[]{},
-                5,
-                "Pair not found",
-                "Empty Array"
-            ),
-            new TestCase(
-                new int[]{1},
-                2,
-                "Pair not found",
-                "Single Element"
-            ),
-            new TestCase(
-                new int[]{4, 4},
-                8,
-                "Pair found (4, 4)",
-                "Pair with Same Elements"
-            ),
-            new TestCase(
-                new int[]{-1, -2, -3, -4, -5},
-                -8,
-                "Pair found (-3, -5)",
-                "Negative Numbers"
-            ),
-            new TestCase(
-                new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
-                19,
-                "Pair found (9, 10)",
-                "Larger Array"
-            )
+                new TestCase(
+                        new int[]{8, 7, 2, 5, 3, 1},
+                        10,
+                        "Pair found (8, 2)orPair found (7, 3)",
+                        "Example Test Case 1"
+                ),
+                new TestCase(
+                        new int[]{5, 2, 6, 8, 1, 9},
+                        12,
+                        "Pair not found",
+                        "Example Test Case 2"
+                ),
+                // Additional test cases for edge scenarios
+                new TestCase(
+                        new int[]{},
+                        5,
+                        "Pair not found",
+                        "Empty Array"
+                ),
+                new TestCase(
+                        new int[]{1},
+                        2,
+                        "Pair not found",
+                        "Single Element"
+                ),
+                new TestCase(
+                        new int[]{4, 4},
+                        8,
+                        "Pair found (4, 4)",
+                        "Pair with Same Elements"
+                ),
+                new TestCase(
+                        new int[]{-1, -2, -3, -4, -5},
+                        -8,
+                        "Pair found (-3, -5)",
+                        "Negative Numbers"
+                ),
+                new TestCase(
+                        new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+                        19,
+                        "Pair found (9, 10)",
+                        "Larger Array"
+                )
         };
 
         // Execute and verify each test case
@@ -150,6 +132,23 @@ public class PairFinder {
         if (!pass) {
             System.out.println("  Expected: " + expected);
             System.out.println("  Got     : " + result);
+        }
+    }
+
+    /**
+     * Represents a test case with input array, target, expected output, and a description.
+     */
+    static class TestCase {
+        int[] nums;
+        int target;
+        String expected;
+        String description;
+
+        TestCase(int[] nums, int target, String expected, String description) {
+            this.nums = nums;
+            this.target = target;
+            this.expected = expected;
+            this.description = description;
         }
     }
 }

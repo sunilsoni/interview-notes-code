@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.amz.test8;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 
 Mini-Max Numbers
@@ -153,8 +155,8 @@ class Outcome {
         List<Long> result = solve(d, k);
         if (!result.get(0).equals(expectedSmallest) || !result.get(1).equals(expectedLargest)) {
             throw new AssertionError(String.format(
-                "Test case failed for d=%d, k=%d. Expected: [%d, %d], Got: [%d, %d]",
-                d, k, expectedSmallest, expectedLargest, result.get(0), result.get(1)));
+                    "Test case failed for d=%d, k=%d. Expected: [%d, %d], Got: [%d, %d]",
+                    d, k, expectedSmallest, expectedLargest, result.get(0), result.get(1)));
         }
     }
 }

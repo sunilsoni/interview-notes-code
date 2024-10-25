@@ -11,12 +11,12 @@ public class FileFinder {
     public static void main(String[] args) {
         String testDirectory = "/path/to/test/directory";
         List<File> largeFiles = findLargeFiles(new File(testDirectory));
-        
+
         System.out.println("Files over 5 MB:");
         for (File file : largeFiles) {
             System.out.println(file.getAbsolutePath() + " - " + (file.length() / 1024 / 1024) + " MB");
         }
-        
+
         runTests();
     }
 

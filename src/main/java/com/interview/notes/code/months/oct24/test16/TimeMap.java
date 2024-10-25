@@ -1,7 +1,9 @@
 package com.interview.notes.code.months.oct24.test16;
 
-import java.util.*;
-import java.util.Map.Entry;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /*
 
@@ -23,6 +25,7 @@ timeMap. get("foo", 4); // returns "bar2" timeMap. get ("'foo"
 // returns "bar2"
 timeMap.get ("foo", 0); // returns ""
  */
+
 /**
  * TimeMap data structure that stores key-value pairs along with timestamps.
  * It allows retrieval of the value for a given key at the most recent timestamp
@@ -30,68 +33,14 @@ timeMap.get ("foo", 0); // returns ""
  */
 public class TimeMap {
 
-    // Inner class to represent a pair of timestamp and value
-    private static class TimeValuePair {
-        int timestamp;
-        String value;
-
-        TimeValuePair(int timestamp, String value) {
-            this.timestamp = timestamp;
-            this.value = value;
-        }
-    }
-
     // HashMap to store the key to list of TimeValuePairs mapping
     private Map<String, List<TimeValuePair>> map;
 
-    /** Initialize the TimeMap data structure */
+    /**
+     * Initialize the TimeMap data structure
+     */
     public TimeMap() {
         map = new HashMap<>();
-    }
-
-    /**
-     * Stores the key-value pair along with the given timestamp.
-     *
-     * @param key       The key to store
-     * @param value     The value associated with the key
-     * @param timestamp The timestamp at which the key-value pair is stored
-     */
-    public void set(String key, String value, int timestamp) {
-        map.computeIfAbsent(key, k -> new ArrayList<>()).add(new TimeValuePair(timestamp, value));
-    }
-
-    /**
-     * Retrieves the value associated with the key at the most recent timestamp
-     * less than or equal to the provided timestamp.
-     *
-     * @param key       The key to retrieve
-     * @param timestamp The timestamp at which to retrieve the value
-     * @return The value associated with the key at the given timestamp, or an empty string if none exists
-     */
-    public String get(String key, int timestamp) {
-        if (!map.containsKey(key)) {
-            return "";
-        }
-        List<TimeValuePair> list = map.get(key);
-        int left = 0;
-        int right = list.size() - 1;
-        String result = "";
-
-        // Binary search to find the rightmost timestamp <= given timestamp
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            TimeValuePair pair = list.get(mid);
-            if (pair.timestamp == timestamp) {
-                return pair.value;
-            } else if (pair.timestamp < timestamp) {
-                result = pair.value;
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
-        }
-
-        return result;
     }
 
     /**
@@ -153,11 +102,11 @@ public class TimeMap {
                     timeMap.set("key1", "value1", 10);
                     timeMap.set("key2", "value2", 20);
                 },
-                () -> 
-                    timeMap.get("key1", 10).equals("value1") &&
-                    timeMap.get("key2", 20).equals("value2") &&
-                    timeMap.get("key1", 15).equals("value1") &&
-                    timeMap.get("key2", 25).equals("value2")
+                () ->
+                        timeMap.get("key1", 10).equals("value1") &&
+                                timeMap.get("key2", 20).equals("value2") &&
+                                timeMap.get("key1", 15).equals("value1") &&
+                                timeMap.get("key2", 25).equals("value2")
         ));
 
         // Test Case 8: Large data input
@@ -193,6 +142,70 @@ public class TimeMap {
     }
 
     /**
+     * Stores the key-value pair along with the given timestamp.
+     *
+     * @param key       The key to store
+     * @param value     The value associated with the key
+     * @param timestamp The timestamp at which the key-value pair is stored
+     */
+    public void set(String key, String value, int timestamp) {
+        map.computeIfAbsent(key, k -> new ArrayList<>()).add(new TimeValuePair(timestamp, value));
+    }
+
+    /**
+     * Retrieves the value associated with the key at the most recent timestamp
+     * less than or equal to the provided timestamp.
+     *
+     * @param key       The key to retrieve
+     * @param timestamp The timestamp at which to retrieve the value
+     * @return The value associated with the key at the given timestamp, or an empty string if none exists
+     */
+    public String get(String key, int timestamp) {
+        if (!map.containsKey(key)) {
+            return "";
+        }
+        List<TimeValuePair> list = map.get(key);
+        int left = 0;
+        int right = list.size() - 1;
+        String result = "";
+
+        // Binary search to find the rightmost timestamp <= given timestamp
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            TimeValuePair pair = list.get(mid);
+            if (pair.timestamp == timestamp) {
+                return pair.value;
+            } else if (pair.timestamp < timestamp) {
+                result = pair.value;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Functional interface for test conditions.
+     */
+    @FunctionalInterface
+    private interface TestCondition {
+        boolean run();
+    }
+
+    // Inner class to represent a pair of timestamp and value
+    private static class TimeValuePair {
+        int timestamp;
+        String value;
+
+        TimeValuePair(int timestamp, String value) {
+            this.timestamp = timestamp;
+            this.value = value;
+        }
+    }
+
+    /**
      * Inner class to represent a test case.
      */
     private static class TestCase {
@@ -205,13 +218,5 @@ public class TimeMap {
             this.setup = setup;
             this.test = test;
         }
-    }
-
-    /**
-     * Functional interface for test conditions.
-     */
-    @FunctionalInterface
-    private interface TestCondition {
-        boolean run();
     }
 }
