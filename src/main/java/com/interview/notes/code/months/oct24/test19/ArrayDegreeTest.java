@@ -36,13 +36,13 @@ public class ArrayDegreeTest {
 
         // Get result with minimum subarray length
         return freq.entrySet().stream()
-            .filter(e -> e.getValue() == maxFreq)
-            .map(e -> {
-                int[] pos = positions.get(e.getKey());
-                return a.subList(pos[0], pos[1] + 1);
-            })
-            .min(Comparator.comparing(List::size))
-            .get();
+                .filter(e -> e.getValue() == maxFreq)
+                .map(e -> {
+                    int[] pos = positions.get(e.getKey());
+                    return a.subList(pos[0], pos[1] + 1);
+                })
+                .min(Comparator.comparing(List::size))
+                .get();
     }
 
     private static void test(List<Integer> input, List<Integer> expected) {
@@ -65,7 +65,7 @@ public class ArrayDegreeTest {
 
     private static List<Integer> generateLargeInput(int size) {
         return new Random().ints(size, 1, 100)
-                          .boxed()
-                          .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
     }
 }

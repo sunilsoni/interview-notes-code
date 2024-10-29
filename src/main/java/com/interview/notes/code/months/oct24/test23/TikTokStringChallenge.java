@@ -1,7 +1,5 @@
 package com.interview.notes.code.months.oct24.test23;
 
-import java.util.Scanner;
-
 public class TikTokStringChallenge {
 
     public static void main(String[] args) {
@@ -43,6 +41,7 @@ public class TikTokStringChallenge {
             System.out.println("All test cases passed.");
         }
     }
+
     public static int getMinTransformations(String caption) {
         int n = caption.length();
         char[] s = caption.toCharArray();

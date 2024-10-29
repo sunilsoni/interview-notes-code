@@ -26,13 +26,13 @@ public class OneBitCounter {
     public static void main(String[] args) {
         // Test cases
         int[] testCases = {161, 1, 255, 256, 1024, 1000000000};
-        
+
         for (int testCase : testCases) {
             System.out.println("Testing for n = " + testCase);
             List<Integer> result = getOneBits(testCase);
-            
+
             System.out.println("Result: " + result);
-            
+
             // Verify the result
             boolean pass = verifyResult(testCase, result);
             System.out.println(pass ? "PASS" : "FAIL");

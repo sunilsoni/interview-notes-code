@@ -100,6 +100,7 @@ One way to organize the array is shown using 1-based indexing.
 
 
  */
+
 /**
  * Solution class containing methods to organize the array with minimum operations.
  */

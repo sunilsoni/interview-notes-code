@@ -20,7 +20,7 @@ public class MaxNegativePnL {
                 break; // Stop if flipping would make cumulative sum negative
             }
         }
-        
+
         return negativeCount;
     }
 

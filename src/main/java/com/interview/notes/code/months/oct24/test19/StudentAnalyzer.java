@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class StudentAnalyzer {
     public static void main(String[] args) {
         List<Student> students = createStudentList();
-        
+
         // Test cases
         testFindStudentsWith900Score(students);
         testFindSecondHighestScoreStudent(students);
@@ -14,35 +14,14 @@ public class StudentAnalyzer {
         testLargeDataSet();
     }
 
-    static class Student {
-        private String name;
-        private int id;
-        private int score;
-
-        public Student(String name, int id, int score) {
-            this.name = name;
-            this.id = id;
-            this.score = score;
-        }
-
-        public String getName() { return name; }
-        public int getId() { return id; }
-        public int getScore() { return score; }
-
-        @Override
-        public String toString() {
-            return "Student{name='" + name + "', id=" + id + ", score=" + score + '}';
-        }
-    }
-
     public static List<Student> createStudentList() {
         return Arrays.asList(
-            new Student("Alice", 1, 950),
-            new Student("Bob", 2, 900),
-            new Student("Charlie", 3, 850),
-            new Student("David", 4, 900),
-            new Student("Eve", 5, 925),
-            new Student("Frank", 6, 850)
+                new Student("Alice", 1, 950),
+                new Student("Bob", 2, 900),
+                new Student("Charlie", 3, 850),
+                new Student("David", 4, 900),
+                new Student("Eve", 5, 925),
+                new Student("Frank", 6, 850)
         );
     }
 
@@ -111,5 +90,34 @@ public class StudentAnalyzer {
         System.out.println("Second highest score student: " + secondHighest.orElse(null));
         System.out.println("Students with unique scores: " + uniqueScoreStudents.size());
         System.out.println("PASS: Large dataset test");
+    }
+
+    static class Student {
+        private String name;
+        private int id;
+        private int score;
+
+        public Student(String name, int id, int score) {
+            this.name = name;
+            this.id = id;
+            this.score = score;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public int getScore() {
+            return score;
+        }
+
+        @Override
+        public String toString() {
+            return "Student{name='" + name + "', id=" + id + ", score=" + score + '}';
+        }
     }
 }

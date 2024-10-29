@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.oct24.amz.test21;
 
 import java.util.*;
+
 /*
 
 WORKING
@@ -129,56 +130,56 @@ public class PackageImportanceOptimizer {
         runTestCase("Test Case 3", Arrays.asList(2, 1, -4), 2);
         runTestCase("Test Case 4", Arrays.asList(-1), 0);
         runTestCase("Test Case 5", Arrays.asList(1, -1), 1);
-        
+
         // Edge cases
         runTestCase("Empty List", new ArrayList<>(), -1);
         runTestCase("Single Positive", Arrays.asList(5), -1);
         runTestCase("All Negative", Arrays.asList(-1, -2, -3), 0);
         runTestCase("Mixed Values", Arrays.asList(-5, 4, 2, -1, 3), 3);
-        
+
         // Large input test cases
         testLargeInput(100);
         testLargeInput(1000);
         testLargeInput(10000);
         testLargeInput(100000);
     }
-    
+
     private static void runTestCase(String testName, List<Integer> input, int expectedOutput) {
         System.out.println("\n" + testName + ":");
         System.out.println("Input: " + input);
-        
+
         long startTime = System.nanoTime();
         int result = getMaximizeIndex(input);
         long endTime = System.nanoTime();
-        
+
         boolean passed = result == expectedOutput;
-        
+
         System.out.println("Expected: " + expectedOutput);
         System.out.println("Got: " + result);
         System.out.println("Status: " + (passed ? "PASS" : "FAIL"));
         System.out.println("Time taken: " + (endTime - startTime) / 1_000_000.0 + " ms");
     }
-    
+
     private static void testLargeInput(int size) {
         List<Integer> largeInput = generateLargeInput(size);
         System.out.println("\nLarge Input Test (" + size + " elements):");
-        
+
         long startTime = System.nanoTime();
         int result = getMaximizeIndex(largeInput);
         long endTime = System.nanoTime();
-        
+
         System.out.println("Result: " + result);
         System.out.println("Time taken: " + (endTime - startTime) / 1_000_000.0 + " ms");
     }
-    
+
     private static List<Integer> generateLargeInput(int size) {
         List<Integer> largeInput = new ArrayList<>(size);
         Random random = new Random();
-        
+
         for (int i = 0; i < size; i++) {
             largeInput.add(random.nextInt(2000) - 1000); // Random numbers between -1000 and 1000
         }
-        
+
         return largeInput;
     }
 }

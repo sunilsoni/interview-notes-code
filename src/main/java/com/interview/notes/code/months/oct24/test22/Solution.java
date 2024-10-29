@@ -71,7 +71,7 @@ public class Solution {
         // Large input example
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 100000; i++) {
-            sb.append((char)('a' + i % 26));
+            sb.append((char) ('a' + i % 26));
         }
         String largeInput = sb.toString();
         long startTime = System.currentTimeMillis();

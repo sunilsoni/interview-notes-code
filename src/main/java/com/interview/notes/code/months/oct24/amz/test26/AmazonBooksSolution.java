@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.oct24.amz.test26;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class AmazonBooksSolution {
 
@@ -37,36 +40,36 @@ public class AmazonBooksSolution {
 
         // Sample Case 0
         testCases.add(new TestCase(
-            Arrays.asList(1, 4, 3, 2, 5),
-            Arrays.asList(
-                Collections.singletonList(1),
-                Collections.singletonList(-1),
-                Collections.singletonList(-1),
-                Arrays.asList(2, 3, 4),
-                Collections.singletonList(5)
-            )
+                Arrays.asList(1, 4, 3, 2, 5),
+                Arrays.asList(
+                        Collections.singletonList(1),
+                        Collections.singletonList(-1),
+                        Collections.singletonList(-1),
+                        Arrays.asList(2, 3, 4),
+                        Collections.singletonList(5)
+                )
         ));
 
         // Sample Case 1
         testCases.add(new TestCase(
-            Arrays.asList(1, 2, 3),
-            Arrays.asList(
-                Collections.singletonList(1),
-                Collections.singletonList(2),
-                Collections.singletonList(3)
-            )
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(
+                        Collections.singletonList(1),
+                        Collections.singletonList(2),
+                        Collections.singletonList(3)
+                )
         ));
 
         // Additional Test Case: Reverse order
         testCases.add(new TestCase(
-            Arrays.asList(5, 4, 3, 2, 1),
-            Arrays.asList(
-                Collections.singletonList(-1),
-                Collections.singletonList(-1),
-                Collections.singletonList(-1),
-                Collections.singletonList(-1),
-                Arrays.asList(1, 2, 3, 4, 5)
-            )
+                Arrays.asList(5, 4, 3, 2, 1),
+                Arrays.asList(
+                        Collections.singletonList(-1),
+                        Collections.singletonList(-1),
+                        Collections.singletonList(-1),
+                        Collections.singletonList(-1),
+                        Arrays.asList(1, 2, 3, 4, 5)
+                )
         ));
 
         // Large Test Case

@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.test18;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class DuplicateRemover {
 
@@ -11,7 +13,7 @@ public class DuplicateRemover {
 
         // Use a Set to keep track of unique elements
         Set<Integer> uniqueSet = new LinkedHashSet<>();
-        
+
         // Add all elements to the set
         for (int num : nums) {
             uniqueSet.add(num);

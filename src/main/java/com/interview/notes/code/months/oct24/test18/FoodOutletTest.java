@@ -42,7 +42,7 @@ public class FoodOutletTest {
                 // Parse JSON response
                 JSONParser parser = new JSONParser();
                 JSONObject jsonResponse = (JSONObject) parser.parse(response.toString());
-                
+
                 // Get total pages on first iteration
                 if (currentPage == 1) {
                     totalPages = ((Long) jsonResponse.get("total_pages")).intValue();

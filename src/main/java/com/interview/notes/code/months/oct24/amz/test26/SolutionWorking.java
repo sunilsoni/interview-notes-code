@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.oct24.amz.test26;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 
 FINAL WORKING
@@ -197,76 +200,76 @@ public class SolutionWorking {
 
         // Test Case 1: Sample Case 0
         testCases.add(new TestCase(
-            Arrays.asList(1, 4, 3, 2, 5),
-            Arrays.asList(
-                Arrays.asList(1),
-                Arrays.asList(-1),
-                Arrays.asList(-1),
-                Arrays.asList(2, 3, 4),
-                Arrays.asList(5)
-            )
+                Arrays.asList(1, 4, 3, 2, 5),
+                Arrays.asList(
+                        Arrays.asList(1),
+                        Arrays.asList(-1),
+                        Arrays.asList(-1),
+                        Arrays.asList(2, 3, 4),
+                        Arrays.asList(5)
+                )
         ));
 
         // Test Case 2: Sample Case 1
         testCases.add(new TestCase(
-            Arrays.asList(1, 2, 3),
-            Arrays.asList(
-                Arrays.asList(1),
-                Arrays.asList(2),
-                Arrays.asList(3)
-            )
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(
+                        Arrays.asList(1),
+                        Arrays.asList(2),
+                        Arrays.asList(3)
+                )
         ));
 
         // Test Case 3: All volumes available on first day
         testCases.add(new TestCase(
-            Arrays.asList(1, 2, 3, 4, 5),
-            Arrays.asList(
-                Arrays.asList(1),
-                Arrays.asList(2),
-                Arrays.asList(3),
-                Arrays.asList(4),
-                Arrays.asList(5)
-            )
+                Arrays.asList(1, 2, 3, 4, 5),
+                Arrays.asList(
+                        Arrays.asList(1),
+                        Arrays.asList(2),
+                        Arrays.asList(3),
+                        Arrays.asList(4),
+                        Arrays.asList(5)
+                )
         ));
 
         // Test Case 4: Volumes released in reverse order
         testCases.add(new TestCase(
-            Arrays.asList(5, 4, 3, 2, 1),
-            Arrays.asList(
-                Arrays.asList(-1),
-                Arrays.asList(-1),
-                Arrays.asList(-1),
-                Arrays.asList(-1),
-                Arrays.asList(1, 2, 3, 4, 5)
-            )
+                Arrays.asList(5, 4, 3, 2, 1),
+                Arrays.asList(
+                        Arrays.asList(-1),
+                        Arrays.asList(-1),
+                        Arrays.asList(-1),
+                        Arrays.asList(-1),
+                        Arrays.asList(1, 2, 3, 4, 5)
+                )
         ));
 
         // Test Case 5: Single volume
         testCases.add(new TestCase(
-            Arrays.asList(1),
-            Arrays.asList(
-                Arrays.asList(1)
-            )
+                Arrays.asList(1),
+                Arrays.asList(
+                        Arrays.asList(1)
+                )
         ));
 
         // Test Case 6: Alternate availability
         testCases.add(new TestCase(
-            Arrays.asList(2, 1, 4, 5, 3),
-            Arrays.asList(
-                Arrays.asList(-1),
-                Arrays.asList(1, 2),
-                Arrays.asList(-1),
-                Arrays.asList(-1),
-                Arrays.asList(3, 4, 5)
-            )
+                Arrays.asList(2, 1, 4, 5, 3),
+                Arrays.asList(
+                        Arrays.asList(-1),
+                        Arrays.asList(1, 2),
+                        Arrays.asList(-1),
+                        Arrays.asList(-1),
+                        Arrays.asList(3, 4, 5)
+                )
         ));
 
         // Test Case 7: Large Test Case (n=100000)
         // To prevent excessive output, we won't define expected output here.
         // Instead, we'll ensure that the function runs without error.
         testCases.add(new TestCase(
-            generateLargeTestCase(100000),
-            null // We won't check expected output for large test case
+                generateLargeTestCase(100000),
+                null // We won't check expected output for large test case
         ));
 
         // Run test cases

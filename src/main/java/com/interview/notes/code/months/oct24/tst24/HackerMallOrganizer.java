@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.tst24;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class HackerMallOrganizer {
 
@@ -48,9 +50,9 @@ public class HackerMallOrganizer {
             boolean passed = result == expectedResults[i];
 
             System.out.println("Test Case " + (i + 1) + ": " +
-                               (passed ? "PASS" : "FAIL") +
-                               " (Expected: " + expectedResults[i] +
-                               ", Got: " + result + ")");
+                    (passed ? "PASS" : "FAIL") +
+                    " (Expected: " + expectedResults[i] +
+                    ", Got: " + result + ")");
         }
 
         // Large input test

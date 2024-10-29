@@ -7,37 +7,8 @@ import java.util.List;
 public class StringCodec {
 
     /**
-     * Encodes a list of strings to a single string.
-     * @param strs List of strings to encode.
-     * @return Encoded single string.
-     */
-    public String encode(List<String> strs) {
-        StringBuilder encoded = new StringBuilder();
-        for (String s : strs) {
-            encoded.append(s.length()).append('#').append(s);
-        }
-        return encoded.toString();
-    }
-
-    /**
-     * Decodes a single string back into a list of strings.
-     * @param s Encoded string.
-     * @return Decoded list of original strings.
-     */
-    public List<String> decode(String s) {
-        List<String> decoded = new ArrayList<>();
-        int i = 0;
-        while (i < s.length()) {
-            int separator = s.indexOf('#', i);
-            int length = Integer.parseInt(s.substring(i, separator));
-            i = separator + 1 + length;
-            decoded.add(s.substring(separator + 1, i));
-        }
-        return decoded;
-    }
-
-    /**
      * Main method for testing the encode and decode methods.
+     *
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
@@ -45,7 +16,7 @@ public class StringCodec {
         List<List<String>> testCases = new ArrayList<>();
 
         // Test case 1: Regular strings
-        testCases.add(Arrays.asList("abc","def" , "fgh"));
+        testCases.add(Arrays.asList("abc", "def", "fgh"));
 
         testCases.add(Arrays.asList("hello", "world"));
 
@@ -71,5 +42,37 @@ public class StringCodec {
             System.out.println("Test Case " + caseNumber + ": " + (passed ? "PASS" : "FAIL"));
             caseNumber++;
         }
+    }
+
+    /**
+     * Encodes a list of strings to a single string.
+     *
+     * @param strs List of strings to encode.
+     * @return Encoded single string.
+     */
+    public String encode(List<String> strs) {
+        StringBuilder encoded = new StringBuilder();
+        for (String s : strs) {
+            encoded.append(s.length()).append('#').append(s);
+        }
+        return encoded.toString();
+    }
+
+    /**
+     * Decodes a single string back into a list of strings.
+     *
+     * @param s Encoded string.
+     * @return Decoded list of original strings.
+     */
+    public List<String> decode(String s) {
+        List<String> decoded = new ArrayList<>();
+        int i = 0;
+        while (i < s.length()) {
+            int separator = s.indexOf('#', i);
+            int length = Integer.parseInt(s.substring(i, separator));
+            i = separator + 1 + length;
+            decoded.add(s.substring(separator + 1, i));
+        }
+        return decoded;
     }
 }

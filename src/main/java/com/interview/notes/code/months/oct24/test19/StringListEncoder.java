@@ -13,9 +13,9 @@ public class StringListEncoder {
         for (String str : strings) {
             // Format: length:string#
             encoded.append(str.length())
-                  .append(LENGTH_SEPARATOR)
-                  .append(str)
-                  .append(DELIMITER);
+                    .append(LENGTH_SEPARATOR)
+                    .append(str)
+                    .append(DELIMITER);
         }
         return encoded.toString();
     }
@@ -27,19 +27,19 @@ public class StringListEncoder {
 
         java.util.List<String> result = new java.util.ArrayList<>();
         int i = 0;
-        
+
         while (i < encoded.length()) {
             int lengthEnd = encoded.indexOf(LENGTH_SEPARATOR, i);
             if (lengthEnd == -1) break;
-            
+
             int length = Integer.parseInt(encoded.substring(i, lengthEnd));
             int stringStart = lengthEnd + 1;
             String str = encoded.substring(stringStart, stringStart + length);
             result.add(str);
-            
+
             i = stringStart + length + 1; // Skip the delimiter
         }
-        
+
         return result.toArray(new String[0]);
     }
 
@@ -47,9 +47,9 @@ public class StringListEncoder {
         try {
             String encoded = encode(input);
             String[] decoded = decode(encoded);
-            
+
             boolean passed = java.util.Arrays.equals(input, decoded);
-            
+
             System.out.println(testName + ": " + (passed ? "PASS" : "FAIL"));
             if (!passed) {
                 System.out.println("  Expected: " + java.util.Arrays.toString(input));
@@ -65,7 +65,7 @@ public class StringListEncoder {
         runTest("Empty array", new String[]{});
         runTest("Single string", new String[]{"hello"});
         runTest("Multiple strings", new String[]{"hello", "world", "test"});
-        runTest("Strings with special chars", 
+        runTest("Strings with special chars",
                 new String[]{"hello#world", "test:123", "special@chars"});
 
         // Edge cases

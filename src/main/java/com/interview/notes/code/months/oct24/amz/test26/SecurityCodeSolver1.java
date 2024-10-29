@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.oct24.amz.test26;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SecurityCodeSolver1 {
 
@@ -38,19 +39,6 @@ public class SecurityCodeSolver1 {
             }
         }
         return new String(chars);
-    }
-
-    // Test case class to hold input and expected output
-    static class TestCase {
-        String code;
-        long k;
-        String expected;
-
-        TestCase(String code, long k, String expected) {
-            this.code = code;
-            this.k = k;
-            this.expected = expected;
-        }
     }
 
     public static void main(String[] args) {
@@ -131,5 +119,18 @@ public class SecurityCodeSolver1 {
             }
         }
         System.out.println("\nPassed " + passed + " out of " + testCases.size() + " test cases.");
+    }
+
+    // Test case class to hold input and expected output
+    static class TestCase {
+        String code;
+        long k;
+        String expected;
+
+        TestCase(String code, long k, String expected) {
+            this.code = code;
+            this.k = k;
+            this.expected = expected;
+        }
     }
 }

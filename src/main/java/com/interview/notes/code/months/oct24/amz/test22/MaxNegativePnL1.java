@@ -42,7 +42,7 @@ public class MaxNegativePnL1 {
         testCases.add(Arrays.asList(5, 3, 1, 2));  // Example from previous question
         testCases.add(Arrays.asList(1));  // Edge case: single element
         testCases.add(Arrays.asList(1000000000, 1000000000));  // Large numbers
-        
+
         // Large input test
         List<Integer> largeInput = new ArrayList<>();
         for (int i = 0; i < 100000; i++) {

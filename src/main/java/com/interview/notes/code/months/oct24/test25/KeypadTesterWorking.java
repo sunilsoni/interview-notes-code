@@ -116,15 +116,15 @@ class KeypadTesterWorking {
     public static char slowestKey(List<List<Integer>> keyTimes) {
         int maxDiff = 0;
         char slowestChar = 'a';
-        
-        for(int i = 0; i < keyTimes.size(); i++) {
+
+        for (int i = 0; i < keyTimes.size(); i++) {
             int currentTime = keyTimes.get(i).get(1);
-            int prevTime = i == 0 ? 0 : keyTimes.get(i-1).get(1);
+            int prevTime = i == 0 ? 0 : keyTimes.get(i - 1).get(1);
             int timeDiff = currentTime - prevTime;
-            
-            if(timeDiff > maxDiff) {
+
+            if (timeDiff > maxDiff) {
                 maxDiff = timeDiff;
-                slowestChar = (char)('a' + keyTimes.get(i).get(0));
+                slowestChar = (char) ('a' + keyTimes.get(i).get(0));
             }
         }
         return slowestChar;
@@ -134,25 +134,25 @@ class KeypadTesterWorking {
     public static void main(String[] args) {
         // Test Case 1
         List<List<Integer>> test1 = Arrays.asList(
-            Arrays.asList(0, 2), 
-            Arrays.asList(1, 3),
-            Arrays.asList(0, 7)
+                Arrays.asList(0, 2),
+                Arrays.asList(1, 3),
+                Arrays.asList(0, 7)
         );
         testCase(test1, 'a', "Test Case 1");
 
         // Test Case 2
         List<List<Integer>> test2 = Arrays.asList(
-            Arrays.asList(0, 1),
-            Arrays.asList(0, 3),
-            Arrays.asList(4, 5),
-            Arrays.asList(5, 6),
-            Arrays.asList(4, 10)
+                Arrays.asList(0, 1),
+                Arrays.asList(0, 3),
+                Arrays.asList(4, 5),
+                Arrays.asList(5, 6),
+                Arrays.asList(4, 10)
         );
         testCase(test2, 'e', "Test Case 2");
 
         // Edge Case: Single Key Press
         List<List<Integer>> test3 = Arrays.asList(
-            Arrays.asList(0, 5)
+                Arrays.asList(0, 5)
         );
         testCase(test3, 'a', "Edge Case - Single Key");
 
@@ -162,9 +162,9 @@ class KeypadTesterWorking {
 
         // Same Key Multiple Times
         List<List<Integer>> test5 = Arrays.asList(
-            Arrays.asList(0, 1),
-            Arrays.asList(0, 3),
-            Arrays.asList(0, 8)
+                Arrays.asList(0, 1),
+                Arrays.asList(0, 3),
+                Arrays.asList(0, 8)
         );
         testCase(test5, 'a', "Same Key Multiple Times");
     }
@@ -186,12 +186,12 @@ class KeypadTesterWorking {
         List<List<Integer>> largeInput = new ArrayList<>();
         Random rand = new Random();
         int currentTime = 0;
-        
-        for(int i = 0; i < size; i++) {
+
+        for (int i = 0; i < size; i++) {
             currentTime += rand.nextInt(5) + 1;
             largeInput.add(Arrays.asList(
-                rand.nextInt(26),  // random key (0-25)
-                currentTime        // increasing time
+                    rand.nextInt(26),  // random key (0-25)
+                    currentTime        // increasing time
             ));
         }
         // Add a known maximum time difference

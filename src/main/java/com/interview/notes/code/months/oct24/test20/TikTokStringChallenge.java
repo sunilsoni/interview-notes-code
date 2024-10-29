@@ -23,7 +23,7 @@ public class TikTokStringChallenge {
                 }
             }
         }
-        
+
         return changes;
     }
 

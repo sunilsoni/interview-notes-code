@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.oct24.amz.test20;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.PriorityQueue;
 
 public class AmazonPnLAnalysis {
 

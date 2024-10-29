@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.amz.test20;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
 FINAL WORKING
@@ -213,25 +215,12 @@ public class TikTokVideoIDGeneration {
         if (expected.size() != actual.size()) {
             return false;
         }
-        for(int i=0;i<expected.size();i++) {
-            if(!expected.get(i).equals(actual.get(i))) {
+        for (int i = 0; i < expected.size(); i++) {
+            if (!expected.get(i).equals(actual.get(i))) {
                 return false;
             }
         }
         return true;
-    }
-
-    // Test Case class to hold individual test cases
-    static class TestCase {
-        String idStream;
-        List<String> videoIds;
-        List<Integer> expected;
-
-        TestCase(String idStream, List<String> videoIds, List<Integer> expected) {
-            this.idStream = idStream;
-            this.videoIds = videoIds;
-            this.expected = expected;
-        }
     }
 
     public static void main(String[] args) {
@@ -276,14 +265,14 @@ public class TikTokVideoIDGeneration {
         // Additional Test Case 5: Large idStream and videoIds
         // Note: Adjusted expected values to match the logic
         StringBuilder largeIdStreamBuilder = new StringBuilder();
-        for(int i=0;i<100000;i++) {
+        for (int i = 0; i < 100000; i++) {
             largeIdStreamBuilder.append(i % 10);
         }
         String largeIdStream = largeIdStreamBuilder.toString();
         List<String> largeVideoIds = new ArrayList<>();
         List<Integer> largeExpected = new ArrayList<>();
         // Each videoId requires 10 of each digit
-        for(int i=0;i<1000;i++) {
+        for (int i = 0; i < 1000; i++) {
             largeVideoIds.add("0123456789".repeat(10)); // "01234567890123456789..." (100 characters)
             // To have 10 of each digit, since idStream has 100000 digits, the 10th occurrence of each digit is at position 99 (0-based)
             largeExpected.add(100); // Exact position where the 10th occurrence of the last required digit appears
@@ -296,15 +285,28 @@ public class TikTokVideoIDGeneration {
 
         // Run test cases
         int testCaseNumber = 1;
-        for(TestCase tc : testCases) {
+        for (TestCase tc : testCases) {
             List<Integer> actual = countMinimumCharactersForVideoIDs(tc.idStream, tc.videoIds);
             boolean pass = compareResults(tc.expected, actual);
             System.out.println("Test Case " + testCaseNumber + ": " + (pass ? "PASS" : "FAIL"));
-            if(!pass) {
+            if (!pass) {
                 System.out.println("Expected: " + tc.expected);
                 System.out.println("Actual:   " + actual);
             }
             testCaseNumber++;
+        }
+    }
+
+    // Test Case class to hold individual test cases
+    static class TestCase {
+        String idStream;
+        List<String> videoIds;
+        List<Integer> expected;
+
+        TestCase(String idStream, List<String> videoIds, List<Integer> expected) {
+            this.idStream = idStream;
+            this.videoIds = videoIds;
+            this.expected = expected;
         }
     }
 }

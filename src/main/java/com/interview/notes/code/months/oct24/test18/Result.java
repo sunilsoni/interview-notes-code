@@ -1,10 +1,16 @@
 package com.interview.notes.code.months.oct24.test18;
 
-import java.net.http.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import java.net.URI;
-import java.util.*;
-import org.json.simple.*;
-import org.json.simple.parser.*;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 class Result {
 
@@ -49,6 +55,18 @@ class Result {
                 .orElse("");
     }
 
+    public static void main(String[] args) throws Exception {
+        // Sample test cases
+        test("Seattle", 500, "Cafe Juanita");
+        test("Miami", 1000, "Pirates of Grill");
+    }
+
+    // Test method to verify the output
+    public static void test(String city, int votes, String expected) throws Exception {
+        String result = finestFoodOutlet(city, votes);
+        System.out.println(result.equals(expected) ? "PASS" : "FAIL: Expected " + expected + " but got " + result);
+    }
+
     // Helper class for food outlet information
     static class FoodOutlet {
         String name;
@@ -61,20 +79,16 @@ class Result {
             this.votes = votes;
         }
 
-        String getName() { return name; }
-        double getRating() { return rating; }
-        long getVotes() { return votes; }
-    }
+        String getName() {
+            return name;
+        }
 
-    public static void main(String[] args) throws Exception {
-        // Sample test cases
-        test("Seattle", 500, "Cafe Juanita");
-        test("Miami", 1000, "Pirates of Grill");
-    }
+        double getRating() {
+            return rating;
+        }
 
-    // Test method to verify the output
-    public static void test(String city, int votes, String expected) throws Exception {
-        String result = finestFoodOutlet(city, votes);
-        System.out.println(result.equals(expected) ? "PASS" : "FAIL: Expected " + expected + " but got " + result);
+        long getVotes() {
+            return votes;
+        }
     }
 }

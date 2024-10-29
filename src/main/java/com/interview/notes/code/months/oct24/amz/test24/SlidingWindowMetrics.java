@@ -7,7 +7,7 @@ For example:
 sum: ([1, 3, 2, 2, 6, 5], 3) => [6, 7, 10, 13] max: ([1, 3, 2, 2, 6, 5], 3) => [3, 3, 6, 6]
  */
 public class SlidingWindowMetrics {
-    
+
     public static int[] calculateSlidingSum(int[] data, int windowSize) {
         if (data == null || data.length == 0 || windowSize <= 0 || windowSize > data.length) {
             return new int[0];
@@ -15,18 +15,18 @@ public class SlidingWindowMetrics {
 
         int resultSize = data.length - windowSize + 1;
         int[] result = new int[resultSize];
-        
+
         int windowSum = 0;
         for (int i = 0; i < windowSize; i++) {
             windowSum += data[i];
         }
         result[0] = windowSum;
-        
+
         for (int i = 1; i < resultSize; i++) {
-            windowSum = windowSum - data[i-1] + data[i+windowSize-1];
+            windowSum = windowSum - data[i - 1] + data[i + windowSize - 1];
             result[i] = windowSum;
         }
-        
+
         return result;
     }
 
@@ -37,7 +37,7 @@ public class SlidingWindowMetrics {
 
         int resultSize = data.length - windowSize + 1;
         int[] result = new int[resultSize];
-        
+
         // For each window
         for (int i = 0; i <= data.length - windowSize; i++) {
             int max = data[i];
@@ -47,7 +47,7 @@ public class SlidingWindowMetrics {
             }
             result[i] = max;
         }
-        
+
         return result;
     }
 
@@ -55,10 +55,10 @@ public class SlidingWindowMetrics {
         // Test both sum and max operations
         System.out.println("Testing Sliding Sum:");
         testSlidingSum();
-        
+
         System.out.println("\nTesting Sliding Max:");
         testSlidingMax();
-        
+
         // Test large data
         testLargeData();
     }
@@ -86,19 +86,19 @@ public class SlidingWindowMetrics {
         for (int i = 0; i < largeInput.length; i++) {
             largeInput[i] = i % 10;
         }
-        
+
         System.out.println("\nLarge Data Tests:");
-        
+
         // Test Sum with large data
         long startTime = System.currentTimeMillis();
         int[] sumResult = calculateSlidingSum(largeInput, 1000);
         long sumTime = System.currentTimeMillis() - startTime;
-        
+
         // Test Max with large data
         startTime = System.currentTimeMillis();
         int[] maxResult = calculateSlidingMax(largeInput, 1000);
         long maxTime = System.currentTimeMillis() - startTime;
-        
+
         System.out.println("Sum execution time: " + sumTime + "ms");
         System.out.println("Max execution time: " + maxTime + "ms");
         System.out.println("Results size: " + sumResult.length);
@@ -111,9 +111,9 @@ public class SlidingWindowMetrics {
         } else {
             result = calculateSlidingMax(input, windowSize);
         }
-        
+
         boolean passed = arrayEquals(result, expected);
-        
+
         System.out.println(operation + " - " + testName + ": " + (passed ? "PASS" : "FAIL"));
         if (!passed) {
             System.out.println("Input: " + arrayToString(input));

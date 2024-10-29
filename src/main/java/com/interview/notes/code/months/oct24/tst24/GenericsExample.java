@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.oct24.tst24;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GenericsExample {
     public static void main(String[] args) {

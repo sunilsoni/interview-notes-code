@@ -63,8 +63,8 @@ public class TikTokStringChallenge1 {
         long duration = (endTime - startTime) / 1000000; // Convert to milliseconds
 
         boolean passed = result == expected;
-        System.out.println("Test case: " + caption.substring(0, Math.min(caption.length(), 20)) + 
-                           (caption.length() > 20 ? "..." : ""));
+        System.out.println("Test case: " + caption.substring(0, Math.min(caption.length(), 20)) +
+                (caption.length() > 20 ? "..." : ""));
         System.out.println("Expected: " + expected);
         System.out.println("Result: " + result);
         System.out.println("Status: " + (passed ? "PASSED" : "FAILED"));

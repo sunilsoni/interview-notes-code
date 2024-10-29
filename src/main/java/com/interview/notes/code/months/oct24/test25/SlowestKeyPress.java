@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.oct24.test25;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SlowestKeyPress {
 
@@ -66,53 +67,59 @@ public class SlowestKeyPress {
 
         // Sample Test Case 0
         int[][] test0 = {
-            {0, 2},
-            {1, 3},
-            {0, 7}
+                {0, 2},
+                {1, 3},
+                {0, 7}
         };
-        if (runTest(0, test0, 'a')) passed++; else failed++;
+        if (runTest(0, test0, 'a')) passed++;
+        else failed++;
 
         // Sample Test Case 1
         int[][] test1 = {
-            {0, 1},
-            {0, 3},
-            {4, 5},
-            {5, 6},
-            {4, 10}
+                {0, 1},
+                {0, 3},
+                {4, 5},
+                {5, 6},
+                {4, 10}
         };
-        if (runTest(1, test1, 'e')) passed++; else failed++;
+        if (runTest(1, test1, 'e')) passed++;
+        else failed++;
 
         // Additional Test Case 2: Only one key press
         int[][] test2 = {
-            {2, 5}
+                {2, 5}
         };
-        if (runTest(2, test2, 'c')) passed++; else failed++;
+        if (runTest(2, test2, 'c')) passed++;
+        else failed++;
 
         // Additional Test Case 3: Maximum duration at the first key press
         int[][] test3 = {
-            {0, 10},
-            {1, 15},
-            {2, 20}
+                {0, 10},
+                {1, 15},
+                {2, 20}
         };
-        if (runTest(3, test3, 'a')) passed++; else failed++;
+        if (runTest(3, test3, 'a')) passed++;
+        else failed++;
 
         // Additional Test Case 4: Maximum duration at the last key press
         int[][] test4 = {
-            {0, 1},
-            {1, 3},
-            {2, 10}
+                {0, 1},
+                {1, 3},
+                {2, 10}
         };
-        if (runTest(4, test4, 'c')) passed++; else failed++;
+        if (runTest(4, test4, 'c')) passed++;
+        else failed++;
 
         // Additional Test Case 5: All durations same except one
         int[][] test5 = {
-            {0, 1},
-            {1, 2},
-            {2, 4},
-            {3, 5},
-            {4, 7}
+                {0, 1},
+                {1, 2},
+                {2, 4},
+                {3, 5},
+                {4, 7}
         };
-        if (runTest(5, test5, 'c')) passed++; else failed++;
+        if (runTest(5, test5, 'c')) passed++;
+        else failed++;
 
         // Additional Test Case 6: Large Input
         int n = 100000;
@@ -125,18 +132,20 @@ public class SlowestKeyPress {
         // Since there's a constraint that there is only one key with the worst time,
         // we modify the last key to have a larger duration
         test6[n - 1][1] = n + 100; // Duration = 100
-        if (runTest(6, test6, (char) ('a' + ( (n-1) % 26 )))) passed++; else failed++;
+        if (runTest(6, test6, (char) ('a' + ((n - 1) % 26)))) passed++;
+        else failed++;
 
         // Additional Test Case 7: All key presses have the same duration except one
         int[][] test7 = {
-            {0, 1},
-            {1, 3},
-            {2, 5},
-            {3, 7},
-            {4, 12}, // Duration = 5, others are 2
-            {5, 14}
+                {0, 1},
+                {1, 3},
+                {2, 5},
+                {3, 7},
+                {4, 12}, // Duration = 5, others are 2
+                {5, 14}
         };
-        if (runTest(7, test7, 'e')) passed++; else failed++;
+        if (runTest(7, test7, 'e')) passed++;
+        else failed++;
 
         // Summary
         System.out.println("\nTotal Passed: " + passed);

@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.amz.test22;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MaxNegativePnL {
 
@@ -26,7 +28,7 @@ public class MaxNegativePnL {
             }
         }
 
-        System.out.println("PnL: "+PnL + " Output: "+left);
+        System.out.println("PnL: " + PnL + " Output: " + left);
         return left;
     }
 
@@ -47,7 +49,7 @@ public class MaxNegativePnL {
         testCases.add(Arrays.asList(5, 3, 1, 2));  // Example from previous question
         testCases.add(Arrays.asList(1));  // Edge case: single element
         testCases.add(Arrays.asList(1000000000, 1000000000));  // Large numbers
-        
+
         // Large input test
         List<Integer> largeInput = new ArrayList<>();
         for (int i = 0; i < 100000; i++) {
@@ -62,8 +64,8 @@ public class MaxNegativePnL {
             int result = getMaxNegativePnL(testCase);
             long endTime = System.nanoTime();
             double duration = (endTime - startTime) / 1e9; // Convert to seconds
-            System.out.printf("Test Case %d: %s (%.6f seconds)%n", 
-                              i, (checkTestCase(testCase, result) ? "PASS" : "FAIL"), duration);
+            System.out.printf("Test Case %d: %s (%.6f seconds)%n",
+                    i, (checkTestCase(testCase, result) ? "PASS" : "FAIL"), duration);
         }
     }
 

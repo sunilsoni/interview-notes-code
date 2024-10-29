@@ -8,7 +8,7 @@ sum: ([1, 3, 2, 2, 6, 5], 3) => [6, 7, 10, 13]
 _max: ([1, 3, 2, 2, 6, 5], 3) = [3, 3, 6, 6]
  */
 public class SlidingWindowMetrics {
-    
+
     public static int[] calculateSlidingSum(int[] data, int windowSize) {
         // Validate input: return empty array if data is null, window size is non-positive, or window size is greater than data length
         if (data == null || windowSize <= 0 || windowSize > data.length) {
@@ -17,14 +17,14 @@ public class SlidingWindowMetrics {
 
         int resultSize = data.length - windowSize + 1;
         int[] result = new int[resultSize];
-        
+
         // Calculate initial window sum
         int windowSum = 0;
         for (int i = 0; i < windowSize; i++) {
             windowSum += data[i]; // Sum the first 'windowSize' elements
         }
         result[0] = windowSum;
-        
+
         // Slide window and update sum
         for (int i = 1; i < resultSize; i++) {
             // Update the window sum by subtracting the element that is no longer in the window
@@ -32,7 +32,7 @@ public class SlidingWindowMetrics {
             windowSum = windowSum - data[i - 1] + data[i + windowSize - 1];
             result[i] = windowSum;
         }
-        
+
         return result; // Return the array of sliding window sums
     }
 
@@ -42,7 +42,7 @@ public class SlidingWindowMetrics {
         runTest(new int[]{1}, 1, new int[]{1}, "Single Element");
         runTest(new int[]{}, 3, new int[]{}, "Empty Array");
         runTest(new int[]{1, 2, 3}, 4, new int[]{}, "Window Size Larger Than Array");
-        
+
         // Large data test case
         int[] largeInput = new int[1000000];
         for (int i = 0; i < largeInput.length; i++) {
@@ -54,11 +54,11 @@ public class SlidingWindowMetrics {
         System.out.println("Large Data Test (1M elements, window=1000):");
         System.out.println("Execution time: " + (endTime - startTime) + "ms");
         System.out.println("Result size: " + largeResult.length);
-        
+
         // Verify first few elements of large result
-        boolean largeTestPass = largeResult.length == 999001 && 
-                              largeResult[0] == 4500 &&
-                              largeResult[1] == 4500;
+        boolean largeTestPass = largeResult.length == 999001 &&
+                largeResult[0] == 4500 &&
+                largeResult[1] == 4500;
         System.out.println("Large Data Test: " + (largeTestPass ? "PASS" : "FAIL"));
     }
 
@@ -66,7 +66,7 @@ public class SlidingWindowMetrics {
     private static void runTest(int[] input, int windowSize, int[] expected, String testName) {
         int[] result = calculateSlidingSum(input, windowSize);
         boolean passed = arrayEquals(result, expected);
-        
+
         System.out.println(testName + ": " + (passed ? "PASS" : "FAIL"));
         if (!passed) {
             // Print expected and actual results if the test fails

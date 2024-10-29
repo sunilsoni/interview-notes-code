@@ -153,14 +153,14 @@ public class TikTokStringChallengePartialFiveOf15 {
     public static void main(String[] args) {
         // Sample test cases
         String[] testCaptions = {
-            "aca",
-            "abab",
-            "abcdef"
+                "aca",
+                "abab",
+                "abcdef"
         };
         int[] expectedResults = {
-            2,
-            2,
-            3
+                2,
+                2,
+                3
         };
 
         boolean allPassed = true;

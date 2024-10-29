@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.oct24.amz.test26;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 FINAL WORKING
 
@@ -156,19 +159,6 @@ public class SecurityCodeSolver {
         return new String(result);
     }
 
-    // Test case class to hold input and expected output
-    static class TestCase {
-        String code;
-        long k;
-        String expected;
-
-        TestCase(String code, long k, String expected) {
-            this.code = code;
-            this.k = k;
-            this.expected = expected;
-        }
-    }
-
     public static void main(String[] args) {
         List<TestCase> testCases = new ArrayList<>();
 
@@ -303,6 +293,19 @@ public class SecurityCodeSolver {
             return s;
         } else {
             return s.substring(0, 10) + "..." + s.substring(s.length() - 10);
+        }
+    }
+
+    // Test case class to hold input and expected output
+    static class TestCase {
+        String code;
+        long k;
+        String expected;
+
+        TestCase(String code, long k, String expected) {
+            this.code = code;
+            this.k = k;
+            this.expected = expected;
         }
     }
 }

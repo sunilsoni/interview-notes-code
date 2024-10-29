@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.test23;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TikTokStringChallengeDP {
     public static int getMinTransformations1(String caption) {
@@ -20,6 +22,7 @@ public class TikTokStringChallengeDP {
         }
         return count;
     }
+
     public static int getMinTransformations(String caption) {
         int n = caption.length();
         char[] chars = caption.toCharArray();
@@ -62,6 +65,7 @@ public class TikTokStringChallengeDP {
 
         return totalCost;
     }
+
     /**
      * Returns the minimum number of transformation steps required to ensure every character
      * in the caption has at least one identical adjacent character.
@@ -110,8 +114,8 @@ public class TikTokStringChallengeDP {
         // - If already covered by previous pairings
         long minCost = dp[n - 1];
         // Additionally, consider if pairing the last character with the second last character offers a better cost
-        if (n >=2 ) {
-            minCost = Math.min(minCost, dp[n - 2] + Math.abs(chars[n -1] - chars[n -2]));
+        if (n >= 2) {
+            minCost = Math.min(minCost, dp[n - 2] + Math.abs(chars[n - 1] - chars[n - 2]));
         }
 
         return (int) minCost;

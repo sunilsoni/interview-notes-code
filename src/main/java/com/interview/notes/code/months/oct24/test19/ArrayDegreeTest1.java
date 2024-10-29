@@ -39,7 +39,7 @@ public class ArrayDegreeTest1 {
         Map<Integer, Integer> freqMap = new HashMap<>();
         Map<Integer, Integer> firstOccurrence = new HashMap<>();
         Map<Integer, Integer> lastOccurrence = new HashMap<>();
-        
+
         // Record frequencies and positions
         int maxFreq = 0;
         for (int i = 0; i < a.size(); i++) {
@@ -68,12 +68,12 @@ public class ArrayDegreeTest1 {
         // Find smallest subarray length
         int minLen = Integer.MAX_VALUE;
         List<Integer> result = null;
-        
+
         for (int num : maxFreqElements) {
             int start = firstOccurrence.get(num);
             int end = lastOccurrence.get(num);
             int len = end - start + 1;
-            
+
             if (len < minLen) {
                 minLen = len;
                 result = a.subList(start, end + 1);
@@ -88,11 +88,11 @@ public class ArrayDegreeTest1 {
             long startTime = System.currentTimeMillis();
             List<Integer> result = solve(input);
             long endTime = System.currentTimeMillis();
-            
+
             System.out.println(testName + ":");
             System.out.println("Input size: " + input.size());
             System.out.println("Time taken: " + (endTime - startTime) + "ms");
-            
+
             if (expected != null) {
                 boolean passed = result.equals(expected);
                 System.out.println("Status: " + (passed ? "PASS" : "FAIL"));

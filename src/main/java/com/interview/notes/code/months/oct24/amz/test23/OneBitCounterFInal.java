@@ -79,6 +79,7 @@ Complete the function `getOneBits` with the following parameter:
 
 
  */
+
 /**
  * This program counts the number of '1' bits in the binary representation of a given integer
  * and identifies their positions from left to right, starting from position 1.

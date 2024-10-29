@@ -12,10 +12,10 @@ public class TikTokStringChallenge2 {
 
         for (int i = 0; i < chars.length; i++) {
             boolean mismatch = true;
-            if (i > 0 && chars[i] == chars[i-1]) {
+            if (i > 0 && chars[i] == chars[i - 1]) {
                 mismatch = false;
             }
-            if (i < chars.length - 1 && chars[i] == chars[i+1]) {
+            if (i < chars.length - 1 && chars[i] == chars[i + 1]) {
                 mismatch = false;
             }
             if (mismatch) {
@@ -53,8 +53,8 @@ public class TikTokStringChallenge2 {
         long duration = (endTime - startTime) / 1000000; // Convert to milliseconds
 
         boolean passed = result == expected;
-        System.out.println("Test case: " + caption.substring(0, Math.min(caption.length(), 20)) + 
-                           (caption.length() > 20 ? "..." : ""));
+        System.out.println("Test case: " + caption.substring(0, Math.min(caption.length(), 20)) +
+                (caption.length() > 20 ? "..." : ""));
         System.out.println("Expected: " + expected);
         System.out.println("Result: " + result);
         System.out.println("Status: " + (passed ? "PASSED" : "FAILED"));
