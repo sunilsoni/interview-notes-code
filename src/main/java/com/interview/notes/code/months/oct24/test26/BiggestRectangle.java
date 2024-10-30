@@ -1,6 +1,10 @@
 package com.interview.notes.code.months.oct24.test26;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
+
 /*
 WORKING
 
@@ -88,19 +92,19 @@ public class BiggestRectangle {
         int n = B.size();
         Stack<Integer> stack = new Stack<>();
         int maxArea = 0;
-        
+
         for (int i = 0; i <= n; i++) {
             int h = (i == n) ? 0 : B.get(i);
-            
+
             while (!stack.isEmpty() && h < B.get(stack.peek())) {
                 int height = B.get(stack.pop());
                 int width = stack.isEmpty() ? i : i - stack.peek() - 1;
                 maxArea = Math.max(maxArea, height * width);
             }
-            
+
             stack.push(i);
         }
-        
+
         return maxArea;
     }
 
@@ -112,22 +116,22 @@ public class BiggestRectangle {
         testCases.add(Arrays.asList(1, 2, 3, 4, 5));
         testCases.add(Arrays.asList(5, 4, 3, 2, 1));
         testCases.add(Arrays.asList(2, 1, 5, 6, 2, 3));
-        
+
         // Expected results
         int[] expectedResults = {15, 9, 9, 9, 10};
-        
+
         // Run tests
         for (int i = 0; i < testCases.size(); i++) {
             List<Integer> testCase = testCases.get(i);
             int result = maxArea(testCase);
             boolean passed = result == expectedResults[i];
-            
-            System.out.println("Test Case " + (i + 1) + ": " + 
-                               (passed ? "PASS" : "FAIL") + 
-                               " (Expected: " + expectedResults[i] + 
-                               ", Got: " + result + ")");
+
+            System.out.println("Test Case " + (i + 1) + ": " +
+                    (passed ? "PASS" : "FAIL") +
+                    " (Expected: " + expectedResults[i] +
+                    ", Got: " + result + ")");
         }
-        
+
         // Large data input test
         List<Integer> largeInput = new ArrayList<>();
         for (int i = 0; i < 100000; i++) {
@@ -136,7 +140,7 @@ public class BiggestRectangle {
         long startTime = System.currentTimeMillis();
         int largeResult = maxArea(largeInput);
         long endTime = System.currentTimeMillis();
-        
+
         System.out.println("\nLarge Input Test:");
         System.out.println("Result: " + largeResult);
         System.out.println("Time taken: " + (endTime - startTime) + " ms");

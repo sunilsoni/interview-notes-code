@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Grand Number Game Solver
- *
+ * <p>
  * Problem Description:
  * In a game scenario, you are presented with an array containing 2N positive integers.
  * You have N operations to manipulate these numbers. In each operation, you choose
@@ -12,7 +12,7 @@ import java.util.*;
  * as the operation number multiplied by the GCD of the two chosen numbers. The total
  * score is the sum of the scores from all operations. The objective is to maximize
  * the total score.
- *
+ * <p>
  * Solution Approach:
  * Since N is up to 10, the total number of integers is up to 20. We can model this
  * problem using recursive dynamic programming with memoization. We use a bitmask

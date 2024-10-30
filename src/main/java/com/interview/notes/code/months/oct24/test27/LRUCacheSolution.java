@@ -1,9 +1,7 @@
 package com.interview.notes.code.months.oct24.test27;
 
-import com.interview.notes.code.months.year2023.june23.test8.Input;
-import org.hibernate.result.Output;
-
 import java.util.*;
+
 /*
 
 WORKING
@@ -168,7 +166,7 @@ public class LRUCacheSolution {
         // Test case 1
         int capacity1 = 2;
         List<String> operations1 = Arrays.asList(
-            "GET, 2", "PUT, 1, 100", "PUT, 2, 125", "PUT, 3, 150", "GET, 1", "GET, 3"
+                "GET, 2", "PUT, 1, 100", "PUT, 2, 125", "PUT, 3, 150", "GET, 1", "GET, 3"
         );
         List<Integer> expected1 = Arrays.asList(-1, -1, 150);
         testCase(1, capacity1, operations1, expected1);
@@ -176,7 +174,7 @@ public class LRUCacheSolution {
         // Test case 2
         int capacity2 = 3;
         List<String> operations2 = Arrays.asList(
-            "PUT,11,25", "PUT,22,50", "PUT,11,75", "GET,11", "GET,22"
+                "PUT,11,25", "PUT,22,50", "PUT,11,75", "GET,11", "GET,22"
         );
         List<Integer> expected2 = Arrays.asList(75, 50);
         testCase(2, capacity2, operations2, expected2);

@@ -47,21 +47,6 @@ public class DiskSpaceAnalysis {
     }
 
     /**
-     * Represents a test case with input parameters and the expected output.
-     */
-    static class TestCase {
-        int x;
-        List<Integer> space;
-        int expected;
-
-        TestCase(int x, List<Integer> space, int expected) {
-            this.x = x;
-            this.space = space;
-            this.expected = expected;
-        }
-    }
-
-    /**
      * Executes all test cases and prints whether each test passes or fails.
      */
     public static void main(String[] args) {
@@ -146,6 +131,21 @@ public class DiskSpaceAnalysis {
                 System.out.println("  Exception: " + e.getMessage());
             }
             testNumber++;
+        }
+    }
+
+    /**
+     * Represents a test case with input parameters and the expected output.
+     */
+    static class TestCase {
+        int x;
+        List<Integer> space;
+        int expected;
+
+        TestCase(int x, List<Integer> space, int expected) {
+            this.x = x;
+            this.space = space;
+            this.expected = expected;
         }
     }
 }

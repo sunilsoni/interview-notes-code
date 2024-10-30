@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.oct24.wallmart.test3.test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 
 WORKING FINAL:
@@ -102,24 +105,24 @@ Each line i of the n subsequent lines (where \( 0 \leq i < n \)) contains an int
 
  */
 public class DiskSpaceAnalyzer {
-    
+
     // Main solution method
     public static int segment(int x, List<Integer> space) {
         if (space == null || space.isEmpty() || x > space.size()) {
             return 0;
         }
-        
+
         int maxOfMins = Integer.MIN_VALUE;
-        
+
         // Use sliding window approach
         for (int i = 0; i <= space.size() - x; i++) {
             int minInWindow = findMinInRange(space, i, i + x);
             maxOfMins = Math.max(maxOfMins, minInWindow);
         }
-        
+
         return maxOfMins;
     }
-    
+
     private static int findMinInRange(List<Integer> space, int start, int end) {
         int min = Integer.MAX_VALUE;
         for (int i = start; i < end; i++) {
@@ -127,42 +130,42 @@ public class DiskSpaceAnalyzer {
         }
         return min;
     }
-    
+
     // Test method
     public static void main(String[] args) {
         // Test case 1
         testCase(2, Arrays.asList(1, 1, 1), 1, "Basic test with same values");
-        
+
         // Test case 2
         testCase(3, Arrays.asList(2, 5, 4, 6, 8), 4, "Example from problem statement");
-        
+
         // Test case 3
         testCase(2, Arrays.asList(8, 2, 4, 6), 4, "Another example from problem");
-        
+
         // Edge case - single element
         testCase(1, Arrays.asList(5), 5, "Single element");
-        
+
         // Edge case - segment size equals array size
         testCase(3, Arrays.asList(1, 2, 3), 1, "Segment equals array size");
-        
+
         // Large data test
         List<Integer> largeInput = new ArrayList<>();
         for (int i = 0; i < 100000; i++) {
             largeInput.add(i % 1000 + 1);
         }
         testCase(1000, largeInput, 1, "Large data test");
-        
+
         // Additional test cases
         testCase(2, Arrays.asList(1, 2, 3, 1, 2), 2, "Multiple segments test");
         testCase(3, Arrays.asList(7, 6, 5, 4, 3, 2, 1), 5, "Decreasing sequence");
     }
-    
+
     private static void testCase(int x, List<Integer> space, int expected, String description) {
         try {
             long startTime = System.currentTimeMillis();
             int result = segment(x, space);
             long endTime = System.currentTimeMillis();
-            
+
             boolean passed = result == expected;
             System.out.printf("Test Case: %s - %s%n", description, passed ? "PASSED" : "FAILED");
             if (!passed) {
@@ -170,7 +173,7 @@ public class DiskSpaceAnalyzer {
             }
             System.out.printf("Execution time: %d ms%n", endTime - startTime);
             System.out.println("--------------------");
-            
+
         } catch (Exception e) {
             System.out.printf("Test Case: %s - FAILED (Exception: %s)%n", description, e.getMessage());
             System.out.println("--------------------");

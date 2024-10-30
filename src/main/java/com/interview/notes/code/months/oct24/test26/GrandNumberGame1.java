@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.oct24.test26;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class GrandNumberGame1 {
 
@@ -16,7 +19,7 @@ public class GrandNumberGame1 {
     private static void runTest(List<Integer> input, int expected, String testName) {
         int result = solve(input);
         System.out.println(testName + ": " + (result == expected ? "PASS" : "FAIL") +
-                           " (Expected: " + expected + ", Got: " + result + ")");
+                " (Expected: " + expected + ", Got: " + result + ")");
     }
 
     private static List<Integer> generateLargeInput(int n) {

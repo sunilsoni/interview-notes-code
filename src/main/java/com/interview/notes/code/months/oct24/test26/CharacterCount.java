@@ -15,7 +15,7 @@ public class CharacterCount {
                 .collect(Collectors.groupingBy(c -> c, LinkedHashMap::new, Collectors.counting())); // Group by character and count while maintaining order
 
         // Print the results
-        characterCount.forEach((character, count) -> 
-            System.out.println(character + ": " + count));
+        characterCount.forEach((character, count) ->
+                System.out.println(character + ": " + count));
     }
 }
