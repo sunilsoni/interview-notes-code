@@ -8,18 +8,18 @@ import java.util.List;
 public class AgeCalculator {
     public static void main(String[] args) {
         List<Person> people = Arrays.asList(
-            new Person("Alice", LocalDate.of(1990, 5, 15)),
-            new Person("Bob", LocalDate.of(1985, 8, 20)),
-            new Person("Charlie", LocalDate.of(2000, 3, 10))
+                new Person("Alice", LocalDate.of(1990, 5, 15)),
+                new Person("Bob", LocalDate.of(1985, 8, 20)),
+                new Person("Charlie", LocalDate.of(2000, 3, 10))
         );
 
         LocalDate currentDate = LocalDate.now();
 
         people.stream()
-              .forEach(person -> {
-                  int age = Period.between(person.getDob(), currentDate).getYears();
-                  System.out.println(person.getName() + " is " + age + " years old.");
-              });
+                .forEach(person -> {
+                    int age = Period.between(person.getDob(), currentDate).getYears();
+                    System.out.println(person.getName() + " is " + age + " years old.");
+                });
     }
 }
 

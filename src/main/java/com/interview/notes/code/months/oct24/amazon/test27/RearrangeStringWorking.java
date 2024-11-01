@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.oct24.amazon.test27;
 
 import java.util.*;
+
 /*
 WORKING
 
@@ -64,19 +65,6 @@ public class RearrangeStringWorking {
     }
 
     /**
-     * Helper class to store character and its frequency.
-     */
-    static class CharFrequency {
-        char character;
-        int frequency;
-
-        CharFrequency(char character, int frequency) {
-            this.character = character;
-            this.frequency = frequency;
-        }
-    }
-
-    /**
      * Main method to run test cases.
      *
      * @param args Command-line arguments (not used).
@@ -127,19 +115,6 @@ public class RearrangeStringWorking {
     }
 
     /**
-     * Represents a test case with input and expected output.
-     */
-    static class TestCase {
-        String input;
-        String expected;
-
-        TestCase(String input, String expected) {
-            this.input = input;
-            this.expected = expected;
-        }
-    }
-
-    /**
      * Generates an expected output for the large test case.
      * Since generating the exact expected output for large inputs is impractical,
      * this method assumes that the rearrangement is possible and returns a valid rearranged string.
@@ -158,7 +133,7 @@ public class RearrangeStringWorking {
      * - Contains the same frequency of each character.
      * - No two adjacent characters are the same.
      *
-     * @param input    The original input string.
+     * @param input      The original input string.
      * @param rearranged The rearranged string.
      * @return True if valid, else false.
      */
@@ -186,5 +161,31 @@ public class RearrangeStringWorking {
         }
 
         return true;
+    }
+
+    /**
+     * Helper class to store character and its frequency.
+     */
+    static class CharFrequency {
+        char character;
+        int frequency;
+
+        CharFrequency(char character, int frequency) {
+            this.character = character;
+            this.frequency = frequency;
+        }
+    }
+
+    /**
+     * Represents a test case with input and expected output.
+     */
+    static class TestCase {
+        String input;
+        String expected;
+
+        TestCase(String input, String expected) {
+            this.input = input;
+            this.expected = expected;
+        }
     }
 }

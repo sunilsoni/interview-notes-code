@@ -1,7 +1,7 @@
 package com.interview.notes.code.months.oct24.codereport.test3;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EmployeeSalarySortStream {
     public static void main(String[] args) {
@@ -16,8 +16,8 @@ public class EmployeeSalarySortStream {
         // Sort and display salaries and corresponding employee IDs using streams
         System.out.println("Sorted Salaries (Descending) and Employee IDs:");
         employeeSalaries.entrySet().stream()
-            .sorted(Map.Entry.<String, Double>comparingByValue().reversed())
-            .forEach(entry -> System.out.printf("Salary: $%.2f, Employee ID: %s%n", 
-                                                entry.getValue(), entry.getKey()));
+                .sorted(Map.Entry.<String, Double>comparingByValue().reversed())
+                .forEach(entry -> System.out.printf("Salary: $%.2f, Employee ID: %s%n",
+                        entry.getValue(), entry.getKey()));
     }
 }

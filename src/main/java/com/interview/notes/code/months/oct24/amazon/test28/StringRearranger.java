@@ -3,7 +3,7 @@ package com.interview.notes.code.months.oct24.amazon.test28;
 import java.util.*;
 
 public class StringRearranger {
-    
+
     public static String rearrangeString(String str) {
         if (str == null || str.length() <= 1) {
             return str;
@@ -22,8 +22,8 @@ public class StringRearranger {
         }
 
         // Create max heap based on character frequencies
-        PriorityQueue<Map.Entry<Character, Integer>> maxHeap = 
-            new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
+        PriorityQueue<Map.Entry<Character, Integer>> maxHeap =
+                new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
         maxHeap.addAll(freqMap.entrySet());
 
         StringBuilder result = new StringBuilder();
@@ -51,15 +51,15 @@ public class StringRearranger {
     private static void runTest(String input, String expectedOutput, String testName) {
         String result = rearrangeString(input);
         boolean isValid;
-        
+
         if (result.isEmpty()) {
             // For impossible cases, empty result is expected
             isValid = isImpossibleCase(input);
         } else {
-            isValid = isValidRearrangement(result, input) && 
-                     !hasAdjacentDuplicates(result);
+            isValid = isValidRearrangement(result, input) &&
+                    !hasAdjacentDuplicates(result);
         }
-        
+
         System.out.println("Test Case: " + testName);
         System.out.println("Input: " + input);
         System.out.println("Output: " + (result.isEmpty() ? "Impossible" : result));
@@ -70,32 +70,32 @@ public class StringRearranger {
 
     private static boolean isImpossibleCase(String input) {
         if (input == null || input.isEmpty()) return false;
-        
+
         Map<Character, Integer> freqMap = new HashMap<>();
         for (char c : input.toCharArray()) {
             freqMap.put(c, freqMap.getOrDefault(c, 0) + 1);
         }
-        
+
         int maxFreq = Collections.max(freqMap.values());
         return maxFreq > (input.length() + 1) / 2;
     }
 
     private static boolean isValidRearrangement(String result, String input) {
         if (result.length() != input.length()) return false;
-        
+
         char[] inputChars = input.toCharArray();
         char[] resultChars = result.toCharArray();
         Arrays.sort(inputChars);
         Arrays.sort(resultChars);
-        
+
         return Arrays.equals(inputChars, resultChars);
     }
 
     private static boolean hasAdjacentDuplicates(String str) {
         if (str == null || str.length() <= 1) return false;
-        
+
         for (int i = 1; i < str.length(); i++) {
-            if (str.charAt(i) == str.charAt(i-1)) return true;
+            if (str.charAt(i) == str.charAt(i - 1)) return true;
         }
         return false;
     }

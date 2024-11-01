@@ -65,7 +65,7 @@ public class MergeSortedLists {
         boolean passed = result.equals(expected);
         System.out.println(testName + ": " + (passed ? "PASS" : "FAIL"));
         System.out.println("Execution time: " + duration + " ms");
-        
+
         if (!passed) {
             System.out.println("Expected: " + expected);
             System.out.println("Actual: " + result);

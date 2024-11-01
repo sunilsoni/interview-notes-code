@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.oct24.amazon.test27;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 public class CharacterRearranger {
 
@@ -40,34 +42,34 @@ public class CharacterRearranger {
     public static void main(String[] args) {
         // Test cases
         String[] testCases = {
-            "bcaaa",
-            "aab",
-            "aaab",
-            "a",
-            "aa",
-            "aabbcc",
-            "aaaabbbccc",
-            "abcdefg",
-            "zzzzzyyyyxxxxwwwvvvuuu"
+                "bcaaa",
+                "aab",
+                "aaab",
+                "a",
+                "aa",
+                "aabbcc",
+                "aaaabbbccc",
+                "abcdefg",
+                "zzzzzyyyyxxxxwwwvvvuuu"
         };
 
         String[] expectedOutputs = {
-            "abaca",
-            "aba",
-            "",
-            "a",
-            "",
-            "abcabc",
-            "abcabcabc",
-            "abcdefg",
-            "zyzxwvuzyzxwvuzyzxwvu"
+                "abaca",
+                "aba",
+                "",
+                "a",
+                "",
+                "abcabc",
+                "abcabcabc",
+                "abcdefg",
+                "zyzxwvuzyzxwvuzyzxwvu"
         };
 
         for (int i = 0; i < testCases.length; i++) {
             String input = testCases[i];
             String expected = expectedOutputs[i];
             String result = rearrangeString(input);
-            
+
             boolean passed = result.equals(expected) && isValid(result);
             System.out.println("Test Case " + (i + 1) + ": " + (passed ? "PASS" : "FAIL"));
             System.out.println("Input: " + input);
