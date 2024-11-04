@@ -136,6 +136,8 @@ public class GrandNumberGame {
                 unusedIndices.add(i);
             }
         }
+
+
         int k = (Integer.bitCount(bitmask) / 2) + 1;
         for (int i = 0; i < unusedIndices.size(); i++) {
             int idx1 = unusedIndices.get(i);

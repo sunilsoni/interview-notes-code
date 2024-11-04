@@ -1,4 +1,4 @@
-package com.interview.notes.code.months.nov24;
+package com.interview.notes.code.months.nov24.test1;
 
 public class MinimumNumberFinder {
     public static int findMinimum(int[] numbers) {
