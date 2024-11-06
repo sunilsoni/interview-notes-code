@@ -1,5 +1,7 @@
 package com.interview.notes.code.months.nov24.test4;
 
+import java.util.function.BiFunction;
+
 public class Demo {
     public static void main(String args[]) {
         System.out.print("a");
@@ -13,4 +15,8 @@ public class Demo {
         }
         System.out.print("e");
     }
+
+    BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
+
+
 }
