@@ -16,6 +16,37 @@ we want to generate a list of ‘loyal customers’ that meet the criteria of:
 
 public class LoyalCustomerApp {
 
+    public static void main(String[] args) {
+        List<PageView> file1 = new ArrayList<>();
+        List<PageView> file2 = new ArrayList<>();
+
+        CustomerId c1 = new CustomerId("C001");
+        CustomerId c2 = new CustomerId("C002");
+        CustomerId c3 = new CustomerId("C003");
+
+        PageId p1 = new PageId("P001");
+        PageId p2 = new PageId("P002");
+        PageId p3 = new PageId("P003");
+
+        file1.add(new PageView(c1, p1));
+        file1.add(new PageView(c2, p2));
+        file1.add(new PageView(c3, p3));
+        file1.add(new PageView(c2, p1));
+
+        file2.add(new PageView(c2, p1));
+        file2.add(new PageView(c2, p3));
+        file2.add(new PageView(c3, p2));
+        file2.add(new PageView(c3, p3));
+
+        Iterator<PageView> it1 = file1.iterator();
+        Iterator<PageView> it2 = file2.iterator();
+
+        LoyalCustomerApp main = new LoyalCustomerApp();
+        Collection<CustomerId> loyalCustomers = main.getLoyalCustomers(it1, it2);
+
+        System.out.println("Loyal customers: " + loyalCustomers);
+    }
+
     public Collection<CustomerId> getLoyalCustomers(Iterator<PageView> file1, Iterator<PageView> file2) {
 
         Collection<CustomerId> loyalCustomers = new HashSet<>();
@@ -54,37 +85,6 @@ public class LoyalCustomerApp {
         }
 
         return loyalCustomers;
-    }
-
-    public static void main(String[] args) {
-        List<PageView> file1 = new ArrayList<>();
-        List<PageView> file2 = new ArrayList<>();
-
-        CustomerId c1 = new CustomerId("C001");
-        CustomerId c2 = new CustomerId("C002");
-        CustomerId c3 = new CustomerId("C003");
-
-        PageId p1 = new PageId("P001");
-        PageId p2 = new PageId("P002");
-        PageId p3 = new PageId("P003");
-
-        file1.add(new PageView(c1, p1));
-        file1.add(new PageView(c2, p2));
-        file1.add(new PageView(c3, p3));
-        file1.add(new PageView(c2, p1));
-
-        file2.add(new PageView(c2, p1));
-        file2.add(new PageView(c2, p3));
-        file2.add(new PageView(c3, p2));
-        file2.add(new PageView(c3, p3));
-
-        Iterator<PageView> it1 = file1.iterator();
-        Iterator<PageView> it2 = file2.iterator();
-
-        LoyalCustomerApp main = new LoyalCustomerApp();
-        Collection<CustomerId> loyalCustomers = main.getLoyalCustomers(it1, it2);
-
-        System.out.println("Loyal customers: " + loyalCustomers);
     }
 
 

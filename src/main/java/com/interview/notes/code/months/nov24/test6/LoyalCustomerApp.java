@@ -16,15 +16,6 @@ we want to generate a list of ‘loyal customers’ that meet the criteria of:
 
 public class LoyalCustomerApp {
 
-    public Collection<CustomerId> getLoyalCustomers(Iterator<PageView> file1, Iterator<PageView> file2) {
-
-        Collection<CustomerId> loyalCustomers = new HashSet<>();
-
-        // Write your code here
-
-        return loyalCustomers;
-    }
-
     public static void main(String[] args) {
         List<PageView> file1 = new ArrayList<>();
         List<PageView> file2 = new ArrayList<>();
@@ -54,6 +45,15 @@ public class LoyalCustomerApp {
         Collection<CustomerId> loyalCustomers = main.getLoyalCustomers(it1, it2);
 
         System.out.println("Loyal customers: " + loyalCustomers);
+    }
+
+    public Collection<CustomerId> getLoyalCustomers(Iterator<PageView> file1, Iterator<PageView> file2) {
+
+        Collection<CustomerId> loyalCustomers = new HashSet<>();
+
+        // Write your code here
+
+        return loyalCustomers;
     }
 
 

@@ -4,8 +4,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 class Counter {
-    private int count = 0;
     private final Lock lock = new ReentrantLock();
+    private int count = 0;
 
     public void increment() {
         lock.lock(); // Acquire the lock

@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.nov24.amazon.test2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PasswordSimilarityChecker {
 
@@ -16,7 +18,7 @@ public class PasswordSimilarityChecker {
         int newIndex = 0, oldIndex = 0;
         while (newIndex < newPassword.length() && oldIndex < oldPassword.length()) {
             if (oldPassword.charAt(oldIndex) == newPassword.charAt(newIndex) ||
-                isNextCyclicChar(newPassword.charAt(newIndex), oldPassword.charAt(oldIndex))) {
+                    isNextCyclicChar(newPassword.charAt(newIndex), oldPassword.charAt(oldIndex))) {
                 oldIndex++;
             }
             newIndex++;
@@ -33,11 +35,11 @@ public class PasswordSimilarityChecker {
         runTestCase(Arrays.asList("aaaa", "bzz"), Arrays.asList("bcd", "az"), Arrays.asList("NO", "YES"), "Sample Case 1");
         runTestCase(Arrays.asList("aaccbbee", "aab"), Arrays.asList("bdbf", "aee"), Arrays.asList("YES", "NO"), "Sample Case 0");
         runTestCase(Arrays.asList("baacbab", "accdb", "baacba"), Arrays.asList("abdbc", "ach", "abb"), Arrays.asList("YES", "NO", "YES"), "Example Case");
-        
+
         // Edge cases
         runTestCase(Arrays.asList("a", "z"), Arrays.asList("a", "a"), Arrays.asList("YES", "YES"), "Edge Case: Single Character");
         runTestCase(Arrays.asList("abcdefghijklmnopqrstuvwxyz"), Arrays.asList("zyxwvutsrqponmlkjihgfedcba"), Arrays.asList("YES"), "Edge Case: Full Alphabet");
-        
+
         // Large data case
         List<String> largeNewPasswords = new ArrayList<>();
         List<String> largeOldPasswords = new ArrayList<>();

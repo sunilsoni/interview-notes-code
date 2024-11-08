@@ -1,7 +1,9 @@
 package com.interview.notes.code.months.nov24.amazon.test4;
 
-import java.util.*;
-import java.io.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TemperatureRegulator1 {
 
@@ -9,18 +11,18 @@ public class TemperatureRegulator1 {
      * Problem Analysis:
      * The problem requires finding the minimum number of actions to make all temperatures zero,
      * using three operations that affect prefixes, suffixes, or the entire array.
-     *
+     * <p>
      * After reviewing the problem and sample outputs, it's clear that simply summing the absolute
      * differences or positive changes does not accurately compute the minimal number of actions.
-     *
+     * <p>
      * Solution Design:
      * We need an algorithm that accurately computes the minimal number of actions. Considering the
      * specific operations, we can process the temperature array and calculate the required actions
      * by carefully considering the changes needed at each step.
-     *
+     * <p>
      * The idea is to calculate the net change at each position and consider both positive and
      * negative changes separately.
-     *
+     * <p>
      * Time Complexity: O(n)
      * Space Complexity: O(1)
      */

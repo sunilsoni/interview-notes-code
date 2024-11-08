@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.nov24.amazon.test3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class RegulateTemperatures {
 

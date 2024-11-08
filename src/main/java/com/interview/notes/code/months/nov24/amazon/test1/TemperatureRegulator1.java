@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.nov24.amazon.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TemperatureRegulator1 {
 
@@ -48,19 +50,6 @@ public class TemperatureRegulator1 {
     }
 
     /**
-     * Represents a test case with input and expected output.
-     */
-    static class TestCase {
-        List<Integer> temperature;
-        long expected;
-
-        TestCase(List<Integer> temperature, long expected) {
-            this.temperature = temperature;
-            this.expected = expected;
-        }
-    }
-
-    /**
      * Runs a series of test cases to validate the regulateTemperatures function.
      */
     public static void main(String[] args) {
@@ -105,5 +94,18 @@ public class TemperatureRegulator1 {
         }
 
         System.out.println(passed + "/" + testCases.size() + " Test Cases Passed.");
+    }
+
+    /**
+     * Represents a test case with input and expected output.
+     */
+    static class TestCase {
+        List<Integer> temperature;
+        long expected;
+
+        TestCase(List<Integer> temperature, long expected) {
+            this.temperature = temperature;
+            this.expected = expected;
+        }
     }
 }

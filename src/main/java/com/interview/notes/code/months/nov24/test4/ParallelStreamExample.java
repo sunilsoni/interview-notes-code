@@ -11,11 +11,11 @@ public class ParallelStreamExample {
         ForkJoinPool customThreadPool = new ForkJoinPool(4);
 
         customThreadPool.submit(() ->
-            IntStream.range(0, 100)
-                    .parallel()
-                    .forEach(i -> {
-                        System.out.println("Processing: " + i + " in thread: " + Thread.currentThread().getName());
-                    })
+                IntStream.range(0, 100)
+                        .parallel()
+                        .forEach(i -> {
+                            System.out.println("Processing: " + i + " in thread: " + Thread.currentThread().getName());
+                        })
         ).join();
 
         executor.shutdown();

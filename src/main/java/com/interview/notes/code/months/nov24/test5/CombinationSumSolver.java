@@ -30,53 +30,6 @@ All elements of candidates are distinct.
 public class CombinationSumSolver {
 
     /**
-     * Finds all unique combinations in candidates where the numbers sum to target.
-     * Each number in candidates may be used an unlimited number of times.
-     *
-     * @param candidates Array of distinct integers.
-     * @param target     Target sum.
-     * @return List of unique combinations.
-     */
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        if (candidates == null || candidates.length == 0) {
-            return result;
-        }
-        Arrays.sort(candidates); // Sort to help with pruning
-        backtrack(candidates, target, 0, new ArrayList<>(), result);
-        return result;
-    }
-
-    /**
-     * Helper method to perform backtracking.
-     *
-     * @param candidates Sorted array of candidates.
-     * @param target     Remaining target sum.
-     * @param start      Current index in candidates.
-     * @param current    Current combination being built.
-     * @param result     List to store all valid combinations.
-     */
-    private void backtrack(int[] candidates, int target, int start,
-                           List<Integer> current, List<List<Integer>> result) {
-        if (target == 0) {
-            // Found a valid combination
-            result.add(new ArrayList<>(current));
-            return;
-        }
-        for (int i = start; i < candidates.length; i++) {
-            // If the current candidate exceeds the target, no need to proceed further
-            if (candidates[i] > target) {
-                break;
-            }
-            current.add(candidates[i]);
-            // Since the same number can be used unlimited times, 'i' is passed again
-            backtrack(candidates, target - candidates[i], i, current, result);
-            // Backtrack by removing the last added number
-            current.remove(current.size() - 1);
-        }
-    }
-
-    /**
      * Main method to run test cases.
      *
      * @param args Command-line arguments.
@@ -122,8 +75,8 @@ public class CombinationSumSolver {
                 new int[]{1, 2, 3},
                 3,
                 Arrays.asList(
-                        Arrays.asList(1,1,1),
-                        Arrays.asList(1,2),
+                        Arrays.asList(1, 1, 1),
+                        Arrays.asList(1, 2),
                         Arrays.asList(3)
                 )
         ));
@@ -137,8 +90,8 @@ public class CombinationSumSolver {
 
         // Large Input Case
         testCases.add(new TestCase(
-                new int[]{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 
-                          21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32},
+                new int[]{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                        21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32},
                 40,
                 null // We will not specify expected output due to its size
         ));
@@ -201,6 +154,53 @@ public class CombinationSumSolver {
         expectedStrings.sort(String::compareTo);
 
         return outputStrings.equals(expectedStrings);
+    }
+
+    /**
+     * Finds all unique combinations in candidates where the numbers sum to target.
+     * Each number in candidates may be used an unlimited number of times.
+     *
+     * @param candidates Array of distinct integers.
+     * @param target     Target sum.
+     * @return List of unique combinations.
+     */
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (candidates == null || candidates.length == 0) {
+            return result;
+        }
+        Arrays.sort(candidates); // Sort to help with pruning
+        backtrack(candidates, target, 0, new ArrayList<>(), result);
+        return result;
+    }
+
+    /**
+     * Helper method to perform backtracking.
+     *
+     * @param candidates Sorted array of candidates.
+     * @param target     Remaining target sum.
+     * @param start      Current index in candidates.
+     * @param current    Current combination being built.
+     * @param result     List to store all valid combinations.
+     */
+    private void backtrack(int[] candidates, int target, int start,
+                           List<Integer> current, List<List<Integer>> result) {
+        if (target == 0) {
+            // Found a valid combination
+            result.add(new ArrayList<>(current));
+            return;
+        }
+        for (int i = start; i < candidates.length; i++) {
+            // If the current candidate exceeds the target, no need to proceed further
+            if (candidates[i] > target) {
+                break;
+            }
+            current.add(candidates[i]);
+            // Since the same number can be used unlimited times, 'i' is passed again
+            backtrack(candidates, target - candidates[i], i, current, result);
+            // Backtrack by removing the last added number
+            current.remove(current.size() - 1);
+        }
     }
 
     /**

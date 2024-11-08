@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.nov24.amazon.test4;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TemperatureRegulator {
 
@@ -58,19 +60,6 @@ public class TemperatureRegulator {
 
         // Total operations is z (Operation 3) plus operations via 1 and 2
         return z + operations_via1_and_2;
-    }
-
-    /**
-     * Represents a test case with input and expected output.
-     */
-    static class TestCase {
-        List<Integer> temperature;
-        long expected;
-
-        TestCase(List<Integer> temperature, long expected) {
-            this.temperature = temperature;
-            this.expected = expected;
-        }
     }
 
     /**
@@ -133,5 +122,18 @@ public class TemperatureRegulator {
         }
 
         System.out.println(passed + "/" + testCases.size() + " Test Cases Passed.");
+    }
+
+    /**
+     * Represents a test case with input and expected output.
+     */
+    static class TestCase {
+        List<Integer> temperature;
+        long expected;
+
+        TestCase(List<Integer> temperature, long expected) {
+            this.temperature = temperature;
+            this.expected = expected;
+        }
     }
 }

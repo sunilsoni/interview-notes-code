@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.nov24.amazon.test5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TemperatureRegulator {
     public static long regulateTemperatures(List<Integer> temperature) {
@@ -51,6 +53,7 @@ public class TemperatureRegulator {
         // Total operations is z (Operation 3) plus the minimal operations via 1 and 2
         return z + operations_via1_and_2;
     }
+
     public static long regulateTemperatures4(List<Integer> temperature) {
         if (temperature == null || temperature.isEmpty()) {
             return 0L;
@@ -135,59 +138,59 @@ public class TemperatureRegulator {
         return z + operations_via1_and_2;
     }
 
-        /**
-         * Calculates the minimum number of operations required to regulate the temperatures of CPU cores to zero.
-         *
-         * @param temperature List of integers representing the initial temperatures of the cores.
-         * @return The minimum number of operations as a long integer.
-         */
-        public static long regulateTemperatures2(List<Integer> temperature) {
-            if (temperature == null || temperature.isEmpty()) {
-                return 0L;
-            }
-
-            // Step 1: Find the minimum temperature
-            int minTemp = Integer.MAX_VALUE;
-            for (int temp : temperature) {
-                if (temp < minTemp) {
-                    minTemp = temp;
-                }
-            }
-
-            // Step 2: Determine the number of Operation 3 needed
-            long z = minTemp < 0 ? (long) -minTemp : 0L;
-
-            // Step 3: Adjust temperatures by applying Operation 3 z times
-            // and compute the operations via Operations 1 and 2
-            long operations_via1 = 0L;
-            long operations_via2 = 0L;
-
-            long prev1 = 0L;
-            long prev2 = 0L;
-
-            for (int i = 0; i < temperature.size(); i++) {
-                long adjustedTemp = (long) temperature.get(i) + z;
-
-                // Calculate operations via Operations 1 (Left to Right)
-                if (adjustedTemp > prev1) {
-                    operations_via1 += (adjustedTemp - prev1);
-                }
-                prev1 = adjustedTemp;
-
-                // Calculate operations via Operations 2 (Right to Left)
-                long reverseIndex = (long) temperature.get(temperature.size() - 1 - i) + z;
-                if (reverseIndex > prev2) {
-                    operations_via2 += (reverseIndex - prev2);
-                }
-                prev2 = reverseIndex;
-            }
-
-            // Total operations via Operations 1 and 2 is the maximum of z, operations_via1, operations_via2
-            long operations_via1_and_2 = Math.max(operations_via1, operations_via2);
-
-            // Total operations is z (Operation 3) plus operations via 1 and 2
-            return z + operations_via1_and_2;
+    /**
+     * Calculates the minimum number of operations required to regulate the temperatures of CPU cores to zero.
+     *
+     * @param temperature List of integers representing the initial temperatures of the cores.
+     * @return The minimum number of operations as a long integer.
+     */
+    public static long regulateTemperatures2(List<Integer> temperature) {
+        if (temperature == null || temperature.isEmpty()) {
+            return 0L;
         }
+
+        // Step 1: Find the minimum temperature
+        int minTemp = Integer.MAX_VALUE;
+        for (int temp : temperature) {
+            if (temp < minTemp) {
+                minTemp = temp;
+            }
+        }
+
+        // Step 2: Determine the number of Operation 3 needed
+        long z = minTemp < 0 ? (long) -minTemp : 0L;
+
+        // Step 3: Adjust temperatures by applying Operation 3 z times
+        // and compute the operations via Operations 1 and 2
+        long operations_via1 = 0L;
+        long operations_via2 = 0L;
+
+        long prev1 = 0L;
+        long prev2 = 0L;
+
+        for (int i = 0; i < temperature.size(); i++) {
+            long adjustedTemp = (long) temperature.get(i) + z;
+
+            // Calculate operations via Operations 1 (Left to Right)
+            if (adjustedTemp > prev1) {
+                operations_via1 += (adjustedTemp - prev1);
+            }
+            prev1 = adjustedTemp;
+
+            // Calculate operations via Operations 2 (Right to Left)
+            long reverseIndex = (long) temperature.get(temperature.size() - 1 - i) + z;
+            if (reverseIndex > prev2) {
+                operations_via2 += (reverseIndex - prev2);
+            }
+            prev2 = reverseIndex;
+        }
+
+        // Total operations via Operations 1 and 2 is the maximum of z, operations_via1, operations_via2
+        long operations_via1_and_2 = Math.max(operations_via1, operations_via2);
+
+        // Total operations is z (Operation 3) plus operations via 1 and 2
+        return z + operations_via1_and_2;
+    }
 
     /**
      * Calculates the minimum number of operations required to regulate the temperatures of CPU cores to zero.
@@ -243,19 +246,6 @@ public class TemperatureRegulator {
 
         // Total operations is z (Operation 3) plus operations via 1 and 2
         return z + operations_via1_and_2;
-    }
-
-    /**
-     * Represents a test case with input and expected output.
-     */
-    static class TestCase {
-        List<Integer> temperature;
-        long expected;
-
-        TestCase(List<Integer> temperature, long expected) {
-            this.temperature = temperature;
-            this.expected = expected;
-        }
     }
 
     /**
@@ -318,5 +308,18 @@ public class TemperatureRegulator {
         }
 
         System.out.println(passed + "/" + testCases.size() + " Test Cases Passed.");
+    }
+
+    /**
+     * Represents a test case with input and expected output.
+     */
+    static class TestCase {
+        List<Integer> temperature;
+        long expected;
+
+        TestCase(List<Integer> temperature, long expected) {
+            this.temperature = temperature;
+            this.expected = expected;
+        }
     }
 }

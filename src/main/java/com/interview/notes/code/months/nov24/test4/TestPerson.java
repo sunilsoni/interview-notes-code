@@ -16,7 +16,7 @@ public class TestPerson {
         System.out.println("John's Department: " + person.getDepartmentByName("John Doe"));
 
 // Attempting to modify the map will throw an UnsupportedOperationException
-  person.getNameDepartmentMap().put("New Person", "HR");
+        person.getNameDepartmentMap().put("New Person", "HR");
 
     }
 }
