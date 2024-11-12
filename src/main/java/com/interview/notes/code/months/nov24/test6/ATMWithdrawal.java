@@ -1,7 +1,6 @@
 package com.interview.notes.code.months.nov24.test6;
 
 import java.util.*;
-import java.io.*;
 
 /*
 WORKING
@@ -146,19 +145,6 @@ Return the result array, \([1, 3, 2]\).
 public class ATMWithdrawal {
 
     /**
-     * Represents a person in the queue with their index and number of withdrawals needed.
-     */
-    static class Person {
-        int index;      // Original position in the queue (1-based)
-        long withdrawals; // Number of withdrawals needed
-
-        Person(int index, long withdrawals) {
-            this.index = index;
-            this.withdrawals = withdrawals;
-        }
-    }
-
-    /**
      * Determines the order in which people leave the ATM queue.
      *
      * @param k      The maximum amount that can be withdrawn in one transaction.
@@ -168,14 +154,14 @@ public class ATMWithdrawal {
     public static List<Integer> getFinalOrder(int k, List<Integer> amount) {
         int n = amount.size();
         List<Person> people = new ArrayList<>(n);
-        
+
         // Compute the number of withdrawals needed for each person
         for (int i = 0; i < n; i++) {
             long amt = amount.get(i);
             long withdrawals = (amt + k - 1) / k; // Equivalent to ceil(amt / k)
             people.add(new Person(i + 1, withdrawals));
         }
-        
+
         // Sort the people based on withdrawals ascending, then by original index
         Collections.sort(people, new Comparator<Person>() {
             @Override
@@ -186,13 +172,13 @@ public class ATMWithdrawal {
                 return Integer.compare(p1.index, p2.index);
             }
         });
-        
+
         // Extract the sorted order
         List<Integer> result = new ArrayList<>(n);
         for (Person p : people) {
             result.add(p.index);
         }
-        
+
         return result;
     }
 
@@ -205,37 +191,37 @@ public class ATMWithdrawal {
 
         // Sample Case 1
         testCases.add(new TestCase(
-            2,
-            Arrays.asList(6, 1, 2, 3, 2, 7),
-            Arrays.asList(2, 3, 5, 4, 1, 6)
+                2,
+                Arrays.asList(6, 1, 2, 3, 2, 7),
+                Arrays.asList(2, 3, 5, 4, 1, 6)
         ));
 
         // Sample Case 2
         testCases.add(new TestCase(
-            2,
-            Arrays.asList(1, 3, 2),
-            Arrays.asList(1, 3, 2)
+                2,
+                Arrays.asList(1, 3, 2),
+                Arrays.asList(1, 3, 2)
         ));
 
         // Additional Test Case 1: All require one withdrawal
         testCases.add(new TestCase(
-            5,
-            Arrays.asList(5, 5, 5, 5, 5),
-            Arrays.asList(1, 2, 3, 4, 5)
+                5,
+                Arrays.asList(5, 5, 5, 5, 5),
+                Arrays.asList(1, 2, 3, 4, 5)
         ));
 
         // Additional Test Case 2: All require maximum withdrawals
         testCases.add(new TestCase(
-            1,
-            Arrays.asList(1000000000, 1000000000, 1000000000),
-            Arrays.asList(1, 2, 3)
+                1,
+                Arrays.asList(1000000000, 1000000000, 1000000000),
+                Arrays.asList(1, 2, 3)
         ));
 
         // Additional Test Case 3: Mixed withdrawals
         testCases.add(new TestCase(
-            3,
-            Arrays.asList(4, 9, 2, 15, 7),
-            Arrays.asList(1, 3, 2, 5, 4)
+                3,
+                Arrays.asList(4, 9, 2, 15, 7),
+                Arrays.asList(1, 3, 2, 5, 4)
         ));
 
         // Additional Test Case 4: Large Input
@@ -249,9 +235,9 @@ public class ATMWithdrawal {
             expectedLarge.add(i);
         }
         testCases.add(new TestCase(
-            1000,
-            largeAmount,
-            expectedLarge
+                1000,
+                largeAmount,
+                expectedLarge
         ));
 
         // Execute test cases
@@ -270,6 +256,19 @@ public class ATMWithdrawal {
         }
 
         System.out.println(passed + " out of " + testCases.size() + " test cases passed.");
+    }
+
+    /**
+     * Represents a person in the queue with their index and number of withdrawals needed.
+     */
+    static class Person {
+        int index;      // Original position in the queue (1-based)
+        long withdrawals; // Number of withdrawals needed
+
+        Person(int index, long withdrawals) {
+            this.index = index;
+            this.withdrawals = withdrawals;
+        }
     }
 
     /**

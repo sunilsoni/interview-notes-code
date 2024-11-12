@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.nov24.amazon.test13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MaximumChargeCalculator5 {
 
@@ -54,40 +56,40 @@ public class MaximumChargeCalculator5 {
 
         // Example 1
         testCases.add(new TestCase(
-            Arrays.asList(-2, 4, 9, 1, -1),
-            9 // Expected Output: 9
+                Arrays.asList(-2, 4, 9, 1, -1),
+                9 // Expected Output: 9
         ));
 
         // Example 2
         testCases.add(new TestCase(
-            Arrays.asList(-1, 3, 2),
-            3 // Expected Output: 3
+                Arrays.asList(-1, 3, 2),
+                3 // Expected Output: 3
         ));
 
         // Example 3
         testCases.add(new TestCase(
-            Arrays.asList(-3, 1, 4, -1, 5, -9),
-            9 // Expected Output: 9
+                Arrays.asList(-3, 1, 4, -1, 5, -9),
+                9 // Expected Output: 9
         ));
 
         // Additional Test Cases
 
         // Single Element
         testCases.add(new TestCase(
-            Arrays.asList(10),
-            10 // Expected Output: 10
+                Arrays.asList(10),
+                10 // Expected Output: 10
         ));
 
         // All Negative Elements
         testCases.add(new TestCase(
-            Arrays.asList(-5, -3, -10, -1),
-            -1 // Expected Output: -1
+                Arrays.asList(-5, -3, -10, -1),
+                -1 // Expected Output: -1
         ));
 
         // Mixed Positive and Negative with Larger Sum
         testCases.add(new TestCase(
-            Arrays.asList(2, -1, 3, 4, -2, 5),
-            9 // Expected Output: 9 (3 +5 =8, but better to take maximum element5 or 4 +5=9)
+                Arrays.asList(2, -1, 3, 4, -2, 5),
+                9 // Expected Output: 9 (3 +5 =8, but better to take maximum element5 or 4 +5=9)
         ));
 
         // Large Input Test Case
@@ -96,20 +98,20 @@ public class MaximumChargeCalculator5 {
             largeInput.add(1); // All ones, maximum sum of non-adjacent pairs is2
         }
         testCases.add(new TestCase(
-            largeInput,
-            2 // Expected Output: 2
+                largeInput,
+                2 // Expected Output: 2
         ));
 
         // Edge Case: Two Elements
         testCases.add(new TestCase(
-            Arrays.asList(5, 7),
-            7 // Expected Output:7
+                Arrays.asList(5, 7),
+                7 // Expected Output:7
         ));
 
         // Edge Case: Two Elements with Negative and Positive
         testCases.add(new TestCase(
-            Arrays.asList(-5, 10),
-            10 // Expected Output:10
+                Arrays.asList(-5, 10),
+                10 // Expected Output:10
         ));
 
         // Run all test cases

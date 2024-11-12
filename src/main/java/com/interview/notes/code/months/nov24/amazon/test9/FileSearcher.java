@@ -1,8 +1,9 @@
 package com.interview.notes.code.months.nov24.amazon.test9;
 
 import java.io.IOException;
-import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +14,10 @@ public class FileSearcher {
     /**
      * Searches for files matching the given criteria within the specified directory and its subdirectories.
      *
-     * @param startDir    The starting directory for the search.
-     * @param fileName    The name of the file to search for.
-     * @param minSize     The minimum file size in bytes (inclusive).
-     * @param maxSize     The maximum file size in bytes (inclusive).
+     * @param startDir       The starting directory for the search.
+     * @param fileName       The name of the file to search for.
+     * @param minSize        The minimum file size in bytes (inclusive).
+     * @param maxSize        The maximum file size in bytes (inclusive).
      * @param modifiedAfter  The earliest last modified time (inclusive).
      * @param modifiedBefore The latest last modified time (inclusive).
      * @return A list of full paths to files that match the criteria.

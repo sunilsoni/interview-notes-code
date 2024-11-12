@@ -11,56 +11,13 @@ import java.util.List;
 public class FileSearchUtility {
 
     /**
-     * Encapsulates search criteria for file searching.
+     * Main method to execute test cases.
+     *
+     * @param args Command-line arguments.
      */
-    public static class FileSearchCriteria {
-        private String fileName;
-        private Long minSize; // in bytes
-        private Long maxSize; // in bytes
-        private Date modifiedAfter;
-        private Date modifiedBefore;
-
-        // Constructors, getters, and setters
-
-        public FileSearchCriteria(String fileName) {
-            this.fileName = fileName;
-        }
-
-        public String getFileName() {
-            return fileName;
-        }
-
-        public Long getMinSize() {
-            return minSize;
-        }
-
-        public void setMinSize(Long minSize) {
-            this.minSize = minSize;
-        }
-
-        public Long getMaxSize() {
-            return maxSize;
-        }
-
-        public void setMaxSize(Long maxSize) {
-            this.maxSize = maxSize;
-        }
-
-        public Date getModifiedAfter() {
-            return modifiedAfter;
-        }
-
-        public void setModifiedAfter(Date modifiedAfter) {
-            this.modifiedAfter = modifiedAfter;
-        }
-
-        public Date getModifiedBefore() {
-            return modifiedBefore;
-        }
-
-        public void setModifiedBefore(Date modifiedBefore) {
-            this.modifiedBefore = modifiedBefore;
-        }
+    public static void main(String[] args) {
+        TestFileSearchUtility tester = new TestFileSearchUtility();
+        tester.runTests();
     }
 
     /**
@@ -136,13 +93,56 @@ public class FileSearchUtility {
     }
 
     /**
-     * Main method to execute test cases.
-     *
-     * @param args Command-line arguments.
+     * Encapsulates search criteria for file searching.
      */
-    public static void main(String[] args) {
-        TestFileSearchUtility tester = new TestFileSearchUtility();
-        tester.runTests();
+    public static class FileSearchCriteria {
+        private String fileName;
+        private Long minSize; // in bytes
+        private Long maxSize; // in bytes
+        private Date modifiedAfter;
+        private Date modifiedBefore;
+
+        // Constructors, getters, and setters
+
+        public FileSearchCriteria(String fileName) {
+            this.fileName = fileName;
+        }
+
+        public String getFileName() {
+            return fileName;
+        }
+
+        public Long getMinSize() {
+            return minSize;
+        }
+
+        public void setMinSize(Long minSize) {
+            this.minSize = minSize;
+        }
+
+        public Long getMaxSize() {
+            return maxSize;
+        }
+
+        public void setMaxSize(Long maxSize) {
+            this.maxSize = maxSize;
+        }
+
+        public Date getModifiedAfter() {
+            return modifiedAfter;
+        }
+
+        public void setModifiedAfter(Date modifiedAfter) {
+            this.modifiedAfter = modifiedAfter;
+        }
+
+        public Date getModifiedBefore() {
+            return modifiedBefore;
+        }
+
+        public void setModifiedBefore(Date modifiedBefore) {
+            this.modifiedBefore = modifiedBefore;
+        }
     }
 }
 

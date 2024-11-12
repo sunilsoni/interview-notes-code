@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.nov24.amazon.test13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MaximumChargeCalculator {
     public static long getMaximumCharge(List<Integer> charge) {

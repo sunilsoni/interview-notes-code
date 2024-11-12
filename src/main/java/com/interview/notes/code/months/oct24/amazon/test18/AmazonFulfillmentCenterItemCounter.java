@@ -1,7 +1,183 @@
 package com.interview.notes.code.months.oct24.amazon.test18;
 
 import java.util.*;
+/*
+WORKING
 
+
+
+### Explanation
+
+- In the first move, pick the items at indexes 0 and 1.
+- In the second move, pick the items at indexes 1 and 2.
+- In the third move, pick the items at indexes 0, 1, 2, and 3.
+- In the fourth move, pick the items at indexes 2, 3, and 4.
+
+The picked elements are `[4, 4, 4, 5, 4, 4, 5, 3, 5, 3, 2]`.
+
+- For the first query, 8 items were picked and had values strictly less than 5.
+- For the second query, 3 items were picked with values strictly less than 5.
+- For the third query, 0 items were picked with values strictly less than 5.
+
+---
+
+### Sample Case 1
+
+**Sample Input For Custom Testing**
+```
+STDIN          Function
+-----          --------
+5              → n = 5
+4              → items = [4, 4, 5, 3, 2]
+4
+5
+3
+2
+4              → m = 4
+0              → start = [0, 1, 0, 2]
+1
+0
+2
+4              → m = 4
+1              → end = [1, 2, 3, 4]
+2
+3
+4
+3              → q = 3
+5              → query = [5, 4, 1]
+4
+1
+```
+
+**Sample Output**
+```
+8
+3
+0
+```
+
+**Explanation**
+
+- In the first move, pick the items at indexes 0 and 1.
+- In the second move, pick the items at indexes 1 and 2.
+- In the third move, pick the items at indexes 0, 1, 2, and 3.
+- In the fourth move, pick the items at indexes 2, 3, and 4.
+
+---
+
+### Sample Case 0
+
+**Sample Input For Custom Testing**
+```
+STDIN          Function
+-----          --------
+6              → n = 6
+1              → prices = [1, 2, 3, 2, 4, 1]
+2
+3
+2
+4
+1
+2              → m = 2
+2              → start = [2, 0]
+0
+2              → m = 2
+4              → end = [4, 0]
+0
+2              → q = 2
+5              → query = [5, 3]
+3
+```
+
+**Sample Output**
+```
+4
+2
+```
+
+**Explanation**
+
+- In the first move, pick items from index 2 to 4, items = `[3, 2, 4]`.
+- In the second move, pick the items from index 0, items = `[1]`.
+
+The picked items are `[3, 2, 4, 1]`.
+
+- For the first query, all the items have values strictly less than 5.
+- For the second query, 2 items have values strictly less than 3.
+
+---
+
+**Function Description**
+
+Complete the function `getSmallerItems` in the editor below.
+
+`getSmallerItems` has the following parameter(s):
+- `int items[n]`: the value of each item
+- `int start[m]`: the start index for each order
+- `int end[m]`: the end index for each order
+- `int query[q]`: query values
+
+**Returns**
+
+`long output[q]`: the answer for each query, the number of picked items having a value strictly less than `query[i]`.
+
+**Constraints**
+
+- \( 1 \leq n \leq 10^5 \)
+- \( 1 \leq items[i] \leq 10^9 \), where \( 0 \leq i < n \)
+- \( 0 \leq m \leq 10^5 \)
+- \( 0 \leq start[i] \leq end[i] < n \), where \( 0 \leq i < m \)
+- \( 1 \leq q \leq 10^5 \)
+- \( 1 \leq query[i] \leq 10^9 \), where \( 0 \leq i < q \)
+
+---
+
+### Input Format For Custom Testing
+
+- The first line contains an integer, `n`, the number of items.
+- Each of the next `n` lines contains an integer `items[i]`.
+- The next line contains an integer, `m`, the size of `start`.
+- Each of the next `m` lines contains an integer `start[i]`.
+- The next line contains an integer, `m`, the size of `end`.
+- Each of the next `m` lines contains an integer `end[i]`.
+- The next line contains an integer, `q`, the size of `query`.
+- Each of the next `q` lines contains an integer `query[i]`.
+
+---
+
+### Example
+
+An Amazon fulfillment center receives a large number of orders each day. Each order is associated with a range of prices of items that need to be picked from the warehouse and packed into a box. There are `n` items in the warehouse, which are represented as an array `items[n]`. The value of `items[i]` represents the value of the `i`th item in the warehouse, and subsequently there are `m` orders. The `start_index` and `end_index` for the `i`th order are represented in the arrays `start[i]` and `end[i]`. Also `start[i]` and `end[i]` are 0-index based.
+
+For each order, all the items are picked from the inclusive range from `start[i]` through `end[i]`. Given array `items`, `start`, `end`, and `query`. For each `query[i]`, find the count of elements in the range with a value strictly less than `query[i]`.
+
+Example:
+Given, `n = 5`, `items = [1, 2, 5, 4, 5]`, `m = 3`, `start = [0, 0, 1]`, `end = [1, 2, 2]` and `query = [2, 4]`.
+
+| Order Number | start index | end index | picked items |
+|--------------|-------------|-----------|--------------|
+| 1st          | 0           | 1         | [1, 2]       |
+| 2nd          | 0           | 2         | [1, 2, 5]    |
+| 3rd          | 1           | 2         | [2, 5]       |
+
+Over the 3 orders, the picked items are `[1, 2, 1, 2, 5, 2, 5]`.
+
+- For the first query, 2 picked items have values less than 2.
+- 5 picked items have values less than 4.
+Hence the answer is `[2, 5]`.
+
+---
+
+```java
+// Complete the 'getSmallerItems' function below.
+
+public static List<Long> getSmallerItems(List<Integer> items, List<Integer> start, List<Integer> end, List<Integer> query) {
+    // Write your code here
+}
+```
+
+
+ */
 public class AmazonFulfillmentCenterItemCounter {
 
     public static List<Long> getSmallerItems(List<Integer> items, List<Integer> start, List<Integer> end, List<Integer> query) {

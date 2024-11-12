@@ -22,18 +22,6 @@ public class CustomHashMap<K, V> {
         size = 0;
     }
 
-    // Node class representing each entry in the hash map
-    private static class Node<K, V> {
-        K key;
-        V value;
-        Node<K, V> next; // Reference to the next node in the same bucket
-
-        Node(K key, V value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
-
     // Method to add a key-value pair to the hash map
     public void put(K key, V value) {
         if (key == null) {
@@ -97,5 +85,17 @@ public class CustomHashMap<K, V> {
         }
 
         buckets = newBuckets; // Update the buckets array reference
+    }
+
+    // Node class representing each entry in the hash map
+    private static class Node<K, V> {
+        K key;
+        V value;
+        Node<K, V> next; // Reference to the next node in the same bucket
+
+        Node(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
     }
 }

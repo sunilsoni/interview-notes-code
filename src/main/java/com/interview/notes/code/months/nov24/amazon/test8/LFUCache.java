@@ -11,9 +11,9 @@ Amazon's Product Catalog Service is a critical component that serves product inf
  */
 class LFUCache {
     private final int capacity;
-    private int minFrequency;
     private final Map<Integer, Node> keyNodeMap;
     private final Map<Integer, DoublyLinkedList> freqListMap;
+    private int minFrequency;
 
     public LFUCache(int capacity) {
         this.capacity = capacity;

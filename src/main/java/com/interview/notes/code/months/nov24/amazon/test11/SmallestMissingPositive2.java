@@ -8,7 +8,7 @@ public class SmallestMissingPositive2 {
         }
 
         int n = nums.length;
-        
+
         // Step 1: Move positive integers <= n to their correct positions
         for (int i = 0; i < n; i++) {
             while (nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) {

@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.nov24.amazon.test13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MaximumChargeCalculator2 {
 
@@ -41,40 +43,40 @@ public class MaximumChargeCalculator2 {
 
         // Example 1
         testCases.add(new TestCase(
-            Arrays.asList(-2, 4, 9, 1, -1),
-            13 // Expected Output: 13 (Explanation: 4 + 9 = 13)
+                Arrays.asList(-2, 4, 9, 1, -1),
+                13 // Expected Output: 13 (Explanation: 4 + 9 = 13)
         ));
 
         // Example 2
         testCases.add(new TestCase(
-            Arrays.asList(-1, 3, 2),
-            5 // Expected Output: 5 (3 + 2 = 5)
+                Arrays.asList(-1, 3, 2),
+                5 // Expected Output: 5 (3 + 2 = 5)
         ));
 
         // Example 3
         testCases.add(new TestCase(
-            Arrays.asList(-3, 1, 4, -1, 5, -9),
-            9 // Expected Output: 9 (4 + 5 = 9)
+                Arrays.asList(-3, 1, 4, -1, 5, -9),
+                9 // Expected Output: 9 (4 + 5 = 9)
         ));
 
         // Additional Test Cases
 
         // Single Element
         testCases.add(new TestCase(
-            Arrays.asList(10),
-            10 // Expected Output: 10
+                Arrays.asList(10),
+                10 // Expected Output: 10
         ));
 
         // All Negative Elements
         testCases.add(new TestCase(
-            Arrays.asList(-5, -3, -10, -1),
-            -1 // Expected Output: -1
+                Arrays.asList(-5, -3, -10, -1),
+                -1 // Expected Output: -1
         ));
 
         // Mixed Positive and Negative with Larger Sum
         testCases.add(new TestCase(
-            Arrays.asList(2, -1, 3, 4, -2, 5),
-            7 // Expected Output: 7 (3 + 4 = 7, or 5 + 2 = 7)
+                Arrays.asList(2, -1, 3, 4, -2, 5),
+                7 // Expected Output: 7 (3 + 4 = 7, or 5 + 2 = 7)
         ));
 
         // Large Input Test Case
@@ -83,8 +85,8 @@ public class MaximumChargeCalculator2 {
             largeInput.add(1); // All ones, maximum sum of adjacent is 2
         }
         testCases.add(new TestCase(
-            largeInput,
-            2 // Expected Output: 2
+                largeInput,
+                2 // Expected Output: 2
         ));
 
         // Run all test cases

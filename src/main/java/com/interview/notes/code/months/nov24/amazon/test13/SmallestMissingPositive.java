@@ -26,7 +26,7 @@ public class SmallestMissingPositive {
             if (num <= 0) {
                 continue;  // Skip non-positive numbers
             }
-            
+
             if (num == expected) {
                 expected++;
             } else if (num > expected) {

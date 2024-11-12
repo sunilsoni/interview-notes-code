@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.nov24.amazon.test12;
 
 import java.util.*;
+
 /*
 WORKING
 
@@ -122,37 +123,37 @@ You need to implement a function with the following signature:
 
  */
 public class MaxQualityFinder {
-    
+
     public static long findMaximumQuality(List<Integer> packets, int channels) {
         // Sort packets in descending order
         Collections.sort(packets, Collections.reverseOrder());
         int n = packets.size();
-        
+
         // If channels equals packets size, return sum of all packets
         if (channels == n) {
             return packets.stream().mapToLong(Integer::longValue).sum();
         }
-        
+
         long result = 0;
         // Add largest elements for first (channels-1) channels
         for (int i = 0; i < channels - 1; i++) {
             result += packets.get(i);
         }
-        
+
         // Calculate median for remaining elements
         List<Integer> remaining = packets.subList(channels - 1, n);
         int size = remaining.size();
         double median;
-        
+
         if (size % 2 == 0) {
             median = (remaining.get(size / 2 - 1) + remaining.get(size / 2)) / 2.0;
         } else {
             median = remaining.get(size / 2);
         }
-        
+
         return result + (long) Math.ceil(median);
     }
-    
+
     // Test method
     private static boolean runTest(List<Integer> packets, int channels, long expected) {
         long result = findMaximumQuality(packets, channels);
@@ -161,27 +162,27 @@ public class MaxQualityFinder {
                 packets, channels, passed ? "PASSED" : "FAILED", expected, result);
         return passed;
     }
-    
+
     public static void main(String[] args) {
         int passedTests = 0;
         int totalTests = 0;
-        
+
         // Test Case 1
         totalTests++;
         if (runTest(Arrays.asList(89, 48, 14), 3, 151)) passedTests++;
-        
+
         // Test Case 2
         totalTests++;
         if (runTest(Arrays.asList(2, 2, 1, 5, 3), 2, 7)) passedTests++;
-        
+
         // Test Case 3
         totalTests++;
         if (runTest(Arrays.asList(1, 2, 3, 4, 5), 2, 8)) passedTests++;
-        
+
         // Edge case: Single packet
         totalTests++;
         if (runTest(Arrays.asList(10), 1, 10)) passedTests++;
-        
+
         // Large data test
         List<Integer> largeInput = new ArrayList<>();
         for (int i = 1; i <= 100000; i++) {
@@ -189,7 +190,7 @@ public class MaxQualityFinder {
         }
         totalTests++;
         if (runTest(largeInput, 2, 75001)) passedTests++; // Expected value calculated manually
-        
+
         // Random large numbers test
         List<Integer> randomLarge = new ArrayList<>();
         Random rand = new Random();
@@ -199,7 +200,7 @@ public class MaxQualityFinder {
         totalTests++;
         long expectedRandom = findMaximumQuality(new ArrayList<>(randomLarge), 5);
         if (runTest(randomLarge, 5, expectedRandom)) passedTests++;
-        
+
         System.out.println("\nTest Summary:");
         System.out.printf("Passed: %d/%d tests%n", passedTests, totalTests);
         System.out.printf("Success Rate: %.2f%%%n", (passedTests * 100.0) / totalTests);
