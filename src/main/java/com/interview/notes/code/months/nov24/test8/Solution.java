@@ -4,267 +4,186 @@ import java.util.*;
 
 /**
  * Enhanced Training Compliance System Implementation
- *
- *
- ## **Enhanced Training Compliance System**
-
- ### **Extended Functionality Overview**
- The training compliance system now includes grouping employees into hierarchical groups. Each employee belongs to one specific group, which may have a parent group, and that parent group may have its own parent, forming a hierarchy. The training compliance needs to be evaluated not just for individual employees but also at the group level to summarize overdue statuses across all associated groups.
-
- **Key enhancements include:**
- - Employees belong to a specific group and may indirectly belong to higher-level parent groups.
- - Groups can have child groups, and each group can inherit employees from its child groups.
- - The total days overdue and the count of employees overdue are calculated for each group, considering all employees within that group and its sub-groups.
-
- ---
-
- ### **Class Structure and Provided Code**
- Below is the updated structure with new classes and methods to handle grouping:
-
- ```java
- class Solution {
- static class Employee {
- String groupId;  // Indicates the group to which the employee belongs
- Integer startDay; // The day the employee started working at the company (in days)
- Integer trainedDay; // (optional) The day the employee was trained (in days)
-
- public Employee(Integer startDay, Integer trainedDay, String groupId) {
- this.startDay = startDay;
- this.trainedDay = trainedDay;
- this.groupId = groupId;
- }
- }
-
- static class Group {
- String id; // Unique identifier for the group
- String parentId; // ID of the parent group, if any
- String[] childIds; // IDs of the child groups
-
- public Group(String id, String parentId, String[] childIds) {
- this.id = id;
- this.parentId = parentId;
- this.childIds = childIds;
- }
- }
-
- static class Datapoint {
- String groupId;
- Integer numEmployees;
- Integer totalDaysOverdue;
-
- public Datapoint(String groupId, Integer numEmployees, Integer totalDaysOverdue) {
- this.groupId = groupId;
- this.numEmployees = numEmployees;
- this.totalDaysOverdue = totalDaysOverdue;
- }
-
- public String toString() {
- return this.groupId + "," + this.numEmployees + "," + this.totalDaysOverdue;
- }
- }
- }
- ```
-
- ---
-
- ### **Functionality Explanation**
- - The new method `getTotalDaysOverdueByGroups` calculates the total overdue days for each group by considering both direct and indirect (through sub-groups) memberships.
- - The output summarizes the overdue training status for each group, including the count of employees and total overdue days.
-
- ---
-
- ## **Examples with Detailed Diagrams**
-
- ### **Example Setup**
-
- **Groups Definition:**
- - Group A: Parent with child Group B.
- - Group B: Parent with child Group C.
- - Group C: No children.
-
- **Employees Data:**
- - Employee 1: `{start_day: 100, trained_day: null, group: "a"}`
- - Employee 2: `{start_day: 105, trained_day: null, group: "b"}`
- - Employee 3: `{start_day: 115, trained_day: null, group: "b"}`
- - Employee 4: `{start_day: 105, trained_day: null, group: "c"}`
-
- **Training Window**: 10 days
- **Check Day**: 120
-
- **Expected Output**:
- ```
- [
- { groupId: "a", numEmployees: 4, totalDaysOverdue: 20 },
- { groupId: "b", numEmployees: 3, totalDaysOverdue: 10 },
- { groupId: "c", numEmployees: 1, totalDaysOverdue: 5 }
- ]
- ```
-
- **Explanation**:
- - Group A includes all employees directly and through its sub-groups (B and C). Total overdue days = 20.
- - Group B includes employees directly in B and in its child group C. Total overdue days = 10.
- - Group C includes only the employee directly assigned to it. Total overdue days = 5.
-
- ---
-
- ### **Questions Based on the Examples**
-
- #### **Understanding the Core Functionality**
- 1. What is the purpose of extending the training compliance system with groups?
- - A) To track individual employee training.
- - B) To summarize overdue training at an organizational level.
- - C) To assign multiple groups to a single employee.
- - D) To track training status by departments only.
-
- 2. If an employee belongs to Group B and Group B is a child of Group A, which groups will include this employee in their overdue calculations?
- - A) Only Group B
- - B) Only Group A
- - C) Both Group A and Group B
- - D) Group B and its siblings
-
- 3. In the provided example, what is the total overdue days for Group A if the training window is 10 days and the check day is 120?
- - A) 5
- - B) 10
- - C) 20
- - D) 15
-
- ---
-
- #### **Scenario-Based Questions**
- 4. If you add a new employee with `{start_day: 110, trained_day: null, group: "b"}`, what will be the new `totalDaysOverdue` for Group B?
- - A) 15
- - B) 10
- - C) 5
- - D) 20
-
- 5. If the training window was extended to 15 days instead of 10, how would the output for Group C change?
- - A) It would remain the same.
- - B) Total overdue days would decrease.
- - C) Total overdue days would increase.
- - D) The number of employees would increase.
-
- 6. How does the system handle employees who belong to multiple nested groups?
- - A) They are counted in each group they belong to.
- - B) They are counted only in their primary group.
- - C) They are excluded from parent groups.
- - D) They are counted only in child groups.
-
- ---
-
- #### **Code Comprehension**
- 7. In the `Group` class, what is the purpose of the `parentId` and `childIds` fields?
- - A) To store the list of employees.
- - B) To establish hierarchical relationships between groups.
- - C) To calculate overdue days directly.
- - D) To assign training windows.
-
- 8. What would happen if the `getTotalDaysOverdueByGroups` method was called with a `checkDay` earlier than all employees' `startDays`?
- - A) All groups will show zero overdue days.
- - B) All groups will have maximum overdue days.
- - C) It will throw an error.
- - D) The output will be unpredictable.
-
- ---
-
- ### **Output Interpretation**
- 9. Given the expected output:
- ```
- [
- { groupId: "a", numEmployees: 4, totalDaysOverdue: 20 },
- { groupId: "b", numEmployees: 3, totalDaysOverdue: 10 },
- { groupId: "c", numEmployees: 1, totalDaysOverdue: 5 }
- ]
- ```
- What is the reason Group A has more overdue days than Group B?
- - A) Group A includes employees from all sub-groups.
- - B) Group B employees were trained late.
- - C) Group C had no employees assigned.
- - D) Group A has a longer training window.
-
- ---
-
+ * <p>
+ * <p>
+ * ## **Enhanced Training Compliance System**
+ * <p>
+ * ### **Extended Functionality Overview**
+ * The training compliance system now includes grouping employees into hierarchical groups. Each employee belongs to one specific group, which may have a parent group, and that parent group may have its own parent, forming a hierarchy. The training compliance needs to be evaluated not just for individual employees but also at the group level to summarize overdue statuses across all associated groups.
+ * <p>
+ * *Key enhancements include:**
+ * - Employees belong to a specific group and may indirectly belong to higher-level parent groups.
+ * - Groups can have child groups, and each group can inherit employees from its child groups.
+ * - The total days overdue and the count of employees overdue are calculated for each group, considering all employees within that group and its sub-groups.
+ * <p>
+ * ---
+ * <p>
+ * ### **Class Structure and Provided Code**
+ * Below is the updated structure with new classes and methods to handle grouping:
+ * <p>
+ * ```java
+ * class Solution {
+ * static class Employee {
+ * String groupId;  // Indicates the group to which the employee belongs
+ * Integer startDay; // The day the employee started working at the company (in days)
+ * Integer trainedDay; // (optional) The day the employee was trained (in days)
+ * <p>
+ * public Employee(Integer startDay, Integer trainedDay, String groupId) {
+ * this.startDay = startDay;
+ * this.trainedDay = trainedDay;
+ * this.groupId = groupId;
+ * }
+ * }
+ * <p>
+ * static class Group {
+ * String id; // Unique identifier for the group
+ * String parentId; // ID of the parent group, if any
+ * String[] childIds; // IDs of the child groups
+ * <p>
+ * public Group(String id, String parentId, String[] childIds) {
+ * this.id = id;
+ * this.parentId = parentId;
+ * this.childIds = childIds;
+ * }
+ * }
+ * <p>
+ * static class Datapoint {
+ * String groupId;
+ * Integer numEmployees;
+ * Integer totalDaysOverdue;
+ * <p>
+ * public Datapoint(String groupId, Integer numEmployees, Integer totalDaysOverdue) {
+ * this.groupId = groupId;
+ * this.numEmployees = numEmployees;
+ * this.totalDaysOverdue = totalDaysOverdue;
+ * }
+ * <p>
+ * public String toString() {
+ * return this.groupId + "," + this.numEmployees + "," + this.totalDaysOverdue;
+ * }
+ * }
+ * }
+ * ```
+ * <p>
+ * ---
+ * <p>
+ * ### **Functionality Explanation**
+ * - The new method `getTotalDaysOverdueByGroups` calculates the total overdue days for each group by considering both direct and indirect (through sub-groups) memberships.
+ * - The output summarizes the overdue training status for each group, including the count of employees and total overdue days.
+ * <p>
+ * ---
+ * <p>
+ * ## **Examples with Detailed Diagrams**
+ * <p>
+ * ### **Example Setup**
+ * <p>
+ * *Groups Definition:**
+ * - Group A: Parent with child Group B.
+ * - Group B: Parent with child Group C.
+ * - Group C: No children.
+ * <p>
+ * *Employees Data:**
+ * - Employee 1: `{start_day: 100, trained_day: null, group: "a"}`
+ * - Employee 2: `{start_day: 105, trained_day: null, group: "b"}`
+ * - Employee 3: `{start_day: 115, trained_day: null, group: "b"}`
+ * - Employee 4: `{start_day: 105, trained_day: null, group: "c"}`
+ * <p>
+ * *Training Window**: 10 days
+ * *Check Day**: 120
+ * <p>
+ * *Expected Output**:
+ * ```
+ * [
+ * { groupId: "a", numEmployees: 4, totalDaysOverdue: 20 },
+ * { groupId: "b", numEmployees: 3, totalDaysOverdue: 10 },
+ * { groupId: "c", numEmployees: 1, totalDaysOverdue: 5 }
+ * ]
+ * ```
+ * <p>
+ * *Explanation**:
+ * - Group A includes all employees directly and through its sub-groups (B and C). Total overdue days = 20.
+ * - Group B includes employees directly in B and in its child group C. Total overdue days = 10.
+ * - Group C includes only the employee directly assigned to it. Total overdue days = 5.
+ * <p>
+ * ---
+ * <p>
+ * ### **Questions Based on the Examples**
+ * <p>
+ * #### **Understanding the Core Functionality**
+ * 1. What is the purpose of extending the training compliance system with groups?
+ * - A) To track individual employee training.
+ * - B) To summarize overdue training at an organizational level.
+ * - C) To assign multiple groups to a single employee.
+ * - D) To track training status by departments only.
+ * <p>
+ * 2. If an employee belongs to Group B and Group B is a child of Group A, which groups will include this employee in their overdue calculations?
+ * - A) Only Group B
+ * - B) Only Group A
+ * - C) Both Group A and Group B
+ * - D) Group B and its siblings
+ * <p>
+ * 3. In the provided example, what is the total overdue days for Group A if the training window is 10 days and the check day is 120?
+ * - A) 5
+ * - B) 10
+ * - C) 20
+ * - D) 15
+ * <p>
+ * ---
+ * <p>
+ * #### **Scenario-Based Questions**
+ * 4. If you add a new employee with `{start_day: 110, trained_day: null, group: "b"}`, what will be the new `totalDaysOverdue` for Group B?
+ * - A) 15
+ * - B) 10
+ * - C) 5
+ * - D) 20
+ * <p>
+ * 5. If the training window was extended to 15 days instead of 10, how would the output for Group C change?
+ * - A) It would remain the same.
+ * - B) Total overdue days would decrease.
+ * - C) Total overdue days would increase.
+ * - D) The number of employees would increase.
+ * <p>
+ * 6. How does the system handle employees who belong to multiple nested groups?
+ * - A) They are counted in each group they belong to.
+ * - B) They are counted only in their primary group.
+ * - C) They are excluded from parent groups.
+ * - D) They are counted only in child groups.
+ * <p>
+ * ---
+ * <p>
+ * #### **Code Comprehension**
+ * 7. In the `Group` class, what is the purpose of the `parentId` and `childIds` fields?
+ * - A) To store the list of employees.
+ * - B) To establish hierarchical relationships between groups.
+ * - C) To calculate overdue days directly.
+ * - D) To assign training windows.
+ * <p>
+ * 8. What would happen if the `getTotalDaysOverdueByGroups` method was called with a `checkDay` earlier than all employees' `startDays`?
+ * - A) All groups will show zero overdue days.
+ * - B) All groups will have maximum overdue days.
+ * - C) It will throw an error.
+ * - D) The output will be unpredictable.
+ * <p>
+ * ---
+ * <p>
+ * ### **Output Interpretation**
+ * 9. Given the expected output:
+ * ```
+ * [
+ * { groupId: "a", numEmployees: 4, totalDaysOverdue: 20 },
+ * { groupId: "b", numEmployees: 3, totalDaysOverdue: 10 },
+ * { groupId: "c", numEmployees: 1, totalDaysOverdue: 5 }
+ * ]
+ * ```
+ * What is the reason Group A has more overdue days than Group B?
+ * - A) Group A includes employees from all sub-groups.
+ * - B) Group B employees were trained late.
+ * - C) Group C had no employees assigned.
+ * - D) Group A has a longer training window.
+ * <p>
+ * ---
  */
 class Solution {
-    // Employee class with group association
-    static class Employee {
-        String groupId;      // Indicates the group to which the employee belongs
-        Integer startDay;    // The day the employee started working at the company (in days)
-        Integer trainedDay;  // (optional) The day the employee was trained (in days)
-
-        public Employee(Integer startDay, Integer trainedDay, String groupId) {
-            this.startDay = startDay;
-            this.trainedDay = trainedDay;
-            this.groupId = groupId;
-        }
-    }
-
-    // Group class representing hierarchical groups
-    static class Group {
-        String id;           // Unique identifier for the group
-        String parentId;     // ID of the parent group, if any
-        String[] childIds;   // IDs of the child groups
-
-        public Group(String id, String parentId, String[] childIds) {
-            this.id = id;
-            this.parentId = parentId;
-            this.childIds = childIds;
-        }
-    }
-
-    // Datapoint class representing the overdue summary for a group
-    static class Datapoint {
-        String groupId;
-        Integer numEmployees;       // Number of overdue employees
-        Integer totalDaysOverdue;   // Total days overdue
-
-        public Datapoint(String groupId, Integer numEmployees, Integer totalDaysOverdue) {
-            this.groupId = groupId;
-            this.numEmployees = numEmployees;
-            this.totalDaysOverdue = totalDaysOverdue;
-        }
-
-        @Override
-        public String toString() {
-            return "{ groupId: \"" + this.groupId + "\", numEmployees: " + this.numEmployees + ", totalDaysOverdue: " + this.totalDaysOverdue + " }";
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (!(obj instanceof Datapoint)) {
-                return false;
-            }
-            Datapoint other = (Datapoint) obj;
-            return this.groupId.equals(other.groupId) &&
-                   this.numEmployees.equals(other.numEmployees) &&
-                   this.totalDaysOverdue.equals(other.totalDaysOverdue);
-        }
-    }
-
-    // Status class reused from previous implementation
-    static class Status {
-        String name;          // one of {"not_required", "pending", "overdue", "completed"}
-        Integer daysOverdue;  // 0 if not overdue
-
-        public Status(String name, Integer daysOverdue) {
-            this.name = name;
-            this.daysOverdue = daysOverdue;
-        }
-
-        @Override
-        public String toString() {
-            return this.name + "," + this.daysOverdue;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (!(obj instanceof Status)) {
-                return false;
-            }
-            Status other = (Status) obj;
-            return this.name.equals(other.name) && this.daysOverdue.equals(other.daysOverdue);
-        }
-    }
-
     /**
      * Evaluates an employee's training status on a specified checkDay.
      *
@@ -312,13 +231,12 @@ class Solution {
      * @param groupsById     - A Map mapping a group id to the corresponding Group.
      * @param trainingWindow - An integer representing the duration (number of days) employees have to complete their training after their start day.
      * @param checkDay       - An integer representing the day for which we are checking the training statuses.
-     *
      * @return A list of Datapoints, one for each group.
      */
-    public static List<Datapoint> getTotalDaysOverdueByGroups(Employee[] employees, 
-                                                             Map<String, Group> groupsById, 
-                                                             Integer trainingWindow, 
-                                                             Integer checkDay) {
+    public static List<Datapoint> getTotalDaysOverdueByGroups(Employee[] employees,
+                                                              Map<String, Group> groupsById,
+                                                              Integer trainingWindow,
+                                                              Integer checkDay) {
         // Map to store groupId to list of employees directly belonging to that group
         Map<String, List<Employee>> groupToEmployees = new HashMap<>();
         for (Employee emp : employees) {
@@ -354,9 +272,9 @@ class Solution {
      * @return Datapoint for the current group
      */
     private static Datapoint computeGroupDatapoint(String groupId, Map<String, Group> groupsById,
-                                                  Map<String, List<Employee>> groupToEmployees,
-                                                  Integer trainingWindow, Integer checkDay,
-                                                  Map<String, Datapoint> memo) {
+                                                   Map<String, List<Employee>> groupToEmployees,
+                                                   Integer trainingWindow, Integer checkDay,
+                                                   Map<String, Datapoint> memo) {
         if (memo.containsKey(groupId)) {
             return memo.get(groupId);
         }
@@ -644,6 +562,86 @@ class Solution {
         }
 
         return true;
+    }
+
+    // Employee class with group association
+    static class Employee {
+        String groupId;      // Indicates the group to which the employee belongs
+        Integer startDay;    // The day the employee started working at the company (in days)
+        Integer trainedDay;  // (optional) The day the employee was trained (in days)
+
+        public Employee(Integer startDay, Integer trainedDay, String groupId) {
+            this.startDay = startDay;
+            this.trainedDay = trainedDay;
+            this.groupId = groupId;
+        }
+    }
+
+    // Group class representing hierarchical groups
+    static class Group {
+        String id;           // Unique identifier for the group
+        String parentId;     // ID of the parent group, if any
+        String[] childIds;   // IDs of the child groups
+
+        public Group(String id, String parentId, String[] childIds) {
+            this.id = id;
+            this.parentId = parentId;
+            this.childIds = childIds;
+        }
+    }
+
+    // Datapoint class representing the overdue summary for a group
+    static class Datapoint {
+        String groupId;
+        Integer numEmployees;       // Number of overdue employees
+        Integer totalDaysOverdue;   // Total days overdue
+
+        public Datapoint(String groupId, Integer numEmployees, Integer totalDaysOverdue) {
+            this.groupId = groupId;
+            this.numEmployees = numEmployees;
+            this.totalDaysOverdue = totalDaysOverdue;
+        }
+
+        @Override
+        public String toString() {
+            return "{ groupId: \"" + this.groupId + "\", numEmployees: " + this.numEmployees + ", totalDaysOverdue: " + this.totalDaysOverdue + " }";
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (!(obj instanceof Datapoint)) {
+                return false;
+            }
+            Datapoint other = (Datapoint) obj;
+            return this.groupId.equals(other.groupId) &&
+                    this.numEmployees.equals(other.numEmployees) &&
+                    this.totalDaysOverdue.equals(other.totalDaysOverdue);
+        }
+    }
+
+    // Status class reused from previous implementation
+    static class Status {
+        String name;          // one of {"not_required", "pending", "overdue", "completed"}
+        Integer daysOverdue;  // 0 if not overdue
+
+        public Status(String name, Integer daysOverdue) {
+            this.name = name;
+            this.daysOverdue = daysOverdue;
+        }
+
+        @Override
+        public String toString() {
+            return this.name + "," + this.daysOverdue;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (!(obj instanceof Status)) {
+                return false;
+            }
+            Status other = (Status) obj;
+            return this.name.equals(other.name) && this.daysOverdue.equals(other.daysOverdue);
+        }
     }
 
     // Helper class for enhanced test cases

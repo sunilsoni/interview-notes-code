@@ -6,86 +6,6 @@ import java.util.*;
  * Enhanced Training Compliance System Implementation
  */
 class Solution {
-    // Employee class with group association
-    static class Employee {
-        String groupId;      // Indicates the group to which the employee belongs
-        Integer startDay;    // The day the employee started working at the company (in days)
-        Integer trainedDay;  // (optional) The day the employee was trained (in days)
-
-        public Employee(Integer startDay, Integer trainedDay, String groupId) {
-            this.startDay = startDay;
-            this.trainedDay = trainedDay;
-            this.groupId = groupId;
-        }
-    }
-
-    // Group class representing hierarchical groups
-    static class Group {
-        String id;           // Unique identifier for the group
-        String parentId;     // ID of the parent group, if any
-        String[] childIds;   // IDs of the child groups
-
-        public Group(String id, String parentId, String[] childIds) {
-            this.id = id;
-            this.parentId = parentId;
-            this.childIds = childIds;
-        }
-    }
-
-    // Datapoint class representing the overdue summary for a group
-    static class Datapoint {
-        String groupId;
-        Integer numEmployees;       // Number of overdue employees
-        Integer totalDaysOverdue;   // Total days overdue
-
-        public Datapoint(String groupId, Integer numEmployees, Integer totalDaysOverdue) {
-            this.groupId = groupId;
-            this.numEmployees = numEmployees;
-            this.totalDaysOverdue = totalDaysOverdue;
-        }
-
-        @Override
-        public String toString() {
-            return "{ groupId: \"" + this.groupId + "\", numEmployees: " + this.numEmployees + ", totalDaysOverdue: " + this.totalDaysOverdue + " }";
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (!(obj instanceof Datapoint)) {
-                return false;
-            }
-            Datapoint other = (Datapoint) obj;
-            return this.groupId.equals(other.groupId) &&
-                   this.numEmployees.equals(other.numEmployees) &&
-                   this.totalDaysOverdue.equals(other.totalDaysOverdue);
-        }
-    }
-
-    // Status class reused from previous implementation
-    static class Status {
-        String name;          // one of {"not_required", "pending", "overdue", "completed"}
-        Integer daysOverdue;  // 0 if not overdue
-
-        public Status(String name, Integer daysOverdue) {
-            this.name = name;
-            this.daysOverdue = daysOverdue;
-        }
-
-        @Override
-        public String toString() {
-            return this.name + "," + this.daysOverdue;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (!(obj instanceof Status)) {
-                return false;
-            }
-            Status other = (Status) obj;
-            return this.name.equals(other.name) && this.daysOverdue.equals(other.daysOverdue);
-        }
-    }
-
     /**
      * Evaluates an employee's training status on a specified checkDay.
      *
@@ -129,17 +49,16 @@ class Solution {
      * This function returns the total days overdue for training completion for each group, considering both direct
      * and indirect (i.e., through sub-groups) employee memberships.
      *
-     * @param employees    - An array of Employee objects.
-     * @param groupsById   - A Map mapping a group id to the corresponding Group.
+     * @param employees      - An array of Employee objects.
+     * @param groupsById     - A Map mapping a group id to the corresponding Group.
      * @param trainingWindow - An integer representing the duration (number of days) employees have to complete their training after their start day.
-     * @param checkDay     - An integer representing the day for which we are checking the training statuses.
-     *
+     * @param checkDay       - An integer representing the day for which we are checking the training statuses.
      * @return A list of Datapoints, one for each group.
      */
-    public static List<Datapoint> getTotalDaysOverdueByGroups(Employee[] employees, 
-                                                             Map<String, Group> groupsById, 
-                                                             Integer trainingWindow, 
-                                                             Integer checkDay) {
+    public static List<Datapoint> getTotalDaysOverdueByGroups(Employee[] employees,
+                                                              Map<String, Group> groupsById,
+                                                              Integer trainingWindow,
+                                                              Integer checkDay) {
         // Map to store groupId to list of employees directly belonging to that group
         Map<String, List<Employee>> groupToEmployees = new HashMap<>();
         for (Employee emp : employees) {
@@ -175,9 +94,9 @@ class Solution {
      * @return Datapoint for the current group
      */
     private static Datapoint computeGroupDatapoint(String groupId, Map<String, Group> groupsById,
-                                                  Map<String, List<Employee>> groupToEmployees,
-                                                  Integer trainingWindow, Integer checkDay,
-                                                  Map<String, Datapoint> memo) {
+                                                   Map<String, List<Employee>> groupToEmployees,
+                                                   Integer trainingWindow, Integer checkDay,
+                                                   Map<String, Datapoint> memo) {
         if (memo.containsKey(groupId)) {
             return memo.get(groupId);
         }
@@ -468,6 +387,86 @@ class Solution {
         }
 
         return true;
+    }
+
+    // Employee class with group association
+    static class Employee {
+        String groupId;      // Indicates the group to which the employee belongs
+        Integer startDay;    // The day the employee started working at the company (in days)
+        Integer trainedDay;  // (optional) The day the employee was trained (in days)
+
+        public Employee(Integer startDay, Integer trainedDay, String groupId) {
+            this.startDay = startDay;
+            this.trainedDay = trainedDay;
+            this.groupId = groupId;
+        }
+    }
+
+    // Group class representing hierarchical groups
+    static class Group {
+        String id;           // Unique identifier for the group
+        String parentId;     // ID of the parent group, if any
+        String[] childIds;   // IDs of the child groups
+
+        public Group(String id, String parentId, String[] childIds) {
+            this.id = id;
+            this.parentId = parentId;
+            this.childIds = childIds;
+        }
+    }
+
+    // Datapoint class representing the overdue summary for a group
+    static class Datapoint {
+        String groupId;
+        Integer numEmployees;       // Number of overdue employees
+        Integer totalDaysOverdue;   // Total days overdue
+
+        public Datapoint(String groupId, Integer numEmployees, Integer totalDaysOverdue) {
+            this.groupId = groupId;
+            this.numEmployees = numEmployees;
+            this.totalDaysOverdue = totalDaysOverdue;
+        }
+
+        @Override
+        public String toString() {
+            return "{ groupId: \"" + this.groupId + "\", numEmployees: " + this.numEmployees + ", totalDaysOverdue: " + this.totalDaysOverdue + " }";
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (!(obj instanceof Datapoint)) {
+                return false;
+            }
+            Datapoint other = (Datapoint) obj;
+            return this.groupId.equals(other.groupId) &&
+                    this.numEmployees.equals(other.numEmployees) &&
+                    this.totalDaysOverdue.equals(other.totalDaysOverdue);
+        }
+    }
+
+    // Status class reused from previous implementation
+    static class Status {
+        String name;          // one of {"not_required", "pending", "overdue", "completed"}
+        Integer daysOverdue;  // 0 if not overdue
+
+        public Status(String name, Integer daysOverdue) {
+            this.name = name;
+            this.daysOverdue = daysOverdue;
+        }
+
+        @Override
+        public String toString() {
+            return this.name + "," + this.daysOverdue;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (!(obj instanceof Status)) {
+                return false;
+            }
+            Status other = (Status) obj;
+            return this.name.equals(other.name) && this.daysOverdue.equals(other.daysOverdue);
+        }
     }
 
     // Helper class for enhanced test cases

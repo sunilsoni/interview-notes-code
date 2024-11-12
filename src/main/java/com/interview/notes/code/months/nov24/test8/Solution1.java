@@ -4,45 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution1 {
-    static class Employee {
-        Integer startDay;   // The day the employee started working at the company (in days)
-        Integer trainedDay; // (optional) The day the employee was trained (in days)
-
-        public Employee(Integer startDay, Integer trainedDay) {
-            this.startDay = startDay;
-            this.trainedDay = trainedDay;
-        }
-    }
-
-    static class Status {
-        String name;          // one of {"not_required", "pending", "overdue", "completed"}
-        Integer daysOverdue;  // 0 if not overdue
-
-        public Status(String name, Integer daysOverdue) {
-            this.name = name;
-            this.daysOverdue = daysOverdue;
-        }
-
-        @Override
-        public String toString() {
-            return this.name + "," + this.daysOverdue;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (!(obj instanceof Status)) {
-                return false;
-            }
-            Status other = (Status) obj;
-            return this.name.equals(other.name) && this.daysOverdue.equals(other.daysOverdue);
-        }
-    }
-
     /**
      * Evaluates an employee's training status on a specified checkDay.
-     * @param employee - The employee's details
+     *
+     * @param employee       - The employee's details
      * @param trainingWindow - The number of days an employee has to complete their training after their start day.
-     * @param checkDay - The day for which we are checking the employee's training status.
+     * @param checkDay       - The day for which we are checking the employee's training status.
      * @return Status object with the training status
      */
     public static Status getTrainingStatus(Employee employee, Integer trainingWindow, Integer checkDay) {
@@ -197,6 +164,40 @@ class Solution1 {
 
         // Summary
         System.out.println("\nTest Summary: " + passCount + "/" + testCases.size() + " passed.");
+    }
+
+    static class Employee {
+        Integer startDay;   // The day the employee started working at the company (in days)
+        Integer trainedDay; // (optional) The day the employee was trained (in days)
+
+        public Employee(Integer startDay, Integer trainedDay) {
+            this.startDay = startDay;
+            this.trainedDay = trainedDay;
+        }
+    }
+
+    static class Status {
+        String name;          // one of {"not_required", "pending", "overdue", "completed"}
+        Integer daysOverdue;  // 0 if not overdue
+
+        public Status(String name, Integer daysOverdue) {
+            this.name = name;
+            this.daysOverdue = daysOverdue;
+        }
+
+        @Override
+        public String toString() {
+            return this.name + "," + this.daysOverdue;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (!(obj instanceof Status)) {
+                return false;
+            }
+            Status other = (Status) obj;
+            return this.name.equals(other.name) && this.daysOverdue.equals(other.daysOverdue);
+        }
     }
 
     // Helper class for test cases

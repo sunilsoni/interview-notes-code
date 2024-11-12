@@ -1,38 +1,6 @@
 package com.interview.notes.code.months.nov24.test9;
 
 class TrainingComplianceTest {
-    static class Employee {
-        Integer startDay;
-        Integer trainedDay;
-        
-        public Employee(Integer startDay, Integer trainedDay) {
-            this.startDay = startDay;
-            this.trainedDay = trainedDay;
-        }
-    }
-
-    static class Status {
-        String name;
-        Integer daysOverdue;
-
-        public Status(String name, Integer daysOverdue) {
-            this.name = name;
-            this.daysOverdue = daysOverdue;
-        }
-
-        public String toString() {
-            return this.name + "," + this.daysOverdue;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (!(obj instanceof Status)) return false;
-            Status other = (Status) obj;
-            return this.name.equals(other.name) && 
-                   this.daysOverdue.equals(other.daysOverdue);
-        }
-    }
-
     public static Status getTrainingStatus(Employee employee, Integer trainingWindow, Integer checkDay) {
         // Check if not required (check day before start day)
         if (checkDay < employee.startDay) {
@@ -75,51 +43,83 @@ class TrainingComplianceTest {
 
     public static void main(String[] args) {
         // Basic test cases
-        runTest("Pending within window", 
-            new Status("pending", 0),
-            getTrainingStatus(new Employee(100, null), 10, 104));
+        runTest("Pending within window",
+                new Status("pending", 0),
+                getTrainingStatus(new Employee(100, null), 10, 104));
 
-        runTest("Completed within window", 
-            new Status("completed", 0),
-            getTrainingStatus(new Employee(100, 105), 10, 110));
+        runTest("Completed within window",
+                new Status("completed", 0),
+                getTrainingStatus(new Employee(100, 105), 10, 110));
 
-        runTest("Trained late but compliant", 
-            new Status("completed", 0),
-            getTrainingStatus(new Employee(100, 107), 5, 110));
+        runTest("Trained late but compliant",
+                new Status("completed", 0),
+                getTrainingStatus(new Employee(100, 107), 5, 110));
 
-        runTest("Overdue training", 
-            new Status("overdue", 1),
-            getTrainingStatus(new Employee(100, 109), 5, 106));
+        runTest("Overdue training",
+                new Status("overdue", 1),
+                getTrainingStatus(new Employee(100, 109), 5, 106));
 
-        runTest("Not required yet", 
-            new Status("not_required", 0),
-            getTrainingStatus(new Employee(100, null), 10, 95));
+        runTest("Not required yet",
+                new Status("not_required", 0),
+                getTrainingStatus(new Employee(100, null), 10, 95));
 
         // Edge cases
-        runTest("Same day start and check", 
-            new Status("pending", 0),
-            getTrainingStatus(new Employee(100, null), 5, 100));
+        runTest("Same day start and check",
+                new Status("pending", 0),
+                getTrainingStatus(new Employee(100, null), 5, 100));
 
-        runTest("Zero training window", 
-            new Status("overdue", 1),
-            getTrainingStatus(new Employee(100, null), 0, 101));
+        runTest("Zero training window",
+                new Status("overdue", 1),
+                getTrainingStatus(new Employee(100, null), 0, 101));
 
         // Large data inputs
-        runTest("Large days", 
-            new Status("completed", 0),
-            getTrainingStatus(new Employee(1000000, 1000005), 10, 1000010));
+        runTest("Large days",
+                new Status("completed", 0),
+                getTrainingStatus(new Employee(1000000, 1000005), 10, 1000010));
 
-        runTest("Very large training window", 
-            new Status("pending", 0),
-            getTrainingStatus(new Employee(100, null), 1000000, 105));
+        runTest("Very large training window",
+                new Status("pending", 0),
+                getTrainingStatus(new Employee(100, null), 1000000, 105));
 
         // Boundary cases
-        runTest("Training on deadline day", 
-            new Status("completed", 0),
-            getTrainingStatus(new Employee(100, 105), 5, 110));
+        runTest("Training on deadline day",
+                new Status("completed", 0),
+                getTrainingStatus(new Employee(100, 105), 5, 110));
 
-        runTest("Check on deadline day", 
-            new Status("pending", 0),
-            getTrainingStatus(new Employee(100, null), 5, 105));
+        runTest("Check on deadline day",
+                new Status("pending", 0),
+                getTrainingStatus(new Employee(100, null), 5, 105));
+    }
+
+    static class Employee {
+        Integer startDay;
+        Integer trainedDay;
+
+        public Employee(Integer startDay, Integer trainedDay) {
+            this.startDay = startDay;
+            this.trainedDay = trainedDay;
+        }
+    }
+
+    static class Status {
+        String name;
+        Integer daysOverdue;
+
+        public Status(String name, Integer daysOverdue) {
+            this.name = name;
+            this.daysOverdue = daysOverdue;
+        }
+
+        public String toString() {
+            return this.name + "," + this.daysOverdue;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (!(obj instanceof Status)) return false;
+            Status other = (Status) obj;
+            return this.name.equals(other.name) &&
+                    this.daysOverdue.equals(other.daysOverdue);
+        }
     }
 }
