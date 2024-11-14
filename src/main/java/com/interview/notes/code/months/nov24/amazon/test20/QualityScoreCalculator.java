@@ -1,7 +1,8 @@
 package com.interview.notes.code.months.nov24.amazon.test20;
 
-import java.util.*;
-import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class QualityScoreCalculator {
 
@@ -139,7 +140,7 @@ public class QualityScoreCalculator {
         // ratings = [1] * 200000
         // Amplify entire array: [10000] *200000 => sum = 2,000,000,000
         List<Integer> largeRatings = new ArrayList<>();
-        for(int i=0; i < 200000; i++) {
+        for (int i = 0; i < 200000; i++) {
             largeRatings.add(1);
         }
         testCases.add(new TestCase(
@@ -150,15 +151,14 @@ public class QualityScoreCalculator {
 
         // Run all test cases
         int passed = 0;
-        for(int i=0; i < testCases.size(); i++) {
+        for (int i = 0; i < testCases.size(); i++) {
             TestCase tc = testCases.get(i);
             long result = calculateMaxQualityScore(tc.impactFactor, tc.ratings);
-            if(result == tc.expectedOutput) {
-                System.out.println("Test Case " + (i+1) + ": PASS");
+            if (result == tc.expectedOutput) {
+                System.out.println("Test Case " + (i + 1) + ": PASS");
                 passed++;
-            }
-            else {
-                System.out.println("Test Case " + (i+1) + ": FAIL");
+            } else {
+                System.out.println("Test Case " + (i + 1) + ": FAIL");
                 System.out.println("Expected: " + tc.expectedOutput + ", Got: " + result);
             }
         }

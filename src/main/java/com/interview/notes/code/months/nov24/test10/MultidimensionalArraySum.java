@@ -46,7 +46,7 @@ public class MultidimensionalArraySum {
     private static int[][] generateLargeArray(int rows, int cols) {
         return IntStream.range(0, rows)
                 .mapToObj(i -> IntStream.range(0, cols)
-                        .map(j -> (int)(Math.random() * 3) - 1) // Generate -1, 0, or 1
+                        .map(j -> (int) (Math.random() * 3) - 1) // Generate -1, 0, or 1
                         .toArray())
                 .toArray(int[][]::new);
     }

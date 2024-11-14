@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.nov24.test10;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
 
 public class Main {
 
@@ -55,9 +58,9 @@ public class Main {
 
     // Helper method to check matching pair of brackets
     private static boolean isMatchingPair(char opening, char closing) {
-        return (opening == '(' && closing == ')') || 
-               (opening == '{' && closing == '}') || 
-               (opening == '[' && closing == ']');
+        return (opening == '(' && closing == ')') ||
+                (opening == '{' && closing == '}') ||
+                (opening == '[' && closing == ']');
     }
 
     // Test Method to validate all cases, including large data

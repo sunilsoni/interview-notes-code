@@ -6,15 +6,15 @@ public class ArraySplitter {
 
     public static void main(String[] args) {
         Object[] input = {'A', 'B', 'C', 1, 2, 3, "4", "5", 6, '@', '~', 'D'};
-        
+
         testSplitArray(input);
-        
+
         // Additional test cases
         testSplitArray(new Object[]{'X', 1, '!', "2", 3, 'Y', '@'});
         testSplitArray(new Object[]{});
         testSplitArray(new Object[]{1, 2, 3, 4, 5});
         testSplitArray(new Object[]{'A', 'B', 'C'});
-        
+
         // Large input test
         Object[] largeInput = generateLargeInput(100000);
         testSplitArray(largeInput);
@@ -22,19 +22,19 @@ public class ArraySplitter {
 
     public static void testSplitArray(Object[] input) {
         System.out.println("Input: " + Arrays.toString(input));
-        
+
         long startTime = System.nanoTime();
         Map<String, List<?>> result = splitArray(input);
         long endTime = System.nanoTime();
-        
+
         List<Integer> integers = (List<Integer>) result.get("integers");
         List<String> strings = (List<String>) result.get("strings");
         List<Character> chars = (List<Character>) result.get("chars");
-        
+
         System.out.println("integers = " + integers);
         System.out.println("strings = " + strings);
         System.out.println("chars = " + chars);
-        
+
         boolean passed = validateResult(integers, strings, chars, input);
         System.out.println("Test " + (passed ? "PASSED" : "FAILED"));
         System.out.println("Execution time: " + (endTime - startTime) / 1_000_000.0 + " ms");
@@ -79,11 +79,11 @@ public class ArraySplitter {
         resultSet.addAll(integers);
         resultSet.addAll(strings);
         resultSet.addAll(chars);
-        
+
         return originalSet.size() == resultSet.size() &&
-               integers.stream().allMatch(i -> i instanceof Integer) &&
-               strings.stream().allMatch(s -> s instanceof String && s.length() == 1 && Character.isLetter(s.charAt(0))) &&
-               chars.stream().allMatch(c -> c instanceof Character && !Character.isLetterOrDigit(c));
+                integers.stream().allMatch(i -> i instanceof Integer) &&
+                strings.stream().allMatch(s -> s instanceof String && s.length() == 1 && Character.isLetter(s.charAt(0))) &&
+                chars.stream().allMatch(c -> c instanceof Character && !Character.isLetterOrDigit(c));
     }
 
     private static Object[] generateLargeInput(int size) {

@@ -1,6 +1,8 @@
 package com.interview.notes.code.months.nov24.amazon.test19;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class QualityScoreCalculator1 {
     public static void main(String[] args) {
@@ -62,26 +64,26 @@ public class QualityScoreCalculator1 {
     private static void runAllTests() {
         // Test case 1
         testCase(
-            Arrays.asList(5, -3, -3, 2, 4),
-            3,
-            20,
-            "Basic test case"
+                Arrays.asList(5, -3, -3, 2, 4),
+                3,
+                20,
+                "Basic test case"
         );
 
         // Test case 2
         testCase(
-            Arrays.asList(-2, -3, -3, -1),
-            1,
-            -1,
-            "All negative numbers"
+                Arrays.asList(-2, -3, -3, -1),
+                1,
+                -1,
+                "All negative numbers"
         );
 
         // Test case 3
         testCase(
-            Arrays.asList(1, -4),
-            3,
-            3,
-            "Small array test"
+                Arrays.asList(1, -4),
+                3,
+                3,
+                "Small array test"
         );
 
         // Test case 4: Large data test
@@ -90,36 +92,36 @@ public class QualityScoreCalculator1 {
             largeInput.add(i % 2 == 0 ? 100 : -100);
         }
         testCase(
-            largeInput,
-            2,
-            200,
-            "Large data test"
+                largeInput,
+                2,
+                200,
+                "Large data test"
         );
 
         // Edge case: Single element
         testCase(
-            Arrays.asList(5),
-            2,
-            10,
-            "Single element test"
+                Arrays.asList(5),
+                2,
+                10,
+                "Single element test"
         );
 
         // Edge case: Zero elements
         testCase(
-            Arrays.asList(0),
-            5,
-            0,
-            "Zero element test"
+                Arrays.asList(0),
+                5,
+                0,
+                "Zero element test"
         );
     }
 
     private static void testCase(List<Integer> ratings, int impactFactor, long expected, String testName) {
         long result = calculateMaxQualityScore(impactFactor, ratings);
         boolean passed = result == expected;
-        
+
         System.out.println("Test: " + testName);
-        System.out.println("Input: ratings=" + (ratings.size() > 10 ? 
-            ratings.subList(0, 5) + "..." : ratings) + ", impactFactor=" + impactFactor);
+        System.out.println("Input: ratings=" + (ratings.size() > 10 ?
+                ratings.subList(0, 5) + "..." : ratings) + ", impactFactor=" + impactFactor);
         System.out.println("Expected: " + expected);
         System.out.println("Got: " + result);
         System.out.println("Status: " + (passed ? "PASS" : "FAIL"));

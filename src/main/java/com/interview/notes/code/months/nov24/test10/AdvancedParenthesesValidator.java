@@ -10,6 +10,9 @@ public class AdvancedParenthesesValidator {
 
     // Map to store bracket pairs
     private static final Map<Character, Character> BRACKET_PAIRS = new HashMap<>();
+    // Validation rules as predicates
+    private static final Map<String, Predicate<String>> VALIDATION_RULES = new HashMap<>();
+
     static {
         BRACKET_PAIRS.put('(', ')');
         BRACKET_PAIRS.put('{', '}');
@@ -18,26 +21,24 @@ public class AdvancedParenthesesValidator {
         // BRACKET_PAIRS.put('<', '>');
     }
 
-    // Validation rules as predicates
-    private static final Map<String, Predicate<String>> VALIDATION_RULES = new HashMap<>();
     static {
         // Rule: No three consecutive same brackets
-        VALIDATION_RULES.put("NO_TRIPLE_BRACKETS", 
-            s -> !Pattern.compile("(\\(\\(\\()|(\\)\\)\\))|(\\[\\[\\[)|(\\]\\]\\])|" +
-                                "(\\{\\{\\{)|(\\}\\}\\})").matcher(s).find());
+        VALIDATION_RULES.put("NO_TRIPLE_BRACKETS",
+                s -> !Pattern.compile("(\\(\\(\\()|(\\)\\)\\))|(\\[\\[\\[)|(\\]\\]\\])|" +
+                        "(\\{\\{\\{)|(\\}\\}\\})").matcher(s).find());
 
         // Rule: Must start with opening bracket if not empty
-        VALIDATION_RULES.put("VALID_START", 
-            s -> s.isEmpty() || BRACKET_PAIRS.containsKey(s.charAt(0)));
+        VALIDATION_RULES.put("VALID_START",
+                s -> s.isEmpty() || BRACKET_PAIRS.containsKey(s.charAt(0)));
 
         // Rule: Equal number of opening and closing brackets
-        VALIDATION_RULES.put("BALANCED_COUNT", 
-            s -> s.chars().filter(ch -> BRACKET_PAIRS.containsKey((char)ch)).count() ==
-                 s.chars().filter(ch -> BRACKET_PAIRS.containsValue((char)ch)).count());
+        VALIDATION_RULES.put("BALANCED_COUNT",
+                s -> s.chars().filter(ch -> BRACKET_PAIRS.containsKey((char) ch)).count() ==
+                        s.chars().filter(ch -> BRACKET_PAIRS.containsValue((char) ch)).count());
 
         // Rule: Maximum nesting depth
-        VALIDATION_RULES.put("MAX_DEPTH", 
-            s -> getMaxDepth(s) <= 100); // configurable depth limit
+        VALIDATION_RULES.put("MAX_DEPTH",
+                s -> getMaxDepth(s) <= 100); // configurable depth limit
     }
 
     private static int getMaxDepth(String s) {
@@ -69,13 +70,13 @@ public class AdvancedParenthesesValidator {
 
         // Main bracket matching logic using stack
         Stack<Character> stack = new Stack<>();
-        
+
         for (char currentChar : s.toCharArray()) {
             if (BRACKET_PAIRS.containsKey(currentChar)) {
                 stack.push(currentChar);
             } else if (BRACKET_PAIRS.containsValue(currentChar)) {
                 if (stack.isEmpty()) return false;
-                
+
                 char lastOpening = stack.pop();
                 if (BRACKET_PAIRS.get(lastOpening) != currentChar) {
                     return false;
@@ -89,20 +90,20 @@ public class AdvancedParenthesesValidator {
     public static void main(String[] args) {
         // Enhanced test cases
         TestCase[] testCases = {
-            new TestCase("()", true, "Simple valid case"),
-            new TestCase("()[]{}", true, "Multiple valid pairs"),
-            new TestCase("(((", false, "Triple brackets - invalid"),
-            new TestCase("({[]})", true, "Nested brackets"),
-            new TestCase(")]", false, "Invalid start"),
-            new TestCase("((()))", true, "Multiple nested"),
-            new TestCase("((())", false, "Unbalanced"),
-            new TestCase("([]){}", true, "Mixed valid"),
-            new TestCase("({[)}]", false, "Cross matching"),
-            // Complex test cases
-            new TestCase("(" + "[]".repeat(50) + ")", true, "Large nested"),
-            new TestCase("(((" + "[]".repeat(10) + ")))", false, "Triple nested start"),
-            new TestCase(null, false, "Null input"),
-            new TestCase("   ", true, "Whitespace only")
+                new TestCase("()", true, "Simple valid case"),
+                new TestCase("()[]{}", true, "Multiple valid pairs"),
+                new TestCase("(((", false, "Triple brackets - invalid"),
+                new TestCase("({[]})", true, "Nested brackets"),
+                new TestCase(")]", false, "Invalid start"),
+                new TestCase("((()))", true, "Multiple nested"),
+                new TestCase("((())", false, "Unbalanced"),
+                new TestCase("([]){}", true, "Mixed valid"),
+                new TestCase("({[)}]", false, "Cross matching"),
+                // Complex test cases
+                new TestCase("(" + "[]".repeat(50) + ")", true, "Large nested"),
+                new TestCase("(((" + "[]".repeat(10) + ")))", false, "Triple nested start"),
+                new TestCase(null, false, "Null input"),
+                new TestCase("   ", true, "Whitespace only")
         };
 
         runTests(testCases);
@@ -120,10 +121,10 @@ public class AdvancedParenthesesValidator {
             boolean isPassed = result == test.expected;
 
             System.out.printf("Test %d: %s\n", i + 1, test.description);
-            System.out.printf("Input: %s\n", 
-                test.input == null ? "null" : 
-                test.input.length() > 50 ? test.input.substring(0, 47) + "..." : 
-                test.input);
+            System.out.printf("Input: %s\n",
+                    test.input == null ? "null" :
+                            test.input.length() > 50 ? test.input.substring(0, 47) + "..." :
+                                    test.input);
             System.out.printf("Expected: %b, Got: %b\n", test.expected, result);
             System.out.printf("Time: %.3f ms\n", (endTime - startTime) / 1_000_000.0);
             System.out.printf("Status: %s\n\n", isPassed ? "✓ PASSED" : "✗ FAILED");
@@ -131,8 +132,8 @@ public class AdvancedParenthesesValidator {
             if (isPassed) passed++;
         }
 
-        System.out.printf("Final Results: %d/%d tests passed (%.2f%%)\n", 
-            passed, testCases.length, (passed * 100.0 / testCases.length));
+        System.out.printf("Final Results: %d/%d tests passed (%.2f%%)\n",
+                passed, testCases.length, (passed * 100.0 / testCases.length));
     }
 
     static class TestCase {

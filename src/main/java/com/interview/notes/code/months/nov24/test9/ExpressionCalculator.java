@@ -43,16 +43,16 @@ public class ExpressionCalculator {
 
     public static int solution(String S) {
         String[] tokens = S.split("[-+]");
-        
+
         // If there's only one token, return its numeric value
         if (tokens.length == 1) {
             return wordToNumber(tokens[0]);
         }
-        
+
         String[] operators = S.replaceAll("[^-+]", "").split("");
-        
+
         int result = wordToNumber(tokens[0]);
-        
+
         for (int i = 0; i < operators.length; i++) {
             int nextNumber = wordToNumber(tokens[i + 1]);
             if (operators[i].equals("+")) {
@@ -61,7 +61,7 @@ public class ExpressionCalculator {
                 result -= nextNumber;
             }
         }
-        
+
         return result;
     }
 
@@ -72,17 +72,17 @@ public class ExpressionCalculator {
     public static void main(String[] args) {
         // Test cases
         String[] testCases = {
-            "one+two-one-one+two+one",
-            "two-two-one-two",
-            "two",
-            "one",
-            "one+one+one+one+one",
-            "two-one-one-one-one-one",
-            "two+two+two+two+two+two+two+two+two+two"
+                "one+two-one-one+two+one",
+                "two-two-one-two",
+                "two",
+                "one",
+                "one+one+one+one+one",
+                "two-one-one-one-one-one",
+                "two+two+two+two+two+two+two+two+two+two"
         };
-        
+
         int[] expectedResults = {4, -3, 2, 1, 5, -3, 20};
-        
+
         for (int i = 0; i < testCases.length; i++) {
             int result = solution(testCases[i]);
             boolean passed = result == expectedResults[i];
@@ -91,7 +91,7 @@ public class ExpressionCalculator {
             System.out.println("Expected: " + expectedResults[i] + ", Got: " + result);
             System.out.println();
         }
-        
+
         // Large input test
         StringBuilder largeInput = new StringBuilder("two");
         for (int i = 0; i < 100; i++) {

@@ -128,7 +128,7 @@ public class WordConjugatesAnalysis {
 
     /**
      * Counts the number of valid substrings in the given string according to Amazon's "Word Conjugates" rules.
-     *
+     * <p>
      * A substring is valid if:
      * 1. It contains only the characters 'a', 'b', 'c', and 'd'.
      * 2. The number of 'a's equals the number of 'b's, and the number of 'c's equals the number of 'd's.
@@ -212,7 +212,7 @@ public class WordConjugatesAnalysis {
 
     /**
      * Main method to run test cases and verify the correctness of the countValidSubstrings method.
-     *
+     * <p>
      * The method runs multiple test cases, including edge cases and large input scenarios,
      * and outputs PASS or FAIL for each test case based on the expected results.
      *

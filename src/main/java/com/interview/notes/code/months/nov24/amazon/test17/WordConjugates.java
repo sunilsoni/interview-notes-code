@@ -1,6 +1,6 @@
 package com.interview.notes.code.months.nov24.amazon.test17;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class WordConjugates {
 
@@ -21,10 +21,10 @@ public class WordConjugates {
             else if (c == 'd') lastD[i] = i;
 
             if (i > 0) {
-                lastA[i] = Math.max(lastA[i], lastA[i-1]);
-                lastB[i] = Math.max(lastB[i], lastB[i-1]);
-                lastC[i] = Math.max(lastC[i], lastC[i-1]);
-                lastD[i] = Math.max(lastD[i], lastD[i-1]);
+                lastA[i] = Math.max(lastA[i], lastA[i - 1]);
+                lastB[i] = Math.max(lastB[i], lastB[i - 1]);
+                lastC[i] = Math.max(lastC[i], lastC[i - 1]);
+                lastD[i] = Math.max(lastD[i], lastD[i - 1]);
             }
 
             int minAB = Math.min(lastA[i], lastB[i]);
@@ -38,16 +38,16 @@ public class WordConjugates {
     public static void main(String[] args) {
         // Test cases
         String[] testCases = {
-            "abdc",
-            "adcb",
-            "abcdad",
-            "aaabbbcccddd",
-            "abcdabcdabcd",
-            "a",
-            "ab",
-            "cd",
-            "abcd" + "a".repeat(100000) + "bcd",
-            "a".repeat(200000) + "b".repeat(200000)
+                "abdc",
+                "adcb",
+                "abcdad",
+                "aaabbbcccddd",
+                "abcdabcdabcd",
+                "a",
+                "ab",
+                "cd",
+                "abcd" + "a".repeat(100000) + "bcd",
+                "a".repeat(200000) + "b".repeat(200000)
         };
 
         long[] expectedResults = {3, 2, 6, 22, 30, 0, 1, 1, 100015, 40000000000L};

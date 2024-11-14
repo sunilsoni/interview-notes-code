@@ -76,34 +76,34 @@ public class BracketValidator {
     public static void main(String[] args) {
         // Define test cases
         String[] testCases = {
-            "",             // Expected: true
-            "()",           // Expected: true
-            "()[]{}",       // Expected: true
-            "{[]}",         // Expected: true
-            "(]",           // Expected: false
-            "([)]",         // Expected: false
-            "{[}",          // Expected: false
-            "(((((((((())))))))))", // Expected: true
-            "([{}])",       // Expected: true
-            "([}{])",       // Expected: false
-            generateLargeValidInput(100000),    // Expected: true
-            generateLargeInvalidInput(100000),  // Expected: false
+                "",             // Expected: true
+                "()",           // Expected: true
+                "()[]{}",       // Expected: true
+                "{[]}",         // Expected: true
+                "(]",           // Expected: false
+                "([)]",         // Expected: false
+                "{[}",          // Expected: false
+                "(((((((((())))))))))", // Expected: true
+                "([{}])",       // Expected: true
+                "([}{])",       // Expected: false
+                generateLargeValidInput(100000),    // Expected: true
+                generateLargeInvalidInput(100000),  // Expected: false
         };
 
         // Expected results corresponding to the test cases
         boolean[] expectedResults = {
-            true,
-            true,
-            true,
-            true,
-            false,
-            false,
-            false,
-            true,
-            true,
-            false,
-            true,
-            false
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                true,
+                true,
+                false,
+                true,
+                false
         };
 
         // Run test cases
