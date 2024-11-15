@@ -112,29 +112,29 @@ public class RearrangeArray {
 
         // Test Case 1: Example provided
         testCases.add(new TestCase(
-                new int[]{1,1,2,2,2,3,4,4,4,4,5},
-                new int[]{1,1,2,2,3,4,4,5,2,4,4},
+                new int[]{1, 1, 2, 2, 2, 3, 4, 4, 4, 4, 5},
+                new int[]{1, 1, 2, 2, 3, 4, 4, 5, 2, 4, 4},
                 "Example Test Case"
         ));
 
         // Test Case 2: All elements are the same
         testCases.add(new TestCase(
-                new int[]{2,2,2,2,2},
-                new int[]{2,2,2,2,2},
+                new int[]{2, 2, 2, 2, 2},
+                new int[]{2, 2, 2, 2, 2},
                 "All Elements Same"
         ));
 
         // Test Case 3: No duplicates
         testCases.add(new TestCase(
-                new int[]{1,2,3,4,5},
-                new int[]{1,2,3,4,5},
+                new int[]{1, 2, 3, 4, 5},
+                new int[]{1, 2, 3, 4, 5},
                 "No Duplicates"
         ));
 
         // Test Case 4: Multiple high-frequency elements
         testCases.add(new TestCase(
-                new int[]{1,1,1,2,2,2,3,3,3,4,4,4},
-                new int[]{1,1,2,2,3,3,4,4,1,2,3,4},
+                new int[]{1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4},
+                new int[]{1, 1, 2, 2, 3, 3, 4, 4, 1, 2, 3, 4},
                 "Multiple High-Frequency Elements"
         ));
 

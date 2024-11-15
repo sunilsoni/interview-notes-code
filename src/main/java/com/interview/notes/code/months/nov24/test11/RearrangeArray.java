@@ -3,15 +3,15 @@ package com.interview.notes.code.months.nov24.test11;
 import java.util.*;
 
 public class RearrangeArray {
-    
+
     public static int[] rearrangeArray(int[] arr) {
         List<Integer> result = new ArrayList<>();
         Map<Integer, Integer> countMap = new HashMap<>();
-        
+
         // Traverse through the sorted array
         for (int num : arr) {
             countMap.put(num, countMap.getOrDefault(num, 0) + 1);
-            
+
             // If this number has appeared less than 2 times, we can safely add it to result
             if (countMap.get(num) <= 2) {
                 result.add(num);
@@ -21,7 +21,7 @@ public class RearrangeArray {
                 countMap.put(num, 0); // reset count for this element
             }
         }
-        
+
         // Convert the result list back to array
         return result.stream().mapToInt(i -> i).toArray();
     }

@@ -1,69 +1,6 @@
 package com.interview.notes.code.months.nov24.test12;
 
-import com.interview.notes.code.months.year2023.june23.test8.Input;
-import org.hibernate.result.Output;/*
-
-Remove duplciates form sorted
----
-
-### Image 1:
-```plaintext
-/**
-* Definition for singly-linked list.
-* struct ListNode {
-* int val;
-* ListNode *next;
-* ListNode() : val(0), next(nullptr) {}
-* ListNode(int x) : val(x), next(nullptr) {}
-* ListNode(int x, ListNode *next) : val(x), next(next) {}
-* };
-
-class Solution {
-    public:
-    ListNode* deleteDuplicates(ListNode* head) {
-
-    }
-};
-```
-
-        ---
-
-
-Example 2:
-
-Input: head = [1,1,2,3,3]
-Output: [1,2,3]
-
-Constraints:
-        - The number of nodes in the list is in the range [0, 300].
-        - -100 <= Node.val <= 100
-        - The list is guaranteed to be sorted in ascending order.
-        ```
-
-        ---
-
-
-        83. Remove Duplicates from Sorted List
-
-Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
-
-        Example 1:
-Input: head = [1,1,2]
-Output: [1,2]
-
-Example 2:
-Input: head = [1,1,2,3,3]
-Output: [1,2,3]
-        ```
-        */
 class RemoveDuplicatesFromSortedList {
-    // Definition for singly-linked list
-    static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) { val = x; }
-    }
-
     // Solution method
     public static ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null) {
@@ -154,5 +91,15 @@ class RemoveDuplicatesFromSortedList {
             largeExpected[i] = i;
         }
         testCase(largeInput, largeExpected);
+    }
+
+    // Definition for singly-linked list
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 }

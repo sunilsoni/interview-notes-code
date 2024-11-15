@@ -41,22 +41,22 @@ public class ArrayRearranger {
     public static void main(String[] args) {
         // Test cases
         int[][] testCases = {
-            {1, 1, 2, 2, 2, 3, 4, 4, 4, 4, 5},
-            {1, 1, 1, 2, 2, 2, 3, 3, 3},
-            {1, 2, 3, 4, 5},
-            {1, 1, 1, 1, 1},
-            {},
-            {1},
-            {1, 1},
-            {1, 1, 1},
-            {1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5}
+                {1, 1, 2, 2, 2, 3, 4, 4, 4, 4, 5},
+                {1, 1, 1, 2, 2, 2, 3, 3, 3},
+                {1, 2, 3, 4, 5},
+                {1, 1, 1, 1, 1},
+                {},
+                {1},
+                {1, 1},
+                {1, 1, 1},
+                {1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5}
         };
 
         for (int i = 0; i < testCases.length; i++) {
             int[] input = testCases[i];
             int[] output = rearrangeArray(input);
             boolean passed = validateOutput(output);
-            
+
             System.out.println("Test Case " + (i + 1) + ":");
             System.out.println("Input:  " + Arrays.toString(input));
             System.out.println("Output: " + Arrays.toString(output));
@@ -73,7 +73,7 @@ public class ArrayRearranger {
         int[] largeOutput = rearrangeArray(largeInput);
         long endTime = System.currentTimeMillis();
         boolean largePassed = validateOutput(largeOutput);
-        
+
         System.out.println("Large Data Test:");
         System.out.println("Input size: " + largeInput.length);
         System.out.println("Execution time: " + (endTime - startTime) + " ms");

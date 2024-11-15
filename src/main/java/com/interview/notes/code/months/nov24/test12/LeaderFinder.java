@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.nov24.test12;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /*
 int[] arr = {14, 9, 11, 7, 8, 5, 3}
@@ -20,10 +23,10 @@ public class LeaderFinder {
         List<Integer> leaders = new ArrayList<>();
         int n = arr.length;
         int maxFromRight = arr[n - 1];
-        
+
         // The rightmost element is always a leader
         leaders.add(maxFromRight);
-        
+
         // Traverse the array from right to left
         for (int i = n - 2; i >= 0; i--) {
             if (arr[i] > maxFromRight) {
@@ -31,7 +34,7 @@ public class LeaderFinder {
                 maxFromRight = arr[i];
             }
         }
-        
+
         // Reverse the list to maintain original order
         Collections.reverse(leaders);
         return leaders;
@@ -45,7 +48,7 @@ public class LeaderFinder {
         runTest(new int[]{5, 4, 3, 2, 1}, Arrays.asList(5, 4, 3, 2, 1));
         runTest(new int[]{7}, Arrays.asList(7));
         runTest(new int[]{}, Arrays.asList());
-        
+
         // Large data input test
         int[] largeArray = new int[100000];
         for (int i = 0; i < 100000; i++) {

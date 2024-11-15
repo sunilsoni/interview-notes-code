@@ -1,18 +1,18 @@
 package com.interview.notes.code.months.nov24.test8;
 
 public class RearrangeArray {
-    
+
     public static int[] rearrange(int[] arr) {
         int n = arr.length;
-        
+
         // If the array is empty or has only one element, it's already valid
         if (n <= 1) {
             return arr;
         }
-        
+
         // Index to place elements at the correct position
         int index = 1;  // Start from the second position as first element is fine
-        
+
         for (int i = 1; i < n; i++) {
             // Check if the current element is the same as the previous one
             if (arr[i] == arr[i - 1]) {
@@ -21,18 +21,18 @@ public class RearrangeArray {
                     continue;
                 }
             }
-            
+
             // Place the element at the correct index
             arr[index] = arr[i];
             index++;
         }
-        
+
         return arr;
     }
 
     public static void test(int[] arr, int[] expected) {
         int[] result = rearrange(arr);
-        
+
         // Check if the result matches the expected
         boolean pass = true;
         if (result.length != expected.length) {
@@ -45,7 +45,7 @@ public class RearrangeArray {
                 }
             }
         }
-        
+
         // Output result
         if (pass) {
             System.out.println("PASS");
@@ -59,27 +59,27 @@ public class RearrangeArray {
         int[] arr1 = {1, 1, 2, 2, 2, 3, 4, 4, 4, 4, 5};
         int[] expected1 = {1, 1, 2, 2, 3, 4, 4, 5, 2, 4, 4};
         test(arr1, expected1);
-        
+
         // Test Case 2: Edge Case - Empty Array
         int[] arr2 = {};
         int[] expected2 = {};
         test(arr2, expected2);
-        
+
         // Test Case 3: Edge Case - Single Element Array
         int[] arr3 = {5};
         int[] expected3 = {5};
         test(arr3, expected3);
-        
+
         // Test Case 4: All elements are the same
         int[] arr4 = {3, 3, 3, 3, 3, 3};
         int[] expected4 = {3, 3, 3, 3};
         test(arr4, expected4);
-        
+
         // Test Case 5: No duplicates
         int[] arr5 = {1, 2, 3, 4, 5};
         int[] expected5 = {1, 2, 3, 4, 5};
         test(arr5, expected5);
-        
+
         // Test Case 6: Large Data
         int[] arr6 = new int[100000];
         for (int i = 0; i < 100000; i++) {

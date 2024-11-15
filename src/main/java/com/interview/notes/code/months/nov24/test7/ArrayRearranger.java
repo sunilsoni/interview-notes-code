@@ -59,24 +59,24 @@ public class ArrayRearranger {
     public static void main(String[] args) {
         // Test cases
         int[][] testCases = {
-            {1, 1, 2, 2, 2, 3, 4, 4, 4, 4, 5},
-            {1, 1, 1, 2, 2, 2, 3, 3},
-            {1, 2, 3, 4, 5},
-            {1, 1, 1, 1, 2, 2, 2, 2},
-            {1, 1, 1, 2, 2, 2, 3, 3, 3},
-            {1, 1, 1, 1, 1, 2, 2, 2, 2, 2},
-            // Large data input
-            generateLargeInput(100000)
+                {1, 1, 2, 2, 2, 3, 4, 4, 4, 4, 5},
+                {1, 1, 1, 2, 2, 2, 3, 3},
+                {1, 2, 3, 4, 5},
+                {1, 1, 1, 1, 2, 2, 2, 2},
+                {1, 1, 1, 2, 2, 2, 3, 3, 3},
+                {1, 1, 1, 1, 1, 2, 2, 2, 2, 2},
+                // Large data input
+                generateLargeInput(100000)
         };
 
         for (int i = 0; i < testCases.length; i++) {
             int[] input = testCases[i];
             int[] result = rearrangeArray(input);
-            
+
             System.out.println("Test Case " + (i + 1) + ":");
             System.out.println("Input: " + Arrays.toString(input));
             System.out.println("Output: " + Arrays.toString(result));
-            
+
             if (isValidRearrangement(result)) {
                 System.out.println("PASS");
             } else {
