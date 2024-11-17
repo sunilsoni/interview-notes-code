@@ -3,7 +3,11 @@ package com.interview.notes.code.months.oct24.amazon.test3;
 
 /*
 
+100% WORKING : /Users/sunilsoni/Documents/Work/Interview/interview-notes-code/src/main/java/com/interview/notes/code/months/nov24/amazon/test21/DominantSubstringCounter.java
+
 PARTIAL WORKING 12/15
+
+
 
 ### **Question:**
 A team of data analysts at Amazon is working to identify patterns in data. During their analysis, they found a category of string they call a **dominant string**. A dominant string has the following properties:
