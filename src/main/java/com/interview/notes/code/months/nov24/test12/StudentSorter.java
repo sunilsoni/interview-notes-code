@@ -2,9 +2,8 @@ package com.interview.notes.code.months.nov24.test12;
 
 import lombok.Data;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+
 @Data
 class Student {
     private String name;
@@ -28,7 +27,8 @@ class Student {
 
 public class StudentSorter {
     public static void main(String[] args) {
-        List<Student> students = null;;// Initialize your list of students here
+        List<Student> students = null;
+        ;// Initialize your list of students here
 
       /*  List<Student> sortedStudents = students.stream()
                 .sorted(Comparator.comparingInt(Student::getSub1)

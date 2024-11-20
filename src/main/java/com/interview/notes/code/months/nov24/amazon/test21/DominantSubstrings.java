@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.nov24.amazon.test21;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class DominantSubstrings {
 
@@ -50,16 +51,16 @@ public class DominantSubstrings {
     public static void main(String[] args) {
         // Define test cases
         List<TestCase> testCases = Arrays.asList(
-            new TestCase("aaaaaid", 3),
-            new TestCase("aidfg", 4),
-            new TestCase("dfdffdfi", 13),
-            new TestCase("a", 0),
-            new TestCase("ab", 1),
-            new TestCase("abab", 2),
-            new TestCase("abcabc", 3),
-            new TestCase("aabbcc", 3),
-            new TestCase("abcdeffedcba", 6),
-            new TestCase("a" + "b".repeat(50000) + "a", 50001) // Large input
+                new TestCase("aaaaaid", 3),
+                new TestCase("aidfg", 4),
+                new TestCase("dfdffdfi", 13),
+                new TestCase("a", 0),
+                new TestCase("ab", 1),
+                new TestCase("abab", 2),
+                new TestCase("abcabc", 3),
+                new TestCase("aabbcc", 3),
+                new TestCase("abcdeffedcba", 6),
+                new TestCase("a" + "b".repeat(50000) + "a", 50001) // Large input
         );
 
         // Run and evaluate each test case

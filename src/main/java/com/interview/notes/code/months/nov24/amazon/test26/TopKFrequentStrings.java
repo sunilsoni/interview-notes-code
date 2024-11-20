@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.nov24.amazon.test26;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 public class TopKFrequentStrings {
     public static String[] topKFrequent(String[] words, int k) {
@@ -12,8 +15,8 @@ public class TopKFrequentStrings {
 
         // Use a PriorityQueue to keep the top k frequent words
         PriorityQueue<String> pq = new PriorityQueue<>(
-            (w1, w2) -> frequencyMap.get(w1).equals(frequencyMap.get(w2)) ?
-                w2.compareTo(w1) : frequencyMap.get(w1) - frequencyMap.get(w2)
+                (w1, w2) -> frequencyMap.get(w1).equals(frequencyMap.get(w2)) ?
+                        w2.compareTo(w1) : frequencyMap.get(w1) - frequencyMap.get(w2)
         );
 
         for (String word : frequencyMap.keySet()) {
@@ -38,7 +41,7 @@ public class TopKFrequentStrings {
         testCase(new String[]{"the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"}, 4, new String[]{"the", "is", "sunny", "day"});
         testCase(new String[]{"i", "love", "leetcode", "i", "love", "coding"}, 2, new String[]{"i", "love"});
         testCase(new String[]{"a", "a", "a", "b", "b", "c"}, 2, new String[]{"a", "b"});
-        
+
         // Large input test case
         String[] largeInput = new String[1000000];
         for (int i = 0; i < largeInput.length; i++) {

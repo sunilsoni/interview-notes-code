@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.nov24.geico.test2;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
 /*
 WORKING
 

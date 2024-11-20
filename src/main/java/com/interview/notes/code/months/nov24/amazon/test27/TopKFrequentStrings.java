@@ -63,13 +63,13 @@ public class TopKFrequentStrings {
 
         // Step 2: Use a min-heap to keep top k elements
         PriorityQueue<Map.Entry<String, Integer>> heap = new PriorityQueue<>(
-            (a, b) -> {
-                if (!a.getValue().equals(b.getValue())) {
-                    return a.getValue() - b.getValue();
-                } else {
-                    return b.getKey().compareTo(a.getKey());
+                (a, b) -> {
+                    if (!a.getValue().equals(b.getValue())) {
+                        return a.getValue() - b.getValue();
+                    } else {
+                        return b.getKey().compareTo(a.getKey());
+                    }
                 }
-            }
         );
 
         for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {

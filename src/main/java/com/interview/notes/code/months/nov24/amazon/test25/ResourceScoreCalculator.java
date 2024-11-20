@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.nov24.amazon.test25;
 
 import java.util.Arrays;
+
 /*
 Assume that I'm building a new container platform that runs within a cluster of nodes.
 The first thing that the platform does is find a node to become the orchestrator.
@@ -11,14 +12,14 @@ input - memFreeIngb = [ 2, 4, 1, 10]
 output - scores= 140, 20, 80, 8]
  */
 public class ResourceScoreCalculator {
-    
+
     public static long[] calculateResourceScores(int[] memFreeInGb) {
         if (memFreeInGb == null || memFreeInGb.length == 0) {
             return new long[0];
         }
-        
+
         long[] scores = new long[memFreeInGb.length];
-        
+
         for (int i = 0; i < memFreeInGb.length; i++) {
             long product = 1;
             for (int j = 0; j < memFreeInGb.length; j++) {
@@ -28,7 +29,7 @@ public class ResourceScoreCalculator {
             }
             scores[i] = product;
         }
-        
+
         return scores;
     }
 
@@ -46,8 +47,8 @@ public class ResourceScoreCalculator {
         testCase(new int[]{0, 1, 2}, new long[]{2, 0, 0}, "Zero Values");
 
         // Test Case 5: Large numbers
-        testCase(new int[]{1000, 2000, 3000}, 
-                new long[]{6000000L, 3000000L, 2000000L}, 
+        testCase(new int[]{1000, 2000, 3000},
+                new long[]{6000000L, 3000000L, 2000000L},
                 "Large Numbers");
 
         // Test Case 6: Empty array
@@ -57,12 +58,12 @@ public class ResourceScoreCalculator {
     private static void testCase(int[] input, long[] expected, String testName) {
         System.out.println("\nRunning Test: " + testName);
         System.out.println("Input: " + Arrays.toString(input));
-        
+
         long[] result = calculateResourceScores(input);
-        
+
         System.out.println("Expected: " + Arrays.toString(expected));
         System.out.println("Actual: " + Arrays.toString(result));
-        
+
         boolean passed = Arrays.equals(result, expected);
         System.out.println("Test " + (passed ? "PASSED" : "FAILED"));
     }

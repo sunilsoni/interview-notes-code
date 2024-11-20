@@ -360,7 +360,7 @@ public class CustomHashSet<T> {
         return result;
     }
 
-    //////////DEBUG///////////////////////////
+    /// ///////DEBUG///////////////////////////
     // просто для проверки что куда добавляет
     private void debug() {
         String result = "[";

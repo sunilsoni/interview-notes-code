@@ -1,18 +1,21 @@
 package com.interview.notes.code.months.nov24.amazon.test25;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class DependencyInstaller {
     public static void main(String[] args) {
         // Define packages
         List<Package> packages = Arrays.asList(
-            new Package("A", "1.0", Arrays.asList("B", "C")),
-            new Package("B", "1.0", Arrays.asList("D", "E", "F")),
-            new Package("C", "1.0", Arrays.asList("F")),
-            new Package("D", "1.0", Collections.emptyList()),
-            new Package("E", "1.0", Collections.emptyList()),
-            new Package("F", "1.0", Arrays.asList("G")),
-            new Package("G", "1.0", Collections.emptyList())
+                new Package("A", "1.0", Arrays.asList("B", "C")),
+                new Package("B", "1.0", Arrays.asList("D", "E", "F")),
+                new Package("C", "1.0", Arrays.asList("F")),
+                new Package("D", "1.0", Collections.emptyList()),
+                new Package("E", "1.0", Collections.emptyList()),
+                new Package("F", "1.0", Arrays.asList("G")),
+                new Package("G", "1.0", Collections.emptyList())
         );
 
         DependencyResolver resolver = new DependencyResolver(packages);
@@ -38,9 +41,9 @@ public class DependencyInstaller {
 
         // Test Case 3: Install Package with Cycle
         List<Package> packagesWithCycle = Arrays.asList(
-            new Package("A", "1.0", Arrays.asList("B")),
-            new Package("B", "1.0", Arrays.asList("C")),
-            new Package("C", "1.0", Arrays.asList("A"))
+                new Package("A", "1.0", Arrays.asList("B")),
+                new Package("B", "1.0", Arrays.asList("C")),
+                new Package("C", "1.0", Arrays.asList("A"))
         );
         resolver = new DependencyResolver(packagesWithCycle);
         boolean result3 = resolver.resolveDependencies("A");
@@ -52,9 +55,9 @@ public class DependencyInstaller {
 
         // Test Case 4: Install Package with Missing Dependency
         List<Package> packagesWithMissing = Arrays.asList(
-            new Package("A", "1.0", Arrays.asList("B")),
-            new Package("B", "1.0", Arrays.asList("C"))
-            // Package C is missing
+                new Package("A", "1.0", Arrays.asList("B")),
+                new Package("B", "1.0", Arrays.asList("C"))
+                // Package C is missing
         );
         resolver = new DependencyResolver(packagesWithMissing);
         boolean result4 = resolver.resolveDependencies("A");

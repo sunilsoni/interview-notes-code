@@ -5,178 +5,177 @@ import java.util.Map;
 
 /**
  * FINAL WORKING 100% IGNORE OLD SOLUTIONS
- *
- *
- *
- *
-
- ```
- Complete the 'getDominantStringCount' function below.
-
- The function is expected to return a LONG_INTEGER.
- The function accepts STRING s as parameter.
-
- public static long getDominantStringCount(String s) {
- // Write your code here
- }
- ```
-
- I'll now extract text from the second image.
-
- Here’s the extracted content from the second new image:
-
- ```
- Code Question 2:
-
- A team of data analysts at Amazon is working to identify patterns in data. During their analysis, they discovered a category of strings they call a dominant string:
-
- • The string has an even length.
- • The string contains at least one character with a frequency equal to exactly half the length of the string.
-
- Given a string `s` of length `n`, determine how many of its substrings are dominant strings.
-
- Example:
- s = "idafddfii".
-
- All even-length substrings of `s` with a frequency of any character that is exactly half their length are:
- ```
-
- I will now extract text from the third image.
-
- Here’s the extracted content from the third new image:
-
- ```
- Substring     Length of substring     Frequent character     Frequency of character
- "id"          2                      'd'/'i'               1
- "da"          2                      'd'/'a'               1
- "af"          2                      'a'/'f'               1
- "fd"          2                      'f'/'d'               1
- "df"          2                      'd'/'f'               1
- "fi"          2                      'f'/'i'               1
- "dafd"        4                      'd'                   2
- "afdd"        4                      'd'                   2
- "fddf"        4                      'f'/'d'               2
- "ddfi"        4                      'd'                   2
- "dfii"        4                      'i'                   2
- "idafdd"      6                      'd'                   3
- "dafddf"      6                      'd'                   3
-
- There are 13 dominant substrings in `s`.
-
- **Function Description**:
- Complete the function `getDominantStringCount` in the editor below.
-
- `getDominantStringCount` has the following parameter:
- - string `s`: the string to analyze
- ```
-
- I'll proceed with extracting text from the fourth image.
-
- Here’s the extracted content from the fourth new image:
-
- ```
- **Returns**:
- int: the number of dominant substrings in `s`
-
- **Constraints**:
- - \(1 ≤ n ≤ 10^5\)
- - `s` consists of lowercase English letters in the range 'a' to 'j' (inclusive) only.
-
- **Input Format For Custom Testing**:
- The first and only line of input contains a string `s`.
-
- **Sample Case 0**:
- Sample Input For Custom Testing:
- STDIN                FUNCTION
- aaaaid               s = "aaaaid"
- Sample Output: 3
-
- **Explanation**:
- 'ai', 'id', and 'aaid' are dominant substrings.
-
- **Sample Case 1**:
- Sample Input For Custom Testing:
- STDIN                FUNCTION
- abab                 s = "abab"
- ```
-
- I will now extract text from the fifth and final image.
-
- Here’s the extracted content from the fifth new image:
-
- ```
- **Sample Case 1**:
-
- Sample Input For Custom Testing:
- STDIN                FUNCTION
- abab                 s = "abab"
- Sample Output: 4
-
- **Explanation**:
- Here are the dominant substrings in `s = "abab"`:
-
- 1. "ab" (from position 0 to 1):
- - Length = 2, 'a' and 'b' both appear once, which is exactly half of the length (2 / 2 = 1).
- 2. "ba" (from position 1 to 2):
- - Length = 2, 'b' and 'a' both appear once, which is exactly half of the length (2 / 2 = 1).
- 3. "ab" (from position 2 to 3):
- - Length = 2, 'a' and 'b' both appear once, which is exactly half of the length (2 / 2 = 1).
- - This substring is counted again because it appears in a different part of the string.
- 4. "abab" (from position 0 to 3):
- - Length = 4, 'a' appears twice, which is exactly half of the length (4 / 2 = 2).
-
- The dominant substrings are "ab", "ba", another occurrence of "ab", and "abab", making a total of 4.
- ```
-
- ### **Combined and Structured Text for the Entire Problem**
-
- 1. **Problem Statement**:
- - A team of data analysts at Amazon discovered a category of strings called **dominant strings**:
- - The string has an even length.
- - The string contains at least one character with a frequency equal to exactly half the length of the string.
- - Given a string `s` of length `n`, determine how many of its substrings are dominant strings.
-
- 2. **Function Signature**:
- ```java
- public static long getDominantStringCount(String s)
- ```
-
- 3. **Constraints**:
- - \(1 ≤ n ≤ 10^5\)
- - The string `s` consists of lowercase English letters in the range 'a' to 'j' (inclusive).
-
- 4. **Input Format**:
- - The first and only line of input contains a string `s`.
-
- 5. **Output**:
- - Returns an integer representing the number of dominant substrings in `s`.
-
- 6. **Sample Cases**:
- - **Sample Case 0**:
- - **Input**: `"aaaaid"`
- - **Output**: `3`
- - **Explanation**: The dominant substrings are "ai", "id", and "aaid".
-
- - **Sample Case 1**:
- - **Input**: `"abab"`
- - **Output**: `4`
- - **Explanation**:
- - Dominant substrings are:
- - "ab" (positions 0-1)
- - "ba" (positions 1-2)
- - "ab" (positions 2-3)
- - "abab" (positions 0-3)
-
- 7. **Example for Explanation**:
- - Given `s = "idafddfii"`:
- - The dominant substrings are derived based on even-length substrings and character frequency meeting the dominant condition.
-
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * ```
+ * Complete the 'getDominantStringCount' function below.
+ * <p>
+ * The function is expected to return a LONG_INTEGER.
+ * The function accepts STRING s as parameter.
+ * <p>
+ * public static long getDominantStringCount(String s) {
+ * // Write your code here
+ * }
+ * ```
+ * <p>
+ * I'll now extract text from the second image.
+ * <p>
+ * Here’s the extracted content from the second new image:
+ * <p>
+ * ```
+ * Code Question 2:
+ * <p>
+ * A team of data analysts at Amazon is working to identify patterns in data. During their analysis, they discovered a category of strings they call a dominant string:
+ * <p>
+ * • The string has an even length.
+ * • The string contains at least one character with a frequency equal to exactly half the length of the string.
+ * <p>
+ * Given a string `s` of length `n`, determine how many of its substrings are dominant strings.
+ * <p>
+ * Example:
+ * s = "idafddfii".
+ * <p>
+ * All even-length substrings of `s` with a frequency of any character that is exactly half their length are:
+ * ```
+ * <p>
+ * I will now extract text from the third image.
+ * <p>
+ * Here’s the extracted content from the third new image:
+ * <p>
+ * ```
+ * Substring     Length of substring     Frequent character     Frequency of character
+ * "id"          2                      'd'/'i'               1
+ * "da"          2                      'd'/'a'               1
+ * "af"          2                      'a'/'f'               1
+ * "fd"          2                      'f'/'d'               1
+ * "df"          2                      'd'/'f'               1
+ * "fi"          2                      'f'/'i'               1
+ * "dafd"        4                      'd'                   2
+ * "afdd"        4                      'd'                   2
+ * "fddf"        4                      'f'/'d'               2
+ * "ddfi"        4                      'd'                   2
+ * "dfii"        4                      'i'                   2
+ * "idafdd"      6                      'd'                   3
+ * "dafddf"      6                      'd'                   3
+ * <p>
+ * There are 13 dominant substrings in `s`.
+ * <p>
+ * *Function Description**:
+ * Complete the function `getDominantStringCount` in the editor below.
+ * <p>
+ * `getDominantStringCount` has the following parameter:
+ * - string `s`: the string to analyze
+ * ```
+ * <p>
+ * I'll proceed with extracting text from the fourth image.
+ * <p>
+ * Here’s the extracted content from the fourth new image:
+ * <p>
+ * ```
+ * *Returns**:
+ * int: the number of dominant substrings in `s`
+ * <p>
+ * *Constraints**:
+ * - \(1 ≤ n ≤ 10^5\)
+ * - `s` consists of lowercase English letters in the range 'a' to 'j' (inclusive) only.
+ * <p>
+ * *Input Format For Custom Testing**:
+ * The first and only line of input contains a string `s`.
+ * <p>
+ * *Sample Case 0**:
+ * Sample Input For Custom Testing:
+ * STDIN                FUNCTION
+ * aaaaid               s = "aaaaid"
+ * Sample Output: 3
+ * <p>
+ * *Explanation**:
+ * 'ai', 'id', and 'aaid' are dominant substrings.
+ * <p>
+ * *Sample Case 1**:
+ * Sample Input For Custom Testing:
+ * STDIN                FUNCTION
+ * abab                 s = "abab"
+ * ```
+ * <p>
+ * I will now extract text from the fifth and final image.
+ * <p>
+ * Here’s the extracted content from the fifth new image:
+ * <p>
+ * ```
+ * *Sample Case 1**:
+ * <p>
+ * Sample Input For Custom Testing:
+ * STDIN                FUNCTION
+ * abab                 s = "abab"
+ * Sample Output: 4
+ * <p>
+ * *Explanation**:
+ * Here are the dominant substrings in `s = "abab"`:
+ * <p>
+ * 1. "ab" (from position 0 to 1):
+ * - Length = 2, 'a' and 'b' both appear once, which is exactly half of the length (2 / 2 = 1).
+ * 2. "ba" (from position 1 to 2):
+ * - Length = 2, 'b' and 'a' both appear once, which is exactly half of the length (2 / 2 = 1).
+ * 3. "ab" (from position 2 to 3):
+ * - Length = 2, 'a' and 'b' both appear once, which is exactly half of the length (2 / 2 = 1).
+ * - This substring is counted again because it appears in a different part of the string.
+ * 4. "abab" (from position 0 to 3):
+ * - Length = 4, 'a' appears twice, which is exactly half of the length (4 / 2 = 2).
+ * <p>
+ * The dominant substrings are "ab", "ba", another occurrence of "ab", and "abab", making a total of 4.
+ * ```
+ * <p>
+ * ### **Combined and Structured Text for the Entire Problem**
+ * <p>
+ * 1. **Problem Statement**:
+ * - A team of data analysts at Amazon discovered a category of strings called **dominant strings**:
+ * - The string has an even length.
+ * - The string contains at least one character with a frequency equal to exactly half the length of the string.
+ * - Given a string `s` of length `n`, determine how many of its substrings are dominant strings.
+ * <p>
+ * 2. **Function Signature**:
+ * ```java
+ * public static long getDominantStringCount(String s)
+ * ```
+ * <p>
+ * 3. **Constraints**:
+ * - \(1 ≤ n ≤ 10^5\)
+ * - The string `s` consists of lowercase English letters in the range 'a' to 'j' (inclusive).
+ * <p>
+ * 4. **Input Format**:
+ * - The first and only line of input contains a string `s`.
+ * <p>
+ * 5. **Output**:
+ * - Returns an integer representing the number of dominant substrings in `s`.
+ * <p>
+ * 6. **Sample Cases**:
+ * - **Sample Case 0**:
+ * - **Input**: `"aaaaid"`
+ * - **Output**: `3`
+ * - **Explanation**: The dominant substrings are "ai", "id", and "aaid".
+ * <p>
+ * - **Sample Case 1**:
+ * - **Input**: `"abab"`
+ * - **Output**: `4`
+ * - **Explanation**:
+ * - Dominant substrings are:
+ * - "ab" (positions 0-1)
+ * - "ba" (positions 1-2)
+ * - "ab" (positions 2-3)
+ * - "abab" (positions 0-3)
+ * <p>
+ * 7. **Example for Explanation**:
+ * - Given `s = "idafddfii"`:
+ * - The dominant substrings are derived based on even-length substrings and character frequency meeting the dominant condition.
  */
 public class DominantSubstringCounter {
 
     /**
      * Counts the number of dominant substrings in the given string.
-     *
+     * <p>
      * A dominant substring is defined as an even-length substring that contains
      * at least one character with a frequency exactly equal to half the substring's length.
      *
@@ -187,17 +186,17 @@ public class DominantSubstringCounter {
         long total = 0;
         // Initialize counts for each character 'a' to 'j'
         Map<Character, Long> perCharCounts = new HashMap<>();
-        for(char c = 'a'; c <= 'j'; c++) {
+        for (char c = 'a'; c <= 'j'; c++) {
             perCharCounts.put(c, 0L);
         }
 
         // Compute per-character counts
-        for(char c = 'a'; c <= 'j'; c++) {
+        for (char c = 'a'; c <= 'j'; c++) {
             Map<Long, Integer> map = new HashMap<>();
             map.put(0L, 1); // Initialize with transformed value 0
             long count_c = 0;
-            for(int j = 0; j < s.length(); j++) {
-                if(s.charAt(j) == c) {
+            for (int j = 0; j < s.length(); j++) {
+                if (s.charAt(j) == c) {
                     count_c++;
                 }
                 long transformed = 2 * count_c - (j + 1);
@@ -210,12 +209,12 @@ public class DominantSubstringCounter {
         // Now, compute per-pair counts using inclusion-exclusion
         long totalPairCounts = 0;
         char[] chars = new char[10];
-        for(int i=0; i<10; i++) {
-            chars[i] = (char)('a' + i);
+        for (int i = 0; i < 10; i++) {
+            chars[i] = (char) ('a' + i);
         }
 
-        for(int i=0; i<10; i++) {
-            for(int j=i+1; j<10; j++) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = i + 1; j < 10; j++) {
                 char c1 = chars[i];
                 char c2 = chars[j];
                 Map<Long, Integer> map = new HashMap<>();
@@ -229,11 +228,11 @@ public class DominantSubstringCounter {
                 long count_c1 = 0;
                 long count_c2 = 0;
                 long count_c1c2 = 0;
-                for(int k=0; k<s.length(); k++) {
-                    if(s.charAt(k) == c1) {
+                for (int k = 0; k < s.length(); k++) {
+                    if (s.charAt(k) == c1) {
                         count_c1++;
                     }
-                    if(s.charAt(k) == c2) {
+                    if (s.charAt(k) == c2) {
                         count_c2++;
                     }
                     long transformed_c1 = 2 * count_c1 - (k + 1);
@@ -288,7 +287,7 @@ public class DominantSubstringCounter {
 
         // Test Case 5
         StringBuilder sb = new StringBuilder();
-        for(int i=0; i<100000; i++) {
+        for (int i = 0; i < 100000; i++) {
             sb.append('a');
         }
         sb.append('b');

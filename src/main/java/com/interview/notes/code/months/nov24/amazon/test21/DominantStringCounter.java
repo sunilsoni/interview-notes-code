@@ -1,7 +1,5 @@
 package com.interview.notes.code.months.nov24.amazon.test21;
 
-import java.util.*;
-
 public class DominantStringCounter {
 
     /**

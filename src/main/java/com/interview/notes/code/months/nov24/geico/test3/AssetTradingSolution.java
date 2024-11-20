@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.nov24.geico.test3;
 
-import java.util.*;
+import java.util.Arrays;
+
 /*
 WORKING:
 
@@ -52,43 +53,6 @@ Design an efficient algorithm to solve this problem given the constraints.
  */
 public class AssetTradingSolution {
 
-    /**
-     * Calculates the maximum possible income from buying and selling an asset given its prices over N days.
-     * 
-     * @param A An array of integers representing the asset prices over N days.
-     * @return The maximum possible income modulo 1,000,000,000 (last nine digits).
-     */
-    public int solution(int[] A) {
-        long income = 0;
-        boolean holding = true; // Start with one asset
-
-        int N = A.length;
-
-        for (int i = 0; i < N - 1; i++) {
-            if (holding) {
-                // If the price is going to drop tomorrow, sell today
-                if (A[i] > A[i + 1]) {
-                    income += A[i];
-                    holding = false;
-                }
-            } else {
-                // If the price is going to rise tomorrow, buy today
-                if (A[i] < A[i + 1]) {
-                    income -= A[i];
-                    holding = true;
-                }
-            }
-        }
-
-        // Sell any remaining asset on the last day
-        if (holding) {
-            income += A[N - 1];
-        }
-
-        // Return the last nine digits of the income
-        return (int) (income % 1_000_000_000);
-    }
-
     public static void main(String[] args) {
         AssetTradingSolution solution = new AssetTradingSolution();
 
@@ -134,5 +98,42 @@ public class AssetTradingSolution {
         int expected7 = 1;
         int result7 = solution.solution(testCase7);
         System.out.println("Test Case 7 (Large data input): " + (result7 == expected7 ? "PASS" : "FAIL"));
+    }
+
+    /**
+     * Calculates the maximum possible income from buying and selling an asset given its prices over N days.
+     *
+     * @param A An array of integers representing the asset prices over N days.
+     * @return The maximum possible income modulo 1,000,000,000 (last nine digits).
+     */
+    public int solution(int[] A) {
+        long income = 0;
+        boolean holding = true; // Start with one asset
+
+        int N = A.length;
+
+        for (int i = 0; i < N - 1; i++) {
+            if (holding) {
+                // If the price is going to drop tomorrow, sell today
+                if (A[i] > A[i + 1]) {
+                    income += A[i];
+                    holding = false;
+                }
+            } else {
+                // If the price is going to rise tomorrow, buy today
+                if (A[i] < A[i + 1]) {
+                    income -= A[i];
+                    holding = true;
+                }
+            }
+        }
+
+        // Sell any remaining asset on the last day
+        if (holding) {
+            income += A[N - 1];
+        }
+
+        // Return the last nine digits of the income
+        return (int) (income % 1_000_000_000);
     }
 }

@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.nov24.geico.test5;
 
-import java.util.*;
+import java.util.Random;
+
 /*
 
 WORKING SOLLN Improved version2:

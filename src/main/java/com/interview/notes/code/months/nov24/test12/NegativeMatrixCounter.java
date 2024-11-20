@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.nov24.test12;
 
 import java.util.Arrays;
+
 /*
 WORKING
 int[][] matrix = {
@@ -50,26 +51,26 @@ public class NegativeMatrixCounter {
     public static void main(String[] args) {
         // Test case 1: Given example
         int[][] matrix1 = {
-            {-3, -2, -1, 1},
-            {-2, -2, 1, 2},
-            {-1, 1, 2, 3},
-            {1, 2, 3, 4}
+                {-3, -2, -1, 1},
+                {-2, -2, 1, 2},
+                {-1, 1, 2, 3},
+                {1, 2, 3, 4}
         };
         testCase(matrix1, new int[]{3, 2, 1, 0}, new int[]{3, 2, 1, 0}, "Test Case 1");
 
         // Test case 2: All negative
         int[][] matrix2 = {
-            {-1, -2, -3},
-            {-4, -5, -6},
-            {-7, -8, -9}
+                {-1, -2, -3},
+                {-4, -5, -6},
+                {-7, -8, -9}
         };
         testCase(matrix2, new int[]{3, 3, 3}, new int[]{3, 3, 3}, "Test Case 2");
 
         // Test case 3: All positive
         int[][] matrix3 = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
         };
         testCase(matrix3, new int[]{0, 0, 0}, new int[]{0, 0, 0}, "Test Case 3");
 

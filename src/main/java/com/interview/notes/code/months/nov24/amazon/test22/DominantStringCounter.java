@@ -1,6 +1,6 @@
 package com.interview.notes.code.months.nov24.amazon.test22;
 
-import java.util.*;
+import java.util.HashMap;
 
 public class DominantStringCounter {
 
@@ -27,8 +27,8 @@ public class DominantStringCounter {
      * Counts the number of dominant substrings where the specified character occurs
      * exactly half the length of the substring.
      *
-     * @param s   the input string
-     * @param ch  the character to consider
+     * @param s  the input string
+     * @param ch the character to consider
      * @return the number of dominant substrings for the character
      */
     private static long countDominantSubstringsForChar(String s, char ch) {

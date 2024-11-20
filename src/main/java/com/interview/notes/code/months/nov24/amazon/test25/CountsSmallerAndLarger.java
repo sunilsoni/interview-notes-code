@@ -6,15 +6,15 @@ public class CountsSmallerAndLarger {
     public static void main(String[] args) {
         // Define test cases
         TestCase[] testCases = new TestCase[]{
-            new TestCase(new int[]{9, 2, 3, 1}, new int[]{3, 1, 1, 0}, new int[]{0, 2, 1, 0}),
-            new TestCase(new int[]{-1}, new int[]{0}, new int[]{0}),
-            new TestCase(new int[]{-1, -1}, new int[]{0, 0}, new int[]{0, 0}),
-            new TestCase(new int[]{1, 2, 3, 4}, new int[]{0, 0, 0, 0}, new int[]{3, 2, 1, 0}),
-            new TestCase(new int[]{4, 3, 2, 1}, new int[]{3, 2, 1, 0}, new int[]{0, 0, 0, 0}),
-            // Additional test cases
-            new TestCase(new int[]{}, new int[]{}, new int[]{}),
-            new TestCase(new int[]{5, 5, 5, 5}, new int[]{0, 0, 0, 0}, new int[]{0, 0, 0, 0}),
-            new TestCase(generateLargeArray(100000), generateCountsSmallerLargeArray(100000, true), generateCountsSmallerLargeArray(100000, false))
+                new TestCase(new int[]{9, 2, 3, 1}, new int[]{3, 1, 1, 0}, new int[]{0, 2, 1, 0}),
+                new TestCase(new int[]{-1}, new int[]{0}, new int[]{0}),
+                new TestCase(new int[]{-1, -1}, new int[]{0, 0}, new int[]{0, 0}),
+                new TestCase(new int[]{1, 2, 3, 4}, new int[]{0, 0, 0, 0}, new int[]{3, 2, 1, 0}),
+                new TestCase(new int[]{4, 3, 2, 1}, new int[]{3, 2, 1, 0}, new int[]{0, 0, 0, 0}),
+                // Additional test cases
+                new TestCase(new int[]{}, new int[]{}, new int[]{}),
+                new TestCase(new int[]{5, 5, 5, 5}, new int[]{0, 0, 0, 0}, new int[]{0, 0, 0, 0}),
+                new TestCase(generateLargeArray(100000), generateCountsSmallerLargeArray(100000, true), generateCountsSmallerLargeArray(100000, false))
         };
 
         // Process each test case
@@ -132,30 +132,6 @@ public class CountsSmallerAndLarger {
         }
     }
 
-    // Helper class to hold value and original index
-    static class Pair {
-        int value;
-        int index;
-
-        Pair(int v, int i) {
-            value = v;
-            index = i;
-        }
-    }
-
-    // Helper class for test cases
-    static class TestCase {
-        int[] nums;
-        int[] expectedSmaller;
-        int[] expectedLarger;
-
-        TestCase(int[] n, int[] es, int[] el) {
-            nums = n;
-            expectedSmaller = es;
-            expectedLarger = el;
-        }
-    }
-
     // Function to generate a large array for testing
     private static int[] generateLargeArray(int size) {
         int[] largeArray = new int[size];
@@ -178,5 +154,29 @@ public class CountsSmallerAndLarger {
             Arrays.fill(counts, 0);
         }
         return counts;
+    }
+
+    // Helper class to hold value and original index
+    static class Pair {
+        int value;
+        int index;
+
+        Pair(int v, int i) {
+            value = v;
+            index = i;
+        }
+    }
+
+    // Helper class for test cases
+    static class TestCase {
+        int[] nums;
+        int[] expectedSmaller;
+        int[] expectedLarger;
+
+        TestCase(int[] n, int[] es, int[] el) {
+            nums = n;
+            expectedSmaller = es;
+            expectedLarger = el;
+        }
     }
 }

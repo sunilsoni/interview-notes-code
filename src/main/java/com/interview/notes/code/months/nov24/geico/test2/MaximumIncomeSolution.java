@@ -8,13 +8,13 @@ public class MaximumIncomeSolution {
 
         long maxIncome = 0;
         int MOD = 1000000000;
-        
+
         // Keep track if we hold an asset
         boolean hasAsset = true;
-        
+
         // Initial position - we start with an asset
         int prevPrice = A[0];
-        
+
         for (int i = 1; i < A.length; i++) {
             if (hasAsset && A[i] > prevPrice) {
                 // Sell if price increased
@@ -26,14 +26,14 @@ public class MaximumIncomeSolution {
             }
             prevPrice = A[i];
         }
-        
+
         return (int) maxIncome;
     }
 
     // Test method to verify solution
     private static void testSolution() {
         int testCase = 1;
-        
+
         // Test Case 1
         int[] test1 = {4, 1, 2, 3};
         int expected1 = 6;
@@ -66,8 +66,8 @@ public class MaximumIncomeSolution {
     private static void verifyResult(int[] input, int expected, int testCase) {
         int result = solution(input);
         boolean passed = result == expected;
-        System.out.printf("Test Case %d: %s\n", testCase, 
-            passed ? "PASSED" : "FAILED");
+        System.out.printf("Test Case %d: %s\n", testCase,
+                passed ? "PASSED" : "FAILED");
         if (!passed) {
             System.out.printf("Expected: %d, Got: %d\n", expected, result);
         }
@@ -78,9 +78,9 @@ public class MaximumIncomeSolution {
         solution(input);
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
-        
-        System.out.printf("Test Case %d (Performance): %s (Duration: %dms)\n", 
-            testCase, duration < 1000 ? "PASSED" : "FAILED", duration);
+
+        System.out.printf("Test Case %d (Performance): %s (Duration: %dms)\n",
+                testCase, duration < 1000 ? "PASSED" : "FAILED", duration);
     }
 
     private static int[] generateLargeTestCase(int size) {

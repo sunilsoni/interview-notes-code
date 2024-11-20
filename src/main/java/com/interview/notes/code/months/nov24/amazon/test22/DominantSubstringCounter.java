@@ -7,7 +7,7 @@ public class DominantSubstringCounter {
 
     /**
      * Counts the number of dominant substrings in the given string.
-     *
+     * <p>
      * A dominant substring is defined as an even-length substring that contains
      * at least one character with a frequency exactly equal to half the substring's length.
      *
@@ -18,17 +18,17 @@ public class DominantSubstringCounter {
         long total = 0;
         // Initialize counts for each character 'a' to 'j'
         Map<Character, Long> perCharCounts = new HashMap<>();
-        for(char c = 'a'; c <= 'j'; c++) {
+        for (char c = 'a'; c <= 'j'; c++) {
             perCharCounts.put(c, 0L);
         }
 
         // Compute per-character counts
-        for(char c = 'a'; c <= 'j'; c++) {
+        for (char c = 'a'; c <= 'j'; c++) {
             Map<Long, Integer> map = new HashMap<>();
             map.put(0L, 1); // Initialize with transformed value 0
             long count_c = 0;
-            for(int j = 0; j < s.length(); j++) {
-                if(s.charAt(j) == c) {
+            for (int j = 0; j < s.length(); j++) {
+                if (s.charAt(j) == c) {
                     count_c++;
                 }
                 long transformed = 2 * count_c - (j + 1);
@@ -41,12 +41,12 @@ public class DominantSubstringCounter {
         // Compute per-pair counts
         long totalPairCounts = 0;
         char[] chars = new char[10];
-        for(int i=0; i<10; i++) {
-            chars[i] = (char)('a' + i);
+        for (int i = 0; i < 10; i++) {
+            chars[i] = (char) ('a' + i);
         }
 
-        for(int i=0; i<10; i++) {
-            for(int j=i+1; j<10; j++) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = i + 1; j < 10; j++) {
                 char c1 = chars[i];
                 char c2 = chars[j];
                 Map<Long, Integer> map = new HashMap<>();
@@ -56,11 +56,11 @@ public class DominantSubstringCounter {
                 long count_c1 = 0;
                 long count_c2 = 0;
                 long count_c1c2 = 0;
-                for(int k=0; k<s.length(); k++) {
-                    if(s.charAt(k) == c1) {
+                for (int k = 0; k < s.length(); k++) {
+                    if (s.charAt(k) == c1) {
                         count_c1++;
                     }
-                    if(s.charAt(k) == c2) {
+                    if (s.charAt(k) == c2) {
                         count_c2++;
                     }
                     long transformed_c1 = 2 * count_c1 - (k + 1);
@@ -118,7 +118,7 @@ public class DominantSubstringCounter {
 
         // Test Case 5: Large input with no dominant substrings
         StringBuilder sb = new StringBuilder();
-        for(int i=0; i<100000; i++) {
+        for (int i = 0; i < 100000; i++) {
             sb.append('a');
         }
         sb.append('b');

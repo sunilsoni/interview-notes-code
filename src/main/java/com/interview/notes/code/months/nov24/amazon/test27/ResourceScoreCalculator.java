@@ -2,17 +2,17 @@ package com.interview.notes.code.months.nov24.amazon.test27; /**
  * ResourceScoreCalculator calculates resource scores for a container platform cluster.
  * The resource score for each node is calculated as the product of available resources
  * across all nodes except the current node.
- *
+ * <p>
  * Assumptions:
  * - memFreeIngb contains non-negative integers.
  * - Zero values in memFreeIngb are handled as per the problem's requirement.
- * 
+ * <p>
  * Approach:
  * - Use BigInteger to handle potential integer overflow with large data inputs.
  * - Count the number of zeros in memFreeIngb.
- *   - If more than one zero, all scores are zero.
- *   - If exactly one zero, scores for non-zero elements are zero; score for zero element is product of non-zero elements.
- *   - If no zeros, calculate total product and divide by memFreeIngb[i] for each element.
+ * - If more than one zero, all scores are zero.
+ * - If exactly one zero, scores for non-zero elements are zero; score for zero element is product of non-zero elements.
+ * - If no zeros, calculate total product and divide by memFreeIngb[i] for each element.
  * - Provide test cases, including edge cases, to validate the solution.
  */
 

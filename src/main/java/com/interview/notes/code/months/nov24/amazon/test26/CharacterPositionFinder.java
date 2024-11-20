@@ -1,7 +1,6 @@
 package com.interview.notes.code.months.nov24.amazon.test26;
 
 import java.util.Comparator;
-import java.util.stream.IntStream;
 
 public class CharacterPositionFinder {
 

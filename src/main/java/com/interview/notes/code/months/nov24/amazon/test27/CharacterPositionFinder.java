@@ -1,6 +1,6 @@
 package com.interview.notes.code.months.nov24.amazon.test27;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class CharacterPositionFinder {
 

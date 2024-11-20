@@ -55,7 +55,7 @@ public class DominantStringCounter {
         // Large input test
         StringBuilder large = new StringBuilder();
         for (int i = 0; i < 100000; i++) {
-            large.append((char)('a' + i % 10));
+            large.append((char) ('a' + i % 10));
         }
         long start = System.currentTimeMillis();
         getDominantStringCount(large.toString());
