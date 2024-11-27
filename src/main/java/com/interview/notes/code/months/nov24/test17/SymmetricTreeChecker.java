@@ -1,53 +1,7 @@
 package com.interview.notes.code.months.nov24.test17;
 
-import java.util.LinkedList;
-import java.util.Queue;
 //WORKING: check if binary tree is symmetric leetcode
 public class SymmetricTreeChecker {
-
-    // Definition for a binary tree node.
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int value) {
-            this.val = value;
-            left = null;
-            right = null;
-        }
-    }
-
-    /*
-     * Function to check if a binary tree is symmetric.
-     * 
-     * @param root The root of the binary tree.
-     * @return True if the tree is symmetric, False otherwise.
-     */
-    public boolean isSymmetric(TreeNode root) {
-        if (root == null) return true;
-        return isMirror(root.left, root.right);
-    }
-
-    /*
-     * Helper function to determine if two trees are mirror images.
-     * 
-     * @param left The root of the first subtree.
-     * @param right The root of the second subtree.
-     * @return True if the subtrees are mirrors, False otherwise.
-     */
-    private boolean isMirror(TreeNode left, TreeNode right) {
-        // If both nodes are null, they are mirrors.
-        if (left == null && right == null) return true;
-        
-        // If only one of the nodes is null, they are not mirrors.
-        if (left == null || right == null) return false;
-        
-        // The current nodes must have the same value, and their subtrees must be mirrors.
-        return (left.val == right.val)
-                && isMirror(left.left, right.right)
-                && isMirror(left.right, right.left);
-    }
 
     /*
      * Main method to run test cases.
@@ -121,5 +75,49 @@ public class SymmetricTreeChecker {
         // Intentionally omit the right subtree to make it asymmetric
         buildSymmetricSubtree(root.left, depth - 1);
         return root;
+    }
+
+    /*
+     * Function to check if a binary tree is symmetric.
+     *
+     * @param root The root of the binary tree.
+     * @return True if the tree is symmetric, False otherwise.
+     */
+    public boolean isSymmetric(TreeNode root) {
+        if (root == null) return true;
+        return isMirror(root.left, root.right);
+    }
+
+    /*
+     * Helper function to determine if two trees are mirror images.
+     *
+     * @param left The root of the first subtree.
+     * @param right The root of the second subtree.
+     * @return True if the subtrees are mirrors, False otherwise.
+     */
+    private boolean isMirror(TreeNode left, TreeNode right) {
+        // If both nodes are null, they are mirrors.
+        if (left == null && right == null) return true;
+
+        // If only one of the nodes is null, they are not mirrors.
+        if (left == null || right == null) return false;
+
+        // The current nodes must have the same value, and their subtrees must be mirrors.
+        return (left.val == right.val)
+                && isMirror(left.left, right.right)
+                && isMirror(left.right, right.left);
+    }
+
+    // Definition for a binary tree node.
+    public static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int value) {
+            this.val = value;
+            left = null;
+            right = null;
+        }
     }
 }

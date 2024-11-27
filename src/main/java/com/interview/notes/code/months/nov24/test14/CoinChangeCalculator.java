@@ -1,6 +1,5 @@
 package com.interview.notes.code.months.nov24.test14;
 
-import java.util.Arrays;
 /*
 You have an infinite number of quarters (25 cents), dimes (10 cents), nickels (5 cents), and pennies (1 cent), write code to calculate the number of ways of representing n cents.
  */
@@ -37,16 +36,16 @@ public class CoinChangeCalculator {
     public static void main(String[] args) {
         // Define test cases: array of {input, expected output}
         Object[][] testCases = {
-            {0, 1L},
-            {1, 1L},
-            {5, 2L},
-            {10, 4L},
-            {25, 13L},
-            {100, 242L},
-            {1000, 142511L},
-            {-5, 0L}, // Edge case: negative input
-            {10000, 142511205L},
-            // Add more test cases as needed
+                {0, 1L},
+                {1, 1L},
+                {5, 2L},
+                {10, 4L},
+                {25, 13L},
+                {100, 242L},
+                {1000, 142511L},
+                {-5, 0L}, // Edge case: negative input
+                {10000, 142511205L},
+                // Add more test cases as needed
         };
 
         boolean allPassed = true;

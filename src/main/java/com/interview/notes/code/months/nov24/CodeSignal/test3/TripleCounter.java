@@ -29,16 +29,16 @@ public class TripleCounter {
                 // Calculate contributions when adding x
                 // 1. As the Middle Element (y = x)
                 long contribMiddle = getOrDefault(freqMap, x + diff) * getOrDefault(freqMap, x - diff);
-                
+
                 // 2. As the First Element (a = x)
                 long contribFirst = getOrDefault(freqMap, x + diff) * getOrDefault(freqMap, x + 2 * diff);
-                
+
                 // 3. As the Last Element (c = x)
                 long contribLast = getOrDefault(freqMap, x - diff) * getOrDefault(freqMap, x - 2 * diff);
-                
+
                 // Update totalTriples
                 totalTriples += contribMiddle + contribFirst + contribLast;
-                
+
                 // Update frequency map
                 freqMap.put(x, freqMap.getOrDefault(x, 0) + 1);
             } else if (operation == '-') {
@@ -49,20 +49,20 @@ public class TripleCounter {
                     // But adding a safety check
                     throw new IllegalArgumentException("Attempting to remove a non-existent element: " + x);
                 }
-                
+
                 // Calculate contributions to remove when removing x
                 // 1. As the Middle Element (y = x)
                 long removeMiddle = (long) getOrDefault(freqMap, x + diff) * getOrDefault(freqMap, x - diff) * k;
-                
+
                 // 2. As the First Element (a = x)
                 long removeFirst = (long) getOrDefault(freqMap, x + diff) * getOrDefault(freqMap, x + 2 * diff) * k;
-                
+
                 // 3. As the Last Element (c = x)
                 long removeLast = (long) getOrDefault(freqMap, x - diff) * getOrDefault(freqMap, x - 2 * diff) * k;
-                
+
                 // Update totalTriples
                 totalTriples -= (removeMiddle + removeFirst + removeLast);
-                
+
                 // Remove x from frequency map
                 freqMap.remove(x);
             }

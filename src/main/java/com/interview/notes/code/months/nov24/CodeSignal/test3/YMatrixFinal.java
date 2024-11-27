@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.nov24.CodeSignal.test3;
 
 import java.util.*;
+
 /*
 WORKING 100%
 
@@ -141,9 +142,9 @@ public class YMatrixFinal {
 
         // Define all possible (Y, Background) pairs
         int[][] pairs = {
-            {0, 1}, {0, 2},
-            {1, 0}, {1, 2},
-            {2, 0}, {2, 1}
+                {0, 1}, {0, 2},
+                {1, 0}, {1, 2},
+                {2, 0}, {2, 1}
         };
 
         int minChanges = Integer.MAX_VALUE;
@@ -181,44 +182,44 @@ public class YMatrixFinal {
 
         // Test Case 1
         testCases.add(new TestCase(
-            new int[][] {
-                {1, 0, 2},
-                {1, 2, 0},
-                {0, 2, 0}
-            },
-            2
+                new int[][]{
+                        {1, 0, 2},
+                        {1, 2, 0},
+                        {0, 2, 0}
+                },
+                2
         ));
 
         // Test Case 2
         testCases.add(new TestCase(
-            new int[][] {
-                {2, 0, 0, 0, 2},
-                {0, 2, 1, 2, 0},
-                {0, 1, 2, 1, 0},
-                {0, 0, 2, 1, 1},
-                {1, 1, 2, 1, 1}
-            },
-            9 // Corrected Expected Output
+                new int[][]{
+                        {2, 0, 0, 0, 2},
+                        {0, 2, 1, 2, 0},
+                        {0, 1, 2, 1, 0},
+                        {0, 0, 2, 1, 1},
+                        {1, 1, 2, 1, 1}
+                },
+                9 // Corrected Expected Output
         ));
 
         // Test Case 3: Minimal Matrix (n=3), already forming Y
         testCases.add(new TestCase(
-            new int[][] {
-                {1, 0, 1},
-                {0, 1, 0},
-                {0, 1, 0}
-            },
-            0
+                new int[][]{
+                        {1, 0, 1},
+                        {0, 1, 0},
+                        {0, 1, 0}
+                },
+                0
         ));
 
         // Test Case 4: All cells need to change
         testCases.add(new TestCase(
-            new int[][] {
-                {0, 0, 0},
-                {0, 0, 0},
-                {0, 0, 0}
-            },
-            4 // Corrected Expected Output
+                new int[][]{
+                        {0, 0, 0},
+                        {0, 0, 0},
+                        {0, 0, 0}
+                },
+                4 // Corrected Expected Output
         ));
 
         // Test Case 5: Large Matrix (n=99) with random values

@@ -1,30 +1,32 @@
 package com.interview.notes.code.months.nov24.CodeSignal.test1;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TripleCounter {
-    
+
     public static int[] solution(String[] queries, int diff) {
         int[] result = new int[queries.length];
         Map<Integer, Long> counts = new HashMap<>();
         long tripleCount = 0;
-        
+
         for (int i = 0; i < queries.length; i++) {
             String query = queries[i];
             int num = Integer.parseInt(query.substring(1));
-            
+
             if (query.charAt(0) == '+') {
                 long count = counts.getOrDefault(num, 0L);
                 long prev = counts.getOrDefault(num - diff, 0L);
                 long next = counts.getOrDefault(num + diff, 0L);
-                
+
                 tripleCount += prev * next;
                 counts.put(num, count + 1);
             } else {
                 long count = counts.get(num);
                 long prev = counts.getOrDefault(num - diff, 0L);
                 long next = counts.getOrDefault(num + diff, 0L);
-                
+
                 tripleCount -= prev * next;
                 if (count == 1) {
                     counts.remove(num);
@@ -32,13 +34,13 @@ public class TripleCounter {
                     counts.put(num, count - 1);
                 }
             }
-            
+
             result[i] = (int) tripleCount;
         }
-        
+
         return result;
     }
-    
+
     public static void main(String[] args) {
         int totalTests = 0;
         int passedTests = 0;
@@ -80,23 +82,23 @@ public class TripleCounter {
         System.out.println("Failed: " + (totalTests - passedTests));
         System.out.println("Success rate: " + (passedTests * 100.0 / totalTests) + "%");
     }
-    
+
     private static boolean runTest(String[] queries, int diff, int[] expected, String testName) {
         System.out.println("Running " + testName + "...");
         long startTime = System.currentTimeMillis();
         int[] result = solution(queries, diff);
         long endTime = System.currentTimeMillis();
-        
+
         boolean passed = Arrays.equals(result, expected);
         System.out.println(testName + ": " + (passed ? "PASS" : "FAIL"));
         System.out.println("Execution time: " + (endTime - startTime) + " ms");
-        
+
         if (!passed) {
             System.out.println("Expected: " + Arrays.toString(expected));
             System.out.println("Actual: " + Arrays.toString(result));
         }
         System.out.println();
-        
+
         return passed;
     }
 }

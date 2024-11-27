@@ -108,7 +108,7 @@ public class ResourceScoreCalculator {
     /**
      * Tests the calculateResourceScores method with given inputs and expected outputs.
      *
-     * @param memFreeIngb   Input array of available resources.
+     * @param memFreeIngb    Input array of available resources.
      * @param expectedScores Expected array of resource scores.
      * @param testCaseName   Name of the test case.
      */
