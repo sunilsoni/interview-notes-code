@@ -13,6 +13,7 @@ Input: Two dimensional array of integers and
 integer k
 Output: kth smallest number (integer)
  */
+
 public class MatrixKthSmallest {
     // Method to find kth smallest element
     public static int findKthSmallest(int[][] matrix, int k) {
