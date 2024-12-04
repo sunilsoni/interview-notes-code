@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.dec24.wallmart.test2;
 
 import java.util.*;
+
 /*
 
 ### Task Description:
@@ -141,19 +142,19 @@ public class MovieRecommender {
 
     public static void main(String[] args) {
         String[][] ratings = {
-            {"Alice", "Frozen", "5"},
-            {"Bob", "Mad Max", "5"},
-            {"Charlie", "Lost In Translation", "4"},
-            {"Charlie", "Inception", "4"},
-            {"Bob", "All About Eve", "3"},
-            {"Bob", "Lost In Translation", "5"},
-            {"Dennis", "All About Eve", "5"},
-            {"Dennis", "Mad Max", "4"},
-            {"Charlie", "Topsy-Turvy", "2"},
-            {"Dennis", "Topsy-Turvy", "4"},
-            {"Alice", "Lost In Translation", "1"},
-            {"Franz", "Lost In Translation", "5"},
-            {"Franz", "Mad Max", "5"}
+                {"Alice", "Frozen", "5"},
+                {"Bob", "Mad Max", "5"},
+                {"Charlie", "Lost In Translation", "4"},
+                {"Charlie", "Inception", "4"},
+                {"Bob", "All About Eve", "3"},
+                {"Bob", "Lost In Translation", "5"},
+                {"Dennis", "All About Eve", "5"},
+                {"Dennis", "Mad Max", "4"},
+                {"Charlie", "Topsy-Turvy", "2"},
+                {"Dennis", "Topsy-Turvy", "4"},
+                {"Alice", "Lost In Translation", "1"},
+                {"Franz", "Lost In Translation", "5"},
+                {"Franz", "Mad Max", "5"}
         };
 
         // Test cases

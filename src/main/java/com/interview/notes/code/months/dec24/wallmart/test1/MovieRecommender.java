@@ -80,19 +80,19 @@ public class MovieRecommender {
      */
     public static void main(String[] args) {
         String[][] ratings = {
-            {"Alice", "Frozen", "5"},
-            {"Bob", "Mad Max", "5"},
-            {"Charlie", "Lost In Translation", "4"},
-            {"Charlie", "Inception", "4"},
-            {"Bob", "All About Eve", "3"},
-            {"Bob", "Lost In Translation", "5"},
-            {"Dennis", "All About Eve", "5"},
-            {"Dennis", "Mad Max", "4"},
-            {"Charlie", "Topsy-Turvy", "2"},
-            {"Dennis", "Topsy-Turvy", "4"},
-            {"Alice", "Lost In Translation", "1"},
-            {"Franz", "Lost In Translation", "5"},
-            {"Franz", "Mad Max", "5"}
+                {"Alice", "Frozen", "5"},
+                {"Bob", "Mad Max", "5"},
+                {"Charlie", "Lost In Translation", "4"},
+                {"Charlie", "Inception", "4"},
+                {"Bob", "All About Eve", "3"},
+                {"Bob", "Lost In Translation", "5"},
+                {"Dennis", "All About Eve", "5"},
+                {"Dennis", "Mad Max", "4"},
+                {"Charlie", "Topsy-Turvy", "2"},
+                {"Dennis", "Topsy-Turvy", "4"},
+                {"Alice", "Lost In Translation", "1"},
+                {"Franz", "Lost In Translation", "5"},
+                {"Franz", "Mad Max", "5"}
         };
 
         // Define test cases
@@ -141,8 +141,8 @@ public class MovieRecommender {
 
         // Test case: User with no ratings
         String[][] ratings1 = {
-            {"Alice", "Frozen", "5"},
-            {"Bob", "Mad Max", "5"}
+                {"Alice", "Frozen", "5"},
+                {"Bob", "Mad Max", "5"}
         };
         List<String> expected1 = Collections.emptyList();
         List<String> actual1 = recommendations("Eve", ratings1);
@@ -156,9 +156,9 @@ public class MovieRecommender {
 
         // Test case: User has rated all movies
         String[][] ratings2 = {
-            {"Alice", "Frozen", "5"},
-            {"Alice", "Mad Max", "4"},
-            {"Alice", "Inception", "5"}
+                {"Alice", "Frozen", "5"},
+                {"Alice", "Mad Max", "4"},
+                {"Alice", "Inception", "5"}
         };
         List<String> expected2 = Collections.emptyList();
         List<String> actual2 = recommendations("Alice", ratings2);

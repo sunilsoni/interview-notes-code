@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.dec24.test3;
 
 import java.util.Arrays;
+
 /*
 
 
@@ -18,28 +19,28 @@ public class MatrixKthSmallest {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             throw new IllegalArgumentException("Invalid matrix input");
         }
-        
+
         int rows = matrix.length;
         int cols = matrix[0].length;
         int totalElements = rows * cols;
-        
+
         if (k <= 0 || k > totalElements) {
             throw new IllegalArgumentException("Invalid k value");
         }
-        
+
         // Convert 2D array to 1D for easier sorting
         int[] flatArray = new int[totalElements];
         int index = 0;
-        
+
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 flatArray[index++] = matrix[i][j];
             }
         }
-        
+
         // Sort the array
         Arrays.sort(flatArray);
-        
+
         // Return kth smallest element
         return flatArray[k - 1];
     }
@@ -47,9 +48,9 @@ public class MatrixKthSmallest {
     public static void main(String[] args) {
         // Test Case 1: Basic case
         int[][] matrix1 = {
-            {1, 5, 9},
-            {10, 11, 13},
-            {12, 13, 15}
+                {1, 5, 9},
+                {10, 11, 13},
+                {12, 13, 15}
         };
         testCase(matrix1, 8, 13, "Basic Test");
 
@@ -59,9 +60,9 @@ public class MatrixKthSmallest {
 
         // Test Case 3: Matrix with duplicates
         int[][] matrix3 = {
-            {1, 2, 2},
-            {2, 3, 3},
-            {3, 3, 4}
+                {1, 2, 2},
+                {2, 3, 3},
+                {3, 3, 4}
         };
         testCase(matrix3, 4, 2, "Duplicates");
 
@@ -80,7 +81,7 @@ public class MatrixKthSmallest {
             long startTime = System.nanoTime();
             int result = findKthSmallest(matrix, k);
             long endTime = System.nanoTime();
-            
+
             System.out.println("Test: " + testName);
             System.out.println("Expected: " + expected + ", Got: " + result);
             System.out.println("Status: " + (result == expected ? "PASS" : "FAIL"));

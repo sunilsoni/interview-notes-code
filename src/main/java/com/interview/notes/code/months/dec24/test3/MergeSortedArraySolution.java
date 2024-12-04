@@ -1,4 +1,5 @@
 package com.interview.notes.code.months.dec24.test3;
+
 /*
 WORKING:
 
@@ -79,24 +80,24 @@ public class MergeSortedArraySolution {
         int[] nums2_1 = {2, 5, 6};
         int[] expected1 = {1, 2, 2, 3, 5, 6};
         merge(nums1_1, 3, nums2_1, 3);
-        System.out.println("Test Case 1: " + 
-            (arraysEqual(nums1_1, expected1) ? "PASS" : "FAIL"));
+        System.out.println("Test Case 1: " +
+                (arraysEqual(nums1_1, expected1) ? "PASS" : "FAIL"));
 
         // Test case 2
         int[] nums1_2 = {1};
         int[] nums2_2 = {};
         int[] expected2 = {1};
         merge(nums1_2, 1, nums2_2, 0);
-        System.out.println("Test Case 2: " + 
-            (arraysEqual(nums1_2, expected2) ? "PASS" : "FAIL"));
+        System.out.println("Test Case 2: " +
+                (arraysEqual(nums1_2, expected2) ? "PASS" : "FAIL"));
 
         // Test case 3
         int[] nums1_3 = {0};
         int[] nums2_3 = {1};
         int[] expected3 = {1};
         merge(nums1_3, 0, nums2_3, 1);
-        System.out.println("Test Case 3: " + 
-            (arraysEqual(nums1_3, expected3) ? "PASS" : "FAIL"));
+        System.out.println("Test Case 3: " +
+                (arraysEqual(nums1_3, expected3) ? "PASS" : "FAIL"));
 
         // Edge case: Large arrays
         int[] nums1_4 = new int[200];
@@ -108,12 +109,12 @@ public class MergeSortedArraySolution {
         merge(nums1_4, 100, nums2_4, 100);
         boolean isLargeArraySorted = true;
         for (int i = 1; i < 200; i++) {
-            if (nums1_4[i] < nums1_4[i-1]) {
+            if (nums1_4[i] < nums1_4[i - 1]) {
                 isLargeArraySorted = false;
                 break;
             }
         }
-        System.out.println("Large Array Test: " + 
-            (isLargeArraySorted ? "PASS" : "FAIL"));
+        System.out.println("Large Array Test: " +
+                (isLargeArraySorted ? "PASS" : "FAIL"));
     }
 }

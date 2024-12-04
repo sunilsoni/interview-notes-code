@@ -64,8 +64,8 @@ public class AquaintlyAnalyzer {
      * @param events A 2D array where each sub-array represents an event.
      * @param N      The threshold for categorizing users.
      * @return A list containing two lists:
-     *         - First list: Users with fewer than N connections.
-     *         - Second list: Users with N or more connections.
+     * - First list: Users with fewer than N connections.
+     * - Second list: Users with N or more connections.
      */
     public static List<List<String>> grouping(String[][] events, int N) {
         // Map to store each user's set of connections
@@ -147,70 +147,70 @@ public class AquaintlyAnalyzer {
 
         // Test Case 1
         String[][] events1 = {
-            {"CONNECT", "Alice", "Bob"},
-            {"DISCONNECT", "Bob", "Alice"},
-            {"CONNECT", "Alice", "Charlie"},
-            {"CONNECT", "Dennis", "Bob"},
-            {"CONNECT", "Pam", "Dennis"},
-            {"DISCONNECT", "Pam", "Dennis"},
-            {"CONNECT", "Pam", "Dennis"},
-            {"CONNECT", "Edward", "Bob"},
-            {"CONNECT", "Dennis", "Charlie"},
-            {"CONNECT", "Alice", "Nicole"},
-            {"CONNECT", "Pam", "Edward"},
-            {"DISCONNECT", "Dennis", "Charlie"},
-            {"CONNECT", "Dennis", "Edward"},
-            {"CONNECT", "Charlie", "Bob"}
+                {"CONNECT", "Alice", "Bob"},
+                {"DISCONNECT", "Bob", "Alice"},
+                {"CONNECT", "Alice", "Charlie"},
+                {"CONNECT", "Dennis", "Bob"},
+                {"CONNECT", "Pam", "Dennis"},
+                {"DISCONNECT", "Pam", "Dennis"},
+                {"CONNECT", "Pam", "Dennis"},
+                {"CONNECT", "Edward", "Bob"},
+                {"CONNECT", "Dennis", "Charlie"},
+                {"CONNECT", "Alice", "Nicole"},
+                {"CONNECT", "Pam", "Edward"},
+                {"DISCONNECT", "Dennis", "Charlie"},
+                {"CONNECT", "Dennis", "Edward"},
+                {"CONNECT", "Charlie", "Bob"}
         };
         List<List<String>> expected1 = Arrays.asList(
-            Arrays.asList("Alice", "Charlie", "Pam", "Nicole"),
-            Arrays.asList("Dennis", "Bob", "Edward")
+                Arrays.asList("Alice", "Charlie", "Pam", "Nicole"),
+                Arrays.asList("Dennis", "Bob", "Edward")
         );
         testCases.add(new TestCase(events1, 3, expected1, "Test Case 1"));
 
         // Test Case 2
         String[][] events2 = {
-            {"CONNECT", "Alice", "Bob"},
-            {"DISCONNECT", "Bob", "Alice"},
-            {"CONNECT", "Alice", "Charlie"},
-            {"CONNECT", "Dennis", "Bob"},
-            {"CONNECT", "Pam", "Dennis"},
-            {"DISCONNECT", "Pam", "Dennis"},
-            {"CONNECT", "Pam", "Dennis"},
-            {"CONNECT", "Edward", "Bob"},
-            {"CONNECT", "Dennis", "Charlie"},
-            {"CONNECT", "Alice", "Nicole"},
-            {"CONNECT", "Pam", "Edward"},
-            {"DISCONNECT", "Dennis", "Charlie"},
-            {"CONNECT", "Dennis", "Edward"},
-            {"CONNECT", "Charlie", "Bob"}
+                {"CONNECT", "Alice", "Bob"},
+                {"DISCONNECT", "Bob", "Alice"},
+                {"CONNECT", "Alice", "Charlie"},
+                {"CONNECT", "Dennis", "Bob"},
+                {"CONNECT", "Pam", "Dennis"},
+                {"DISCONNECT", "Pam", "Dennis"},
+                {"CONNECT", "Pam", "Dennis"},
+                {"CONNECT", "Edward", "Bob"},
+                {"CONNECT", "Dennis", "Charlie"},
+                {"CONNECT", "Alice", "Nicole"},
+                {"CONNECT", "Pam", "Edward"},
+                {"DISCONNECT", "Dennis", "Charlie"},
+                {"CONNECT", "Dennis", "Edward"},
+                {"CONNECT", "Charlie", "Bob"}
         };
         List<List<String>> expected2 = Arrays.asList(
-            Collections.emptyList(),
-            Arrays.asList("Alice", "Charlie", "Dennis", "Bob", "Pam", "Edward", "Nicole")
+                Collections.emptyList(),
+                Arrays.asList("Alice", "Charlie", "Dennis", "Bob", "Pam", "Edward", "Nicole")
         );
         testCases.add(new TestCase(events2, 1, expected2, "Test Case 2"));
 
         // Test Case 3
         String[][] events3 = {
-            {"CONNECT", "Alice", "Bob"},
-            {"DISCONNECT", "Bob", "Alice"},
-            {"CONNECT", "Alice", "Charlie"},
-            {"CONNECT", "Dennis", "Bob"},
-            {"CONNECT", "Pam", "Dennis"},
-            {"DISCONNECT", "Pam", "Dennis"},
-            {"CONNECT", "Pam", "Dennis"},
-            {"CONNECT", "Edward", "Bob"},
-            {"CONNECT", "Dennis", "Charlie"},
-            {"CONNECT", "Alice", "Nicole"},
-            {"CONNECT", "Pam", "Edward"},
-            {"DISCONNECT", "Dennis", "Charlie"},
-            {"CONNECT", "Dennis", "Edward"},
-            {"CONNECT", "Charlie", "Bob"}
+                {"CONNECT", "Alice", "Bob"},
+                {"DISCONNECT", "Bob", "Alice"},
+                {"CONNECT", "Alice", "Charlie"},
+                {"CONNECT", "Dennis", "Bob"},
+                {"CONNECT", "Pam", "Dennis"},
+                {"DISCONNECT", "Pam", "Dennis"},
+                {"CONNECT", "Pam", "Dennis"},
+                {"CONNECT", "Edward", "Bob"},
+                {"CONNECT", "Dennis", "Charlie"},
+                {"CONNECT", "Alice", "Nicole"},
+                {"CONNECT", "Pam", "Edward"},
+                {"DISCONNECT", "Dennis", "Charlie"},
+                {"CONNECT", "Dennis", "Edward"},
+                {"CONNECT", "Charlie", "Bob"}
         };
         List<List<String>> expected3 = Arrays.asList(
-            Arrays.asList("Alice", "Charlie", "Dennis", "Bob", "Pam", "Edward", "Nicole"),
-            Collections.emptyList()
+                Arrays.asList("Alice", "Charlie", "Dennis", "Bob", "Pam", "Edward", "Nicole"),
+                Collections.emptyList()
         );
         testCases.add(new TestCase(events3, 10, expected3, "Test Case 3"));
 
@@ -219,35 +219,35 @@ public class AquaintlyAnalyzer {
         // Test Case 4: No Events
         String[][] events4 = {};
         List<List<String>> expected4 = Arrays.asList(
-            Collections.emptyList(),
-            Collections.emptyList()
+                Collections.emptyList(),
+                Collections.emptyList()
         );
         testCases.add(new TestCase(events4, 1, expected4, "Test Case 4 - No Events"));
 
         // Test Case 5: Self Connections
         String[][] events5 = {
-            {"CONNECT", "Alice", "Alice"},
-            {"CONNECT", "Bob", "Bob"},
-            {"CONNECT", "Charlie", "Charlie"}
+                {"CONNECT", "Alice", "Alice"},
+                {"CONNECT", "Bob", "Bob"},
+                {"CONNECT", "Charlie", "Charlie"}
         };
         List<List<String>> expected5 = Arrays.asList(
-            Arrays.asList("Alice", "Bob", "Charlie"),
-            Collections.emptyList()
+                Arrays.asList("Alice", "Bob", "Charlie"),
+                Collections.emptyList()
         );
         testCases.add(new TestCase(events5, 1, expected5, "Test Case 5 - Self Connections"));
 
         // Test Case 6: Duplicate Connections
         String[][] events6 = {
-            {"CONNECT", "Alice", "Bob"},
-            {"CONNECT", "Bob", "Alice"},
-            {"CONNECT", "Alice", "Bob"},
-            {"DISCONNECT", "Alice", "Bob"},
-            {"DISCONNECT", "Bob", "Alice"},
-            {"DISCONNECT", "Alice", "Bob"}
+                {"CONNECT", "Alice", "Bob"},
+                {"CONNECT", "Bob", "Alice"},
+                {"CONNECT", "Alice", "Bob"},
+                {"DISCONNECT", "Alice", "Bob"},
+                {"DISCONNECT", "Bob", "Alice"},
+                {"DISCONNECT", "Alice", "Bob"}
         };
         List<List<String>> expected6 = Arrays.asList(
-            Arrays.asList("Alice", "Bob"),
-            Collections.emptyList()
+                Arrays.asList("Alice", "Bob"),
+                Collections.emptyList()
         );
         testCases.add(new TestCase(events6, 1, expected6, "Test Case 6 - Duplicate Connections"));
 
@@ -294,7 +294,7 @@ public class AquaintlyAnalyzer {
     /**
      * Generates a large set of connection events for testing scalability.
      *
-     * @param numUsers Number of unique users.
+     * @param numUsers  Number of unique users.
      * @param numEvents Number of events to generate.
      * @return A 2D array representing the events.
      */

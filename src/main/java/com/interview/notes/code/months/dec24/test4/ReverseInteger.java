@@ -30,36 +30,6 @@ Constraints:
 
 public class ReverseInteger {
 
-    /**
-     * Reverses the digits of a 32-bit signed integer.
-     * If the reversed integer overflows, returns 0.
-     *
-     * @param x the integer to reverse
-     * @return the reversed integer or 0 if it overflows
-     */
-    public int reverse(int x) {
-        int reversed = 0;
-        while (x != 0) {
-            // Extract the last digit
-            int digit = x % 10;
-            x /= 10;
-
-            // Check for overflow before it happens
-            if (reversed > Integer.MAX_VALUE / 10 || 
-               (reversed == Integer.MAX_VALUE / 10 && digit > 7)) {
-                return 0; // Overflow would occur
-            }
-            if (reversed < Integer.MIN_VALUE / 10 || 
-               (reversed == Integer.MIN_VALUE / 10 && digit < -8)) {
-                return 0; // Underflow would occur
-            }
-
-            // Append the digit
-            reversed = reversed * 10 + digit;
-        }
-        return reversed;
-    }
-
     public static void main(String[] args) {
         com.interview.notes.code.misc.test4.ReverseInteger ri = new com.interview.notes.code.misc.test4.ReverseInteger();
 
@@ -78,7 +48,7 @@ public class ReverseInteger {
                 System.out.println("Test case " + (i + 1) + " passed.");
             } else {
                 System.out.println("Test case " + (i + 1) + " failed: Input: " + input +
-                                   ", Expected: " + expected + ", Got: " + result);
+                        ", Expected: " + expected + ", Got: " + result);
                 allTestsPassed = false;
             }
         }
@@ -92,7 +62,7 @@ public class ReverseInteger {
             System.out.println("Large input test passed.");
         } else {
             System.out.println("Large input test failed: Input: " + largeInput +
-                               ", Expected: " + largeExpected + ", Got: " + largeResult);
+                    ", Expected: " + largeExpected + ", Got: " + largeResult);
             allTestsPassed = false;
         }
 
@@ -101,5 +71,35 @@ public class ReverseInteger {
         } else {
             System.out.println("Some test cases failed.");
         }
+    }
+
+    /**
+     * Reverses the digits of a 32-bit signed integer.
+     * If the reversed integer overflows, returns 0.
+     *
+     * @param x the integer to reverse
+     * @return the reversed integer or 0 if it overflows
+     */
+    public int reverse(int x) {
+        int reversed = 0;
+        while (x != 0) {
+            // Extract the last digit
+            int digit = x % 10;
+            x /= 10;
+
+            // Check for overflow before it happens
+            if (reversed > Integer.MAX_VALUE / 10 ||
+                    (reversed == Integer.MAX_VALUE / 10 && digit > 7)) {
+                return 0; // Overflow would occur
+            }
+            if (reversed < Integer.MIN_VALUE / 10 ||
+                    (reversed == Integer.MIN_VALUE / 10 && digit < -8)) {
+                return 0; // Underflow would occur
+            }
+
+            // Append the digit
+            reversed = reversed * 10 + digit;
+        }
+        return reversed;
     }
 }

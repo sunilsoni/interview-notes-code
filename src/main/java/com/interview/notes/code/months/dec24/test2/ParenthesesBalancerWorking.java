@@ -124,15 +124,15 @@ public class ParenthesesBalancerWorking {
     public static void main(String[] args) {
         // Test cases
         test("(()))", 1, "Test Case 1");
-        test("))((",  4, "Test Case 2");
-        test("()()",  0, "Test Case 3");
+        test("))((", 4, "Test Case 2");
+        test("()()", 0, "Test Case 3");
         test("((()))", 0, "Test Case 4");
-        test(")))",   3, "Test Case 5");
-        test("(((",   3, "Test Case 6");
-        test("",      0, "Empty String");
-        test(")",     1, "Single Right");
-        test("(",     1, "Single Left");
-        
+        test(")))", 3, "Test Case 5");
+        test("(((", 3, "Test Case 6");
+        test("", 0, "Empty String");
+        test(")", 1, "Single Right");
+        test("(", 1, "Single Left");
+
         // Large input test
         StringBuilder largeInput = new StringBuilder();
         for (int i = 0; i < 100000; i++) {
@@ -145,7 +145,7 @@ public class ParenthesesBalancerWorking {
         long startTime = System.nanoTime();
         int result = getMin(input);
         long endTime = System.nanoTime();
-        
+
         boolean passed = result == expected;
         System.out.printf("%-20s: %s (Expected: %d, Got: %d) Time: %.3f ms%n",
                 testName,
