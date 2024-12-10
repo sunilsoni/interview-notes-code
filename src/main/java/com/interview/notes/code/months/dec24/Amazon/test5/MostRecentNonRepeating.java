@@ -46,6 +46,7 @@ public class MostRecentNonRepeating {
     // Maps to track counts and positions
     private Map<Character, Integer> countMap = new HashMap<>();
     private Map<Character, Node> nodeMap = new HashMap<>();
+
     public MostRecentNonRepeating() {
         head.next = tail;
         tail.prev = head;
