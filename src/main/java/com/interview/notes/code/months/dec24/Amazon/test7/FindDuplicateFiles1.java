@@ -2,8 +2,10 @@ package com.interview.notes.code.months.dec24.Amazon.test7;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.*;
-import java.security.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
@@ -17,48 +19,6 @@ Assumptions:
 - Aim for faster processing
  */
 public class FindDuplicateFiles1 {
-
-    // Simple data structure to hold file metadata
-    static class FileData {
-        String filename;
-        String path;
-        long size;
-
-        FileData(String filename, String path, long size) {
-            this.filename = filename;
-            this.path = path;
-            this.size = size;
-        }
-
-        @Override
-        public String toString() {
-            return "FileData{filename='" + filename + "', path='" + path + "', size=" + size + "}";
-        }
-    }
-
-    // A key that combines filename and size for initial grouping
-    static class FileKey {
-        String filename;
-        long size;
-
-        FileKey(String filename, long size) {
-            this.filename = filename;
-            this.size = size;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) return true;
-            if (!(obj instanceof FileKey)) return false;
-            FileKey other = (FileKey) obj;
-            return this.size == other.size && Objects.equals(this.filename, other.filename);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(filename, size);
-        }
-    }
 
     /**
      * Finds duplicates based on filename and size, then verifies content.
@@ -275,6 +235,48 @@ public class FindDuplicateFiles1 {
             largeTestData.add(new FileData("file" + i + ".txt", "/path/file" + i + ".txt", i));
         }
         return largeTestData;
+    }
+
+    // Simple data structure to hold file metadata
+    static class FileData {
+        String filename;
+        String path;
+        long size;
+
+        FileData(String filename, String path, long size) {
+            this.filename = filename;
+            this.path = path;
+            this.size = size;
+        }
+
+        @Override
+        public String toString() {
+            return "FileData{filename='" + filename + "', path='" + path + "', size=" + size + "}";
+        }
+    }
+
+    // A key that combines filename and size for initial grouping
+    static class FileKey {
+        String filename;
+        long size;
+
+        FileKey(String filename, long size) {
+            this.filename = filename;
+            this.size = size;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (!(obj instanceof FileKey)) return false;
+            FileKey other = (FileKey) obj;
+            return this.size == other.size && Objects.equals(this.filename, other.filename);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(filename, size);
+        }
     }
 
     /**

@@ -1,6 +1,32 @@
 package com.interview.notes.code.months.dec24.test6;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+
+// Option B: Interface Reader with default and additional methods
+interface ReaderB {
+    default void read(Book b) {
+        System.out.println("Reading book " + b.getTitle());
+    }
+
+    void unread(Book b);
+}
+
+// Option C: Interface Reader with a default implementation
+interface ReaderC {
+    default void read(Book b) {
+        System.out.println("Default read: Reading book " + b.getTitle());
+    }
+}
+
+// Option E: Interface with both default and non-default methods
+interface ReaderE {
+    void read(Book b);
+
+    default void unread(Book b) {
+        System.out.println("Unread book " + b.getTitle());
+    }
+}
 
 class Book {
     private String title;
@@ -27,42 +53,17 @@ abstract class AbstractReaderA {
     }
 }
 
-// Option B: Interface Reader with default and additional methods
-interface ReaderB {
-    default void read(Book b) {
-        System.out.println("Reading book " + b.getTitle());
-    }
-
-    void unread(Book b);
-}
-
-// Option C: Interface Reader with a default implementation
-interface ReaderC {
-    default void read(Book b) {
-        System.out.println("Default read: Reading book " + b.getTitle());
-    }
-}
-
 // Option D: Abstract class Reader with an abstract method
 abstract class AbstractReaderD {
     abstract void read(Book b);
 }
 
-// Option E: Interface with both default and non-default methods
-interface ReaderE {
-    void read(Book b);
-
-    default void unread(Book b) {
-        System.out.println("Unread book " + b.getTitle());
-    }
-}
-
 public class ReaderTest {
     public static void main(String[] args) {
         List<Book> books = Arrays.asList(
-            new Book("Gone with the Wind", "Fiction"),
-            new Book("Bourne Ultimatum", "Thriller"),
-            new Book("The Client", "Thriller")
+                new Book("Gone with the Wind", "Fiction"),
+                new Book("Bourne Ultimatum", "Thriller"),
+                new Book("The Client", "Thriller")
         );
 
         // Testing Option B
@@ -77,7 +78,8 @@ public class ReaderTest {
         books.forEach(readerB::unread);
 
         // Testing Option C
-        ReaderC readerC = new ReaderC() {};
+        ReaderC readerC = new ReaderC() {
+        };
         books.forEach(readerC::read);
 
         // Testing Option E

@@ -12,48 +12,6 @@ Assumptions:
 - Aim for faster processing
  */
 public class FindDuplicateFiles {
-    
-    // Simple data structure to hold file metadata
-    static class FileData {
-        String filename;
-        String path;
-        long size;
-
-        FileData(String filename, String path, long size) {
-            this.filename = filename;
-            this.path = path;
-            this.size = size;
-        }
-
-        @Override
-        public String toString() {
-            return "FileData{filename='" + filename + "', path='" + path + "', size=" + size + "}";
-        }
-    }
-    
-    // A key that combines filename and size for grouping
-    static class FileKey {
-        String filename;
-        long size;
-        
-        FileKey(String filename, long size) {
-            this.filename = filename;
-            this.size = size;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) return true;
-            if (!(obj instanceof FileKey)) return false;
-            FileKey other = (FileKey) obj;
-            return this.size == other.size && Objects.equals(this.filename, other.filename);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(filename, size);
-        }
-    }
 
     /**
      * Finds duplicates based on filename and size.
@@ -144,5 +102,47 @@ public class FindDuplicateFiles {
         // If additional edge cases are needed, we can add more here.
 
         // All tests completed.
+    }
+
+    // Simple data structure to hold file metadata
+    static class FileData {
+        String filename;
+        String path;
+        long size;
+
+        FileData(String filename, String path, long size) {
+            this.filename = filename;
+            this.path = path;
+            this.size = size;
+        }
+
+        @Override
+        public String toString() {
+            return "FileData{filename='" + filename + "', path='" + path + "', size=" + size + "}";
+        }
+    }
+
+    // A key that combines filename and size for grouping
+    static class FileKey {
+        String filename;
+        long size;
+
+        FileKey(String filename, long size) {
+            this.filename = filename;
+            this.size = size;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (!(obj instanceof FileKey)) return false;
+            FileKey other = (FileKey) obj;
+            return this.size == other.size && Objects.equals(this.filename, other.filename);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(filename, size);
+        }
     }
 }

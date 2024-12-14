@@ -1,7 +1,8 @@
 package com.interview.notes.code.months.dec24.Amazon.test5;
 
-import java.util.*;
-import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
 WORKING
@@ -127,42 +128,42 @@ Complete the function in the provided code editor:
 
  */
 public class Solution {
-    
+
     // Method to compute minimal connection costs for multiple queries
     public static List<Long> getMinConnectionCost(List<Integer> warehouseCapacity, List<List<Integer>> additionalHubs) {
         int n = warehouseCapacity.size();
         // Precompute prefix sums
-        long[] prefixSum = new long[n+1];
+        long[] prefixSum = new long[n + 1];
         for (int i = 1; i <= n; i++) {
-            prefixSum[i] = prefixSum[i-1] + warehouseCapacity.get(i-1);
+            prefixSum[i] = prefixSum[i - 1] + warehouseCapacity.get(i - 1);
         }
-        
-        long cN = warehouseCapacity.get(n-1); // Capacity at position n
+
+        long cN = warehouseCapacity.get(n - 1); // Capacity at position n
         List<Long> result = new ArrayList<>(additionalHubs.size());
-        
+
         for (List<Integer> hubs : additionalHubs) {
             int hubA = hubs.get(0);
             int hubB = hubs.get(1);
-            
-            long cA = warehouseCapacity.get(hubA-1);
-            long cB = warehouseCapacity.get(hubB-1);
-            
+
+            long cA = warehouseCapacity.get(hubA - 1);
+            long cB = warehouseCapacity.get(hubB - 1);
+
             // Segment 1
             long seg1 = hubA * cA - prefixSum[hubA];
-            
+
             // Segment 2
             long seg2 = (hubB - hubA) * cB - (prefixSum[hubB] - prefixSum[hubA]);
-            
+
             // Segment 3
             long seg3 = (n - hubB) * cN - (prefixSum[n] - prefixSum[hubB]);
-            
+
             long totalCost = seg1 + seg2 + seg3;
             result.add(totalCost);
         }
-        
+
         return result;
     }
-    
+
     // Simple main method for testing without JUnit
     public static void main(String[] args) {
         // Test 1: Example from the prompt
@@ -170,29 +171,29 @@ public class Solution {
         // n=5, capacities=[3,6,10,15,20]
         // q=1, additionalHubs=[[2,4]]
         // Expected Output: 8
-        List<Integer> capacities1 = Arrays.asList(3,6,10,15,20);
+        List<Integer> capacities1 = Arrays.asList(3, 6, 10, 15, 20);
         List<List<Integer>> queries1 = new ArrayList<>();
-        queries1.add(Arrays.asList(2,4));
+        queries1.add(Arrays.asList(2, 4));
         List<Long> result1 = getMinConnectionCost(capacities1, queries1);
         System.out.println("Test 1: " + (result1.get(0) == 8 ? "PASS" : "FAIL") + " (Expected 8, Got " + result1.get(0) + ")");
-        
+
         // Test 2: Sample Input 0 from prompt
         // n=6, capacities=[0,2,5,9,12,18]
         // q=2, queries=[[2,5],[1,3]]
         // Expected Output: 12,18
-        List<Integer> capacities2 = Arrays.asList(0,2,5,9,12,18);
+        List<Integer> capacities2 = Arrays.asList(0, 2, 5, 9, 12, 18);
         List<List<Integer>> queries2 = new ArrayList<>();
-        queries2.add(Arrays.asList(2,5));
-        queries2.add(Arrays.asList(1,3));
+        queries2.add(Arrays.asList(2, 5));
+        queries2.add(Arrays.asList(1, 3));
         List<Long> result2 = getMinConnectionCost(capacities2, queries2);
         boolean passQ1 = (result2.get(0) == 12);
         boolean passQ2 = (result2.get(1) == 18);
         System.out.println("Test 2 Query 1: " + (passQ1 ? "PASS" : "FAIL") + " (Expected 12, Got " + result2.get(0) + ")");
         System.out.println("Test 2 Query 2: " + (passQ2 ? "PASS" : "FAIL") + " (Expected 18, Got " + result2.get(1) + ")");
-        
+
         // Additional tests can be added here:
         // Edge Cases, Large Inputs, etc.
-        
+
         // If all tests print PASS, the solution likely works correctly.
     }
 }

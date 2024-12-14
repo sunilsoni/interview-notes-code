@@ -1,10 +1,11 @@
 package com.interview.notes.code.months.dec24.Amazon.test7;
 
 import java.io.IOException;
-import java.nio.file.*;
-import java.security.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /*
 Say you have a host with millions of files. How do you find all the duplicate files?
@@ -15,22 +16,7 @@ Assumptions:
 - Aim for faster processing
  */
 public class FindDuplicateFilesByContent {
-    
-    static class FileData {
-        String path;
-        long size;
 
-        FileData(String path, long size) {
-            this.path = path;
-            this.size = size;
-        }
-
-        @Override
-        public String toString() {
-            return "FileData{path='" + path + "', size=" + size + "}";
-        }
-    }
-    
     /**
      * Compute hash of the file content.
      * This example uses SHA-256. For production, handle exceptions properly.
@@ -93,10 +79,10 @@ public class FindDuplicateFilesByContent {
         // Example test:
         // Assume these files exist and have known content
         List<FileData> testFiles = Arrays.asList(
-            new FileData("/path/to/file1.txt", 100),
-            new FileData("/path/to/file2.txt", 100),
-            new FileData("/path/to/file3.txt", 200),
-            new FileData("/path/to/file4.txt", 100) // Suppose file1.txt and file4.txt have identical content
+                new FileData("/path/to/file1.txt", 100),
+                new FileData("/path/to/file2.txt", 100),
+                new FileData("/path/to/file3.txt", 200),
+                new FileData("/path/to/file4.txt", 100) // Suppose file1.txt and file4.txt have identical content
         );
 
         List<List<FileData>> duplicates = findDuplicatesByContent(testFiles);
@@ -104,10 +90,25 @@ public class FindDuplicateFilesByContent {
         // Simple PASS/FAIL check:
         // If we know beforehand that file1 and file4 are duplicates:
         boolean foundExpected = duplicates.stream()
-            .anyMatch(group -> group.stream().anyMatch(f -> f.path.endsWith("file1.txt")) &&
-                                group.stream().anyMatch(f -> f.path.endsWith("file4.txt")));
+                .anyMatch(group -> group.stream().anyMatch(f -> f.path.endsWith("file1.txt")) &&
+                        group.stream().anyMatch(f -> f.path.endsWith("file4.txt")));
 
         System.out.println("Duplicates Found: " + duplicates);
         System.out.println("Test (Expected duplicates): " + (foundExpected ? "PASS" : "FAIL"));
+    }
+
+    static class FileData {
+        String path;
+        long size;
+
+        FileData(String path, long size) {
+            this.path = path;
+            this.size = size;
+        }
+
+        @Override
+        public String toString() {
+            return "FileData{path='" + path + "', size=" + size + "}";
+        }
     }
 }

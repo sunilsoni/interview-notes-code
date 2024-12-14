@@ -26,132 +26,6 @@ How would you implement a payment system? its free parking based n ticket no nee
  */
 public class ParkingGarage {
 
-    // Enum for Car and Bay sizes
-    enum Size {
-        SMALL, MEDIUM, LARGE
-    }
-
-    // Ticket class to store ticket information
-    static class Ticket {
-        private final int id;
-        private final Size size;
-
-        public Ticket(int id, Size size) {
-            this.id = id;
-            this.size = size;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public Size getSize() {
-            return size;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) return true;
-            if (!(obj instanceof Ticket)) return false;
-            Ticket other = (Ticket) obj;
-            return this.id == other.id && this.size == other.size;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(id, size);
-        }
-    }
-
-    // ParkingGarage class to manage parking operations
-    static class ParkingGarageSystem {
-        private final int totalSmall;
-        private final int totalMedium;
-        private final int totalLarge;
-
-        private int availableSmall;
-        private int availableMedium;
-        private int availableLarge;
-
-        private final Map<Integer, Ticket> activeTickets;
-        private final AtomicInteger ticketCounter;
-
-        public ParkingGarageSystem(int small, int medium, int large) {
-            this.totalSmall = small;
-            this.totalMedium = medium;
-            this.totalLarge = large;
-            this.availableSmall = small;
-            this.availableMedium = medium;
-            this.availableLarge = large;
-            this.activeTickets = new HashMap<>();
-            this.ticketCounter = new AtomicInteger(1);
-        }
-
-        // Method to park a car
-        public synchronized Ticket parkCar(Size size) {
-            switch (size) {
-                case SMALL:
-                    if (availableSmall > 0) {
-                        availableSmall--;
-                        Ticket ticket = new Ticket(ticketCounter.getAndIncrement(), size);
-                        activeTickets.put(ticket.getId(), ticket);
-                        return ticket;
-                    }
-                    break;
-                case MEDIUM:
-                    if (availableMedium > 0) {
-                        availableMedium--;
-                        Ticket ticket = new Ticket(ticketCounter.getAndIncrement(), size);
-                        activeTickets.put(ticket.getId(), ticket);
-                        return ticket;
-                    }
-                    break;
-                case LARGE:
-                    if (availableLarge > 0) {
-                        availableLarge--;
-                        Ticket ticket = new Ticket(ticketCounter.getAndIncrement(), size);
-                        activeTickets.put(ticket.getId(), ticket);
-                        return ticket;
-                    }
-                    break;
-            }
-            return null; // Garage is full for the given size
-        }
-
-        // Method to retrieve a car
-        public synchronized boolean retrieveCar(int ticketId) {
-            Ticket ticket = activeTickets.remove(ticketId);
-            if (ticket == null) {
-                return false; // Invalid ticket
-            }
-            switch (ticket.getSize()) {
-                case SMALL:
-                    availableSmall++;
-                    break;
-                case MEDIUM:
-                    availableMedium++;
-                    break;
-                case LARGE:
-                    availableLarge++;
-                    break;
-            }
-            return true;
-        }
-
-        // Getters for available spaces (useful for testing)
-        public int getAvailableSmall() {
-            return availableSmall;
-        }
-
-        public int getAvailableMedium() {
-            return availableMedium;
-        }
-
-        public int getAvailableLarge() {
-            return availableLarge;
-        }
-    }
-
     // Main method for testing
     public static void main(String[] args) {
         // Initialize the parking garage with specific bay counts
@@ -233,6 +107,130 @@ public class ParkingGarage {
         // Output all test results
         for (int i = 0; i < testResults.size(); i++) {
             System.out.println("Test Case " + (i + 1) + ": " + testResults.get(i));
+        }
+    }
+
+    // Enum for Car and Bay sizes
+    enum Size {
+        SMALL, MEDIUM, LARGE
+    }
+
+    // Ticket class to store ticket information
+    static class Ticket {
+        private final int id;
+        private final Size size;
+
+        public Ticket(int id, Size size) {
+            this.id = id;
+            this.size = size;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public Size getSize() {
+            return size;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (!(obj instanceof Ticket)) return false;
+            Ticket other = (Ticket) obj;
+            return this.id == other.id && this.size == other.size;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(id, size);
+        }
+    }
+
+    // ParkingGarage class to manage parking operations
+    static class ParkingGarageSystem {
+        private final int totalSmall;
+        private final int totalMedium;
+        private final int totalLarge;
+        private final Map<Integer, Ticket> activeTickets;
+        private final AtomicInteger ticketCounter;
+        private int availableSmall;
+        private int availableMedium;
+        private int availableLarge;
+
+        public ParkingGarageSystem(int small, int medium, int large) {
+            this.totalSmall = small;
+            this.totalMedium = medium;
+            this.totalLarge = large;
+            this.availableSmall = small;
+            this.availableMedium = medium;
+            this.availableLarge = large;
+            this.activeTickets = new HashMap<>();
+            this.ticketCounter = new AtomicInteger(1);
+        }
+
+        // Method to park a car
+        public synchronized Ticket parkCar(Size size) {
+            switch (size) {
+                case SMALL:
+                    if (availableSmall > 0) {
+                        availableSmall--;
+                        Ticket ticket = new Ticket(ticketCounter.getAndIncrement(), size);
+                        activeTickets.put(ticket.getId(), ticket);
+                        return ticket;
+                    }
+                    break;
+                case MEDIUM:
+                    if (availableMedium > 0) {
+                        availableMedium--;
+                        Ticket ticket = new Ticket(ticketCounter.getAndIncrement(), size);
+                        activeTickets.put(ticket.getId(), ticket);
+                        return ticket;
+                    }
+                    break;
+                case LARGE:
+                    if (availableLarge > 0) {
+                        availableLarge--;
+                        Ticket ticket = new Ticket(ticketCounter.getAndIncrement(), size);
+                        activeTickets.put(ticket.getId(), ticket);
+                        return ticket;
+                    }
+                    break;
+            }
+            return null; // Garage is full for the given size
+        }
+
+        // Method to retrieve a car
+        public synchronized boolean retrieveCar(int ticketId) {
+            Ticket ticket = activeTickets.remove(ticketId);
+            if (ticket == null) {
+                return false; // Invalid ticket
+            }
+            switch (ticket.getSize()) {
+                case SMALL:
+                    availableSmall++;
+                    break;
+                case MEDIUM:
+                    availableMedium++;
+                    break;
+                case LARGE:
+                    availableLarge++;
+                    break;
+            }
+            return true;
+        }
+
+        // Getters for available spaces (useful for testing)
+        public int getAvailableSmall() {
+            return availableSmall;
+        }
+
+        public int getAvailableMedium() {
+            return availableMedium;
+        }
+
+        public int getAvailableLarge() {
+            return availableLarge;
         }
     }
 }

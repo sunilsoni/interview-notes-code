@@ -1,14 +1,18 @@
 package com.interview.notes.code.months.dec24.test6;
 
-public interface CanHop {}
+public interface CanHop {
+}
 
- class Frog implements CanHop {}
+class Frog implements CanHop {
+}
 
- class TurtleFrog extends Frog {}
+class TurtleFrog extends Frog {
+}
 
- class BrazilianHornedFrog extends Frog {}
+class BrazilianHornedFrog extends Frog {
+}
 
- class Main {
+class Main {
     public static void main(String[] args) {
         // Replace the blank with the correct types to test the code
         CanHop frog1 = new TurtleFrog();         // Valid, because TurtleFrog indirectly implements CanHop

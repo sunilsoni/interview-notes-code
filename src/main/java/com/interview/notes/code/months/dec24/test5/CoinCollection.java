@@ -1,31 +1,34 @@
 package com.interview.notes.code.months.dec24.test5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 //NOT TRIED
 public class CoinCollection {
     public static int solve(List<Integer> A, List<Integer> B) {
         int maxSum = 0;
         int n = A.size();
         int m = B.size();
-        
+
         // Try starting from each road
         maxSum = Math.max(
-            findMaxPath(A, B, true), // Start from road A
-            findMaxPath(B, A, true)  // Start from road B
+                findMaxPath(A, B, true), // Start from road A
+                findMaxPath(B, A, true)  // Start from road B
         );
-        
+
         return maxSum;
     }
-    
+
     private static int findMaxPath(List<Integer> road1, List<Integer> road2, boolean ascending) {
         int maxSum = 0;
         int currentSum = 0;
         int i = ascending ? 0 : road1.size() - 1;
-        
+
         // Try all possible switching points
         while (ascending ? i < road1.size() : i >= 0) {
             int currentCoin = road1.get(i);
-            
+
             // Try switching to other road at matching values
             int maxSwitchSum = currentSum;
             for (int j = 0; j < road2.size(); j++) {
@@ -34,16 +37,16 @@ public class CoinCollection {
                     maxSwitchSum = Math.max(maxSwitchSum, currentSum + remainingSum);
                 }
             }
-            
+
             currentSum += currentCoin;
             maxSum = Math.max(maxSum, Math.max(currentSum, maxSwitchSum));
-            
+
             i = ascending ? i + 1 : i - 1;
         }
-        
+
         return maxSum;
     }
-    
+
     private static int calcRemainingSum(List<Integer> road, int startIndex, boolean ascending) {
         int sum = road.get(startIndex);
         if (ascending) {

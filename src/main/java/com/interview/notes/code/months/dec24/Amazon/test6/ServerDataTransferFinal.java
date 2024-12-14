@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.dec24.Amazon.test6;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /*
 WORKING:
@@ -105,25 +108,25 @@ public class ServerDataTransferFinal {
      * of these chosen servers and must ensure that data is eventually on all chosen servers.
      * Data transfer between directly connected servers takes 1 unit of time.
      * We must find the minimum time required to achieve this synchronization among the chosen servers.
-     *
+     * <p>
      * Key Insight:
      * In essence, we need to find the minimal continuous circular arc that covers all chosen servers. Since we can start from any chosen server,
      * the problem reduces to finding the smallest arc on the circle that contains all chosen servers. The length of that arc is the answer.
-     *
+     * <p>
      * Approach:
      * 1. Sort the chosen servers in ascending order.
      * 2. Compute the circular gaps between consecutive chosen servers:
-     *    - For i in [0..n-2], gap_i = servers[i+1] - servers[i]
-     *    - Also consider the wrap-around gap: gap_wrap = total_servers - (servers[n-1] - servers[0])
+     * - For i in [0..n-2], gap_i = servers[i+1] - servers[i]
+     * - Also consider the wrap-around gap: gap_wrap = total_servers - (servers[n-1] - servers[0])
      * 3. Identify the largest gap. By "skipping" the largest gap, we form the smallest arc that covers all chosen servers.
-     *    The minimal travel time = total_servers - largest_gap.
+     * The minimal travel time = total_servers - largest_gap.
      * 4. Special case: If there is only one chosen server, no travel is needed, so answer = 0.
-     *
+     * <p>
      * Complexity:
      * - Sorting takes O(n log n).
      * - Finding largest gap takes O(n).
      * This is efficient for n up to 10^5.
-     *
+     * <p>
      * Edge Cases:
      * - n=1: Only one chosen server, answer=0.
      * - All servers close together and one far away creates a large gap, ensure correctness.
@@ -134,20 +137,20 @@ public class ServerDataTransferFinal {
             // Only one server, no travel needed.
             return 0;
         }
-        
+
         // Sort the server positions
         Collections.sort(servers);
 
         // Find the largest gap in the circular arrangement
         int largestGap = 0;
         for (int i = 0; i < n - 1; i++) {
-            int gap = servers.get(i+1) - servers.get(i);
+            int gap = servers.get(i + 1) - servers.get(i);
             if (gap > largestGap) {
                 largestGap = gap;
             }
         }
         // Consider the wrap-around gap
-        int wrapGap = total_servers - (servers.get(n-1) - servers.get(0));
+        int wrapGap = total_servers - (servers.get(n - 1) - servers.get(0));
         if (wrapGap > largestGap) {
             largestGap = wrapGap;
         }
@@ -155,7 +158,7 @@ public class ServerDataTransferFinal {
         // The minimal route is total_servers - largest_gap
         return total_servers - largestGap;
     }
-    
+
     /**
      * A simple main method to test the solution without JUnit.
      * We'll print PASS/FAIL for the given test cases and can add more tests as needed.
@@ -165,7 +168,7 @@ public class ServerDataTransferFinal {
         // total_servers=10, servers=[4,6,2,9] => expected 7
         {
             int total = 10;
-            List<Integer> s = Arrays.asList(4,6,2,9);
+            List<Integer> s = Arrays.asList(4, 6, 2, 9);
             int result = getMinTime(total, s);
             System.out.println("Test 1: " + (result == 7 ? "PASS" : "FAIL") + " (Expected 7, Got " + result + ")");
         }
@@ -174,7 +177,7 @@ public class ServerDataTransferFinal {
         // total_servers=5, servers=[1,5] => expected 1
         {
             int total = 5;
-            List<Integer> s = Arrays.asList(1,5);
+            List<Integer> s = Arrays.asList(1, 5);
             int result = getMinTime(total, s);
             System.out.println("Test 2: " + (result == 1 ? "PASS" : "FAIL") + " (Expected 1, Got " + result + ")");
         }
@@ -184,7 +187,7 @@ public class ServerDataTransferFinal {
         // The example mentions a minimal route of 4. Let's confirm:
         {
             int total = 8;
-            List<Integer> s = Arrays.asList(2,6,8);
+            List<Integer> s = Arrays.asList(2, 6, 8);
             // Sort: [2,6,8]
             // Gaps: (6-2)=4, (8-6)=2, wrapGap=8-(8-2)=8-6=2
             // largestGap=4, answer=8-4=4
