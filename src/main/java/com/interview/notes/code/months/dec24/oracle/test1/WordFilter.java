@@ -5,28 +5,28 @@ public class WordFilter {
     // Method to filter out the target string from the array
     public static String[] wordsWithout(String[] words, String target) {
         int validCount = 0;
-        
+
         // First, count how many elements are not equal to target
         for (String word : words) {
             if (!word.equals(target)) {
                 validCount++;
             }
         }
-        
+
         // Create a new array of the correct size
         String[] result = new String[validCount];
         int index = 0;
-        
+
         // Copy the valid elements to the new array
         for (String word : words) {
             if (!word.equals(target)) {
                 result[index++] = word;
             }
         }
-        
+
         return result;
     }
-    
+
     // Main method to run test cases
     public static void main(String[] args) {
         // Test case 1

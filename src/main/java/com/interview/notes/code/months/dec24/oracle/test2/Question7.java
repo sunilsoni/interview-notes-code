@@ -1,16 +1,18 @@
 package com.interview.notes.code.months.dec24.oracle.test2;
 
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 public class Question7 {
 
     public static void main(String[] args) {
         // Create an instance of the Test class
         Test futureTask = new Test();
-        
+
         // Define the numbers array with more than 5 elements (which will trigger an exception)
         int[] numbers = {1, 1, 2, 3, 5, 8, 13, 21};
-        
+
         // Call calculateSum asynchronously and get the Future result
         Future<Integer> sumFuture = futureTask.calculateSum(numbers);
 
@@ -19,7 +21,7 @@ public class Question7 {
             sumFuture.get(); // This will throw an exception if there is an error during calculation
             System.out.println("Task Completed.");
         } catch (ExecutionException e) {
-            System.out.println("An execution exception occurred"+e.getCause());
+            System.out.println("An execution exception occurred" + e.getCause());
         } catch (InterruptedException e) {
             System.out.println("An interrupted exception occurred");
         } catch (IllegalArgumentException e) {

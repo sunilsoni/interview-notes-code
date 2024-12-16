@@ -1,6 +1,7 @@
 package com.interview.notes.code.months.dec24.test7;
 
 import java.util.*;
+
 /*
 WORKING
 ### **String Segmentation Problem**
@@ -86,11 +87,11 @@ public class StringSegmentation {
 
         // Convert wordDict to HashSet for O(1) lookups
         Set<String> dictionary = new HashSet<>(wordDict);
-        
+
         // dp[i] represents whether s[0...i] can be segmented
         boolean[] dp = new boolean[s.length() + 1];
         dp[0] = true;  // empty string is always valid
-        
+
         // For each position in string
         for (int i = 1; i <= s.length(); i++) {
             // Try all possible previous positions
@@ -101,42 +102,42 @@ public class StringSegmentation {
                 }
             }
         }
-        
+
         return String.valueOf(dp[s.length()]).toLowerCase();
     }
 
     public static void main(String[] args) {
         // Test cases
         List<TestCase> testCases = new ArrayList<>();
-        
+
         // Test case 1: Basic case
         testCases.add(new TestCase(
-            "applepenapple",
-            Arrays.asList("apple", "pen"),
-            "true"
+                "applepenapple",
+                Arrays.asList("apple", "pen"),
+                "true"
         ));
-        
+
         // Test case 2: Cannot be segmented
         testCases.add(new TestCase(
-            "catsandog",
-            Arrays.asList("cats", "dog", "sand", "and", "cat"),
-            "false"
+                "catsandog",
+                Arrays.asList("cats", "dog", "sand", "and", "cat"),
+                "false"
         ));
-        
+
         // Test case 3: Single word
         testCases.add(new TestCase(
-            "leetcode",
-            Arrays.asList("leet", "code"),
-            "true"
+                "leetcode",
+                Arrays.asList("leet", "code"),
+                "true"
         ));
-        
+
         // Test case 4: Empty string
         testCases.add(new TestCase(
-            "",
-            Arrays.asList("test"),
-            "false"
+                "",
+                Arrays.asList("test"),
+                "false"
         ));
-        
+
         // Test case 5: Long repeated pattern
         StringBuilder sb = new StringBuilder();
         List<String> longDict = new ArrayList<>();
@@ -145,19 +146,19 @@ public class StringSegmentation {
             longDict.add("ab");
         }
         testCases.add(new TestCase(
-            sb.toString(),
-            longDict,
-            "true"
+                sb.toString(),
+                longDict,
+                "true"
         ));
-        
+
         // Run tests
         for (int i = 0; i < testCases.size(); i++) {
             TestCase tc = testCases.get(i);
             String result = solve(tc.input, tc.dict);
             boolean passed = result.equals(tc.expected);
-            
+
             System.out.printf("Test Case %d: %s\n", i + 1, passed ? "PASS" : "FAIL");
-            
+
             if (!passed) {
                 System.out.println("Input String: " + tc.input);
                 System.out.println("Dictionary: " + tc.dict);
@@ -171,7 +172,7 @@ public class StringSegmentation {
         String input;
         List<String> dict;
         String expected;
-        
+
         TestCase(String input, List<String> dict, String expected) {
             this.input = input;
             this.dict = dict;

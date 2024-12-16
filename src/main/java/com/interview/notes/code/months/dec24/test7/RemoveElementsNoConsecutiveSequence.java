@@ -1,16 +1,18 @@
 package com.interview.notes.code.months.dec24.test7;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class RemoveElementsNoConsecutiveSequence {
 
     /*
-    * Implement method/function with name 'solve' below.
-    * The function accepts following as parameters.
-    * 1. ar is of type List<Integer>.
-    * return int.
-    */
-    public static int solve(List<Integer> ar){
+     * Implement method/function with name 'solve' below.
+     * The function accepts following as parameters.
+     * 1. ar is of type List<Integer>.
+     * return int.
+     */
+    public static int solve(List<Integer> ar) {
         int n = ar.size();
         if (n < 3) {
             return 0; // No need to remove elements if the array has less than 3 elements
@@ -31,11 +33,11 @@ public class RemoveElementsNoConsecutiveSequence {
                 int idx1 = newIndices.get(size - 3);
                 int idx2 = newIndices.get(size - 2);
                 int idx3 = newIndices.get(size - 1);
-                
+
                 int a = ar.get(idx1);
                 int b = ar.get(idx2);
                 int c = ar.get(idx3);
-                
+
                 if ((a < b && b < c) || (a > b && b > c)) {
                     // Remove the middle element
                     newIndices.remove(size - 2);

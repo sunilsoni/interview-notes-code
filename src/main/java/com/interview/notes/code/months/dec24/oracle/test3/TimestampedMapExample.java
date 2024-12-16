@@ -4,78 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TimestampedMapExample {
-    
-    // Inner class to hold value and timestamp
-    private static class Entry {
-        private final String value;
-        private final Long timestamp;
-        
-        Entry(String value, Long timestamp) {
-            this.value = value;
-            this.timestamp = timestamp;
-        }
-    }
-
-    public static class TimestampedMap {
-        private final Map<String, Entry> map;
-
-        public TimestampedMap() {
-            this.map = new HashMap<>();
-        }
-
-        /**
-         * Stores the value for the given key along with the provided timestamp.
-         * If the key already exists, it overwrites the existing value and timestamp.
-         * 
-         * @param key       The key to store
-         * @param value     The value to store
-         * @param timestamp The timestamp to associate with the key-value pair
-         */
-        public void put(String key, String value, Long timestamp) {
-            map.put(key, new Entry(value, timestamp));
-        }
-
-        /**
-         * Retrieves the value associated with the given key, or null if not found.
-         * 
-         * @param key The key to look up
-         * @return The associated value, or null if no such key exists
-         */
-        public String get(String key) {
-            Entry entry = map.get(key);
-            return (entry != null) ? entry.value : null;
-        }
-
-        /**
-         * Retrieves the timestamp associated with the given key, or -1 if not found.
-         * 
-         * @param key The key to look up
-         * @return The associated timestamp, or -1 if no such key exists
-         */
-        public Long getTimestamp(String key) {
-            Entry entry = map.get(key);
-            return (entry != null) ? entry.timestamp : -1L;
-        }
-
-        /**
-         * Checks if the map contains the given key.
-         * 
-         * @param key The key to check
-         * @return true if the key is present, false otherwise
-         */
-        public boolean containsKey(String key) {
-            return map.containsKey(key);
-        }
-
-        /**
-         * Returns the size of the map.
-         * 
-         * @return the number of key-value pairs stored
-         */
-        public int size() {
-            return map.size();
-        }
-    }
 
     // Main method for testing
     public static void main(String[] args) {
@@ -147,5 +75,77 @@ public class TimestampedMapExample {
         System.out.println("Inserted " + testSize + " items in " + (end - start) + " ms");
         System.out.println("Spot-check correct values (first 10 entries): " + correctValues);
         System.out.println((largeMap.size() == testSize && correctValues) ? "PASS" : "FAIL");
+    }
+
+    // Inner class to hold value and timestamp
+    private static class Entry {
+        private final String value;
+        private final Long timestamp;
+
+        Entry(String value, Long timestamp) {
+            this.value = value;
+            this.timestamp = timestamp;
+        }
+    }
+
+    public static class TimestampedMap {
+        private final Map<String, Entry> map;
+
+        public TimestampedMap() {
+            this.map = new HashMap<>();
+        }
+
+        /**
+         * Stores the value for the given key along with the provided timestamp.
+         * If the key already exists, it overwrites the existing value and timestamp.
+         *
+         * @param key       The key to store
+         * @param value     The value to store
+         * @param timestamp The timestamp to associate with the key-value pair
+         */
+        public void put(String key, String value, Long timestamp) {
+            map.put(key, new Entry(value, timestamp));
+        }
+
+        /**
+         * Retrieves the value associated with the given key, or null if not found.
+         *
+         * @param key The key to look up
+         * @return The associated value, or null if no such key exists
+         */
+        public String get(String key) {
+            Entry entry = map.get(key);
+            return (entry != null) ? entry.value : null;
+        }
+
+        /**
+         * Retrieves the timestamp associated with the given key, or -1 if not found.
+         *
+         * @param key The key to look up
+         * @return The associated timestamp, or -1 if no such key exists
+         */
+        public Long getTimestamp(String key) {
+            Entry entry = map.get(key);
+            return (entry != null) ? entry.timestamp : -1L;
+        }
+
+        /**
+         * Checks if the map contains the given key.
+         *
+         * @param key The key to check
+         * @return true if the key is present, false otherwise
+         */
+        public boolean containsKey(String key) {
+            return map.containsKey(key);
+        }
+
+        /**
+         * Returns the size of the map.
+         *
+         * @return the number of key-value pairs stored
+         */
+        public int size() {
+            return map.size();
+        }
     }
 }

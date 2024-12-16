@@ -61,15 +61,15 @@ public class LongestConsecutiveSequence {
      */
     public static void main(String[] args) {
         // Define test cases
-        TestCase[] testCases = new TestCase[] {
-            new TestCase(new int[] {6, 7, 3, 1, 100, 102, 6, 12}, 2),
-            new TestCase(new int[] {5, 6, 1, 2, 8, 9, 7}, 5),
-            new TestCase(new int[] {4, 3, 8, 1, 2, 6, 100, 9}, 4),
-            new TestCase(new int[] {}, 0),
-            new TestCase(new int[] {1}, 1),
-            new TestCase(new int[] {2, 2, 2, 2}, 1),
-            new TestCase(new int[] {10, 5, 12, 3, 55, 30, 4, 11, 2}, 4), // [2,3,4,5]
-            new TestCase(generateLargeArray(100000), 1) // Large array with unique elements
+        TestCase[] testCases = new TestCase[]{
+                new TestCase(new int[]{6, 7, 3, 1, 100, 102, 6, 12}, 2),
+                new TestCase(new int[]{5, 6, 1, 2, 8, 9, 7}, 5),
+                new TestCase(new int[]{4, 3, 8, 1, 2, 6, 100, 9}, 4),
+                new TestCase(new int[]{}, 0),
+                new TestCase(new int[]{1}, 1),
+                new TestCase(new int[]{2, 2, 2, 2}, 1),
+                new TestCase(new int[]{10, 5, 12, 3, 55, 30, 4, 11, 2}, 4), // [2,3,4,5]
+                new TestCase(generateLargeArray(100000), 1) // Large array with unique elements
         };
 
         // Execute test cases

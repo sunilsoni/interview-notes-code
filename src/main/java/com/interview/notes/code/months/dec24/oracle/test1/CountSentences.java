@@ -28,7 +28,7 @@ public class CountSentences {
         List<Long> counts = new ArrayList<>(sentences.size());
         for (String sentence : sentences) {
             Set<String> wordsInSentence = Arrays.stream(sentence.split(" "))
-                .collect(Collectors.toSet());
+                    .collect(Collectors.toSet());
 
             long count = 1;
             for (String word : wordsInSentence) {

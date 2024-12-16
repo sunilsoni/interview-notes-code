@@ -88,11 +88,11 @@ Total score = \( 1 + 4 + 9 = 14 \).
 public class GrandNumberGame {
 
     /*
-    * Implement method/function with name 'solve' below.
-    * The function accepts the following as parameters:
-    * 1. arr is of type List<Integer>.
-    * return int.
-    */
+     * Implement method/function with name 'solve' below.
+     * The function accepts the following as parameters:
+     * 1. arr is of type List<Integer>.
+     * return int.
+     */
     public static int solve(List<Integer> arr) {
         int n = arr.size() / 2; // Number of operations
         int size = arr.size();

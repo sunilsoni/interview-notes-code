@@ -2,6 +2,20 @@ package com.interview.notes.code.months.dec24.oracle.test1;
 
 public class StringCleaner {
 
+    // Main method to test the stringClean function
+    public static void main(String[] args) {
+        StringCleaner cleaner = new StringCleaner();
+
+        // Test cases
+        System.out.println("Test Case 1: " + cleaner.stringClean("yyyzzz")); // Expected: "yza"
+        System.out.println("Test Case 2: " + cleaner.stringClean("abbccdd")); // Expected: "abcd"
+        System.out.println("Test Case 3: " + cleaner.stringClean("Hello"));  // Expected: "Helo"
+        System.out.println("Test Case 4: " + cleaner.stringClean(""));       // Expected: ""
+        System.out.println("Test Case 5: " + cleaner.stringClean("a"));      // Expected: "a"
+        System.out.println("Test Case 6: " + cleaner.stringClean("aabbccaa")); // Expected: "abc"
+        System.out.println("Test Case 7: " + cleaner.stringClean("aaaabbbbbccccddddd")); // Expected: "abcd"
+    }
+
     // Recursive function to clean the string
     public String stringClean(String str) {
         // Base case: if the string is empty or has only one character, return it as is
@@ -17,19 +31,5 @@ public class StringCleaner {
             // Include the first character and recursively clean the rest
             return str.charAt(0) + stringClean(str.substring(1));
         }
-    }
-
-    // Main method to test the stringClean function
-    public static void main(String[] args) {
-        StringCleaner cleaner = new StringCleaner();
-
-        // Test cases
-        System.out.println("Test Case 1: " + cleaner.stringClean("yyyzzz")); // Expected: "yza"
-        System.out.println("Test Case 2: " + cleaner.stringClean("abbccdd")); // Expected: "abcd"
-        System.out.println("Test Case 3: " + cleaner.stringClean("Hello"));  // Expected: "Helo"
-        System.out.println("Test Case 4: " + cleaner.stringClean(""));       // Expected: ""
-        System.out.println("Test Case 5: " + cleaner.stringClean("a"));      // Expected: "a"
-        System.out.println("Test Case 6: " + cleaner.stringClean("aabbccaa")); // Expected: "abc"
-        System.out.println("Test Case 7: " + cleaner.stringClean("aaaabbbbbccccddddd")); // Expected: "abcd"
     }
 }

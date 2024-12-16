@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.dec24.test7;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 WORKING
 
@@ -84,85 +87,85 @@ public class ConsecutiveElements1 {
         if (ar == null || ar.size() <= 2) {
             return 0;
         }
-        
+
         // Dynamic programming approach
         int n = ar.size();
         int[][] dp = new int[n][2]; // dp[i][0] - keep element, dp[i][1] - remove element
-        
+
         // Initialize with max value
         for (int i = 0; i < n; i++) {
             Arrays.fill(dp[i], n);
         }
-        
+
         // Base cases
         dp[0][0] = 0; // keep first element
         dp[0][1] = 1; // remove first element
         dp[1][0] = 0; // keep second element
         dp[1][1] = 1; // remove second element
-        
+
         for (int i = 2; i < n; i++) {
             // Check if keeping current element creates violation
             if (!isViolation(ar, i)) {
-                dp[i][0] = Math.min(dp[i-1][0], dp[i-1][1]);
+                dp[i][0] = Math.min(dp[i - 1][0], dp[i - 1][1]);
             }
-            
+
             // Always possible to remove current element
-            dp[i][1] = Math.min(dp[i-1][0], dp[i-1][1]) + 1;
+            dp[i][1] = Math.min(dp[i - 1][0], dp[i - 1][1]) + 1;
         }
-        
-        return Math.min(dp[n-1][0], dp[n-1][1]);
+
+        return Math.min(dp[n - 1][0], dp[n - 1][1]);
     }
-    
+
     private static boolean isViolation(List<Integer> ar, int index) {
         if (index < 2) return false;
-        
+
         // Check if three consecutive elements are increasing
-        if (ar.get(index-2) < ar.get(index-1) && ar.get(index-1) < ar.get(index)) {
+        if (ar.get(index - 2) < ar.get(index - 1) && ar.get(index - 1) < ar.get(index)) {
             return true;
         }
-        
+
         // Check if three consecutive elements are decreasing
-        if (ar.get(index-2) > ar.get(index-1) && ar.get(index-1) > ar.get(index)) {
+        if (ar.get(index - 2) > ar.get(index - 1) && ar.get(index - 1) > ar.get(index)) {
             return true;
         }
-        
+
         return false;
     }
 
     public static void main(String[] args) {
         // Test cases
         List<TestCase> testCases = new ArrayList<>();
-        
+
         // Test case 1: Example from problem
         testCases.add(new TestCase(
-            Arrays.asList(1, 2, 4, 1, 2),
-            1
+                Arrays.asList(1, 2, 4, 1, 2),
+                1
         ));
-        
+
         // Test case 2: Another example from problem
         testCases.add(new TestCase(
-            Arrays.asList(1, 2, 3, 5),
-            2
+                Arrays.asList(1, 2, 3, 5),
+                2
         ));
-        
+
         // Test case 3: Empty array
         testCases.add(new TestCase(
-            new ArrayList<>(),
-            0
+                new ArrayList<>(),
+                0
         ));
-        
+
         // Test case 4: Array with two elements
         testCases.add(new TestCase(
-            Arrays.asList(1, 2),
-            0
+                Arrays.asList(1, 2),
+                0
         ));
-        
+
         // Test case 5: Strictly decreasing
         testCases.add(new TestCase(
-            Arrays.asList(5, 4, 3, 2, 1),
-            2
+                Arrays.asList(5, 4, 3, 2, 1),
+                2
         ));
-        
+
         // Test case 6: Large input
         List<Integer> largeInput = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
@@ -175,9 +178,9 @@ public class ConsecutiveElements1 {
             TestCase tc = testCases.get(i);
             int result = solve(tc.input);
             boolean passed = result == tc.expected;
-            
+
             System.out.printf("Test Case %d: %s\n", i + 1, passed ? "PASS" : "FAIL");
-            
+
             if (!passed) {
                 System.out.println("Input: " + tc.input);
                 System.out.println("Expected: " + tc.expected);
@@ -189,7 +192,7 @@ public class ConsecutiveElements1 {
     static class TestCase {
         List<Integer> input;
         int expected;
-        
+
         TestCase(List<Integer> input, int expected) {
             this.input = input;
             this.expected = expected;

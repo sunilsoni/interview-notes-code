@@ -1,6 +1,10 @@
 package com.interview.notes.code.months.dec24.oracle.test2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /*
 
 
@@ -121,26 +125,26 @@ For `teamB[1] = 4`, `teamA` has 3 matches with scores `1`, `2`, and `3` that sat
 ```
  */
 public class FootballScores {
-    
+
     // Main solution method
     public static List<Integer> counts(List<Integer> teamA, List<Integer> teamB) {
         // Sort teamA to optimize counting process
         Collections.sort(teamA);
         List<Integer> result = new ArrayList<>();
-        
+
         // For each score in teamB, count valid scores in teamA
         for (int score : teamB) {
             result.add(countLessOrEqual(teamA, score));
         }
-        
+
         return result;
     }
-    
+
     // Helper method to count numbers less than or equal to target
     private static int countLessOrEqual(List<Integer> sortedList, int target) {
         int left = 0;
         int right = sortedList.size() - 1;
-        
+
         // Binary search to find rightmost position
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -152,41 +156,41 @@ public class FootballScores {
         }
         return left;
     }
-    
+
     // Test method
     public static void main(String[] args) {
         // Test case 1: Sample case
         runTest(
-            Arrays.asList(1, 4, 2, 4),
-            Arrays.asList(3, 5),
-            Arrays.asList(2, 4),
-            "Sample Test Case"
+                Arrays.asList(1, 4, 2, 4),
+                Arrays.asList(3, 5),
+                Arrays.asList(2, 4),
+                "Sample Test Case"
         );
-        
+
         // Test case 2: Edge case - Empty teams
         runTest(
-            new ArrayList<>(),
-            Arrays.asList(1),
-            Arrays.asList(0),
-            "Empty Team A Test"
+                new ArrayList<>(),
+                Arrays.asList(1),
+                Arrays.asList(0),
+                "Empty Team A Test"
         );
-        
+
         // Test case 3: Large numbers
         runTest(
-            Arrays.asList(1000000000, 999999999),
-            Arrays.asList(1000000000),
-            Arrays.asList(2),
-            "Large Numbers Test"
+                Arrays.asList(1000000000, 999999999),
+                Arrays.asList(1000000000),
+                Arrays.asList(2),
+                "Large Numbers Test"
         );
-        
+
         // Test case 4: Equal numbers
         runTest(
-            Arrays.asList(2, 2, 2, 2),
-            Arrays.asList(2),
-            Arrays.asList(4),
-            "Equal Numbers Test"
+                Arrays.asList(2, 2, 2, 2),
+                Arrays.asList(2),
+                Arrays.asList(4),
+                "Equal Numbers Test"
         );
-        
+
         // Test case 5: Large dataset
         List<Integer> largeTeamA = new ArrayList<>();
         List<Integer> largeTeamB = new ArrayList<>();
@@ -195,22 +199,22 @@ public class FootballScores {
             if (i < 1000) largeTeamB.add(i * 100);
         }
         runTest(
-            largeTeamA,
-            largeTeamB,
-            null, // Expected result calculated during runtime
-            "Large Dataset Test"
+                largeTeamA,
+                largeTeamB,
+                null, // Expected result calculated during runtime
+                "Large Dataset Test"
         );
     }
-    
+
     // Helper method to run tests
-    private static void runTest(List<Integer> teamA, List<Integer> teamB, 
-                              List<Integer> expected, String testName) {
+    private static void runTest(List<Integer> teamA, List<Integer> teamB,
+                                List<Integer> expected, String testName) {
         System.out.println("\nRunning " + testName + "...");
-        
+
         long startTime = System.currentTimeMillis();
         List<Integer> result = counts(teamA, teamB);
         long endTime = System.currentTimeMillis();
-        
+
         if (expected != null) {
             boolean passed = result.equals(expected);
             System.out.println("Status: " + (passed ? "PASSED" : "FAILED"));
@@ -221,7 +225,7 @@ public class FootballScores {
         } else {
             System.out.println("Result size: " + result.size());
         }
-        
+
         System.out.println("Execution time: " + (endTime - startTime) + "ms");
     }
 }

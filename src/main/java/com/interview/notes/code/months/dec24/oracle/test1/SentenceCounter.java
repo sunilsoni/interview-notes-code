@@ -6,7 +6,7 @@ public class SentenceCounter {
     public static List<Long> countSentences(List<String> wordSet, List<String> sentences) {
         // Create anagram mapping
         Map<String, Set<String>> anagramMap = buildAnagramMap(wordSet);
-        
+
         List<Long> results = new ArrayList<>();
         for (String sentence : sentences) {
             results.add(calculatePossibleSentences(sentence, anagramMap));
@@ -16,12 +16,12 @@ public class SentenceCounter {
 
     private static Map<String, Set<String>> buildAnagramMap(List<String> wordSet) {
         Map<String, Set<String>> anagramMap = new HashMap<>();
-        
+
         for (String word : wordSet) {
             char[] chars = word.toCharArray();
             Arrays.sort(chars);
             String sortedWord = new String(chars);
-            
+
             anagramMap.computeIfAbsent(sortedWord, k -> new HashSet<>()).add(word);
         }
         return anagramMap;
@@ -30,12 +30,12 @@ public class SentenceCounter {
     private static long calculatePossibleSentences(String sentence, Map<String, Set<String>> anagramMap) {
         String[] words = sentence.split(" ");
         long combinations = 1;
-        
+
         for (String word : words) {
             char[] chars = word.toCharArray();
             Arrays.sort(chars);
             String sortedWord = new String(chars);
-            
+
             Set<String> anagrams = anagramMap.get(sortedWord);
             if (anagrams != null) {
                 combinations *= anagrams.size();
@@ -73,11 +73,11 @@ public class SentenceCounter {
         return largeSet;
     }
 
-    private static void testAndPrint(String testName, List<String> wordSet, 
-                                   List<String> sentences, List<Long> expected) {
+    private static void testAndPrint(String testName, List<String> wordSet,
+                                     List<String> sentences, List<Long> expected) {
         List<Long> result = countSentences(wordSet, sentences);
         boolean passed = result.equals(expected);
-        
+
         System.out.println(testName);
         System.out.println("Input WordSet: " + wordSet);
         System.out.println("Input Sentences: " + sentences);

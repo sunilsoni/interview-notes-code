@@ -1,6 +1,10 @@
 package com.interview.notes.code.months.dec24.oracle.test3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /*
 
 
@@ -121,7 +125,7 @@ For `teamB[1] = 4`, `teamA` has 3 matches with scores `1`, `2`, and `3` that sat
 ```
  */
 public class FootballScoresSolution {
-    
+
     /**
      * Returns a list where each element is the count of elements in teamA
      * that are <= the corresponding element in teamB.
@@ -131,13 +135,13 @@ public class FootballScoresSolution {
         Collections.sort(teamA);
 
         List<Integer> result = new ArrayList<>(teamB.size());
-        
+
         for (int b : teamB) {
             // Find the number of elements in teamA <= b
             int count = countLessOrEqual(teamA, b);
             result.add(count);
         }
-        
+
         return result;
     }
 
@@ -148,7 +152,7 @@ public class FootballScoresSolution {
         int low = 0;
         int high = sortedList.size() - 1;
         int position = -1;
-        
+
         while (low <= high) {
             int mid = (low + high) >>> 1;
             if (sortedList.get(mid) <= value) {
@@ -158,7 +162,7 @@ public class FootballScoresSolution {
                 high = mid - 1;
             }
         }
-        
+
         // If position = -1, no elements are <= value
         // Otherwise, position gives the last index with element <= value
         // Count = position + 1 (since indices start at 0)
@@ -168,22 +172,22 @@ public class FootballScoresSolution {
     public static void main(String[] args) {
         // Testing approach:
         // 1. Run given sample test
-        test(new int[]{1,4,2,4}, new int[]{3,5}, new int[]{2,4}, "Sample Test");
+        test(new int[]{1, 4, 2, 4}, new int[]{3, 5}, new int[]{2, 4}, "Sample Test");
 
         // 2. Edge case: all teamA less than teamB
-        test(new int[]{1,1,1}, new int[]{5,10}, new int[]{3,3}, "All A <= B");
-        
+        test(new int[]{1, 1, 1}, new int[]{5, 10}, new int[]{3, 3}, "All A <= B");
+
         // 3. Edge case: all teamA greater than teamB
-        test(new int[]{10,11}, new int[]{1,2}, new int[]{0,0}, "All A > B");
-        
+        test(new int[]{10, 11}, new int[]{1, 2}, new int[]{0, 0}, "All A > B");
+
         // 4. Edge case: duplicates in A
-        test(new int[]{2,2,2,2}, new int[]{2,3}, new int[]{4,4}, "Duplicates in A");
-        
+        test(new int[]{2, 2, 2, 2}, new int[]{2, 3}, new int[]{4, 4}, "Duplicates in A");
+
         // 5. teamB smaller than smallest element in teamA
-        test(new int[]{5,6,7}, new int[]{1,2}, new int[]{0,0}, "All B < A");
+        test(new int[]{5, 6, 7}, new int[]{1, 2}, new int[]{0, 0}, "All B < A");
 
         // 6. Random test
-        test(new int[]{1,2,3}, new int[]{2,4}, new int[]{2,3}, "Random Test");
+        test(new int[]{1, 2, 3}, new int[]{2, 4}, new int[]{2, 3}, "Random Test");
 
         // Optionally test large data:
         // (This is a simple example; in practice, you could generate arrays of size 100000 and run.)

@@ -1,135 +1,132 @@
 package com.interview.notes.code.months.dec24.oracle.test1;
 
 import java.util.*;
-import java.io.*;
 
 /**
-
- **Sentence 2:** For the sentence "in the act", the sentences that can be formed are:
- - in the act
- - in the cat
-
- **Sentence 3:** For the sentence "act tabs in", the sentences that can be formed are:
- - act tabs in
- - cat tabs in
- - act bats in
- - cat bats in
-
- ---
-
- **Sample Input:**
- ```
- 6 → wordSet[] size n = 6
- the → wordSet = ['the', 'bats', 'tabs', 'in', 'cat', 'act']
- 3 → sentences[] size m = 3
- cat the bats → sentences = ['cat the bats', 'in the act', 'act tabs in']
- in the act
- act tabs in
- ```
-
- ---
-
- **Sample Output:**
- ```
- 4
- 2
- 4
- ```
-
- ---
-
- **Explanation:**
- **Sentence 1:** For the sentence "cat the bats", the sentences that can be formed are:
- - cat the bats
- - act the bats
- - cat the tabs
- - act the tabs
-
- **Sentence 2:** For the sentence "in the act", the sentences that can be formed are:
- - in the act
- - in the cat
-
- ---
-
- **Function Description:**
- Complete the `countSentences` function in the editor below.
-
- `countSentences` has the following parameters:
- - `string wordSet[n]`: An array of strings
- - `string sentences[m]`: An array of strings
-
- **Returns:**
- `int[]`: An array of `m` integers that denote the number of sentences that can be formed from each sentence.
-
- ---
-
- **Constraints:**
- - \( 0 < n \leq 10^5 \)
- - \( 1 \leq \text{length of each word} \leq 20 \)
- - \( 1 \leq m \leq 1000 \)
- - \( 3 \leq \text{words in a sentence} \leq 20 \)
-
- ---
-
- **Custom Input Format for Testing:**
- Sample Case 0
-
- ---
-
- **Code:**
- ```java
- /*
+ * *Sentence 2:** For the sentence "in the act", the sentences that can be formed are:
+ * - in the act
+ * - in the cat
+ * <p>
+ * *Sentence 3:** For the sentence "act tabs in", the sentences that can be formed are:
+ * - act tabs in
+ * - cat tabs in
+ * - act bats in
+ * - cat bats in
+ * <p>
+ * ---
+ * <p>
+ * *Sample Input:**
+ * ```
+ * 6 → wordSet[] size n = 6
+ * the → wordSet = ['the', 'bats', 'tabs', 'in', 'cat', 'act']
+ * 3 → sentences[] size m = 3
+ * cat the bats → sentences = ['cat the bats', 'in the act', 'act tabs in']
+ * in the act
+ * act tabs in
+ * ```
+ * <p>
+ * ---
+ * <p>
+ * *Sample Output:**
+ * ```
+ * 4
+ * 2
+ * 4
+ * ```
+ * <p>
+ * ---
+ * <p>
+ * *Explanation:**
+ * *Sentence 1:** For the sentence "cat the bats", the sentences that can be formed are:
+ * - cat the bats
+ * - act the bats
+ * - cat the tabs
+ * - act the tabs
+ * <p>
+ * *Sentence 2:** For the sentence "in the act", the sentences that can be formed are:
+ * - in the act
+ * - in the cat
+ * <p>
+ * ---
+ * <p>
+ * *Function Description:**
+ * Complete the `countSentences` function in the editor below.
+ * <p>
+ * `countSentences` has the following parameters:
+ * - `string wordSet[n]`: An array of strings
+ * - `string sentences[m]`: An array of strings
+ * <p>
+ * *Returns:**
+ * `int[]`: An array of `m` integers that denote the number of sentences that can be formed from each sentence.
+ * <p>
+ * ---
+ * <p>
+ * *Constraints:**
+ * - \( 0 < n \leq 10^5 \)
+ * - \( 1 \leq \text{length of each word} \leq 20 \)
+ * - \( 1 \leq m \leq 1000 \)
+ * - \( 3 \leq \text{words in a sentence} \leq 20 \)
+ * <p>
+ * ---
+ * <p>
+ * *Custom Input Format for Testing:**
+ * Sample Case 0
+ * <p>
+ * ---
+ * <p>
+ * *Code:**
+ * ```java
+ * /*
  * Complete the 'countSentences' function below.
- *
+ * <p>
  * The function is expected to return a LONG_INTEGER_ARRAY.
  * The function accepts the following parameters:
  * 1. STRING_ARRAY wordSet
  * 2. STRING_ARRAY sentences
-
-public static List<Long> countSentences(List<String> wordSet, List<String> sentences) {
-    // Write your code here
-
-
-        ---
-
-        **How Many Sentences?**
-        **Description:**
-Given an array of words and an array of sentences, calculate how many sentences can be created by replacing any word with one of its
-
-anagrams.
-
----
-
-        **Note:**
-        - Two words are said to be anagrams of each other if one can be created by rearranging the letters of another word, using all the original letters exactly once.
-
----
-
-        **Example:**
-        `wordSet = ['listen', 'silent', 'it', 'is']`
-        `sentence = 'listen it is silent'`
-
-Determine that **listen** is an anagram of **silent**. Those two words can be replaced with their anagrams. The four sentences that can be created are:
-        1. listen it is silent
-2. listen it is listen
-3. silent it is silent
-4. silent it is listen
-
----
-
-        **Function Description:**
-Complete the `countSentences` function in the editor below.
-
-`countSentences` has the following parameters:
-        - `string wordSet[n]`: An array of strings
-- `string sentences[m]`: An array of strings
-
-**Returns:**
-        `int[]`: An array of integers denoting how many sentences can be formed from each given sentence by replacing words with their anagrams.
-
+ * <p>
+ * public static List<Long> countSentences(List<String> wordSet, List<String> sentences) {
+ * // Write your code here
+ * <p>
+ * <p>
+ * ---
+ * <p>
+ * *How Many Sentences?**
+ * *Description:**
+ * Given an array of words and an array of sentences, calculate how many sentences can be created by replacing any word with one of its
+ * <p>
+ * anagrams.
+ * <p>
+ * ---
+ * <p>
+ * *Note:**
+ * - Two words are said to be anagrams of each other if one can be created by rearranging the letters of another word, using all the original letters exactly once.
+ * <p>
+ * ---
+ * <p>
+ * *Example:**
+ * `wordSet = ['listen', 'silent', 'it', 'is']`
+ * `sentence = 'listen it is silent'`
+ * <p>
+ * Determine that **listen** is an anagram of **silent**. Those two words can be replaced with their anagrams. The four sentences that can be created are:
+ * 1. listen it is silent
+ * 2. listen it is listen
+ * 3. silent it is silent
+ * 4. silent it is listen
+ * <p>
+ * ---
+ * <p>
+ * *Function Description:**
+ * Complete the `countSentences` function in the editor below.
+ * <p>
+ * `countSentences` has the following parameters:
+ * - `string wordSet[n]`: An array of strings
+ * - `string sentences[m]`: An array of strings
+ * <p>
+ * *Returns:**
+ * `int[]`: An array of integers denoting how many sentences can be formed from each given sentence by replacing words with their anagrams.
  **/
 public class CountAnagramSentences {
-    
+
     /**
      * Given a list of words (wordSet) and a list of sentences, returns the number of possible
      * sentences that can be formed for each sentence by replacing each word with any of its anagrams found in wordSet.
@@ -137,13 +134,13 @@ public class CountAnagramSentences {
     public static List<Long> countSentences(List<String> wordSet, List<String> sentences) {
         // Map from sorted word -> frequency count of anagram group
         Map<String, Long> anagramCountMap = new HashMap<>();
-        
+
         // Preprocessing: build the anagram count map
         for (String w : wordSet) {
             String signature = sortWord(w);
             anagramCountMap.put(signature, anagramCountMap.getOrDefault(signature, 0L) + 1L);
         }
-        
+
         // Process each sentence
         List<Long> results = new ArrayList<>(sentences.size());
         for (String sentence : sentences) {
@@ -163,26 +160,26 @@ public class CountAnagramSentences {
             }
             results.add(count);
         }
-        
+
         return results;
     }
-    
+
     private static String sortWord(String w) {
         char[] arr = w.toCharArray();
         Arrays.sort(arr);
         return new String(arr);
     }
-    
+
     // A simple test runner in main method (no JUnit)
     public static void main(String[] args) {
         // Test with the provided sample input
         List<String> wordSet = Arrays.asList("the", "bats", "tabs", "in", "cat", "act");
         List<String> sentences = Arrays.asList("cat the bats", "in the act", "act tabs in");
         List<Long> output = countSentences(wordSet, sentences);
-        
+
         // Expected from sample: [4, 2, 4]
         List<Long> expected = Arrays.asList(4L, 2L, 4L);
-        
+
         if (output.equals(expected)) {
             System.out.println("Sample Test: PASS");
         } else {
@@ -190,7 +187,7 @@ public class CountAnagramSentences {
             System.out.println("Expected: " + expected);
             System.out.println("Got: " + output);
         }
-        
+
         // Additional test: no anagrams found
         List<String> wordSet2 = Arrays.asList("abc");
         List<String> sentences2 = Arrays.asList("xyz");
@@ -203,7 +200,7 @@ public class CountAnagramSentences {
             System.out.println("Expected: 0");
             System.out.println("Got: " + output2.get(0));
         }
-        
+
         // Additional test: multiple identical words
         List<String> wordSet3 = Arrays.asList("act", "cat");
         List<String> sentences3 = Arrays.asList("act act");
@@ -216,7 +213,7 @@ public class CountAnagramSentences {
             System.out.println("Expected: 4");
             System.out.println("Got: " + output3.get(0));
         }
-        
+
         // Additional edge case: a sentence with a word not in wordSet at all
         List<String> wordSet4 = Arrays.asList("listen", "silent", "it", "is");
         List<String> sentences4 = Arrays.asList("listen it is silent", "hello world");
@@ -235,7 +232,7 @@ public class CountAnagramSentences {
             System.out.println("Expected: [4, 0]");
             System.out.println("Got: " + output4);
         }
-        
+
         // Testing large data (pseudo test, no actual big data here)
         // In a real scenario, we would generate a large set and a sentence, but here we trust complexity analysis.
         System.out.println("All done!");
