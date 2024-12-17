@@ -1,4 +1,4 @@
-package com.interview.notes.code.months.dec24.Amazon;
+package com.interview.notes.code.months.dec24.Amazon.test7;
 
 import java.util.*;
 
