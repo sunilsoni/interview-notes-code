@@ -52,17 +52,17 @@ public class SnowpackCalculator {
         // Find maximum height to the left of each position
         leftMax[0] = heights[0];
         for (int i = 1; i < length; i++) {
-            leftMax[i] = Math.max(leftMax[i-1], heights[i]);
+            leftMax[i] = Math.max(leftMax[i - 1], heights[i]);
         }
 
         // Find maximum height to the right of each position
-        rightMax[length-1] = heights[length-1];
-        for (int i = length-2; i >= 0; i--) {
-            rightMax[i] = Math.max(rightMax[i+1], heights[i]);
+        rightMax[length - 1] = heights[length - 1];
+        for (int i = length - 2; i >= 0; i--) {
+            rightMax[i] = Math.max(rightMax[i + 1], heights[i]);
         }
 
         // Calculate snow at each position
-        for (int i = 1; i < length-1; i++) {
+        for (int i = 1; i < length - 1; i++) {
             int minHeight = Math.min(leftMax[i], rightMax[i]);
             if (minHeight > heights[i]) {
                 totalSnow += minHeight - heights[i];
@@ -78,35 +78,35 @@ public class SnowpackCalculator {
 
     private static void runAllTests() {
         // Test cases with expected results
-        runTest("Basic Case", 
-                new int[]{0,1,3,0,1,2,0,4,2,0,3,0}, 13);
-        
-        runTest("Empty Array", 
+        runTest("Basic Case",
+                new int[]{0, 1, 3, 0, 1, 2, 0, 4, 2, 0, 3, 0}, 13);
+
+        runTest("Empty Array",
                 new int[]{}, 0);
-        
-        runTest("Single Element", 
+
+        runTest("Single Element",
                 new int[]{5}, 0);
-        
-        runTest("Two Elements", 
-                new int[]{3,5}, 0);
-        
-        runTest("Flat Surface", 
-                new int[]{2,2,2,2}, 0);
-        
-        runTest("Valley", 
-                new int[]{3,0,3}, 3);
-        
-        runTest("Mountain", 
-                new int[]{0,3,0}, 0);
-        
-        runTest("Large Numbers", 
-                new int[]{1000,0,1000}, 1000);
-        
-        runTest("Increasing Heights", 
-                new int[]{0,1,2,3}, 0);
-        
-        runTest("Decreasing Heights", 
-                new int[]{3,2,1,0}, 0);
+
+        runTest("Two Elements",
+                new int[]{3, 5}, 0);
+
+        runTest("Flat Surface",
+                new int[]{2, 2, 2, 2}, 0);
+
+        runTest("Valley",
+                new int[]{3, 0, 3}, 3);
+
+        runTest("Mountain",
+                new int[]{0, 3, 0}, 0);
+
+        runTest("Large Numbers",
+                new int[]{1000, 0, 1000}, 1000);
+
+        runTest("Increasing Heights",
+                new int[]{0, 1, 2, 3}, 0);
+
+        runTest("Decreasing Heights",
+                new int[]{3, 2, 1, 0}, 0);
 
         // Large data test
         int[] largeArray = new int[10000];
@@ -120,13 +120,13 @@ public class SnowpackCalculator {
         long startTime = System.nanoTime();
         int result = computeSnowpack(input);
         long endTime = System.nanoTime();
-        
+
         boolean passed = result == expected;
         System.out.printf("Test %s: %s%n", testName, passed ? "PASS" : "FAIL");
         if (!passed) {
             System.out.printf("Expected: %d, Got: %d%n", expected, result);
         }
-        System.out.printf("Execution time: %.3f ms%n%n", 
-                         (endTime - startTime) / 1_000_000.0);
+        System.out.printf("Execution time: %.3f ms%n%n",
+                (endTime - startTime) / 1_000_000.0);
     }
 }

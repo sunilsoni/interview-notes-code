@@ -1,6 +1,9 @@
 package com.interview.notes.code.months.dec24.gs.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class StudentGrades {
     public static int bestAverageGrade(String[][] scores) {
@@ -39,10 +42,10 @@ public class StudentGrades {
     private static void runAllTests() {
         // Test 1: Original test case
         testCase(new String[][]{
-            {"Bobby", "87"},
-            {"Charles", "100"},
-            {"Eric", "64"},
-            {"Charles", "22"}
+                {"Bobby", "87"},
+                {"Charles", "100"},
+                {"Eric", "64"},
+                {"Charles", "22"}
         }, 87, "Basic test case");
 
         // Test 2: Empty input
@@ -50,34 +53,34 @@ public class StudentGrades {
 
         // Test 3: Single student
         testCase(new String[][]{
-            {"Alice", "100"}
+                {"Alice", "100"}
         }, 100, "Single student");
 
         // Test 4: Negative scores
         testCase(new String[][]{
-            {"John", "-5"},
-            {"John", "-15"},
-            {"Sarah", "-10"}
+                {"John", "-5"},
+                {"John", "-15"},
+                {"Sarah", "-10"}
         }, -5, "Negative scores");
 
         // Test 5: Decimal average
         testCase(new String[][]{
-            {"Mike", "100"},
-            {"Mike", "99"}
+                {"Mike", "100"},
+                {"Mike", "99"}
         }, 99, "Decimal average");
 
         // Test 6: Large numbers
         testCase(new String[][]{
-            {"Max", "999999"},
-            {"Max", "1000000"},
-            {"Min", "-999999"}
+                {"Max", "999999"},
+                {"Max", "1000000"},
+                {"Min", "-999999"}
         }, 999999, "Large numbers");
 
         // Test 7: Multiple students same score
         testCase(new String[][]{
-            {"A", "85"},
-            {"B", "85"},
-            {"C", "85"}
+                {"A", "85"},
+                {"B", "85"},
+                {"C", "85"}
         }, 85, "Same scores");
     }
 

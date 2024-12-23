@@ -48,20 +48,20 @@ public class BestAverageGradeCalculator {
     public static void main(String[] args) {
         // Test cases
         String[][] tc1 = {
-            {"Bobby", "87"},
-            {"Charles", "100"},
-            {"Eric", "64"},
-            {"Charles", "22"}
+                {"Bobby", "87"},
+                {"Charles", "100"},
+                {"Eric", "64"},
+                {"Charles", "22"}
         };
         // Expected: Bobby's avg = 87, Charles' avg = 61 ((100+22)/2), Eric's avg = 64. Max = 87.
         testCase("Test case 1", tc1, 87);
 
         // Test with negative and positive
         String[][] tc2 = {
-            {"Alice", "90"},
-            {"Alice", "-10"},
-            {"Bob", "0"},
-            {"Bob", "0"}
+                {"Alice", "90"},
+                {"Alice", "-10"},
+                {"Bob", "0"},
+                {"Bob", "0"}
         };
         // Alice's avg = (90 + (-10)) / 2 = 40, Bob's avg = 0, max = 40
         testCase("Test case 2", tc2, 40);
@@ -73,11 +73,11 @@ public class BestAverageGradeCalculator {
 
         // Multiple students, large numbers
         String[][] tc4 = {
-            {"John", "1000"},
-            {"John", "999"},
-            {"Jane", "1000"},
-            {"Jane", "1001"},
-            {"Jake", "-1"}
+                {"John", "1000"},
+                {"John", "999"},
+                {"Jane", "1000"},
+                {"Jane", "1001"},
+                {"Jake", "-1"}
         };
         // John avg = 1999/2 = 999, Jane avg = 2001/2=1000, Jake = -1
         // max=1000
@@ -85,9 +85,9 @@ public class BestAverageGradeCalculator {
 
         // One student multiple negative scores
         String[][] tc5 = {
-            {"Sam", "-5"},
-            {"Sam", "-10"},
-            {"Sam", "-3"}
+                {"Sam", "-5"},
+                {"Sam", "-10"},
+                {"Sam", "-3"}
         };
         // Sam avg = (-5 + -10 + -3)/3 = -18/3 = -6
         testCase("Test case 5", tc5, -6);

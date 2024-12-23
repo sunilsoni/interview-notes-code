@@ -30,8 +30,8 @@ package com.interview.notes.code.months.dec24.gs.test3;
 class Snowpack {
 
     /*
-    ** Compute the amount of snow that could be captured.
-    */
+     ** Compute the amount of snow that could be captured.
+     */
     public static int computeSnowpack(int[] arr) {
         if (arr == null || arr.length < 3) {
             // Cannot trap snow if less than 3 elevations
@@ -66,8 +66,8 @@ class Snowpack {
     }
 
     /*
-    ** Returns true if the tests pass. Otherwise, returns false.
-    */
+     ** Returns true if the tests pass. Otherwise, returns false.
+     */
     public static boolean doTestsPass() {
         boolean result = true;
 
@@ -116,8 +116,8 @@ class Snowpack {
     }
 
     /*
-    ** Execution entry point.
-    */
+     ** Execution entry point.
+     */
     public static void main(String[] args) {
         if (doTestsPass()) {
             System.out.println("All tests pass");
