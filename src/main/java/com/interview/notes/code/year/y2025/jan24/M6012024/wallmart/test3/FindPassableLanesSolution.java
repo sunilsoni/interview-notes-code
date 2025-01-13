@@ -1,8 +1,8 @@
 package com.interview.notes.code.year.y2025.jan24.M6012024.wallmart.test3;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
 /*
 
@@ -119,11 +119,11 @@ public class FindPassableLanesSolution {
         if (board == null || board.length == 0) {
             return passableRows; // Return empty if no rows
         }
-        
+
         // r = number of rows, c = number of columns
         int r = board.length;
         int c = board[0].length;
-        
+
         for (int row = 0; row < r; row++) {
             boolean isPassable = true;
             for (int col = 0; col < c; col++) {
@@ -145,10 +145,10 @@ public class FindPassableLanesSolution {
         if (board == null || board.length == 0) {
             return passableCols; // Return empty if no columns
         }
-        
+
         int r = board.length;
         int c = board[0].length;
-        
+
         for (int col = 0; col < c; col++) {
             boolean isPassable = true;
             for (int row = 0; row < r; row++) {
@@ -173,10 +173,10 @@ public class FindPassableLanesSolution {
 
         // board1
         String[][] board1 = {
-            {"+", "+", "+", "+", "0", "0"},
-            {"0", "0", "+", "0", "0", "0"},
-            {"0", "0", "+", "0", "0", "0"},
-            {"0", "0", "+", "0", "0", "0"}
+                {"+", "+", "+", "+", "0", "0"},
+                {"0", "0", "+", "0", "0", "0"},
+                {"0", "0", "+", "0", "0", "0"},
+                {"0", "0", "+", "0", "0", "0"}
         };
         // For this layout, let's compute passable rows/columns:
         List<Integer> rows1 = findPassableRows(board1);
@@ -205,10 +205,10 @@ public class FindPassableLanesSolution {
 
         // board2
         String[][] board2 = {
-            {"+", "+", "+", "+", "0", "0"},
-            {"0", "0", "0", "0", "0", "0"},
-            {"0", "0", "0", "0", "0", "0"},
-            {"0", "0", "0", "0", "0", "0"}
+                {"+", "+", "+", "+", "0", "0"},
+                {"0", "0", "0", "0", "0", "0"},
+                {"0", "0", "0", "0", "0", "0"},
+                {"0", "0", "0", "0", "0", "0"}
         };
         // Let's see the actual passable rows:
         //  - Row 0 has '+', so not passable
@@ -227,7 +227,7 @@ public class FindPassableLanesSolution {
         // passable columns => [4, 5]
         List<Integer> rows2 = findPassableRows(board2);
         List<Integer> cols2 = findPassableColumns(board2);
-        
+
         // Suppose we set the expected results:
         List<Integer> expectedRows2 = Arrays.asList(1, 2, 3);
         List<Integer> expectedCols2 = Arrays.asList(4, 5);
@@ -237,9 +237,9 @@ public class FindPassableLanesSolution {
 
         // board3
         String[][] board3 = {
-            {"+", "+", "+", "0", "0", "0"},
-            {"0", "0", "0", "0", "0", "0"},
-            {"0", "0", "0", "0", "0", "0"}
+                {"+", "+", "+", "0", "0", "0"},
+                {"0", "0", "0", "0", "0", "0"},
+                {"0", "0", "0", "0", "0", "0"}
         };
         // Check passable rows:
         //  - Row 0 has '+', not passable
@@ -265,7 +265,7 @@ public class FindPassableLanesSolution {
 
         // board4: single cell '+'
         String[][] board4 = {
-            { "+" }
+                {"+"}
         };
         // passable rows => none
         // passable columns => none
@@ -279,7 +279,7 @@ public class FindPassableLanesSolution {
 
         // board5: single cell '0'
         String[][] board5 = {
-            { "0" }
+                {"0"}
         };
         // passable rows => [0]
         // passable columns => [0]
@@ -293,9 +293,9 @@ public class FindPassableLanesSolution {
 
         // board6: multiple rows, multiple columns all '0'
         String[][] board6 = {
-            { "0", "0" },
-            { "0", "0" },
-            { "0", "0" }
+                {"0", "0"},
+                {"0", "0"},
+                {"0", "0"}
         };
         // All rows are passable => [0, 1, 2]
         // All columns are passable => [0, 1]

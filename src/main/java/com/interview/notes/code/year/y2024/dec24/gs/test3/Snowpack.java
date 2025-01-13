@@ -92,7 +92,7 @@ class Snowpack {
         System.out.println("Test case 5 (descending elevation): " + (computeSnowpack(new int[]{5, 4, 3, 2, 1}) == 0 ? "PASS" : "FAIL"));
 
         // Test case 5: Descending elevation
-        result &= computeSnowpack(new int[]{1,2,3,4,5,4,3,2,1}) == 0;
+        result &= computeSnowpack(new int[]{1, 2, 3, 4, 5, 4, 3, 2, 1}) == 0;
         System.out.println("Test case 5 (descending elevation): " + (computeSnowpack(new int[]{5, 4, 3, 2, 1}) == 0 ? "PASS" : "FAIL"));
 
         // Test case 6: Ascending elevation

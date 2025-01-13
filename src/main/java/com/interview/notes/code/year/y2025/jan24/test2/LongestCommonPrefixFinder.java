@@ -4,6 +4,7 @@ public class LongestCommonPrefixFinder {
 
     /**
      * Finds the longest common prefix among an array of strings.
+     *
      * @param strs Array of input strings.
      * @return The longest common prefix.
      */
@@ -30,8 +31,8 @@ public class LongestCommonPrefixFinder {
         if (result.equals(expected)) {
             System.out.println("Test case " + testCaseNumber + " PASS");
         } else {
-            System.out.println("Test case " + testCaseNumber + " FAIL - Expected: '" 
-                               + expected + "', but got: '" + result + "'");
+            System.out.println("Test case " + testCaseNumber + " FAIL - Expected: '"
+                    + expected + "', but got: '" + result + "'");
         }
     }
 

@@ -9,7 +9,7 @@ public class LongestCommonSubstring {
         }
 
         String longestSubstring = "";
-        
+
         // Compare each pair of strings
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
@@ -19,21 +19,21 @@ public class LongestCommonSubstring {
                 }
             }
         }
-        
+
         return longestSubstring;
     }
 
     private static String findCommonSubstring(String str1, String str2) {
         String longest = "";
-        
+
         // Check all possible substrings of str1
         for (int i = 0; i < str1.length(); i++) {
             for (int j = i + 1; j <= str1.length(); j++) {
                 String current = str1.substring(i, j);
                 // Check if substring has no repeating chars and exists in str2
-                if (hasNoRepeatingChars(current) && 
-                    str2.contains(current) && 
-                    current.length() > longest.length()) {
+                if (hasNoRepeatingChars(current) &&
+                        str2.contains(current) &&
+                        current.length() > longest.length()) {
                     longest = current;
                 }
             }
@@ -52,21 +52,21 @@ public class LongestCommonSubstring {
 
     public static void main(String[] args) {
         // Test cases
-        runTest("Test 1 - Given Array", 
-            new String[]{"India", "Individual", "Indefinite", "Indifferent", "Flow", "Flower", "Power"},
-            "Indi");
+        runTest("Test 1 - Given Array",
+                new String[]{"India", "Individual", "Indefinite", "Indifferent", "Flow", "Flower", "Power"},
+                "Indi");
 
-        runTest("Test 2 - Empty Array", 
-            new String[]{},
-            "");
+        runTest("Test 2 - Empty Array",
+                new String[]{},
+                "");
 
-        runTest("Test 3 - Single String", 
-            new String[]{"Hello"},
-            "");
+        runTest("Test 3 - Single String",
+                new String[]{"Hello"},
+                "");
 
-        runTest("Test 4 - No Common Substring", 
-            new String[]{"abc", "def", "ghi"},
-            "");
+        runTest("Test 4 - No Common Substring",
+                new String[]{"abc", "def", "ghi"},
+                "");
 
         // Performance test
         System.out.println("\nPerformance Test:");
@@ -74,11 +74,11 @@ public class LongestCommonSubstring {
         for (int i = 0; i < 100; i++) {
             largeArray[i] = "Test" + i + "Individual";
         }
-        
+
         long startTime = System.currentTimeMillis();
         String result = findLongestCommonSubstring(largeArray);
         long endTime = System.currentTimeMillis();
-        
+
         System.out.println("Time taken: " + (endTime - startTime) + "ms");
         System.out.println("Result length: " + result.length());
     }

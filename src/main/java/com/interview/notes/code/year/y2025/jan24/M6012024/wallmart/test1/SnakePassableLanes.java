@@ -9,8 +9,8 @@ public class SnakePassableLanes {
      *
      * @param board 2D array representing the board
      * @return A Map containing two entries:
-     *         "Rows" -> List of row numbers completely passable
-     *         "Columns" -> List of column numbers completely passable
+     * "Rows" -> List of row numbers completely passable
+     * "Columns" -> List of column numbers completely passable
      */
     public static Map<String, List<Integer>> findPassableLanes(char[][] board) {
         List<Integer> passableRows = new ArrayList<>();

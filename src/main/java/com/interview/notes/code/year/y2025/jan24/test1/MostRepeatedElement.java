@@ -1,17 +1,18 @@
 package com.interview.notes.code.year.y2025.jan24.test1;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class MostRepeatedElement {
-    
+
     // Generic method to find most repeated element
     public static <T> Map.Entry<T, Long> findMostRepeated(T[] array) {
         if (array == null || array.length == 0) {
             return null;
         }
-        
+
         return Arrays.stream(array)
                 .collect(Collectors.groupingBy(
                         Function.identity(),
@@ -52,7 +53,7 @@ public class MostRepeatedElement {
 
     private static <T> void testCase(String testName, T[] input, T expectedElement, Long expectedCount) {
         System.out.println("\nExecuting " + testName);
-        
+
         long startTime = System.currentTimeMillis();
         Map.Entry<T, Long> result = findMostRepeated(input);
         long endTime = System.currentTimeMillis();
@@ -69,17 +70,17 @@ public class MostRepeatedElement {
         if (result != null) {
             boolean elementMatch = result.getKey().equals(expectedElement);
             boolean countMatch = result.getValue().equals(expectedCount);
-            
+
             if (elementMatch && countMatch) {
-                System.out.println("PASS: Found " + result.getKey() + 
-                                 " repeated " + result.getValue() + " times");
+                System.out.println("PASS: Found " + result.getKey() +
+                        " repeated " + result.getValue() + " times");
             } else {
-                System.out.println("FAIL: Expected " + expectedElement + 
-                                 " repeated " + expectedCount + " times, but got " + 
-                                 result.getKey() + " repeated " + result.getValue() + " times");
+                System.out.println("FAIL: Expected " + expectedElement +
+                        " repeated " + expectedCount + " times, but got " +
+                        result.getKey() + " repeated " + result.getValue() + " times");
             }
         }
-        
+
         System.out.println("Execution time: " + (endTime - startTime) + "ms");
     }
 }

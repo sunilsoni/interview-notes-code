@@ -19,10 +19,21 @@ class Employee {
     }
 
     // Getters
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public String getAddress() { return address; }
-    public int getAge() { return age; }
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getAge() {
+        return age;
+    }
 
     @Override
     public String toString() {
@@ -86,7 +97,7 @@ public class EmployeeStreamExample {
                 .filter(emp -> emp.getAge() > 30)
                 .collect(Collectors.groupingBy(Employee::getAge));
         System.out.println("\nEmployees above 30 grouped by age: ");
-        groupedByAgeAbove30.forEach((age, empList) -> 
-            System.out.println("Age " + age + ": " + empList));
+        groupedByAgeAbove30.forEach((age, empList) ->
+                System.out.println("Age " + age + ": " + empList));
     }
 }

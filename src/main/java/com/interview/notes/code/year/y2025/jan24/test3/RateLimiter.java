@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.jan24.test3;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class RateLimiter {
     // Define the request limit and time window (in milliseconds)
@@ -13,6 +14,7 @@ public class RateLimiter {
 
     /**
      * Call this method for each incoming request.
+     *
      * @param userId The identifier of the user making the request.
      * @return true if the request is allowed; false if it should be rate-limited.
      */

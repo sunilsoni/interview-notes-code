@@ -39,7 +39,7 @@ public class FindMedian {
         if (lowerHalf.size() == upperHalf.size()) {
             if (lowerHalf.isEmpty() && upperHalf.isEmpty()) {
                 // No elements, handle as needed (return 0 or throw an exception)
-                return 0.0; 
+                return 0.0;
             }
             return (lowerHalf.peek() + upperHalf.peek()) / 2.0;
         } else {
@@ -58,7 +58,7 @@ public class FindMedian {
         // Reset heaps before every test
         lowerHalf.clear();
         upperHalf.clear();
-        
+
         // Test 1: Single element
         addNumber(10);
         double median = getMedian();
@@ -75,7 +75,7 @@ public class FindMedian {
         for (int num : test2Data) {
             addNumber(num);
         }
-        double resultTest2 = getMedian(); 
+        double resultTest2 = getMedian();
         // Sorted test2Data => {2, 5, 8}; middle = 5
         boolean passTest2 = (resultTest2 == 5.0);
         printTestResult("Test 2 - Odd number of elements", passTest2);
@@ -90,7 +90,7 @@ public class FindMedian {
         for (int num : test3Data) {
             addNumber(num);
         }
-        double resultTest3 = getMedian(); 
+        double resultTest3 = getMedian();
         // Sorted test3Data => {2, 5, 8, 10}; median = (5 + 8)/2 = 6.5
         boolean passTest3 = (resultTest3 == 6.5);
         printTestResult("Test 3 - Even number of elements", passTest3);

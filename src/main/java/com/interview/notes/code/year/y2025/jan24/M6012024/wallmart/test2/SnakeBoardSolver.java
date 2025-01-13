@@ -6,21 +6,6 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class SnakeBoardSolver {
-    public static class Result {
-        List<Integer> passableRows;
-        List<Integer> passableColumns;
-        
-        public Result(List<Integer> rows, List<Integer> cols) {
-            this.passableRows = rows;
-            this.passableColumns = cols;
-        }
-        
-        @Override
-        public String toString() {
-            return "Rows: " + passableRows + ", Columns: " + passableColumns;
-        }
-    }
-
     public static Result findPassableLanes(char[][] board) {
         if (board == null || board.length == 0) {
             return new Result(new ArrayList<>(), new ArrayList<>());
@@ -28,7 +13,7 @@ public class SnakeBoardSolver {
 
         List<Integer> passableRows = new ArrayList<>();
         List<Integer> passableCols = new ArrayList<>();
-        
+
         // Check rows
         for (int row = 0; row < board.length; row++) {
             boolean passable = true;
@@ -40,7 +25,7 @@ public class SnakeBoardSolver {
             }
             if (passable) passableRows.add(row);
         }
-        
+
         // Check columns
         int cols = board[0].length;
         for (int col = 0; col < cols; col++) {
@@ -53,25 +38,25 @@ public class SnakeBoardSolver {
             }
             if (passable) passableCols.add(col);
         }
-        
+
         return new Result(passableRows, passableCols);
     }
 
     public static void main(String[] args) {
         // Test cases
         char[][] board1 = {
-            {'+', '+', '+', '+', '0', '0'},
-            {'0', '0', '+', '0', '0', '0'},
-            {'0', '0', '+', '0', '0', '0'},
-            {'0', '0', '+', '0', '0', '0'}
+                {'+', '+', '+', '+', '0', '0'},
+                {'0', '0', '+', '0', '0', '0'},
+                {'0', '0', '+', '0', '0', '0'},
+                {'0', '0', '+', '0', '0', '0'}
         };
 
         char[][] board2 = {{'0'}};
-        
+
         char[][] board3 = {
-            {'0', '0'},
-            {'0', '0'},
-            {'0', '0'}
+                {'0', '0'},
+                {'0', '0'},
+                {'0', '0'}
         };
 
         // Run tests
@@ -84,30 +69,45 @@ public class SnakeBoardSolver {
         for (char[] row : largeBoard) {
             Arrays.fill(row, '0');
         }
-        testCase("Large Board Test", largeBoard, 
+        testCase("Large Board Test", largeBoard,
                 range(0, 999), range(0, 999));
     }
 
-    private static void testCase(String testName, char[][] board, 
-                               int[] expectedRows, int[] expectedCols) {
+    private static void testCase(String testName, char[][] board,
+                                 int[] expectedRows, int[] expectedCols) {
         System.out.println("Running " + testName + "...");
         Result result = findPassableLanes(board);
-        
+
         boolean rowsMatch = Arrays.equals(
-            result.passableRows.stream().mapToInt(i->i).toArray(), 
-            expectedRows
+                result.passableRows.stream().mapToInt(i -> i).toArray(),
+                expectedRows
         );
         boolean colsMatch = Arrays.equals(
-            result.passableColumns.stream().mapToInt(i->i).toArray(), 
-            expectedCols
+                result.passableColumns.stream().mapToInt(i -> i).toArray(),
+                expectedCols
         );
-        
+
         System.out.println(result);
-        System.out.println(testName + ": " + 
-            (rowsMatch && colsMatch ? "PASS" : "FAIL") + "\n");
+        System.out.println(testName + ": " +
+                (rowsMatch && colsMatch ? "PASS" : "FAIL") + "\n");
     }
 
     private static int[] range(int start, int end) {
         return IntStream.rangeClosed(start, end).toArray();
+    }
+
+    public static class Result {
+        List<Integer> passableRows;
+        List<Integer> passableColumns;
+
+        public Result(List<Integer> rows, List<Integer> cols) {
+            this.passableRows = rows;
+            this.passableColumns = cols;
+        }
+
+        @Override
+        public String toString() {
+            return "Rows: " + passableRows + ", Columns: " + passableColumns;
+        }
     }
 }

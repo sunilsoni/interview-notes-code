@@ -5,7 +5,7 @@ public class Employee {
     private String name;
     private String department;
     private double salary;
-    
+
     // Constructors
     public Employee(int id, String name, String department, double salary) {
         this.id = id;
@@ -13,7 +13,7 @@ public class Employee {
         this.department = department;
         this.salary = salary;
     }
-    
+
     // Getters and setters
     public int getId() {
         return id;
@@ -25,7 +25,7 @@ public class Employee {
 
     public String getDepartment() {
         return department;
-    }    
+    }
 
     public double getSalary() {
         return salary;

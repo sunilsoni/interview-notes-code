@@ -9,9 +9,9 @@ public class SnakeExitFinder {
      * Finds the coordinates of the nearest exit (row, col) from the start position,
      * returning null if no exit is reachable. Uses BFS for shortest path.
      *
-     * @param board  2D array containing '+' (impassable) or '0' (passable)
-     * @param start  int[] of the form [startRow, startCol]
-     * @return       int[] of the form [exitRow, exitCol] or null if unreachable
+     * @param board 2D array containing '+' (impassable) or '0' (passable)
+     * @param start int[] of the form [startRow, startCol]
+     * @return int[] of the form [exitRow, exitCol] or null if unreachable
      */
     public static int[] findExit(char[][] board, int[] start) {
         int rows = board.length;
@@ -24,7 +24,7 @@ public class SnakeExitFinder {
         visited[startR][startC] = true;
 
         // Four possible directions: up, down, left, right
-        int[][] directions = {{-1,0}, {1,0}, {0,-1}, {0,1}};
+        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
         // BFS queue holds [row, col]
         Queue<int[]> queue = new LinkedList<>();
@@ -63,8 +63,8 @@ public class SnakeExitFinder {
 
     /**
      * A cell is considered an exit if:
-     *   1) It is on the boundary (top row, bottom row, left col, or right col), AND
-     *   2) It is NOT the same as the starting position.
+     * 1) It is on the boundary (top row, bottom row, left col, or right col), AND
+     * 2) It is NOT the same as the starting position.
      */
     private static boolean isExit(int r, int c,
                                   int startR, int startC,
@@ -77,7 +77,7 @@ public class SnakeExitFinder {
     }
 
     /**
-     * Simple test harness in main; no JUnit. 
+     * Simple test harness in main; no JUnit.
      * We define boards, run findExit for each test, and compare with expected results.
      */
     public static void main(String[] args) {
@@ -86,19 +86,19 @@ public class SnakeExitFinder {
         // From the problem statement, it has at least 8 columns. 
         // Make sure the board matches the puzzle EXACTLY for correct results.
         char[][] board1 = {
-            {'+','+','+','+','+','+','0','0'},  // row 0
-            {'+','0','0','0','0','0','+','+'},
-            {'+','+','0','+','+','+','+','0'},
-            {'+','+','+','+','+','0','+','0'},
-            {'+','+','+','+','+','+','0','+'},
-            {'+','+','+','+','+','+','+','+'}   // row 5
-            // columns -> 0..7
+                {'+', '+', '+', '+', '+', '+', '0', '0'},  // row 0
+                {'+', '0', '0', '0', '0', '0', '+', '+'},
+                {'+', '+', '0', '+', '+', '+', '+', '0'},
+                {'+', '+', '+', '+', '+', '0', '+', '0'},
+                {'+', '+', '+', '+', '+', '+', '0', '+'},
+                {'+', '+', '+', '+', '+', '+', '+', '+'}   // row 5
+                // columns -> 0..7
         };
 
         // start1_1 = (2, 0) => expected (5, 2)
-        testResult("board1_start1_1", 
-            findExit(board1, new int[]{2, 0}), 
-            new int[]{5, 2});
+        testResult("board1_start1_1",
+                findExit(board1, new int[]{2, 0}),
+                new int[]{5, 2});
 
         // start1_2 = (0, 7) => expected (0, 8) in the puzzle text
         // but if our board only has columns 0..7, col=8 is out of bounds.
@@ -106,44 +106,44 @@ public class SnakeExitFinder {
         // For now, let's assume the puzzle says there's NO other exit,
         // so the official expected is "null".
         // This also tests that starting on edge (0,7) returns null if no other path.
-        testResult("board1_start1_2", 
-            findExit(board1, new int[]{0, 7}), 
-            null);
+        testResult("board1_start1_2",
+                findExit(board1, new int[]{0, 7}),
+                null);
 
         // start1_3 = (5, 2) => puzzle says expected could be (2, 0) or (5, 5).
         // Because they say there's a tie. We'll just check if BFS returns either.
         // We'll do a special check that it's either (2,0) or (5,5).
         int[] res1_3 = findExit(board1, new int[]{5, 2});
-        boolean pass1_3 = isEqual(res1_3, new int[]{2, 0}) 
-                          || isEqual(res1_3, new int[]{5, 5});
-        printPassFail("board1_start1_3", pass1_3, 
-                      "(2, 0) or (5, 5)", format(res1_3));
+        boolean pass1_3 = isEqual(res1_3, new int[]{2, 0})
+                || isEqual(res1_3, new int[]{5, 5});
+        printPassFail("board1_start1_3", pass1_3,
+                "(2, 0) or (5, 5)", format(res1_3));
 
         // start1_4 = (5, 5) => expected (5, 7)
-        testResult("board1_start1_4", 
-            findExit(board1, new int[]{5, 5}), 
-            new int[]{5, 7});
+        testResult("board1_start1_4",
+                findExit(board1, new int[]{5, 5}),
+                new int[]{5, 7});
 
         // ------------------------------------------------------------
         // BOARD 2
         // The puzzle states: start2_1 => null, start2_2 => null
         // So let's define a smaller board2 with no possible exit path:
         char[][] board2 = {
-            {'+','+','+','+','+','+','+'},
-            {'+','+','+','+','+','+','+'},
-            {'+','+','+','+','+','+','+'}
-            // Just a 3x7 with all '+', so no path anywhere
+                {'+', '+', '+', '+', '+', '+', '+'},
+                {'+', '+', '+', '+', '+', '+', '+'},
+                {'+', '+', '+', '+', '+', '+', '+'}
+                // Just a 3x7 with all '+', so no path anywhere
         };
 
         // start2_1 = (1,0) => expected null
-        testResult("board2_start2_1", 
-            findExit(board2, new int[]{1, 0}), 
-            null);
+        testResult("board2_start2_1",
+                findExit(board2, new int[]{1, 0}),
+                null);
 
         // start2_2 = (2,6) => expected null
-        testResult("board2_start2_2", 
-            findExit(board2, new int[]{2, 6}), 
-            null);
+        testResult("board2_start2_2",
+                findExit(board2, new int[]{2, 6}),
+                null);
 
         // ------------------------------------------------------------
         // BOARD 3
@@ -154,31 +154,31 @@ public class SnakeExitFinder {
         //   start3_4 => (4, 3) => (3, 4)
         // We'll build a 5x5 (rows=0..4, cols=0..4) or so:
         char[][] board3 = {
-            {'+','0','+','0','+'},
-            {'0','0','+','0','0'},
-            {'+','0','+','0','+'},
-            {'0','0','+','0','0'},
-            {'+','0','+','0','+'}
+                {'+', '0', '+', '0', '+'},
+                {'0', '0', '+', '0', '0'},
+                {'+', '0', '+', '0', '+'},
+                {'0', '0', '+', '0', '0'},
+                {'+', '0', '+', '0', '+'}
         };
         // start3_1 = (0,1) => expected (1,0)
-        testResult("board3_start3_1", 
-            findExit(board3, new int[]{0,1}), 
-            new int[]{1,0});
+        testResult("board3_start3_1",
+                findExit(board3, new int[]{0, 1}),
+                new int[]{1, 0});
 
         // start3_2 = (4,1) => expected (3,0)
-        testResult("board3_start3_2", 
-            findExit(board3, new int[]{4,1}), 
-            new int[]{3,0});
+        testResult("board3_start3_2",
+                findExit(board3, new int[]{4, 1}),
+                new int[]{3, 0});
 
         // start3_3 = (0,3) => expected (1,4)
-        testResult("board3_start3_3", 
-            findExit(board3, new int[]{0,3}), 
-            new int[]{1,4});
+        testResult("board3_start3_3",
+                findExit(board3, new int[]{0, 3}),
+                new int[]{1, 4});
 
         // start3_4 = (4,3) => expected (3,4)
-        testResult("board3_start3_4", 
-            findExit(board3, new int[]{4,3}), 
-            new int[]{3,4});
+        testResult("board3_start3_4",
+                findExit(board3, new int[]{4, 3}),
+                new int[]{3, 4});
 
         // ------------------------------------------------------------
         // BOARD 4
@@ -188,31 +188,31 @@ public class SnakeExitFinder {
         //   start4_3 => (3,0) => (4,1)
         //   start4_4 => (3,4) => (4,3)
         char[][] board4 = {
-            {'+','+','+','+','+'},
-            {'0','0','0','0','0'},
-            {'+','0','+','0','+'},
-            {'0','0','0','0','0'},
-            {'+','+','+','+','+'}
+                {'+', '+', '+', '+', '+'},
+                {'0', '0', '0', '0', '0'},
+                {'+', '0', '+', '0', '+'},
+                {'0', '0', '0', '0', '0'},
+                {'+', '+', '+', '+', '+'}
         };
         // start4_1 = (1,0) => (0,1)
-        testResult("board4_start4_1", 
-            findExit(board4, new int[]{1,0}), 
-            new int[]{0,1});
+        testResult("board4_start4_1",
+                findExit(board4, new int[]{1, 0}),
+                new int[]{0, 1});
 
         // start4_2 = (1,4) => (0,3)
-        testResult("board4_start4_2", 
-            findExit(board4, new int[]{1,4}), 
-            new int[]{0,3});
+        testResult("board4_start4_2",
+                findExit(board4, new int[]{1, 4}),
+                new int[]{0, 3});
 
         // start4_3 = (3,0) => (4,1)
-        testResult("board4_start4_3", 
-            findExit(board4, new int[]{3,0}), 
-            new int[]{4,1});
+        testResult("board4_start4_3",
+                findExit(board4, new int[]{3, 0}),
+                new int[]{4, 1});
 
         // start4_4 = (3,4) => (4,3)
-        testResult("board4_start4_4", 
-            findExit(board4, new int[]{3,4}), 
-            new int[]{4,3});
+        testResult("board4_start4_4",
+                findExit(board4, new int[]{3, 4}),
+                new int[]{4, 3});
 
         // ------------------------------------------------------------
         // BOARD 5
@@ -221,42 +221,42 @@ public class SnakeExitFinder {
         //   start5_2 => (3,1) => (3,2)
         //   start5_3 => (1,4) => (2,4)
         char[][] board5 = {
-            {'+','0','0','0','+'},
-            {'+','0','+','0','0'},
-            {'+','+','0','0','+'},
-            {'+','0','+','0','+'}
+                {'+', '0', '0', '0', '+'},
+                {'+', '0', '+', '0', '0'},
+                {'+', '+', '0', '0', '+'},
+                {'+', '0', '+', '0', '+'}
         };
         // start5_1 = (0,1) => (0,2)
         testResult("board5_start5_1",
-            findExit(board5, new int[]{0,1}),
-            new int[]{0,2});
+                findExit(board5, new int[]{0, 1}),
+                new int[]{0, 2});
 
         // start5_2 = (3,1) => (3,2)
         testResult("board5_start5_2",
-            findExit(board5, new int[]{3,1}),
-            new int[]{3,2});
+                findExit(board5, new int[]{3, 1}),
+                new int[]{3, 2});
 
         // start5_3 = (1,4) => (2,4)
         testResult("board5_start5_3",
-            findExit(board5, new int[]{1,4}),
-            new int[]{2,4});
+                findExit(board5, new int[]{1, 4}),
+                new int[]{2, 4});
 
         // ------------------------------------------------------------
         // BOARD 6
         // from the puzzle:
         //   start6_1 => (4,0) => (1,0)
         char[][] board6 = {
-            {'+','+','+','+','+','+'},
-            {'+','0','+','+','0','+'},
-            {'+','0','0','0','0','0'},
-            {'+','0','0','0','0','+'},
-            {'+','0','+','0','+','+'},
-            {'+','+','+','+','+','+'}
+                {'+', '+', '+', '+', '+', '+'},
+                {'+', '0', '+', '+', '0', '+'},
+                {'+', '0', '0', '0', '0', '0'},
+                {'+', '0', '0', '0', '0', '+'},
+                {'+', '0', '+', '0', '+', '+'},
+                {'+', '+', '+', '+', '+', '+'}
         };
         // start6_1 = (4,0) => (1,0)
         testResult("board6_start6_1",
-            findExit(board6, new int[]{4,0}),
-            new int[]{1,0});
+                findExit(board6, new int[]{4, 0}),
+                new int[]{1, 0});
     }
 
     // ----------------------------------------------------------------

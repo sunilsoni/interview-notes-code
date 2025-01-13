@@ -5,22 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SnakeBoardGame {
-    public static class Result {
-        private final int[] passableRows;
-        private final int[] passableColumns;
-
-        public Result(int[] rows, int[] cols) {
-            this.passableRows = rows;
-            this.passableColumns = cols;
-        }
-
-        @Override
-        public String toString() {
-            return "Rows: " + Arrays.toString(passableRows) +
-                   ", Columns: " + Arrays.toString(passableColumns);
-        }
-    }
-
     public static Result findPassableLanes(char[][] board) {
         if (board == null || board.length == 0 || board[0].length == 0) {
             return new Result(new int[]{}, new int[]{});
@@ -28,7 +12,7 @@ public class SnakeBoardGame {
 
         List<Integer> passableRows = new ArrayList<>();
         List<Integer> passableCols = new ArrayList<>();
-        
+
         // Check rows
         for (int i = 0; i < board.length; i++) {
             boolean passable = true;
@@ -58,25 +42,25 @@ public class SnakeBoardGame {
         }
 
         return new Result(
-            passableRows.stream().mapToInt(i -> i).toArray(),
-            passableCols.stream().mapToInt(i -> i).toArray()
+                passableRows.stream().mapToInt(i -> i).toArray(),
+                passableCols.stream().mapToInt(i -> i).toArray()
         );
     }
 
     public static void main(String[] args) {
         // Test cases
         char[][] board1 = {
-            {'+', '+', '+', '+', '0', '0'},
-            {'0', '0', '+', '0', '0', '0'},
-            {'0', '0', '+', '0', '0', '0'},
-            {'0', '0', '+', '0', '0', '0'}
+                {'+', '+', '+', '+', '0', '0'},
+                {'0', '0', '+', '0', '0', '0'},
+                {'0', '0', '+', '0', '0', '0'},
+                {'0', '0', '+', '0', '0', '0'}
         };
 
         char[][] board2 = {
-            {'+', '+', '+', '+', '0', '0'},
-            {'0', '0', '0', '0', '0', '0'},
-            {'0', '0', '0', '0', '0', '0'},
-            {'0', '0', '0', '0', '0', '0'}
+                {'+', '+', '+', '+', '0', '0'},
+                {'0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0'}
         };
 
         // Large board test
@@ -101,11 +85,27 @@ public class SnakeBoardGame {
             System.out.println("Result: " + result);
             System.out.println("Time taken: " + (endTime - startTime) + "ms");
             System.out.println("Expected: " + expectedResult);
-            System.out.println("Status: " + 
-                (result.toString().contains(expectedResult) ? "PASS" : "FAIL"));
+            System.out.println("Status: " +
+                    (result.toString().contains(expectedResult) ? "PASS" : "FAIL"));
             System.out.println("--------------------");
         } catch (Exception e) {
             System.out.println(testName + " FAILED with exception: " + e.getMessage());
+        }
+    }
+
+    public static class Result {
+        private final int[] passableRows;
+        private final int[] passableColumns;
+
+        public Result(int[] rows, int[] cols) {
+            this.passableRows = rows;
+            this.passableColumns = cols;
+        }
+
+        @Override
+        public String toString() {
+            return "Rows: " + Arrays.toString(passableRows) +
+                    ", Columns: " + Arrays.toString(passableColumns);
         }
     }
 }

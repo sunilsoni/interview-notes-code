@@ -8,7 +8,7 @@ public class SnakeExitFinder {
     /**
      * Finds the coordinates of the nearest exit (row, col) from the start position.
      * Returns null if no exit is reachable.
-     *
+     * <p>
      * board: 2D array of '+' (impassable) and '0' (passable)
      * start: int[] with two elements: [startRow, startCol]
      */
@@ -26,11 +26,11 @@ public class SnakeExitFinder {
         visited[start[0]][start[1]] = true;
 
         // Directions: up, down, left, right
-        int[][] directions = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
+        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
         // Queue for BFS (stores row, col)
         Queue<int[]> queue = new LinkedList<>();
-        queue.offer(new int[] { start[0], start[1] });
+        queue.offer(new int[]{start[0], start[1]});
 
         // Perform BFS
         while (!queue.isEmpty()) {
@@ -55,10 +55,10 @@ public class SnakeExitFinder {
 
                 // If this is an exit, return it
                 if (isExit(nr, nc, rows, cols)) {
-                    return new int[] { nr, nc };
+                    return new int[]{nr, nc};
                 }
                 // Otherwise, keep searching
-                queue.offer(new int[] { nr, nc });
+                queue.offer(new int[]{nr, nc});
             }
         }
 
@@ -80,24 +80,24 @@ public class SnakeExitFinder {
     public static void main(String[] args) {
         // Example boards
         char[][] board1 = {
-            {'+','+','+','+','+','+','0','0'},
-            {'+','0','0','0','0','0','+','+'},
-            {'+','+','0','+','+','+','+','0'},
-            {'+','+','+','+','+','0','+','0'},
-            {'+','+','+','+','+','+','0','+'},
-            {'+','+','+','+','+','+','+','+'}
+                {'+', '+', '+', '+', '+', '+', '0', '0'},
+                {'+', '0', '0', '0', '0', '0', '+', '+'},
+                {'+', '+', '0', '+', '+', '+', '+', '0'},
+                {'+', '+', '+', '+', '+', '0', '+', '0'},
+                {'+', '+', '+', '+', '+', '+', '0', '+'},
+                {'+', '+', '+', '+', '+', '+', '+', '+'}
         };
 
         // Test case 1: start = (2, 0) expected output = (5, 2)
-        int[] result1 = findExit(board1, new int[] {2, 0});
-        testResult("Test1", result1, new int[] {5, 2});
+        int[] result1 = findExit(board1, new int[]{2, 0});
+        testResult("Test1", result1, new int[]{5, 2});
 
         // Test case 2: start = (0, 7) expected output = (0, 8) but col=8 is out of range for this example
         // Let's assume the edges are from 0..7. If we actually wanted col=8, we need to ensure the board has col=8
         // Adjusting to match the sample data, we might have a different expected exit.
         // For illustration, let's skip this or treat as unreachable if col=8 is out of bounds.
         // Let's show a scenario that returns null
-        int[] result2 = findExit(board1, new int[] {0, 7});
+        int[] result2 = findExit(board1, new int[]{0, 7});
         testResult("Test2", result2, null);
 
         // Additional boards or scenarios can be added here for more thorough testing...
@@ -119,9 +119,9 @@ public class SnakeExitFinder {
         } else {
             pass = (actual[0] == expected[0] && actual[1] == expected[1]);
         }
-        System.out.println(testName + " => " + (pass ? "PASS" : "FAIL") 
-                           + " (Expected: " + format(expected) 
-                           + ", Got: " + format(actual) + ")");
+        System.out.println(testName + " => " + (pass ? "PASS" : "FAIL")
+                + " (Expected: " + format(expected)
+                + ", Got: " + format(actual) + ")");
     }
 
     /**

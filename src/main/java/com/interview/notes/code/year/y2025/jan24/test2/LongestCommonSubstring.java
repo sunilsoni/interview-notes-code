@@ -23,15 +23,15 @@ public class LongestCommonSubstring {
     private static String findCommonSubstring(String str1, String str2) {
         String result = "";
         int maxLength = 0;
-        
+
         // Compare all possible substrings
         for (int i = 0; i < str1.length(); i++) {
             for (int j = i + 1; j <= str1.length(); j++) {
                 String current = str1.substring(i, j);
                 // Check if substring has no repeating characters
-                if (hasNoRepeatingChars(current) && 
-                    str2.contains(current) && 
-                    current.length() > maxLength) {
+                if (hasNoRepeatingChars(current) &&
+                        str2.contains(current) &&
+                        current.length() > maxLength) {
                     maxLength = current.length();
                     result = current;
                 }
@@ -54,10 +54,10 @@ public class LongestCommonSubstring {
     public static void main(String[] args) {
         // Test Case 1: Given array
         String[] filledArr = {
-            "India", "Individual", "Indefinite", "Indifferent", 
-            "Flow", "Flower", "Power"
+                "India", "Individual", "Indefinite", "Indifferent",
+                "Flow", "Flower", "Power"
         };
-        
+
         System.out.println("Test Case 1:");
         String result = findLongestCommonSubstring(filledArr);
         System.out.println("Result: " + result);
@@ -87,11 +87,11 @@ public class LongestCommonSubstring {
         for (int i = 0; i < 1000; i++) {
             largeArray[i] = "Test" + i + "Individual";
         }
-        
+
         long startTime = System.currentTimeMillis();
         result = findLongestCommonSubstring(largeArray);
         long endTime = System.currentTimeMillis();
-        
+
         System.out.println("Time taken: " + (endTime - startTime) + "ms");
         System.out.println("Result: " + result);
     }

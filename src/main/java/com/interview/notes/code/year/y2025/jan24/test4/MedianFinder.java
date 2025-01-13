@@ -6,26 +6,10 @@ import java.util.PriorityQueue;
 public class MedianFinder {
     private PriorityQueue<Integer> smallNums; // max heap
     private PriorityQueue<Integer> largeNums; // min heap
-    
+
     public MedianFinder() {
         smallNums = new PriorityQueue<>(Collections.reverseOrder());
         largeNums = new PriorityQueue<>();
-    }
-    
-    public void addNum(int num) {
-        smallNums.offer(num);
-        largeNums.offer(smallNums.poll());
-        
-        if (smallNums.size() < largeNums.size()) {
-            smallNums.offer(largeNums.poll());
-        }
-    }
-    
-    public double findMedian() {
-        if (smallNums.size() > largeNums.size()) {
-            return smallNums.peek();
-        }
-        return (smallNums.peek() + largeNums.peek()) / 2.0;
     }
 
     // Test method
@@ -51,10 +35,26 @@ public class MedianFinder {
         // Test Case 3: Stream of numbers
         System.out.println("\nTest Case 3:");
         MedianFinder mf3 = new MedianFinder();
-        int[] stream = {5,2,3,4,1};
-        for(int num : stream) {
+        int[] stream = {5, 2, 3, 4, 1};
+        for (int num : stream) {
             mf3.addNum(num);
             System.out.println("After adding " + num + ", Median is: " + mf3.findMedian());
         }
+    }
+
+    public void addNum(int num) {
+        smallNums.offer(num);
+        largeNums.offer(smallNums.poll());
+
+        if (smallNums.size() < largeNums.size()) {
+            smallNums.offer(largeNums.poll());
+        }
+    }
+
+    public double findMedian() {
+        if (smallNums.size() > largeNums.size()) {
+            return smallNums.peek();
+        }
+        return (smallNums.peek() + largeNums.peek()) / 2.0;
     }
 }

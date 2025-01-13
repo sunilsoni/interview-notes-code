@@ -38,34 +38,34 @@ public class LongestCommonPrefixFinder {
     public static void main(String[] args) {
         // Array of test cases
         String[][] testArrays = {
-            // Test Case 1: Provided example
-            {"India", "Individual", "Indefinite", "Indifferent", "Flow", "Flower", "Power"},
-            // Test Case 2: Common prefix "Fl"
-            {"Flower", "Flow", "Flight"},
-            // Test Case 3: No common prefix
-            {"Dog", "Racecar", "Car"},
-            // Test Case 4: Empty array
-            {},
-            // Test Case 5: Single string
-            {"Single"},
-            // Test Case 6: Common prefix "Inter"
-            {"Interstellar", "Internet", "Interval", "Interview"},
-            // Test Case 7: Empty string in array
-            {"", "Empty", "Emptier"},
-            // Test Case 8: All strings are the same
-            {"Same", "Same", "Same"}
+                // Test Case 1: Provided example
+                {"India", "Individual", "Indefinite", "Indifferent", "Flow", "Flower", "Power"},
+                // Test Case 2: Common prefix "Fl"
+                {"Flower", "Flow", "Flight"},
+                // Test Case 3: No common prefix
+                {"Dog", "Racecar", "Car"},
+                // Test Case 4: Empty array
+                {},
+                // Test Case 5: Single string
+                {"Single"},
+                // Test Case 6: Common prefix "Inter"
+                {"Interstellar", "Internet", "Interval", "Interview"},
+                // Test Case 7: Empty string in array
+                {"", "Empty", "Emptier"},
+                // Test Case 8: All strings are the same
+                {"Same", "Same", "Same"}
         };
 
         // Expected outputs
         String[] expectedOutputs = {
-            "Indi",
-            "Fl",
-            "",
-            "",
-            "Single",
-            "Inter",
-            "",
-            "Same"
+                "Indi",
+                "Fl",
+                "",
+                "",
+                "Single",
+                "Inter",
+                "",
+                "Same"
         };
 
         int passedTests = 0;

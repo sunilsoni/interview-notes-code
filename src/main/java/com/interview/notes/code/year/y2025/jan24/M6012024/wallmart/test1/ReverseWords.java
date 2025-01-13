@@ -4,12 +4,12 @@ public class ReverseWords {
 
     // Method to reverse words in a given string
     public static String reverseWords(String input) {
-        if(input == null || input.trim().isEmpty()) return input; // handle empty/null
+        if (input == null || input.trim().isEmpty()) return input; // handle empty/null
         String[] words = input.split("\\s+"); // split by whitespace
         StringBuilder reversed = new StringBuilder();
-        for(int i = words.length - 1; i >= 0; i--) {
+        for (int i = words.length - 1; i >= 0; i--) {
             reversed.append(words[i]);
-            if(i != 0) reversed.append(" ");
+            if (i != 0) reversed.append(" ");
         }
         return reversed.toString();
     }
@@ -17,7 +17,7 @@ public class ReverseWords {
     // Simple testing method to verify output
     public static void runTest(String input, String expected) {
         String result = reverseWords(input);
-        if(result.equals(expected)) {
+        if (result.equals(expected)) {
             System.out.println("PASS: \"" + input + "\" → \"" + result + "\"");
         } else {
             System.out.println("FAIL: \"" + input + "\". Expected \"" + expected + "\" but got \"" + result + "\"");
@@ -36,7 +36,7 @@ public class ReverseWords {
         // Test with large input: repeat a phrase many times
         StringBuilder largeInputBuilder = new StringBuilder();
         String phrase = "hello world ";
-        for(int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 100000; i++) {
             largeInputBuilder.append(phrase);
         }
         String largeInput = largeInputBuilder.toString().trim();

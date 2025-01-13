@@ -62,10 +62,10 @@ public class SalaryHikeCalculator {
     public static void main(String[] args) {
         // Example usage
         List<Employee> employees = List.of(
-            new Employee("John", 50000, 6),
-            new Employee("Alice", 60000, 4),
-            new Employee("Bob", 75000, 8),
-            new Employee("Sarah", 45000, 3)
+                new Employee("John", 50000, 6),
+                new Employee("Alice", 60000, 4),
+                new Employee("Bob", 75000, 8),
+                new Employee("Sarah", 45000, 3)
         );
 
         System.out.println("Before salary hike:");

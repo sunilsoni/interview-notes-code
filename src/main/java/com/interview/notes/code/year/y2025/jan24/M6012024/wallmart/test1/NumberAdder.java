@@ -37,7 +37,7 @@ public class NumberAdder {
         int result = addNumbers(a, b);
         boolean passed = (result == expected);
         System.out.printf("Test %s: %s (Input: %d, %d | Expected: %d | Got: %d)%n",
-            testName, passed ? "PASS" : "FAIL", a, b, expected, result);
+                testName, passed ? "PASS" : "FAIL", a, b, expected, result);
     }
 
     public static void main(String[] args) {
@@ -54,7 +54,7 @@ public class NumberAdder {
 
         // Large number tests
         testCase("Large Numbers", 1000000, 2000000, 3000000);
-        
+
         // Edge cases
         testCase("Max Value Test", Integer.MAX_VALUE - 1, 1, Integer.MAX_VALUE);
         testCase("Min Value Test", Integer.MIN_VALUE + 1, -1, Integer.MIN_VALUE);
@@ -64,8 +64,8 @@ public class NumberAdder {
         long startTime = System.nanoTime();
         int result = addNumbers(999999999, 888888888);
         long endTime = System.nanoTime();
-        System.out.printf("Large number addition completed in %d nanoseconds%n", 
-            (endTime - startTime));
+        System.out.printf("Large number addition completed in %d nanoseconds%n",
+                (endTime - startTime));
         System.out.println("Result: " + result);
     }
 }
