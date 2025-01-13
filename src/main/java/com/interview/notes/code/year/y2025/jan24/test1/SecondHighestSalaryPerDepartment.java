@@ -1,4 +1,4 @@
-package com.interview.notes.code.year;
+package com.interview.notes.code.year.y2025.jan24.test1;
 
 import java.util.Collections;
 import java.util.Comparator;

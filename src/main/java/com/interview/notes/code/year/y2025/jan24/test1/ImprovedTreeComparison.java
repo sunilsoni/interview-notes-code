@@ -1,4 +1,4 @@
-package com.interview.notes.code.year.y2025.jan24;
+package com.interview.notes.code.year.y2025.jan24.test1;
 
 import java.util.HashMap;
 import java.util.Map;

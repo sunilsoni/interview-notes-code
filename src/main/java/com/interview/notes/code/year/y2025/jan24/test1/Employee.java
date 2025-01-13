@@ -1,4 +1,4 @@
-package com.interview.notes.code.year;
+package com.interview.notes.code.year.y2025.jan24.test1;
 
 public class Employee {
     private int id;
