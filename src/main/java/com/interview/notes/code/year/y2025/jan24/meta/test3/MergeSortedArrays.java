@@ -1,10 +1,10 @@
 package com.interview.notes.code.year.y2025.jan24.meta.test3;
 
 public class MergeSortedArrays {
-    
+
     /**
      * Merges sorted array B into array A with empty slots
-     * 
+     *
      * @param A main array with empty slots at the end
      * @param m number of actual elements in A
      * @param B array to be merged into A
@@ -15,7 +15,7 @@ public class MergeSortedArrays {
         if (B == null || n == 0) {
             return;  // Nothing to merge
         }
-        
+
         if (A == null || A.length < m + n) {
             throw new IllegalArgumentException("Insufficient array size");
         }
@@ -81,7 +81,7 @@ public class MergeSortedArrays {
     private static void runTest(String testName, int[] A, int m, int[] B, int n) {
         try {
             System.out.println("\n" + testName + " Test:");
-            
+
             // Print initial state
             System.out.print("Before: A = ");
             printArray(A);
@@ -106,7 +106,7 @@ public class MergeSortedArrays {
             System.out.println("null");
             return;
         }
-        
+
         System.out.print("[");
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i]);
@@ -135,7 +135,7 @@ public class MergeSortedArrays {
 
         System.out.println("\nLarge Input Performance Test:");
         System.out.println("Time taken: " + (endTime - startTime) / 1_000_000 + " ms");
-        
+
         // Verify first few and last few elements
         System.out.println("First 10 elements: ");
         for (int i = 0; i < 10; i++) {

@@ -1,20 +1,22 @@
 package com.interview.notes.code.year.y2025.jan24.meta.test1;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
 public class ShortestSubstringWithAlphabet {
-    
+
     /**
      * Find the shortest substring containing all alphabet letters
-     * 
-     * @param input Input string to search
+     *
+     * @param input    Input string to search
      * @param alphabet Target alphabet letters
      * @return Shortest substring containing all alphabet letters
      */
     public static String findShortestSubstring(String input, String alphabet) {
         // Validate inputs
-        if (input == null || input.isEmpty() || 
-            alphabet == null || alphabet.isEmpty()) {
+        if (input == null || input.isEmpty() ||
+                alphabet == null || alphabet.isEmpty()) {
             return "";
         }
 
@@ -31,14 +33,14 @@ public class ShortestSubstringWithAlphabet {
         for (int start = 0; start < input.length(); start++) {
             // Track characters in current window
             Set<Character> currentChars = new HashSet<>();
-            
+
             for (int end = start; end < input.length(); end++) {
                 currentChars.add(input.charAt(end));
 
                 // Check if current window contains all required characters
                 if (currentChars.containsAll(requiredChars)) {
                     String currentSubstring = input.substring(start, end + 1);
-                    
+
                     // Update shortest substring if needed
                     if (currentSubstring.length() < minLength) {
                         minLength = currentSubstring.length();
@@ -66,12 +68,12 @@ public class ShortestSubstringWithAlphabet {
     }
 
     // Helper method to run test cases
-    private static void testCase(String testName, String input, 
+    private static void testCase(String testName, String input,
                                  String alphabet, String expected) {
         try {
             String result = findShortestSubstring(input, alphabet);
             boolean passed = result.equals(expected);
-            
+
             System.out.println("Test: " + testName);
             System.out.println("Input: " + input);
             System.out.println("Alphabet: " + alphabet);
@@ -93,12 +95,12 @@ public class ShortestSubstringWithAlphabet {
     private static String generateLargeInput() {
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
-        
+
         // Create a large input string
         for (int i = 0; i < 100000; i++) {
-            sb.append((char)(random.nextInt(26) + 'a'));
+            sb.append((char) (random.nextInt(26) + 'a'));
         }
-        
+
         return sb.toString();
     }
 

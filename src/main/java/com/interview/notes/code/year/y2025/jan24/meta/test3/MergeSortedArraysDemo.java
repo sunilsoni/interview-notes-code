@@ -22,9 +22,9 @@ public class MergeSortedArraysDemo {
     /**
      * Merges array B into array A in-place, assuming A has enough empty slots.
      *
-     * @param A the first sorted array with extra slots at the end
-     * @param validA the number of valid elements initially in A
-     * @param B the second sorted array
+     * @param A       the first sorted array with extra slots at the end
+     * @param validA  the number of valid elements initially in A
+     * @param B       the second sorted array
      * @param lengthB the length of array B
      */
     public static void mergeArrays(int[] A, int validA, int[] B, int lengthB) {
@@ -56,9 +56,9 @@ public class MergeSortedArraysDemo {
      * A helper method to check if two arrays have the same values.
      */
     private static boolean arraysAreEqual(int[] a, int[] b) {
-        if(a.length != b.length) return false;
-        for(int i = 0; i < a.length; i++) {
-            if(a[i] != b[i]) {
+        if (a.length != b.length) return false;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) {
                 return false;
             }
         }
@@ -110,18 +110,18 @@ public class MergeSortedArraysDemo {
         int[] largeB = new int[5_000];
         int validCountA = 5_000; // assume first 5,000 spots in A are filled
         // Fill A (first 5000 positions sorted), B (5000 positions sorted)
-        for(int i = 0; i < 5_000; i++){
+        for (int i = 0; i < 5_000; i++) {
             largeA[i] = i; // sorted 0 to 4999
         }
-        for(int i = 0; i < 5_000; i++){
+        for (int i = 0; i < 5_000; i++) {
             largeB[i] = i + 5000; // sorted 5000 to 9999
         }
         // Merge
         mergeArrays(largeA, validCountA, largeB, largeB.length);
         // Quick check: The final array should be 0..9999 sorted
         boolean largeTestPass = true;
-        for(int i = 0; i < 10_000; i++){
-            if(largeA[i] != i){
+        for (int i = 0; i < 10_000; i++) {
+            if (largeA[i] != i) {
                 largeTestPass = false;
                 break;
             }

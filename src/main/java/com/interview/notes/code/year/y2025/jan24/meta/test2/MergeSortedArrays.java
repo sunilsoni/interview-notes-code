@@ -35,28 +35,28 @@ public class MergeSortedArrays {
         int[] A1 = {1, 2, 3, 0, 0, 0, 0}; // '_' represented as 0 for empty slots
         int[] B1 = {2, 4, 6, 100};
         merge(A1, B1, 3, B1.length);
-        boolean pass1 = java.util.Arrays.equals(A1, new int[]{1,2,2,3,4,6,100});
+        boolean pass1 = java.util.Arrays.equals(A1, new int[]{1, 2, 2, 3, 4, 6, 100});
         System.out.println("Test Case 1 " + (pass1 ? "PASSED" : "FAILED"));
 
         // Additional Test Case 2: A has no initial elements
         int[] A2 = {0, 0, 0};
         int[] B2 = {1, 2, 3};
         merge(A2, B2, 0, B2.length);
-        boolean pass2 = java.util.Arrays.equals(A2, new int[]{1,2,3});
+        boolean pass2 = java.util.Arrays.equals(A2, new int[]{1, 2, 3});
         System.out.println("Test Case 2 " + (pass2 ? "PASSED" : "FAILED"));
 
         // Additional Test Case 3: B is empty
         int[] A3 = {1, 2, 3};
         int[] B3 = {};
         merge(A3, B3, 3, B3.length);
-        boolean pass3 = java.util.Arrays.equals(A3, new int[]{1,2,3});
+        boolean pass3 = java.util.Arrays.equals(A3, new int[]{1, 2, 3});
         System.out.println("Test Case 3 " + (pass3 ? "PASSED" : "FAILED"));
 
         // Additional Test Case 4: Both A and B have elements, with duplicates
         int[] A4 = {1, 3, 5, 0, 0, 0};
         int[] B4 = {2, 3, 4};
         merge(A4, B4, 3, B4.length);
-        boolean pass4 = java.util.Arrays.equals(A4, new int[]{1,2,3,3,4,5});
+        boolean pass4 = java.util.Arrays.equals(A4, new int[]{1, 2, 3, 3, 4, 5});
         System.out.println("Test Case 4 " + (pass4 ? "PASSED" : "FAILED"));
 
         // Edge Test Case 5: Large Data Input

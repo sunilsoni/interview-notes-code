@@ -1,10 +1,10 @@
 package com.interview.notes.code.year.y2025.jan24.meta.test1;
 
 public class MergeSortedArrays {
-    
+
     /**
      * Merges sorted array B into array A with empty slots
-     * 
+     *
      * @param A main array with empty slots at the end
      * @param m number of actual elements in A
      * @param B array to be merged into A

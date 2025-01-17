@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.jan24.meta.test1;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
 /*
 
 We have two SORTED arrays of integers: A and B. A has empty slots at the end of it. It has exactly as many empty slots as there are elements in B. Your goal is to merge the elements from B into A so that array A contains all of the elements in sorted order.

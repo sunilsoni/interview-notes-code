@@ -2,6 +2,7 @@ package com.interview.notes.code.year.y2025.jan24.meta.test2;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /*
 Q2
 
@@ -75,7 +76,7 @@ public class ShortestSubstringContainingAlphabet {
 
                 // If removing leftChar breaks the requirement
                 if (required.containsKey(leftChar) &&
-                    windowCount.get(leftChar).intValue() < required.get(leftChar).intValue()) {
+                        windowCount.get(leftChar).intValue() < required.get(leftChar).intValue()) {
                     have--;
                 }
                 left++;
@@ -106,24 +107,24 @@ public class ShortestSubstringContainingAlphabet {
         // or even "acbc" if it doesn't shrink optimally, that might differ in length.
         // We expect length 3, so let's check that specifically:
         boolean pass1 = (result1.length() == 3 && containsAllLetters(result1, alphabet1));
-        System.out.println("Test 1: " + (pass1 ? "PASS" : "FAIL") 
-                           + " (Got: \"" + result1 + "\")");
+        System.out.println("Test 1: " + (pass1 ? "PASS" : "FAIL")
+                + " (Got: \"" + result1 + "\")");
 
         // Test 2 (no possible substring)
         String input2 = "aaaa";
         String alphabet2 = "abc";
         String result2 = findShortestSubstring(input2, alphabet2);
         boolean pass2 = result2.equals("");
-        System.out.println("Test 2: " + (pass2 ? "PASS" : "FAIL") 
-                           + " (Got: \"" + result2 + "\")");
+        System.out.println("Test 2: " + (pass2 ? "PASS" : "FAIL")
+                + " (Got: \"" + result2 + "\")");
 
         // Test 3 (alphabet is exactly the input)
         String input3 = "abc";
         String alphabet3 = "abc";
         String result3 = findShortestSubstring(input3, alphabet3);
         boolean pass3 = (result3.equals("abc"));
-        System.out.println("Test 3: " + (pass3 ? "PASS" : "FAIL") 
-                           + " (Got: \"" + result3 + "\")");
+        System.out.println("Test 3: " + (pass3 ? "PASS" : "FAIL")
+                + " (Got: \"" + result3 + "\")");
 
         // Test 4 (alphabet repeated letters)
         // e.g. if alphabet is "aabc" => need 'a', 'a', 'b', 'c'
@@ -133,7 +134,7 @@ public class ShortestSubstringContainingAlphabet {
         String result4 = findShortestSubstring(input4, alphabet4);
         boolean pass4 = (result4.equals("abbca"));
         System.out.println("Test 4: " + (pass4 ? "PASS" : "FAIL")
-                           + " (Got: \"" + result4 + "\")");
+                + " (Got: \"" + result4 + "\")");
 
         // Test 5 (large input test)
         // We'll create a large string with repeated pattern, then add a minimal
@@ -149,7 +150,7 @@ public class ShortestSubstringContainingAlphabet {
         String result5 = findShortestSubstring(input5, alphabet5);
         boolean pass5 = (result5.length() == 3);  // expecting "abc"
         System.out.println("Test 5 (Large input): " + (pass5 ? "PASS" : "FAIL")
-                           + " (Length: " + result5.length() + ", Got: \"" + result5 + "\")");
+                + " (Length: " + result5.length() + ", Got: \"" + result5 + "\")");
     }
 
     /**
