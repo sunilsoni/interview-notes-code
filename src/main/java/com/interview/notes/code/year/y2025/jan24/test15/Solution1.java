@@ -8,42 +8,42 @@ public class Solution1 {
      * in the screenshot.
      */
     private static final String DOCUMENT = ""
-        + "In publishing and graphic design, lorem ipsum is a "
-        + "filler text commonly used to demonstrate the graphic elements of a "
-        + "document or visual presentation. Replacing meaningful content that "
-        + "could be distracting with placeholder text may allow viewers to focus "
-        + "on graphic aspects such as font, typography, and page layout. It also "
-        + "reduces the need for the designer to come up with meaningful text, as "
-        + "they can instead use hastily generated lorem ipsum text. The lorem "
-        + "ipsum text is typically a scrambled section of De finibus bonorum et "
-        + "malorum, a 1st-century BC Latin text by Cicero, with words altered, "
-        + "added, and removed to make it nonsensical, improper Latin. A variation "
-        + "of the ordinary lorem ipsum text has been used in typesetting since "
-        + "the 1960s or earlier, when it was popularized by advertisements for "
-        + "Letraset transfer sheets. It was introduced to the Information Age in "
-        + "the mid-1980s by Aldus Corporation, which employed it in graphics and "
-        + "word processing templates for its desktop publishing program, "
-        + "PageMaker, for the Apple Macintosh. A common form of lorem ipsum "
-        + "reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do "
-        + "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad "
-        + "minim veniam, quis nostrud exercitation ullamco laboris nisi ut "
-        + "aliquip ex ea commodo consequat. Duis aute irure dolor in "
-        + "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
-        + "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in "
-        + "culpa qui officia deserunt mollit anim id est laborum."
-        // The original code replaced newlines with spaces. We'll just keep it as one line:
-        .replace('\n', ' ');
+            + "In publishing and graphic design, lorem ipsum is a "
+            + "filler text commonly used to demonstrate the graphic elements of a "
+            + "document or visual presentation. Replacing meaningful content that "
+            + "could be distracting with placeholder text may allow viewers to focus "
+            + "on graphic aspects such as font, typography, and page layout. It also "
+            + "reduces the need for the designer to come up with meaningful text, as "
+            + "they can instead use hastily generated lorem ipsum text. The lorem "
+            + "ipsum text is typically a scrambled section of De finibus bonorum et "
+            + "malorum, a 1st-century BC Latin text by Cicero, with words altered, "
+            + "added, and removed to make it nonsensical, improper Latin. A variation "
+            + "of the ordinary lorem ipsum text has been used in typesetting since "
+            + "the 1960s or earlier, when it was popularized by advertisements for "
+            + "Letraset transfer sheets. It was introduced to the Information Age in "
+            + "the mid-1980s by Aldus Corporation, which employed it in graphics and "
+            + "word processing templates for its desktop publishing program, "
+            + "PageMaker, for the Apple Macintosh. A common form of lorem ipsum "
+            + "reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do "
+            + "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad "
+            + "minim veniam, quis nostrud exercitation ullamco laboris nisi ut "
+            + "aliquip ex ea commodo consequat. Duis aute irure dolor in "
+            + "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
+            + "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in "
+            + "culpa qui officia deserunt mollit anim id est laborum."
+            // The original code replaced newlines with spaces. We'll just keep it as one line:
+            .replace('\n', ' ');
 
     /**
      * Given two words, returns the shortest distance between their midpoints
      * in the DOCUMENT, measured in number of characters.  If either word
      * does not appear, returns -1.  We consider the words in a case-insensitive
      * fashion (e.g., "Design" = "design").
-     *
+     * <p>
      * This code accounts for:
-     *   1) Case insensitivity
-     *   2) Handling the situation if word1 or word2 is never found
-     *   3) Returning the absolute distance so it is never negative
+     * 1) Case insensitivity
+     * 2) Handling the situation if word1 or word2 is never found
+     * 3) Returning the absolute distance so it is never negative
      */
     public static double shortestDistance(String document, String word1, String word2) {
         // Quick sanity check
@@ -64,7 +64,7 @@ public class Solution1 {
         String[] words = document.split("[, .]");
 
         int index = 0;                 // Tracks the character position in the document
-        double shortest = Double.MAX_VALUE; 
+        double shortest = Double.MAX_VALUE;
         double word1Loc = -1;          // Last midpoint location of word1 (if found)
         double word2Loc = -1;          // Last midpoint location of word2 (if found)
 
@@ -107,7 +107,7 @@ public class Solution1 {
      * test-cases pass.  If any fail, returns false.
      */
     public static boolean doTestsPass() {
-        return  shortestDistance(DOCUMENT, "and", "graphic") == 6d &&
+        return shortestDistance(DOCUMENT, "and", "graphic") == 6d &&
                 shortestDistance(DOCUMENT, "transfer", "it") == 14d &&
                 shortestDistance(DOCUMENT, "layout", "It") == 6d &&
                 shortestDistance(DOCUMENT, "Design", "filler") == 25d &&

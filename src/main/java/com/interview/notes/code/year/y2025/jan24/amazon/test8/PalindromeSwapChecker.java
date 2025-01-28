@@ -136,23 +136,23 @@ public class PalindromeSwapChecker {
     }
 
     /**
-     * Main method for testing (no JUnit). 
+     * Main method for testing (no JUnit).
      * We run several test scenarios, print PASS/FAIL, and show the output.
      */
     public static void main(String[] args) {
 
         // Helper for test results
         String[][] tests = {
-            // { inputString, expectedResult }
-            { "1110",    "-1" },  // from sample => impossible
-            { "101000",  "1"  },  // from sample => 1 swap
-            { "0100101", "2"  },  // example => 2 swaps
-            { "0",       "0"  },  // single char => already palindrome
-            { "00",      "0"  },  // even length, all same => palindrome
-            { "01",      "-1" },  // 2 chars, 1 zero/1 one => cannot both be even => -1
-            { "001",     "1"  },  // can fix in 1 swap (middle helps)
-            { "100",     "1"  },  // also fix in 1 swap
-            { "0101",    "1"  },  // mismatch=2 => (2+1)/2=1
+                // { inputString, expectedResult }
+                {"1110", "-1"},  // from sample => impossible
+                {"101000", "1"},  // from sample => 1 swap
+                {"0100101", "2"},  // example => 2 swaps
+                {"0", "0"},  // single char => already palindrome
+                {"00", "0"},  // even length, all same => palindrome
+                {"01", "-1"},  // 2 chars, 1 zero/1 one => cannot both be even => -1
+                {"001", "1"},  // can fix in 1 swap (middle helps)
+                {"100", "1"},  // also fix in 1 swap
+                {"0101", "1"},  // mismatch=2 => (2+1)/2=1
         };
 
         for (String[] test : tests) {
@@ -163,8 +163,8 @@ public class PalindromeSwapChecker {
             String outcome = (String.valueOf(result).equals(expected)) ? "PASS" : "FAIL";
 
             System.out.printf(
-                "Input: %s | Expected: %s | Got: %d => %s%n",
-                input, expected, result, outcome
+                    "Input: %s | Expected: %s | Got: %d => %s%n",
+                    input, expected, result, outcome
             );
         }
 
@@ -184,6 +184,6 @@ public class PalindromeSwapChecker {
         double elapsedMs = (endTime - startTime) / 1_000_000.0;
 
         System.out.println("\nLarge test (n=200000) completed in " + elapsedMs + " ms. "
-            + "Result was: " + largeResult);
+                + "Result was: " + largeResult);
     }
 }

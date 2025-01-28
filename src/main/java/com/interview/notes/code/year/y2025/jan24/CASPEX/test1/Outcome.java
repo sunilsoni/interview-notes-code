@@ -1,11 +1,9 @@
 package com.interview.notes.code.year.y2025.jan24.CASPEX.test1;
 
-import com.interview.notes.code.year.y2023.june23.test8.Input;
-import org.hibernate.result.Output;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /*
 
 WORKING :
@@ -103,33 +101,33 @@ public static int maxArea(List<Integer> B) {
 public class Outcome {
     public static int maxArea(List<Integer> B) {
         if (B == null || B.isEmpty()) return 0;
-        
+
         int maxArea = 0;
         int n = B.size();
-        
+
         // Check each bar as potential minimum height
         for (int i = 0; i < n; i++) {
             // Expand left and right while maintaining minimum height
             int minHeight = B.get(i);
-            
+
             // Expand left
             int left = i;
             while (left > 0 && B.get(left - 1) >= minHeight) {
                 left--;
             }
-            
+
             // Expand right
             int right = i;
             while (right < n - 1 && B.get(right + 1) >= minHeight) {
                 right++;
             }
-            
+
             // Calculate area with current bar as minimum height
             int width = right - left + 1;
             int area = width * minHeight;
             maxArea = Math.max(maxArea, area);
         }
-        
+
         return maxArea;
     }
 
@@ -140,7 +138,7 @@ public class Outcome {
         runTest(Arrays.asList(1), 1, "Test 3: Single element");
         runTest(Arrays.asList(2, 2, 2), 6, "Test 4: Equal heights");
         runTest(Arrays.asList(1, 2, 3, 4), 6, "Test 5: Increasing heights");
-        
+
         // Large input test
         List<Integer> largeInput = new ArrayList<>();
         for (int i = 0; i < 100; i++) {

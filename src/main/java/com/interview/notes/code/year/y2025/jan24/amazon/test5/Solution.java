@@ -3,18 +3,18 @@ package com.interview.notes.code.year.y2025.jan24.amazon.test5;
 public class Solution {
     public static int minPalindromeSwaps(String s) {
         if (s == null || s.length() <= 1) return 0;
-        
+
         char[] chars = s.toCharArray();
         int left = 0;
         int right = chars.length - 1;
         int swaps = 0;
-        
+
         // Count mismatched characters
         int[] count = new int[2];  // count[0] for '0's, count[1] for '1's
         for (char c : chars) {
             count[c - '0']++;
         }
-        
+
         // Check if palindrome is possible
         // For odd length, at most one character can have odd count
         if (chars.length % 2 == 0) {
@@ -25,7 +25,7 @@ public class Solution {
             if (count[1] % 2 != 0) oddCount++;
             if (oddCount > 1) return -1;
         }
-        
+
         // Count minimum swaps needed
         while (left < right) {
             if (chars[left] != chars[right]) {
@@ -44,7 +44,7 @@ public class Solution {
                     }
                     k--;
                 }
-                
+
                 if (!found) {
                     // If no match found, swap adjacent characters
                     char temp = chars[left];
@@ -57,7 +57,7 @@ public class Solution {
             left++;
             right--;
         }
-        
+
         return swaps;
     }
 
@@ -69,7 +69,7 @@ public class Solution {
         runTest("0", 0, "Test 4: Single character");
         runTest("00", 0, "Test 5: Already palindrome");
         runTest("01", 1, "Test 6: Two different characters");
-        
+
         // Large test case
         StringBuilder large = new StringBuilder();
         for (int i = 0; i < 100000; i++) {

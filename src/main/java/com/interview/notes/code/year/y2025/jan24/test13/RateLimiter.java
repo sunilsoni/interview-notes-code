@@ -10,7 +10,7 @@ public class RateLimiter {
 
     public boolean allowRequest(String key, int maxRequests, long windowSizeInSeconds) {
         long currentTimeSeconds = Instant.now().getEpochSecond();
-        
+
         return counters.compute(key, (k, v) -> {
             if (v == null || currentTimeSeconds - v.windowStart >= windowSizeInSeconds) {
                 return new WindowCounter(currentTimeSeconds, 1);

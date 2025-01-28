@@ -9,7 +9,7 @@ public class MinPalindromeSwapsSolution {
 
         int n = s.length();
         char[] chars = s.toCharArray();
-        
+
         // Check if palindrome is possible
         if (!isPalindromePossible(chars)) {
             return -1;
@@ -24,7 +24,7 @@ public class MinPalindromeSwapsSolution {
         for (char c : chars) {
             count[c - '0']++;
         }
-        
+
         // Odd length palindrome requires at most one character with odd count
         int oddCount = 0;
         for (int cnt : count) {
@@ -32,7 +32,7 @@ public class MinPalindromeSwapsSolution {
                 oddCount++;
             }
         }
-        
+
         return oddCount <= 1;
     }
 
@@ -55,7 +55,7 @@ public class MinPalindromeSwapsSolution {
 
             // Find the matching character to swap
             int matchIndex = findMatchIndex(copy, left, right);
-            
+
             // If no match found, it's impossible
             if (matchIndex == -1) {
                 return -1;
@@ -97,13 +97,13 @@ public class MinPalindromeSwapsSolution {
     public static void main(String[] args) {
         // Test cases: {input, expected output}
         Object[][] testCases = {
-            {"101000", 1},     // Should be 1 swap
-            {"1110", -1},      // Should be -1 (impossible)
-            {"0100101", 2},    // Should be 2 swaps
-            {"1001001", 0},    // Should be 0 swaps (already palindrome)
-            {"", -1},          // Empty string
-            {"10101", -1},     // Impossible to make palindrome
-            {"111000", 3}      // Should be 3 swaps
+                {"101000", 1},     // Should be 1 swap
+                {"1110", -1},      // Should be -1 (impossible)
+                {"0100101", 2},    // Should be 2 swaps
+                {"1001001", 0},    // Should be 0 swaps (already palindrome)
+                {"", -1},          // Empty string
+                {"10101", -1},     // Impossible to make palindrome
+                {"111000", 3}      // Should be 3 swaps
         };
 
         int passedTests = 0;
@@ -112,17 +112,17 @@ public class MinPalindromeSwapsSolution {
         for (Object[] testCase : testCases) {
             String input = (String) testCase[0];
             int expectedOutput = (int) testCase[1];
-            
+
             int result = minPalindromeSwaps(input);
-            
+
             boolean testPassed = result == expectedOutput;
             passedTests += testPassed ? 1 : 0;
-            
+
             System.out.println(
-                "Input: " + input + 
-                ", Minimum Swaps: " + result + 
-                ", Expected: " + expectedOutput + 
-                ", Status: " + (testPassed ? "PASS" : "FAIL")
+                    "Input: " + input +
+                            ", Minimum Swaps: " + result +
+                            ", Expected: " + expectedOutput +
+                            ", Status: " + (testPassed ? "PASS" : "FAIL")
             );
         }
 
@@ -131,7 +131,7 @@ public class MinPalindromeSwapsSolution {
         System.out.println("Total Tests: " + totalTests);
         System.out.println("Passed Tests: " + passedTests);
         System.out.println("Failed Tests: " + (totalTests - passedTests));
-        System.out.println("Pass Rate: " + 
-            String.format("%.2f%%", (passedTests * 100.0 / totalTests)));
+        System.out.println("Pass Rate: " +
+                String.format("%.2f%%", (passedTests * 100.0 / totalTests)));
     }
 }

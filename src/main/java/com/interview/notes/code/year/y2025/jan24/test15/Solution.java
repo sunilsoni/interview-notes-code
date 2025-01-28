@@ -3,43 +3,43 @@ package com.interview.notes.code.year.y2025.jan24.test15;
 public class Solution {
 
     /**
-     * A sample document for testing (same as before). 
+     * A sample document for testing (same as before).
      * Make sure it matches exactly the text the tests expect.
      */
     private static final String DOCUMENT = ""
-        + "In publishing and graphic design, lorem ipsum is a "
-        + "filler text commonly used to demonstrate the graphic elements of a "
-        + "document or visual presentation. Replacing meaningful content that "
-        + "could be distracting with placeholder text may allow viewers to focus "
-        + "on graphic aspects such as font, typography, and page layout. It also "
-        + "reduces the need for the designer to come up with meaningful text, as "
-        + "they can instead use hastily generated lorem ipsum text. The lorem "
-        + "ipsum text is typically a scrambled section of De finibus bonorum et "
-        + "malorum, a 1st-century BC Latin text by Cicero, with words altered, "
-        + "added, and removed to make it nonsensical, improper Latin. A variation "
-        + "of the ordinary lorem ipsum text has been used in typesetting since "
-        + "the 1960s or earlier, when it was popularized by advertisements for "
-        + "Letraset transfer sheets. It was introduced to the Information Age in "
-        + "the mid-1980s by Aldus Corporation, which employed it in graphics and "
-        + "word processing templates for its desktop publishing program, "
-        + "PageMaker, for the Apple Macintosh. A common form of lorem ipsum "
-        + "reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do "
-        + "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad "
-        + "minim veniam, quis nostrud exercitation ullamco laboris nisi ut "
-        + "aliquip ex ea commodo consequat. Duis aute irure dolor in "
-        + "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
-        + "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in "
-        + "culpa qui officia deserunt mollit anim id est laborum."
-        .replace('\n', ' ');
+            + "In publishing and graphic design, lorem ipsum is a "
+            + "filler text commonly used to demonstrate the graphic elements of a "
+            + "document or visual presentation. Replacing meaningful content that "
+            + "could be distracting with placeholder text may allow viewers to focus "
+            + "on graphic aspects such as font, typography, and page layout. It also "
+            + "reduces the need for the designer to come up with meaningful text, as "
+            + "they can instead use hastily generated lorem ipsum text. The lorem "
+            + "ipsum text is typically a scrambled section of De finibus bonorum et "
+            + "malorum, a 1st-century BC Latin text by Cicero, with words altered, "
+            + "added, and removed to make it nonsensical, improper Latin. A variation "
+            + "of the ordinary lorem ipsum text has been used in typesetting since "
+            + "the 1960s or earlier, when it was popularized by advertisements for "
+            + "Letraset transfer sheets. It was introduced to the Information Age in "
+            + "the mid-1980s by Aldus Corporation, which employed it in graphics and "
+            + "word processing templates for its desktop publishing program, "
+            + "PageMaker, for the Apple Macintosh. A common form of lorem ipsum "
+            + "reads: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do "
+            + "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad "
+            + "minim veniam, quis nostrud exercitation ullamco laboris nisi ut "
+            + "aliquip ex ea commodo consequat. Duis aute irure dolor in "
+            + "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
+            + "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in "
+            + "culpa qui officia deserunt mollit anim id est laborum."
+            .replace('\n', ' ');
 
     /**
      * Returns the shortest distance (in characters) between the midpoints of two words,
-     * ignoring case. 
-     * 
-     *  - We iterate character-by-character through 'document'.
-     *  - 'index' counts every character (including punctuation/spaces).
-     *  - We build "words" only from [a-z0-9], ignoring punctuation for the word's length.
-     *  - If either word doesn't appear, return -1.
+     * ignoring case.
+     * <p>
+     * - We iterate character-by-character through 'document'.
+     * - 'index' counts every character (including punctuation/spaces).
+     * - We build "words" only from [a-z0-9], ignoring punctuation for the word's length.
+     * - If either word doesn't appear, return -1.
      */
     public static double shortestDistance(String document, String word1, String word2) {
         if (document == null || word1 == null || word2 == null) {
@@ -69,8 +69,8 @@ public class Solution {
             char lower = Character.toLowerCase(c);
 
             // Check if it's alphanumeric
-            boolean isAlnum = (lower >= 'a' && lower <= 'z') 
-                           || (lower >= '0' && lower <= '9');
+            boolean isAlnum = (lower >= 'a' && lower <= 'z')
+                    || (lower >= '0' && lower <= '9');
 
             if (isAlnum) {
                 // If we're not currently "in a word," mark the start now
@@ -140,11 +140,11 @@ public class Solution {
      * Tests from your screenshot, including the failing "layout" vs. "It" check.
      */
     public static boolean doTestsPass() {
-        return  shortestDistance(DOCUMENT, "and", "graphic")    == 6d &&
-                shortestDistance(DOCUMENT, "transfer", "it")    == 14d &&
-                shortestDistance(DOCUMENT, "layout", "It")      == 6d &&  // This was failing before
-                shortestDistance(DOCUMENT, "Design", "filler")  == 25d &&
-                shortestDistance(DOCUMENT, "It", "transfer")     == 14d &&
+        return shortestDistance(DOCUMENT, "and", "graphic") == 6d &&
+                shortestDistance(DOCUMENT, "transfer", "it") == 14d &&
+                shortestDistance(DOCUMENT, "layout", "It") == 6d &&  // This was failing before
+                shortestDistance(DOCUMENT, "Design", "filler") == 25d &&
+                shortestDistance(DOCUMENT, "It", "transfer") == 14d &&
                 Math.abs(shortestDistance(DOCUMENT, "of", "lorem") - 4.5) < 0.000001 &&
                 shortestDistance(DOCUMENT, "thiswordisnotthere", "lorem") == -1d;
     }

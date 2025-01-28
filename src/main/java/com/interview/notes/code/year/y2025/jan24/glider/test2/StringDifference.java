@@ -59,10 +59,10 @@ public class StringDifference {
                 if (freq1[i] > freq2[i]) {
                     return "None";
                 }
-                return String.valueOf((char)i);
+                return String.valueOf((char) i);
             }
         }
-        
+
         return "None";
     }
 
@@ -75,7 +75,7 @@ public class StringDifference {
         testCase("xyz", "xyza", "a", "Test 5");
         testCase("hello", "hello", "None", "Test 6");
         testCase("salsa", "sals", "None", "Test 7");
-        
+
         // Large data test
         StringBuilder sb1 = new StringBuilder();
         StringBuilder sb2 = new StringBuilder();
@@ -86,11 +86,11 @@ public class StringDifference {
         sb2.append('b');
         testCase(sb1.toString(), sb2.toString(), "b", "Large Data Test");
     }
-    
+
     private static void testCase(String s1, String s2, String expected, String testName) {
         String result = Difference(s1, s2);
-        System.out.println(testName + ": " + 
-                         (result.equals(expected) ? "PASS" : "FAIL") +
-                         " (Expected: " + expected + ", Got: " + result + ")");
+        System.out.println(testName + ": " +
+                (result.equals(expected) ? "PASS" : "FAIL") +
+                " (Expected: " + expected + ", Got: " + result + ")");
     }
 }

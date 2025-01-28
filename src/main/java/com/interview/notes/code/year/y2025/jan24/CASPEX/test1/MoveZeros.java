@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 /*
 WORKING:
 
@@ -91,13 +92,13 @@ public class MoveZeros {
         if (nums == null || nums.size() <= 1) {
             return nums;
         }
-        
+
         // Convert List to array for in-place modification
         int[] arr = new int[nums.size()];
         for (int i = 0; i < nums.size(); i++) {
             arr[i] = nums.get(i);
         }
-        
+
         // Move non-zero elements to front
         int nonZeroIndex = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -105,12 +106,12 @@ public class MoveZeros {
                 arr[nonZeroIndex++] = arr[i];
             }
         }
-        
+
         // Fill remaining positions with zeros
         while (nonZeroIndex < arr.length) {
             arr[nonZeroIndex++] = 0;
         }
-        
+
         // Convert back to List
         List<Integer> result = new ArrayList<>();
         for (int num : arr) {
@@ -127,7 +128,7 @@ public class MoveZeros {
         runTest(Arrays.asList(0, 0, 0), "Test 4: All zeros");
         runTest(Arrays.asList(1, 2, 3), "Test 5: No zeros");
         runTest(Arrays.asList(0, 0, 1, 0, 2), "Test 6: Multiple zeros");
-        
+
         // Large input test
         List<Integer> largeInput = new ArrayList<>();
         for (int i = 0; i < 10000; i++) {
@@ -141,7 +142,7 @@ public class MoveZeros {
         System.out.println("Input: " + input);
         List<Integer> result = solve(input);
         System.out.println("Output: " + result);
-        
+
         // Verify result
         boolean isValid = validateResult(input, result);
         System.out.println("Test " + (isValid ? "PASSED" : "FAILED"));
@@ -150,17 +151,17 @@ public class MoveZeros {
 
     private static boolean validateResult(List<Integer> input, List<Integer> result) {
         if (input.size() != result.size()) return false;
-        
+
         // Check if non-zero elements maintain relative order
         List<Integer> inputNonZeros = input.stream()
-            .filter(x -> x != 0)
-            .collect(Collectors.toList());
+                .filter(x -> x != 0)
+                .collect(Collectors.toList());
         List<Integer> resultNonZeros = result.stream()
-            .filter(x -> x != 0)
-            .collect(Collectors.toList());
-            
+                .filter(x -> x != 0)
+                .collect(Collectors.toList());
+
         if (!inputNonZeros.equals(resultNonZeros)) return false;
-        
+
         // Check if zeros are at the end
         boolean foundNonZero = false;
         for (int i = result.size() - 1; i >= 0; i--) {
@@ -170,7 +171,7 @@ public class MoveZeros {
                 return false;
             }
         }
-        
+
         return true;
     }
 }

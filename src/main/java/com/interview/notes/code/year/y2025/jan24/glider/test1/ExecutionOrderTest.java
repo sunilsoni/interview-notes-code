@@ -9,12 +9,12 @@ public class ExecutionOrderTest {
         System.out.println("Instance block executed");
     }
 
-    public static void display() {
-        System.out.println("Static method executed");
-    }
-
     public ExecutionOrderTest() {
         System.out.println("Constructor executed");
+    }
+
+    public static void display() {
+        System.out.println("Static method executed");
     }
 
     public static void main(String[] args) {

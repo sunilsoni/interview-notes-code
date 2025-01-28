@@ -5,7 +5,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class DuplicateFinder {
-    
+
     // Method to find duplicates and their counts
     public static Map<Integer, Long> findDuplicates(List<Integer> numbers) {
         return numbers.stream()
@@ -46,12 +46,12 @@ public class DuplicateFinder {
     private static void testCase(String testName, List<Integer> input, int expectedDuplicates) {
         System.out.println("\nRunning test: " + testName);
         long startTime = System.currentTimeMillis();
-        
+
         Map<Integer, Long> result = findDuplicates(input);
-        
+
         long endTime = System.currentTimeMillis();
         boolean passed = result.size() <= expectedDuplicates;
-        
+
         System.out.println("Input size: " + input.size());
         System.out.println("Found duplicates: " + result);
         System.out.println("Execution time: " + (endTime - startTime) + "ms");
@@ -63,7 +63,7 @@ public class DuplicateFinder {
         List<Integer> list = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < size; i++) {
-            list.add(random.nextInt(size/10)); // This ensures some duplicates
+            list.add(random.nextInt(size / 10)); // This ensures some duplicates
         }
         return list;
     }

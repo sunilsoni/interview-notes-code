@@ -30,22 +30,22 @@ public class OptimizedQueueAlgorithm {
         // Test Case 1: Sample Case 1
         List<Integer> payload1 = Arrays.asList(1, 100);
         runTestCase(payload1, 2);  // Expected 2
-        
+
         // Test Case 2: Sample Case 0
         List<Integer> payload0 = Arrays.asList(5, 5, 2, 1, 3, 4, 5);
         runTestCase(payload0, 7);  // Our analysis predicts 7 as correct
-        
+
         // Test Case 3: Example case
         List<Integer> payloadExample = Arrays.asList(1, 3, 5, 4, 2, 6, 8, 7, 9);
         runTestCase(payloadExample, 9);
-        
+
         // Additional Test Cases:
-        
+
         // All elements the same
         List<Integer> allSame = new ArrayList<>(Collections.nCopies(1000, 42));
         // Only 3 can be selected because we can use value 42 at most 3 times
         runTestCase(allSame, 3);
-        
+
         // Large input simulation with increasing and repeating pattern
         List<Integer> largeInput = new ArrayList<>();
         int largeN = 200000;

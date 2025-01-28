@@ -30,7 +30,7 @@ public class OptimizedQueueAlgorithm {
         // Sample Test Cases
         List<Integer> payload1 = Arrays.asList(1, 100);
         runTestCase(payload1, 2);  // Sample Case 1
-        
+
         List<Integer> payload0 = Arrays.asList(5, 5, 2, 1, 3, 4, 5);
         runTestCase(payload0, 6);  // Sample Case 0 as given (based on provided explanation)
 

@@ -1,7 +1,5 @@
 package com.interview.notes.code.year.y2025.jan24.amazon.test5;
 
-import java.util.*;
-
 public class MinimumPalindromeSwaps {
 
     public static void main(String[] args) {

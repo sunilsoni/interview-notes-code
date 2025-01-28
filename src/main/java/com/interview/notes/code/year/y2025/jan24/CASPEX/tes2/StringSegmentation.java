@@ -2,6 +2,7 @@ package com.interview.notes.code.year.y2025.jan24.CASPEX.tes2;
 
 import java.util.Arrays;
 import java.util.List;
+
 /*
 WORKING:
 
@@ -100,14 +101,14 @@ public class StringSegmentation {
     public static String solve(String S, List<String> wordDict) {
         return canSegment(S, wordDict) ? "true" : "false";
     }
-    
+
     // Helper method that does the actual segmentation check
     private static boolean canSegment(String s, List<String> wordDict) {
         if (s == null || s.length() == 0) return false;
-        
+
         boolean[] dp = new boolean[s.length() + 1];
         dp[0] = true;  // Empty string is always valid
-        
+
         // Try all possible prefixes
         for (int i = 1; i <= s.length(); i++) {
             // Check all possible words that could end at position i
@@ -122,36 +123,36 @@ public class StringSegmentation {
                 }
             }
         }
-        
+
         return dp[s.length()];
     }
 
     // Main method with test cases
     public static void main(String[] args) {
         // Test Case 1: Basic valid case
-        test("applepenapple", 
-             Arrays.asList("apple", "pen"),
-             "true");
+        test("applepenapple",
+                Arrays.asList("apple", "pen"),
+                "true");
 
         // Test Case 2: Invalid case
-        test("catsandog", 
-             Arrays.asList("cats", "dog", "sand", "and", "cat"), 
-             "false");
+        test("catsandog",
+                Arrays.asList("cats", "dog", "sand", "and", "cat"),
+                "false");
 
         // Test Case 3: Empty string
-        test("", 
-             Arrays.asList("cat", "dog"), 
-             "false");
+        test("",
+                Arrays.asList("cat", "dog"),
+                "false");
 
         // Test Case 4: Single character
-        test("a", 
-             Arrays.asList("a"), 
-             "true");
+        test("a",
+                Arrays.asList("a"),
+                "true");
 
         // Test Case 5: Large repeated words
-        test("aaaaaaa", 
-             Arrays.asList("a", "aa", "aaa"), 
-             "true");
+        test("aaaaaaa",
+                Arrays.asList("a", "aa", "aaa"),
+                "true");
     }
 
     // Test helper method

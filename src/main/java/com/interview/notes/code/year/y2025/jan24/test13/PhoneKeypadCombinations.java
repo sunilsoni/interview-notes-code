@@ -1,6 +1,10 @@
 package com.interview.notes.code.year.y2025.jan24.test13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /*
 Phone Keypad Letter Combinations
 
@@ -74,13 +78,13 @@ public class PhoneKeypadCombinations {
     private static void runTest(String testName, String input, int expectedSize) {
         System.out.println("\nRunning " + testName);
         System.out.println("Input: " + input);
-        
+
         long startTime = System.currentTimeMillis();
         List<String> result = generateCombinations(input);
         long endTime = System.currentTimeMillis();
-        
+
         boolean passed = result.size() == expectedSize;
-        
+
         System.out.println("Result size: " + result.size());
         System.out.println("Combinations: " + result);
         System.out.println("Time taken: " + (endTime - startTime) + "ms");

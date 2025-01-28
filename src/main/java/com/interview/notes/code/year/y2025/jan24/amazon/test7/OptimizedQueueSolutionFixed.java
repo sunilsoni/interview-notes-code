@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.jan24.amazon.test7;
 
 import java.util.*;
+
 /*
 WORKING 13/15
 
@@ -154,24 +155,24 @@ public static int getMaximumEvents(List<Integer> payload) {
 
  */
 public class OptimizedQueueSolutionFixed {
-    
+
     public static int getMaximumEvents(List<Integer> payload) {
         // 1) Count frequency of each distinct value
         Map<Integer, Integer> freq = new HashMap<>();
         for (int val : payload) {
             freq.put(val, freq.getOrDefault(val, 0) + 1);
         }
-        
+
         // 2) Sort the distinct values
         List<Integer> distinct = new ArrayList<>(freq.keySet());
         Collections.sort(distinct);
-        
+
         // 3) Build three ascending lists (tentative):
         //    inc1, decAsc, inc2
         List<Integer> inc1 = new ArrayList<>();
         List<Integer> decAsc = new ArrayList<>();
         List<Integer> inc2 = new ArrayList<>();
-        
+
         for (int x : distinct) {
             int count = freq.get(x);
             // inc1: use up to 1 copy if available
@@ -190,86 +191,86 @@ public class OptimizedQueueSolutionFixed {
                 count--;
             }
         }
-        
+
         // 4) Remove repeated boundary values in a loop:
         //    (A) inc1.last vs. decAsc.last (which becomes the first element of the reversed middle)
         while (!inc1.isEmpty() && !decAsc.isEmpty() &&
-               inc1.get(inc1.size() - 1).equals(decAsc.get(decAsc.size() - 1))) {
+                inc1.get(inc1.size() - 1).equals(decAsc.get(decAsc.size() - 1))) {
             decAsc.remove(decAsc.size() - 1);
         }
-        
+
         //    (B) decAsc.first vs. inc2.first (which becomes the last element of the reversed middle)
         while (!decAsc.isEmpty() && !inc2.isEmpty() &&
-               decAsc.get(0).equals(inc2.get(0))) {
+                decAsc.get(0).equals(inc2.get(0))) {
             inc2.remove(0);
         }
-        
+
         // 5) Reverse the middle to get a strictly-decreasing sub-array in final arrangement
         Collections.reverse(decAsc);
-        
+
         // 6) The total size is how many events we can use
         return inc1.size() + decAsc.size() + inc2.size();
     }
-    
+
     // ---------------------------------------------------
     // Simple main() to demonstrate usage & run a few tests
     // ---------------------------------------------------
     public static void main(String[] args) {
         boolean allPassed = true;
-        
+
         // A helper for quick pass/fail
         allPassed &= testPayload(
-            "[2,1,3,3,1,2,1,2,3]",
-            Arrays.asList(2,1,3,3,1,2,1,2,3),
-            7
+                "[2,1,3,3,1,2,1,2,3]",
+                Arrays.asList(2, 1, 3, 3, 1, 2, 1, 2, 3),
+                7
         );
-        
+
         // Previous official small samples
         allPassed &= testPayload(
-            "[1,100]",
-            Arrays.asList(1, 100),
-            2
+                "[1,100]",
+                Arrays.asList(1, 100),
+                2
         );
-        
+
         allPassed &= testPayload(
-            "[5,5,2,1,3,4,5]",
-            Arrays.asList(5,5,2,1,3,4,5),
-            6
+                "[5,5,2,1,3,4,5]",
+                Arrays.asList(5, 5, 2, 1, 3, 4, 5),
+                6
         );
-        
+
         allPassed &= testPayload(
-            "[1,3,5,4,2,6,8,7,9]",
-            Arrays.asList(1,3,5,4,2,6,8,7,9),
-            9
+                "[1,3,5,4,2,6,8,7,9]",
+                Arrays.asList(1, 3, 5, 4, 2, 6, 8, 7, 9),
+                9
         );
-        
+
         // The bigger test that was failing
         // (No exact known "expected" given in your message, but let's see if it runs cleanly)
         List<Integer> big = Arrays.asList(
-            1074, 1025, 1044, 1071, 1080, 1046, 1028, 1096, 1001, 1074,
-            1024, 1081, 1083, 1016, 1055, 1031, 1001, 1027, 1036, 1056,
-            1038, 1017, 1010, 1078, 1005, 1039, 1067, 1067, 1015, 1039,
-            1062, 1092, 1048, 1090, 1009, 1054, 1067, 1030, 1079, 1056,
-            1017, 1033, 1027, 1075, 1054, 1020, 1079, 1021, 1044, 1010,
-            1066, 1066, 1073, 1090, 1003, 1034, 1033, 1064, 1079, 1020,
-            1094, 1000, 1051, 1024, 1030, 1001, 1052, 1095, 1021, 1088,
-            1098, 1006, 1065, 1031, 1001, 1067, 1032, 1074, 1091, 1083,
-            1009, 1093, 1027, 1053, 1011, 1008, 1079, 1042, 1020, 1050,
-            1091, 1019, 1096, 1006, 1024, 1066, 1016, 1037, 1099
+                1074, 1025, 1044, 1071, 1080, 1046, 1028, 1096, 1001, 1074,
+                1024, 1081, 1083, 1016, 1055, 1031, 1001, 1027, 1036, 1056,
+                1038, 1017, 1010, 1078, 1005, 1039, 1067, 1067, 1015, 1039,
+                1062, 1092, 1048, 1090, 1009, 1054, 1067, 1030, 1079, 1056,
+                1017, 1033, 1027, 1075, 1054, 1020, 1079, 1021, 1044, 1010,
+                1066, 1066, 1073, 1090, 1003, 1034, 1033, 1064, 1079, 1020,
+                1094, 1000, 1051, 1024, 1030, 1001, 1052, 1095, 1021, 1088,
+                1098, 1006, 1065, 1031, 1001, 1067, 1032, 1074, 1091, 1083,
+                1009, 1093, 1027, 1053, 1011, 1008, 1079, 1042, 1020, 1050,
+                1091, 1019, 1096, 1006, 1024, 1066, 1016, 1037, 1099
         );
         int bigResult = getMaximumEvents(big);
         System.out.println("Big array test => got " + bigResult + " (no fixed expected given)");
-        
+
         System.out.println("--------------------------------");
         System.out.println(allPassed ? "ALL SMALL TESTS PASSED" : "SOME TEST(S) FAILED");
     }
-    
+
     // Quick test harness
     private static boolean testPayload(String name, List<Integer> input, int expected) {
         int got = getMaximumEvents(input);
         boolean pass = (got == expected);
-        System.out.println(name + " => expected: " + expected + ", got: " + got 
-                           + " => " + (pass ? "PASS" : "FAIL"));
+        System.out.println(name + " => expected: " + expected + ", got: " + got
+                + " => " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
 }

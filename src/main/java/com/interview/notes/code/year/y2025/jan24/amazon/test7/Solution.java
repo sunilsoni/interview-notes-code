@@ -73,26 +73,26 @@ public class Solution {
 
         // Test Case 1 (Sample Case 1)
         tests.add(new TestCase(
-            Arrays.asList(1, 100),
-            2
+                Arrays.asList(1, 100),
+                2
         ));
 
         // Test Case 0 (Sample Case 0)
         tests.add(new TestCase(
-            Arrays.asList(5, 5, 2, 1, 3, 4, 5),
-            6 // Adjusted to match sample output
+                Arrays.asList(5, 5, 2, 1, 3, 4, 5),
+                6 // Adjusted to match sample output
         ));
 
         // Additional Test Case
         tests.add(new TestCase(
-            Arrays.asList(1, 3, 5, 4, 2, 6, 8, 7, 9),
-            9
+                Arrays.asList(1, 3, 5, 4, 2, 6, 8, 7, 9),
+                9
         ));
 
         // New Test Case with duplicates
         tests.add(new TestCase(
-            Arrays.asList(1, 2, 2, 2, 3, 4, 5, 5, 6),
-            8 // Expected total events
+                Arrays.asList(1, 2, 2, 2, 3, 4, 5, 5, 6),
+                8 // Expected total events
         ));
 
         // New Test Case with large input
@@ -101,8 +101,8 @@ public class Solution {
             largeInput.add(i);
         }
         tests.add(new TestCase(
-            largeInput,
-            200000
+                largeInput,
+                200000
         ));
 
         int testCaseNumber = 1;

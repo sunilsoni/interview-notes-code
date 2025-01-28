@@ -1,7 +1,5 @@
 package com.interview.notes.code.year.y2025.jan24.amazon.test5;
 
-import java.util.*;
-
 public class MinimumPalindromeSwapsSolution {
 
     /**
@@ -121,10 +119,10 @@ public class MinimumPalindromeSwapsSolution {
     private static void runTest(String input, int expected) {
         int result = minPalindromeSwaps(input);
         boolean pass = (result == expected);
-        System.out.println("Input: " + input 
-            + " | Expected: " + expected 
-            + " | Got: " + result 
-            + " | " + (pass ? "PASS" : "FAIL"));
+        System.out.println("Input: " + input
+                + " | Expected: " + expected
+                + " | Got: " + result
+                + " | " + (pass ? "PASS" : "FAIL"));
     }
 
     /**

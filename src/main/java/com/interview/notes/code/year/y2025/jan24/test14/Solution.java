@@ -29,11 +29,11 @@ public class Solution {
     public static double shortestDistance(String document, String word1, String word2) {
         String[] words = document.split(" ");
         double shortest = Double.MAX_VALUE;
-        
+
         // Store all positions of both words
         java.util.ArrayList<Double> positions1 = new java.util.ArrayList<>();
         java.util.ArrayList<Double> positions2 = new java.util.ArrayList<>();
-        
+
         double position = 0;
         for (String word : words) {
             // Skip empty words
@@ -41,24 +41,24 @@ public class Solution {
                 position += 1;
                 continue;
             }
-            
+
             double midPoint = position + (word.length() / 2.0);
-            
+
             if (word.equalsIgnoreCase(word1)) {
                 positions1.add(midPoint);
             }
             if (word.equalsIgnoreCase(word2)) {
                 positions2.add(midPoint);
             }
-            
+
             position += word.length() + 1;
         }
-        
+
         // If either word is not found, return -1
         if (positions1.isEmpty() || positions2.isEmpty()) {
             return -1;
         }
-        
+
         // Find the shortest distance between any pair of positions
         for (double pos1 : positions1) {
             for (double pos2 : positions2) {
@@ -68,18 +68,18 @@ public class Solution {
                 }
             }
         }
-        
+
         return shortest;
     }
 
     public static boolean doTestsPass() {
         return shortestDistance(DOCUMENT, "and", "graphic") == 6d &&
-               shortestDistance(DOCUMENT, "transfer", "it") == 14d &&
-               shortestDistance(DOCUMENT, "layout", "It") == 6d &&
-               shortestDistance(DOCUMENT, "Design", "filler") == 25d &&
-               shortestDistance(DOCUMENT, "It", "transfer") == 14d &&
-               Math.abs(shortestDistance(DOCUMENT, "of", "lorem") - 4.5) < 0.000001 &&
-               shortestDistance(DOCUMENT, "thiswordisnothere", "lorem") == -1d;
+                shortestDistance(DOCUMENT, "transfer", "it") == 14d &&
+                shortestDistance(DOCUMENT, "layout", "It") == 6d &&
+                shortestDistance(DOCUMENT, "Design", "filler") == 25d &&
+                shortestDistance(DOCUMENT, "It", "transfer") == 14d &&
+                Math.abs(shortestDistance(DOCUMENT, "of", "lorem") - 4.5) < 0.000001 &&
+                shortestDistance(DOCUMENT, "thiswordisnothere", "lorem") == -1d;
     }
 
     public static void main(String[] args) {

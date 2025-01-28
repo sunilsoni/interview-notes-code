@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2025.jan24.glider.test3;
 import java.util.*;
 
 public class HashMapSorter {
-    
+
     // Method to sort HashMap by values in descending order
     public static String sortHashMapByValues(HashMap<String, String> map) {
         if (map == null || map.isEmpty()) {
@@ -11,17 +11,17 @@ public class HashMapSorter {
         }
 
         // Convert HashMap to List for sorting
-        List<Map.Entry<String, String>> list = 
-            new ArrayList<>(map.entrySet());
+        List<Map.Entry<String, String>> list =
+                new ArrayList<>(map.entrySet());
 
         // Sort the list using custom comparator
-        Collections.sort(list, (entry1, entry2) -> 
-            entry2.getValue().compareTo(entry1.getValue()));
+        Collections.sort(list, (entry1, entry2) ->
+                entry2.getValue().compareTo(entry1.getValue()));
 
         // Create new LinkedHashMap to maintain order
-        LinkedHashMap<String, String> sortedMap = 
-            new LinkedHashMap<>();
-        
+        LinkedHashMap<String, String> sortedMap =
+                new LinkedHashMap<>();
+
         // Add sorted entries to new map
         for (Map.Entry<String, String> entry : list) {
             sortedMap.put(entry.getKey(), entry.getValue());
@@ -44,8 +44,8 @@ public class HashMapSorter {
         String expected1 = "{F=fruit, D=Date, C=Cherry, B=Banana, A=Apple}";
         System.out.println("Result: " + result1);
         System.out.println("Expected: " + expected1);
-        System.out.println("Test Case 1: " + 
-            (result1.equals(expected1) ? "PASS" : "FAIL"));
+        System.out.println("Test Case 1: " +
+                (result1.equals(expected1) ? "PASS" : "FAIL"));
 
         // Test Case 2: Empty HashMap
         System.out.println("\nTest Case 2: Empty HashMap");
@@ -54,8 +54,8 @@ public class HashMapSorter {
         String expected2 = "{}";
         System.out.println("Result: " + result2);
         System.out.println("Expected: " + expected2);
-        System.out.println("Test Case 2: " + 
-            (result2.equals(expected2) ? "PASS" : "FAIL"));
+        System.out.println("Test Case 2: " +
+                (result2.equals(expected2) ? "PASS" : "FAIL"));
 
         // Test Case 3: Large data set
         System.out.println("\nTest Case 3: Large data set");
@@ -65,8 +65,8 @@ public class HashMapSorter {
         }
         String result3 = sortHashMapByValues(map3);
         System.out.println("Large data set size: " + map3.size());
-        System.out.println("Test Case 3: " + 
-            (result3.length() > 0 ? "PASS" : "FAIL"));
+        System.out.println("Test Case 3: " +
+                (result3.length() > 0 ? "PASS" : "FAIL"));
 
         // Test Case 4: Same values
         System.out.println("\nTest Case 4: Same values");
@@ -76,7 +76,7 @@ public class HashMapSorter {
         map4.put("C", "Same");
         String result4 = sortHashMapByValues(map4);
         System.out.println("Result: " + result4);
-        System.out.println("Test Case 4: " + 
-            (result4.length() > 0 ? "PASS" : "FAIL"));
+        System.out.println("Test Case 4: " +
+                (result4.length() > 0 ? "PASS" : "FAIL"));
     }
 }
