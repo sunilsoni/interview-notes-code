@@ -140,57 +140,57 @@ This version ensures clarity and proper formatting of the game description, rule
 public class TileGame {
     private static boolean[][] visited;
     private static int count;
-    
+
     public static int disappear(int[][] grid, int row, int col) {
         if (grid == null || grid.length == 0 || grid[0].length == 0) {
             return 0;
         }
-        
+
         visited = new boolean[grid.length][grid[0].length];
         count = 0;
-        
+
         // Get the target number and start DFS
         int targetNum = grid[row][col];
         dfs(grid, row, col, targetNum);
-        
+
         return count;
     }
-    
+
     private static void dfs(int[][] grid, int row, int col, int target) {
         // Check bounds and if already visited
-        if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length 
-            || visited[row][col] || grid[row][col] != target) {
+        if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length
+                || visited[row][col] || grid[row][col] != target) {
             return;
         }
-        
+
         // Mark as visited and increment count
         visited[row][col] = true;
         count++;
-        
+
         // Check all four directions
         dfs(grid, row + 1, col, target); // down
         dfs(grid, row - 1, col, target); // up
         dfs(grid, row, col + 1, target); // right
         dfs(grid, row, col - 1, target); // left
     }
-    
+
     public static void main(String[] args) {
         // Test cases
         int[][] grid1 = {
-            {8, 8, 8, 8},
-            {1, 1, 1, 8},
-            {2, 1, 7, 1}
+                {8, 8, 8, 8},
+                {1, 1, 1, 8},
+                {2, 1, 7, 1}
         };
-        
+
         int[][] grid2 = {
-            {0, 3, 3, 3, 3, 3, 1},
-            {0, 1, 1, 1, 1, 1, 3},
-            {0, 2, 2, 0, 2, 1, 4},
-            {0, 1, 2, 2, 2, 1, 3},
-            {0, 1, 1, 1, 1, 1, 3},
-            {0, 0, 0, 0, 0, 0, 0}
+                {0, 3, 3, 3, 3, 3, 1},
+                {0, 1, 1, 1, 1, 1, 3},
+                {0, 2, 2, 0, 2, 1, 4},
+                {0, 1, 2, 2, 2, 1, 3},
+                {0, 1, 1, 1, 1, 1, 3},
+                {0, 0, 0, 0, 0, 0, 0}
         };
-        
+
         // Run tests and verify results
         runTest("Test 1", grid1, 0, 0, 5);
         runTest("Test 2", grid1, 1, 1, 4);
@@ -199,11 +199,11 @@ public class TileGame {
         runTest("Test 5", grid2, 3, 0, 12);
         runTest("Test 6", grid2, 1, 1, 13);
     }
-    
+
     private static void runTest(String testName, int[][] grid, int row, int col, int expected) {
         int result = disappear(grid, row, col);
-        System.out.println(testName + ": " + 
-            (result == expected ? "PASS" : "FAIL") + 
-            " (Expected: " + expected + ", Got: " + result + ")");
+        System.out.println(testName + ": " +
+                (result == expected ? "PASS" : "FAIL") +
+                " (Expected: " + expected + ", Got: " + result + ")");
     }
 }

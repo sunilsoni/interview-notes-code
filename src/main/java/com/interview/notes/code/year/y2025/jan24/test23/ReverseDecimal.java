@@ -1,4 +1,5 @@
 package com.interview.notes.code.year.y2025.jan24.test23;
+
 //WORKING
 public class ReverseDecimal {
     public static void main(String[] args) {
@@ -8,9 +9,9 @@ public class ReverseDecimal {
         for (int i = 0; i < inputs.length; i++) {
             String result = reverseDecimal(inputs[i]);
             System.out.println("Input: " + inputs[i]
-                + " | Output: " + result
-                + " | Expected: " + expected[i]
-                + " | " + (result.equals(expected[i]) ? "PASS" : "FAIL"));
+                    + " | Output: " + result
+                    + " | Expected: " + expected[i]
+                    + " | " + (result.equals(expected[i]) ? "PASS" : "FAIL"));
         }
     }
 
@@ -33,7 +34,7 @@ public class ReverseDecimal {
         if (insertPosition > reversed.length()) insertPosition = reversed.length(); // If decimal was near end
 
         return reversed.substring(0, insertPosition)
-             + (reversed.isEmpty() ? "" : ".")
-             + (insertPosition < reversed.length() ? reversed.substring(insertPosition) : "");
+                + (reversed.isEmpty() ? "" : ".")
+                + (insertPosition < reversed.length() ? reversed.substring(insertPosition) : "");
     }
 }

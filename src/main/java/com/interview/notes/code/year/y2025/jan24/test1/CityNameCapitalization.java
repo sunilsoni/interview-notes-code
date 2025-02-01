@@ -11,17 +11,17 @@ public class CityNameCapitalization {
 
         // Using streams to capitalize first letter of each city
         List<String> capitalizedCities = cities.stream()
-            .map(city -> {
-                if (city == null || city.isEmpty()) {
-                    return city;
-                }
-                // Handle multi-word city names
-                String[] words = city.split(" ");
-                return Arrays.stream(words)
-                    .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1))
-                    .collect(Collectors.joining(" "));
-            })
-            .collect(Collectors.toList());
+                .map(city -> {
+                    if (city == null || city.isEmpty()) {
+                        return city;
+                    }
+                    // Handle multi-word city names
+                    String[] words = city.split(" ");
+                    return Arrays.stream(words)
+                            .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1))
+                            .collect(Collectors.joining(" "));
+                })
+                .collect(Collectors.toList());
 
         // Print original and capitalized cities
         System.out.println("Original cities: " + cities);

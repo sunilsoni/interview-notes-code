@@ -8,21 +8,21 @@ public class CityNameProcessor {
     public static void main(String[] args) {
         // Initial list of city names (with duplicates and mixed cases)
         List<String> cities = Arrays.asList(
-            "london", "paris", "new york", "TOKYO", 
-            "mumbai", "London", "PARIS", "singapore"
+                "london", "paris", "new york", "TOKYO",
+                "mumbai", "London", "PARIS", "singapore"
         );
 
         // Process cities using streams
         List<String> processedCities = cities.stream()
-            // Convert to lowercase first to handle mixed cases
-            .map(String::toLowerCase)
-            // Remove duplicates
-            .distinct()
-            // Capitalize first letter of each word
-            .map(CityNameProcessor::capitalizeWords)
-            // Sort alphabetically
-            .sorted()
-            .collect(Collectors.toList());
+                // Convert to lowercase first to handle mixed cases
+                .map(String::toLowerCase)
+                // Remove duplicates
+                .distinct()
+                // Capitalize first letter of each word
+                .map(CityNameProcessor::capitalizeWords)
+                // Sort alphabetically
+                .sorted()
+                .collect(Collectors.toList());
 
         // Print original and processed cities
         System.out.println("Original cities: " + cities);
@@ -37,7 +37,7 @@ public class CityNameProcessor {
 
         String[] words = city.split(" ");
         return Arrays.stream(words)
-            .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1))
-            .collect(Collectors.joining(" "));
+                .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1))
+                .collect(Collectors.joining(" "));
     }
 }

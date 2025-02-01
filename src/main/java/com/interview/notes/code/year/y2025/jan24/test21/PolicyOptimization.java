@@ -1,17 +1,19 @@
 package com.interview.notes.code.year.y2025.jan24.test21;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class PolicyOptimization {
 
     public static void main(String[] args) {
         // Test Case 1 (Updated Expected Output)
         List<int[]> policies1 = Arrays.asList(
-            new int[]{1, 5, 50},
-            new int[]{6, 10, 60},
-            new int[]{2, 7, 100},
-            new int[]{8, 12, 90},
-            new int[]{13, 16, 120}
+                new int[]{1, 5, 50},
+                new int[]{6, 10, 60},
+                new int[]{2, 7, 100},
+                new int[]{8, 12, 90},
+                new int[]{13, 16, 120}
         );
 
         // Correct expected output for Test Case 1 is 310

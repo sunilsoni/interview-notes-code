@@ -21,11 +21,11 @@ public class ReverseDecimalNumber {
     public static void main(String[] args) {
         // Test cases
         String[] testCases = {
-            "123456.789",  // Expected: 987654.321
-            "123.456",     // Expected: 321.654
-            "1.1",         // Expected: 1.1
-            "0.123",       // Expected: 0.321
-            "123456789012345678901234567890.98765432109876543210987654321"  // Large input
+                "123456.789",  // Expected: 987654.321
+                "123.456",     // Expected: 321.654
+                "1.1",         // Expected: 1.1
+                "0.123",       // Expected: 0.321
+                "123456789012345678901234567890.98765432109876543210987654321"  // Large input
         };
 
         for (String testCase : testCases) {

@@ -68,15 +68,15 @@ public class PerfectNumberFinder {
         // Define test cases as arrays where the first element is N
         // and the second element is the expected list of perfect numbers up to N
         Object[][] testCases = {
-            {5, new int[] {}},
-            {6, new int[] {6}},
-            {28, new int[] {6, 28}},
-            {496, new int[] {6, 28, 496}},
-            {8128, new int[] {6, 28, 496, 8128}},
-            {33550336, new int[] {6, 28, 496, 8128, 33550336}}, // Large N
-            {1, new int[] {}}, // Edge case: N < 6
-            {0, new int[] {}}, // Edge case: N <= 0
-            {-10, new int[] {}} // Edge case: Negative N
+                {5, new int[]{}},
+                {6, new int[]{6}},
+                {28, new int[]{6, 28}},
+                {496, new int[]{6, 28, 496}},
+                {8128, new int[]{6, 28, 496, 8128}},
+                {33550336, new int[]{6, 28, 496, 8128, 33550336}}, // Large N
+                {1, new int[]{}}, // Edge case: N < 6
+                {0, new int[]{}}, // Edge case: N <= 0
+                {-10, new int[]{}} // Edge case: Negative N
         };
 
         boolean allTestsPassed = true;

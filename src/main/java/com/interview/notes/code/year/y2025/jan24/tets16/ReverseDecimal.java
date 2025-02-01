@@ -1,12 +1,12 @@
 package com.interview.notes.code.year.y2025.jan24.tets16;
 
 public class ReverseDecimal {
-    
+
     // Method to reverse integer and decimal parts
     public static String reverseNumber(String input) {
         // Split the input by decimal point
         String[] parts = input.split("\\.");
-        
+
         String integerPart = parts[0];
         String decimalPart = parts.length > 1 ? parts[1] : "";
 
@@ -22,12 +22,12 @@ public class ReverseDecimal {
     public static void main(String[] args) {
         // Test cases
         String[] testCases = {
-            "123456.789", // Regular case
-            "123456",     // No decimal part
-            "123.007",    // Decimal with leading zeros
-            "9876543210.1234567890", // Large number
-            "0.12345",    // Small number
-            "1000.0001"   // Decimal with small number
+                "123456.789", // Regular case
+                "123456",     // No decimal part
+                "123.007",    // Decimal with leading zeros
+                "9876543210.1234567890", // Large number
+                "0.12345",    // Small number
+                "1000.0001"   // Decimal with small number
         };
 
         for (String testCase : testCases) {

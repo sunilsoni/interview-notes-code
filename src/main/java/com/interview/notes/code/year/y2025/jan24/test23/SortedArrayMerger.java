@@ -8,7 +8,7 @@ public class SortedArrayMerger {
                 int temp = A[A.length - 1];
                 A[A.length - 1] = B[i];
                 B[i] = temp;
-                
+
                 // Sort A
                 for (int j = A.length - 1; j > 0; j--) {
                     if (A[j] < A[j - 1]) {
@@ -19,7 +19,7 @@ public class SortedArrayMerger {
                 }
             }
         }
-        
+
         // Sort B
         for (int i = 0; i < B.length - 1; i++) {
             for (int j = 0; j < B.length - 1 - i; j++) {
@@ -35,34 +35,34 @@ public class SortedArrayMerger {
     public static void main(String[] args) {
         // Test Case 1: Original example
         testCase(
-            new int[]{0, 2, 5, 8},
-            new int[]{1, 6, 7},
-            new int[]{0, 1, 2, 5},
-            new int[]{6, 7, 8}
+                new int[]{0, 2, 5, 8},
+                new int[]{1, 6, 7},
+                new int[]{0, 1, 2, 5},
+                new int[]{6, 7, 8}
         );
 
         // Test Case 2: Different sizes
         testCase(
-            new int[]{1, 3, 5, 7},
-            new int[]{2, 4},
-            new int[]{1, 2, 3, 4},
-            new int[]{5, 7}
+                new int[]{1, 3, 5, 7},
+                new int[]{2, 4},
+                new int[]{1, 2, 3, 4},
+                new int[]{5, 7}
         );
 
         // Test Case 3: Equal lengths
         testCase(
-            new int[]{1, 4, 7},
-            new int[]{2, 5, 8},
-            new int[]{1, 2, 4},
-            new int[]{5, 7, 8}
+                new int[]{1, 4, 7},
+                new int[]{2, 5, 8},
+                new int[]{1, 2, 4},
+                new int[]{5, 7, 8}
         );
 
         // Test Case 4: Large numbers
         testCase(
-            new int[]{100, 300, 500, 700},
-            new int[]{200, 400},
-            new int[]{100, 200, 300, 400},
-            new int[]{500, 700}
+                new int[]{100, 300, 500, 700},
+                new int[]{200, 400},
+                new int[]{100, 200, 300, 400},
+                new int[]{500, 700}
         );
     }
 
@@ -70,11 +70,11 @@ public class SortedArrayMerger {
         System.out.println("\nTest Case:");
         System.out.println("Input A: " + arrayToString(A));
         System.out.println("Input B: " + arrayToString(B));
-        
+
         mergeSortArrays(A, B);
-        
+
         boolean passed = arrayEquals(A, expectedA) && arrayEquals(B, expectedB);
-        
+
         System.out.println("Result A: " + arrayToString(A));
         System.out.println("Result B: " + arrayToString(B));
         System.out.println("Test " + (passed ? "PASSED" : "FAILED"));

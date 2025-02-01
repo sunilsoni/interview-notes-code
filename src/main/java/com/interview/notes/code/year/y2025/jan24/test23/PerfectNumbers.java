@@ -8,32 +8,32 @@ import java.util.List;
 public class PerfectNumbers {
 
     private static final long[] PERFECT_NUMBERS = {
-        6L,
-        28L,
-        496L,
-        8128L,
-        33550336L,
-        8589869056L,
-        137438691328L,
-        2305843008139952128L
+            6L,
+            28L,
+            496L,
+            8128L,
+            33550336L,
+            8589869056L,
+            137438691328L,
+            2305843008139952128L
     };
 
     public static void main(String[] args) {
         // Test cases with expected results
         Object[][] testCases = {
-            {6L, Arrays.asList(6L)},
-            {28L, Arrays.asList(6L, 28L)},
-            {100L, Arrays.asList(6L, 28L)},
-            {496L, Arrays.asList(6L, 28L, 496L)},
-            {8128L, Arrays.asList(6L, 28L, 496L, 8128L)},
-            {33550336L, Arrays.asList(6L, 28L, 496L, 8128L, 33550336L)},
-            {8589869056L, Arrays.asList(6L, 28L, 496L, 8128L, 33550336L, 8589869056L)},
-            {137438691328L, Arrays.asList(6L, 28L, 496L, 8128L, 33550336L, 8589869056L, 137438691328L)},
-            {2305843008139952128L, Arrays.asList(6L, 28L, 496L, 8128L, 33550336L, 8589869056L, 137438691328L, 2305843008139952128L)},
-            {1L, Collections.emptyList()},
-            {0L, Collections.emptyList()},
-            {7L, Arrays.asList(6L)},
-            {5000L, Arrays.asList(6L, 28L, 496L, 8128L)}
+                {6L, Arrays.asList(6L)},
+                {28L, Arrays.asList(6L, 28L)},
+                {100L, Arrays.asList(6L, 28L)},
+                {496L, Arrays.asList(6L, 28L, 496L)},
+                {8128L, Arrays.asList(6L, 28L, 496L, 8128L)},
+                {33550336L, Arrays.asList(6L, 28L, 496L, 8128L, 33550336L)},
+                {8589869056L, Arrays.asList(6L, 28L, 496L, 8128L, 33550336L, 8589869056L)},
+                {137438691328L, Arrays.asList(6L, 28L, 496L, 8128L, 33550336L, 8589869056L, 137438691328L)},
+                {2305843008139952128L, Arrays.asList(6L, 28L, 496L, 8128L, 33550336L, 8589869056L, 137438691328L, 2305843008139952128L)},
+                {1L, Collections.emptyList()},
+                {0L, Collections.emptyList()},
+                {7L, Arrays.asList(6L)},
+                {5000L, Arrays.asList(6L, 28L, 496L, 8128L)}
         };
 
         for (Object[] testCase : testCases) {

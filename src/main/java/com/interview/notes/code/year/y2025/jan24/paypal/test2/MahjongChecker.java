@@ -1,15 +1,13 @@
 package com.interview.notes.code.year.y2025.jan24.paypal.test2;
 
-import java.util.*;
-
 public class MahjongChecker {
 
     /**
      * Checks if a string of digit-characters represents a 'complete hand'
      * under the rules:
-     *   - Exactly one pair
-     *   - Zero or more triples
-     *   - No leftover tiles
+     * - Exactly one pair
+     * - Zero or more triples
+     * - No leftover tiles
      */
     public static boolean isCompleteHand(String tiles) {
         // Edge cases: if < 2 tiles, can't form even a single pair
@@ -70,25 +68,25 @@ public class MahjongChecker {
         // Provided test inputs and expected results
         // Format: { "tiles", expectedBoolean, testDescription }
         Object[][] testCases = {
-            { "88884",        true,  "Base case - a pair and a triple" },
-            { "99",           true,  "Just a pair is enough" },
-            { "55555",        true,  "Triple and pair of the same tile" },
-            { "2233333",      true,  "A pair and two triples" },
-            { "737974399494974379777979739497477993", true,
-                    "4 digits: two triples + a pair for '4', others triple out" },
-            { "11133355",     false, "3 triples but no pair" },
-            { "42",           false, "Two single tiles not forming a pair" },
-            { "888",          false, "One triple, no pair" },
-            { "10010000",     false, "A leftover digit remains after pairing/tripling" },
-            { "346664366",    false, "Three pairs + one triple (must be exactly one pair)" },
-            { "899999989999898", false, "Leftover digit 8" },
-            { "17610177",     false, "Does not properly form one pair + triples" },
-            { "54616616",     false, "Leaves a leftover 6" },
-            { "6969699",      false, "Two different pairs plus a triple" },
-            { "0379949",      false, "Leftover tiles remain" },
-            { "6444433355556",false, "Multiple pairs instead of exactly one" },
-            { "7",            false, "Single tile leftover" },
-            { "776655",       false, "Three pairs" }
+                {"88884", true, "Base case - a pair and a triple"},
+                {"99", true, "Just a pair is enough"},
+                {"55555", true, "Triple and pair of the same tile"},
+                {"2233333", true, "A pair and two triples"},
+                {"737974399494974379777979739497477993", true,
+                        "4 digits: two triples + a pair for '4', others triple out"},
+                {"11133355", false, "3 triples but no pair"},
+                {"42", false, "Two single tiles not forming a pair"},
+                {"888", false, "One triple, no pair"},
+                {"10010000", false, "A leftover digit remains after pairing/tripling"},
+                {"346664366", false, "Three pairs + one triple (must be exactly one pair)"},
+                {"899999989999898", false, "Leftover digit 8"},
+                {"17610177", false, "Does not properly form one pair + triples"},
+                {"54616616", false, "Leaves a leftover 6"},
+                {"6969699", false, "Two different pairs plus a triple"},
+                {"0379949", false, "Leftover tiles remain"},
+                {"6444433355556", false, "Multiple pairs instead of exactly one"},
+                {"7", false, "Single tile leftover"},
+                {"776655", false, "Three pairs"}
         };
 
         // Run each test case
@@ -103,13 +101,13 @@ public class MahjongChecker {
 
             // Print out a PASS/FAIL message
             System.out.println(
-                String.format(
-                    "Test: %-40s | Expected: %5s | Got: %5s | %s",
-                    "\"" + tiles + "\"",
-                    expected,
-                    result,
-                    pass ? "PASS" : "FAIL"
-                )
+                    String.format(
+                            "Test: %-40s | Expected: %5s | Got: %5s | %s",
+                            "\"" + tiles + "\"",
+                            expected,
+                            result,
+                            pass ? "PASS" : "FAIL"
+                    )
             );
             if (pass) {
                 passCount++;
@@ -129,18 +127,18 @@ public class MahjongChecker {
     private static void extraTests() {
         // Edge cases
         String[] edgeCases = {
-            "",       // empty
-            "0",      // single digit
-            "999999", // all same digit, forms 2 triples, but no pair
-            "3333",   // two pairs (3,3) but no triple => should be false
-            "000",    // one triple => no pair => false
-            "0000"    // triple(0) + 1 leftover => false
+                "",       // empty
+                "0",      // single digit
+                "999999", // all same digit, forms 2 triples, but no pair
+                "3333",   // two pairs (3,3) but no triple => should be false
+                "000",    // one triple => no pair => false
+                "0000"    // triple(0) + 1 leftover => false
         };
 
         System.out.println("\nExtra Edge Cases:");
         for (String ec : edgeCases) {
             System.out.println(
-                "\"" + ec + "\"" + " -> " + isCompleteHand(ec)
+                    "\"" + ec + "\"" + " -> " + isCompleteHand(ec)
             );
         }
 

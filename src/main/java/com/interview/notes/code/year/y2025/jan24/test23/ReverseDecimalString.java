@@ -7,8 +7,8 @@ public class ReverseDecimalString {
 
         for (int i = 0; i < inputs.length; i++) {
             String result = reverseDecimal(inputs[i]);
-            System.out.println(inputs[i] + " -> " + result 
-               + " | " + (result.equals(expected[i]) ? "PASS" : "FAIL"));
+            System.out.println(inputs[i] + " -> " + result
+                    + " | " + (result.equals(expected[i]) ? "PASS" : "FAIL"));
         }
     }
 
