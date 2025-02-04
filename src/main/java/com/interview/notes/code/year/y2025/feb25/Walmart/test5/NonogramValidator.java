@@ -99,11 +99,11 @@ public class NonogramValidator {
 
     /**
      * Validates a nonogram solution.
-     *
+     * <p>
      * For each row and column in the matrix, the method generates the contiguous run lengths
      * of black cells ('B') and compares them to the provided instructions.
      *
-     * @param matrix         A 2D character array where each cell is either 'B' (black) or 'W' (white)
+     * @param matrix          A 2D character array where each cell is either 'B' (black) or 'W' (white)
      * @param rowInstructions A 2D integer array; each subarray specifies the expected run lengths for the corresponding row
      * @param colInstructions A 2D integer array; each subarray specifies the expected run lengths for the corresponding column
      * @return true if the solution matches all row and column instructions; false otherwise.
@@ -113,7 +113,7 @@ public class NonogramValidator {
         if (matrix == null || matrix.length == 0) return false;
         int n = matrix.length;         // Number of rows.
         int m = matrix[0].length;      // Number of columns.
-        
+
         // Ensure all rows have the same length.
         for (int i = 0; i < n; i++) {
             if (matrix[i].length != m) return false;
@@ -121,7 +121,7 @@ public class NonogramValidator {
         // Check if the instructions dimensions match the matrix dimensions.
         if (rowInstructions.length != n) return false;
         if (colInstructions.length != m) return false;
-        
+
         // Validate each row.
         for (int i = 0; i < n; i++) {
             int[] runs = getRuns(matrix[i]);
@@ -129,7 +129,7 @@ public class NonogramValidator {
                 return false;
             }
         }
-        
+
         // Validate each column.
         for (int j = 0; j < m; j++) {
             char[] col = new char[n];
@@ -141,10 +141,10 @@ public class NonogramValidator {
                 return false;
             }
         }
-        
+
         return true;
     }
-    
+
     /**
      * Generates the contiguous run lengths of black cells ('B') in a given line.
      *
@@ -175,7 +175,7 @@ public class NonogramValidator {
         }
         return runs;
     }
-    
+
     /**
      * Compares two integer arrays for equality.
      *
@@ -190,15 +190,15 @@ public class NonogramValidator {
         }
         return true;
     }
-    
+
     /**
      * A helper method to run a single test case.
      *
-     * @param testName       A string representing the name of the test case.
-     * @param matrix         The nonogram solution matrix to test.
+     * @param testName        A string representing the name of the test case.
+     * @param matrix          The nonogram solution matrix to test.
      * @param rowInstructions The expected run instructions for each row.
      * @param colInstructions The expected run instructions for each column.
-     * @param expected       The expected boolean result.
+     * @param expected        The expected boolean result.
      */
     private static void runTest(String testName, char[][] matrix, int[][] rowInstructions, int[][] colInstructions, boolean expected) {
         boolean result = validateNonogram(matrix, rowInstructions, colInstructions);
@@ -208,7 +208,7 @@ public class NonogramValidator {
             System.out.println(testName + ": FAIL (expected " + expected + ", got " + result + ")");
         }
     }
-    
+
     /**
      * The main method runs all test cases including edge scenarios and large data inputs.
      */
@@ -223,95 +223,95 @@ public class NonogramValidator {
         // Row 3: [W, W, B, W]          -> Expected instruction: [1]
         // Row 4: [B, B, W, W]          -> Expected instruction: [2]
         char[][] matrix1 = {
-            {'W','W','W','W'},
-            {'B','W','W','W'},
-            {'B','W','B','B'},
-            {'W','W','B','W'},
-            {'B','B','W','W'}
+                {'W', 'W', 'W', 'W'},
+                {'B', 'W', 'W', 'W'},
+                {'B', 'W', 'B', 'B'},
+                {'W', 'W', 'B', 'W'},
+                {'B', 'B', 'W', 'W'}
         };
         int[][] rows1_1 = {
-            new int[]{},       // Row 0
-            new int[]{1},      // Row 1
-            new int[]{1, 2},   // Row 2
-            new int[]{1},      // Row 3
-            new int[]{2}       // Row 4
+                new int[]{},       // Row 0
+                new int[]{1},      // Row 1
+                new int[]{1, 2},   // Row 2
+                new int[]{1},      // Row 3
+                new int[]{2}       // Row 4
         };
         int[][] cols1_1 = {
-            new int[]{2, 1},   // Column 0
-            new int[]{2},      // Column 1
-            new int[]{1},      // Column 2
-            new int[]{1}       // Column 3
+                new int[]{2, 1},   // Column 0
+                new int[]{2},      // Column 1
+                new int[]{1},      // Column 2
+                new int[]{1}       // Column 3
         };
         runTest("matrix1 rows1_1", matrix1, rows1_1, cols1_1, true);
-        
+
         // Example Instructions #2 (should fail):
         int[][] rows1_2 = {
-            new int[]{},       // Row 0
-            new int[]{},       // Row 1 (should be [1])
-            new int[]{1},      // Row 2 (should be [1,2])
-            new int[]{1},      // Row 3
-            new int[]{1, 1}    // Row 4 (should be [2])
+                new int[]{},       // Row 0
+                new int[]{},       // Row 1 (should be [1])
+                new int[]{1},      // Row 2 (should be [1,2])
+                new int[]{1},      // Row 3
+                new int[]{1, 1}    // Row 4 (should be [2])
         };
         int[][] cols1_2 = {
-            new int[]{2},      // Column 0 (should be [2,1])
-            new int[]{1},      // Column 1 (should be [2])
-            new int[]{2},      // Column 2 (should be [1])
-            new int[]{1}       // Column 3
+                new int[]{2},      // Column 0 (should be [2,1])
+                new int[]{1},      // Column 1 (should be [2])
+                new int[]{2},      // Column 2 (should be [1])
+                new int[]{1}       // Column 3
         };
         runTest("matrix1 rows1_2", matrix1, rows1_2, cols1_2, false);
-        
+
         // Additional invalid test cases for matrix1:
         int[][] rows1_3 = {
-            new int[]{},      
-            new int[]{1},     
-            new int[]{2, 1},  // Wrong order; expected [1,2]
-            new int[]{1},     
-            new int[]{2}
+                new int[]{},
+                new int[]{1},
+                new int[]{2, 1},  // Wrong order; expected [1,2]
+                new int[]{1},
+                new int[]{2}
         };
         runTest("matrix1 rows1_3", matrix1, rows1_3, cols1_1, false);
-        
+
         int[][] cols1_4 = {
-            new int[]{2},     // Wrong; should be [2,1]
-            new int[]{2},
-            new int[]{1},
-            new int[]{1}
+                new int[]{2},     // Wrong; should be [2,1]
+                new int[]{2},
+                new int[]{1},
+                new int[]{1}
         };
         runTest("matrix1 rows1_4", matrix1, rows1_1, cols1_4, false);
-        
+
         int[][] rows1_5 = {
-            new int[]{1},     // Wrong; should be []
-            new int[]{1},
-            new int[]{1, 2},
-            new int[]{1},
-            new int[]{2}
+                new int[]{1},     // Wrong; should be []
+                new int[]{1},
+                new int[]{1, 2},
+                new int[]{1},
+                new int[]{2}
         };
         runTest("matrix1 rows1_5", matrix1, rows1_5, cols1_1, false);
-        
+
         int[][] cols1_6 = {
-            new int[]{2, 1},
-            new int[]{2},
-            new int[]{1, 1},  // Wrong; should be [1]
-            new int[]{1}
+                new int[]{2, 1},
+                new int[]{2},
+                new int[]{1, 1},  // Wrong; should be [1]
+                new int[]{1}
         };
         runTest("matrix1 rows1_6", matrix1, rows1_1, cols1_6, false);
-        
+
         int[][] cols1_7 = {
-            new int[]{2, 1},
-            new int[]{2},
-            new int[]{1},
-            new int[]{1, 1}   // Wrong; should be [1]
+                new int[]{2, 1},
+                new int[]{2},
+                new int[]{1},
+                new int[]{1, 1}   // Wrong; should be [1]
         };
         runTest("matrix1 rows1_7", matrix1, rows1_1, cols1_7, false);
-        
+
         int[][] rows1_8 = {
-            new int[]{},
-            new int[]{1},
-            new int[]{1, 2},
-            new int[]{1, 1},  // Wrong; should be [1]
-            new int[]{2}
+                new int[]{},
+                new int[]{1},
+                new int[]{1, 2},
+                new int[]{1, 1},  // Wrong; should be [1]
+                new int[]{2}
         };
         runTest("matrix1 rows1_8", matrix1, rows1_8, cols1_1, false);
-        
+
         // ------------------------------
         // Test Cases for matrix2 (3 rows x 3 columns)
         // ------------------------------
@@ -320,59 +320,59 @@ public class NonogramValidator {
         // Row 1: [W, B, W]  -> Runs: [1]
         // Row 2: [B, B, W]  -> Runs: [2]
         char[][] matrix2 = {
-            {'B', 'W', 'B'},
-            {'W', 'B', 'W'},
-            {'B', 'B', 'W'}
+                {'B', 'W', 'B'},
+                {'W', 'B', 'W'},
+                {'B', 'B', 'W'}
         };
         // Correct instructions:
         int[][] rows2_5 = {
-            new int[]{1, 1},
-            new int[]{1},
-            new int[]{2}
+                new int[]{1, 1},
+                new int[]{1},
+                new int[]{2}
         };
         int[][] cols2_5 = {
-            new int[]{1, 1},  // Column 0: B, W, B
-            new int[]{2},     // Column 1: W, B, B
-            new int[]{1}      // Column 2: B, W, W
+                new int[]{1, 1},  // Column 0: B, W, B
+                new int[]{2},     // Column 1: W, B, B
+                new int[]{1}      // Column 2: B, W, W
         };
         runTest("matrix2 rows2_5", matrix2, rows2_5, cols2_5, true);
-        
+
         // Other invalid instruction variations for matrix2:
         int[][] rows2_1 = {
-            new int[]{},
-            new int[]{1},
-            new int[]{2}
+                new int[]{},
+                new int[]{1},
+                new int[]{2}
         };
         runTest("matrix2 rows2_1", matrix2, rows2_1, cols2_5, false);
-        
+
         int[][] rows2_2 = {
-            new int[]{1, 1},
-            new int[]{},
-            new int[]{2}
+                new int[]{1, 1},
+                new int[]{},
+                new int[]{2}
         };
         runTest("matrix2 rows2_2", matrix2, rows2_2, cols2_5, false);
-        
+
         int[][] rows2_3 = {
-            new int[]{1, 1},
-            new int[]{1},
-            new int[]{} 
+                new int[]{1, 1},
+                new int[]{1},
+                new int[]{}
         };
         runTest("matrix2 rows2_3", matrix2, rows2_3, cols2_5, false);
-        
+
         int[][] cols2_4 = {
-            new int[]{},  // Wrong: should be [1,1]
-            new int[]{2},
-            new int[]{1}
+                new int[]{},  // Wrong: should be [1,1]
+                new int[]{2},
+                new int[]{1}
         };
         runTest("matrix2 rows2_4", matrix2, rows2_5, cols2_4, false);
-        
+
         int[][] cols2_6 = {
-            new int[]{1, 1},
-            new int[]{1},  // Wrong: should be [2]
-            new int[]{1}
+                new int[]{1, 1},
+                new int[]{1},  // Wrong: should be [2]
+                new int[]{1}
         };
         runTest("matrix2 rows2_6", matrix2, rows2_5, cols2_6, false);
-        
+
         // ------------------------------
         // Test Cases for matrix3 (4 rows x 4 columns)
         // ------------------------------
@@ -382,33 +382,33 @@ public class NonogramValidator {
         // Row 2: [W, W, B, B] -> Runs: [2]
         // Row 3: [B, W, W, W] -> Runs: [1]
         char[][] matrix3 = {
-            {'W','B','B','W'},
-            {'B','B','W','B'},
-            {'W','W','B','B'},
-            {'B','W','W','W'}
+                {'W', 'B', 'B', 'W'},
+                {'B', 'B', 'W', 'B'},
+                {'W', 'W', 'B', 'B'},
+                {'B', 'W', 'W', 'W'}
         };
         int[][] rows3_1 = {
-            new int[]{2},
-            new int[]{2, 1},
-            new int[]{2},
-            new int[]{1}
+                new int[]{2},
+                new int[]{2, 1},
+                new int[]{2},
+                new int[]{1}
         };
         int[][] cols3_1 = {
-            new int[]{1, 1}, // Column 0: [W, B, W, B] -> [1,1]
-            new int[]{2},    // Column 1: [B, B, W, W] -> [2]
-            new int[]{1, 1}, // Column 2: [B, W, B, W] -> [1,1]
-            new int[]{2}     // Column 3: [W, B, B, W] -> [2]
+                new int[]{1, 1}, // Column 0: [W, B, W, B] -> [1,1]
+                new int[]{2},    // Column 1: [B, B, W, W] -> [2]
+                new int[]{1, 1}, // Column 2: [B, W, B, W] -> [1,1]
+                new int[]{2}     // Column 3: [W, B, B, W] -> [2]
         };
         runTest("matrix3 rows3_1", matrix3, rows3_1, cols3_1, true);
-        
+
         int[][] rows3_2 = {
-            new int[]{2},
-            new int[]{2},    // Wrong: row1 should be [2,1]
-            new int[]{2},
-            new int[]{1}
+                new int[]{2},
+                new int[]{2},    // Wrong: row1 should be [2,1]
+                new int[]{2},
+                new int[]{1}
         };
         runTest("matrix3 rows3_2", matrix3, rows3_2, cols3_1, false);
-        
+
         // ------------------------------
         // Additional Large Data Test
         // ------------------------------

@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.feb25.Walmart.test2;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.IntStream;
 
 @FunctionalInterface

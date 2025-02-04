@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 @FunctionalInterface
-interface FuncInterface1 { 
-    Iterable abstractFun(Iterable<String> ar); 
+interface FuncInterface1 {
+    Iterable abstractFun(Iterable<String> ar);
 }
 
 @FunctionalInterface
-interface FuncInterface2 extends FuncInterface1 { 
+interface FuncInterface2 extends FuncInterface1 {
     Iterable<String> abstractFun(Iterable ar);
 }
 

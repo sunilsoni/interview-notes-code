@@ -191,7 +191,7 @@ public class SubSudokuValidator {
         // Check if grid is null or empty.
         if (grid == null || grid.length == 0) return false;
         int n = grid.length;
-        
+
         // Ensure every row has the same length as n (i.e., the grid is square).
         for (int i = 0; i < n; i++) {
             if (grid[i].length != n) return false;
@@ -245,115 +245,115 @@ public class SubSudokuValidator {
 
         // grid1: Valid 3x3
         int[][] grid1 = {
-            {2, 3, 1},
-            {1, 2, 3},
-            {3, 1, 2}
+                {2, 3, 1},
+                {1, 2, 3},
+                {3, 1, 2}
         };
 
         // grid2: Invalid (columns missing correct values)
         int[][] grid2 = {
-            {1, 2, 3},
-            {3, 2, 1},
-            {3, 1, 2}
+                {1, 2, 3},
+                {3, 2, 1},
+                {3, 1, 2}
         };
 
         // grid3: Invalid (duplicate values in row/column)
         int[][] grid3 = {
-            {2, 2, 3},
-            {3, 1, 2},
-            {2, 3, 1}
+                {2, 2, 3},
+                {3, 1, 2},
+                {2, 3, 1}
         };
 
         // grid4: Valid 1x1 grid
         int[][] grid4 = {
-            {1}
+                {1}
         };
 
         // grid5: Invalid (negative numbers)
         int[][] grid5 = {
-            {-1, -2, -3},
-            {-2, -3, -1},
-            {-3, -1, -2}
+                {-1, -2, -3},
+                {-2, -3, -1},
+                {-3, -1, -2}
         };
 
         // grid6: Invalid (duplicate in row)
         int[][] grid6 = {
-            {1, 3, 3},
-            {3, 1, 2},
-            {2, 3, 1}
+                {1, 3, 3},
+                {3, 1, 2},
+                {2, 3, 1}
         };
 
         // grid7: Invalid 4x4 grid (duplicate/missing values in rows/columns)
         int[][] grid7 = {
-            {1, 2, 3, 4},
-            {4, 3, 2, 1},
-            {1, 3, 2, 4},
-            {4, 2, 3, 1}
+                {1, 2, 3, 4},
+                {4, 3, 2, 1},
+                {1, 3, 2, 4},
+                {4, 2, 3, 1}
         };
 
         // grid8: Invalid (values out of range for 2x2 grid)
         int[][] grid8 = {
-            {0, 3},
-            {3, 0}
+                {0, 3},
+                {3, 0}
         };
 
         // grid9: Invalid (values out of range)
         int[][] grid9 = {
-            {0, 1},
-            {1, 0}
+                {0, 1},
+                {1, 0}
         };
 
         // grid10: Invalid (duplicates and out-of-range)
         int[][] grid10 = {
-            {1, 1, 6},
-            {1, 6, 1},
-            {6, 1, 1}
+                {1, 1, 6},
+                {1, 6, 1},
+                {6, 1, 1}
         };
 
         // grid11: Invalid (4x4 with duplicates/missing values)
         int[][] grid11 = {
-            {1, 2, 3, 4},
-            {2, 3, 1, 4},
-            {3, 1, 2, 4},
-            {4, 2, 3, 1}
+                {1, 2, 3, 4},
+                {2, 3, 1, 4},
+                {3, 1, 2, 4},
+                {4, 2, 3, 1}
         };
 
         // grid12: Invalid (mixed negatives and out-of-range)
         int[][] grid12 = {
-            {-1, -2, 12, 1},
-            {1, 12, -2, -1}
+                {-1, -2, 12, 1},
+                {1, 12, -2, -1}
         };
 
         // grid13: Invalid (duplicates in row and column)
         int[][] grid13 = {
-            {2, 3, 3},
-            {1, 2, 1},
-            {3, 1, 2}
+                {2, 3, 3},
+                {1, 2, 1},
+                {3, 1, 2}
         };
 
         // grid14: Invalid (2x2 but missing correct set)
         int[][] grid14 = {
-            {1, 3},
-            {3, 1}
+                {1, 3},
+                {3, 1}
         };
 
         // grid15: Invalid (2x2, incorrect numbers)
         int[][] grid15 = {
-            {2, 3},
-            {3, 2}
+                {2, 3},
+                {3, 2}
         };
 
         // grid16: Invalid (duplicate in row)
         int[][] grid16 = {
-            {1, 2},
-            {2, 2}
+                {1, 2},
+                {2, 2}
         };
 
         // grid17: Invalid (duplicate row pattern)
         int[][] grid17 = {
-            {2, 3, 1},
-            {1, 2, 3},
-            {2, 3, 1}
+                {2, 3, 1},
+                {1, 2, 3},
+                {2, 3, 1}
         };
 
         // Run the provided tests
