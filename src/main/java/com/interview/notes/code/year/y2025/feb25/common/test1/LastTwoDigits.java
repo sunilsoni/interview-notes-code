@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.feb25.common.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 WORKING:100%
 
@@ -70,7 +73,7 @@ public class LastTwoDigits {
 
     /**
      * Computes the last two digits of the product of the given list of integers.
-     * 
+     *
      * @param ar List of integers representing the array.
      * @return A string representing the last two digits (always two characters).
      */
@@ -125,8 +128,8 @@ public class LastTwoDigits {
     /**
      * Helper method to run a single test case.
      *
-     * @param testCase The input list of integers.
-     * @param expected The expected result as a two-digit string.
+     * @param testCase       The input list of integers.
+     * @param expected       The expected result as a two-digit string.
      * @param testCaseNumber The test case number.
      */
     private static void runTest(List<Integer> testCase, String expected, int testCaseNumber) {
