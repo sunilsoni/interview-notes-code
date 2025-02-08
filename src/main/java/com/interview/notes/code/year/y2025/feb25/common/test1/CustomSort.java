@@ -30,7 +30,7 @@ public class CustomSort {
         pass &= java.util.Arrays.equals(large, largeCopy);
         System.out.println(pass ? "PASS" : "FAIL");
     }
-    
+
     // QuickSort algorithm implementation
     public static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
@@ -39,7 +39,7 @@ public class CustomSort {
             quickSort(arr, pivotIndex + 1, high);
         }
     }
-    
+
     // Partition method for QuickSort
     public static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
@@ -53,14 +53,14 @@ public class CustomSort {
         swap(arr, i + 1, high);
         return i + 1;
     }
-    
+
     // Swap helper method
     public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
-    
+
     // Test method: sorts array and compares with expected sorted array
     public static boolean testSort(int[] input, int[] expected) {
         int[] copy = java.util.Arrays.copyOf(input, input.length);

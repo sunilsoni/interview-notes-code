@@ -6,17 +6,17 @@ public class MapOfExample {
     public static void main(String[] args) {
         // Example 1: Simple Map.of with key-value pairs
         Map<String, String> fruits = Map.of(
-            "apple", "red",
-            "banana", "yellow",
-            "grape", "purple"
+                "apple", "red",
+                "banana", "yellow",
+                "grape", "purple"
         );
         System.out.println("Fruits: " + fruits);
 
         // Example 2: Map.of with different data types
         Map<String, Integer> ages = Map.of(
-            "John", 25,
-            "Alice", 30,
-            "Bob", 28
+                "John", 25,
+                "Alice", 30,
+                "Bob", 28
         );
         System.out.println("Ages: " + ages);
 

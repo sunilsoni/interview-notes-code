@@ -14,17 +14,6 @@ public class EmployeeSolution {
         System.out.println("Thread: " + Thread.currentThread().getName());
         list.forEach(e -> System.out.println(e.getFullName()));
     };
-
-    public static void main(String[] args) {
-        // 2) Create a list of Employee from employeeInfoSupplier data
-        List<Employee> employees = parseEmployees(employeeInfoSupplier.get());
-        listConsumer.accept(employees);
-
-        // 6) Group employees by salary range
-        Map<EmployeeLevel, List<Employee>> eMap = getEmployeesBySalary(employees);
-        System.out.println("employeeMap is: " + eMap);
-    }
-
     // Supplier providing employee info strings
     static Supplier<List<String>> employeeInfoSupplier = () -> {
         List<String> employeeStringList = new ArrayList<>();
@@ -42,6 +31,16 @@ public class EmployeeSolution {
         employeeStringList.add("Ulyses,Ustinov,36,86000.00,R&D,Kenny Dalglish");
         return employeeStringList;
     };
+
+    public static void main(String[] args) {
+        // 2) Create a list of Employee from employeeInfoSupplier data
+        List<Employee> employees = parseEmployees(employeeInfoSupplier.get());
+        listConsumer.accept(employees);
+
+        // 6) Group employees by salary range
+        Map<EmployeeLevel, List<Employee>> eMap = getEmployeesBySalary(employees);
+        System.out.println("employeeMap is: " + eMap);
+    }
 
     // Convert CSV strings into Employee objects
     static List<Employee> parseEmployees(List<String> data) {
@@ -64,11 +63,6 @@ public class EmployeeSolution {
         return employees;
     }
 
-    // Enum for salary range levels
-    enum EmployeeLevel {
-        JUNIORS, SENIORS, DIRECTORS
-    }
-
     // Group employees based on salary ranges
     static Map<EmployeeLevel, List<Employee>> getEmployeesBySalary(List<Employee> employees) {
         return employees.stream().collect(Collectors.groupingBy(emp -> {
@@ -77,6 +71,11 @@ public class EmployeeSolution {
             else if (salary <= 60000) return EmployeeLevel.SENIORS;
             else return EmployeeLevel.DIRECTORS;
         }));
+    }
+
+    // Enum for salary range levels
+    enum EmployeeLevel {
+        JUNIORS, SENIORS, DIRECTORS
     }
 }
 
