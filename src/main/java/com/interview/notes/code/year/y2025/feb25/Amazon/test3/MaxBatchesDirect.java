@@ -11,7 +11,7 @@ public class MaxBatchesDirect {
         maxHeap.addAll(products);
 
         int batch = 0;
-        
+
         // We'll form consecutive batches: 1, 2, 3, ...
         while (true) {
             int need = batch + 1; // how many distinct types we need for the next batch
@@ -19,21 +19,21 @@ public class MaxBatchesDirect {
                 // If we have fewer distinct product types total than 'need', we can't form the next batch
                 break;
             }
-            
+
             // We will pick 'need' items from the top leftover counts
             List<Integer> used = new ArrayList<>();
             for (int i = 0; i < need; i++) {
                 // If the top is zero or the heap is too small, we fail
                 if (maxHeap.isEmpty() || maxHeap.peek() <= 0) {
-                    return batch; 
+                    return batch;
                 }
                 int top = maxHeap.poll();
                 used.add(top);
             }
-            
+
             // We successfully formed the (batch+1)-th batch
             batch++;
-            
+
             // Decrement each used count by 1 and push back if still > 0
             for (int cnt : used) {
                 int newCount = cnt - 1;
@@ -42,13 +42,13 @@ public class MaxBatchesDirect {
                 }
             }
         }
-        
+
         return batch;
     }
-    
+
     // Quick test
     public static void main(String[] args) {
-        List<Integer> test = Arrays.asList(1,1,8,11,11,12,12);
+        List<Integer> test = Arrays.asList(1, 1, 8, 11, 11, 12, 12);
         int result = maximizeGroups(test);
         System.out.println("Products: " + test);
         System.out.println("Computed: " + result);

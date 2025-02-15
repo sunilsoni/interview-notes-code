@@ -1,8 +1,8 @@
 package com.interview.notes.code.year.y2025.feb25.Amazon.test3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
 
 public class MaximizeGroups {
 
@@ -64,7 +64,7 @@ public class MaximizeGroups {
         int result4 = maximizeGroups(products4);
         System.out.println("Test Case 4: " + (result4 == 447 ? "PASS" : "FAIL")); //Expected 447
 
-         // Test Case 5: Few products, large quantities
+        // Test Case 5: Few products, large quantities
         List<Integer> products5 = new ArrayList<>(Arrays.asList(1000000000, 1000000000, 1000000000));
         int result5 = maximizeGroups(products5);
         System.out.println("Test Case 5: " + (result5 == 18257 ? "PASS" : "FAIL")); //Expected 18257

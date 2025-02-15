@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.feb25.Amazon.test1;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Random;
+
 /*
 WORKING 100%
 
@@ -104,7 +106,7 @@ public class ProductNameSearch {
 
     /**
      * Finds the length of the longest valid substring in the product name.
-     * A valid substring is defined as having its first character lexicographically 
+     * A valid substring is defined as having its first character lexicographically
      * smaller than its last character and must have more than one character.
      *
      * @param s the product name (string) composed of lowercase English letters.
@@ -112,12 +114,12 @@ public class ProductNameSearch {
      */
     public static int findMaxChainLength(String s) {
         int n = s.length();
-        
+
         // Arrays to hold the first (leftmost) and last (rightmost) occurrence for each letter.
         // There are 26 lowercase English letters.
         int[] leftOccurrence = new int[26];
         int[] rightOccurrence = new int[26];
-        
+
         // Initialize leftOccurrence with a high value and rightOccurrence with -1.
         Arrays.fill(leftOccurrence, Integer.MAX_VALUE);
         Arrays.fill(rightOccurrence, -1);
@@ -128,7 +130,7 @@ public class ProductNameSearch {
             leftOccurrence[index] = Math.min(leftOccurrence[index], i);
             rightOccurrence[index] = i;  // since i increases, the last assignment is the rightmost.
         }
-        
+
         int maxLen = 0;
         // For every pair of letters L and M (where L comes before M in the alphabet),
         // check if a valid substring exists with the extreme indices.
@@ -145,15 +147,15 @@ public class ProductNameSearch {
                 }
             }
         }
-        
+
         return maxLen;
     }
-    
+
     /**
      * A simple helper method to run and report a single test case.
      *
      * @param testName the name or description of the test case.
-     * @param s the input string (product name) for the test case.
+     * @param s        the input string (product name) for the test case.
      * @param expected the expected output for the test case.
      */
     private static void runTestCase(String testName, String s, int expected) {
@@ -164,7 +166,7 @@ public class ProductNameSearch {
             System.out.println("FAIL: " + testName + " | Input: \"" + s + "\" | Expected: " + expected + " | Output: " + result);
         }
     }
-    
+
     /**
      * Main method to run several test cases, including edge cases and a large input test.
      */
@@ -173,14 +175,14 @@ public class ProductNameSearch {
         runTestCase("Sample Case 0", "abcd", 4);
         runTestCase("Sample Case 1", "fghbbadcba", 5);
         runTestCase("Example Case", "ecbdca", 3);
-        
+
         // --- Additional test cases ---
         runTestCase("All Same Characters", "aaa", 0);  // No valid substring exists.
         runTestCase("Two Characters Valid", "ab", 2);    // 'a' < 'b'
         runTestCase("Two Characters Invalid", "ba", 0);  // 'b' is not less than 'a'
         runTestCase("Longest at End", "zabc", 3);        // "abc": 'a' < 'c'
         runTestCase("Longest at Beginning", "acdz", 4);    // "acdz": 'a' < 'z'
-        
+
         // --- Large Input Test Case ---
         // Create a large string of length 100,000.
         // Ensure the first character is 'a' and the last character is 'z'
@@ -189,14 +191,14 @@ public class ProductNameSearch {
         StringBuilder sb = new StringBuilder(largeSize);
         sb.append('a');  // first character
         Random rand = new Random(42);  // fixed seed for reproducibility
-        
+
         // Fill the middle of the string with random lowercase letters.
         for (int i = 1; i < largeSize - 1; i++) {
             char c = (char) ('a' + rand.nextInt(26));
             sb.append(c);
         }
         sb.append('z');  // last character (largest letter) ensures a valid substring from start.
-        
+
         String largeTest = sb.toString();
         runTestCase("Large Input Test", largeTest, largeSize);
     }

@@ -12,7 +12,8 @@ public class WordSeparator {
 
     /**
      * Attempts to insert spaces into the given string to form valid words.
-     * @param s the input string with no spaces.
+     *
+     * @param s          the input string with no spaces.
      * @param dictionary the set of valid English words.
      * @return a valid segmented string if possible, otherwise returns null.
      */

@@ -12,6 +12,7 @@ public class WordBreaker {
 
     /**
      * Inserts whitespaces back into a string that is a concatenation of valid English words.
+     *
      * @param s The input string with no spaces.
      * @return The segmented string with spaces, or null if no valid segmentation exists.
      */
@@ -24,9 +25,10 @@ public class WordBreaker {
 
     /**
      * Helper function to recursively segment the string.
-     * @param s The input string.
+     *
+     * @param s     The input string.
      * @param start The current starting index in the string.
-     * @param memo A map used for memoization to avoid redundant work.
+     * @param memo  A map used for memoization to avoid redundant work.
      * @return A list of words that forms a valid segmentation, or null if segmentation is not possible.
      */
     private static List<String> helper(String s, int start, Map<Integer, List<String>> memo) {
@@ -89,8 +91,8 @@ public class WordBreaker {
             String result = addSpaces(input);
 
             // Check if both expected and result are null or if they match exactly.
-            boolean passed = (expected == null && result == null) || 
-                             (expected != null && expected.equals(result));
+            boolean passed = (expected == null && result == null) ||
+                    (expected != null && expected.equals(result));
 
             System.out.println("Test Case " + testNumber + ":");
             System.out.println("   Input:    \"" + input + "\"");

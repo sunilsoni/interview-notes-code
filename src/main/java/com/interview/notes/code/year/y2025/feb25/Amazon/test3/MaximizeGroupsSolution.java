@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.feb25.Amazon.test3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 12/15 Pass
 
@@ -153,22 +155,22 @@ public class MaximizeGroupsSolution {
         long sum = 0;
         int n = products.size();
         for (int p : products) {
-            sum += p; 
+            sum += p;
         }
-        
+
         // 1) Based on total items, x(x+1)/2 <= sum => x up to about sqrt(2*sum).
         // We'll add 2 for a small buffer
-        long maxFromSum = (long)Math.floor(Math.sqrt(2.0 * sum)) + 2;
-        
+        long maxFromSum = (long) Math.floor(Math.sqrt(2.0 * sum)) + 2;
+
         // 2) But x cannot exceed the distinct product count 'n'
         long upperBound = Math.min(n, maxFromSum);
-        
+
         // Convert to long[] for convenience
         long[] counts = new long[n];
         for (int i = 0; i < n; i++) {
             counts[i] = products.get(i);
         }
-        
+
         // 3) Binary search in [0 .. upperBound]
         long left = 0, right = upperBound, answer = 0;
         while (left <= right) {
@@ -180,21 +182,21 @@ public class MaximizeGroupsSolution {
                 right = mid - 1; // go smaller
             }
         }
-        
-        return (int)answer;  // cast down to int is safe here
+
+        return (int) answer;  // cast down to int is safe here
     }
-    
+
     /*
-     * Checks if we can form 'x' batches. 
+     * Checks if we can form 'x' batches.
      * Condition: sum( min(counts[i], x) ) >= x*(x+1)/2
      */
     private static boolean canFormXbatches(long[] counts, long x) {
         if (x == 0) return true; // 0 batches is trivially possible
-        long needed = x * (x + 1) / 2; 
+        long needed = x * (x + 1) / 2;
         long sumMins = 0;
         for (long c : counts) {
             // each type can be used up to 'x' times across x batches (once per batch)
-            sumMins += Math.min(c, x);  
+            sumMins += Math.min(c, x);
             if (sumMins >= needed) {
                 return true;
             }
@@ -209,30 +211,30 @@ public class MaximizeGroupsSolution {
     public static void main(String[] args) {
         test(Arrays.asList(1, 2, 7), 3, "Sample Case 0");   // Expected=3
         test(Arrays.asList(1, 2, 8, 9), 4, "Sample Case 1"); // Expected=4
-        
+
         // Additional checks
-        
+
         // 1) All zero => no batches
-        test(Arrays.asList(0,0,0), 0, "All zero products");
-        
+        test(Arrays.asList(0, 0, 0), 0, "All zero products");
+
         // 2) Single large product => can only form 1 batch
         //   (batch 2 requires 2 distinct types, but we only have 1 type)
         test(Arrays.asList(10_000_000), 1, "One large type");
-        
+
         // 3) Mixed small
         //   [0,1,1,1,1] => at most 2 batches
         //    - 1st batch needs 1 distinct => possible
         //    - 2nd batch needs 2 distinct => possible
         //    - 3rd batch needs 3 distinct => not enough items left distinct
-        test(Arrays.asList(0,1,1,1,1), 2, "One zero, four ones => 2 batches");
-        
+        test(Arrays.asList(0, 1, 1, 1, 1), 2, "One zero, four ones => 2 batches");
+
         // 4) Same counts => e.g. [5,5,5] => we have 3 types
         //    The 3rd batch needs 3 distinct => possible
         //    The 4th batch needs 4 distinct => not possible since only 3 types
         //    so we expect 3
-        test(Arrays.asList(5,5,5), 3, "Three product types each count=5");
+        test(Arrays.asList(5, 5, 5), 3, "Three product types each count=5");
     }
-    
+
     // Helper for easy pass/fail testing
     private static void test(List<Integer> input, int expected, String testName) {
         int result = maximizeGroups(input);

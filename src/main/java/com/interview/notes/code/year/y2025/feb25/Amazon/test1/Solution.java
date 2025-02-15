@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.feb25.Amazon.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 12/15 working
 
@@ -24,13 +27,13 @@ public class Solution {
         int n = products.size();
         // The maximum possible number of batches is at most 2*n - 1.
         int left = 0;
-        int right = 2 * n; 
+        int right = 2 * n;
         int answer = 0;
-        
+
         while (left <= right) {
             int mid = left + (right - left) / 2;
             long sum = 0;
-            
+
             // For each product, add the maximum items we can use in m batches (capped at mid)
             for (int p : products) {
                 sum += Math.min(p, mid);
@@ -39,7 +42,7 @@ public class Solution {
                     break;
                 }
             }
-            
+
             long required = (long) mid * (mid + 1) / 2;
             if (sum >= required) {
                 answer = mid;      // mid batches can be formed
@@ -48,10 +51,10 @@ public class Solution {
                 right = mid - 1;   // mid batches cannot be formed, reduce the search space
             }
         }
-        
+
         return answer;
     }
-    
+
     /*
      * runTest: A simple helper method to run and verify test cases.
      */
@@ -63,7 +66,7 @@ public class Solution {
             System.out.println("Test " + testId + " FAILED. Expected: " + expected + ", Got: " + result);
         }
     }
-    
+
     /*
      * main: Runs sample tests as well as additional tests including a large-data test.
      */
@@ -72,27 +75,27 @@ public class Solution {
         List<Integer> test0 = Arrays.asList(1, 2, 7);
         // Explanation: Optimal batches are 1, 2, and 3 items respectively.
         runTest(0, test0, 3);
-        
+
         // Sample Case 1
         List<Integer> test1 = Arrays.asList(1, 2, 8, 9);
         // Explanation: Optimal batches are 1, 2, 3, and 4 items respectively.
         runTest(1, test1, 4);
-        
+
         // Edge Case: All products have zero items.
         List<Integer> test2 = Arrays.asList(0, 0, 0, 0);
         runTest(2, test2, 0);
-        
+
         // Edge Case: Only one product with items and others are zero.
         List<Integer> test3 = Arrays.asList(0, 100, 0, 0);
         // With only one non-zero product, at most 1 batch can be formed.
         runTest(3, test3, 1);
-        
+
         // Additional Test: Multiple products each with very high count.
         List<Integer> test4 = Arrays.asList(1000000000, 1000000000, 1000000000, 1000000000, 1000000000);
         // With 5 products, the maximum m satisfies:
         // 5*m >= m*(m+1)/2   => m+1 <= 10, hence m <= 9.
         runTest(4, test4, 9);
-        
+
         // Large Data Test: n = 100,000 products, each with 10^9 items.
         int n = 100000;
         List<Integer> testLarge = new ArrayList<>(n);
