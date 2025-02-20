@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.feb25.common.test8;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /*
 
 100% WORKING
@@ -66,31 +70,31 @@ public class Solution {
     public static void main(String[] args) {
         PositionSvc positionSvc = new PositionSvc();
         QuoteSvc quoteSvc = new QuoteSvc();
-        
+
         // Retrieve positions and quotes
         List<Position> positions = positionSvc.getCustomerPositions();
         List<Quote> quotes = quoteSvc.getAllPreviousClose();
-        
+
         // Map to store symbol and its price
         Map<String, BigDecimal> quoteMap = new HashMap<>();
         for (Quote quote : quotes) {
             quoteMap.put(quote.getSymbol(), quote.getPrice());
         }
-        
+
         // Map to store account total values
         Map<String, BigDecimal> accountTotalValues = new HashMap<>();
-        
+
         for (Position position : positions) {
             BigDecimal price = quoteMap.getOrDefault(position.getSymbol(), BigDecimal.ZERO);
             BigDecimal positionValue = price.multiply(BigDecimal.valueOf(position.getNumberOfShares()));
             accountTotalValues.put(position.getAccountId(),
                     accountTotalValues.getOrDefault(position.getAccountId(), BigDecimal.ZERO).add(positionValue));
         }
-        
+
         // Sort accounts by total value in descending order
         List<Map.Entry<String, BigDecimal>> sortedAccounts = new ArrayList<>(accountTotalValues.entrySet());
         sortedAccounts.sort((a, b) -> b.getValue().compareTo(a.getValue()));
-        
+
         // Print sorted results
         for (Map.Entry<String, BigDecimal> entry : sortedAccounts) {
             System.out.println(entry.getKey() + ": " + entry.getValue());

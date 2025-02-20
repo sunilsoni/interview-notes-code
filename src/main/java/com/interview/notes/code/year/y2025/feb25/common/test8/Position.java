@@ -12,14 +12,29 @@ class Position {
         this.numShares = Long.valueOf(tokens[2]);
     }
 
-    public String getAccountId() { return accountId; }
-    public void setAccountId(String accountId) { this.accountId = accountId; }
+    public String getAccountId() {
+        return accountId;
+    }
 
-    public String getSymbol() { return symbol; }
-    public void setSymbol(String sym) { this.symbol = sym; }
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
 
-    public long getNumberOfShares() { return numShares; }
-    public void setNumberOfShares(long shares) { this.numShares = shares; }
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String sym) {
+        this.symbol = sym;
+    }
+
+    public long getNumberOfShares() {
+        return numShares;
+    }
+
+    public void setNumberOfShares(long shares) {
+        this.numShares = shares;
+    }
 
     @Override
     public String toString() {

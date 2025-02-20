@@ -14,7 +14,7 @@ public class Main {
         List<String> list4 = new ArrayList<>();
 
         Main main = new Main();
-        
+
         // Test with normal list
         System.out.println("Normal list: " + main.sortByLengthDescending(list1));
         // Output: [banana, cherry, apple, date]

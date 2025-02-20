@@ -10,9 +10,9 @@ public class EvenNumberCount {
 
         // Use stream to convert strings to integers, filter even numbers, and count them
         long evenCount = numbers.stream()
-                                .map(Integer::parseInt)       // Convert each string to an Integer
-                                .filter(num -> num % 2 == 0)    // Keep only even numbers
-                                .count();                     // Count the remaining numbers
+                .map(Integer::parseInt)       // Convert each string to an Integer
+                .filter(num -> num % 2 == 0)    // Keep only even numbers
+                .count();                     // Count the remaining numbers
 
         System.out.println("Count of even numbers: " + evenCount);
     }

@@ -13,11 +13,11 @@ public class NumberFrequency {
 
         // Group the numbers and count the frequency of each number
         Map<Integer, Long> frequencyMap = numbers.stream()
-            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
         // Print the frequency of each number
-        frequencyMap.forEach((number, count) -> 
-            System.out.println("Number " + number + " appears " + count + " times")
+        frequencyMap.forEach((number, count) ->
+                System.out.println("Number " + number + " appears " + count + " times")
         );
     }
 }

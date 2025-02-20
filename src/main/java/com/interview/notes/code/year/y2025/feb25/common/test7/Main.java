@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.feb25.common.test7;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 class Employee {
@@ -39,9 +39,9 @@ public class Main {
 
         // Using Streams to filter employees whose age is greater than 30
         List<String> filteredNames = empList.stream()
-            .filter(employee -> employee.getAge() > 30)
-            .map(Employee::getName)
-            .collect(Collectors.toList());
+                .filter(employee -> employee.getAge() > 30)
+                .map(Employee::getName)
+                .collect(Collectors.toList());
 
         // Printing the filtered employee names
         filteredNames.forEach(System.out::println);

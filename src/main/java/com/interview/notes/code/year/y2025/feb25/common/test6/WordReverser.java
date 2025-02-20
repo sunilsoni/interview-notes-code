@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 public class WordReverser {
     public static String reverseWords(String input) {
         return Arrays.stream(input.split(" "))
-                    .map(word -> word.chars()
-                         .mapToObj(ch -> String.valueOf((char)ch))
-                         .reduce("", (s1, s2) -> s2 + s1))
-                    .collect(Collectors.joining(" "));
+                .map(word -> word.chars()
+                        .mapToObj(ch -> String.valueOf((char) ch))
+                        .reduce("", (s1, s2) -> s2 + s1))
+                .collect(Collectors.joining(" "));
     }
 
     public static void main(String[] args) {

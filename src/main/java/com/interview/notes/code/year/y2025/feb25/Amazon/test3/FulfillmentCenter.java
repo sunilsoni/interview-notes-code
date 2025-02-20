@@ -1,42 +1,8 @@
 package com.interview.notes.code.year.y2025.feb25.Amazon.test3;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 class FulfillmentCenter {
-    // Core entities
-    static class Position {
-        int x, y;
-        Position(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
-    static class Robot {
-        String id;
-        Position position;
-        boolean available;
-
-        Robot(String id, Position position) {
-            this.id = id;
-            this.position = position;
-            this.available = true;
-        }
-    }
-
-    static class Shelf {
-        String id;
-        Position position;
-        Map<String, Integer> items; // item -> quantity
-
-        Shelf(String id, Position position) {
-            this.id = id;
-            this.position = position;
-            this.items = new HashMap<>();
-        }
-    }
-
     private List<Robot> robots;
     private List<Shelf> shelves;
     private Position pickStation;
@@ -46,6 +12,33 @@ class FulfillmentCenter {
         shelves = new ArrayList<>();
         pickStation = new Position(0, 0); // P is at (0,0)
         initializeWarehouse();
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        FulfillmentCenter fc = new FulfillmentCenter();
+
+        // Test case 1: Valid order
+        Map<String, String> result1 = fc.processOrder("item1");
+        System.out.println("Test 1 - Order for item1: " +
+                (result1.isEmpty() ? "FAIL" : "PASS - Robot: " + result1.get("robotId") +
+                        ", Shelf: " + result1.get("shelfId")));
+
+        // Test case 2: Non-existent item
+        Map<String, String> result2 = fc.processOrder("item4");
+        System.out.println("Test 2 - Order for non-existent item: " +
+                (result2.isEmpty() ? "PASS" : "FAIL"));
+
+        // Test case 3: Large number of orders
+        System.out.println("Test 3 - Processing multiple orders:");
+        for (int i = 0; i < 100; i++) {
+            Map<String, String> result = fc.processOrder("item1");
+            if (result.isEmpty()) {
+                System.out.println("FAIL at iteration " + i);
+                break;
+            }
+            if (i == 99) System.out.println("PASS - Successfully processed 100 orders");
+        }
     }
 
     private void initializeWarehouse() {
@@ -67,7 +60,7 @@ class FulfillmentCenter {
 
     public Map<String, String> processOrder(String itemId) {
         // Find available shelves containing the item
-        List<Shelf> availableShelves =null;// shelves.stream()
+        List<Shelf> availableShelves = null;// shelves.stream()
 
         if (availableShelves.isEmpty()) {
             return Collections.emptyMap();
@@ -99,30 +92,37 @@ class FulfillmentCenter {
         return Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y);
     }
 
-    // Main method for testing
-    public static void main(String[] args) {
-        FulfillmentCenter fc = new FulfillmentCenter();
-        
-        // Test case 1: Valid order
-        Map<String, String> result1 = fc.processOrder("item1");
-        System.out.println("Test 1 - Order for item1: " + 
-            (result1.isEmpty() ? "FAIL" : "PASS - Robot: " + result1.get("robotId") + 
-             ", Shelf: " + result1.get("shelfId")));
+    // Core entities
+    static class Position {
+        int x, y;
 
-        // Test case 2: Non-existent item
-        Map<String, String> result2 = fc.processOrder("item4");
-        System.out.println("Test 2 - Order for non-existent item: " + 
-            (result2.isEmpty() ? "PASS" : "FAIL"));
+        Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
 
-        // Test case 3: Large number of orders
-        System.out.println("Test 3 - Processing multiple orders:");
-        for (int i = 0; i < 100; i++) {
-            Map<String, String> result = fc.processOrder("item1");
-            if (result.isEmpty()) {
-                System.out.println("FAIL at iteration " + i);
-                break;
-            }
-            if (i == 99) System.out.println("PASS - Successfully processed 100 orders");
+    static class Robot {
+        String id;
+        Position position;
+        boolean available;
+
+        Robot(String id, Position position) {
+            this.id = id;
+            this.position = position;
+            this.available = true;
+        }
+    }
+
+    static class Shelf {
+        String id;
+        Position position;
+        Map<String, Integer> items; // item -> quantity
+
+        Shelf(String id, Position position) {
+            this.id = id;
+            this.position = position;
+            this.items = new HashMap<>();
         }
     }
 }

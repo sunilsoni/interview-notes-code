@@ -3,6 +3,11 @@ package com.interview.notes.code.year.y2025.feb25.common.test7;
 import java.util.ArrayList;
 import java.util.List;
 
+// Observer Interface
+interface Observer {
+    void update(String state);
+}
+
 // Subject (Observable)
 class Subject {
     private List<Observer> observers = new ArrayList<>();
@@ -26,11 +31,6 @@ class Subject {
             observer.update(state);
         }
     }
-}
-
-// Observer Interface
-interface Observer {
-    void update(String state);
 }
 
 // Concrete Observer 1

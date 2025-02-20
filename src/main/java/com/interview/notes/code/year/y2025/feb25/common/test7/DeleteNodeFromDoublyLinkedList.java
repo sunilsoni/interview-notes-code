@@ -2,19 +2,10 @@ package com.interview.notes.code.year.y2025.feb25.common.test7;
 
 public class DeleteNodeFromDoublyLinkedList {
 
-    // Doubly linked list node definition.
-    static class Node {
-        int val;
-        Node prev, next;
-
-        Node(int val) {
-            this.val = val;
-        }
-    }
-
     /**
      * Deletes the first node with the target value from the doubly linked list.
-     * @param head The head of the linked list.
+     *
+     * @param head   The head of the linked list.
      * @param target The value to be deleted.
      * @return The head of the modified linked list.
      */
@@ -47,6 +38,7 @@ public class DeleteNodeFromDoublyLinkedList {
 
     /**
      * Creates a doubly linked list from an array of integers.
+     *
      * @param values Array of integers.
      * @return The head of the doubly linked list.
      */
@@ -67,6 +59,7 @@ public class DeleteNodeFromDoublyLinkedList {
     /**
      * Converts the doubly linked list into a string using Java 8 Streams.
      * Each node's value is separated by " <-> ".
+     *
      * @param head The head of the linked list.
      * @return A string representation of the list.
      */
@@ -79,9 +72,9 @@ public class DeleteNodeFromDoublyLinkedList {
         }
         // Use Java 8 streams to join list values.
         return list.stream()
-                   .map(String::valueOf)
-                   .reduce((a, b) -> a + " <-> " + b)
-                   .orElse("");
+                .map(String::valueOf)
+                .reduce((a, b) -> a + " <-> " + b)
+                .orElse("");
     }
 
     /**
@@ -190,5 +183,15 @@ public class DeleteNodeFromDoublyLinkedList {
      */
     public static void main(String[] args) {
         runTests();
+    }
+
+    // Doubly linked list node definition.
+    static class Node {
+        int val;
+        Node prev, next;
+
+        Node(int val) {
+            this.val = val;
+        }
     }
 }

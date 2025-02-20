@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.feb25.codility.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 // Sample Person class with multiple attributes
 class Person {
@@ -15,9 +17,17 @@ class Person {
     }
 
     // Getters
-    public String getName() { return name; }
-    public int getAge() { return age; }
-    public double getSalary() { return salary; }
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
 
     @Override
     public String toString() {
@@ -89,10 +99,10 @@ public class ComparatorExample {
         Comparator<Person> customComparator = (p1, p2) -> {
             int nameComparison = p1.getName().compareTo(p2.getName());
             if (nameComparison != 0) return nameComparison;
-            
+
             if (p1.getSalary() > p2.getSalary()) return 1;
             if (p1.getSalary() < p2.getSalary()) return -1;
-            
+
             return Integer.compare(p1.getAge(), p2.getAge());
         };
     }

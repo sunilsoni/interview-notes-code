@@ -12,11 +12,21 @@ class Quote {
         this.price = new BigDecimal(tokens[1]);
     }
 
-    public String getSymbol() { return symbol; }
-    public void setSymbol(String sym) { this.symbol = sym; }
+    public String getSymbol() {
+        return symbol;
+    }
 
-    public BigDecimal getPrice() { return price; }
-    public void setPrice(BigDecimal price) { this.price = price; }
+    public void setSymbol(String sym) {
+        this.symbol = sym;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
     @Override
     public String toString() {
