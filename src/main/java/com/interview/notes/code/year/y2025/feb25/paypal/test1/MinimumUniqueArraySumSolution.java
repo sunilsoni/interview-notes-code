@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.feb25.paypal.test1;
 
 import java.util.*;
+
 /*
 WORKING
 
@@ -84,7 +85,7 @@ public class MinimumUniqueArraySumSolution {
         // Use a HashSet to track used numbers
         Set<Integer> used = new HashSet<>();
         int sum = 0;
-        
+
         // Process each number in the original order
         for (int num : arr) {
             // Increment until the number is unique
@@ -96,7 +97,7 @@ public class MinimumUniqueArraySumSolution {
         }
         return sum;
     }
-    
+
     /**
      * Main method for testing the getMinimumUniqueSum function.
      * It runs several test cases and prints PASS/FAIL messages.
@@ -104,18 +105,18 @@ public class MinimumUniqueArraySumSolution {
     public static void main(String[] args) {
         // Create a resizable list of test cases
         List<TestCase> testCases = new ArrayList<>(Arrays.asList(
-            // Sample test case from the problem statement.
-            new TestCase(Arrays.asList(1, 2, 2), 6),
-            // Example from the description.
-            new TestCase(Arrays.asList(3, 2, 1, 2, 7), 17),
-            // Edge case: single element.
-            new TestCase(Arrays.asList(1), 1),
-            // Edge case: all elements are duplicates.
-            new TestCase(Arrays.asList(1, 1, 1, 1), 10), // Expected: 1, 2, 3, 4
-            // Additional case: mixed duplicates.
-            new TestCase(Arrays.asList(5, 3, 3, 3, 2, 2, 1), 28)
+                // Sample test case from the problem statement.
+                new TestCase(Arrays.asList(1, 2, 2), 6),
+                // Example from the description.
+                new TestCase(Arrays.asList(3, 2, 1, 2, 7), 17),
+                // Edge case: single element.
+                new TestCase(Arrays.asList(1), 1),
+                // Edge case: all elements are duplicates.
+                new TestCase(Arrays.asList(1, 1, 1, 1), 10), // Expected: 1, 2, 3, 4
+                // Additional case: mixed duplicates.
+                new TestCase(Arrays.asList(5, 3, 3, 3, 2, 2, 1), 28)
         ));
-        
+
         // Large data test: 2000 elements, all are 1.
         List<Integer> largeTest = new ArrayList<>();
         for (int i = 0; i < 2000; i++) {
@@ -124,7 +125,7 @@ public class MinimumUniqueArraySumSolution {
         // The expected unique sequence is 1, 2, 3, ..., 2000
         // Its sum is (2000 * (2000 + 1)) / 2 = 2001000.
         testCases.add(new TestCase(largeTest, 2001000));
-        
+
         // Run each test case and output results
         boolean allPassed = true;
         for (int i = 0; i < testCases.size(); i++) {
@@ -137,19 +138,19 @@ public class MinimumUniqueArraySumSolution {
                 allPassed = false;
             }
         }
-        
+
         if (allPassed) {
             System.out.println("All test cases passed.");
         } else {
             System.out.println("Some test cases failed.");
         }
     }
-    
+
     // Helper class to store test cases
     static class TestCase {
         List<Integer> input;
         int expected;
-        
+
         TestCase(List<Integer> input, int expected) {
             this.input = input;
             this.expected = expected;

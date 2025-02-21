@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.feb25.imocha.test2;
 
-import java.util.*;
+import java.util.Arrays;
+
 /*
 MAX Value
 You are given four integers, N, A, B, and C.
@@ -33,7 +34,7 @@ The maximum number of parts you can divide N into that satisfies the condition i
 Hence, the output is 2.
  */
 public class TestMaxValue {
-    
+
     // Method to find the maximum number of parts
     // into which you can divide N using A, B, or C.
     public static int MaxValue(int N, int A, int B, int C) {
@@ -57,7 +58,7 @@ public class TestMaxValue {
                 dp[i] = Math.max(dp[i], dp[i - C] + 1);
             }
         }
-        
+
         // dp[N] is the final answer (or -404 if not possible).
         return dp[N];
     }
@@ -65,10 +66,10 @@ public class TestMaxValue {
     public static void main(String[] args) {
         // Each test case: {N, A, B, C, expectedOutput}
         int[][] testCases = {
-            // Test case from the image: N=5, A=5, B=3, C=2 => Expected 2
-            {5, 5, 3, 2, 2},
-            // Another example (if present in the problem explanation): N=5, A=2, B=5, C=3 => Expected 2
-            {5, 2, 5, 3, 2}
+                // Test case from the image: N=5, A=5, B=3, C=2 => Expected 2
+                {5, 5, 3, 2, 2},
+                // Another example (if present in the problem explanation): N=5, A=2, B=5, C=3 => Expected 2
+                {5, 2, 5, 3, 2}
         };
 
         for (int[] test : testCases) {
@@ -82,10 +83,10 @@ public class TestMaxValue {
             String passFail = (result == expected) ? "PASS" : "FAIL";
 
             System.out.println(
-                "Input: " + N + " " + A + " " + B + " " + C +
-                " | Output: " + result +
-                " | Expected: " + expected +
-                " | " + passFail
+                    "Input: " + N + " " + A + " " + B + " " + C +
+                            " | Output: " + result +
+                            " | Expected: " + expected +
+                            " | " + passFail
             );
         }
     }

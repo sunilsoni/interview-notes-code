@@ -1,24 +1,26 @@
 package com.interview.notes.code.year.y2025.feb25.paypal.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Solution {
 
     // Function to compute the minimum unique array sum
     public static int getMinimumUniqueSum(List<Integer> arr) {
-        if(arr == null || arr.isEmpty()){
+        if (arr == null || arr.isEmpty()) {
             return 0;
         }
-        
+
         // Sort the array using streams
         List<Integer> sorted = arr.stream()
-                                  .sorted()
-                                  .collect(Collectors.toList());
-                                  
+                .sorted()
+                .collect(Collectors.toList());
+
         int sum = sorted.get(0);
         int prev = sorted.get(0);
-        
+
         // Process each element ensuring uniqueness with minimal increments
         for (int i = 1; i < sorted.size(); i++) {
             int current = sorted.get(i);
@@ -29,7 +31,7 @@ public class Solution {
             sum += current;
             prev = current;
         }
-        
+
         return sum;
     }
 
@@ -37,13 +39,13 @@ public class Solution {
     public static void main(String[] args) {
         // Define test cases
         List<TestCase> testCases = Arrays.asList(
-            new TestCase(Arrays.asList(1, 2, 2), 6, "Sample Test Case"),
-            new TestCase(Arrays.asList(3, 2, 1, 2, 7), 17, "Example Test Case"),
-            new TestCase(Arrays.asList(1), 1, "Single Element Test"),
-            new TestCase(Arrays.asList(2, 2, 2, 2), 2 + 3 + 4 + 5, "All Duplicates Test"),
-            new TestCase(Arrays.asList(1, 2, 3, 4), 10, "Already Unique Test")
+                new TestCase(Arrays.asList(1, 2, 2), 6, "Sample Test Case"),
+                new TestCase(Arrays.asList(3, 2, 1, 2, 7), 17, "Example Test Case"),
+                new TestCase(Arrays.asList(1), 1, "Single Element Test"),
+                new TestCase(Arrays.asList(2, 2, 2, 2), 2 + 3 + 4 + 5, "All Duplicates Test"),
+                new TestCase(Arrays.asList(1, 2, 3, 4), 10, "Already Unique Test")
         );
-        
+
         // Adding a large input test case
         List<Integer> largeInput = new ArrayList<>();
         int expectedLargeSum = 0;
@@ -63,13 +65,13 @@ public class Solution {
             System.out.println(tc.testName + ": " + status + " (Expected: " + tc.expected + ", Got: " + result + ")");
         }
     }
-    
+
     // Helper class for test cases
     static class TestCase {
         List<Integer> input;
         int expected;
         String testName;
-        
+
         TestCase(List<Integer> input, int expected, String testName) {
             this.input = input;
             this.expected = expected;

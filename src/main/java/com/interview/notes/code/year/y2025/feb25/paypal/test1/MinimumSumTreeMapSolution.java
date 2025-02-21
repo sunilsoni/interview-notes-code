@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.feb25.paypal.test1;
 
 import java.util.*;
-import java.util.stream.*;
+
 /*
 WORKING:
 
@@ -109,7 +109,7 @@ public class MinimumSumTreeMapSolution {
      *
      * @param nums List of integers.
      * @param k    Number of operations.
-     * @return     The minimum sum after k operations.
+     * @return The minimum sum after k operations.
      */
     public static int minSumTreeMap(List<Integer> nums, int k) {
         // TreeMap in descending order to access the maximum element quickly.
@@ -118,32 +118,32 @@ public class MinimumSumTreeMapSolution {
         for (int num : nums) {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
-        
+
         // Perform k operations.
-        while(k > 0) {
+        while (k > 0) {
             // Get the largest key (maximum element).
             int max = map.firstKey();
             int freq = map.get(max);
-            
+
             // Process one operation on one occurrence of the maximum element.
             int reduced = (max + 1) / 2;
-            
+
             // Decrease the frequency count of the maximum.
-            if(freq == 1) {
+            if (freq == 1) {
                 map.remove(max);
             } else {
                 map.put(max, freq - 1);
             }
-            
+
             // Insert/update the reduced value.
             map.put(reduced, map.getOrDefault(reduced, 0) + 1);
             k--;
         }
-        
+
         // Compute the final sum.
         return map.entrySet().stream()
-                  .mapToInt(e -> e.getKey() * e.getValue())
-                  .sum();
+                .mapToInt(e -> e.getKey() * e.getValue())
+                .sum();
     }
 
     /**
@@ -151,31 +151,31 @@ public class MinimumSumTreeMapSolution {
      */
     public static void main(String[] args) {
         int testCaseNumber = 1;
-        
+
         // Test Case 1: Single element.
         List<Integer> nums1 = Arrays.asList(2);
         int k1 = 1;
         int expected1 = 1;
         runTest(testCaseNumber++, nums1, k1, expected1, "TreeMap");
-        
+
         // Test Case 2: Provided sample.
         List<Integer> nums2 = Arrays.asList(10, 20, 7);
         int k2 = 4;
         int expected2 = 14;
         runTest(testCaseNumber++, nums2, k2, expected2, "TreeMap");
-        
+
         // Test Case 3: All elements are 1.
         List<Integer> nums3 = Arrays.asList(1, 1, 1);
         int k3 = 5;
         int expected3 = 3;
         runTest(testCaseNumber++, nums3, k3, expected3, "TreeMap");
-        
+
         // Test Case 4: No operations performed.
         List<Integer> nums4 = Arrays.asList(5, 10, 15);
         int k4 = 0;
         int expected4 = 30;
         runTest(testCaseNumber++, nums4, k4, expected4, "TreeMap");
-        
+
         // Test Case 5: Large input test for performance.
         List<Integer> nums5 = new ArrayList<>();
         int n5 = 100000; // 100k elements.
@@ -186,8 +186,8 @@ public class MinimumSumTreeMapSolution {
         long start = System.currentTimeMillis();
         int result5 = minSumTreeMap(nums5, k5);
         long end = System.currentTimeMillis();
-        System.out.println("Test " + testCaseNumber++ + " (Large Test using TreeMap): Result = " 
-                           + result5 + ", Time = " + (end - start) + " ms");
+        System.out.println("Test " + testCaseNumber++ + " (Large Test using TreeMap): Result = "
+                + result5 + ", Time = " + (end - start) + " ms");
     }
 
     /**
@@ -204,8 +204,8 @@ public class MinimumSumTreeMapSolution {
         if (result == expected) {
             System.out.println("Test " + testCaseNumber + " (" + method + "): PASS");
         } else {
-            System.out.println("Test " + testCaseNumber + " (" + method + "): FAIL. Expected: " 
-                               + expected + ", Got: " + result);
+            System.out.println("Test " + testCaseNumber + " (" + method + "): FAIL. Expected: "
+                    + expected + ", Got: " + result);
         }
     }
 }

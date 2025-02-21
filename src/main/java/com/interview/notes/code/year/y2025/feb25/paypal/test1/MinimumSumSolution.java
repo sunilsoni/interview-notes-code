@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.feb25.paypal.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.PriorityQueue;
+
 /*
 WORKING:
 
@@ -108,13 +111,13 @@ public class MinimumSumSolution {
      *
      * @param nums List of integers representing the array.
      * @param k    Number of operations to perform.
-     * @return     The minimum sum after k operations.
+     * @return The minimum sum after k operations.
      */
     public static int minSum(List<Integer> nums, int k) {
         // Use a max-heap to always process the largest element first.
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
         maxHeap.addAll(nums);
-        
+
         // Perform k operations.
         for (int i = 0; i < k; i++) {
             // Remove the largest element.
@@ -124,7 +127,7 @@ public class MinimumSumSolution {
             // Add the reduced value back to the heap.
             maxHeap.offer(reduced);
         }
-        
+
         // Sum the final elements using Java 8 Streams.
         return maxHeap.stream().mapToInt(Integer::intValue).sum();
     }
@@ -134,31 +137,31 @@ public class MinimumSumSolution {
      */
     public static void main(String[] args) {
         int testCaseNumber = 1;
-        
+
         // Test Case 1: Single element reduction.
         List<Integer> nums1 = Arrays.asList(2);
         int k1 = 1;
         int expected1 = 1; // 2 becomes 1 after one operation.
         runTest(testCaseNumber++, nums1, k1, expected1);
-        
+
         // Test Case 2: Provided sample case.
         List<Integer> nums2 = Arrays.asList(10, 20, 7);
         int k2 = 4;
         int expected2 = 14;
         runTest(testCaseNumber++, nums2, k2, expected2);
-        
+
         // Test Case 3: Edge case where all numbers are 1.
         List<Integer> nums3 = Arrays.asList(1, 1, 1);
         int k3 = 5;
         int expected3 = 3; // All remain 1.
         runTest(testCaseNumber++, nums3, k3, expected3);
-        
+
         // Test Case 4: No operations performed.
         List<Integer> nums4 = Arrays.asList(5, 10, 15);
         int k4 = 0;
         int expected4 = 30;
         runTest(testCaseNumber++, nums4, k4, expected4);
-        
+
         // Test Case 5: Large input test to validate performance.
         // For demonstration, we use 100,000 elements each initialized to 10,000 and k = 2,000,000.
         List<Integer> nums5 = new ArrayList<>();
@@ -170,8 +173,8 @@ public class MinimumSumSolution {
         long start = System.currentTimeMillis();
         int result5 = minSum(nums5, k5);
         long end = System.currentTimeMillis();
-        System.out.println("Test " + testCaseNumber++ + " (Large Test): Result = " + result5 + 
-                           ", Time = " + (end - start) + " ms");
+        System.out.println("Test " + testCaseNumber++ + " (Large Test): Result = " + result5 +
+                ", Time = " + (end - start) + " ms");
     }
 
     /**

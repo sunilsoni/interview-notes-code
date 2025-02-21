@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.feb25.paypal.test2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
+
 /*
 WORKING
 
@@ -85,8 +88,8 @@ public class MinimumUniqueArraySumSolution {
     public static int getMinimumUniqueSum(List<Integer> arr) {
         // Sort the list using Java 8 Stream API
         List<Integer> sortedList = arr.stream()
-                                      .sorted()
-                                      .collect(Collectors.toList());
+                .sorted()
+                .collect(Collectors.toList());
         int sum = 0;
         int prev = -1; // Keeps track of the last unique element
         for (int num : sortedList) {
@@ -100,7 +103,7 @@ public class MinimumUniqueArraySumSolution {
         }
         return sum;
     }
-    
+
     /**
      * A simple main method to test the getMinimumUniqueSum function.
      * This method runs multiple test cases and prints PASS/FAIL for each.
@@ -108,18 +111,18 @@ public class MinimumUniqueArraySumSolution {
     public static void main(String[] args) {
         // Use a resizable list to hold test cases.
         List<TestCase> testCases = new ArrayList<>(Arrays.asList(
-            // Sample test case provided in the problem statement.
-            new TestCase(Arrays.asList(1, 2, 2), 6),
-            // Example from the description.
-            new TestCase(Arrays.asList(3, 2, 1, 2, 7), 17),
-            // Edge case: single element.
-            new TestCase(Arrays.asList(1), 1),
-            // Edge case: all elements are duplicates.
-            new TestCase(Arrays.asList(1, 1, 1, 1), 10), // Expected: 1,2,3,4 => 10
-            // Additional case: mixed duplicates.
-            new TestCase(Arrays.asList(5, 3, 3, 3, 2, 2, 1), 28)
+                // Sample test case provided in the problem statement.
+                new TestCase(Arrays.asList(1, 2, 2), 6),
+                // Example from the description.
+                new TestCase(Arrays.asList(3, 2, 1, 2, 7), 17),
+                // Edge case: single element.
+                new TestCase(Arrays.asList(1), 1),
+                // Edge case: all elements are duplicates.
+                new TestCase(Arrays.asList(1, 1, 1, 1), 10), // Expected: 1,2,3,4 => 10
+                // Additional case: mixed duplicates.
+                new TestCase(Arrays.asList(5, 3, 3, 3, 2, 2, 1), 28)
         ));
-        
+
         // Large data test: 2000 elements, all are 1.
         List<Integer> largeTest = new ArrayList<>();
         for (int i = 0; i < 2000; i++) {
@@ -128,30 +131,31 @@ public class MinimumUniqueArraySumSolution {
         // The expected unique sequence will be 1, 2, 3, ..., 2000.
         // Its sum is given by the formula: sum = (2000 * (2000 + 1)) / 2 = 2001000.
         testCases.add(new TestCase(largeTest, 2001000));
-        
+
         // Process each test case and display PASS/FAIL.
         boolean allPassed = true;
         for (int i = 0; i < testCases.size(); i++) {
             TestCase tc = testCases.get(i);
             int result = getMinimumUniqueSum(tc.input);
             if (result == tc.expected) {
-                System.out.println("Test case " + (i+1) + " PASSED");
+                System.out.println("Test case " + (i + 1) + " PASSED");
             } else {
-                System.out.println("Test case " + (i+1) + " FAILED: Expected " + tc.expected + " but got " + result);
+                System.out.println("Test case " + (i + 1) + " FAILED: Expected " + tc.expected + " but got " + result);
                 allPassed = false;
             }
         }
-        if(allPassed) {
+        if (allPassed) {
             System.out.println("All test cases passed.");
         } else {
             System.out.println("Some test cases failed.");
         }
     }
-    
+
     // Helper class to store test cases.
     static class TestCase {
         List<Integer> input;
         int expected;
+
         TestCase(List<Integer> input, int expected) {
             this.input = input;
             this.expected = expected;

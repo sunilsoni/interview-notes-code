@@ -6,9 +6,9 @@ import java.util.stream.IntStream;
 
 public class PrimeNumbers {
     public static boolean isPrime1(int number) {
-        return number > 1 && 
-               IntStream.rangeClosed(2, (int) Math.sqrt(number))
-                       .noneMatch(i -> number % i == 0);
+        return number > 1 &&
+                IntStream.rangeClosed(2, (int) Math.sqrt(number))
+                        .noneMatch(i -> number % i == 0);
     }
 
     public static boolean isPrime(int number) {
@@ -19,9 +19,9 @@ public class PrimeNumbers {
 
     public static List<Integer> findPrimesInRange(int start, int end) {
         return IntStream.rangeClosed(start, end)
-                       .filter(PrimeNumbers::isPrime)
-                       .boxed()
-                       .collect(Collectors.toList());
+                .filter(PrimeNumbers::isPrime)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {
