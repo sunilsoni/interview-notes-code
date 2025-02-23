@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.feb25.Amazon.test6;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Solution {
 

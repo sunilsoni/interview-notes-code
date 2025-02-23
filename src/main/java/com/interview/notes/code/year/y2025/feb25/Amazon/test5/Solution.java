@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.feb25.Amazon.test5;
 
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
+
 /*
 WORKING 100%
 
@@ -212,41 +213,41 @@ public class Solution {
      * Calculates the minimum cost to remove characters from the password so that
      * no permutation of the remaining characters contains the reference string
      * as a subsequence.
-     *
+     * <p>
      * The idea is simple:
      * - A permutation can be arranged arbitrarily. Thus, if the multiset of characters
-     *   in the password contains each character of reference in at least the same count,
-     *   then one can arrange a permutation that has reference as a subsequence.
+     * in the password contains each character of reference in at least the same count,
+     * then one can arrange a permutation that has reference as a subsequence.
      * - To break that possibility, it is enough to reduce the count of any one letter (that
-     *   appears in reference) below its frequency in reference.
+     * appears in reference) below its frequency in reference.
      * - For each letter L in reference:
-     *      if passwordCount(L) < referenceCount(L) then the condition is already broken.
-     *      Otherwise, we need to remove at least (passwordCount(L) - (referenceCount(L) - 1))
-     *      occurrences of L.
+     * if passwordCount(L) < referenceCount(L) then the condition is already broken.
+     * Otherwise, we need to remove at least (passwordCount(L) - (referenceCount(L) - 1))
+     * occurrences of L.
      * - Multiply the number of removals by the cost to remove that letter.
      * - The answer is the minimum cost among all letters in reference.
-     *
+     * <p>
      * Time Complexity: O(n) for counting + O(26) constant work.
      *
-     * @param password the original password string
+     * @param password  the original password string
      * @param reference the subsequence that must not be possible
-     * @param cost a list of 26 integers representing removal cost for 'a' to 'z'
+     * @param cost      a list of 26 integers representing removal cost for 'a' to 'z'
      * @return the minimum total removal cost
      */
     public static long calculateMinCost(String password, String reference, List<Integer> cost) {
         int[] countPassword = new int[26];
         int[] countReference = new int[26];
-        
+
         // Count frequency of each character in the password.
         for (char c : password.toCharArray()) {
             countPassword[c - 'a']++;
         }
-        
+
         // Count frequency of each character in the reference string.
         for (char c : reference.toCharArray()) {
             countReference[c - 'a']++;
         }
-        
+
         // Check if the password is already safe.
         // If for any character in the reference, the count in the password is less than the required count,
         // then no permutation can form the reference string.
@@ -255,7 +256,7 @@ public class Solution {
                 return 0;
             }
         }
-        
+
         // For each character in the reference, compute the removal cost required to make its count less than
         // what is needed to form the reference subsequence.
         long minCost = Long.MAX_VALUE;
@@ -269,15 +270,15 @@ public class Solution {
         }
         return minCost;
     }
-    
+
     /**
      * Runs a test case with the provided inputs and expected output.
      *
-     * @param testName Name/description of the test case.
-     * @param password Test input: password string.
+     * @param testName  Name/description of the test case.
+     * @param password  Test input: password string.
      * @param reference Test input: reference string.
-     * @param cost Test input: cost array as a List of 26 integers.
-     * @param expected Expected minimum cost.
+     * @param cost      Test input: cost array as a List of 26 integers.
+     * @param expected  Expected minimum cost.
      */
     private static void runTest(String testName, String password, String reference, List<Integer> cost, long expected) {
         long result = calculateMinCost(password, reference, cost);
@@ -287,7 +288,7 @@ public class Solution {
             System.out.println(testName + ": FAIL. Expected " + expected + " but got " + result);
         }
     }
-    
+
     /**
      * Main method for testing. It includes sample cases provided in the problem statement,
      * additional edge cases, and a large input simulation.
@@ -299,27 +300,27 @@ public class Solution {
         // Expected removal: remove 'h' (cost=1) → Total cost = 1.
         List<Integer> cost1 = Arrays.asList(1, 0, 0, 2, 4, 4, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         runTest("Test Case 1", "adefgh", "hf", cost1, 1);
-        
+
         // Test Case 2: Sample Case 0 from the prompt.
         // password = "abcdcbcb", reference = "bcb"
         // cost = [2, 3, 1, 4, 0, ... 0] for 26 elements.
         // Expected removal: remove three 'c's at cost=1 each → Total cost = 3.
         List<Integer> cost2 = Arrays.asList(2, 3, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         runTest("Test Case 2", "abcdcbcb", "bcb", cost2, 3);
-        
+
         // Test Case 3: Sample Case 1 from the prompt.
         // password = "kkkk", reference = "k"
         // cost for 'k' (index 10) is 5; removal needed = 4 (since count=4 and reference count=1)
         // Expected total cost = 4 * 5 = 20.
         List<Integer> cost3 = Arrays.asList(5, 1, 1, 2, 4, 7, 3, 4, 5, 7, 5, 6, 2, 1, 5, 12, 5, 1, 5, 0, 5, 6, 4, 7, 8, 50);
         runTest("Test Case 3", "kkkk", "k", cost3, 20);
-        
+
         // Test Case 4: Already safe – one character in reference is missing.
         // password = "abc", reference = "abcd" (letter 'd' is missing in the password)
         // Expected total cost = 0.
         List<Integer> cost4 = Arrays.asList(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
         runTest("Test Case 4", "abc", "abcd", cost4, 0);
-        
+
         // Test Case 5: Large data input simulation.
         // Simulate a password with 100,000 'a's and reference "aaa".
         // For letter 'a': count = 100000, reference count = 3, removal needed = 100000 - 3 + 1 = 99998.

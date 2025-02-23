@@ -102,10 +102,10 @@ public class Solution {
 
             System.out.println("Test #" + testNumber++ + ": " + (pass ? "PASS" : "FAIL"));
             if (!pass) {
-                System.out.println("  Expected: Mean=" + t.expectedMean 
-                                   + ", Mode=" + t.expectedMode);
-                System.out.println("  Actual:   Mean=" + actualMean 
-                                   + ", Mode=" + actualMode);
+                System.out.println("  Expected: Mean=" + t.expectedMean
+                        + ", Mode=" + t.expectedMode);
+                System.out.println("  Actual:   Mean=" + actualMean
+                        + ", Mode=" + actualMode);
             }
         }
     }

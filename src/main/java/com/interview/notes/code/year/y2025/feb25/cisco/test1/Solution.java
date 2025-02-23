@@ -1,8 +1,7 @@
 package com.interview.notes.code.year.y2025.feb25.cisco.test1;
 
 import java.util.*;
-import java.lang.*;
-import java.io.*;
+
 /*
 WORKING
 
@@ -63,7 +62,7 @@ public class Solution {
      * Computes the mean and mode of the input array.
      * - Mean is computed as the floor of the arithmetic average.
      * - Mode is determined as the most frequently occurring number.
-     *   In case of a tie, the smallest number is chosen.
+     * In case of a tie, the smallest number is chosen.
      *
      * @param inputArr the array of integers.
      * @return an int array where index 0 is the mean and index 1 is the mode.
@@ -72,17 +71,17 @@ public class Solution {
         if (inputArr.length == 0) {
             return new int[]{0, 0}; // Edge case: empty array (should not occur per problem statement)
         }
-        
+
         long sum = 0;
         HashMap<Integer, Integer> freq = new HashMap<>();
         for (int num : inputArr) {
             sum += num;
             freq.put(num, freq.getOrDefault(num, 0) + 1);
         }
-        
+
         // Compute mean (using Math.floor to get the floor value)
-        int mean = (int)Math.floor(sum / (double)inputArr.length);
-        
+        int mean = (int) Math.floor(sum / (double) inputArr.length);
+
         // Compute mode: choose the number with the highest frequency.
         // In case of ties, choose the smallest number.
         int mode = inputArr[0];
@@ -95,7 +94,7 @@ public class Solution {
                 maxCount = count;
             }
         }
-        
+
         return new int[]{mean, mode};
     }
 
@@ -124,6 +123,7 @@ public class Solution {
             int expectedMean;
             int expectedMode;
             String description;
+
             TestCase(int[] input, int expectedMean, int expectedMode, String description) {
                 this.input = input;
                 this.expectedMean = expectedMean;
@@ -131,7 +131,7 @@ public class Solution {
                 this.description = description;
             }
         }
-        
+
         List<TestCase> testCases = new ArrayList<>();
         // Test Case 1: Provided sample input
         testCases.add(new TestCase(new int[]{1, 2, 7, 3, 2}, 3, 2, "Provided sample: 1 2 7 3 2"));
@@ -152,7 +152,7 @@ public class Solution {
         }
         largeInput[0] = 5;
         long sum = 5 + 10L * (size - 1);
-        int expectedMean = (int)Math.floor(sum / (double)size);
+        int expectedMean = (int) Math.floor(sum / (double) size);
         testCases.add(new TestCase(largeInput, expectedMean, 5, "Large input: 100000 elements"));
 
         // Run each test case and print PASS/FAIL

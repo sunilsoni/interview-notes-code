@@ -1,4 +1,5 @@
 package com.interview.notes.code.year.y2025.feb25.cisco.test1;
+
 /*
 WORKING
 
@@ -68,14 +69,14 @@ public class SaddlePointMatrix {
     public static int findSaddlePoint(int[][] matrix) {
         int n = matrix.length;
         int m = matrix[0].length;
-        
+
         // Iterate over each row to find candidate saddle points.
         for (int i = 0; i < n; i++) {
             // Find the maximum element in row i and record all its column indexes.
             int maxVal = Integer.MIN_VALUE;
             // Store candidate column indices where the row maximum occurs.
             java.util.List<Integer> candidateCols = new java.util.ArrayList<>();
-            
+
             for (int j = 0; j < m; j++) {
                 if (matrix[i][j] > maxVal) {
                     maxVal = matrix[i][j];
@@ -85,7 +86,7 @@ public class SaddlePointMatrix {
                     candidateCols.add(j);
                 }
             }
-            
+
             // Check each candidate to see if it is the smallest in its column.
             for (int col : candidateCols) {
                 boolean isMinInCol = true;
@@ -110,43 +111,43 @@ public class SaddlePointMatrix {
     public static void main(String[] args) {
         // Create a list of test cases.
         java.util.List<TestCase> testCases = new java.util.ArrayList<>();
-        
+
         // Test case 1: Provided example.
         testCases.add(new TestCase(new int[][]{
-            {1, 2},
-            {3, 4}
+                {1, 2},
+                {3, 4}
         }, 2, "Example test case"));
-        
+
         // Test case 2: No saddle point.
         testCases.add(new TestCase(new int[][]{
-            {1, 2},
-            {3, 1}
+                {1, 2},
+                {3, 1}
         }, -1, "No saddle point test case"));
-        
+
         // Test case 3: Single row.
         testCases.add(new TestCase(new int[][]{
-            {1, 2, 3, 4}
+                {1, 2, 3, 4}
         }, 4, "Single row test case"));
-        
+
         // Test case 4: Single column.
         testCases.add(new TestCase(new int[][]{
-            {5},
-            {2},
-            {9}
+                {5},
+                {2},
+                {9}
         }, 2, "Single column test case"));
-        
+
         // Test case 5: 3x3 matrix.
         testCases.add(new TestCase(new int[][]{
-            {5, 7, 6},
-            {7, 8, 9},
-            {6, 7, 8}
+                {5, 7, 6},
+                {7, 8, 9},
+                {6, 7, 8}
         }, 7, "3x3 test case"));
-        
+
         // Test case 6: Single element matrix.
         testCases.add(new TestCase(new int[][]{
-            {7}
+                {7}
         }, 7, "Single element test case"));
-        
+
         // Test case 7: Large matrix (1000x1000) with constant value.
         int n = 1000, m = 1000;
         int[][] largeMatrix = new int[n][m];
@@ -156,7 +157,7 @@ public class SaddlePointMatrix {
             }
         }
         testCases.add(new TestCase(largeMatrix, 5, "Large matrix test case (1000x1000)"));
-        
+
         // Run all test cases.
         for (TestCase tc : testCases) {
             int result = findSaddlePoint(tc.matrix);

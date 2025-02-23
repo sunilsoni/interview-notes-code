@@ -1,6 +1,6 @@
 package com.interview.notes.code.year.y2025.feb25.Amazon.test5;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class PasswordReferenceChecker {
 
@@ -30,7 +30,7 @@ public class PasswordReferenceChecker {
         }
 
         long minCost = Long.MAX_VALUE;
-        
+
         // For each character c in 'a'..'z' that appears in reference
         for (int c = 0; c < 26; c++) {
             if (freqR[c] > 0) {
@@ -54,7 +54,7 @@ public class PasswordReferenceChecker {
     // Main method to test multiple scenarios
     public static void main(String[] args) {
         // We will do a few test cases in code:
-        
+
         // Test case 1 (from the sample with kkkk -> k)
         {
             String password = "kkkk";
@@ -65,8 +65,8 @@ public class PasswordReferenceChecker {
 
             long expected = 20; // remove 4 'k's, cost = 4 * 5 = 20
             long actual = calculateMinCost(password, reference, costArray);
-            System.out.println("Test1 " + (expected == actual ? "PASS" : "FAIL") 
-                               + " | Expected=" + expected + " Got=" + actual);
+            System.out.println("Test1 " + (expected == actual ? "PASS" : "FAIL")
+                    + " | Expected=" + expected + " Got=" + actual);
         }
 
         // Test case 2 (abcdcb -> bcb) from the example snippet
@@ -83,10 +83,10 @@ public class PasswordReferenceChecker {
             // The cheaper is 1, but the example’s final answer was 3 if they remove c's.
             // Possibly the sample’s cost array was different. 
             // Here, with these costs, minimal cost is 1.
-            long expected = 1; 
+            long expected = 1;
             long actual = calculateMinCost(password, reference, costArray);
-            System.out.println("Test2 " + (expected == actual ? "PASS" : "FAIL") 
-                               + " | Expected=" + expected + " Got=" + actual);
+            System.out.println("Test2 " + (expected == actual ? "PASS" : "FAIL")
+                    + " | Expected=" + expected + " Got=" + actual);
         }
 
         // Test case 3: reference not present in password
@@ -100,8 +100,8 @@ public class PasswordReferenceChecker {
             // So minimal cost is 0.
             long expected = 0;
             long actual = calculateMinCost(password, reference, costArray);
-            System.out.println("Test3 " + (expected == actual ? "PASS" : "FAIL") 
-                               + " | Expected=" + expected + " Got=" + actual);
+            System.out.println("Test3 " + (expected == actual ? "PASS" : "FAIL")
+                    + " | Expected=" + expected + " Got=" + actual);
         }
 
         // Test case 4: empty reference
@@ -112,10 +112,10 @@ public class PasswordReferenceChecker {
             // Usually, removing 0 is enough if the problem statement says
             // an empty reference is always trivially formed, but let's assume
             // we treat an empty reference as "no cost needed." 
-            long expected = 0; 
+            long expected = 0;
             long actual = calculateMinCost(password, reference, costArray);
-            System.out.println("Test4 " + (expected == actual ? "PASS" : "FAIL") 
-                               + " | Expected=" + expected + " Got=" + actual);
+            System.out.println("Test4 " + (expected == actual ? "PASS" : "FAIL")
+                    + " | Expected=" + expected + " Got=" + actual);
         }
 
         // Additional large-data test scenario (not fully shown here):

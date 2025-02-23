@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.feb25.Amazon.test7;
 
 import java.util.*;
+
 /*
 WORKING 100%
 
@@ -154,7 +155,7 @@ public class DominoGame {
         }
         return answer;
     }
-    
+
     // Checks if after removing the first m dominoes (by indices in remove list),
     // the longest increasing subsequence (LIS) of the remaining dominoes is at least min_order.
     private static boolean isValid(List<Integer> domino, List<Integer> remove, int m, int min_order) {
@@ -175,7 +176,7 @@ public class DominoGame {
         int lis = longestIncreasingSubsequence(remaining);
         return lis >= min_order;
     }
-    
+
     // Standard O(n log n) algorithm to compute the length of the longest strictly increasing subsequence.
     private static int longestIncreasingSubsequence(List<Integer> seq) {
         List<Integer> tail = new ArrayList<>();
@@ -193,7 +194,7 @@ public class DominoGame {
         }
         return tail.size();
     }
-    
+
     // Main method to run tests. No JUnit is used; each test prints PASS/FAIL.
     public static void main(String[] args) {
         // Sample Test Case 0:
@@ -203,7 +204,7 @@ public class DominoGame {
         int min_order1 = 2;
         int result1 = getMaxPoints(domino1, remove1, min_order1);
         System.out.println("Test Case 1: Expected: 2, Got: " + result1 + (result1 == 2 ? " PASS" : " FAIL"));
-        
+
         // Sample Test Case 1:
         // domino = [4, 5, 58, 5, 4], remove = [1, 0, 2, 3, 4], min_order = 1, expected answer = 4.
         List<Integer> domino2 = Arrays.asList(4, 5, 58, 5, 4);
@@ -211,7 +212,7 @@ public class DominoGame {
         int min_order2 = 1;
         int result2 = getMaxPoints(domino2, remove2, min_order2);
         System.out.println("Test Case 2: Expected: 4, Got: " + result2 + (result2 == 4 ? " PASS" : " FAIL"));
-        
+
         // Sample Test Case 2:
         // domino = [1, 4, 4, 2, 5, 3], remove = [2, 1, 4, 0, 5, 3], min_order = 3, expected answer = 3.
         List<Integer> domino3 = Arrays.asList(1, 4, 4, 2, 5, 3);
@@ -219,7 +220,7 @@ public class DominoGame {
         int min_order3 = 3;
         int result3 = getMaxPoints(domino3, remove3, min_order3);
         System.out.println("Test Case 3: Expected: 3, Got: " + result3 + (result3 == 3 ? " PASS" : " FAIL"));
-        
+
         // Additional Edge Case:
         // A decreasing sequence where the original LIS is 1.
         List<Integer> domino4 = Arrays.asList(5, 4, 3, 2, 1);
@@ -227,7 +228,7 @@ public class DominoGame {
         int min_order4 = 2; // With a decreasing sequence, any removal still gives an LIS of 1.
         int result4 = getMaxPoints(domino4, remove4, min_order4);
         System.out.println("Test Case 4: Expected: 0, Got: " + result4 + (result4 == 0 ? " PASS" : " FAIL"));
-        
+
         // Large Data Test Case:
         // Generating a large input to test efficiency.
         int largeN = 100000;

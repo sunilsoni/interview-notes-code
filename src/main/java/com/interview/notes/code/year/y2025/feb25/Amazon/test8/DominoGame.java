@@ -8,8 +8,8 @@ public class DominoGame {
      * Returns the maximum number of moves (removals) that can be made
      * such that the remaining dominoes have an order (LIS) >= min_order.
      *
-     * @param domino   List of domino sizes.
-     * @param remove   List of indices representing the removal order.
+     * @param domino    List of domino sizes.
+     * @param remove    List of indices representing the removal order.
      * @param min_order The minimum required length of the longest increasing subsequence.
      * @return Maximum number of safe moves.
      */
@@ -17,7 +17,7 @@ public class DominoGame {
         int n = domino.size();
         int left = 0, right = n;
         int ans = 0;
-        
+
         // Binary search on the number of removals
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -119,6 +119,6 @@ public class DominoGame {
         int resultLarge = getMaxPoints(dominoLarge, removeLarge, min_orderLarge);
         long endTime = System.currentTimeMillis();
         System.out.println("Large Test Case Result: " + resultLarge +
-                           " (computed in " + (endTime - startTime) + "ms)");
+                " (computed in " + (endTime - startTime) + "ms)");
     }
 }
