@@ -2,37 +2,16 @@ package com.interview.notes.code.year.y2025.march.common.test4;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
-import java.util.Random;
 
 public class BalancedNodesCheck {
 
     /**
-     * Node structure:
-     *  - val: an integer value (not strictly needed for counting).
-     *  - subtrees: array of child nodes (could be 0..N children).
-     */
-    static class Node {
-        public int val;
-        public Node[] subtrees;
-
-        public Node(int val) {
-            this.val = val;
-            this.subtrees = new Node[0];
-        }
-
-        public Node(int val, Node[] children) {
-            this.val = val;
-            this.subtrees = children;
-        }
-    }
-
-    /**
      * Main solution method:
      * Returns the number of "balanced" nodes in the tree.
-     *
+     * <p>
      * Definition of a balanced node:
-     *   - All of its children (subtrees) have the same size.
-     *   - A leaf node (no children) is trivially balanced.
+     * - All of its children (subtrees) have the same size.
+     * - A leaf node (no children) is trivially balanced.
      */
     public static int solution(Node tree) {
         // We'll use a single-element array to store the count, so it can be updated in the helper method.
@@ -42,9 +21,9 @@ public class BalancedNodesCheck {
     }
 
     /**
-     * Helper method: 
-     *   - Returns the total number of nodes in the subtree rooted at 'node'.
-     *   - Increments balancedCount[0] if 'node' is balanced.
+     * Helper method:
+     * - Returns the total number of nodes in the subtree rooted at 'node'.
+     * - Increments balancedCount[0] if 'node' is balanced.
      */
     private static int countBalanced(Node node, int[] balancedCount) {
         if (node == null) {
@@ -74,10 +53,10 @@ public class BalancedNodesCheck {
     }
 
     /**
-     * MAIN METHOD: 
-     *   - Builds test trees.
-     *   - Calls the solution method.
-     *   - Prints PASS or FAIL for each test case.
+     * MAIN METHOD:
+     * - Builds test trees.
+     * - Calls the solution method.
+     * - Prints PASS or FAIL for each test case.
      */
     public static void main(String[] args) {
         // Test Case 1 (Example-like tree)
@@ -96,9 +75,9 @@ public class BalancedNodesCheck {
 
         Node c1Child1 = new Node(5);
         Node c1Child2 = new Node(6);
-        Node c1 = new Node(2, new Node[]{ c1Child1, c1Child2 });
+        Node c1 = new Node(2, new Node[]{c1Child1, c1Child2});
         Node c2 = new Node(3); // leaf
-        Node root1 = new Node(1, new Node[]{ c1, c2 });
+        Node root1 = new Node(1, new Node[]{c1, c2});
 
         int expected1 = 4;
         int result1 = solution(root1);
@@ -113,13 +92,13 @@ public class BalancedNodesCheck {
         Node leafD = new Node(13);
 
         // Child X with two leaves => balanced
-        Node childX = new Node(20, new Node[]{ leafA, leafB });
+        Node childX = new Node(20, new Node[]{leafA, leafB});
         // Child Y with two leaves => balanced
-        Node childY = new Node(21, new Node[]{ leafC, leafD });
+        Node childY = new Node(21, new Node[]{leafC, leafD});
         // Root with two children => need to see if they match
         //   Each child subtree is 1 (the node) + 2 leaves => total 3 each
         //   So the root is also balanced in that sense
-        Node root2 = new Node(99, new Node[]{ childX, childY });
+        Node root2 = new Node(99, new Node[]{childX, childY});
 
         // Let's count:
         // - leafA, leafB, leafC, leafD => all balanced (4)
@@ -178,5 +157,25 @@ public class BalancedNodesCheck {
             children[i] = new Node(i);
         }
         return new Node(-1, children);
+    }
+
+    /**
+     * Node structure:
+     * - val: an integer value (not strictly needed for counting).
+     * - subtrees: array of child nodes (could be 0..N children).
+     */
+    static class Node {
+        public int val;
+        public Node[] subtrees;
+
+        public Node(int val) {
+            this.val = val;
+            this.subtrees = new Node[0];
+        }
+
+        public Node(int val, Node[] children) {
+            this.val = val;
+            this.subtrees = children;
+        }
     }
 }

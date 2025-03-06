@@ -1,4 +1,5 @@
 package com.interview.notes.code.year.y2025.march.caspex.test1;
+
 /*
 WORKING 100%
 
@@ -45,9 +46,10 @@ Print the number of prime numbers less than **N**.
 
  */
 public class PrimeCounter {
-    
+
     /**
      * Counts the number of prime numbers less than N
+     *
      * @param N The upper bound (exclusive)
      * @return The count of prime numbers less than N
      */
@@ -56,11 +58,11 @@ public class PrimeCounter {
         if (N <= 2) {
             return 0; // No primes less than 2
         }
-        
+
         // Use Sieve of Eratosthenes to find all primes less than N
         boolean[] isComposite = new boolean[N];
         // Initialize: false means potentially prime
-        
+
         // Start from the first prime number, 2
         for (int i = 2; i * i < N; i++) {
             if (!isComposite[i]) {
@@ -70,7 +72,7 @@ public class PrimeCounter {
                 }
             }
         }
-        
+
         // Count the prime numbers
         int count = 0;
         for (int i = 2; i < N; i++) {
@@ -78,10 +80,10 @@ public class PrimeCounter {
                 count++;
             }
         }
-        
+
         return count;
     }
-    
+
     /**
      * Main method to test the solution
      */
@@ -93,25 +95,25 @@ public class PrimeCounter {
         testCase(3, 1);
         testCase(20, 8);
         testCase(100, 25);
-        
+
         // Test large input
         long startTime = System.currentTimeMillis();
         int result = solve(5000000);
         long endTime = System.currentTimeMillis();
-        System.out.println("Large test case (N=5,000,000): " + result + 
-                           " (Time: " + (endTime - startTime) + "ms)");
-        
+        System.out.println("Large test case (N=5,000,000): " + result +
+                " (Time: " + (endTime - startTime) + "ms)");
+
         // The correct answer for N=5,000,000 is 348,513
         testCase(5000000, 348513);
     }
-    
+
     /**
      * Helper method to test and verify a test case
      */
     private static void testCase(int input, int expected) {
         int result = solve(input);
         boolean passed = result == expected;
-        
+
         System.out.println("Input: " + input);
         System.out.println("Expected: " + expected);
         System.out.println("Result: " + result);

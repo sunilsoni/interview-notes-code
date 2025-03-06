@@ -1,6 +1,6 @@
 package com.interview.notes.code.year.y2025.march.common.test7;
 
-import java.util.*;
+import java.util.Random;
 
 /*
 WORKING 14/15
@@ -107,50 +107,50 @@ The **good subsequences**:
 
  */
 public class GoodSubsequencesCounter {
-    
+
     private static final int MOD = 1_000_000_007;
-    
+
     public static int countGoodSubsequences(String word) {
         // Count frequency of each character
         int[] charFreq = new int[26];
-        for(char c : word.toCharArray()){
-            charFreq[c-'a']++;
+        for (char c : word.toCharArray()) {
+            charFreq[c - 'a']++;
         }
-        
+
         // Find the maximum frequency
         int maxFreq = 0;
-        for(int f : charFreq){
+        for (int f : charFreq) {
             maxFreq = Math.max(maxFreq, f);
         }
-        
+
         long result = 0;
-        
+
         // For each possible frequency
-        for(int freq = 1; freq <= maxFreq; freq++){
+        for (int freq = 1; freq <= maxFreq; freq++) {
             long subseqCount = 1;
-            
+
             // For each character
-            for(int i = 0; i < 26; i++){
-                if(charFreq[i] >= freq){
+            for (int i = 0; i < 26; i++) {
+                if (charFreq[i] >= freq) {
                     // Calculate combination C(charFreq[i], freq)
                     long ways = nCrModPrime(charFreq[i], freq, MOD);
-                    
+
                     // Multiply by (ways+1) - the +1 is for not choosing this character
-                    subseqCount = (subseqCount * (ways + 1)) % MOD; 
+                    subseqCount = (subseqCount * (ways + 1)) % MOD;
                 }
             }
-            
+
             // Subtract 1 for the empty subsequence
             subseqCount = (subseqCount - 1 + MOD) % MOD;
             result = (result + subseqCount) % MOD;
         }
-        return (int)result;
+        return (int) result;
     }
-    
+
     /**
      * Calculates nCr % p where p is prime.
      * Uses Fermat's Little Theorem for modular inverse.
-     * 
+     *
      * @param n Number of elements
      * @param r Number to choose
      * @param p Prime modulus
@@ -161,14 +161,14 @@ public class GoodSubsequencesCounter {
         if (r == 0) return 1;
         if (r > n) return 0;
         if (r > n - r) r = n - r; // Optimization: C(n,r) = C(n,n-r)
-        
+
         // Calculate [n * (n-1) * ... * (n-r+1)] / [r * (r-1) * ... * 1]
         long num = 1, den = 1;
         for (int i = 0; i < r; i++) {
             num = (num * (n - i)) % p;
             den = (den * (i + 1)) % p;
         }
-        
+
         // Calculate num * den^(p-2) % p using Fermat's Little Theorem
         return (num * modPow(den, p - 2, p)) % p;
     }
@@ -176,10 +176,10 @@ public class GoodSubsequencesCounter {
     /**
      * Calculates (base^exponent) % modulus efficiently.
      *
-     * @param base The base
+     * @param base     The base
      * @param exponent The exponent
-     * @param modulus The modulus
-     * @return (base^exponent) % modulus
+     * @param modulus  The modulus
+     * @return (base ^ exponent) % modulus
      */
     private static long modPow(long base, int exponent, int modulus) {
         long result = 1;
@@ -216,7 +216,7 @@ public class GoodSubsequencesCounter {
         StringBuilder largeInput = new StringBuilder();
         Random rand = new Random(42); // Fixed seed for reproducibility
         for (int i = 0; i < 100000; i++) {
-            largeInput.append((char)('a' + rand.nextInt(26)));
+            largeInput.append((char) ('a' + rand.nextInt(26)));
         }
         long startTime = System.currentTimeMillis();
         int result = countGoodSubsequences(largeInput.toString());
@@ -228,7 +228,7 @@ public class GoodSubsequencesCounter {
     /**
      * Helper method to run a test case and check if it passes or fails.
      *
-     * @param input The input string
+     * @param input    The input string
      * @param expected The expected output
      * @param testName The name of the test case
      */

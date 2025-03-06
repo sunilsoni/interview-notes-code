@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.march.caspex.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 WORKING 100%
 
@@ -53,6 +56,7 @@ public class MoveZeros {
 
     /**
      * Moves all zeros to the end of the array while preserving the order of non-zero elements.
+     *
      * @param nums The input list of integers
      * @return The modified list with zeros at the end
      */
@@ -61,10 +65,10 @@ public class MoveZeros {
         if (nums == null || nums.size() <= 1) {
             return nums;
         }
-        
+
         // Count of non-zero elements
         int nonZeroIndex = 0;
-        
+
         // First pass: move all non-zero elements to the front
         for (int i = 0; i < nums.size(); i++) {
             if (nums.get(i) != 0) {
@@ -72,26 +76,26 @@ public class MoveZeros {
                 nonZeroIndex++;
             }
         }
-        
+
         // Second pass: fill the remaining positions with zeros
         for (int i = nonZeroIndex; i < nums.size(); i++) {
             nums.set(i, 0);
         }
-        
+
         return nums;
     }
-    
+
     // Alternative solution using Java 8 Streams (less efficient for this problem)
     public static List<Integer> solveWithStreams(List<Integer> nums) {
         List<Integer> nonZeros = nums.stream()
-                                     .filter(n -> n != 0)
-                                     .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
-        
+                .filter(n -> n != 0)
+                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+
         int zeroCount = nums.size() - nonZeros.size();
         for (int i = 0; i < zeroCount; i++) {
             nonZeros.add(0);
         }
-        
+
         return nonZeros;
     }
 
@@ -102,13 +106,13 @@ public class MoveZeros {
         // Test cases
         testCase(Arrays.asList(0, 1, 0, 3, 12), Arrays.asList(1, 3, 12, 0, 0), "Example 1");
         testCase(Arrays.asList(0), Arrays.asList(0), "Example 2");
-        
+
         // Additional test cases
         testCase(Arrays.asList(1, 2, 3, 4, 5), Arrays.asList(1, 2, 3, 4, 5), "All non-zeros");
         testCase(Arrays.asList(0, 0, 0, 0, 0), Arrays.asList(0, 0, 0, 0, 0), "All zeros");
         testCase(Arrays.asList(1, 0, 2, 0, 3), Arrays.asList(1, 2, 3, 0, 0), "Alternating");
         testCase(new ArrayList<>(), new ArrayList<>(), "Empty list");
-        
+
         // Large test case
         List<Integer> largeInput = new ArrayList<>();
         List<Integer> largeExpected = new ArrayList<>();
@@ -125,14 +129,14 @@ public class MoveZeros {
         }
         testCase(largeInput, largeExpected, "Large input (10,000 elements)");
     }
-    
+
     /**
      * Helper method to test and validate a single test case
      */
     private static void testCase(List<Integer> input, List<Integer> expected, String testName) {
         List<Integer> original = new ArrayList<>(input);
         List<Integer> result = solve(input);
-        
+
         boolean passed = result.equals(expected);
         System.out.println("Test: " + testName);
         System.out.println("Input: " + original);

@@ -54,7 +54,7 @@ public class GoodSubsequencesSolution {
      * @param base Base of the exponentiation.
      * @param exp  Exponent.
      * @param mod  Modulus.
-     * @return (base^exp) % mod.
+     * @return (base ^ exp) % mod.
      */
     private static long fastPow(long base, long exp, long mod) {
         long result = 1;
@@ -113,7 +113,7 @@ public class GoodSubsequencesSolution {
             for (int f : freq) {
                 if (f >= x) {
                     long chooseX = nCr(f, x);    // Number of ways to pick x from f
-                    long term = (1 + chooseX) % MOD; 
+                    long term = (1 + chooseX) % MOD;
                     waysForX = (waysForX * term) % MOD;
                 }
             }
@@ -137,14 +137,14 @@ public class GoodSubsequencesSolution {
 
         // Additional Tests
         testCase("aaa", 3);    // Good subsequences: "a", "a", "a", "aa", "aa", "aa", "aaa"
-                               // Actually let's see which are "good":
-                               // Non-empty subsequences = 7 total: "a"(3 ways), "aa"(3 ways), "aaa"(1 way).
-                               // But "a", "aa", "aaa" are all good. Summation = 7.
-                               // Check result:
-                               // For x=1: freq=3 => (1 + C(3,1)=1+3=4) -1=3
-                               // For x=2: freq=3 => (1 + C(3,2)=1+3=4) -1=3
-                               // For x=3: freq=3 => (1 + C(3,3)=1+1=2) -1=1
-                               // total=3+3+1=7
+        // Actually let's see which are "good":
+        // Non-empty subsequences = 7 total: "a"(3 ways), "aa"(3 ways), "aaa"(1 way).
+        // But "a", "aa", "aaa" are all good. Summation = 7.
+        // Check result:
+        // For x=1: freq=3 => (1 + C(3,1)=1+3=4) -1=3
+        // For x=2: freq=3 => (1 + C(3,2)=1+3=4) -1=3
+        // For x=3: freq=3 => (1 + C(3,3)=1+1=2) -1=1
+        // total=3+3+1=7
         testCase("aaa", 7);
 
         // Edge Case: Empty string (though not explicitly stated if it can be empty)
@@ -155,7 +155,7 @@ public class GoodSubsequencesSolution {
         // We'll create a large string of repeated characters
         // to see if it runs within a reasonable time
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < 20000; i++) {
+        for (int i = 0; i < 20000; i++) {
             sb.append('a');
         }
         // We won't know the exact number easily by hand, 

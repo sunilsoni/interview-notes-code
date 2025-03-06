@@ -28,16 +28,16 @@ public class TwoSumSimple {
         for (int i = 0; i < nums.length; i++) {
             numWithIndex[i] = new int[]{nums[i], i};
         }
-        
+
         // Sort based on values
         Arrays.sort(numWithIndex, (a, b) -> a[0] - b[0]);
-        
+
         int left = 0;
         int right = nums.length - 1;
-        
+
         while (left < right) {
             int sum = numWithIndex[left][0] + numWithIndex[right][0];
-            
+
             if (sum == target) {
                 return new int[]{numWithIndex[left][1], numWithIndex[right][1]};
             } else if (sum < target) {
@@ -58,16 +58,16 @@ public class TwoSumSimple {
         int[] resultBrute = findTwoSumBruteForce(nums, target);
         System.out.println("Brute Force Result: " + Arrays.toString(resultBrute));
         if (resultBrute.length == 2) {
-            System.out.println("Found numbers: " + nums[resultBrute[0]] + " + " 
-                             + nums[resultBrute[1]] + " = " + target);
+            System.out.println("Found numbers: " + nums[resultBrute[0]] + " + "
+                    + nums[resultBrute[1]] + " = " + target);
         }
 
         // Test Two Pointer
         int[] resultTwoPointer = findTwoSumTwoPointer(nums, target);
         System.out.println("Two Pointer Result: " + Arrays.toString(resultTwoPointer));
         if (resultTwoPointer.length == 2) {
-            System.out.println("Found numbers: " + nums[resultTwoPointer[0]] + " + " 
-                             + nums[resultTwoPointer[1]] + " = " + target);
+            System.out.println("Found numbers: " + nums[resultTwoPointer[0]] + " + "
+                    + nums[resultTwoPointer[1]] + " = " + target);
         }
     }
 

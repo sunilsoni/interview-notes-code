@@ -1,9 +1,12 @@
 package com.interview.notes.code.year.y2025.march.common.test10;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class MultiLevelList {
-    
+
     public static List<Integer> flattenByLevel(Node head) {
         List<Integer> result = new ArrayList<>();
         if (head == null) return result;
@@ -33,7 +36,7 @@ public class MultiLevelList {
 
         return result;
     }
-    
+
     public static void main(String[] args) {
         // Example usage:
         // Construct a small multilevel list for demonstration:
@@ -41,13 +44,16 @@ public class MultiLevelList {
         Node n2 = new Node(2);
         Node n3 = new Node(3);
         Node n4 = new Node(4);
-        n1.next = n2; n2.next = n3; n3.next = n4;
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
 
         Node n5 = new Node(5);
         Node n9 = new Node(9);
         Node n10 = new Node(10);
-        n5.next = n9; n9.next = n10;
-        
+        n5.next = n9;
+        n9.next = n10;
+
         Node n8 = new Node(8);
 
         // Suppose n2 has a child list starting at n5

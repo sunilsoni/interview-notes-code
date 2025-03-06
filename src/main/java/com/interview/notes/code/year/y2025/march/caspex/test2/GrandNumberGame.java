@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.march.caspex.test2;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 WORKING 100%
 
@@ -66,14 +68,14 @@ Max score is **(1 × gcd(1,5) = 1) + (2 × gcd(2,4) = 4) + (3 × gcd(3,6) = 9) =
  */
 public class GrandNumberGame {
 
+    // DP memoization map: key is the bitmask representing used numbers.
+    private static Map<Integer, Integer> memo;
+
     // Function to compute the greatest common divisor (gcd) of two numbers.
     public static int gcd(int a, int b) {
         return b == 0 ? a : gcd(b, a % b);
     }
-    
-    // DP memoization map: key is the bitmask representing used numbers.
-    private static Map<Integer, Integer> memo;
-    
+
     // Main solver method
     public static int solve(List<Integer> arr) {
         int n = arr.size();
@@ -81,7 +83,7 @@ public class GrandNumberGame {
         // start recursion with mask 0 (none used) and operation number 1.
         return dfs(arr, 0, 1);
     }
-    
+
     // DFS function with bitmask to track used indices and op represents the current operation number.
     private static int dfs(List<Integer> arr, int mask, int op) {
         int n = arr.size();
@@ -89,7 +91,7 @@ public class GrandNumberGame {
         if (mask == (1 << n) - 1) {
             return 0;
         }
-        if(memo.containsKey(mask)){
+        if (memo.containsKey(mask)) {
             return memo.get(mask);
         }
         int maxScore = 0;
@@ -110,62 +112,63 @@ public class GrandNumberGame {
         memo.put(mask, maxScore);
         return maxScore;
     }
-    
+
     // Testing method: it runs test cases and prints PASS/FAIL for each.
     public static void main(String[] args) {
         // List of test cases: each test case contains an input array and expected output.
         List<TestCase> testCases = new ArrayList<>();
-        
+
         // Provided Test Case #1
         testCases.add(new TestCase(2, Arrays.asList(3, 4, 9, 5), 7));
         // Provided Test Case #2
         testCases.add(new TestCase(3, Arrays.asList(1, 2, 3, 4, 5, 6), 14));
-        
+
         // Additional test cases:
         // 1. Minimal input
         testCases.add(new TestCase(1, Arrays.asList(10, 20), 1 * gcd(10, 20)));
         // 2. Larger input but within constraints (N=4, 8 numbers)
         // For this test, we are printing the computed result for further inspection.
         testCases.add(new TestCase(4, Arrays.asList(12, 15, 18, 21, 24, 30, 35, 40), 0));
-        
+
         int passed = 0;
         for (TestCase tc : testCases) {
             int result = solve(tc.arr);
             // If expected is given as 0, print the computed result (dynamic case)
             if (tc.expected == 0) {
-                System.out.println("Test case with N = " + tc.n + " and input " + tc.arr 
-                                   + " computed result: " + result);
+                System.out.println("Test case with N = " + tc.n + " and input " + tc.arr
+                        + " computed result: " + result);
             } else if (result == tc.expected) {
-                System.out.println("Test case PASSED for input " + tc.arr 
-                                   + ". Expected: " + tc.expected + ", Got: " + result);
+                System.out.println("Test case PASSED for input " + tc.arr
+                        + ". Expected: " + tc.expected + ", Got: " + result);
                 passed++;
             } else {
-                System.out.println("Test case FAILED for input " + tc.arr 
-                                   + ". Expected: " + tc.expected + ", Got: " + result);
+                System.out.println("Test case FAILED for input " + tc.arr
+                        + ". Expected: " + tc.expected + ", Got: " + result);
             }
         }
-        
+
         // Additional large test: to handle maximum constraint scenario, N=10 (20 numbers)
         Random rand = new Random();
         int N = 10;
         List<Integer> largeInput = IntStream.range(0, 2 * N)
-                                    .mapToObj(i -> rand.nextInt(1_000_000_000) + 1)
-                                    .collect(Collectors.toList());
+                .mapToObj(i -> rand.nextInt(1_000_000_000) + 1)
+                .collect(Collectors.toList());
         // Time measurement for large test case.
         long startTime = System.currentTimeMillis();
         int largeResult = solve(largeInput);
         long endTime = System.currentTimeMillis();
-        System.out.println("Large test case (N=10) executed in " + (endTime - startTime) 
-                           + " ms, result: " + largeResult);
-        
-        System.out.println("Total passed test cases: " + passed + "/" + (testCases.size()-1)); // excluding dynamic test case
+        System.out.println("Large test case (N=10) executed in " + (endTime - startTime)
+                + " ms, result: " + largeResult);
+
+        System.out.println("Total passed test cases: " + passed + "/" + (testCases.size() - 1)); // excluding dynamic test case
     }
-    
+
     // Helper TestCase class to hold test case data.
     static class TestCase {
         int n;
         List<Integer> arr;
         int expected;
+
         public TestCase(int n, List<Integer> arr, int expected) {
             this.n = n;
             this.arr = arr;

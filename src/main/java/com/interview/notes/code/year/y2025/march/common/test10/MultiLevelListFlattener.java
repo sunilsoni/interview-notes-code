@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.march.common.test10;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class MultiLevelListFlattener {
     public static List<Integer> flattenBFS(Node head) {
@@ -51,11 +54,11 @@ public class MultiLevelListFlattener {
         n2.child = n5;
         n5.next = n9;
         n4.child = n8;
-        
+
         // Flatten via BFS
         List<Integer> bfsResult = flattenBFS(n1);
         System.out.println(bfsResult);
-        
+
         // If you want to print with Java 8 streams:
         bfsResult.stream().forEach(x -> System.out.print(x + " "));
     }

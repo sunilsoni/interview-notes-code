@@ -1,14 +1,18 @@
 package com.interview.notes.code.year.y2025.march.caspex.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class GrandNumberGame {
 
     /**
      * The solve method computes the maximum total score by choosing pairs of numbers
      * and multiplying their GCD by the operation number.
-     * 
+     *
      * @param arr List of 2N positive integers.
      * @return Maximum total score.
      */
@@ -22,10 +26,10 @@ public class GrandNumberGame {
 
     /**
      * Recursive helper that uses a bitmask to represent the state of used numbers.
-     * 
-     * @param arr The input array.
+     *
+     * @param arr  The input array.
      * @param mask A bitmask where a bit value of 1 indicates the number has been used.
-     * @param dp Memoization array.
+     * @param dp   Memoization array.
      * @return Maximum score from the current state.
      */
     private static int helper(List<Integer> arr, int mask, int[] dp) {
@@ -117,6 +121,13 @@ public class GrandNumberGame {
     }
 
     /**
+     * Main method to run all test cases.
+     */
+    public static void main(String[] args) {
+        runTests();
+    }
+
+    /**
      * Inner class to store test case information.
      */
     static class TestCase {
@@ -129,12 +140,5 @@ public class GrandNumberGame {
             this.expected = expected;
             this.description = description;
         }
-    }
-
-    /**
-     * Main method to run all test cases.
-     */
-    public static void main(String[] args) {
-        runTests();
     }
 }

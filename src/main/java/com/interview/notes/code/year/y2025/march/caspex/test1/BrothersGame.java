@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.march.caspex.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+
 /*
 WORKING 100%
 
@@ -89,21 +93,21 @@ public class BrothersGame {
             currentSum = Math.max(value, currentSum + value);
             maxGain = Math.max(maxGain, currentSum);
         }
-        
+
         // If all numbers are 1 then flipping any segment will reduce the count by at least one.
         // Thus, if maxGain is less than or equal to 0, we must subtract one from totalOnes.
         if (maxGain <= 0) {
             return totalOnes - 1;
         }
-        
+
         return totalOnes + maxGain;
     }
-    
+
     /**
      * A helper method to run tests and print the result.
      *
      * @param testName Name/description of the test.
-     * @param input List of integers representing the test array.
+     * @param input    List of integers representing the test array.
      * @param expected Expected output value.
      */
     public static void runTest(String testName, List<Integer> input, int expected) {
@@ -119,24 +123,24 @@ public class BrothersGame {
         // Provided test cases:
         runTest("Test Case 1", Arrays.asList(0, 1, 0, 0, 1), 4);
         runTest("Test Case 2", Arrays.asList(1, 0, 0, 1, 0, 0), 5);
-        
+
         // Additional test cases:
-        
+
         // Edge Case: All zeros
         runTest("Edge Case - All zeros", Arrays.asList(0, 0, 0, 0), 4);
-        
+
         // Edge Case: All ones (must flip at least one bit, so answer is total ones - 1)
         runTest("Edge Case - All ones", Arrays.asList(1, 1, 1, 1), 3);
-        
+
         // Edge Case: Single element, 0
         runTest("Edge Case - Single 0", Arrays.asList(0), 1);
-        
+
         // Edge Case: Single element, 1
         runTest("Edge Case - Single 1", Arrays.asList(1), 0);
-        
+
         // Random Test: Mixed small case
         runTest("Mixed Test", Arrays.asList(1, 0, 1, 0, 1, 0), 4);
-        
+
         // Large Input Test: Create a large array (100 elements)
         List<Integer> largeInput = new ArrayList<>();
         Random rand = new Random();
