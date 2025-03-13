@@ -1,25 +1,14 @@
 package com.interview.notes.code.year.y2025.march.caspex.test5;
 
 import java.util.*;
-import java.util.stream.*;
 
 public class ZigzagTraversalTest {
 
-    // Definition for a binary tree node.
-    static class TreeNode {
-        int val;
-        TreeNode left, right;
-        // Constructor: sets the node's value.
-        TreeNode(int val) {
-            this.val = val;
-        }
-    }
-
     /**
      * Performs a zigzag (spiral order) traversal on a binary tree.
-     * Traversal rule: 
-     *   - Odd levels (level 1, 3, ...): traverse right-to-left.
-     *   - Even levels (level 2, 4, ...): traverse left-to-right.
+     * Traversal rule:
+     * - Odd levels (level 1, 3, ...): traverse right-to-left.
+     * - Even levels (level 2, 4, ...): traverse left-to-right.
      * (Note: since level 1 has only one element, the order is the same.)
      *
      * @param root The root node of the binary tree.
@@ -39,7 +28,7 @@ public class ZigzagTraversalTest {
         // Flag to indicate level order.
         // Start with level 1 (odd level) where we want right-to-left order.
         // (Since there is only one element at level 1, the order doesn't change.)
-        boolean isOddLevel = true; 
+        boolean isOddLevel = true;
 
         // Process the tree level by level.
         while (!queue.isEmpty()) {
@@ -82,9 +71,9 @@ public class ZigzagTraversalTest {
     /**
      * A helper method to run a single test case.
      *
-     * @param testName  Name or description of the test.
-     * @param root      Root of the binary tree.
-     * @param expected  Expected output array.
+     * @param testName Name or description of the test.
+     * @param root     Root of the binary tree.
+     * @param expected Expected output array.
      */
     public static void runTest(String testName, TreeNode root, int[] expected) {
         int[] output = getLevelSpiral(root);
@@ -100,9 +89,9 @@ public class ZigzagTraversalTest {
     /**
      * Build the first test tree from the problem's Example 1.
      * Tree structure:
-     *         10
-     *        /  \
-     *      30    20
+     * 10
+     * /  \
+     * 30    20
      *
      * @return The root node of the tree.
      */
@@ -117,11 +106,11 @@ public class ZigzagTraversalTest {
     /**
      * Build the second test tree from the problem's Example 2.
      * Tree structure:
-     *         2
-     *       /   \
-     *      4     6
-     *     / \
-     *    8  10
+     * 2
+     * /   \
+     * 4     6
+     * / \
+     * 8  10
      *
      * @return The root node of the tree.
      */
@@ -136,7 +125,7 @@ public class ZigzagTraversalTest {
 
     /**
      * Builds a large binary tree (complete binary tree) for performance testing.
-     * 
+     *
      * @param totalNodes The total number of nodes to include.
      * @return The root node of the large tree.
      */
@@ -193,6 +182,17 @@ public class ZigzagTraversalTest {
         } else {
             System.out.println("Test Case 5 (Large Tree): FAIL");
             System.out.println("Expected node count: " + totalNodes + ", but got: " + largeOutput.length);
+        }
+    }
+
+    // Definition for a binary tree node.
+    static class TreeNode {
+        int val;
+        TreeNode left, right;
+
+        // Constructor: sets the node's value.
+        TreeNode(int val) {
+            this.val = val;
         }
     }
 }

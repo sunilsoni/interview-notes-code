@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.march.caspex.test3;
 
 import java.util.*;
-import java.util.stream.Collectors;  
 /*
 
 ### **Problem Statement: LRU Cache Implementation**
@@ -74,61 +73,13 @@ PUT,11,25 PUT,22,50 PUT,11,75 GET,11 GET,22
 5. `GET,22` → Return `50`
 
  */
+
 /**
  * LRUCacheImplementation demonstrates an LRU cache using a LinkedHashMap.
  * The cache supports GET and PUT operations while evicting the least recently used
  * entry when capacity is exceeded.
  */
 public class LRUCacheImplementation {
-
-    /**
-     * LRUCache class extends LinkedHashMap to leverage its access-ordering.
-     * Using LinkedHashMap with 'accessOrder' flag ensures that any GET or PUT
-     * operation moves the accessed entry to the end (most recently used).
-     */
-    static class LRUCache extends LinkedHashMap<Integer, Integer> {
-        private int capacity;  // Maximum number of elements allowed in the cache
-
-        /**
-         * Constructor initializes the cache with a specific capacity.
-         * @param capacity the maximum number of elements
-         */
-        public LRUCache(int capacity) {
-            // 'true' sets the map to access-order. The initial capacity and load factor are standard.
-            super(capacity, 0.75f, true);
-            this.capacity = capacity;
-        }
-
-        /**
-         * This method is automatically called after each put() operation.
-         * It determines whether the eldest entry should be removed.
-         * @param eldest the eldest entry in the map
-         * @return true if the map size exceeds capacity (causing eviction)
-         */
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
-            return size() > capacity;
-        }
-
-        /**
-         * Retrieves the value for the given key.
-         * If the key is not present, returns -1.
-         * @param key the key to retrieve
-         * @return the value associated with the key or -1 if not found
-         */
-        public int getValue(int key) {
-            return getOrDefault(key, -1);
-        }
-
-        /**
-         * Inserts or updates the key with the specified value.
-         * @param key the key to insert/update
-         * @param value the value to associate with the key
-         */
-        public void putValue(int key, int value) {
-            put(key, value);
-        }
-    }
 
     /**
      * The solve method processes a list of operations on the LRU Cache.
@@ -157,21 +108,6 @@ public class LRUCacheImplementation {
             }
         }
         return results;  // Return the list of GET results
-    }
-
-    /**
-     * Test case holder to group capacity, operations, and expected output.
-     */
-    static class TestCase {
-        int capacity;
-        List<String> operations;
-        List<Integer> expected;
-
-        public TestCase(int capacity, List<String> operations, List<Integer> expected) {
-            this.capacity = capacity;
-            this.operations = operations;
-            this.expected = expected;
-        }
     }
 
     /**
@@ -245,5 +181,73 @@ public class LRUCacheImplementation {
     public static void main(String[] args) {
         // Run all test cases to verify correctness and performance.
         runTests();
+    }
+
+    /**
+     * LRUCache class extends LinkedHashMap to leverage its access-ordering.
+     * Using LinkedHashMap with 'accessOrder' flag ensures that any GET or PUT
+     * operation moves the accessed entry to the end (most recently used).
+     */
+    static class LRUCache extends LinkedHashMap<Integer, Integer> {
+        private int capacity;  // Maximum number of elements allowed in the cache
+
+        /**
+         * Constructor initializes the cache with a specific capacity.
+         *
+         * @param capacity the maximum number of elements
+         */
+        public LRUCache(int capacity) {
+            // 'true' sets the map to access-order. The initial capacity and load factor are standard.
+            super(capacity, 0.75f, true);
+            this.capacity = capacity;
+        }
+
+        /**
+         * This method is automatically called after each put() operation.
+         * It determines whether the eldest entry should be removed.
+         *
+         * @param eldest the eldest entry in the map
+         * @return true if the map size exceeds capacity (causing eviction)
+         */
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+            return size() > capacity;
+        }
+
+        /**
+         * Retrieves the value for the given key.
+         * If the key is not present, returns -1.
+         *
+         * @param key the key to retrieve
+         * @return the value associated with the key or -1 if not found
+         */
+        public int getValue(int key) {
+            return getOrDefault(key, -1);
+        }
+
+        /**
+         * Inserts or updates the key with the specified value.
+         *
+         * @param key   the key to insert/update
+         * @param value the value to associate with the key
+         */
+        public void putValue(int key, int value) {
+            put(key, value);
+        }
+    }
+
+    /**
+     * Test case holder to group capacity, operations, and expected output.
+     */
+    static class TestCase {
+        int capacity;
+        List<String> operations;
+        List<Integer> expected;
+
+        public TestCase(int capacity, List<String> operations, List<Integer> expected) {
+            this.capacity = capacity;
+            this.operations = operations;
+            this.expected = expected;
+        }
     }
 }

@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.march.caspex.test3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
+
 /*
 WORKING 100
 
@@ -57,9 +60,10 @@ Given an integer array `nums[]`, move all `0`s to the end of the array while mai
 
  */
 public class MoveZeroes {
-    
+
     /**
      * Moves all zeroes to the end of the array while maintaining relative order of non-zero elements
+     *
      * @param nums Input list of integers
      * @return Modified list with zeros moved to the end
      */
@@ -68,24 +72,24 @@ public class MoveZeroes {
         if (nums == null || nums.isEmpty()) {
             return nums;
         }
-        
+
         int nonZeroPos = 0; // Position where next non-zero element should go
-        
+
         // First pass: place all non-zero elements in their correct positions
         for (int i = 0; i < nums.size(); i++) {
             if (nums.get(i) != 0) {
                 nums.set(nonZeroPos++, nums.get(i));
             }
         }
-        
+
         // Second pass: fill remaining positions with zeroes
         while (nonZeroPos < nums.size()) {
             nums.set(nonZeroPos++, 0);
         }
-        
+
         return nums;
     }
-    
+
     // Alternative implementation using Java 8 Stream (more concise but creates temporary collections)
     public static List<Integer> solveUsingStream(List<Integer> nums) {
         // Count zeroes and filter non-zero elements
@@ -93,34 +97,34 @@ public class MoveZeroes {
         List<Integer> result = new ArrayList<>(nums.stream()
                 .filter(num -> num != 0)
                 .collect(Collectors.toList()));
-        
+
         // Add zeroes at the end
         for (int i = 0; i < zeroCount; i++) {
             result.add(0);
         }
-        
+
         return result;
     }
-    
+
     /**
      * Test method to verify the solution against test cases
      */
     public static void main(String[] args) {
         // Test case 1: Example from problem
         runTest(Arrays.asList(0, 1, 0, 3, 12), Arrays.asList(1, 3, 12, 0, 0), "Basic test");
-        
+
         // Test case 2: Single element
         runTest(Arrays.asList(0), Arrays.asList(0), "Single zero");
-        
+
         // Test case 3: No zeroes
         runTest(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3), "No zeroes");
-        
+
         // Test case 4: All zeroes
         runTest(Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 0), "All zeroes");
-        
+
         // Test case 5: Zeroes at the end already
         runTest(Arrays.asList(1, 2, 0, 0), Arrays.asList(1, 2, 0, 0), "Zeroes at end");
-        
+
         // Test case 6: Large input
         List<Integer> largeInput = new ArrayList<>();
         for (int i = 0; i < 100000; i++) {
@@ -128,7 +132,7 @@ public class MoveZeroes {
         }
         System.out.println("Large input test: " + testLargeInput(largeInput));
     }
-    
+
     private static void runTest(List<Integer> input, List<Integer> expected, String testName) {
         List<Integer> inputCopy = new ArrayList<>(input);
         List<Integer> result = solve(inputCopy);
@@ -139,13 +143,13 @@ public class MoveZeroes {
             System.out.println("  Got: " + result);
         }
     }
-    
+
     private static boolean testLargeInput(List<Integer> input) {
         List<Integer> inputCopy = new ArrayList<>(input);
         long startTime = System.currentTimeMillis();
         List<Integer> result = solve(inputCopy);
         long endTime = System.currentTimeMillis();
-        
+
         // Verify correctness - all non-zeroes come first, then all zeroes
         int firstZeroPos = -1;
         for (int i = 0; i < result.size(); i++) {
@@ -155,7 +159,7 @@ public class MoveZeroes {
                 return false; // Found non-zero after zeroes started
             }
         }
-        
+
         System.out.println("Large input execution time: " + (endTime - startTime) + "ms");
         return true;
     }

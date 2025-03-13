@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.march.amazon.test1;
 
-import java.util.*;  // Import utilities for data structures and Random
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
 /*
 
@@ -25,17 +28,10 @@ Result: "GOAT", "TAR", "ART"
 // Main class for solving the board word search problem
 public class WordSearchSolver {
 
-    // Inner class representing a node in the Trie (prefix tree)
-    static class TrieNode {
-        // Array to hold children nodes for each letter A-Z.
-        TrieNode[] children = new TrieNode[26];
-        // When non-null, this field indicates the node marks the end of a word.
-        String word = null;
-    }
-
     /**
      * Builds a Trie from an array of words.
      * Each word is inserted letter by letter.
+     *
      * @param words - array of dictionary words
      * @return the root node of the Trie
      */
@@ -62,10 +58,11 @@ public class WordSearchSolver {
     /**
      * Performs a DFS search from cell (i, j) on the board using the Trie.
      * Marks found words and adds them to the result set.
-     * @param board - 2D array representing the board
-     * @param i - current row index
-     * @param j - current column index
-     * @param node - current Trie node in the search path
+     *
+     * @param board  - 2D array representing the board
+     * @param i      - current row index
+     * @param j      - current column index
+     * @param node   - current Trie node in the search path
      * @param result - set to store found words
      */
     private static void dfs(char[][] board, int i, int j, TrieNode node, Set<String> result) {
@@ -96,6 +93,7 @@ public class WordSearchSolver {
 
     /**
      * Finds all dictionary words present in the board.
+     *
      * @param board - 2D char array representing the board
      * @param words - array of dictionary words
      * @return a set of words that are found on the board
@@ -119,9 +117,9 @@ public class WordSearchSolver {
         // Sample board for a minimal reproducible example.
         // The board is chosen such that it can produce the words: "GOAT", "TAR", "ART".
         char[][] board = {
-            {'G', 'O', 'T', 'R'},
-            {'T', 'A', 'R', 'T'},
-            {'G', 'O', 'A', 'T'}
+                {'G', 'O', 'T', 'R'},
+                {'T', 'A', 'R', 'T'},
+                {'G', 'O', 'A', 'T'}
         };
 
         // Dictionary of words.
@@ -145,9 +143,9 @@ public class WordSearchSolver {
         // Test Case 1: Basic test from the minimal example.
         {
             char[][] board = {
-                {'G', 'O', 'T', 'R'},
-                {'T', 'A', 'R', 'T'},
-                {'G', 'O', 'A', 'T'}
+                    {'G', 'O', 'T', 'R'},
+                    {'T', 'A', 'R', 'T'},
+                    {'G', 'O', 'A', 'T'}
             };
             String[] dict = {"GOAT", "TAR", "ART"};
             Set<String> expected = new HashSet<>(Arrays.asList("GOAT", "TAR", "ART"));
@@ -163,8 +161,8 @@ public class WordSearchSolver {
         // Test Case 2: Word not found in a small board.
         {
             char[][] board = {
-                {'A', 'B'},
-                {'C', 'D'}
+                    {'A', 'B'},
+                    {'C', 'D'}
             };
             String[] dict = {"EFG"};
             Set<String> expected = new HashSet<>();
@@ -223,5 +221,13 @@ public class WordSearchSolver {
         } else {
             System.out.println("Some test cases FAILED.");
         }
+    }
+
+    // Inner class representing a node in the Trie (prefix tree)
+    static class TrieNode {
+        // Array to hold children nodes for each letter A-Z.
+        TrieNode[] children = new TrieNode[26];
+        // When non-null, this field indicates the node marks the end of a word.
+        String word = null;
     }
 }

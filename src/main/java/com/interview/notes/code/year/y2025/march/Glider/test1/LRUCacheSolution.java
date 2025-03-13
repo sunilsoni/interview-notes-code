@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.march.Glider.test1;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 
 
@@ -97,28 +99,6 @@ Final output: **`75 50`**
  */
 class LRUCacheSolution {
 
-    private static class LRUCache extends LinkedHashMap<Integer, Integer> {
-        private final int capacity;
-
-        LRUCache(int capacity) {
-            super(capacity, 0.75f, true);
-            this.capacity = capacity;
-        }
-
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
-            return size() > capacity;
-        }
-
-        public int get(int key) {
-            return getOrDefault(key, -1);
-        }
-
-        public void put(int key, int value) {
-            super.put(key, value);
-        }
-    }
-
     public static List<Integer> solve(int capacity, List<String> ar) {
         LRUCache cache = new LRUCache(capacity);
         List<Integer> result = new ArrayList<>();
@@ -150,46 +130,68 @@ class LRUCacheSolution {
 
         // Provided Test Case 1
         verify(
-            Arrays.asList(-1, -1, 150),
-            solve(2, Arrays.asList("GET,2", "PUT,1,100", "PUT,2,125", "PUT,3,150", "GET,1", "GET,3")),
-            "Test Case 1"
+                Arrays.asList(-1, -1, 150),
+                solve(2, Arrays.asList("GET,2", "PUT,1,100", "PUT,2,125", "PUT,3,150", "GET,1", "GET,3")),
+                "Test Case 1"
         );
 
         // Provided Test Case 2
         verify(
-            Arrays.asList(75, 50),
-            solve(3, Arrays.asList("PUT,11,25", "PUT,22,50", "PUT,11,75", "GET,11", "GET,22")),
-            "Test Case 2"
+                Arrays.asList(75, 50),
+                solve(3, Arrays.asList("PUT,11,25", "PUT,22,50", "PUT,11,75", "GET,11", "GET,22")),
+                "Test Case 2"
         );
 
         // Additional edge test cases:
 
         // Empty cache test
         verify(
-            Arrays.asList(-1),
-            solve(1, Arrays.asList("GET,10")),
-            "Empty Cache Test"
+                Arrays.asList(-1),
+                solve(1, Arrays.asList("GET,10")),
+                "Empty Cache Test"
         );
 
         // Capacity overflow test
         verify(
-            Arrays.asList(-1, 200),
-            solve(1, Arrays.asList("PUT,5,100", "PUT,10,200", "GET,5", "GET,10")),
-            "Capacity Overflow Test"
+                Arrays.asList(-1, 200),
+                solve(1, Arrays.asList("PUT,5,100", "PUT,10,200", "GET,5", "GET,10")),
+                "Capacity Overflow Test"
         );
 
         // Large input performance test
         int largeCapacity = 10000;
         List<String> largeInput = IntStream.rangeClosed(1, 20000)
-            .mapToObj(i -> "PUT," + i + "," + (i * 10))
-            .collect(Collectors.toList());
+                .mapToObj(i -> "PUT," + i + "," + (i * 10))
+                .collect(Collectors.toList());
         largeInput.add("GET,1");          // Should be evicted (-1)
         largeInput.add("GET,20000");      // Should be available (200000)
 
         verify(
-            Arrays.asList(-1, 200000),
-            solve(largeCapacity, largeInput),
-            "Large Input Performance Test"
+                Arrays.asList(-1, 200000),
+                solve(largeCapacity, largeInput),
+                "Large Input Performance Test"
         );
+    }
+
+    private static class LRUCache extends LinkedHashMap<Integer, Integer> {
+        private final int capacity;
+
+        LRUCache(int capacity) {
+            super(capacity, 0.75f, true);
+            this.capacity = capacity;
+        }
+
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+            return size() > capacity;
+        }
+
+        public int get(int key) {
+            return getOrDefault(key, -1);
+        }
+
+        public void put(int key, int value) {
+            super.put(key, value);
+        }
     }
 }

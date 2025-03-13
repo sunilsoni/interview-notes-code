@@ -1,10 +1,10 @@
 package com.interview.notes.code.year.y2025.march.caspex.test3;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 public class MoveZeroesEnd {
-    
+
     /**
      * This method moves all 0's to the end of the given list in-place
      * while preserving the order of non-zero elements.
@@ -14,8 +14,8 @@ public class MoveZeroesEnd {
      */
     public static List<Integer> solve(List<Integer> nums) {
         // 1) Create a pointer to track where the next non-zero element should go.
-        int insertPos = 0;  
-        
+        int insertPos = 0;
+
         // 2) Loop through the list
         for (int i = 0; i < nums.size(); i++) {
             // 3) If element is not zero, place it at 'insertPos' and increment 'insertPos'.
@@ -24,17 +24,17 @@ public class MoveZeroesEnd {
                 insertPos++;
             }
         }
-        
+
         // 4) After we have moved all non-zero elements, fill the rest with zeros.
         while (insertPos < nums.size()) {
             nums.set(insertPos, 0);
             insertPos++;
         }
-        
+
         // 5) Return the modified list (we have done an in-place operation).
         return nums;
     }
-    
+
     /**
      * Main method to run test cases and show PASS/FAIL status.
      */
@@ -88,9 +88,9 @@ public class MoveZeroesEnd {
         {
             List<Integer> largeData = new ArrayList<>();
             // For illustration, let's create 100 elements, but you can do a million or more for stress tests.
-            for(int i = 0; i < 100; i++){
+            for (int i = 0; i < 100; i++) {
                 // Randomly put zero or a value i
-                if(i % 10 == 0) {
+                if (i % 10 == 0) {
                     largeData.add(0);
                 } else {
                     largeData.add(i);
@@ -98,9 +98,9 @@ public class MoveZeroesEnd {
             }
             // Make a copy of the original data to check final arrangement
             List<Integer> originalCopy = new ArrayList<>(largeData);
-            
+
             solve(largeData); // in-place modification
-            
+
             // Validation 1: The number of zeros should be the same
             long originalZeroCount = originalCopy.stream().filter(x -> x == 0).count();
             long newZeroCount = largeData.stream().filter(x -> x == 0).count();

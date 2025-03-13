@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.march.amazon.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class AmazonSearchAutocomplete {
 

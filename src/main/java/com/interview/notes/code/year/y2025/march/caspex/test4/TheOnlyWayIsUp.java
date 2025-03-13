@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.march.caspex.test4;
 
-import java.util.*;  // Import utilities for lists and arrays
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 /*
 WORKING 100
 
@@ -74,6 +77,7 @@ Find the **total number of times** you need to add `B` to make `ar[]` a rising s
 
 ---
  */
+
 /**
  * Class to solve "The Only Way is Up" problem.
  * The goal is to convert a given sequence into a strictly increasing (rising) sequence by adding B to elements as needed.
@@ -90,21 +94,21 @@ public class TheOnlyWayIsUp {
      */
     public static int solve(int B, List<Integer> ar) {
         int totalAdditions = 0; // Counter to track total additions required
-        
+
         // Iterate through the array starting from the second element (index 1)
         for (int i = 1; i < ar.size(); i++) {
             // Check if the current element is not strictly greater than the previous element
             if (ar.get(i) <= ar.get(i - 1)) {
                 // Calculate the difference needed: (previous element + 1) minus the current element
                 int diff = ar.get(i - 1) + 1 - ar.get(i);
-                
+
                 // Compute the number of times to add B using ceiling division:
                 // (diff + B - 1) / B gives the smallest integer >= diff/B
                 int addTimes = (diff + B - 1) / B;
-                
+
                 // Increase the total additions by the number of times B was added
                 totalAdditions += addTimes;
-                
+
                 // Update the current element by adding B addTimes times
                 ar.set(i, ar.get(i) + addTimes * B);
             }

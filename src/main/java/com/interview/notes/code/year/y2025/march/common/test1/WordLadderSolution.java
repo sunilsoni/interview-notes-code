@@ -1,14 +1,14 @@
 package com.interview.notes.code.year.y2025.march.common.test1;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.IntStream;
 
 public class WordLadderSolution {
 
     // Simulated dictionary for demonstration.
     // In a real-world scenario, this would be replaced with an actual dictionary lookup.
     private static Set<String> dictionary = new HashSet<>(Arrays.asList(
-        "hit", "hot", "dot", "dog", "cog", "lot", "log"
+            "hit", "hot", "dot", "dog", "cog", "lot", "log"
     ));
 
     // Main method to run test cases.
@@ -95,14 +95,14 @@ public class WordLadderSolution {
     public static void testWordLadder() {
         // Define test cases with start word, end word, and the expected transformation sequence.
         List<TestCase> testCases = Arrays.asList(
-            // Test case where a valid transformation exists.
-            new TestCase("hit", "cog", Arrays.asList("hit", "hot", "dot", "dog", "cog")),
-            // Another valid transformation example.
-            new TestCase("hit", "log", Arrays.asList("hit", "hot", "lot", "log")),
-            // Edge case: start and end are the same.
-            new TestCase("hit", "hit", Arrays.asList("hit")),
-            // Fail case: no possible transformation.
-            new TestCase("hit", "xyz", Collections.emptyList())
+                // Test case where a valid transformation exists.
+                new TestCase("hit", "cog", Arrays.asList("hit", "hot", "dot", "dog", "cog")),
+                // Another valid transformation example.
+                new TestCase("hit", "log", Arrays.asList("hit", "hot", "lot", "log")),
+                // Edge case: start and end are the same.
+                new TestCase("hit", "hit", Arrays.asList("hit")),
+                // Fail case: no possible transformation.
+                new TestCase("hit", "xyz", Collections.emptyList())
         );
 
         int testCaseNumber = 1;

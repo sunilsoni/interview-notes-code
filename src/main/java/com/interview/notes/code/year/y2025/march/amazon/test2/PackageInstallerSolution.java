@@ -6,112 +6,11 @@ import java.util.*;
 public class PackageInstallerSolution {
 
     /**
-     * Represents a software package with a name and its dependent packages.
-     */
-    public static class Package {
-        // Name of the package.
-        private String name;
-        // List of dependent packages.
-        private List<Package> dependencies;
-
-        /**
-         * Constructor initializes the package with a name and an empty list for dependencies.
-         */
-        public Package(String name) {
-            this.name = name;
-            this.dependencies = new ArrayList<>();
-        }
-
-        /**
-         * Adds a dependency to this package.
-         * @param dependency The package that this package depends on.
-         */
-        public void addDependency(Package dependency) {
-            this.dependencies.add(dependency);
-        }
-
-        /**
-         * Getter for package name.
-         */
-        public String getName() {
-            return name;
-        }
-
-        /**
-         * Getter for package dependencies.
-         */
-        public List<Package> getDependencies() {
-            return dependencies;
-        }
-    }
-
-    /**
-     * PackageInstaller is responsible for installing a package and all its dependencies.
-     * It simulates installation by printing out the package names.
-     */
-    public static class PackageInstaller {
-        // List to record installation order (useful for testing the correct sequence).
-        private List<String> installationOrder = new ArrayList<>();
-
-        /**
-         * Public method to install a package.
-         * It initializes a set to track already installed packages to avoid duplicates.
-         * @param pkg The package to install.
-         */
-        public void install(Package pkg) {
-            // Set to track installed package names.
-            Set<String> installed = new HashSet<>();
-            // Begin recursive installation.
-            installRecursive(pkg, installed);
-        }
-
-        /**
-         * Recursively installs the given package and its dependencies.
-         * It uses a visited set to avoid re-installing packages.
-         * @param pkg The current package to install.
-         * @param installed Set containing names of packages that have been installed.
-         */
-        private void installRecursive(Package pkg, Set<String> installed) {
-            // If already installed, skip this package.
-            if (installed.contains(pkg.getName())) {
-                return;
-            }
-            // Use Java 8 streams to iterate over each dependency.
-            pkg.getDependencies().stream().forEach(dependency -> {
-                // Recursively install each dependency.
-                installRecursive(dependency, installed);
-            });
-            // Simulate the installation of the current package.
-            performInstallation(pkg);
-            // Mark the current package as installed.
-            installed.add(pkg.getName());
-            // Record the installation order for testing.
-            installationOrder.add(pkg.getName());
-        }
-
-        /**
-         * Simulates the installation logic.
-         * In a real scenario, the platform-specific team would implement actual installation steps.
-         * @param pkg The package being installed.
-         */
-        private void performInstallation(Package pkg) {
-            System.out.println("Installing package: " + pkg.getName());
-        }
-
-        /**
-         * Getter for the recorded installation order.
-         * @return List of package names in the order they were installed.
-         */
-        public List<String> getInstallationOrder() {
-            return installationOrder;
-        }
-    }
-
-    /**
      * Test method to run a test case.
      * It installs a root package and compares the installation order against the expected order.
-     * @param testCaseName The name of the test case.
-     * @param rootPackage The starting package for installation.
+     *
+     * @param testCaseName  The name of the test case.
+     * @param rootPackage   The starting package for installation.
      * @param expectedOrder The expected installation order.
      */
     public static void runTestCase(String testCaseName, Package rootPackage, List<String> expectedOrder) {
@@ -188,5 +87,112 @@ public class PackageInstallerSolution {
         Collections.reverse(expectedChainOrder);
         // Run the large chain test case.
         runTestCase("Large Chain Test", chainRoot, expectedChainOrder);
+    }
+
+    /**
+     * Represents a software package with a name and its dependent packages.
+     */
+    public static class Package {
+        // Name of the package.
+        private String name;
+        // List of dependent packages.
+        private List<Package> dependencies;
+
+        /**
+         * Constructor initializes the package with a name and an empty list for dependencies.
+         */
+        public Package(String name) {
+            this.name = name;
+            this.dependencies = new ArrayList<>();
+        }
+
+        /**
+         * Adds a dependency to this package.
+         *
+         * @param dependency The package that this package depends on.
+         */
+        public void addDependency(Package dependency) {
+            this.dependencies.add(dependency);
+        }
+
+        /**
+         * Getter for package name.
+         */
+        public String getName() {
+            return name;
+        }
+
+        /**
+         * Getter for package dependencies.
+         */
+        public List<Package> getDependencies() {
+            return dependencies;
+        }
+    }
+
+    /**
+     * PackageInstaller is responsible for installing a package and all its dependencies.
+     * It simulates installation by printing out the package names.
+     */
+    public static class PackageInstaller {
+        // List to record installation order (useful for testing the correct sequence).
+        private List<String> installationOrder = new ArrayList<>();
+
+        /**
+         * Public method to install a package.
+         * It initializes a set to track already installed packages to avoid duplicates.
+         *
+         * @param pkg The package to install.
+         */
+        public void install(Package pkg) {
+            // Set to track installed package names.
+            Set<String> installed = new HashSet<>();
+            // Begin recursive installation.
+            installRecursive(pkg, installed);
+        }
+
+        /**
+         * Recursively installs the given package and its dependencies.
+         * It uses a visited set to avoid re-installing packages.
+         *
+         * @param pkg       The current package to install.
+         * @param installed Set containing names of packages that have been installed.
+         */
+        private void installRecursive(Package pkg, Set<String> installed) {
+            // If already installed, skip this package.
+            if (installed.contains(pkg.getName())) {
+                return;
+            }
+            // Use Java 8 streams to iterate over each dependency.
+            pkg.getDependencies().stream().forEach(dependency -> {
+                // Recursively install each dependency.
+                installRecursive(dependency, installed);
+            });
+            // Simulate the installation of the current package.
+            performInstallation(pkg);
+            // Mark the current package as installed.
+            installed.add(pkg.getName());
+            // Record the installation order for testing.
+            installationOrder.add(pkg.getName());
+        }
+
+        /**
+         * Simulates the installation logic.
+         * In a real scenario, the platform-specific team would implement actual installation steps.
+         *
+         * @param pkg The package being installed.
+         */
+        private void performInstallation(Package pkg) {
+            System.out.println("Installing package: " + pkg.getName());
+        }
+
+        /**
+         * Getter for the recorded installation order.
+         *
+         * @return List of package names in the order they were installed.
+         */
+        public List<String> getInstallationOrder() {
+            return installationOrder;
+        }
     }
 }

@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.march.common.test9;
 
 import java.util.*;
-import java.util.stream.*; // Import stream API utilities
+import java.util.stream.Collectors;
 
 /**
  * DuplicateCounter class that processes input to count duplicate occurrences.
@@ -23,12 +23,12 @@ public class DuplicateCounter {
 
         // Group tokens by their value and count the occurrences using streams.
         Map<String, Long> frequencyMap = Arrays.stream(tokens)
-            .collect(Collectors.groupingBy(token -> token, Collectors.counting()));
+                .collect(Collectors.groupingBy(token -> token, Collectors.counting()));
 
         // Filter out tokens that occur only once; keep only duplicates.
         Map<String, Long> duplicates = frequencyMap.entrySet().stream()
-            .filter(entry -> entry.getValue() > 1)
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                .filter(entry -> entry.getValue() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         return duplicates;
     }
@@ -43,10 +43,10 @@ public class DuplicateCounter {
     public static void main(String[] args) {
         // Example input provided in the problem statement.
         String input = "2 1 3 1 2 s 5 a 1 a 3";
-        
+
         // Calculate duplicate occurrences.
         Map<String, Long> duplicates = countDuplicates(input);
-        
+
         // Output the duplicates and their counts.
         System.out.println("Duplicate occurrences: " + duplicates);
 
@@ -63,11 +63,11 @@ public class DuplicateCounter {
     public static void runTests() {
         // Create a list to store different test cases.
         List<TestCase> testCases = new ArrayList<>();
-        
+
         // Test case 1: Provided example input.
-        testCases.add(new TestCase("2 1 3 1 2 s 5 a 1 a 3", 
-            Map.of("2", 2L, "1", 3L, "3", 2L, "a", 2L)));
-        
+        testCases.add(new TestCase("2 1 3 1 2 s 5 a 1 a 3",
+                Map.of("2", 2L, "1", 3L, "3", 2L, "a", 2L)));
+
         // Test case 2: No duplicates present.
         testCases.add(new TestCase("x y z", new HashMap<>()));
 
@@ -76,7 +76,7 @@ public class DuplicateCounter {
 
         // Test case 4: Mixed numbers with duplicates.
         testCases.add(new TestCase("1 2 3 2 1", Map.of("1", 2L, "2", 2L)));
-        
+
         // Test case 5: Large input test with a repeated token.
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 10000; i++) {
@@ -92,13 +92,13 @@ public class DuplicateCounter {
             Map<String, Long> result = countDuplicates(tc.input);
             // Check if the result matches the expected output.
             if (!result.equals(tc.expected)) {
-                System.out.println("Test case " + (i+1) + " FAILED.");
+                System.out.println("Test case " + (i + 1) + " FAILED.");
                 System.out.println("Input: " + tc.input);
                 System.out.println("Expected: " + tc.expected);
                 System.out.println("Got: " + result);
                 allPass = false;
             } else {
-                System.out.println("Test case " + (i+1) + " PASSED.");
+                System.out.println("Test case " + (i + 1) + " PASSED.");
             }
         }
         // Overall test result.

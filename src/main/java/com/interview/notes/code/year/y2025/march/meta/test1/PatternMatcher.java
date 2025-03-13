@@ -9,7 +9,7 @@ public class PatternMatcher {
 
         while (i < pattern.length() && j < str.length()) {
             char ch = pattern.charAt(i);
-            
+
             // If character is a digit, calculate the number to skip
             if (Character.isDigit(ch)) {
                 int num = 0;
@@ -50,6 +50,6 @@ public class PatternMatcher {
     private static void test(String pattern, String str, boolean expected) {
         boolean result = matchesPattern(pattern, str);
         System.out.println((result == expected ? "PASS" : "FAIL") +
-            " | Pattern: " + pattern + " | String: " + (str.length() > 20 ? "[large input]" : str));
+                " | Pattern: " + pattern + " | String: " + (str.length() > 20 ? "[large input]" : str));
     }
 }

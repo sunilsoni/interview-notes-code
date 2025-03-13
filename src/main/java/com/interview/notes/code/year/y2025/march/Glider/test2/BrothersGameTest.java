@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.march.Glider.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /*
 WORKING 100
 
@@ -93,14 +96,14 @@ public class BrothersGameTest {
 
     public static void main(String[] args) {
         // Provided test cases
-        runTest(Arrays.asList(0,1,0,0,1), 4);
-        runTest(Arrays.asList(1,0,0,1,0,0), 5);
+        runTest(Arrays.asList(0, 1, 0, 0, 1), 4);
+        runTest(Arrays.asList(1, 0, 0, 1, 0, 0), 5);
 
         // Edge case: All ones
-        runTest(Arrays.asList(1,1,1,1), 3);
+        runTest(Arrays.asList(1, 1, 1, 1), 3);
 
         // Edge case: All zeros
-        runTest(Arrays.asList(0,0,0,0), 4);
+        runTest(Arrays.asList(0, 0, 0, 0), 4);
 
         // Large input test case
         List<Integer> largeTest = Stream.generate(() -> 1).limit(100).collect(Collectors.toList());

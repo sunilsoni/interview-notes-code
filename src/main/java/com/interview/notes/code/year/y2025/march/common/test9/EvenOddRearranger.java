@@ -5,7 +5,7 @@ public class EvenOddRearranger {
     /**
      * Rearranges the array so that even numbers come first and odd numbers at the end,
      * preserving the relative order (stable partition).
-     * 
+     *
      * @param arr The input array containing positive numbers.
      * @return The rearranged array with evens in front and odds at the back.
      */
@@ -49,7 +49,7 @@ public class EvenOddRearranger {
         System.out.println("Input : [7, 4, 3, 8, 5, 2]");
         System.out.print("Output: ");
         printArray(output);  // Expected: [4, 8, 2, 7, 3, 5]
-        
+
         // Additional test cases to cover edge cases:
         // 1. All even numbers.
         int[] testEven = {2, 4, 6, 8};

@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.march.amazon.test3;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 class Package {
     String name;
@@ -21,15 +23,6 @@ public class PackageInstaller {
 
     // Set to keep track of installed packages and avoid repetition
     private Set<String> installed = new LinkedHashSet<>();
-
-    // Method to perform package installation
-    public void installPackage(Package pkg) {
-        if (!installed.contains(pkg.name)) {
-            pkg.dependencies.forEach(this::installPackage); // Install dependencies first (recursive)
-            installed.add(pkg.name);                        // Then install the current package
-            System.out.println("Installed package: " + pkg.name);
-        }
-    }
 
     // Main method to test the installation logic
     public static void main(String[] args) {
@@ -62,6 +55,15 @@ public class PackageInstaller {
         // Additional test for edge case: Already installed package
         System.out.println("\nTesting re-installation of package B:");
         installer.installPackage(B);
+    }
+
+    // Method to perform package installation
+    public void installPackage(Package pkg) {
+        if (!installed.contains(pkg.name)) {
+            pkg.dependencies.forEach(this::installPackage); // Install dependencies first (recursive)
+            installed.add(pkg.name);                        // Then install the current package
+            System.out.println("Installed package: " + pkg.name);
+        }
     }
 
     // Verify correct installation order

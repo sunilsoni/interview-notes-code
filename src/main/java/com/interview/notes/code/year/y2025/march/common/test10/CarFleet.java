@@ -1,6 +1,5 @@
 package com.interview.notes.code.year.y2025.march.common.test10;
 
-import java.util.*;
 import java.util.stream.IntStream;
 
 public class CarFleet {
@@ -8,9 +7,9 @@ public class CarFleet {
     public static int carFleet(int target, int[] position, int[] speed) {
         int n = position.length;
         double[][] cars = IntStream.range(0, n)
-            .mapToObj(i -> new double[]{position[i], (target - position[i]) / (double) speed[i]})
-            .sorted((a, b) -> Double.compare(b[0], a[0])) // sort by position descending
-            .toArray(double[][]::new);
+                .mapToObj(i -> new double[]{position[i], (target - position[i]) / (double) speed[i]})
+                .sorted((a, b) -> Double.compare(b[0], a[0])) // sort by position descending
+                .toArray(double[][]::new);
 
         int fleets = 0;
         double currentMaxTime = 0;

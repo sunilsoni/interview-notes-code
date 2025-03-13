@@ -49,26 +49,26 @@ class BT {
         if (root == null) {
             return new int[0]; // Empty tree
         }
-        
+
         // Use ArrayList to store results as we don't know final size
         List<Integer> result = new ArrayList<>();
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
-        
+
         // Start at level 1 (odd)
         boolean isOddLevel = true;
-        
+
         while (!queue.isEmpty()) {
             int levelSize = queue.size();
             List<Integer> currentLevel = new ArrayList<>();
-            
+
             // Process current level
             for (int i = 0; i < levelSize; i++) {
                 Node current = queue.poll();
-                
+
                 // Add current node's value to level list
                 currentLevel.add(current.data);
-                
+
                 // Add children to queue for next level
                 if (current.left != null) {
                     queue.offer(current.left);
@@ -77,7 +77,7 @@ class BT {
                     queue.offer(current.right);
                 }
             }
-            
+
             // Add current level to result in correct order
             // Note: Problem states odd levels right to left, even levels left to right
             // But root is level 1 (odd), so we need to handle it correctly
@@ -87,17 +87,17 @@ class BT {
                 Collections.reverse(currentLevel);
                 result.addAll(currentLevel);
             }
-            
+
             // Toggle level parity
             isOddLevel = !isOddLevel;
         }
-        
+
         // Convert ArrayList to array
         int[] resultArray = new int[result.size()];
         for (int i = 0; i < result.size(); i++) {
             resultArray[i] = result.get(i);
         }
-        
+
         return resultArray;
     }
 }
@@ -113,7 +113,7 @@ public class ZigZagTraversal {
         printArray(result1);
         boolean pass1 = Arrays.equals(result1, new int[]{10, 30, 20});
         System.out.println("Test Case 1: " + (pass1 ? "PASS" : "FAIL"));
-        
+
         // Test case 2
         BT bt2 = new BT();
         bt2.addNode(2, 4, 'L');
@@ -125,7 +125,7 @@ public class ZigZagTraversal {
         printArray(result2);
         boolean pass2 = Arrays.equals(result2, new int[]{2, 4, 6, 10, 8});
         System.out.println("Test Case 2: " + (pass2 ? "PASS" : "FAIL"));
-        
+
         // Test case 3 (larger tree from example)
         BT bt3 = new BT();
         bt3.addNode(2, 4, 'L');
@@ -139,7 +139,7 @@ public class ZigZagTraversal {
         printArray(result3);
         boolean pass3 = Arrays.equals(result3, new int[]{2, 4, 6, 14, 12, 10, 8});
         System.out.println("Test Case 3: " + (pass3 ? "PASS" : "FAIL"));
-        
+
         // Edge case: empty tree
         BT bt4 = new BT();
         System.out.println("\nTest Case 4 (Empty Tree):");
@@ -148,13 +148,13 @@ public class ZigZagTraversal {
         boolean pass4 = result4.length == 0;
         System.out.println("Test Case 4: " + (pass4 ? "PASS" : "FAIL"));
     }
-    
+
     private static void printArray(int[] arr) {
         if (arr.length == 0) {
             System.out.println("[]");
             return;
         }
-        
+
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arr.length; i++) {
             sb.append(arr[i]);

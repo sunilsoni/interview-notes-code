@@ -1,31 +1,15 @@
 package com.interview.notes.code.year.y2025.march.jpmc;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.PriorityQueue;
 
 public class MedianFinder {
 
     // Max-heap for lower half
     private PriorityQueue<Integer> left = new PriorityQueue<>(Collections.reverseOrder());
-    
+
     // Min-heap for upper half
     private PriorityQueue<Integer> right = new PriorityQueue<>();
-
-    // Append value method
-    public void appendValue(int num) {
-        left.offer(num); // Add to left heap
-        right.offer(left.poll()); // Balance: Move largest from left to right
-
-        if (right.size() > left.size()) { // Ensure left is not smaller
-            left.offer(right.poll());
-        }
-    }
-
-    // Get Median method
-    public double getMedian() {
-        if (left.isEmpty()) return 0.0; // Edge case: no numbers yet
-        if (left.size() > right.size()) return left.peek(); // Odd size
-        return (left.peek() + right.peek()) / 2.0; // Even size, average two middles
-    }
 
     // Main Method to test cases
     public static void main(String[] args) {
@@ -56,5 +40,22 @@ public class MedianFinder {
                 500000.5, largeMedian, largeMedian == 500000.5 ? "PASS" : "FAIL");
 
         System.out.println(allPassed ? "All tests PASSED!" : "Some tests FAILED.");
+    }
+
+    // Append value method
+    public void appendValue(int num) {
+        left.offer(num); // Add to left heap
+        right.offer(left.poll()); // Balance: Move largest from left to right
+
+        if (right.size() > left.size()) { // Ensure left is not smaller
+            left.offer(right.poll());
+        }
+    }
+
+    // Get Median method
+    public double getMedian() {
+        if (left.isEmpty()) return 0.0; // Edge case: no numbers yet
+        if (left.size() > right.size()) return left.peek(); // Odd size
+        return (left.peek() + right.peek()) / 2.0; // Even size, average two middles
     }
 }

@@ -89,11 +89,11 @@ public class EvenOddRearranger {
     public static void main(String[] args) {
         // Define several test cases.
         int[][] testCases = {
-            {7, 4, 3, 8, 5, 2},  // Mixed even and odd numbers.
-            {2, 4, 6, 8},        // All even numbers.
-            {1, 3, 5, 7},        // All odd numbers.
-            {},                  // Empty array.
-            {1}                  // Single element array.
+                {7, 4, 3, 8, 5, 2},  // Mixed even and odd numbers.
+                {2, 4, 6, 8},        // All even numbers.
+                {1, 3, 5, 7},        // All odd numbers.
+                {},                  // Empty array.
+                {1}                  // Single element array.
         };
 
         // Process each test case.

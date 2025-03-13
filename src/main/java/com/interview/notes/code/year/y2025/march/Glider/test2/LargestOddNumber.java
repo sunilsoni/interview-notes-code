@@ -1,8 +1,10 @@
 package com.interview.notes.code.year.y2025.march.Glider.test2;
 
-import java.util.*;
-import java.util.regex.*;
-import java.util.stream.*;
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
+
 /*
 WORKING 100
 ### **Brothers' Game**
@@ -74,11 +76,11 @@ public class LargestOddNumber {
 
         // Find largest odd number from all numeric groupings
         return Stream.generate(() -> matcher.find() ? matcher.group() : null)
-                     .takeWhile(Objects::nonNull)
-                     .mapToInt(Integer::parseInt)
-                     .filter(num -> num % 2 != 0) // Keep only odd numbers
-                     .max()                       // Get maximum odd number
-                     .orElse(-1);                 // If none found, return -1
+                .takeWhile(Objects::nonNull)
+                .mapToInt(Integer::parseInt)
+                .filter(num -> num % 2 != 0) // Keep only odd numbers
+                .max()                       // Get maximum odd number
+                .orElse(-1);                 // If none found, return -1
     }
 
     public static void main(String[] args) {

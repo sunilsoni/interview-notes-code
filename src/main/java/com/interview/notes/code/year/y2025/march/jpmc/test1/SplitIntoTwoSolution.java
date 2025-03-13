@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.march.jpmc.test1;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 /*
 WORKING 100
@@ -101,6 +103,7 @@ Both splits satisfy `Left sum > Right sum`.
 
 
  */
+
 /**
  * This class contains the solution to the "splitIntoTwo" problem along
  * with a main method for testing.
@@ -121,8 +124,8 @@ public class SplitIntoTwoSolution {
         // and there can be up to 10^5 elements. Summation can reach ~10^9,
         // which still fits into an 'int', but using 'long' is safer.
         long totalSum = arr.stream()
-                           .mapToLong(Integer::longValue)
-                           .sum();
+                .mapToLong(Integer::longValue)
+                .sum();
 
         // We'll keep a running sum of the left side as we iterate
         // from the first element to the second-last element.
@@ -232,8 +235,8 @@ public class SplitIntoTwoSolution {
         int largeSize = 100_000;
         Random rand = new Random(42);
         List<Integer> largeList = rand.ints(largeSize, -10_000, 10_001)
-                                      .boxed()
-                                      .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
         long startTime = System.nanoTime();
         int largeResult = splitIntoTwo(largeList);
         long endTime = System.nanoTime();

@@ -105,7 +105,7 @@ public class MaxSubstringCost {
 
     /**
      * Computes the maximum length of a contiguous substring in s which can be transformed into
-     * the corresponding substring in t with a total cost no greater than K. The cost to change 
+     * the corresponding substring in t with a total cost no greater than K. The cost to change
      * s[i] to t[i] is defined as the absolute difference between their ASCII values.
      *
      * @param s the source string
@@ -135,14 +135,14 @@ public class MaxSubstringCost {
 
         return maxLen;
     }
-    
+
     /**
      * A simple test method that prints whether a test case passes or fails.
      *
      * @param testName a descriptive name for the test case
-     * @param s the source string for the test
-     * @param t the target string for the test
-     * @param K the allowed transformation cost
+     * @param s        the source string for the test
+     * @param t        the target string for the test
+     * @param K        the allowed transformation cost
      * @param expected the expected output
      */
     public static void runTest(String testName, String s, String t, int K, int expected) {
@@ -153,7 +153,7 @@ public class MaxSubstringCost {
             System.out.println("Test " + testName + " FAILED: Expected " + expected + ", got " + result);
         }
     }
-    
+
     /**
      * Main method to run sample tests and additional edge cases, including a large input test.
      */
@@ -161,20 +161,20 @@ public class MaxSubstringCost {
         // Sample test cases provided in the problem statement
         runTest("Sample Case 0", "uaccd", "gbbeg", 4, 3);
         runTest("Sample Case 1", "hffk", "larb", 3, 0);
-        
+
         // Provided example in the problem statement
         runTest("Provided Example", "adpgki", "cdmxki", 6, 3);
-        
+
         // Edge case: When both strings are identical, cost for each position is 0.
         runTest("Edge Case - Identical Strings", "abcdef", "abcdef", 0, 6);
-        
+
         // Edge case: Extremely large K so that the whole string can be transformed.
         runTest("Edge Case - Large K", "abcdef", "ghijkl", 1000, 6);
-        
+
         // Single character tests
         runTest("Single Character - Insufficient K", "a", "z", 5, 0);
         runTest("Single Character - Sufficient K", "a", "z", 26, 1);
-        
+
         // Large Data Test: Create strings of length 200,000.
         // For simplicity, s is composed entirely of 'a' and t entirely of 'z'.
         // The cost per character is |'a' - 'z'| = 25.

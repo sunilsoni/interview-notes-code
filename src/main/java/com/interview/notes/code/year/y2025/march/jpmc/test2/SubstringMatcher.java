@@ -1,7 +1,5 @@
 package com.interview.notes.code.year.y2025.march.jpmc.test2;
 
-import java.util.*;
-
 public class SubstringMatcher {
 
     // Method to find the longest substring with total change cost <= K
