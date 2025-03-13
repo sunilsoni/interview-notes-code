@@ -14,6 +14,7 @@ public class LRUCache {
     private int capacity;
     // Head and tail of doubly linked list for tracking usage order
     private Node head, tail;
+
     /**
      * Initialize the LRU cache with given capacity
      *
