@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.march.GoldmanSachs.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class SnowpackSolution {
 
@@ -26,8 +26,8 @@ public class SnowpackSolution {
 
         // Calculate total snow trapped
         int snow = IntStream.range(0, n)
-            .map(i -> Math.min(leftMax[i], rightMax[i]) - arr[i])
-            .sum();
+                .map(i -> Math.min(leftMax[i], rightMax[i]) - arr[i])
+                .sum();
 
         return snow;
     }

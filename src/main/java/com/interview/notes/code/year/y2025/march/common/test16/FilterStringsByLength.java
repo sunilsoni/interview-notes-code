@@ -1,15 +1,17 @@
 package com.interview.notes.code.year.y2025.march.common.test16;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class FilterStringsByLength {
 
     // Method to filter out strings of given length 'n'
     public static List<String> filterStrings(String[] input, int n) {
         return Arrays.stream(input) // Convert array to stream for functional processing
-                     .filter(str -> str.length() != n) // Filter condition to remove strings matching length 'n'
-                     .collect(Collectors.toList()); // Collect filtered elements into a List
+                .filter(str -> str.length() != n) // Filter condition to remove strings matching length 'n'
+                .collect(Collectors.toList()); // Collect filtered elements into a List
     }
 
     // Test method to validate logic
@@ -28,8 +30,8 @@ public class FilterStringsByLength {
 
         // Large data input
         String[] largeInput = IntStream.range(0, 100000)
-                                       .mapToObj(i -> "test" + i)
-                                       .toArray(String[]::new);
+                .mapToObj(i -> "test" + i)
+                .toArray(String[]::new);
         List<String> largeOutput = filterStrings(largeInput, 6); // Removing strings of length 6
         System.out.println("Large Test Passed? " + (largeOutput.size() == 90000 ? "PASS" : "FAIL"));
     }

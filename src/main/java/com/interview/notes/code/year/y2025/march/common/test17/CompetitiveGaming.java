@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.march.common.test17;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 // Class implementing the competitive gaming ranking logic
 public class CompetitiveGaming {

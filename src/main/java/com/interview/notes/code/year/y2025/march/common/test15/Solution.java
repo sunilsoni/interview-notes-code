@@ -2,9 +2,9 @@ package com.interview.notes.code.year.y2025.march.common.test15;
 
 
 import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.IntStream;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 
 **Problem Name: "Unique Tuples"**
@@ -84,7 +84,10 @@ public class Solution {
         // Test case 3: Input with distinct characters.
         // For "abcdef" with len = 3, expected tuples are "abc", "bcd", "cde", and "def".
         if (!uniqueTuples("abcdef", 3).equals(new HashSet<String>() {{
-            add("abc"); add("bcd"); add("cde"); add("def");
+            add("abc");
+            add("bcd");
+            add("cde");
+            add("def");
         }})) {
             System.out.println("Test 3 failed.");
             return false;

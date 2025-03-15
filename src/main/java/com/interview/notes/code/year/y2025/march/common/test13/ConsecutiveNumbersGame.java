@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.march.common.test13;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 WORKING 5 failed
 
@@ -83,6 +87,7 @@ public class ConsecutiveNumbersGame {
 
     /**
      * Solves the \"Consecutive Numbers Game\" problem.
+     *
      * @param arr input list of integers
      * @return number of rounds until all first n-1 elements are divisible by 3
      */
@@ -120,23 +125,23 @@ public class ConsecutiveNumbersGame {
     // Structured test method for verifying correctness
     private static void runTests() {
         List<TestCase> cases = Arrays.asList(
-            new TestCase(Arrays.asList(34, 56, 20, 90, 100), 3),
-            new TestCase(Arrays.asList(1, 333, 222, 22), 1),
-            // Edge case: already multiples of 3
-            new TestCase(Arrays.asList(3, 6, 9), 0),
-            // Edge case: minimal input
-            new TestCase(Arrays.asList(2), 0),
-            // Edge case: Large numbers
-            new TestCase(Arrays.asList(999999, 999999, 999999), 0),
-            // Edge case: None divisible initially
-            new TestCase(Arrays.asList(1, 1, 1, 1, 1, 1), 2)
+                new TestCase(Arrays.asList(34, 56, 20, 90, 100), 3),
+                new TestCase(Arrays.asList(1, 333, 222, 22), 1),
+                // Edge case: already multiples of 3
+                new TestCase(Arrays.asList(3, 6, 9), 0),
+                // Edge case: minimal input
+                new TestCase(Arrays.asList(2), 0),
+                // Edge case: Large numbers
+                new TestCase(Arrays.asList(999999, 999999, 999999), 0),
+                // Edge case: None divisible initially
+                new TestCase(Arrays.asList(1, 1, 1, 1, 1, 1), 2)
         );
 
         cases.forEach(testCase -> {
             int result = solve(testCase.input);
             System.out.printf("Input: %s | Expected: %d | Got: %d | Result: %s%n",
-                testCaseToString(testCase.input), testCase.expected, result,
-                (result == testCase.expected ? "PASS" : "FAIL"));
+                    testCaseToString(testCase.input), testCase.expected, result,
+                    (result == testCase.expected ? "PASS" : "FAIL"));
         });
 
         System.out.println("\nAll tests completed.");

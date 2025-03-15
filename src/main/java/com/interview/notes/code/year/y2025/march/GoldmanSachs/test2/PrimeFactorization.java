@@ -31,7 +31,7 @@ public class PrimeFactorization {
             put(6, Arrays.asList(2, 3));
             put(5, Arrays.asList(5));
             put(12, Arrays.asList(2, 2, 3));
-            put(1_000_000, Arrays.asList(2,2,2,2,2,2,5,5,5,5,5,5));
+            put(1_000_000, Arrays.asList(2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5));
             put(1, Collections.emptyList());
             put(-5, Collections.emptyList()); // Negative test case
             put(0, Collections.emptyList());  // Zero test case
@@ -40,7 +40,7 @@ public class PrimeFactorization {
         tests.forEach((input, expected) -> {
             try {
                 List<Integer> result = primeFactorization(input);
-                if(result.equals(expected)) {
+                if (result.equals(expected)) {
                     System.out.println("PASS for input: " + input);
                 } else {
                     System.out.println("FAIL for input: " + input + " | Expected: " + expected + " but got: " + result);

@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.march.GoldmanSachs.test3;
 
-import java.util.*;
+import java.util.Arrays;
+
 /*
 
 ### **Reconstructed Code and Question (Snowpack Problem)**

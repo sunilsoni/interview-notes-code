@@ -8,8 +8,8 @@ public class Solution1 {
     /**
      * Converts a fraction (numerator/denominator) into its decimal representation.
      * If the decimal repeats, the repeating part is enclosed in parentheses.
-     * 
-     * @param numerator the numerator of the fraction
+     *
+     * @param numerator   the numerator of the fraction
      * @param denominator the denominator of the fraction
      * @return the decimal representation as a String
      */
@@ -81,18 +81,18 @@ public class Solution1 {
     /**
      * The method doTestsPass() runs several test cases to validate the solution.
      * It prints whether the tests passed or failed.
-     *
+     * <p>
      * We have improved the tests by including:
-     *  - Terminating decimals (e.g., 1/2, 4/2).
-     *  - Repeating decimals (e.g., 1/3, 22/7).
-     *  - Negative fractions (e.g., -1/2, 1/-2).
-     *  - Edge cases (zero numerator, large numbers).
+     * - Terminating decimals (e.g., 1/2, 4/2).
+     * - Repeating decimals (e.g., 1/3, 22/7).
+     * - Negative fractions (e.g., -1/2, 1/-2).
+     * - Edge cases (zero numerator, large numbers).
      *
      * @return true if all tests pass, false otherwise.
      */
     public static boolean doTestsPass() {
         boolean testsPassed = true;
-        
+
         // Terminating decimals.
         testsPassed &= vulgarToDecimal(1, 2).equals("0.5");           // 0.5
         testsPassed &= vulgarToDecimal(4, 2).equals("2");               // Integer result
