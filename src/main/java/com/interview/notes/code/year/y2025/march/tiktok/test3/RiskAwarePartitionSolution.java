@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.march.tiktok.test3;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 WORKING 100%
 
@@ -110,18 +111,18 @@ public class RiskAwarePartitionSolution {
      * findTotalCost function:
      * -----------------------
      * Given a list of video risk scores and an integer k (the maximum group size),
-     * this method calculates the minimal total cost of partitioning the videos 
-     * such that each partition's size is at most k, and the cost of a partition 
+     * this method calculates the minimal total cost of partitioning the videos
+     * such that each partition's size is at most k, and the cost of a partition
      * is the maximum risk score in that partition.
      *
      * @param videoRiskScores list of integer risk scores
      * @param k               maximum allowed subarray size
-     * @return                minimal total partition cost
+     * @return minimal total partition cost
      */
     public static int findTotalCost(List<Integer> videoRiskScores, int k) {
         // n is the number of videos
         int n = videoRiskScores.size();
-        
+
         // dp[i] will store the minimal cost to partition videos[0..i-1]
         int[] dp = new int[n + 1];
 
@@ -136,13 +137,13 @@ public class RiskAwarePartitionSolution {
         // Build dp from left to right
         for (int i = 1; i <= n; i++) {
             int currentMax = Integer.MIN_VALUE;
-            
+
             // Look back up to k positions to find best sub-partition
             // j goes from i-1 down to i-k (but not less than 0)
             for (int j = i - 1; j >= Math.max(0, i - k); j--) {
                 // Track the max risk within this subarray [j..i-1]
                 currentMax = Math.max(currentMax, videoRiskScores.get(j));
-                
+
                 // Update dp[i] if we found a smaller cost partition
                 dp[i] = Math.min(dp[i], dp[j] + currentMax);
             }
@@ -153,7 +154,7 @@ public class RiskAwarePartitionSolution {
     }
 
     /**
-     * Main method: 
+     * Main method:
      * ------------
      * 1. Demonstrates how to run multiple tests.
      * 2. Validates each test by comparing actual result vs expected result.
@@ -163,13 +164,13 @@ public class RiskAwarePartitionSolution {
         // Define some test cases:
         // Each test case has: (input array, k, expectedOutput)
         List<TestCase> testCases = Arrays.asList(
-            new TestCase(Arrays.asList(1, 3, 4, 5, 2, 6), 3, 10),
-            new TestCase(Arrays.asList(1, 2, 3, 4), 1, 10),
-            new TestCase(Arrays.asList(1, 2, 3, 4), 3, 5),
-            new TestCase(Arrays.asList(5, 5, 5, 5), 2, 10),      // partition [5,5] + [5,5]
-            new TestCase(Arrays.asList(5, 5, 5, 5), 4, 5),       // partition all in one group
-            new TestCase(Arrays.asList(10), 1, 10),             // single element
-            new TestCase(Arrays.asList(2, 2, 2), 2, 4)          // partition [2,2] + [2] => 2 + 2 = 4
+                new TestCase(Arrays.asList(1, 3, 4, 5, 2, 6), 3, 10),
+                new TestCase(Arrays.asList(1, 2, 3, 4), 1, 10),
+                new TestCase(Arrays.asList(1, 2, 3, 4), 3, 5),
+                new TestCase(Arrays.asList(5, 5, 5, 5), 2, 10),      // partition [5,5] + [5,5]
+                new TestCase(Arrays.asList(5, 5, 5, 5), 4, 5),       // partition all in one group
+                new TestCase(Arrays.asList(10), 1, 10),             // single element
+                new TestCase(Arrays.asList(2, 2, 2), 2, 4)          // partition [2,2] + [2] => 2 + 2 = 4
         );
 
         // Run each test case
@@ -177,8 +178,8 @@ public class RiskAwarePartitionSolution {
             int actual = findTotalCost(test.videoRiskScores, test.k);
             boolean pass = (actual == test.expected);
             System.out.printf(
-                "Input: %s, k=%d, Expected: %d, Got: %d => %s%n",
-                test.videoRiskScores, test.k, test.expected, actual, pass ? "PASS" : "FAIL"
+                    "Input: %s, k=%d, Expected: %d, Got: %d => %s%n",
+                    test.videoRiskScores, test.k, test.expected, actual, pass ? "PASS" : "FAIL"
             );
         }
     }

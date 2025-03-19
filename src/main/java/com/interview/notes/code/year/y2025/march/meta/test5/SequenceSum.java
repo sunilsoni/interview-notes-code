@@ -15,20 +15,20 @@ public class SequenceSum {
     // Core logic: Uses sliding window technique
     public static boolean hasSequenceSum(int[] nums, int target) {
         if (nums == null || nums.length == 0) return false;
-        
+
         int currentSum = 0;
         int start = 0;
-        
+
         // Iterate through the array using sliding window
         for (int end = 0; end < nums.length; end++) {
             currentSum += nums[end];
-            
+
             // Shrink window if sum exceeds target
             while (currentSum > target && start < end) {
                 currentSum -= nums[start];
                 start++;
             }
-            
+
             // Check if we found the target sum
             if (currentSum == target) return true;
         }
@@ -38,7 +38,7 @@ public class SequenceSum {
     // Test helper method
     private static void test(int[] arr, int target) {
         boolean result = hasSequenceSum(arr, target);
-        System.out.printf("Array: %s, Target: %d, Result: %b%n", 
-            Arrays.toString(arr), target, result);
+        System.out.printf("Array: %s, Target: %d, Result: %b%n",
+                Arrays.toString(arr), target, result);
     }
 }

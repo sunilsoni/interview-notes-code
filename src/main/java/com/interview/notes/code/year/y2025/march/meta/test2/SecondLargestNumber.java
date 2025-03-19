@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.march.meta.test2;
 
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class SecondLargestNumber {
 
@@ -23,10 +22,10 @@ public class SecondLargestNumber {
         // Step 1: Sort the array in descending order to get the largest possible arrangement.
         // We use Java8 streams to box, sort, and then unbox the integers.
         int[] largest = Arrays.stream(digits)
-                              .boxed()
-                              .sorted((a, b) -> b - a) // sort in descending order
-                              .mapToInt(Integer::intValue)
-                              .toArray();
+                .boxed()
+                .sorted((a, b) -> b - a) // sort in descending order
+                .mapToInt(Integer::intValue)
+                .toArray();
 
         // Step 2: Find the "previous permutation" of the sorted array.
         // We start from the right end to find the first index 'i' where largest[i] > largest[i+1].

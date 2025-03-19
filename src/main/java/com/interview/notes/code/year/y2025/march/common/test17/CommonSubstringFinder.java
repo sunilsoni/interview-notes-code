@@ -5,7 +5,7 @@ public class CommonSubstringFinder {
     // Method to find the longest common substring in an array of strings.
     public static String longestCommonSubstring(String[] arr) {
         if (arr == null || arr.length == 0) return "";
-        
+
         // Find the shortest string (to minimize the number of substrings to check)
         String shortest = arr[0];
         for (String s : arr) {
@@ -13,10 +13,10 @@ public class CommonSubstringFinder {
                 shortest = s;
             }
         }
-        
+
         String longestCommon = "";
         int len = shortest.length();
-        
+
         // Iterate over all possible substrings of the shortest string.
         for (int i = 0; i < len; i++) {
             for (int j = i + 1; j <= len; j++) {
@@ -37,7 +37,7 @@ public class CommonSubstringFinder {
         }
         return longestCommon;
     }
-    
+
     public static void main(String[] args) {
         String[] arr = {"abc", "abcd", "adcd", "abcefg"};
         String commonSubstring = longestCommonSubstring(arr);

@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.march.tiktok.test5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -22,13 +24,13 @@ public class DifferenceGameSimulator {
 
         // Count final numbers that are "smaller" (< midpoint) and "bigger" (> midpoint).
         long countSmaller = finalNumbers.stream().filter(n -> n < midPoint).count();
-        long countBigger  = finalNumbers.stream().filter(n -> n > midPoint).count();
-        long countExact   = finalNumbers.stream().filter(n -> n == midPoint).count();
+        long countBigger = finalNumbers.stream().filter(n -> n > midPoint).count();
+        long countExact = finalNumbers.stream().filter(n -> n == midPoint).count();
 
         // Calculate percentages (as a double value).
         double percSmaller = (countSmaller * 100.0) / numSimulations;
-        double percBigger  = (countBigger * 100.0) / numSimulations;
-        double percExact   = (countExact * 100.0) / numSimulations;
+        double percBigger = (countBigger * 100.0) / numSimulations;
+        double percExact = (countExact * 100.0) / numSimulations;
 
         // Output the results of each simulation (could also be written to a log or file).
         System.out.println("Final numbers from each simulation run:");
@@ -68,7 +70,7 @@ public class DifferenceGameSimulator {
         List<Integer> numbers = IntStream.rangeClosed(1, N)
                 .boxed()
                 .collect(Collectors.toCollection(ArrayList::new));
-        
+
         // Create an instance of Random for choosing random indices.
         Random rand = new Random();
 
@@ -78,16 +80,16 @@ public class DifferenceGameSimulator {
             int index1 = rand.nextInt(numbers.size());
             // Remove the first number from the list and store it.
             int num1 = numbers.remove(index1);
-            
+
             // Randomly select the index for the second number.
             // Note: the list size is now reduced by one.
             int index2 = rand.nextInt(numbers.size());
             // Remove the second number from the list and store it.
             int num2 = numbers.remove(index2);
-            
+
             // Compute the absolute difference between the two numbers.
             int difference = Math.abs(num1 - num2);
-            
+
             // Add the computed difference back into the list.
             numbers.add(difference);
         }
@@ -97,7 +99,7 @@ public class DifferenceGameSimulator {
 
     /**
      * Runs some basic tests to check if the simulation meets expected invariants.
-     *
+     * <p>
      * For example, one known invariant is that the parity (even/odd) of the sum
      * of the numbers is preserved. For N = 100, the sum of numbers 1 to 100 is 5050 (even),
      * so the final number should be even.
@@ -114,7 +116,7 @@ public class DifferenceGameSimulator {
         } else {
             System.out.println("TEST FAILED: Some final numbers are not even.");
         }
-        
+
         // Additional tests can be added here for further invariants or edge cases.
         // For example, one might test for behavior when N = 1 or very large N values.
     }

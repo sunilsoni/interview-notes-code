@@ -18,33 +18,34 @@ public class TicTacToe {
 
     /**
      * Makes a move and returns if the player won
-     * @param row - row position (0-based)
-     * @param col - column position (0-based)
+     *
+     * @param row    - row position (0-based)
+     * @param col    - column position (0-based)
      * @param player - player number (1 or 2)
      * @return true if current player won, false otherwise
      */
     public boolean move(int row, int col, int player) {
         // Convert player number to score (+1 for player 1, -1 for player 2)
         int currentPlayer = (player == 1) ? 1 : -1;
-        
+
         // Update row and column counts
         rows[row] += currentPlayer;
         cols[col] += currentPlayer;
-        
+
         // Update diagonal if move is on it
         if (row == col) {
             diagonal += currentPlayer;
         }
-        
+
         // Update anti-diagonal if move is on it
         if (row + col == n - 1) {
             antiDiagonal += currentPlayer;
         }
-        
+
         // Check if current player won
-        return Math.abs(rows[row]) == n || 
-               Math.abs(cols[col]) == n || 
-               Math.abs(diagonal) == n || 
-               Math.abs(antiDiagonal) == n;
+        return Math.abs(rows[row]) == n ||
+                Math.abs(cols[col]) == n ||
+                Math.abs(diagonal) == n ||
+                Math.abs(antiDiagonal) == n;
     }
 }

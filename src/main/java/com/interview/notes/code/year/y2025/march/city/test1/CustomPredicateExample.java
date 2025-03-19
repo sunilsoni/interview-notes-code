@@ -26,14 +26,14 @@ public class CustomPredicateExample {
         // Using the lambda Predicate (Method 2)
         System.out.println("\nNames starting with 'A' (using lambda):");
         names.stream()
-            .filter(startsWithALambda)
-            .forEach(System.out::println);
+                .filter(startsWithALambda)
+                .forEach(System.out::println);
 
         // Using stream with filter directly
         System.out.println("\nNames starting with 'A' (using direct stream filter):");
         names.stream()
-            .filter(name -> name.startsWith("A"))
-            .forEach(System.out::println);
+                .filter(name -> name.startsWith("A"))
+                .forEach(System.out::println);
     }
 }
 

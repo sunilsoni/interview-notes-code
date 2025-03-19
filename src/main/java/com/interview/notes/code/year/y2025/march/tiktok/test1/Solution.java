@@ -1,7 +1,5 @@
 package com.interview.notes.code.year.y2025.march.tiktok.test1;
 
-import java.util.Arrays;
-
 public class Solution {
 
     // 1) We define a maximum size based on the problem constraints (x + y <= 10000).
@@ -93,9 +91,10 @@ public class Solution {
 
     /**
      * Helper method to print Pass/Fail for each test.
-     * @param x #zeroes
-     * @param y #ones
-     * @param k rank
+     *
+     * @param x        #zeroes
+     * @param y        #ones
+     * @param k        rank
      * @param expected the expected string
      */
     private static void testDecompressVideo(int x, int y, long k, String expected) {

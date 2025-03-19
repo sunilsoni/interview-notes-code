@@ -77,9 +77,9 @@ public class VideoDecompressionWOrking10 {
      * Helper method to test a single case.
      *
      * @param testName Name/description of the test case.
-     * @param x Number of '0's.
-     * @param y Number of '1's.
-     * @param k Lexicographic rank.
+     * @param x        Number of '0's.
+     * @param y        Number of '1's.
+     * @param k        Lexicographic rank.
      * @param expected Expected result. If null, we only print the output.
      */
     private static void runTest(String testName, int x, int y, long k, String expected) {

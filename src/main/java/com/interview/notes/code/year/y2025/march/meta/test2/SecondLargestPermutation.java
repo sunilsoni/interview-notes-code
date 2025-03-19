@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.march.meta.test2;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class SecondLargestPermutation {
 
@@ -28,11 +29,11 @@ public class SecondLargestPermutation {
             // Copy the test case array because our method modifies the array.
             int[] inputCopy = Arrays.copyOf(testCase, testCase.length);
             int[] result = getSecondLargestPermutation(inputCopy);
-            
+
             // For simplicity in testing, we generate the largest permutation first.
             // Note: If no second permutation exists, our method returns the same array.
             int[] largest = Arrays.copyOf(testCase, testCase.length);
-            Arrays.sort(largest); 
+            Arrays.sort(largest);
             reverse(largest); // largest permutation
 
             // Determine if the computed result is exactly the second largest
@@ -58,7 +59,7 @@ public class SecondLargestPermutation {
      */
     public static int[] getSecondLargestPermutation(int[] arr) {
         // First, sort the array in descending order to get the largest permutation.
-        Arrays.sort(arr); 
+        Arrays.sort(arr);
         reverse(arr); // custom reverse method
         // The largest permutation is now in arr.
 

@@ -1,7 +1,5 @@
 package com.interview.notes.code.year.y2025.march.tiktok.test1;
 
-import java.util.stream.LongStream;
-
 public class DecompressVideo {
 
     // This method computes the k-th lexicographically smallest string
@@ -68,13 +66,13 @@ public class DecompressVideo {
         // Example tests:
         testCase(2, 2, 3, "0110");     // from the sample: 3rd combination among x=2,y=2 => "0110"
         testCase(3, 4, 35, "1111000"); // from the sample: the 35th combination => "1111000"
-        
+
         // Additional tests:
         testCase(3, 2, 1, "00011");    // smallest for x=3, y=2
         testCase(3, 2, 10, "11000");   // largest for x=3, y=2 => total 10 combos
         testCase(1, 1, 1, "01");       // simplest case
         testCase(1, 1, 2, "10");       // next simplest case
-        
+
         // Edge cases:
         testCase(5, 0, 1, "00000");    // only zeros
         testCase(0, 5, 1, "11111");    // only ones
@@ -84,7 +82,7 @@ public class DecompressVideo {
     private static void testCase(int x, int y, long k, String expected) {
         String actual = decompressVideo(x, y, k);
         String result = actual.equals(expected) ? "PASS" : "FAIL";
-        System.out.println("x=" + x + ", y=" + y + ", k=" + k 
-            + " => " + actual + " | Expected: " + expected + " => " + result);
+        System.out.println("x=" + x + ", y=" + y + ", k=" + k
+                + " => " + actual + " | Expected: " + expected + " => " + result);
     }
 }

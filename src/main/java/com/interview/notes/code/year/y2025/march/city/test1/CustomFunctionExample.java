@@ -10,7 +10,7 @@ public class CustomFunctionExample {
     public static void main(String[] args) {
         // Method 1: Creating implementation class
         StringToIntConverter converter = new StringToIntConverter();
-        
+
         // Method 2: Using lambda
         StringConverter<String, Integer> lengthCounter = str -> str.length();
 
@@ -18,17 +18,17 @@ public class CustomFunctionExample {
         String testString = "Hello";
 
         // Using custom implementation
-        System.out.println("String length using custom class: " + 
-            converter.convert(testString));  // Output: 5
+        System.out.println("String length using custom class: " +
+                converter.convert(testString));  // Output: 5
 
         // Using lambda implementation
-        System.out.println("String length using lambda: " + 
-            lengthCounter.convert(testString));  // Output: 5
+        System.out.println("String length using lambda: " +
+                lengthCounter.convert(testString));  // Output: 5
 
         // Another example with different conversion
         StringConverter<String, String> toUpperCase = str -> str.toUpperCase();
-        System.out.println("Uppercase conversion: " + 
-            toUpperCase.convert(testString));  // Output: HELLO
+        System.out.println("Uppercase conversion: " +
+                toUpperCase.convert(testString));  // Output: HELLO
     }
 }
 

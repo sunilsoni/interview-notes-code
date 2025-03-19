@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.march.tiktok.test2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class RiskAwarePartition {
 
@@ -57,15 +60,15 @@ public class RiskAwarePartition {
     public static void main(String[] args) {
         // List of test cases: each entry has input + expected output
         List<TestCase> testCases = Arrays.asList(
-            new TestCase(Arrays.asList(1,2,3,4,5,6), 3, 9),
-            new TestCase(Arrays.asList(2,3,4), 2, 5),
-            new TestCase(Arrays.asList(2,3,4), 1, 9),
-            new TestCase(Arrays.asList(5), 1, 5),
-            new TestCase(Arrays.asList(5,5,5,5), 2, 10),
-            // Additional edge case: k >= n
-            new TestCase(Arrays.asList(1,2,3,4), 4, 4),
-            // Another check
-            new TestCase(Arrays.asList(3,1,2,5,6), 2, 11)
+                new TestCase(Arrays.asList(1, 2, 3, 4, 5, 6), 3, 9),
+                new TestCase(Arrays.asList(2, 3, 4), 2, 5),
+                new TestCase(Arrays.asList(2, 3, 4), 1, 9),
+                new TestCase(Arrays.asList(5), 1, 5),
+                new TestCase(Arrays.asList(5, 5, 5, 5), 2, 10),
+                // Additional edge case: k >= n
+                new TestCase(Arrays.asList(1, 2, 3, 4), 4, 4),
+                // Another check
+                new TestCase(Arrays.asList(3, 1, 2, 5, 6), 2, 11)
         );
 
         // Run each test
@@ -82,7 +85,7 @@ public class RiskAwarePartition {
         int largeSize = 100000;
         List<Integer> largeScores = new ArrayList<>(largeSize);
         Random rand = new Random();
-        for(int i = 0; i < largeSize; i++) {
+        for (int i = 0; i < largeSize; i++) {
             largeScores.add(rand.nextInt(1000)); // random risk 0..999
         }
         // We won't have an "expected" here, but we can time it
