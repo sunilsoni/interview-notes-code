@@ -62,7 +62,7 @@ public class CustomQueue<T> {
 }
 
 // Test class
-public class QueueTest {
+  class QueueTest {
     public static void main(String[] args) {
         testBasicOperations();
         testEdgeCases();
