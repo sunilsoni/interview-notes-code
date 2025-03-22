@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.march.GoldmanSachs.test5;
 
 import java.util.PriorityQueue;
-import java.util.Arrays;
 
 /*
 Here's a well-structured and interview-ready question based on the scenario you described:
@@ -62,14 +61,6 @@ public class NthLargestNumberStream {
         minHeap = new PriorityQueue<>();
     }
 
-    public Integer add(int num) {
-        minHeap.offer(num);
-        if (minHeap.size() > n) {
-            minHeap.poll();
-        }
-        return (minHeap.size() < n) ? null : minHeap.peek();
-    }
-
     public static void main(String[] args) {
         testSolution();
     }
@@ -111,7 +102,7 @@ public class NthLargestNumberStream {
         for (int i = 0; i < stream.length; i++) {
             Integer result = nthLargest.add(stream[i]);
             if ((expected[i] == null && result != null) ||
-                (expected[i] != null && !expected[i].equals(result))) {
+                    (expected[i] != null && !expected[i].equals(result))) {
                 testPassed = false;
                 System.out.printf("Test [%s] failed at input index %d: Expected: %s, Got: %s%n",
                         testName, i, expected[i], result);
@@ -124,5 +115,13 @@ public class NthLargestNumberStream {
         }
 
         return testPassed;
+    }
+
+    public Integer add(int num) {
+        minHeap.offer(num);
+        if (minHeap.size() > n) {
+            minHeap.poll();
+        }
+        return (minHeap.size() < n) ? null : minHeap.peek();
     }
 }

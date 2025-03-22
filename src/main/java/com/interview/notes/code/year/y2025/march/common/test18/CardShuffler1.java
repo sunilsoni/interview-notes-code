@@ -1,16 +1,18 @@
 package com.interview.notes.code.year.y2025.march.common.test18;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CardShuffler1 {
     public static List<String> optimizedShuffle(List<String> initialDeck) {
         if (initialDeck == null || initialDeck.size() <= 1) {
             return initialDeck;
         }
-        
+
         int n = initialDeck.size();
         String[] result = new String[n];
-        
+
         // Calculate final positions in O(1) per element
         for (int i = 0; i < n; i++) {
             int finalPos;
@@ -23,7 +25,7 @@ public class CardShuffler1 {
             }
             result[finalPos] = initialDeck.get(i);
         }
-        
+
         return Arrays.asList(result);
     }
 
@@ -37,19 +39,19 @@ public class CardShuffler1 {
     public static void main(String[] args) {
         // Test Case 1: 4-card deck
         List<String> deck1 = Arrays.asList(
-            "A♠", "2♥", "3♦", "4♣"
+                "A♠", "2♥", "3♦", "4♣"
         );
         testShuffle(deck1);
 
         // Test Case 2: 6-card deck
         List<String> deck2 = Arrays.asList(
-            "A♠", "2♥", "3♦", "4♣", "5♥", "6♠"
+                "A♠", "2♥", "3♦", "4♣", "5♥", "6♠"
         );
         testShuffle(deck2);
 
         // Test Case 3: 8-card deck
         List<String> deck3 = Arrays.asList(
-            "A♠", "2♥", "3♦", "4♣", "5♥", "6♠", "7♣", "8♦"
+                "A♠", "2♥", "3♦", "4♣", "5♥", "6♠", "7♣", "8♦"
         );
         testShuffle(deck3);
 

@@ -13,33 +13,22 @@ A key requirement is that a leaf node (for example, the leftmost node like numbe
  */
 public class BinaryTreeBoundaryTraversal {
 
-    // Define a Node of the tree.
-    static class Node {
-        int val;
-        Node left, right;
-
-        Node(int val) {
-            this.val = val;
-            left = right = null;
-        }
-    }
-
     // Function to perform the boundary traversal
     public static void printBoundary(Node root) {
         if (root == null) {
             return; // Empty tree
         }
-        
+
         // 1. Print the root node (if it is not a leaf)
         System.out.print(root.val + " ");
-        
+
         // 2. Print the left boundary (excluding leaf nodes)
         printLeftBoundary(root.left);
-        
+
         // 3. Print all leaf nodes (left subtree, then right subtree)
         printLeaves(root.left);
         printLeaves(root.right);
-        
+
         // 4. Print the right boundary (excluding leaf nodes, in reverse order)
         printRightBoundary(root.right);
     }
@@ -49,12 +38,12 @@ public class BinaryTreeBoundaryTraversal {
         if (node == null) {
             return;
         }
-        
+
         // Check if this node is not a leaf node.
         if (node.left != null || node.right != null) {
             System.out.print(node.val + " ");
         }
-        
+
         // Prefer the left child; if absent, use the right child.
         if (node.left != null) {
             printLeftBoundary(node.left);
@@ -68,14 +57,14 @@ public class BinaryTreeBoundaryTraversal {
         if (node == null) {
             return;
         }
-        
+
         printLeaves(node.left);
-        
+
         // If node is a leaf, print its value.
         if (node.left == null && node.right == null) {
             System.out.print(node.val + " ");
         }
-        
+
         printLeaves(node.right);
     }
 
@@ -84,14 +73,14 @@ public class BinaryTreeBoundaryTraversal {
         if (node == null) {
             return;
         }
-        
+
         // Recurse first: prefer the right child; if absent, use the left child.
         if (node.right != null) {
             printRightBoundary(node.right);
         } else if (node.left != null) {
             printRightBoundary(node.left);
         }
-        
+
         // Print the node if it is not a leaf (printing on the way back up)
         if (node.left != null || node.right != null) {
             System.out.print(node.val + " ");
@@ -124,5 +113,16 @@ public class BinaryTreeBoundaryTraversal {
 
         System.out.println("Boundary traversal of the binary tree:");
         printBoundary(root);
+    }
+
+    // Define a Node of the tree.
+    static class Node {
+        int val;
+        Node left, right;
+
+        Node(int val) {
+            this.val = val;
+            left = right = null;
+        }
     }
 }
