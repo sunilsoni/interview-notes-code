@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.march.KMM.test2;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /*
 Here’s the properly combined version of the “Sweet Interval” coding problem, including constraints, input/output details, examples, and the method signature:
@@ -100,16 +102,20 @@ public class SweetInterval {
     // Simple main method for testing all provided and additional test cases
     public static void main(String[] args) {
         List<TestCase> tests = Arrays.asList(
-            new TestCase(Arrays.asList(1, 3, 7, 5), 10, Arrays.asList(2, 3)),
-            new TestCase(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8), 21, Arrays.asList(1, 6)),
-            new TestCase(Arrays.asList(1, 2, 3, 4), 15, Arrays.asList(-1)),
-            new TestCase(Arrays.asList(5), 5, Arrays.asList(1, 1)),
-            new TestCase(Arrays.asList(1, 2, 3, 4, 5), 9, Arrays.asList(2, 4)),
-            // Large data case
-            new TestCase(generateLargeList(100, 2), 200, Arrays.asList(1, 100))
+                new TestCase(Arrays.asList(1, 3, 7, 5), 10, Arrays.asList(2, 3)),
+                new TestCase(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8), 21, Arrays.asList(1, 6)),
+                new TestCase(Arrays.asList(1, 2, 3, 4), 15, Arrays.asList(-1)),
+                new TestCase(Arrays.asList(5), 5, Arrays.asList(1, 1)),
+                new TestCase(Arrays.asList(1, 2, 3, 4, 5), 9, Arrays.asList(2, 4)),
+                // Large data case
+                new TestCase(generateLargeList(100, 2), 200, Arrays.asList(1, 100))
         );
 
         tests.forEach(TestCase::run);
+    }
+
+    static List<Integer> generateLargeList(int size, int value) {
+        return Collections.nCopies(size, value);
     }
 
     static class TestCase {
@@ -130,9 +136,5 @@ public class SweetInterval {
                     sum,
                     result.equals(expected) ? "PASS" : "FAIL - Expected " + expected + ", got " + result);
         }
-    }
-
-    static List<Integer> generateLargeList(int size, int value) {
-        return Collections.nCopies(size, value);
     }
 }

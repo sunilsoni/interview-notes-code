@@ -59,14 +59,14 @@ public class SweetIntervalSolution {
         List<Integer> ar3 = Arrays.asList(2, 2, 2);
         int S3 = 10;
         List<Integer> result3 = solve(ar3, S3);
-        List<Integer> expected3 = Arrays.asList(-1, -1); 
+        List<Integer> expected3 = Arrays.asList(-1, -1);
         printTestResult("Test Case 3", result3, expected3);
 
         // Test case 4 (single element match)
         List<Integer> ar4 = Arrays.asList(5);
         int S4 = 5;
         List<Integer> result4 = solve(ar4, S4);
-        List<Integer> expected4 = Arrays.asList(1, 1); 
+        List<Integer> expected4 = Arrays.asList(1, 1);
         printTestResult("Test Case 4", result4, expected4);
 
         // Test case 5 (multiple intervals, first match)
@@ -103,7 +103,7 @@ public class SweetIntervalSolution {
     private static void printTestResult(String testName, List<Integer> result, List<Integer> expected) {
         boolean pass = result.equals(expected);
         System.out.println(
-            testName + " - Expected: " + expected + ", Got: " + result + " => " + (pass ? "PASS" : "FAIL")
+                testName + " - Expected: " + expected + ", Got: " + result + " => " + (pass ? "PASS" : "FAIL")
         );
     }
 }

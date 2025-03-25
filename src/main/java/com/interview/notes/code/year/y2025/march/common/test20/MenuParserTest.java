@@ -14,13 +14,13 @@ public class MenuParserTest {
 
         // Simple pass/fail check for essential cases
         boolean passTest =
-            reconstructedMenu.contains("Spaghetti") &&
-            reconstructedMenu.contains("CATEGORY") &&
-            reconstructedMenu.contains("Pasta") &&
-            reconstructedMenu.contains("Meatballs") &&
-            reconstructedMenu.contains("Chicken") &&
-            reconstructedMenu.contains("Lasagna") &&
-            reconstructedMenu.contains("Caesar Salad");
+                reconstructedMenu.contains("Spaghetti") &&
+                        reconstructedMenu.contains("CATEGORY") &&
+                        reconstructedMenu.contains("Pasta") &&
+                        reconstructedMenu.contains("Meatballs") &&
+                        reconstructedMenu.contains("Chicken") &&
+                        reconstructedMenu.contains("Lasagna") &&
+                        reconstructedMenu.contains("Caesar Salad");
 
         System.out.println("Basic Parsing Test: " + (passTest ? "PASS" : "FAIL"));
 
@@ -37,8 +37,8 @@ public class MenuParserTest {
 
         // Test large input (simulate large number of items)
         MenuStream largeStream = new MenuStream() {
-            int currentLine = 0;
             final int totalItems = 500000; // 500k items (manageable for simple testing)
+            int currentLine = 0;
 
             public String nextLine() {
                 if (currentLine >= totalItems * 5) return null;
@@ -47,12 +47,18 @@ public class MenuParserTest {
                 currentLine++;
 
                 switch (position) {
-                    case 0: return Integer.toString(itemNum);
-                    case 1: return "OPTION";
-                    case 2: return "LargeItem" + itemNum;
-                    case 3: return "0.99";
-                    case 4: return "";
-                    default: return null;
+                    case 0:
+                        return Integer.toString(itemNum);
+                    case 1:
+                        return "OPTION";
+                    case 2:
+                        return "LargeItem" + itemNum;
+                    case 3:
+                        return "0.99";
+                    case 4:
+                        return "";
+                    default:
+                        return null;
                 }
             }
         };

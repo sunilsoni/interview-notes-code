@@ -1,7 +1,14 @@
 package com.interview.notes.code.year.y2025.march.common.test20;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+interface MenuStream {
+    String nextLine(); // returns null if stream ends
+}
 
 class MenuItem {
     String id, type, name;
@@ -49,7 +56,7 @@ class Menu {
         String name = data.get(2);
         Double price = (type.equals("CATEGORY")) ? null : Double.parseDouble(data.get(3));
         List<String> linkedIds = (type.equals("CATEGORY")) ?
-            data.subList(3, data.size()) : data.subList(4, data.size());
+                data.subList(3, data.size()) : data.subList(4, data.size());
 
         MenuItem item = new MenuItem(id, type, name, price);
         item.linkedIds.addAll(linkedIds);
@@ -59,11 +66,7 @@ class Menu {
     // reconstruct stream
     String reconstruct() {
         return items.values().stream()
-            .map(MenuItem::toString)
-            .collect(Collectors.joining("\n\n"));
+                .map(MenuItem::toString)
+                .collect(Collectors.joining("\n\n"));
     }
-}
-
-interface MenuStream {
-    String nextLine(); // returns null if stream ends
 }

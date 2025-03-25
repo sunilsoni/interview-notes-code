@@ -85,17 +85,6 @@ public class Node {
 
     static int totalNodes = 0;
 
-    // Message class representing messages between nodes
-    static class Message {
-        int count;
-        int type; // 1 = counting phase, 2 = broadcast phase
-
-        public Message(int count, int type) {
-            this.count = count;
-            this.type = type;
-        }
-    }
-
     // Driver function for each node
     public static void main(String[] args) {
         if (isLeftMost()) {
@@ -151,5 +140,16 @@ public class Node {
     public static int sendRight(Message m) {
         // Stub to be replaced by system
         return 0;
+    }
+
+    // Message class representing messages between nodes
+    static class Message {
+        int count;
+        int type; // 1 = counting phase, 2 = broadcast phase
+
+        public Message(int count, int type) {
+            this.count = count;
+            this.type = type;
+        }
     }
 }

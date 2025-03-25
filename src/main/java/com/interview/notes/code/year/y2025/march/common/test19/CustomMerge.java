@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.march.common.test19;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /*
 
@@ -71,38 +74,38 @@ public class CustomMerge {
     public static String customMerge(String input) {
         String[] arrays = input.split(";");
         List<Integer> list1 = Arrays.stream(arrays[0].split(","))
-                                    .map(Integer::parseInt)
-                                    .collect(Collectors.toList());
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
 
         List<Integer> list2 = Arrays.stream(arrays[1].split(","))
-                                    .map(Integer::parseInt)
-                                    .collect(Collectors.toList());
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
 
         // Merge and separate odd and even numbers
         List<Integer> mergedOdds = Stream.concat(list1.stream(), list2.stream())
-                                         .filter(n -> n % 2 != 0)
-                                         .sorted()
-                                         .collect(Collectors.toList());
+                .filter(n -> n % 2 != 0)
+                .sorted()
+                .collect(Collectors.toList());
 
         List<Integer> mergedEvens = Stream.concat(list1.stream(), list2.stream())
-                                          .filter(n -> n % 2 == 0)
-                                          .sorted()
-                                          .collect(Collectors.toList());
+                .filter(n -> n % 2 == 0)
+                .sorted()
+                .collect(Collectors.toList());
 
         // Combine odd numbers followed by even numbers
         List<Integer> result = Stream.concat(mergedOdds.stream(), mergedEvens.stream())
-                                     .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         return result.stream()
-                     .map(String::valueOf)
-                     .collect(Collectors.joining(","));
+                .map(String::valueOf)
+                .collect(Collectors.joining(","));
     }
 
     // Minimal reproducible example & Testing in main (No JUnit)
     public static void main(String[] args) {
         test("1,5,7,4;3,7,2", "1,3,5,7,7,2,4");
         test("-17,1,5,11,19,-16,-14,-6,0,4,16,20;-13,-7,-7,-18,-4,-2,4,12",
-             "-17,-13,-7,-7,1,5,11,19,-18,-16,-14,-6,-4,-2,0,4,4,12,16,20");
+                "-17,-13,-7,-7,1,5,11,19,-18,-16,-14,-6,-4,-2,0,4,4,12,16,20");
 
         // Large data test case
         largeDataTest();
