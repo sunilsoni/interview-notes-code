@@ -1,10 +1,6 @@
 package com.interview.notes.code.year.y2025.april.amazon.test2;
 
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Deque;
-import java.util.ArrayDeque;
-import java.util.AbstractMap;
+import java.util.*;
 
 public class FlattenJsonIterative {
 

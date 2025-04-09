@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.april.common.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AverageAge {
     public static void main(String[] args) {
@@ -40,11 +42,11 @@ public class AverageAge {
 
         // Find average age of people above 30
         double averageAge = list.stream()
-                                .map(map -> Integer.parseInt(map.get("age"))) // Extract age
-                                .filter(age -> age > 30) // Filter ages above 30
-                                .mapToInt(age -> age) // Convert to IntStream
-                                .average() // Calculate average
-                                .orElse(0.0); // Default if no match
+                .map(map -> Integer.parseInt(map.get("age"))) // Extract age
+                .filter(age -> age > 30) // Filter ages above 30
+                .mapToInt(age -> age) // Convert to IntStream
+                .average() // Calculate average
+                .orElse(0.0); // Default if no match
 
         System.out.println("Average age of people above 30: " + averageAge);
     }

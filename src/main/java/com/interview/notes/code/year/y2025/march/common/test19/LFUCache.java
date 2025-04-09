@@ -10,18 +10,6 @@ public class LFUCache<K, V> {
     private Map<K, Node> keyToNode;
     private Map<Integer, LinkedHashSet<Node>> freqToNodes;
 
-    // Node class to store key, value, and frequency
-    private class Node {
-        K key;
-        V value;
-        int freq;
-        Node(K key, V value) {
-            this.key = key;
-            this.value = value;
-            this.freq = 1;
-        }
-    }
-
     // Constructor
     public LFUCache(int capacity) {
         this.capacity = capacity;
@@ -83,5 +71,18 @@ public class LFUCache<K, V> {
     // For testing purposes: get the current size of the cache
     public int size() {
         return keyToNode.size();
+    }
+
+    // Node class to store key, value, and frequency
+    private class Node {
+        K key;
+        V value;
+        int freq;
+
+        Node(K key, V value) {
+            this.key = key;
+            this.value = value;
+            this.freq = 1;
+        }
     }
 }

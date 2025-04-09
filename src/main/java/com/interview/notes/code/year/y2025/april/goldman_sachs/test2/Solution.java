@@ -24,11 +24,19 @@ public class Solution {
         // Loop through each character in the path
         for (char c : path.toCharArray()) {
             switch (c) {
-                case 'U': y++; break;
-                case 'D': y--; break;
-                case 'L': x--; break;
-                case 'R': x++; break;
-                default:  /* ignore any other character */ 
+                case 'U':
+                    y++;
+                    break;
+                case 'D':
+                    y--;
+                    break;
+                case 'L':
+                    x--;
+                    break;
+                case 'R':
+                    x++;
+                    break;
+                default:  /* ignore any other character */
                     break;
             }
         }

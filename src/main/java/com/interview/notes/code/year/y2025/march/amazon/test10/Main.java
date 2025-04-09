@@ -1,7 +1,5 @@
 package com.interview.notes.code.year.y2025.march.amazon.test10;
 
-import java.util.*;
-
 public class Main {
     // Core function
 
@@ -21,7 +19,7 @@ public class Main {
 
                     StringBuilder sb = new StringBuilder(current);
                     sb.deleteCharAt(i);
-                    sb.insert(pos, (char)(digit + 1));
+                    sb.insert(pos, (char) (digit + 1));
 
                     if (sb.charAt(0) == '0' && sb.length() > 1) continue;
 
@@ -70,8 +68,8 @@ public class Main {
     private static void test(String testName, String input, String expected) {
         String result = getMinimumString(input);
         String status = result.equals(expected) ? "PASS" : "FAIL";
-        System.out.println(testName + ": " + status + 
-            " (Expected=" + expected + ", Got=" + result + ")");
+        System.out.println(testName + ": " + status +
+                " (Expected=" + expected + ", Got=" + result + ")");
     }
 
     // Large data test
@@ -79,7 +77,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         // Generate a large string of digits
         for (int i = 0; i < 100000; i++) {
-            sb.append((char)('0' + (i % 10)));
+            sb.append((char) ('0' + (i % 10)));
         }
         String largeInput = sb.toString();
 

@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.march.GoldmanSachs.test4;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.HashMap;
+import java.util.Map;
+
 /*
 
 ### **Problem Statement**
@@ -23,10 +24,10 @@ public class Solution {
      */
     public static int bestAverageGrade(String[][] scores) {
         if (scores == null || scores.length == 0) return 0;
-        
+
         // Map to hold student -> [sum, count]
         Map<String, int[]> studentScores = new HashMap<>();
-        
+
         // Process each score entry
         for (String[] entry : scores) {
             String name = entry[0];
@@ -36,7 +37,7 @@ public class Solution {
             sumCount[0] += score; // cumulative sum
             sumCount[1] += 1;     // count of tests
         }
-        
+
         // Use Java 8 streams to compute the maximum average (integer division floors automatically)
         return studentScores.values().stream()
                 .mapToInt(arr -> arr[0] / arr[1])
@@ -50,37 +51,37 @@ public class Solution {
      */
     public static boolean doTestsPass() {
         boolean testsPass = true;
-        
+
         // Test case 1: Provided example
         String[][] tc1 = {
-            {"Bobby", "87"},
-            {"Charles", "100"},
-            {"Eric", "64"},
-            {"Charles", "22"}
+                {"Bobby", "87"},
+                {"Charles", "100"},
+                {"Eric", "64"},
+                {"Charles", "22"}
         };
         testsPass &= bestAverageGrade(tc1) == 87;
-        
+
         // Test case 2: Empty input
         String[][] tc2 = {};
         testsPass &= bestAverageGrade(tc2) == 0;
-        
+
         // Test case 3: Single student with multiple tests
         String[][] tc3 = {
-            {"Alice", "90"},
-            {"Alice", "80"}
+                {"Alice", "90"},
+                {"Alice", "80"}
         };
         // (90 + 80) / 2 = 85
         testsPass &= bestAverageGrade(tc3) == 85;
-        
+
         // Test case 4: Negative scores
         String[][] tc4 = {
-            {"Bob", "-10"},
-            {"Bob", "0"},
-            {"Alice", "-20"}
+                {"Bob", "-10"},
+                {"Bob", "0"},
+                {"Alice", "-20"}
         };
         // Bob's average: (-10 + 0) / 2 = -5; Alice's average: -20; best average is -5.
         testsPass &= bestAverageGrade(tc4) == -5;
-        
+
         // Test case 5: Large data input
         int largeSize = 1000000;
         String[][] tc5 = new String[largeSize][2];
@@ -96,7 +97,7 @@ public class Solution {
         }
         // Student1's average should be 100, which is the maximum.
         testsPass &= bestAverageGrade(tc5) == 100;
-        
+
         return testsPass;
     }
 

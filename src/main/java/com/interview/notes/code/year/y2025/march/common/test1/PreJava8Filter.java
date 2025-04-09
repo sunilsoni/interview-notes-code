@@ -1,14 +1,11 @@
 package com.interview.notes.code.year.y2025.march.common.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PreJava8Filter {
 
-    // Define a functional interface for filtering items
-    public interface Filter<T> {
-        boolean apply(T t);
-    }
-    
     // Generic filter method that mimics the behavior of Stream.filter
     public static <T> List<T> filter(List<T> list, Filter<T> filter) {
         List<T> result = new ArrayList<T>();
@@ -19,7 +16,7 @@ public class PreJava8Filter {
         }
         return result;
     }
-    
+
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
@@ -30,7 +27,7 @@ public class PreJava8Filter {
             }
         });
         System.out.println("Even numbers: " + evens);
-        
+
         // Filtering odd numbers using another anonymous inner class
         List<Integer> odds = filter(numbers, new Filter<Integer>() {
             public boolean apply(Integer n) {
@@ -38,5 +35,10 @@ public class PreJava8Filter {
             }
         });
         System.out.println("Odd numbers: " + odds);
+    }
+
+    // Define a functional interface for filtering items
+    public interface Filter<T> {
+        boolean apply(T t);
     }
 }

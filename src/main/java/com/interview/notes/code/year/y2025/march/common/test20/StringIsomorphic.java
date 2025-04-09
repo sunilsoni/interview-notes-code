@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StringIsomorphic {
-    
+
     // Main method to test the solution
     public static void main(String[] args) {
         // Test cases

@@ -2,12 +2,13 @@
 package com.interview.notes.code.year.y2025.march.common.test21;
 
 // Importing required classes from the Java standard library
+
 import java.util.HashMap;
 import java.util.Map;
 
 // Main class containing the isomorphic string logic
 public class StringIsomorphic {
-    
+
     // Main method - Entry point of the program
     public static void main(String[] args) {
         // Test different pairs of strings to check if they are isomorphic

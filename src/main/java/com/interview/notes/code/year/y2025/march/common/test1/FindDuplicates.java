@@ -44,7 +44,7 @@ public class FindDuplicates {
 
     /**
      * Main method to run various test cases.
-     *
+     * <p>
      * It includes:
      * - Provided test case.
      * - Test case with no duplicates.

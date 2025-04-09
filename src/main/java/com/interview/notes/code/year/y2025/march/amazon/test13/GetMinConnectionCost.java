@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.march.amazon.test13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 WORKING 100%
 
@@ -159,48 +162,49 @@ public class GetMinConnectionCost {
 
         return result;
     }
+
     public static List<Long> getMinConnectionCost1(List<Integer> warehouseCapacity, List<List<Integer>> additionalHubs) {
         int n = warehouseCapacity.size();
         List<Long> results = new ArrayList<>();
-        
+
         // Precompute total cost if all warehouses connect to the last warehouse (central hub)
         long baseCost = 0;
         for (int i = 0; i < n - 1; i++) {
             baseCost += warehouseCapacity.get(n - 1) - warehouseCapacity.get(i);
         }
-        
+
         for (List<Integer> query : additionalHubs) {
             // Convert 1-based to 0-based indexing
             int hub1 = query.get(0) - 1;
             int hub2 = query.get(1) - 1;
-            
+
             // Start with base cost (all warehouses connected to central hub)
             long totalCost = baseCost;
-            
+
             // Calculate savings for warehouses connecting to hub1 instead of central hub
             for (int i = 0; i < hub1; i++) {
                 // Save by connecting to hub1 instead of central hub
                 totalCost -= (warehouseCapacity.get(n - 1) - warehouseCapacity.get(i));
                 totalCost += (warehouseCapacity.get(hub1) - warehouseCapacity.get(i));
             }
-            
+
             // Calculate savings for warehouses connecting to hub2 instead of central hub
             for (int i = hub1 + 1; i < hub2; i++) {
                 // Save by connecting to hub2 instead of central hub
                 totalCost -= (warehouseCapacity.get(n - 1) - warehouseCapacity.get(i));
                 totalCost += (warehouseCapacity.get(hub2) - warehouseCapacity.get(i));
             }
-            
+
             // Subtract the cost for hub1 and hub2 (they have zero cost)
             totalCost -= (warehouseCapacity.get(n - 1) - warehouseCapacity.get(hub1));
             totalCost -= (warehouseCapacity.get(n - 1) - warehouseCapacity.get(hub2));
-            
+
             results.add(totalCost);
         }
-        
+
         return results;
     }
-    
+
     public static void main(String[] args) {
         // Test Case 1
         List<Integer> warehouses1 = Arrays.asList(3, 6, 10, 15, 20);
@@ -211,7 +215,7 @@ public class GetMinConnectionCost {
         System.out.println("Test Case 1: " + (expected1.equals(result1) ? "PASS" : "FAIL"));
         System.out.println("Expected: " + expected1);
         System.out.println("Result: " + result1);
-        
+
         // Test Case 2
         List<Integer> warehouses2 = Arrays.asList(2, 6, 8, 14);
         List<List<Integer>> queries2 = new ArrayList<>();
@@ -221,7 +225,7 @@ public class GetMinConnectionCost {
         System.out.println("Test Case 2: " + (expected2.equals(result2) ? "PASS" : "FAIL"));
         System.out.println("Expected: " + expected2);
         System.out.println("Result: " + result2);
-        
+
         // Test Case 3
         List<Integer> warehouses3 = Arrays.asList(0, 2, 5, 9, 12, 18);
         List<List<Integer>> queries3 = new ArrayList<>();
@@ -232,11 +236,11 @@ public class GetMinConnectionCost {
         System.out.println("Test Case 3: " + (expected3.equals(result3) ? "PASS" : "FAIL"));
         System.out.println("Expected: " + expected3);
         System.out.println("Result: " + result3);
-        
+
         // Test for large data
         testLargeData();
     }
-    
+
     private static void testLargeData() {
         // Create large test data
         int n = 200000;
@@ -244,16 +248,16 @@ public class GetMinConnectionCost {
         for (int i = 0; i < n; i++) {
             largeWarehouses.add(i);
         }
-        
+
         List<List<Integer>> largeQueries = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            largeQueries.add(Arrays.asList(n/4, 3*n/4));
+            largeQueries.add(Arrays.asList(n / 4, 3 * n / 4));
         }
-        
+
         long startTime = System.currentTimeMillis();
         getMinConnectionCost(largeWarehouses, largeQueries);
         long endTime = System.currentTimeMillis();
-        
+
         System.out.println("Large data test with n=" + n + " and q=100");
         System.out.println("Execution time: " + (endTime - startTime) + "ms");
     }

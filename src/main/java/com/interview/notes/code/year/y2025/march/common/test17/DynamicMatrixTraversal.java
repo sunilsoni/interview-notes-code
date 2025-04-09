@@ -59,15 +59,15 @@ public class DynamicMatrixTraversal {
 
         // Middle elements
         if (rows > 2 && cols > 1) {
-            result.append(matrix[rows/2][1]).append(" | ");
+            result.append(matrix[rows / 2][1]).append(" | ");
         }
-        
+
         if (rows > 2 && cols > 3) {
-            result.append(matrix[rows/2][cols-2]).append(" | ");
+            result.append(matrix[rows / 2][cols - 2]).append(" | ");
         }
-        
+
         if (rows > 2 && cols > 2) {
-            result.append(matrix[rows/2][cols/2]);
+            result.append(matrix[rows / 2][cols / 2]);
         }
 
         System.out.println(result.toString());
@@ -75,41 +75,41 @@ public class DynamicMatrixTraversal {
 
     public static void main(String[] args) {
         // Test with different matrix sizes
-        
+
         // Original 5x5 matrix
         int[][] matrix5x5 = {
-            {1, 2, 3, 4, 5},
-            {6, 7, 8, 9, 1},
-            {2, 3, 4, 5, 6},
-            {7, 8, 9, 1, 2},
-            {3, 4, 5, 6, 7}
+                {1, 2, 3, 4, 5},
+                {6, 7, 8, 9, 1},
+                {2, 3, 4, 5, 6},
+                {7, 8, 9, 1, 2},
+                {3, 4, 5, 6, 7}
         };
         System.out.println("5x5 Matrix:");
         traverseMatrix(matrix5x5);
 
         // 3x3 matrix
         int[][] matrix3x3 = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
         };
         System.out.println("\n3x3 Matrix:");
         traverseMatrix(matrix3x3);
 
         // 4x4 matrix
         int[][] matrix4x4 = {
-            {1, 2, 3, 4},
-            {5, 6, 7, 8},
-            {9, 10, 11, 12},
-            {13, 14, 15, 16}
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12},
+                {13, 14, 15, 16}
         };
         System.out.println("\n4x4 Matrix:");
         traverseMatrix(matrix4x4);
 
         // 2x2 matrix
         int[][] matrix2x2 = {
-            {1, 2},
-            {3, 4}
+                {1, 2},
+                {3, 4}
         };
         System.out.println("\n2x2 Matrix:");
         traverseMatrix(matrix2x2);

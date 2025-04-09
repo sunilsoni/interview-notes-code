@@ -8,9 +8,9 @@ public class CustomPow {
         if (exponent == 0) {
             return 1;
         }
-        
+
         // Check if exponent is an integer (within a tolerance)
-        if (exponent == (int)exponent) {
+        if (exponent == (int) exponent) {
             int exp = (int) exponent;
             // For negative integer exponent, compute positive exponent and then take reciprocal
             if (exp < 0) {
@@ -64,8 +64,8 @@ public class CustomPow {
         // Tolerance for floating point comparison
         double tolerance = 1e-9;
         boolean pass = Math.abs(result - expected) < tolerance;
-        System.out.println("customPow(" + base + ", " + exponent + ") = " + result 
-                           + " | Expected: " + expected + " | " + (pass ? "PASS" : "FAIL"));
+        System.out.println("customPow(" + base + ", " + exponent + ") = " + result
+                + " | Expected: " + expected + " | " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
 }

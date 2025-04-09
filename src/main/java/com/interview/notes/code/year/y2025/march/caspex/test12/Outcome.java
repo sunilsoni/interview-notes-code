@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.march.caspex.test12;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 //WORKING
 public class Outcome {
@@ -24,12 +27,12 @@ public class Outcome {
 
     public static void main(String[] args) {
         List<TestCase> testCases = Arrays.asList(
-            new TestCase("applepenapple", Arrays.asList("apple", "pen"), "true"),
-            new TestCase("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat"), "false"),
-            new TestCase("leetcode", Arrays.asList("leet", "code"), "true"),
-            new TestCase("aaaaaaa", Arrays.asList("aaaa", "aaa"), "true"),
-            new TestCase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
-                         Arrays.asList("a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa"), "false")
+                new TestCase("applepenapple", Arrays.asList("apple", "pen"), "true"),
+                new TestCase("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat"), "false"),
+                new TestCase("leetcode", Arrays.asList("leet", "code"), "true"),
+                new TestCase("aaaaaaa", Arrays.asList("aaaa", "aaa"), "true"),
+                new TestCase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+                        Arrays.asList("a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa"), "false")
         );
 
         for (int i = 0; i < testCases.size(); i++) {

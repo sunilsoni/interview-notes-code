@@ -1,6 +1,6 @@
 package com.interview.notes.code.year.y2025.march.caspex.test10;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class Main {
     private static final int MAX = 5_000_000;

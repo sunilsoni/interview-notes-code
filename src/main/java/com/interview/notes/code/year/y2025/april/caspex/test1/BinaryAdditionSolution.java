@@ -37,16 +37,16 @@ public class BinaryAdditionSolution {
     public static void main(String[] args) {
         // Test cases: {inputA, inputB, expectedOutput}
         String[][] testCases = {
-            {"11",   "1",    "100"},   // Example #1
-            {"1010", "1011", "10101"}, // Example #2
-            {"0",    "0",    "0"},
-            {"1",    "0",    "1"},
-            {"101",  "101",  "1010"}
+                {"11", "1", "100"},   // Example #1
+                {"1010", "1011", "10101"}, // Example #2
+                {"0", "0", "0"},
+                {"1", "0", "1"},
+                {"101", "101", "1010"}
         };
 
         // Check each test case
         Arrays.stream(testCases).forEach(tc -> {
-            String actual   = solve(tc[0], tc[1]);
+            String actual = solve(tc[0], tc[1]);
             String expected = tc[2];
             if (actual.equals(expected)) {
                 System.out.println("PASS for input (" + tc[0] + ", " + tc[1] + ") => " + actual);
@@ -58,10 +58,10 @@ public class BinaryAdditionSolution {
         });
 
         // Large data test: 100 '1's + 100 '1's
-        String largeA = new String(new char[100]).replace('\0', '1'); 
-        String largeB = new String(new char[100]).replace('\0', '1'); 
+        String largeA = new String(new char[100]).replace('\0', '1');
+        String largeB = new String(new char[100]).replace('\0', '1');
         String largeExpected = new BigInteger(largeA, 2).add(new BigInteger(largeB, 2)).toString(2);
-        String largeActual   = solve(largeA, largeB);
+        String largeActual = solve(largeA, largeB);
         if (largeActual.equals(largeExpected)) {
             System.out.println("PASS for large input (100 '1's each) => length: " + largeActual.length());
         } else {

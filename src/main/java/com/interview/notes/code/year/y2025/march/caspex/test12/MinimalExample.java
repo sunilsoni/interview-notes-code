@@ -6,8 +6,8 @@ public class MinimalExample {
     // Simple example method: sum of even integers using Java 8 Streams
     public static int solve(int[] numbers) {
         return Arrays.stream(numbers)
-                     .filter(n -> n % 2 == 0)
-                     .sum();
+                .filter(n -> n % 2 == 0)
+                .sum();
     }
 
     public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class MinimalExample {
 
         // Large data test (illustrative)
         int[] largeTest = new int[100000];
-        for(int i = 0; i < largeTest.length; i++) {
+        for (int i = 0; i < largeTest.length; i++) {
             largeTest[i] = i;
         }
         // For a large array, just check it runs without error and 

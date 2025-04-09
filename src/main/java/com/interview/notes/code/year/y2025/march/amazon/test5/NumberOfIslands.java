@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.march.amazon.test5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class NumberOfIslands {
 
@@ -42,22 +44,22 @@ public class NumberOfIslands {
         List<char[][]> testCases = new ArrayList<>();
 
         testCases.add(new char[][]{
-            {'1', '1', '0', '1', '0'},
-            {'1', '1', '0', '1', '0'},
-            {'1', '1', '0', '0', '1'},
-            {'0', '0', '0', '1', '0'}
+                {'1', '1', '0', '1', '0'},
+                {'1', '1', '0', '1', '0'},
+                {'1', '1', '0', '0', '1'},
+                {'0', '0', '0', '1', '0'}
         });
 
         testCases.add(new char[][]{
-            {'1', '0', '1'},
-            {'0', '1', '0'},
-            {'1', '0', '1'}
+                {'1', '0', '1'},
+                {'0', '1', '0'},
+                {'1', '0', '1'}
         });
 
         testCases.add(new char[][]{
-            {'0', '0', '0'},
-            {'0', '0', '0'},
-            {'0', '0', '0'}
+                {'0', '0', '0'},
+                {'0', '0', '0'},
+                {'0', '0', '0'}
         });
 
         // Large test case

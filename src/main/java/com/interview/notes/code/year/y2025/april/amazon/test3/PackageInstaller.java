@@ -10,7 +10,7 @@ public class PackageInstaller {
     // When adding a package, update the parent map
     public void addPackage(String name, List<String> dependencies) {
         packages.put(name, new Package(name, dependencies));
-        
+
         // For each dependency, add the current package as its parent
         for (String dep : dependencies) {
             parentMap.computeIfAbsent(dep, k -> new HashSet<>()).add(name);

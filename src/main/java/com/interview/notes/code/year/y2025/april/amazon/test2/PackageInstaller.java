@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.april.amazon.test2;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 // Defines a Package and its dependencies
 class Package {
@@ -24,49 +23,6 @@ public class PackageInstaller {
     Set<String> visited = new HashSet<>();
     Set<String> visiting = new HashSet<>();
     List<String> installationOrder = new ArrayList<>();
-
-    // Build the package structure
-    void addPackageDependency(String pkg, String... dependencies) {
-        packageMap.putIfAbsent(pkg, new Package(pkg));
-        for (String dep : dependencies) {
-            packageMap.putIfAbsent(dep, new Package(dep));
-            packageMap.get(pkg).addDependency(dep);
-        }
-    }
-
-    // Resolve dependencies and generate installation order
-    boolean buildInstallationOrder() {
-        for (String pkg : packageMap.keySet()) {
-            if (!visited.contains(pkg)) {
-                if (!resolve(pkg)) {
-                    System.out.println("Cycle detected! Cannot install packages.");
-                    return false;
-                }
-            }
-        }
-        Collections.reverse(installationOrder);  // Reverse for correct install order
-        return true;
-    }
-
-    // Helper method to resolve dependencies recursively
-    boolean resolve(String pkg) {
-        if (visiting.contains(pkg)) return false;  // Detect cycles
-        if (visited.contains(pkg)) return true;
-
-        visiting.add(pkg);
-        for (String dep : packageMap.get(pkg).dependencies) {
-            if (!resolve(dep)) return false;
-        }
-        visiting.remove(pkg);
-        visited.add(pkg);
-        installationOrder.add(pkg);
-        return true;
-    }
-
-    // Execute installation
-    void executeInstallation() {
-        installationOrder.forEach(pkg -> System.out.println("Installing: " + pkg));
-    }
 
     // Test cases
     public static void main(String[] args) {
@@ -110,5 +66,48 @@ public class PackageInstaller {
         } else {
             System.out.println("Test Case 3 (Large Data): FAIL");
         }
+    }
+
+    // Build the package structure
+    void addPackageDependency(String pkg, String... dependencies) {
+        packageMap.putIfAbsent(pkg, new Package(pkg));
+        for (String dep : dependencies) {
+            packageMap.putIfAbsent(dep, new Package(dep));
+            packageMap.get(pkg).addDependency(dep);
+        }
+    }
+
+    // Resolve dependencies and generate installation order
+    boolean buildInstallationOrder() {
+        for (String pkg : packageMap.keySet()) {
+            if (!visited.contains(pkg)) {
+                if (!resolve(pkg)) {
+                    System.out.println("Cycle detected! Cannot install packages.");
+                    return false;
+                }
+            }
+        }
+        Collections.reverse(installationOrder);  // Reverse for correct install order
+        return true;
+    }
+
+    // Helper method to resolve dependencies recursively
+    boolean resolve(String pkg) {
+        if (visiting.contains(pkg)) return false;  // Detect cycles
+        if (visited.contains(pkg)) return true;
+
+        visiting.add(pkg);
+        for (String dep : packageMap.get(pkg).dependencies) {
+            if (!resolve(dep)) return false;
+        }
+        visiting.remove(pkg);
+        visited.add(pkg);
+        installationOrder.add(pkg);
+        return true;
+    }
+
+    // Execute installation
+    void executeInstallation() {
+        installationOrder.forEach(pkg -> System.out.println("Installing: " + pkg));
     }
 }

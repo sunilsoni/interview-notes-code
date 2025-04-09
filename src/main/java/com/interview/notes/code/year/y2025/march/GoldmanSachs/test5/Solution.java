@@ -1,5 +1,9 @@
 package com.interview.notes.code.year.y2025.march.GoldmanSachs.test5;/* Problem Name is &&& Best Average Grade &&& PLEASE DO NOT REMOVE THIS LINE. */
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 class Solution {
     /*
@@ -57,10 +61,10 @@ class Solution {
     public static void main(String[] args) {
         // 1) Example test case from the problem description
         String[][] tc1 = {
-            {"Bobby", "87"},
-            {"Charles", "100"},
-            {"Eric", "64"},
-            {"Charles", "22"}
+                {"Bobby", "87"},
+                {"Charles", "100"},
+                {"Eric", "64"},
+                {"Charles", "22"}
         };
         // Expecting 87 (Bobby’s single score is 87, which is higher than Charles’s floor(61) and Eric’s 64)
         System.out.println("Test 1: " + (bestAverageGrade(tc1) == 87 ? "PASS" : "FAIL"));
@@ -71,16 +75,16 @@ class Solution {
 
         // 3) Single entry
         String[][] tc3 = {
-            {"Alice", "90"}
+                {"Alice", "90"}
         };
         // Expect 90
         System.out.println("Test 3: " + (bestAverageGrade(tc3) == 90 ? "PASS" : "FAIL"));
 
         // 4) Negative scores
         String[][] tc4 = {
-            {"Derek", "-5"},
-            {"Derek", "-3"},
-            {"Derek", "-2"}
+                {"Derek", "-5"},
+                {"Derek", "-3"},
+                {"Derek", "-2"}
         };
         // Average = (-5 + -3 + -2) / 3 = -10 / 3 = -3.333..., floor -> -4
         System.out.println("Test 4: " + (bestAverageGrade(tc4) == -4 ? "PASS" : "FAIL"));
@@ -88,10 +92,10 @@ class Solution {
         // 5) Mixed positives and negatives
         // Let's say 72, 100, -10 -> sum = 162 -> avg=54, floor=54
         String[][] tc5 = {
-            {"Fiona", "72"},
-            {"Fiona", "100"},
-            {"Fiona", "-10"},
-            {"George", "0"}        // Another student
+                {"Fiona", "72"},
+                {"Fiona", "100"},
+                {"Fiona", "-10"},
+                {"George", "0"}        // Another student
         };
         System.out.println("Test 5: " + (bestAverageGrade(tc5) == 54 ? "PASS" : "FAIL"));
 

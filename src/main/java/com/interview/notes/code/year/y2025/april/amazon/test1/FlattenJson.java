@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.april.amazon.test1;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class FlattenJson {
@@ -90,11 +90,11 @@ public class FlattenJson {
         input4.put("large", nested);
         // Create expected output for a few sample keys
         Map<String, String> expected4 = nested.entrySet()
-            .stream()
-            .collect(Collectors.toMap(
-                e -> "large." + e.getKey(),
-                e -> e.getValue().toString()
-            ));
+                .stream()
+                .collect(Collectors.toMap(
+                        e -> "large." + e.getKey(),
+                        e -> e.getValue().toString()
+                ));
 
         runTest("Test Case 4 (Large Data)", input4, expected4);
     }

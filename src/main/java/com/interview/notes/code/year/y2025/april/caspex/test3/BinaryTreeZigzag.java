@@ -3,69 +3,11 @@ package com.interview.notes.code.year.y2025.april.caspex.test3;
 import java.util.*;
 
 public class BinaryTreeZigzag {
-    // Simple tree node class
-    static class Node {
-        int data;
-        Node left, right;
-        Node(int data) {
-            this.data = data;
-        }
-    }
-
     Node root;
 
     // Constructor for convenience
     public BinaryTreeZigzag(Node root) {
         this.root = root;
-    }
-
-    /**
-     * Returns the spiral (zigzag) level-order traversal of the binary tree.
-     * The traversal alternates between left-to-right and right-to-left at each level.
-     */
-    public int[] getLevelSpiral() {
-        if (root == null) {
-            return new int[0];
-        }
-
-        List<Integer> result = new ArrayList<>();
-        Deque<Node> deque = new LinkedList<>();
-        deque.add(root);
-        // Start with false so the first poll is from the last
-        // (and subsequent addition is right->left)
-        // Flip it after each level.
-        boolean leftToRight = false;
-
-        while (!deque.isEmpty()) {
-            int levelSize = deque.size();
-            List<Integer> currentLevel = new ArrayList<>();
-
-            for (int i = 0; i < levelSize; i++) {
-                Node node;
-                if (leftToRight) {
-                    node = deque.pollFirst();
-                    if (node.left != null) {
-                        deque.addLast(node.left);
-                    }
-                    if (node.right != null) {
-                        deque.addLast(node.right);
-                    }
-                } else {
-                    node = deque.pollLast();
-                    if (node.right != null) {
-                        deque.addFirst(node.right);
-                    }
-                    if (node.left != null) {
-                        deque.addFirst(node.left);
-                    }
-                }
-                currentLevel.add(node.data);
-            }
-            result.addAll(currentLevel);
-            leftToRight = !leftToRight;
-        }
-
-        return result.stream().mapToInt(i -> i).toArray();
     }
 
     // --- Test code ---
@@ -201,5 +143,64 @@ public class BinaryTreeZigzag {
         System.out.println("Zigzag/Spiral level order traversal (Example 4 - duplicates):");
         System.out.println(Arrays.toString(spiralOrder4));
         // Example output could be [5, 7, 5, 5, 7, 7] depending on the toggles.
+    }
+
+    /**
+     * Returns the spiral (zigzag) level-order traversal of the binary tree.
+     * The traversal alternates between left-to-right and right-to-left at each level.
+     */
+    public int[] getLevelSpiral() {
+        if (root == null) {
+            return new int[0];
+        }
+
+        List<Integer> result = new ArrayList<>();
+        Deque<Node> deque = new LinkedList<>();
+        deque.add(root);
+        // Start with false so the first poll is from the last
+        // (and subsequent addition is right->left)
+        // Flip it after each level.
+        boolean leftToRight = false;
+
+        while (!deque.isEmpty()) {
+            int levelSize = deque.size();
+            List<Integer> currentLevel = new ArrayList<>();
+
+            for (int i = 0; i < levelSize; i++) {
+                Node node;
+                if (leftToRight) {
+                    node = deque.pollFirst();
+                    if (node.left != null) {
+                        deque.addLast(node.left);
+                    }
+                    if (node.right != null) {
+                        deque.addLast(node.right);
+                    }
+                } else {
+                    node = deque.pollLast();
+                    if (node.right != null) {
+                        deque.addFirst(node.right);
+                    }
+                    if (node.left != null) {
+                        deque.addFirst(node.left);
+                    }
+                }
+                currentLevel.add(node.data);
+            }
+            result.addAll(currentLevel);
+            leftToRight = !leftToRight;
+        }
+
+        return result.stream().mapToInt(i -> i).toArray();
+    }
+
+    // Simple tree node class
+    static class Node {
+        int data;
+        Node left, right;
+
+        Node(int data) {
+            this.data = data;
+        }
     }
 }

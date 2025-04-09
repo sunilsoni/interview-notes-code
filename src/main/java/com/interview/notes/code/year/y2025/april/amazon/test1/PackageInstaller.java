@@ -3,54 +3,10 @@ package com.interview.notes.code.year.y2025.april.amazon.test1;
 import java.util.*;
 
 
-
 public class PackageInstaller {
     private Map<String, Package> packages = new HashMap<>();
     private Set<String> installed = new HashSet<>();
     private Set<String> visiting = new HashSet<>();
-
-    // Add a package with its dependencies
-    public void addPackage(String name, List<String> dependencies) {
-        packages.put(name, new Package(name, dependencies));
-    }
-
-    // Install a package and its dependencies
-    public List<String> install(String packageName) {
-        List<String> installationOrder = new ArrayList<>();
-        installPackage(packageName, installationOrder);
-        return installationOrder;
-    }
-
-    private void installPackage(String packageName, List<String> installationOrder) {
-        // Skip if already installed
-        if (installed.contains(packageName)) return;
-        
-        // Check for circular dependency
-        if (visiting.contains(packageName)) {
-            throw new RuntimeException("Circular dependency detected: " + packageName);
-        }
-
-        // Mark as being visited
-        visiting.add(packageName);
-
-        Package pkg = packages.get(packageName);
-        if (pkg == null) {
-            throw new RuntimeException("Package not found: " + packageName);
-        }
-
-        // Install dependencies first
-        for (String dep : pkg.dependencies) {
-            installPackage(dep, installationOrder);
-        }
-
-        // Install the package
-        if (!installed.contains(packageName)) {
-            installationOrder.add(packageName);
-            installed.add(packageName);
-        }
-
-        visiting.remove(packageName);
-    }
 
     // Main method for testing
     public static void main(String[] args) {
@@ -96,5 +52,48 @@ public class PackageInstaller {
         } catch (Exception e) {
             System.out.println("PASS: Detected missing package");
         }
+    }
+
+    // Add a package with its dependencies
+    public void addPackage(String name, List<String> dependencies) {
+        packages.put(name, new Package(name, dependencies));
+    }
+
+    // Install a package and its dependencies
+    public List<String> install(String packageName) {
+        List<String> installationOrder = new ArrayList<>();
+        installPackage(packageName, installationOrder);
+        return installationOrder;
+    }
+
+    private void installPackage(String packageName, List<String> installationOrder) {
+        // Skip if already installed
+        if (installed.contains(packageName)) return;
+
+        // Check for circular dependency
+        if (visiting.contains(packageName)) {
+            throw new RuntimeException("Circular dependency detected: " + packageName);
+        }
+
+        // Mark as being visited
+        visiting.add(packageName);
+
+        Package pkg = packages.get(packageName);
+        if (pkg == null) {
+            throw new RuntimeException("Package not found: " + packageName);
+        }
+
+        // Install dependencies first
+        for (String dep : pkg.dependencies) {
+            installPackage(dep, installationOrder);
+        }
+
+        // Install the package
+        if (!installed.contains(packageName)) {
+            installationOrder.add(packageName);
+            installed.add(packageName);
+        }
+
+        visiting.remove(packageName);
     }
 }

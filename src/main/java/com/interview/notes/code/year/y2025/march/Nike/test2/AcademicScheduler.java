@@ -3,15 +3,6 @@ package com.interview.notes.code.year.y2025.march.Nike.test2;
 import java.util.*;
 
 public class AcademicScheduler {
-    static class Course {
-        int id;
-        Set<Integer> prerequisites = new HashSet<>();
-        
-        Course(int id) {
-            this.id = id;
-        }
-    }
-
     public static List<Integer> buildSchedule(int n, List<String> prerequisites) {
         // Create courses with their prerequisites
         Course[] courses = new Course[n];
@@ -47,7 +38,7 @@ public class AcademicScheduler {
     }
 
     private static boolean dfs(int courseId, Course[] courses, Set<Integer> visited,
-                             Set<Integer> processing, List<Integer> schedule) {
+                               Set<Integer> processing, List<Integer> schedule) {
         if (processing.contains(courseId)) return false; // Cycle detected
         if (visited.contains(courseId)) return true;
 
@@ -77,26 +68,26 @@ public class AcademicScheduler {
     private static void testCase1() {
         int n = 4;
         List<String> prerequisites = Arrays.asList(
-            "1 0",
-            "2 0",
-            "3 1 2"
+                "1 0",
+                "2 0",
+                "3 1 2"
         );
         List<Integer> result = buildSchedule(n, prerequisites);
-        System.out.println("Test Case 1: " + 
-            (result.equals(Arrays.asList(0, 1, 2, 3)) ? "PASS" : "FAIL"));
+        System.out.println("Test Case 1: " +
+                (result.equals(Arrays.asList(0, 1, 2, 3)) ? "PASS" : "FAIL"));
     }
 
     private static void testCase2() {
         // Cycle detection test
         int n = 3;
         List<String> prerequisites = Arrays.asList(
-            "1 0",
-            "2 1",
-            "0 2"
+                "1 0",
+                "2 1",
+                "0 2"
         );
         List<Integer> result = buildSchedule(n, prerequisites);
-        System.out.println("Test Case 2 (Cycle): " + 
-            (result.isEmpty() ? "PASS" : "FAIL"));
+        System.out.println("Test Case 2 (Cycle): " +
+                (result.isEmpty() ? "PASS" : "FAIL"));
     }
 
     private static void testCase3() {
@@ -104,8 +95,8 @@ public class AcademicScheduler {
         int n = 3;
         List<String> prerequisites = new ArrayList<>();
         List<Integer> result = buildSchedule(n, prerequisites);
-        System.out.println("Test Case 3 (No Prerequisites): " + 
-            (result.equals(Arrays.asList(0, 1, 2)) ? "PASS" : "FAIL"));
+        System.out.println("Test Case 3 (No Prerequisites): " +
+                (result.equals(Arrays.asList(0, 1, 2)) ? "PASS" : "FAIL"));
     }
 
     private static void testLargeInput() {
@@ -113,10 +104,19 @@ public class AcademicScheduler {
         int n = 1000;
         List<String> prerequisites = new ArrayList<>();
         for (int i = 1; i < n; i++) {
-            prerequisites.add(i + " " + (i-1));
+            prerequisites.add(i + " " + (i - 1));
         }
         List<Integer> result = buildSchedule(n, prerequisites);
-        System.out.println("Large Input Test: " + 
-            (result.size() == n ? "PASS" : "FAIL"));
+        System.out.println("Large Input Test: " +
+                (result.size() == n ? "PASS" : "FAIL"));
+    }
+
+    static class Course {
+        int id;
+        Set<Integer> prerequisites = new HashSet<>();
+
+        Course(int id) {
+            this.id = id;
+        }
     }
 }

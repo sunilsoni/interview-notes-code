@@ -1,7 +1,5 @@
 package com.interview.notes.code.year.y2025.march.amazon.test12;
 
-import java.util.*;
-
 public class Main {
     // 1) Use Java 8+ Version
     // 2) Problem Analysis:
@@ -47,7 +45,7 @@ public class Main {
         // We'll also track whether a digit (by its index) has been incremented yet.
         // Because once a digit is incremented, we won't increment it again.
         char[] stack = new char[n];
-        boolean[] usedIncrement = new boolean[n]; 
+        boolean[] usedIncrement = new boolean[n];
         // usedIncrement[i] will mark if we've incremented the digit originally at index i
 
         int top = -1; // stack pointer
@@ -94,7 +92,7 @@ public class Main {
                 } else {
                     // If next digit is >= stack[i]+1, we can increment
                     char nextVal = stack[i + 1];
-                    char incremented = (char)(stack[i] + 1);
+                    char incremented = (char) (stack[i] + 1);
                     if (incremented <= nextVal) {
                         stack[i] = incremented;
                         usedIncrement[i] = true;
@@ -125,24 +123,24 @@ public class Main {
         String s1 = "04829";
         String expected1 = "02599"; // from the prompt
         String actual1 = getMinimumString(s1);
-        System.out.println("Input: " + s1 + " | Output: " + actual1 
-                + " | Expected: " + expected1 
+        System.out.println("Input: " + s1 + " | Output: " + actual1
+                + " | Expected: " + expected1
                 + " | Test: " + (actual1.equals(expected1) ? "PASS" : "FAIL"));
 
         // Sample Test 2:
         String s2 = "34892";
-        String expected2 = "24599"; 
+        String expected2 = "24599";
         String actual2 = getMinimumString(s2);
-        System.out.println("Input: " + s2 + " | Output: " + actual2 
-                + " | Expected: " + expected2 
+        System.out.println("Input: " + s2 + " | Output: " + actual2
+                + " | Expected: " + expected2
                 + " | Test: " + (actual2.equals(expected2) ? "PASS" : "FAIL"));
 
         // Example from problem statement:
         String s3 = "26547";
         String expected3 = "24677";
         String actual3 = getMinimumString(s3);
-        System.out.println("Input: " + s3 + " | Output: " + actual3 
-                + " | Expected: " + expected3 
+        System.out.println("Input: " + s3 + " | Output: " + actual3
+                + " | Expected: " + expected3
                 + " | Test: " + (actual3.equals(expected3) ? "PASS" : "FAIL"));
 
         // Additional Edge Cases:
@@ -151,8 +149,8 @@ public class Main {
         // Only one digit, can't improve anything
         String expected4 = "9";
         String actual4 = getMinimumString(s4);
-        System.out.println("Input: " + s4 + " | Output: " + actual4 
-                + " | Expected: " + expected4 
+        System.out.println("Input: " + s4 + " | Output: " + actual4
+                + " | Expected: " + expected4
                 + " | Test: " + (actual4.equals(expected4) ? "PASS" : "FAIL"));
 
         // 2) All same digits 
@@ -160,8 +158,8 @@ public class Main {
         // All zeroes remain zero, or we could increment but that wouldn't be lex smaller
         String expected5 = "0000";
         String actual5 = getMinimumString(s5);
-        System.out.println("Input: " + s5 + " | Output: " + actual5 
-                + " | Expected: " + expected5 
+        System.out.println("Input: " + s5 + " | Output: " + actual5
+                + " | Expected: " + expected5
                 + " | Test: " + (actual5.equals(expected5) ? "PASS" : "FAIL"));
 
         // 3) Large digits
@@ -169,15 +167,15 @@ public class Main {
         // All 9, no change
         String expected6 = "99999";
         String actual6 = getMinimumString(s6);
-        System.out.println("Input: " + s6 + " | Output: " + actual6 
-                + " | Expected: " + expected6 
+        System.out.println("Input: " + s6 + " | Output: " + actual6
+                + " | Expected: " + expected6
                 + " | Test: " + (actual6.equals(expected6) ? "PASS" : "FAIL"));
 
         // 4) A random large input check (for performance), we won't do an expected check, 
         // just ensure it runs fast without errors:
         StringBuilder big = new StringBuilder();
-        for(int i=0;i<200000;i++){
-            big.append((char)('0' + (i%10)));
+        for (int i = 0; i < 200000; i++) {
+            big.append((char) ('0' + (i % 10)));
         }
         // Just run it to ensure it doesn’t time out
         String bigResult = getMinimumString(big.toString());

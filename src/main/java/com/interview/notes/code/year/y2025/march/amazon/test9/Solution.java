@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.march.amazon.test9;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class CinemaEntry {
     int start, end, volume;

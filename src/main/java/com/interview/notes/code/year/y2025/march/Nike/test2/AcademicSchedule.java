@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.march.Nike.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class AcademicSchedule {
 
@@ -13,7 +17,7 @@ public class AcademicSchedule {
         for (int i = 0; i < N; i++) {
             graph.add(new ArrayList<>());
         }
-        
+
         // Process each prerequisite line.
         for (List<Integer> pre : prerequisites) {
             // First element is the course; the rest are prerequisites.
@@ -25,7 +29,7 @@ public class AcademicSchedule {
                 inDegree[course]++;
             }
         }
-        
+
         // Use a priority queue to always select the smallest index course available
         PriorityQueue<Integer> queue = new PriorityQueue<>();
         for (int i = 0; i < N; i++) {
@@ -33,7 +37,7 @@ public class AcademicSchedule {
                 queue.offer(i);
             }
         }
-        
+
         List<Integer> schedule = new ArrayList<>();
         while (!queue.isEmpty()) {
             int current = queue.poll();
@@ -46,7 +50,7 @@ public class AcademicSchedule {
                 }
             }
         }
-        
+
         // If schedule size is less than N, there is a cycle (invalid input)
         if (schedule.size() != N) {
             throw new IllegalArgumentException("There is a cycle in the prerequisites, schedule not possible.");
@@ -58,23 +62,23 @@ public class AcademicSchedule {
     public static void main(String[] args) {
         // List of test cases
         List<TestCase> tests = Arrays.asList(
-            new TestCase(4, Arrays.asList(
-                Arrays.asList(1, 0),
-                Arrays.asList(2, 0),
-                Arrays.asList(3, 1, 2)
-            ), Arrays.asList(0, 1, 2, 3)),
-            // Edge case: single course, no prerequisites
-            new TestCase(1, new ArrayList<>(), Arrays.asList(0)),
-            // Additional test: multiple valid orders, smallest index order required
-            new TestCase(6, Arrays.asList(
-                Arrays.asList(1, 0),
-                Arrays.asList(2, 0),
-                Arrays.asList(3, 1),
-                Arrays.asList(4, 1, 2),
-                Arrays.asList(5, 3, 4)
-            ), Arrays.asList(0, 1, 2, 3, 4, 5))
+                new TestCase(4, Arrays.asList(
+                        Arrays.asList(1, 0),
+                        Arrays.asList(2, 0),
+                        Arrays.asList(3, 1, 2)
+                ), Arrays.asList(0, 1, 2, 3)),
+                // Edge case: single course, no prerequisites
+                new TestCase(1, new ArrayList<>(), Arrays.asList(0)),
+                // Additional test: multiple valid orders, smallest index order required
+                new TestCase(6, Arrays.asList(
+                        Arrays.asList(1, 0),
+                        Arrays.asList(2, 0),
+                        Arrays.asList(3, 1),
+                        Arrays.asList(4, 1, 2),
+                        Arrays.asList(5, 3, 4)
+                ), Arrays.asList(0, 1, 2, 3, 4, 5))
         );
-        
+
         boolean allPassed = true;
         for (int i = 0; i < tests.size(); i++) {
             TestCase tc = tests.get(i);
@@ -82,16 +86,16 @@ public class AcademicSchedule {
                 List<Integer> result = findCourseSchedule(tc.N, tc.prerequisites);
                 if (!result.equals(tc.expected)) {
                     allPassed = false;
-                    System.out.println("Test " + (i+1) + " FAILED: Expected " + tc.expected + ", got " + result);
+                    System.out.println("Test " + (i + 1) + " FAILED: Expected " + tc.expected + ", got " + result);
                 } else {
-                    System.out.println("Test " + (i+1) + " PASSED");
+                    System.out.println("Test " + (i + 1) + " PASSED");
                 }
             } catch (Exception e) {
                 allPassed = false;
-                System.out.println("Test " + (i+1) + " FAILED with exception: " + e.getMessage());
+                System.out.println("Test " + (i + 1) + " FAILED with exception: " + e.getMessage());
             }
         }
-        
+
         // Large data input test
         try {
             int largeN = 100000;
@@ -110,7 +114,7 @@ public class AcademicSchedule {
         } catch (Exception e) {
             System.out.println("Large input test FAILED with exception: " + e.getMessage());
         }
-        
+
         if (allPassed) {
             System.out.println("All tests PASSED");
         } else {
@@ -124,7 +128,7 @@ class TestCase {
     int N;
     List<List<Integer>> prerequisites;
     List<Integer> expected;
-    
+
     TestCase(int N, List<List<Integer>> prerequisites, List<Integer> expected) {
         this.N = N;
         this.prerequisites = prerequisites;

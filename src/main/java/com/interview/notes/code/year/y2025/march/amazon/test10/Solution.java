@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.march.amazon.test10;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 //CHECK 13/15 passing
 class CinemaEntry {
     int start, end, volume;
@@ -18,9 +20,9 @@ public class Solution {
     public static int cinemaEntries(List<Integer> start, List<Integer> duration, List<Integer> volume) {
         int n = start.size();
         List<CinemaEntry> shows = IntStream.range(0, n)
-            .mapToObj(i -> new CinemaEntry(start.get(i), duration.get(i), volume.get(i)))
-            .sorted(Comparator.comparingInt(s -> s.end))
-            .collect(Collectors.toList());
+                .mapToObj(i -> new CinemaEntry(start.get(i), duration.get(i), volume.get(i)))
+                .sorted(Comparator.comparingInt(s -> s.end))
+                .collect(Collectors.toList());
 
         TreeMap<Integer, Integer> dp = new TreeMap<>();
         dp.put(0, 0);
@@ -58,7 +60,7 @@ public class Solution {
     private static void test(List<Integer> start, List<Integer> duration, List<Integer> volume, int expected) {
         int result = cinemaEntries(start, duration, volume);
         System.out.println(result == expected
-            ? "Test PASS (Expected=" + expected + ", Actual=" + result + ")"
-            : "Test FAIL (Expected=" + expected + ", Actual=" + result + ")");
+                ? "Test PASS (Expected=" + expected + ", Actual=" + result + ")"
+                : "Test FAIL (Expected=" + expected + ", Actual=" + result + ")");
     }
 }

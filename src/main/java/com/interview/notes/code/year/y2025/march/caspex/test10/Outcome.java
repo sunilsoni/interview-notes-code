@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.march.caspex.test10;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class Outcome {
     public static List<Integer> solve(int capacity, List<String> ar) {

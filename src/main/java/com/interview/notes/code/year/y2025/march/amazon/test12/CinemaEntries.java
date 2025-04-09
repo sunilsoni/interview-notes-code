@@ -1,22 +1,11 @@
 package com.interview.notes.code.year.y2025.march.amazon.test12;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class CinemaEntries {
-
-    // Show class representing a show interval with start, end, and volume.
-    static class Show {
-        int start;
-        int end;
-        int volume;
-
-        Show(int s, int d, int v) {
-            this.start = s;
-            this.end = s + d;
-            this.volume = v;
-        }
-    }
 
     // Returns the maximum total volume of non-overlapping shows.
     public static int cinemaEntries(List<Integer> start, List<Integer> duration, List<Integer> volume) {
@@ -114,5 +103,18 @@ public class CinemaEntries {
         if (resultLarge != expectedLarge) allPassed = false;
 
         System.out.println("Overall: " + (allPassed ? "PASS" : "FAIL"));
+    }
+
+    // Show class representing a show interval with start, end, and volume.
+    static class Show {
+        int start;
+        int end;
+        int volume;
+
+        Show(int s, int d, int v) {
+            this.start = s;
+            this.end = s + d;
+            this.volume = v;
+        }
     }
 }

@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.march.caspex.test11;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
 
 public class Main {
     public static int maxArea(List<Integer> B) {
@@ -27,11 +28,11 @@ public class Main {
 
     public static void main(String[] args) {
         Object[][] tests = {
-            new Object[] {Arrays.asList(7,3,5,6,0,7), 15},
-            new Object[] {Arrays.asList(9,1,1,9), 9},
-            new Object[] {Arrays.asList(2,2,2,2), 8},
-            new Object[] {Arrays.asList(0,0,0), 0},
-            new Object[] {Arrays.asList(5), 5}
+                new Object[]{Arrays.asList(7, 3, 5, 6, 0, 7), 15},
+                new Object[]{Arrays.asList(9, 1, 1, 9), 9},
+                new Object[]{Arrays.asList(2, 2, 2, 2), 8},
+                new Object[]{Arrays.asList(0, 0, 0), 0},
+                new Object[]{Arrays.asList(5), 5}
         };
         for (Object[] t : tests) {
             @SuppressWarnings("unchecked")
@@ -39,9 +40,9 @@ public class Main {
             int expected = (int) t[1];
             int result = maxArea(input);
             System.out.println(
-                "Input: " + input +
-                ", Output: " + result +
-                ", " + (result == expected ? "PASS" : "FAIL (Expected " + expected + ")")
+                    "Input: " + input +
+                            ", Output: " + result +
+                            ", " + (result == expected ? "PASS" : "FAIL (Expected " + expected + ")")
             );
         }
     }

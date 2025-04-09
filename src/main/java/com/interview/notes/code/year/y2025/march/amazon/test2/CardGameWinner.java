@@ -1,17 +1,20 @@
 package com.interview.notes.code.year.y2025.march.amazon.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class Card {
-    enum Colour { R, G, B }
     int value;
     Colour colour;
-
     Card(Colour colour, int value) {
         this.colour = colour;
         this.value = value;
     }
+
+    enum Colour {R, G, B}
 }
 
 class Player {
@@ -78,38 +81,38 @@ public class CardGameWinner {
     public static void main(String[] args) {
         // Test case with color combo winner
         List<Player> colorCombo = Arrays.asList(
-            new Player("Player1", new Card(Card.Colour.R, 2), new Card(Card.Colour.R, 3), new Card(Card.Colour.R, 4)),
-            new Player("Player2", new Card(Card.Colour.R, 1), new Card(Card.Colour.B, 2), new Card(Card.Colour.G, 3))
+                new Player("Player1", new Card(Card.Colour.R, 2), new Card(Card.Colour.R, 3), new Card(Card.Colour.R, 4)),
+                new Player("Player2", new Card(Card.Colour.R, 1), new Card(Card.Colour.B, 2), new Card(Card.Colour.G, 3))
         );
         determineWinner(colorCombo);  // Expected: Player1
 
         // Test case with value combo winner
         List<Player> valueCombo = Arrays.asList(
-            new Player("Player3", new Card(Card.Colour.R, 4), new Card(Card.Colour.G, 4), new Card(Card.Colour.B, 4)),
-            new Player("Player4", new Card(Card.Colour.R, 7), new Card(Card.Colour.G, 7), new Card(Card.Colour.B, 7))
+                new Player("Player3", new Card(Card.Colour.R, 4), new Card(Card.Colour.G, 4), new Card(Card.Colour.B, 4)),
+                new Player("Player4", new Card(Card.Colour.R, 7), new Card(Card.Colour.G, 7), new Card(Card.Colour.B, 7))
         );
         determineWinner(valueCombo); // Expected: Player4
 
         // Edge test case - No Winners
         List<Player> noWinnerPlayers = Arrays.asList(
-            new Player("Player5", new Card(Card.Colour.R, 1), new Card(Card.Colour.G, 2), new Card(Card.Colour.B, 3)),
-            new Player("Player6", new Card(Card.Colour.R, 7), new Card(Card.Colour.G, 8), new Card(Card.Colour.B, 9))
+                new Player("Player5", new Card(Card.Colour.R, 1), new Card(Card.Colour.G, 2), new Card(Card.Colour.B, 3)),
+                new Player("Player6", new Card(Card.Colour.R, 7), new Card(Card.Colour.G, 8), new Card(Card.Colour.B, 9))
         );
         determineWinner(noWinnerPlayers); // Expected: No Winners
 
         // Large test case
         List<Player> largePlayerSet = IntStream.range(0, 100000)
-            .mapToObj(i -> new Player("Player" + i,
-                new Card(Card.Colour.R, i % 10),
-                new Card(Card.Colour.G, (i + 1) % 10),
-                new Card(Card.Colour.B, (i + 2) % 10)))
-            .collect(Collectors.toList());
+                .mapToObj(i -> new Player("Player" + i,
+                        new Card(Card.Colour.R, i % 10),
+                        new Card(Card.Colour.G, (i + 1) % 10),
+                        new Card(Card.Colour.B, (i + 2) % 10)))
+                .collect(Collectors.toList());
 
         // Add guaranteed color combo winner
-        largePlayerSet.add(new Player("GuaranteedWinner", 
-            new Card(Card.Colour.G, 9),
-            new Card(Card.Colour.G, 9),
-            new Card(Card.Colour.G, 9)));
+        largePlayerSet.add(new Player("GuaranteedWinner",
+                new Card(Card.Colour.G, 9),
+                new Card(Card.Colour.G, 9),
+                new Card(Card.Colour.G, 9)));
 
         determineWinner(largePlayerSet); // Expected: GuaranteedWinner
     }

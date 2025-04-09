@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.march.caspex.test7;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class BrothersGame {
     public static int solve(List<Integer> arr) {
@@ -18,9 +19,9 @@ public class BrothersGame {
     }
 
     public static void main(String[] args) {
-        System.out.println(solve(Arrays.asList(5, 0, 1, 0, 1))); 
-        System.out.println(solve(Arrays.asList(6, 1, 0, 1, 0))); 
-        System.out.println(solve(Arrays.asList(1, 1, 1, 1, 1))); 
-        System.out.println(solve(Arrays.asList(0, 0, 0, 0)));     
+        System.out.println(solve(Arrays.asList(5, 0, 1, 0, 1)));
+        System.out.println(solve(Arrays.asList(6, 1, 0, 1, 0)));
+        System.out.println(solve(Arrays.asList(1, 1, 1, 1, 1)));
+        System.out.println(solve(Arrays.asList(0, 0, 0, 0)));
     }
 }

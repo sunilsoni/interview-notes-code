@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.april.caspex.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /*
@@ -10,8 +13,8 @@ public class MoveZeros {
     public static List<Integer> solve(List<Integer> nums) {
         // Count non-zero elements
         List<Integer> nonZeros = nums.stream()
-                                     .filter(n -> n != 0)
-                                     .collect(Collectors.toList());
+                .filter(n -> n != 0)
+                .collect(Collectors.toList());
         // Calculate the number of zeros
         int zerosCount = nums.size() - nonZeros.size();
 

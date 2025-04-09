@@ -5,6 +5,7 @@ import java.util.*;
 class Node {
     int data;
     Node left, right, nextRight;
+
     Node(int val) {
         data = val;
         left = null;

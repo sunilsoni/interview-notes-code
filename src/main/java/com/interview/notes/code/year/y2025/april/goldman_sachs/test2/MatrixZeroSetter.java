@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.april.goldman_sachs.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MatrixZeroSetter {
 
@@ -22,10 +24,10 @@ public class MatrixZeroSetter {
 
         // Set identified rows and columns to zero
         IntStream.range(0, rows).forEach(i ->
-            IntStream.range(0, cols).forEach(j -> {
-                if (rowsToZero.contains(i) || colsToZero.contains(j))
-                    matrix[i][j] = 0;
-            })
+                IntStream.range(0, cols).forEach(j -> {
+                    if (rowsToZero.contains(i) || colsToZero.contains(j))
+                        matrix[i][j] = 0;
+                })
         );
 
         return matrix;
@@ -38,19 +40,19 @@ public class MatrixZeroSetter {
 
     private static void testChangeMatrix() {
         int[][] input = {
-            {1, 1, 0, 1, 1},
-            {1, 1, 1, 1, 1},
-            {1, 1, 1, 0, 1},
-            {1, 1, 1, 1, 1},
-            {0, 1, 1, 1, 1}
+                {1, 1, 0, 1, 1},
+                {1, 1, 1, 1, 1},
+                {1, 1, 1, 0, 1},
+                {1, 1, 1, 1, 1},
+                {0, 1, 1, 1, 1}
         };
 
         int[][] expectedOutput = {
-            {0, 0, 0, 0, 0},
-            {0, 1, 0, 0, 1},
-            {0, 0, 0, 0, 0},
-            {0, 1, 0, 0, 1},
-            {0, 0, 0, 0, 0}
+                {0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 1},
+                {0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 1},
+                {0, 0, 0, 0, 0}
         };
 
         int[][] result = changeMatrix(input);
@@ -81,7 +83,7 @@ public class MatrixZeroSetter {
 
         int[][] processedLargeMatrix = changeMatrix(largeMatrix);
         boolean largeTestPassed = IntStream.range(0, size).allMatch(i ->
-            processedLargeMatrix[500][i] == 0 && processedLargeMatrix[i][500] == 0
+                processedLargeMatrix[500][i] == 0 && processedLargeMatrix[i][500] == 0
         );
 
         System.out.println("Test Case 4 (Large Matrix): " + (largeTestPassed ? "PASS" : "FAIL"));

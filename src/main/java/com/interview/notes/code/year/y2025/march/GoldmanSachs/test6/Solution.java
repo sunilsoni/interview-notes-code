@@ -35,27 +35,27 @@ public class Solution {
 
         // Each test array, followed by the expected result
         int[][] testArrays = {
-            {},               // no elements
-            {5},              // single element
-            {0, 1},           // simplest two
-            {2, 2, 2},        // all duplicates
-            {-1, -2, -3, -4}, // negative numbers
-            {1, 2, 2, 3, 3},  // duplicates but distinct second
-            {3, 2, 1},        // second smallest is 2
-            {5, 5, 5, 6},     // second smallest is 6
-            {10, -1},         // second smallest is 10
+                {},               // no elements
+                {5},              // single element
+                {0, 1},           // simplest two
+                {2, 2, 2},        // all duplicates
+                {-1, -2, -3, -4}, // negative numbers
+                {1, 2, 2, 3, 3},  // duplicates but distinct second
+                {3, 2, 1},        // second smallest is 2
+                {5, 5, 5, 6},     // second smallest is 6
+                {10, -1},         // second smallest is 10
         };
 
         int[] expectedResults = {
-            0,   // fewer than 2 elements => 0
-            0,   // fewer than 2 elements => 0
-            1,   // second smallest is 1
-            0,   // no distinct second smallest
-            -3,  // second smallest is -3
-            2,   // second smallest is 2
-            2,   // second smallest is 2
-            6,   // second smallest is 6
-            10   // second smallest is 10
+                0,   // fewer than 2 elements => 0
+                0,   // fewer than 2 elements => 0
+                1,   // second smallest is 1
+                0,   // no distinct second smallest
+                -3,  // second smallest is -3
+                2,   // second smallest is 2
+                2,   // second smallest is 2
+                6,   // second smallest is 6
+                10   // second smallest is 10
         };
 
         System.out.println("Running tests...");
@@ -65,7 +65,7 @@ public class Solution {
             int result = secondSmallest(testArrays[i]);
             boolean pass = (result == expectedResults[i]);
             System.out.printf("Test %d: Expect=%d, Got=%d => %s%n",
-                i, expectedResults[i], result, pass ? "PASS" : "FAIL");
+                    i, expectedResults[i], result, pass ? "PASS" : "FAIL");
             allPass &= pass;
         }
 

@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.april.caspex.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class RisingSequenceSolver {
 
@@ -9,7 +12,7 @@ public class RisingSequenceSolver {
         for (int i = 1; i < ar.size(); i++) {
             if (ar.get(i) <= ar.get(i - 1)) {
                 int diff = ar.get(i - 1) - ar.get(i) + 1;
-                int timesToAdd = (int) Math.ceil((double)diff / B);
+                int timesToAdd = (int) Math.ceil((double) diff / B);
                 ar.set(i, ar.get(i) + timesToAdd * B);
                 totalAdds += timesToAdd;
             }

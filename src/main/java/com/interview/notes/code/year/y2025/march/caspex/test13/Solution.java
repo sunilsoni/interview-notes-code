@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.march.caspex.test13;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Solution {
     // Example method: Sum of integers using Java 8 Streams.
@@ -32,8 +35,8 @@ public class Solution {
 
         // Test Case 4: Large data input
         List<Integer> largeData = IntStream.rangeClosed(1, 1000000)
-                                             .boxed()
-                                             .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
         int expectedSum = (1000000 * (1000000 + 1)) / 2;
         allPassed &= runTest("Test Case 4", largeData, expectedSum);
 

@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.march.amazon.test14;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class CinemaEntry {
     int start, end, volume;
@@ -18,9 +19,9 @@ public class Solution {
     public static int cinemaEntries(List<Integer> start, List<Integer> duration, List<Integer> volume) {
         int n = start.size();
         List<CinemaEntry> shows = IntStream.range(0, n)
-            .mapToObj(i -> new CinemaEntry(start.get(i), duration.get(i), volume.get(i)))
-            .sorted(Comparator.comparingInt(s -> s.end))
-            .collect(Collectors.toList());
+                .mapToObj(i -> new CinemaEntry(start.get(i), duration.get(i), volume.get(i)))
+                .sorted(Comparator.comparingInt(s -> s.end))
+                .collect(Collectors.toList());
 
         TreeMap<Integer, Integer> dp = new TreeMap<>();
         dp.put(0, 0);

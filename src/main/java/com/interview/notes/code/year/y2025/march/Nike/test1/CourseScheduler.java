@@ -1,15 +1,13 @@
 package com.interview.notes.code.year.y2025.march.Nike.test1;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class CourseScheduler {
 
     /**
      * Topological sort using Kahn's Algorithm + PriorityQueue for smallest-first ties.
      *
-     * @param N         Number of courses
+     * @param N          Number of courses
      * @param prereqList Each line: first int is course, following ints are prerequisites
      * @return A list of courses in the order they should be taken, or empty if a cycle is detected
      */
@@ -154,9 +152,9 @@ public class CourseScheduler {
             TestCase tc = testCases.get(i);
             List<Integer> result = topologicalSort(tc.N, tc.prereqs);
             boolean pass = result.equals(tc.expectedOrder);
-            System.out.println("Test #" + (i + 1) 
-                    + (pass ? " PASSED" : " FAILED") 
-                    + " | Output: " + result 
+            System.out.println("Test #" + (i + 1)
+                    + (pass ? " PASSED" : " FAILED")
+                    + " | Output: " + result
                     + " | Expected: " + tc.expectedOrder);
         }
 

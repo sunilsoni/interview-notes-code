@@ -1,7 +1,5 @@
 package com.interview.notes.code.year.y2025.march.amazon.test11;
 
-import java.util.*;
-
 public class LexicoMinimalString {
 
     public static String getMinimumString(String s_id) {
@@ -14,7 +12,7 @@ public class LexicoMinimalString {
 
             // Find smaller digit to the right (d+1)%10 allows digit rotation
             for (int j = n - 1; j > i; j--) {
-                char rotatedDigit = (char)(((digits[j] - '0' + 1) % 10) + '0');
+                char rotatedDigit = (char) (((digits[j] - '0' + 1) % 10) + '0');
                 if (rotatedDigit < minDigit) {
                     minDigit = rotatedDigit;
                     minIndex = j;
@@ -23,7 +21,7 @@ public class LexicoMinimalString {
 
             if (minIndex != i) {
                 // Perform operation: remove digit at minIndex and insert rotatedDigit at position i
-                char rotatedDigit = (char)(((digits[minIndex] - '0' + 1) % 10) + '0');
+                char rotatedDigit = (char) (((digits[minIndex] - '0' + 1) % 10) + '0');
                 StringBuilder sb = new StringBuilder();
                 for (int k = 0; k < n; k++) {
                     if (k == i) sb.append(rotatedDigit);

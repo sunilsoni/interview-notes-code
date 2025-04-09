@@ -83,24 +83,24 @@ public class LargestOddNumber {
 
         // Test cases
         Object[][] tests = {
-            // {test input, expected output}
-            {"gt12cty65mt1", 65},
-            {"mkf43kd1cmk32klmv123", 123},
-            {"abcdef", -1},              // No digits
-            {"24680", -1},               // All even numbers
-            {"13579", 13579},            // Single odd number group that is the max
-            {"a1b2c3d5", 5},             // Multiple small numbers, maximum is 5
-            {"abc0023xyz005", 23},       // Leading zeros and multiple groups
-            {"1234567890", 123456789},   // Only odd grouping is the first 9 digits (if any)
-            // Large input: repeat a pattern many times
-            {new String(new char[500]).replace("\0", "a1b2c3d5e7"), 7}
+                // {test input, expected output}
+                {"gt12cty65mt1", 65},
+                {"mkf43kd1cmk32klmv123", 123},
+                {"abcdef", -1},              // No digits
+                {"24680", -1},               // All even numbers
+                {"13579", 13579},            // Single odd number group that is the max
+                {"a1b2c3d5", 5},             // Multiple small numbers, maximum is 5
+                {"abc0023xyz005", 23},       // Leading zeros and multiple groups
+                {"1234567890", 123456789},   // Only odd grouping is the first 9 digits (if any)
+                // Large input: repeat a pattern many times
+                {new String(new char[500]).replace("\0", "a1b2c3d5e7"), 7}
         };
 
         for (Object[] test : tests) {
             String input = (String) test[0];
             int expected = (int) test[1];
             int result = solve(input);
-            if(result == expected) {
+            if (result == expected) {
                 System.out.println("PASS: Input: \"" + input + "\" -> Expected: " + expected + ", Got: " + result);
                 passCount++;
             } else {

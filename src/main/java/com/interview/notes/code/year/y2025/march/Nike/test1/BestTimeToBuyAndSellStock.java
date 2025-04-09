@@ -25,21 +25,21 @@ public class BestTimeToBuyAndSellStock {
     public static void main(String[] args) {
         // Define test cases
         int[][] testCases = {
-            {7, 1, 5, 3, 6, 4},    // Expected 7
-            {1, 2, 3, 4, 5},       // Expected 4
-            {7, 6, 4, 3, 1},       // Expected 0
-            {},                    // Expected 0 (empty array)
-            {5},                   // Expected 0 (single element)
-            {2, 1, 2, 0, 1}        // Expected 2 (buy at 1, sell at 2, buy at 0, sell at 1)
+                {7, 1, 5, 3, 6, 4},    // Expected 7
+                {1, 2, 3, 4, 5},       // Expected 4
+                {7, 6, 4, 3, 1},       // Expected 0
+                {},                    // Expected 0 (empty array)
+                {5},                   // Expected 0 (single element)
+                {2, 1, 2, 0, 1}        // Expected 2 (buy at 1, sell at 2, buy at 0, sell at 1)
         };
 
         int[] expectedResults = {
-            7,
-            4,
-            0,
-            0,
-            0,
-            2
+                7,
+                4,
+                0,
+                0,
+                0,
+                2
         };
 
         // Run each test
@@ -60,7 +60,7 @@ public class BestTimeToBuyAndSellStock {
         int[] largeData = new int[100000];
         for (int i = 0; i < largeData.length; i++) {
             // A simple pattern: strictly increasing (worst-case scenario for memory, but easy to validate large data)
-            largeData[i] = i; 
+            largeData[i] = i;
         }
         int largeResult = maxProfit(largeData);
         System.out.println("Large data test (size=" + largeData.length + "): profit=" + largeResult);

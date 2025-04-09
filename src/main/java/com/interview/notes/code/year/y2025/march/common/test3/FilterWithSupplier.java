@@ -1,19 +1,17 @@
 package com.interview.notes.code.year.y2025.march.common.test3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class FilterWithSupplier {
 
-    // Pre-Java8 style functional interface for filtering items.
-    public interface Filter<T> {
-        boolean apply(T t);
-    }
-
     // Generic filter method that takes a Supplier for the output collection.
     public static <T, U extends Collection<T>> U filter(
-            Collection<T> items, 
-            Filter<T> filter, 
+            Collection<T> items,
+            Filter<T> filter,
             Supplier<U> outputSupplier) {
         U result = outputSupplier.get();  // Create an instance of the output collection.
         for (T item : items) {
@@ -40,5 +38,10 @@ public class FilterWithSupplier {
         });
 
         System.out.println("Even numbers: " + evens);
+    }
+
+    // Pre-Java8 style functional interface for filtering items.
+    public interface Filter<T> {
+        boolean apply(T t);
     }
 }

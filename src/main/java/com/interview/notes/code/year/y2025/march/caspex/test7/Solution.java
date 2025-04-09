@@ -1,16 +1,19 @@
 package com.interview.notes.code.year.y2025.march.caspex.test7;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Solution {
 
     public static List<Integer> solve(List<Integer> nums) {
         List<Integer> nonZero = nums.stream()
-                                    .filter(n -> n != 0)
-                                    .collect(Collectors.toList());
+                .filter(n -> n != 0)
+                .collect(Collectors.toList());
         long zerosCount = nums.size() - nonZero.size();
-        nonZero.addAll(Collections.nCopies((int)zerosCount, 0));
+        nonZero.addAll(Collections.nCopies((int) zerosCount, 0));
         return nonZero;
     }
 

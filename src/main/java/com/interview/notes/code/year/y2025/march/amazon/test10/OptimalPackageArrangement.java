@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.march.amazon.test10;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /*
 Here is the combined and fully structured version of the problem statement and function signature from your screenshots:
@@ -145,8 +149,8 @@ public class OptimalPackageArrangement {
 
         // Mixed large input
         List<Integer> mixedLargeInput = IntStream.concat(
-                IntStream.generate(() -> 1000000).limit(50000),
-                IntStream.generate(() -> -1000001).limit(50000))
+                        IntStream.generate(() -> 1000000).limit(50000),
+                        IntStream.generate(() -> -1000001).limit(50000))
                 .boxed().collect(Collectors.toList());
         test(mixedLargeInput, 99999);
     }

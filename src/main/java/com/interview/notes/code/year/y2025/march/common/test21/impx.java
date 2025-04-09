@@ -1,7 +1,5 @@
 package com.interview.notes.code.year.y2025.march.common.test21;
 
-import java.io.*;
-
 interface x {
     int p = 10; // implicitly public, static, final
 
@@ -14,14 +12,14 @@ interface x {
 
 public class impx implements x {
 
-    // Implementing the abstract method
-    public void pr() {
-        System.out.println("Hello World");
-    }
-
     public static void main(String[] args) {
         x ob = new impx(); // using interface reference
         ob.pr();           // prints: Hello World
         ob.show();         // prints: A default method in interface
+    }
+
+    // Implementing the abstract method
+    public void pr() {
+        System.out.println("Hello World");
     }
 }

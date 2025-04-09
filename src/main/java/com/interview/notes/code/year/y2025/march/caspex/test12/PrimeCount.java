@@ -52,8 +52,8 @@ public class PrimeCount {
         if (result == expected) {
             System.out.println("Input=" + input + " PASS (Got " + result + ")");
         } else {
-            System.out.println("Input=" + input + " FAIL (Got " + result 
-                               + ", Expected " + expected + ")");
+            System.out.println("Input=" + input + " FAIL (Got " + result
+                    + ", Expected " + expected + ")");
         }
     }
 }

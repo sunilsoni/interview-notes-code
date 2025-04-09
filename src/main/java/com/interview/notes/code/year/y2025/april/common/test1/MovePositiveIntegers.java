@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2025.april.common.test1;
 import java.util.Arrays;
 
 public class MovePositiveIntegers {
-    
+
     public static int[] movePositiveToFront(int[] arr) {
         // Edge case handling
         if (arr == null || arr.length <= 1) {
@@ -12,7 +12,7 @@ public class MovePositiveIntegers {
 
         // Using two-pointer technique
         int writeIndex = 0;
-        
+
         // First pass: Copy positive integers
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] > 0) {
@@ -22,7 +22,7 @@ public class MovePositiveIntegers {
                 writeIndex++;
             }
         }
-        
+
         return arr;
     }
 
@@ -34,7 +34,7 @@ public class MovePositiveIntegers {
         runTest(new int[]{}, new int[]{}, "Empty array");
         runTest(new int[]{0}, new int[]{0}, "Single zero");
         runTest(new int[]{1}, new int[]{1}, "Single positive");
-        
+
         // Large data test
         int[] largeInput = new int[100000];
         for (int i = 0; i < largeInput.length; i++) {
@@ -43,15 +43,15 @@ public class MovePositiveIntegers {
         long startTime = System.currentTimeMillis();
         movePositiveToFront(largeInput);
         long endTime = System.currentTimeMillis();
-        System.out.println("Large data test (100000 elements) completed in: " + 
-                          (endTime - startTime) + "ms");
+        System.out.println("Large data test (100000 elements) completed in: " +
+                (endTime - startTime) + "ms");
     }
 
     private static void runTest(int[] input, int[] expected, String testName) {
         int[] original = input.clone();
         int[] result = movePositiveToFront(input);
         boolean passed = Arrays.equals(result, expected);
-        
+
         System.out.println("Test: " + testName);
         System.out.println("Input: " + Arrays.toString(original));
         System.out.println("Output: " + Arrays.toString(result));

@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.march.amazon.test10;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.PriorityQueue;
 
 public class LexicoMinimalString {
     public static String getMinimumString(String s_id) {
@@ -44,7 +46,7 @@ public class LexicoMinimalString {
         // Large test case
         StringBuilder largeInput = new StringBuilder();
         for (int i = 0; i < 200000; i++) {
-            largeInput.append((char)('9' - (i % 10)));
+            largeInput.append((char) ('9' - (i % 10)));
         }
         String largeResult = getMinimumString(largeInput.toString());
         System.out.println("Large test case result length: " + largeResult.length());
@@ -52,9 +54,9 @@ public class LexicoMinimalString {
 
     static void test(String input, String expected) {
         String result = getMinimumString(input);
-        System.out.println("Input: " + input 
-            + " | Expected: " + expected 
-            + " | Result: " + result 
-            + " | " + (result.equals(expected) ? "PASS" : "FAIL"));
+        System.out.println("Input: " + input
+                + " | Expected: " + expected
+                + " | Result: " + result
+                + " | " + (result.equals(expected) ? "PASS" : "FAIL"));
     }
 }

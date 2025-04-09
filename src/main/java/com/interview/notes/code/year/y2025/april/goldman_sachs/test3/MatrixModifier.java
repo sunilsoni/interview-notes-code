@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.april.goldman_sachs.test3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -18,12 +20,12 @@ public class MatrixModifier {
         if (matrix == null || matrix.length == 0) {
             return matrix;
         }
-        
+
         int rows = matrix.length;
         int cols = matrix[0].length;
         Set<Integer> rowsToZero = new HashSet<>();
         Set<Integer> colsToZero = new HashSet<>();
-        
+
         // Record the rows and columns that need to be zeroed.
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -33,7 +35,7 @@ public class MatrixModifier {
                 }
             }
         }
-        
+
         // Modify the matrix: if either the row or column index is in the set, set that cell to 0.
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -85,8 +87,8 @@ public class MatrixModifier {
         }
         for (int[] row : matrix) {
             String rowString = Arrays.stream(row)
-                                     .mapToObj(String::valueOf)
-                                     .collect(Collectors.joining(", "));
+                    .mapToObj(String::valueOf)
+                    .collect(Collectors.joining(", "));
             System.out.println("[" + rowString + "]");
         }
     }
@@ -94,42 +96,42 @@ public class MatrixModifier {
     public static void main(String[] args) {
         // Test 1: Provided test case
         int[][] input1 = {
-            {1, 1, 0, 1, 1},
-            {1, 1, 1, 1, 1},
-            {1, 1, 1, 0, 1},
-            {1, 1, 1, 1, 1},
-            {0, 1, 1, 1, 1}
+                {1, 1, 0, 1, 1},
+                {1, 1, 1, 1, 1},
+                {1, 1, 1, 0, 1},
+                {1, 1, 1, 1, 1},
+                {0, 1, 1, 1, 1}
         };
         int[][] expected1 = {
-            {0, 0, 0, 0, 0},
-            {0, 1, 0, 0, 1},
-            {0, 0, 0, 0, 0},
-            {0, 1, 0, 0, 1},
-            {0, 0, 0, 0, 0}
+                {0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 1},
+                {0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 1},
+                {0, 0, 0, 0, 0}
         };
         runTest(input1, expected1, "Test 1");
 
         // Test 2: Matrix without any zeros should remain the same.
         int[][] input2 = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
         };
         int[][] expected2 = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
         };
         runTest(input2, expected2, "Test 2");
 
         // Test 3: Matrix with a zero in the first element.
         int[][] input3 = {
-            {0, 2},
-            {3, 4}
+                {0, 2},
+                {3, 4}
         };
         int[][] expected3 = {
-            {0, 0},
-            {0, 4}
+                {0, 0},
+                {0, 4}
         };
         runTest(input3, expected3, "Test 3");
 
@@ -140,23 +142,23 @@ public class MatrixModifier {
 
         // Test 5: Single-row matrix.
         int[][] input5 = {
-            {1, 0, 3, 4}
+                {1, 0, 3, 4}
         };
         int[][] expected5 = {
-            {0, 0, 0, 0}
+                {0, 0, 0, 0}
         };
         runTest(input5, expected5, "Test 5");
 
         // Test 6: Single-column matrix.
         int[][] input6 = {
-            {1},
-            {0},
-            {3}
+                {1},
+                {0},
+                {3}
         };
         int[][] expected6 = {
-            {0},
-            {0},
-            {0}
+                {0},
+                {0},
+                {0}
         };
         runTest(input6, expected6, "Test 6");
 
@@ -173,28 +175,28 @@ public class MatrixModifier {
         largeInput[700][300] = 0;
         // Instead of building a complete expected matrix, we can check if the required rows & columns are zero.
         int[][] modifiedLargeMatrix = changeMatrix(largeInput);
-        boolean largeTestPass = 
-            isRowZero(modifiedLargeMatrix, 100) &&
-            isColumnZero(modifiedLargeMatrix, 200) &&
-            isRowZero(modifiedLargeMatrix, 500) &&
-            isColumnZero(modifiedLargeMatrix, 500) &&
-            isRowZero(modifiedLargeMatrix, 700) &&
-            isColumnZero(modifiedLargeMatrix, 300);
+        boolean largeTestPass =
+                isRowZero(modifiedLargeMatrix, 100) &&
+                        isColumnZero(modifiedLargeMatrix, 200) &&
+                        isRowZero(modifiedLargeMatrix, 500) &&
+                        isColumnZero(modifiedLargeMatrix, 500) &&
+                        isRowZero(modifiedLargeMatrix, 700) &&
+                        isColumnZero(modifiedLargeMatrix, 300);
         System.out.println("Test 7 (Large Matrix): " + (largeTestPass ? "PASS" : "FAIL"));
     }
-    
+
     /**
      * Helper method to run an individual test case.
      *
-     * @param input The input matrix.
+     * @param input    The input matrix.
      * @param expected The expected output matrix.
      * @param testName Name or identifier of the test.
      */
     public static void runTest(int[][] input, int[][] expected, String testName) {
         // Create a deep copy of input for testing so original is not mutated during testing.
         int[][] inputCopy = Arrays.stream(input)
-                                  .map(arr -> Arrays.copyOf(arr, arr.length))
-                                  .toArray(int[][]::new);
+                .map(arr -> Arrays.copyOf(arr, arr.length))
+                .toArray(int[][]::new);
         int[][] output = changeMatrix(inputCopy);
         boolean passed = isMatrixEqual(output, expected);
         System.out.println(testName + ": " + (passed ? "PASS" : "FAIL"));
@@ -205,24 +207,24 @@ public class MatrixModifier {
             printMatrix(output);
         }
     }
-    
+
     /**
      * Helper method to check if all elements in a specified row are zero.
-     * 
+     *
      * @param matrix The matrix to check.
-     * @param row The row index to verify.
+     * @param row    The row index to verify.
      * @return true if all elements are zero.
      */
     public static boolean isRowZero(int[][] matrix, int row) {
-        if(row >= matrix.length) return false;
+        if (row >= matrix.length) return false;
         return IntStream.of(matrix[row]).allMatch(x -> x == 0);
     }
-    
+
     /**
      * Helper method to check if all elements in a specified column are zero.
-     * 
+     *
      * @param matrix The matrix to check.
-     * @param col The column index to verify.
+     * @param col    The column index to verify.
      * @return true if all elements in the column are zero.
      */
     public static boolean isColumnZero(int[][] matrix, int col) {

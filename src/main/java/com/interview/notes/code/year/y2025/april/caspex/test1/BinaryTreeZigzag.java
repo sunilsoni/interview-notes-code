@@ -3,66 +3,11 @@ package com.interview.notes.code.year.y2025.april.caspex.test1;
 import java.util.*;
 
 public class BinaryTreeZigzag {
-    // Simple tree node class
-    static class Node {
-        int data;
-        Node left, right;
-        Node(int data) {
-            this.data = data;
-        }
-    }
-
     Node root;
 
     // Constructor for convenience
     public BinaryTreeZigzag(Node root) {
         this.root = root;
-    }
-
-    /**
-     * Returns the spiral (zigzag) level-order traversal of the binary tree.
-     * The traversal alternates between left-to-right and right-to-left at each level.
-     */
-    public int[] getLevelSpiral() {
-        if (root == null) {
-            return new int[0];
-        }
-        
-        List<Integer> result = new ArrayList<>();
-        Deque<Node> deque = new LinkedList<>();
-        deque.add(root);
-        boolean leftToRight = false;
-
-        while (!deque.isEmpty()) {
-            int levelSize = deque.size();
-            List<Integer> currentLevel = new ArrayList<>();
-
-            for (int i = 0; i < levelSize; i++) {
-                Node node;
-                if (leftToRight) {
-                    node = deque.pollFirst();
-                    if (node.left != null) {
-                        deque.addLast(node.left);
-                    }
-                    if (node.right != null) {
-                        deque.addLast(node.right);
-                    }
-                } else {
-                    node = deque.pollLast();
-                    if (node.right != null) {
-                        deque.addFirst(node.right);
-                    }
-                    if (node.left != null) {
-                        deque.addFirst(node.left);
-                    }
-                }
-                currentLevel.add(node.data);
-            }
-            result.addAll(currentLevel);
-            leftToRight = !leftToRight;
-        }
-
-        return result.stream().mapToInt(i -> i).toArray();
     }
 
     // --- Test code ---
@@ -123,5 +68,61 @@ public class BinaryTreeZigzag {
         BinaryTreeZigzag rightTree = new BinaryTreeZigzag(rightRoot);
         System.out.println("Only right children tree spiral traversal: " + Arrays.toString(rightTree.getLevelSpiral()));
         // Expected [100, 200, 300, 400].
+    }
+
+    /**
+     * Returns the spiral (zigzag) level-order traversal of the binary tree.
+     * The traversal alternates between left-to-right and right-to-left at each level.
+     */
+    public int[] getLevelSpiral() {
+        if (root == null) {
+            return new int[0];
+        }
+
+        List<Integer> result = new ArrayList<>();
+        Deque<Node> deque = new LinkedList<>();
+        deque.add(root);
+        boolean leftToRight = false;
+
+        while (!deque.isEmpty()) {
+            int levelSize = deque.size();
+            List<Integer> currentLevel = new ArrayList<>();
+
+            for (int i = 0; i < levelSize; i++) {
+                Node node;
+                if (leftToRight) {
+                    node = deque.pollFirst();
+                    if (node.left != null) {
+                        deque.addLast(node.left);
+                    }
+                    if (node.right != null) {
+                        deque.addLast(node.right);
+                    }
+                } else {
+                    node = deque.pollLast();
+                    if (node.right != null) {
+                        deque.addFirst(node.right);
+                    }
+                    if (node.left != null) {
+                        deque.addFirst(node.left);
+                    }
+                }
+                currentLevel.add(node.data);
+            }
+            result.addAll(currentLevel);
+            leftToRight = !leftToRight;
+        }
+
+        return result.stream().mapToInt(i -> i).toArray();
+    }
+
+    // Simple tree node class
+    static class Node {
+        int data;
+        Node left, right;
+
+        Node(int data) {
+            this.data = data;
+        }
     }
 }

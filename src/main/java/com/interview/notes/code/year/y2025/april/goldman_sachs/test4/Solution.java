@@ -12,7 +12,7 @@ class Solution {
     public static int optimalPath(int[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0)
             return 0;
-        
+
         int m = grid.length;      // number of rows
         int n = grid[0].length;   // number of columns
 
@@ -52,30 +52,30 @@ class Solution {
 
         // Test case 1: Provided example.
         int[][] grid1 = {
-            {0, 0, 0, 0, 5},
-            {0, 1, 1, 1, 0},
-            {2, 0, 0, 0, 0}
+                {0, 0, 0, 0, 5},
+                {0, 1, 1, 1, 0},
+                {2, 0, 0, 0, 0}
         };
         allTestsPass &= (optimalPath(grid1) == 10);
 
         // Test case 2: Single cell grid.
         int[][] grid2 = {
-            {7}
+                {7}
         };
         allTestsPass &= (optimalPath(grid2) == 7);
 
         // Test case 3: Grid with one row.
         int[][] grid3 = {
-            {1, 2, 3, 4}
+                {1, 2, 3, 4}
         };
         // Only east moves are possible.
         allTestsPass &= (optimalPath(grid3) == 1 + 2 + 3 + 4);
 
         // Test case 4: Grid with one column.
         int[][] grid4 = {
-            {4},
-            {5},
-            {6}
+                {4},
+                {5},
+                {6}
         };
         // Only north moves are possible (from bottom to top).
         allTestsPass &= (optimalPath(grid4) == 4 + 5 + 6);

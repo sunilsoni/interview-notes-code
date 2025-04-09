@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.april.goldman_sachs.test3;
 
-import java.io.*;
-import java.util.*;
+import java.util.Arrays;
 
 public class Solution {
 
@@ -10,21 +9,21 @@ public class Solution {
         int x = 0, y = 0;
         // Process each character in the path string
         for (char c : path.toCharArray()) {
-            switch(c) {
-                case 'U': 
-                    y++; 
+            switch (c) {
+                case 'U':
+                    y++;
                     break;
-                case 'D': 
-                    y--; 
+                case 'D':
+                    y--;
                     break;
-                case 'L': 
-                    x--; 
+                case 'L':
+                    x--;
                     break;
-                case 'R': 
-                    x++; 
+                case 'R':
+                    x++;
                     break;
                 // Ignore all other characters
-                default: 
+                default:
                     break;
             }
         }
