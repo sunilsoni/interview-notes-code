@@ -5,9 +5,11 @@ import java.util.stream.Collectors;
 
 public class StockCarElimination {
 
-    /** -----------------------------------------------------------
-     *  Returns the drivers in the exact order they are eliminated.
-     *  ----------------------------------------------------------*/
+    /**
+     * -----------------------------------------------------------
+     * Returns the drivers in the exact order they are eliminated.
+     * ----------------------------------------------------------
+     */
     public static String[] solution(String[][] laps) {
 
         if (laps == null || laps.length == 0 || laps[0].length == 0)
@@ -15,8 +17,8 @@ public class StockCarElimination {
 
         // 1. collect the list of drivers that appear in lap 0
         Set<String> remaining = Arrays.stream(laps[0])
-                                      .map(s -> s.split("\\s+")[0])
-                                      .collect(Collectors.toCollection(LinkedHashSet::new));
+                .map(s -> s.split("\\s+")[0])
+                .collect(Collectors.toCollection(LinkedHashSet::new));
 
         // 2. best time seen so far for every driver
         Map<String, Integer> best = new HashMap<>();
@@ -29,22 +31,22 @@ public class StockCarElimination {
             // 3a. update best time for each driver this lap
             for (String record : lap) {
                 String[] parts = record.split("\\s+");
-                String name   = parts[0];
-                int    time   = Integer.parseInt(parts[1]);
+                String name = parts[0];
+                int time = Integer.parseInt(parts[1]);
                 best.put(name, Math.min(best.get(name), time));
             }
 
             // 3b. find the slowest best time among those still racing
             int slowestBest = remaining.stream()
-                                       .mapToInt(best::get)
-                                       .max()
-                                       .orElse(Integer.MIN_VALUE);
+                    .mapToInt(best::get)
+                    .max()
+                    .orElse(Integer.MIN_VALUE);
 
             // 3c. everyone with that slowest time is out (alphabetically)
             List<String> toRemove = remaining.stream()
-                                             .filter(d -> best.get(d) == slowestBest)
-                                             .sorted()
-                                             .collect(Collectors.toList());
+                    .filter(d -> best.get(d) == slowestBest)
+                    .sorted()
+                    .collect(Collectors.toList());
 
             eliminated.addAll(toRemove);
             remaining.removeAll(toRemove);
@@ -63,33 +65,33 @@ public class StockCarElimination {
         // ------------ provided example 1 -------------
         total++;
         String[][] ex1 = {
-            {"Harold 154", "Gina 155", "Juan 160"},
-            {"Juan 152",   "Gina 153", "Harold 160"},
-            {"Harold 148", "Gina 150", "Juan 151"}
+                {"Harold 154", "Gina 155", "Juan 160"},
+                {"Juan 152", "Gina 153", "Harold 160"},
+                {"Harold 148", "Gina 150", "Juan 151"}
         };
         passed += check(ex1, new String[]{"Juan", "Harold", "Gina"});
 
         // ------------ provided example 2 -------------
         total++;
         String[][] ex2 = {
-            {"Gina 155",  "Eddie 160", "Joy 161",  "Harold 163"},
-            {"Harold 151","Gina 153",  "Joy 160",  "Eddie 160"},
-            {"Harold 149","Joy 150",   "Gina 152", "Eddie 154"},
-            {"Harold 148","Gina 150",  "Eddie 151","Joy 155"}
+                {"Gina 155", "Eddie 160", "Joy 161", "Harold 163"},
+                {"Harold 151", "Gina 153", "Joy 160", "Eddie 160"},
+                {"Harold 149", "Joy 150", "Gina 152", "Eddie 154"},
+                {"Harold 148", "Gina 150", "Eddie 151", "Joy 155"}
         };
         passed += check(ex2, new String[]{"Harold", "Eddie", "Joy", "Gina"});
 
         // ------------ all drivers tie every lap -------------
         total++;
         String[][] tie = {
-            {"A 100", "B 100"},
-            {"A 100", "B 100"}
+                {"A 100", "B 100"},
+                {"A 100", "B 100"}
         };
         passed += check(tie, new String[]{"A", "B"});  // alphabetic
 
         // ------------ one lap only -------------
         total++;
-        String[][] oneLap = {{"X 120","Y 110","Z 115"}};
+        String[][] oneLap = {{"X 120", "Y 110", "Z 115"}};
         passed += check(oneLap, new String[]{"X"}); // X is slowest best (120)
 
         // ------------ large random test -------------

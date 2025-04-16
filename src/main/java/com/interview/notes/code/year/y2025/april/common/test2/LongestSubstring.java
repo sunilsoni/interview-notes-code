@@ -47,6 +47,6 @@ public class LongestSubstring {
     private static void test(String input, int expected) {
         int result = findLongestSubstring(input);
         System.out.printf("Input: %s\nExpected: %d, Got: %d\nTest: %s\n\n",
-            input, expected, result, result == expected ? "PASS" : "FAIL");
+                input, expected, result, result == expected ? "PASS" : "FAIL");
     }
 }

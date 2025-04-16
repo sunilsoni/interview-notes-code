@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2025.april.common.test1;
 class Node {
     char data;
     Node next;
-    
+
     Node(char data) {
         this.data = data;
         this.next = null;
@@ -14,11 +14,11 @@ class LinkedListSolution {
     // Removes lowercase letters and breaks the cycle
     public static Node cleanupList(Node head) {
         if (head == null) return null;
-        
+
         // Step 1: Remove lowercase letters
         Node current = head;
         Node prev = null;
-        
+
         while (current != null) {
             // Skip lowercase nodes
             if (Character.isLowerCase(current.data)) {
@@ -33,15 +33,15 @@ class LinkedListSolution {
                 current = current.next;
             }
         }
-        
+
         // Step 2: Detect and remove cycle using Floyd's algorithm
         Node slow = head;
         Node fast = head;
-        
+
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
-            
+
             if (slow == fast) {
                 // Cycle detected, break it
                 slow = head;
@@ -53,7 +53,7 @@ class LinkedListSolution {
                 break;
             }
         }
-        
+
         return head;
     }
 

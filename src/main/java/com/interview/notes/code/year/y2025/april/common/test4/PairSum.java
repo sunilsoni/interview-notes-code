@@ -13,7 +13,7 @@ public class PairSum {
 
         // Store number and its index
         Map<Integer, Integer> map = new HashMap<>();
-        
+
         // Find pairs
         for (int i = 0; i < arr.length; i++) {
             int complement = target - arr[i];
@@ -27,7 +27,7 @@ public class PairSum {
     public static void main(String[] args) {
         // Test Case 1: Given example
         System.out.println("Test Case 1:");
-        int[] arr1 = {1,3,5,6,8,2,4,7};
+        int[] arr1 = {1, 3, 5, 6, 8, 2, 4, 7};
         int target1 = 9;
         findPairs(arr1, target1);
 
@@ -38,18 +38,18 @@ public class PairSum {
 
         // Test Case 3: No pairs sum to target
         System.out.println("\nTest Case 3 (No pairs):");
-        int[] arr3 = {1,2,3};
+        int[] arr3 = {1, 2, 3};
         findPairs(arr3, 10);
 
         // Test Case 4: Duplicate numbers
         System.out.println("\nTest Case 4 (Duplicates):");
-        int[] arr4 = {1,4,4,5,8};
+        int[] arr4 = {1, 4, 4, 5, 8};
         findPairs(arr4, 9);
 
         // Test Case 5: Large array
         System.out.println("\nTest Case 5 (Large array):");
         int[] arr5 = new int[1000];
-        for(int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1000; i++) {
             arr5[i] = i;
         }
         findPairs(arr5, 9);

@@ -1,6 +1,6 @@
 package com.interview.notes.code.year.y2025.april.visa.test1;
 
-import java.util.*;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class RatingVsPrice {
@@ -17,7 +17,7 @@ public class RatingVsPrice {
     public static int solution(int[] prices, int[] ratings) {
         // -------- basic checks --------
         if (prices == null || ratings == null ||
-            prices.length == 0 || prices.length != ratings.length) {
+                prices.length == 0 || prices.length != ratings.length) {
             throw new IllegalArgumentException("Arrays must be non‑null, non‑empty and of equal length");
         }
 
@@ -68,12 +68,12 @@ public class RatingVsPrice {
 
         // ---------- large random case ----------
         int n = 100_000;
-        int[] bigPrices  = new int[n];
+        int[] bigPrices = new int[n];
         int[] bigRatings = new int[n];
         Random rnd = new Random(42);
 
         for (int i = 0; i < n; i++) {
-            bigPrices[i]  = 1 + rnd.nextInt(1_000_000); // 1 … 1 000 000
+            bigPrices[i] = 1 + rnd.nextInt(1_000_000); // 1 … 1 000 000
             bigRatings[i] = 1 + rnd.nextInt(5);          // 1 … 5
         }
 
@@ -86,7 +86,9 @@ public class RatingVsPrice {
 
     }
 
-    /** Helper to run one test case */
+    /**
+     * Helper to run one test case
+     */
     private static void test(String name, int[] prices, int[] ratings, int expected) {
         int actual = solution(prices, ratings);
         if (actual == expected) {

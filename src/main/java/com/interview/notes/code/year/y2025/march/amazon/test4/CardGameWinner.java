@@ -31,6 +31,7 @@ Player 2: R4, B5, G6 → LOSE (no value match)
 class Card {
     int value;
     Colour colour;
+
     Card(Colour colour, int value) {
         this.colour = colour;
         this.value = value;

@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.april.common.test4;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LongestSubstringFinder {
     public static void findAllLongestSubstrings(String input) {
@@ -19,13 +20,13 @@ public class LongestSubstringFinder {
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
             int index = current.indexOf(c);
-            
+
             // If character is found in current substring
             if (index != -1) {
                 current = current.substring(index + 1);
             }
             current += c;
-            
+
             // Update maxLength and combinations if necessary
             if (current.length() >= maxLength) {
                 if (current.length() > maxLength) {

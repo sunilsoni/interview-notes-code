@@ -9,7 +9,7 @@ public class TowerOfHanoi {
             moveCount++;
             return;
         }
-        
+
         solveTowerOfHanoi(n - 1, source, target, auxiliary);
         System.out.println("Move disk " + n + " from " + source + " to " + target);
         moveCount++;
@@ -31,7 +31,7 @@ public class TowerOfHanoi {
         System.out.println("\nTesting with " + disks + " disks:");
         moveCount = 0;
         solveTowerOfHanoi(disks, 'A', 'B', 'C');
-        
+
         boolean passed = (moveCount == expectedMoves);
         System.out.println("Expected moves: " + expectedMoves);
         System.out.println("Actual moves: " + moveCount);

@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 class Card {
     int value;
     Colour colour;
+
     Card(Colour colour, int value) {
         this.colour = colour;
         this.value = value;

@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class GraphFixer {
-    
+
     // Adjacency list: Node -> List of Nodes
     private final Map<String, List<String>> adjacency;
 
@@ -15,6 +15,73 @@ public class GraphFixer {
     }
 
     /**
+     * Simple main method to test the logic (no JUnit).
+     */
+    public static void main(String[] args) {
+        // Step 0: Build the example graph as described.
+        // Lowercase nodes: "c", "b"
+        // Here, for demonstration, we’ll combine them to show the adjacency:
+        //   A -> B
+        //   B -> c
+        //   c -> D
+        //   D -> B (creates a loop among B->c->D->B if we treat c as uppercase)
+        //   D -> b
+        //   b -> F
+        //   F -> c
+        // But let's adapt to exactly reflect the bullet points with uppercase-lowercase consistency:
+
+        Map<String, List<String>> adjacency = new HashMap<>();
+        adjacency.put("A", Arrays.asList("B"));
+        adjacency.put("B", Arrays.asList("C"));      // We'll assume "C" was meant uppercase
+        adjacency.put("C", Arrays.asList("D"));      // "C" -> "D"
+        adjacency.put("D", Arrays.asList("B", "b")); // "D" -> "B" (cycle) and "D" -> "b"
+        adjacency.put("b", Arrays.asList("F"));      // "b" -> "F"
+        adjacency.put("F", Arrays.asList("C"));      // "F" -> "C"
+
+        // Create the GraphFixer object
+        GraphFixer fixer = new GraphFixer(adjacency);
+
+        System.out.println("=== Before Removal ===");
+        printAdjacency(fixer.adjacency);
+
+        // 1) Remove lowercase nodes
+        fixer.removeLowercaseNodes();
+        System.out.println("\n=== After Removing Lowercase ===");
+        printAdjacency(fixer.adjacency);
+
+        // 2) Remove cycles
+        fixer.removeCycles();
+        System.out.println("\n=== After Removing Cycles ===");
+        printAdjacency(fixer.adjacency);
+
+        // 3) Find path from A to F
+        List<String> path = fixer.findPath("A", "F");
+        System.out.println("\n=== Path from A to F ===");
+        if (path.isEmpty()) {
+            System.out.println("No path found!");
+        } else {
+            System.out.println(String.join(" -> ", path));
+        }
+
+        // Extra: A simple pass/fail check (not JUnit).
+        // The desired final output is "A -> B -> D -> F".
+        String result = String.join("->", path);
+        String expected = "A->B->D->F";
+        if (result.equals(expected)) {
+            System.out.println("\nTEST RESULT: PASS");
+        } else {
+            System.out.println("\nTEST RESULT: FAIL (Expected: " + expected + ", Got: " + result + ")");
+        }
+    }
+
+    // Utility to print adjacency map
+    private static void printAdjacency(Map<String, List<String>> adjacency) {
+        adjacency.forEach((k, v) -> {
+            System.out.println(k + " -> " + v);
+        });
+    }
+
+    /**
      * Step 1 & 2: Remove all lowercase nodes and edges referencing them.
      */
     public void removeLowercaseNodes() {
@@ -22,7 +89,7 @@ public class GraphFixer {
         Set<String> lowercaseNodes = adjacency.keySet().stream()
                 .filter(k -> k.equals(k.toLowerCase())) // or: !k.equals(k.toUpperCase())
                 .collect(Collectors.toSet());
-        
+
         // Remove all lowercase keys entirely
         adjacency.keySet().removeAll(lowercaseNodes);
 
@@ -122,72 +189,5 @@ public class GraphFixer {
         }
         path.remove(path.size() - 1);
         return false;
-    }
-
-    /**
-     * Simple main method to test the logic (no JUnit).
-     */
-    public static void main(String[] args) {
-        // Step 0: Build the example graph as described.
-        // Lowercase nodes: "c", "b"
-        // Here, for demonstration, we’ll combine them to show the adjacency:
-        //   A -> B
-        //   B -> c
-        //   c -> D
-        //   D -> B (creates a loop among B->c->D->B if we treat c as uppercase)
-        //   D -> b
-        //   b -> F
-        //   F -> c
-        // But let's adapt to exactly reflect the bullet points with uppercase-lowercase consistency:
-        
-        Map<String, List<String>> adjacency = new HashMap<>();
-        adjacency.put("A", Arrays.asList("B"));
-        adjacency.put("B", Arrays.asList("C"));      // We'll assume "C" was meant uppercase
-        adjacency.put("C", Arrays.asList("D"));      // "C" -> "D"
-        adjacency.put("D", Arrays.asList("B", "b")); // "D" -> "B" (cycle) and "D" -> "b"
-        adjacency.put("b", Arrays.asList("F"));      // "b" -> "F"
-        adjacency.put("F", Arrays.asList("C"));      // "F" -> "C"
-        
-        // Create the GraphFixer object
-        GraphFixer fixer = new GraphFixer(adjacency);
-
-        System.out.println("=== Before Removal ===");
-        printAdjacency(fixer.adjacency);
-
-        // 1) Remove lowercase nodes
-        fixer.removeLowercaseNodes();
-        System.out.println("\n=== After Removing Lowercase ===");
-        printAdjacency(fixer.adjacency);
-
-        // 2) Remove cycles
-        fixer.removeCycles();
-        System.out.println("\n=== After Removing Cycles ===");
-        printAdjacency(fixer.adjacency);
-
-        // 3) Find path from A to F
-        List<String> path = fixer.findPath("A", "F");
-        System.out.println("\n=== Path from A to F ===");
-        if (path.isEmpty()) {
-            System.out.println("No path found!");
-        } else {
-            System.out.println(String.join(" -> ", path));
-        }
-
-        // Extra: A simple pass/fail check (not JUnit).
-        // The desired final output is "A -> B -> D -> F".
-        String result = String.join("->", path);
-        String expected = "A->B->D->F";
-        if (result.equals(expected)) {
-            System.out.println("\nTEST RESULT: PASS");
-        } else {
-            System.out.println("\nTEST RESULT: FAIL (Expected: " + expected + ", Got: " + result + ")");
-        }
-    }
-
-    // Utility to print adjacency map
-    private static void printAdjacency(Map<String, List<String>> adjacency) {
-        adjacency.forEach((k,v) -> {
-            System.out.println(k + " -> " + v);
-        });
     }
 }

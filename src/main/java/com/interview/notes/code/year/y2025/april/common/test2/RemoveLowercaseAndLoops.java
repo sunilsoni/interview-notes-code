@@ -5,21 +5,6 @@ import java.util.stream.Collectors;
 
 public class RemoveLowercaseAndLoops {
 
-    // Simple Node class
-    static class Node {
-        String name;
-        List<Node> neighbors = new ArrayList<>();
-
-        Node(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String toString() {
-            return name;
-        }
-    }
-
     // Build the sample graph from the problem statement
     private static Map<String, Node> buildSampleGraph() {
         // Create all nodes
@@ -165,8 +150,8 @@ public class RemoveLowercaseAndLoops {
         // Additional checks (simulating tests in a simple main method)
         // -----------------------------------------------------------
         boolean passCase1 = (graph.size() == 4) && graph.containsKey("A")
-                            && graph.containsKey("B") && graph.containsKey("D")
-                            && graph.containsKey("F");
+                && graph.containsKey("B") && graph.containsKey("D")
+                && graph.containsKey("F");
         System.out.println("Test Case 1 (Only A,B,D,F remain): " + (passCase1 ? "PASS" : "FAIL"));
 
         // If we want to see that A->B->D->F is indeed the chain:
@@ -174,9 +159,24 @@ public class RemoveLowercaseAndLoops {
         Node D = graph.get("D");
         Node F = graph.get("F");
         boolean passCase2 = (A != null && A.neighbors.size() == 1 && A.neighbors.get(0) == B) &&
-                            (B != null && B.neighbors.size() == 1 && B.neighbors.get(0) == D) &&
-                            (D != null && D.neighbors.size() == 1 && D.neighbors.get(0) == F) &&
-                            (F != null && F.neighbors.isEmpty());
+                (B != null && B.neighbors.size() == 1 && B.neighbors.get(0) == D) &&
+                (D != null && D.neighbors.size() == 1 && D.neighbors.get(0) == F) &&
+                (F != null && F.neighbors.isEmpty());
         System.out.println("Test Case 2 (Chain A->B->D->F): " + (passCase2 ? "PASS" : "FAIL"));
+    }
+
+    // Simple Node class
+    static class Node {
+        String name;
+        List<Node> neighbors = new ArrayList<>();
+
+        Node(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 }
