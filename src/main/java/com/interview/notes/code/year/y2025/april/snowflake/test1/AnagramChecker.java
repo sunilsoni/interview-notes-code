@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class AnagramChecker {
-    
+
     // Main method containing test cases
     public static void main(String[] args) {
         // Test cases to verify the solution
@@ -17,7 +17,7 @@ public class AnagramChecker {
         testAnagram("Hello", "hello", false);     // Case sensitive
         testAnagram("abc", "abcd", false);        // Different lengths
         testAnagram("  ", "  ", true);            // Whitespace
-        
+
         // Large input test
         String str1 = "a".repeat(100000);
         String str2 = "a".repeat(100000);

@@ -71,17 +71,17 @@ public class Solution {
     public static void runTests() {
         // Test cases with expected results
         String[][] testCases = {
-            {"apple", "a"},          // Basic case
-            {"racecars", "e"},       // Multiple characters
-            {"ababdc", "d"},         // Character in middle
-            {"aabb", "0"},           // All repeating
-            {"", "0"},               // Empty string
-            {"a", "a"},              // Single character
-            {"aaaaaa", "0"},         // All same characters
-            {"abcdefg", "a"},        // All unique
-            {"leetcode", "l"},       // Common coding example
-            {"loveleetcode", "v"},   // More complex example
-            {"aabbccdeeff", "d"}     // Multiple repeating pairs
+                {"apple", "a"},          // Basic case
+                {"racecars", "e"},       // Multiple characters
+                {"ababdc", "d"},         // Character in middle
+                {"aabb", "0"},           // All repeating
+                {"", "0"},               // Empty string
+                {"a", "a"},              // Single character
+                {"aaaaaa", "0"},         // All same characters
+                {"abcdefg", "a"},        // All unique
+                {"leetcode", "l"},       // Common coding example
+                {"loveleetcode", "v"},   // More complex example
+                {"aabbccdeeff", "d"}     // Multiple repeating pairs
         };
 
         // Test both implementations
@@ -108,20 +108,20 @@ public class Solution {
                 System.out.printf("PASS: Input: \"%-12s\" → Got: '%c'%n", input, result);
                 passed++;
             } else {
-                System.out.printf("FAIL: Input: \"%-12s\" → Expected: '%c', Got: '%c'%n", 
-                    input, expected, result);
+                System.out.printf("FAIL: Input: \"%-12s\" → Expected: '%c', Got: '%c'%n",
+                        input, expected, result);
             }
         }
 
-        System.out.printf("\nSummary: Total: %d, Passed: %d, Failed: %d%n", 
-            total, passed, (total - passed));
+        System.out.printf("\nSummary: Total: %d, Passed: %d, Failed: %d%n",
+                total, passed, (total - passed));
     }
 
     private static void testPerformance() {
         // Create large input string
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 1000000; i++) {
-            sb.append((char)('a' + (i % 26)));
+            sb.append((char) ('a' + (i % 26)));
         }
         String largeInput = sb.toString();
 

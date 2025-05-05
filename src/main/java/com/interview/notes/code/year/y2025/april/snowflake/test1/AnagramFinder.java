@@ -1,12 +1,16 @@
 package com.interview.notes.code.year.y2025.april.snowflake.test1;
 
-import java.util.*;
-import java.util.stream.*;   // Stream API utilities
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class AnagramFinder {
 
     /**
      * Finds all start indices of anagrams of 'p' inside 's'.
+     *
      * @param s source text
      * @param p pattern (target)
      * @return list of 0-based indices
@@ -25,8 +29,8 @@ public class AnagramFinder {
 
         // Fill pattern counter using Stream API
         p.chars()
-         .map(Character::toLowerCase)                      // lower-case each char
-         .forEach(c -> freqP[c - 'a']++);                  // increment its bucket
+                .map(Character::toLowerCase)                      // lower-case each char
+                .forEach(c -> freqP[c - 'a']++);                  // increment its bucket
 
         // Pre-fill window with first m-1 chars
         for (int i = 0; i < m - 1; i++) {
@@ -55,22 +59,15 @@ public class AnagramFinder {
         return result;
     }
 
-    // ---------- Simple Test Harness (no JUnit) ---------- //
-    private static class TestCase {
-        String source, target;
-        List<Integer> expected;
-        TestCase(String s, String t, List<Integer> e) { source = s; target = t; expected = e; }
-    }
-
     public static void main(String[] args) {
 
         List<TestCase> cases = Arrays.asList(
-            new TestCase("arts of grats and tars are xartsr",
-                          "art",
-                          Arrays.asList(0, 9, 18, 28)),
-            new TestCase("aaaaa", "aa", Arrays.asList(0, 1, 2, 3)),
-            new TestCase("", "a", Collections.emptyList()),
-            new TestCase("short", "longer", Collections.emptyList())
+                new TestCase("arts of grats and tars are xartsr",
+                        "art",
+                        Arrays.asList(0, 9, 18, 28)),
+                new TestCase("aaaaa", "aa", Arrays.asList(0, 1, 2, 3)),
+                new TestCase("", "a", Collections.emptyList()),
+                new TestCase("short", "longer", Collections.emptyList())
         );
 
         // Large-data performance case: 100 000 letters, pattern absent
@@ -88,9 +85,21 @@ public class AnagramFinder {
         List<Integer> actual = findAnagramIndices(tc.source, tc.target);
         long dt = System.currentTimeMillis() - t0;
         System.out.println(
-            (actual.equals(tc.expected) ? "PASS" : "FAIL")
-            + " | " + dt + " ms | target=\"" + tc.target + "\""
-            + " | expected=" + tc.expected + " | actual=" + actual
+                (actual.equals(tc.expected) ? "PASS" : "FAIL")
+                        + " | " + dt + " ms | target=\"" + tc.target + "\""
+                        + " | expected=" + tc.expected + " | actual=" + actual
         );
+    }
+
+    // ---------- Simple Test Harness (no JUnit) ---------- //
+    private static class TestCase {
+        String source, target;
+        List<Integer> expected;
+
+        TestCase(String s, String t, List<Integer> e) {
+            source = s;
+            target = t;
+            expected = e;
+        }
     }
 }

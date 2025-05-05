@@ -6,6 +6,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * A thread-safe in-memory cache implementation
+ *
  * @param <K> Type of cache keys
  * @param <V> Type of cache values
  */
@@ -27,84 +28,13 @@ public class ThreadSafeCache<K, V> {
 
     /**
      * Constructor with custom capacity
+     *
      * @param capacity Maximum entries the cache can hold
      */
     public ThreadSafeCache(int capacity) {
         this.cache = new ConcurrentHashMap<>();
         this.lock = new ReentrantReadWriteLock();
         this.capacity = capacity;
-    }
-
-    /**
-     * Thread-safe put operation
-     * @param key Key to store
-     * @param value Value to be stored
-     * @return Previous value if exists
-     */
-    public V put(K key, V value) {
-        if (key == null) {
-            throw new IllegalArgumentException("Key cannot be null");
-        }
-
-        lock.writeLock().lock();
-        try {
-            if (cache.size() >= capacity) {
-                // Simple capacity check, could implement eviction policy here
-                throw new IllegalStateException("Cache is full");
-            }
-            return cache.put(key, value);
-        } finally {
-            lock.writeLock().unlock();
-        }
-    }
-
-    /**
-     * Thread-safe get operation
-     * @param key Key to lookup
-     * @return Value if found, null otherwise
-     */
-    public V get(K key) {
-        if (key == null) {
-            throw new IllegalArgumentException("Key cannot be null");
-        }
-
-        lock.readLock().lock();
-        try {
-            return cache.get(key);
-        } finally {
-            lock.readLock().unlock();
-        }
-    }
-
-    /**
-     * Thread-safe remove operation
-     * @param key Key to remove
-     * @return Removed value if exists
-     */
-    public V remove(K key) {
-        if (key == null) {
-            throw new IllegalArgumentException("Key cannot be null");
-        }
-
-        lock.writeLock().lock();
-        try {
-            return cache.remove(key);
-        } finally {
-            lock.writeLock().unlock();
-        }
-    }
-
-    /**
-     * Get current cache size
-     * @return Number of entries in cache
-     */
-    public int size() {
-        lock.readLock().lock();
-        try {
-            return cache.size();
-        } finally {
-            lock.readLock().unlock();
-        }
     }
 
     /**
@@ -172,6 +102,82 @@ public class ThreadSafeCache<K, V> {
             System.out.println("Test Case 4: FAIL - Null key accepted");
         } catch (IllegalArgumentException e) {
             System.out.println("Test Case 4: PASS - Null key rejected");
+        }
+    }
+
+    /**
+     * Thread-safe put operation
+     *
+     * @param key   Key to store
+     * @param value Value to be stored
+     * @return Previous value if exists
+     */
+    public V put(K key, V value) {
+        if (key == null) {
+            throw new IllegalArgumentException("Key cannot be null");
+        }
+
+        lock.writeLock().lock();
+        try {
+            if (cache.size() >= capacity) {
+                // Simple capacity check, could implement eviction policy here
+                throw new IllegalStateException("Cache is full");
+            }
+            return cache.put(key, value);
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    /**
+     * Thread-safe get operation
+     *
+     * @param key Key to lookup
+     * @return Value if found, null otherwise
+     */
+    public V get(K key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Key cannot be null");
+        }
+
+        lock.readLock().lock();
+        try {
+            return cache.get(key);
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
+
+    /**
+     * Thread-safe remove operation
+     *
+     * @param key Key to remove
+     * @return Removed value if exists
+     */
+    public V remove(K key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Key cannot be null");
+        }
+
+        lock.writeLock().lock();
+        try {
+            return cache.remove(key);
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    /**
+     * Get current cache size
+     *
+     * @return Number of entries in cache
+     */
+    public int size() {
+        lock.readLock().lock();
+        try {
+            return cache.size();
+        } finally {
+            lock.readLock().unlock();
         }
     }
 }

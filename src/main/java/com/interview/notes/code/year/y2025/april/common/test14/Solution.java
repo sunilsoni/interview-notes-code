@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.april.common.test14;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /* WORKING
 Here is the combined and properly formatted question with the relevant code stub:
 
@@ -51,17 +54,6 @@ Focus on **correctness**, not performance.
 
  */
 public class Solution {
-    public boolean solution(String S) {
-        if (S == null) return false;
-        // split with -1 to catch trailing empty segments
-        String[] parts = S.split("-", -1);
-        if (parts.length != 3) return false;
-        // each part must be exactly 3 digits
-        return Arrays.stream(parts)
-                     .allMatch(p -> p.length() == 3
-                                  && p.chars().allMatch(Character::isDigit));
-    }
-
     public static void main(String[] args) {
         Solution sol = new Solution();
         Map<String, Boolean> tests = new LinkedHashMap<>();
@@ -88,5 +80,16 @@ public class Solution {
             String res = (out == e.getValue()) ? "PASS" : "FAIL";
             System.out.println("Test " + n++ + ": " + res);
         }
+    }
+
+    public boolean solution(String S) {
+        if (S == null) return false;
+        // split with -1 to catch trailing empty segments
+        String[] parts = S.split("-", -1);
+        if (parts.length != 3) return false;
+        // each part must be exactly 3 digits
+        return Arrays.stream(parts)
+                .allMatch(p -> p.length() == 3
+                        && p.chars().allMatch(Character::isDigit));
     }
 }

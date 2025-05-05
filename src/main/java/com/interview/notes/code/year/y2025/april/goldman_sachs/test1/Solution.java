@@ -48,26 +48,26 @@ public class Solution {
     // Test method
     public static void runTests() {
         String[][] testCases = {
-            {"leetcode", "l"},        // First char is non-repeating
-            {"loveleetcode", "v"},    // Non-repeating char in middle
-            {"aabb", "0"},            // No non-repeating char
-            {"abcab", "c"},           // Single non-repeating char
-            {"", "0"},                // Empty string
-            {"a", "a"},               // Single char
-            {"aaa", "0"},             // All repeating
-            {"abcdef", "a"},          // All unique
-            {"aabbc", "c"},           // Last char is non-repeating
-            {"zxvczbtxyzvy", "c"}     // Complex case
+                {"leetcode", "l"},        // First char is non-repeating
+                {"loveleetcode", "v"},    // Non-repeating char in middle
+                {"aabb", "0"},            // No non-repeating char
+                {"abcab", "c"},           // Single non-repeating char
+                {"", "0"},                // Empty string
+                {"a", "a"},               // Single char
+                {"aaa", "0"},             // All repeating
+                {"abcdef", "a"},          // All unique
+                {"aabbc", "c"},           // Last char is non-repeating
+                {"zxvczbtxyzvy", "c"}     // Complex case
         };
 
         for (String[] test : testCases) {
             String input = test[0];
             char expected = test[1].charAt(0);
             char result = findFirstNonRepeating(input);
-            
-            System.out.printf("Input: %-12s | Expected: %c | Got: %c | %s%n", 
-                input, expected, result, 
-                (result == expected ? "✓ PASS" : "✗ FAIL"));
+
+            System.out.printf("Input: %-12s | Expected: %c | Got: %c | %s%n",
+                    input, expected, result,
+                    (result == expected ? "✓ PASS" : "✗ FAIL"));
         }
     }
 
@@ -77,7 +77,7 @@ public class Solution {
         StringBuilder sb = new StringBuilder();
         int size = 1_000_000;
         for (int i = 0; i < size; i++) {
-            sb.append((char)('a' + (i % 26)));
+            sb.append((char) ('a' + (i % 26)));
         }
         String largeInput = sb.toString();
 
