@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.april.amazon.test5;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 //WORKING 100%
 
@@ -14,10 +16,10 @@ public class AmazonRewardEvent {
         long countMax = initialRewards.stream().filter(r -> r == max1).count();
         // find second max
         int secondMax = initialRewards.stream()
-                                      .filter(r -> r < max1)
-                                      .mapToInt(Integer::intValue)
-                                      .max()
-                                      .orElse(0);
+                .filter(r -> r < max1)
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(0);
 
         int winners = 0;
         for (int r : initialRewards) {
@@ -33,20 +35,20 @@ public class AmazonRewardEvent {
     private static void runTest(List<Integer> rewards, int expected, String name) {
         int result = countPossibleWinners(rewards);
         System.out.println(name + ": " +
-            (result == expected ? "PASS" : "FAIL") +
-            " (expected=" + expected + ", actual=" + result + ")");
+                (result == expected ? "PASS" : "FAIL") +
+                " (expected=" + expected + ", actual=" + result + ")");
     }
 
     public static void main(String[] args) {
-        runTest(Arrays.asList(1, 3, 4),    2, "Example1");  // see note below
-        runTest(Arrays.asList(8, 10, 9),   2, "Example2");
-        runTest(Arrays.asList(5, 7, 9, 11),1, "Example3");
+        runTest(Arrays.asList(1, 3, 4), 2, "Example1");  // see note below
+        runTest(Arrays.asList(8, 10, 9), 2, "Example2");
+        runTest(Arrays.asList(5, 7, 9, 11), 1, "Example3");
 
         // performance check
         List<Integer> large = new Random()
-            .ints(100_000, 1, 100_001)
-            .boxed()
-            .collect(Collectors.toList());
+                .ints(100_000, 1, 100_001)
+                .boxed()
+                .collect(Collectors.toList());
         long t0 = System.currentTimeMillis();
         int res = countPossibleWinners(large);
         long dt = System.currentTimeMillis() - t0;

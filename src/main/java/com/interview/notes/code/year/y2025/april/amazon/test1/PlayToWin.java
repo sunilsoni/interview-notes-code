@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.april.amazon.test1;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class PlayToWin {
 
@@ -58,7 +59,7 @@ public class PlayToWin {
         runTest("Example2", Arrays.asList(6, 4, 4, 6, 4, 4), 6, 5);
         runTest("AllEqualK", Arrays.asList(1, 1, 1), 1, 3);
         runTest("NoChange", Arrays.asList(1, 2, 3), 5, 0);
-        runTest("Mixed1", Arrays.asList(3,5,3,5,3,5,3), 5, 4);
+        runTest("Mixed1", Arrays.asList(3, 5, 3, 5, 3, 5, 3), 5, 4);
 
         // large data test
         int n = 200_000, kVal = 100;

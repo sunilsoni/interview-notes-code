@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.april.amazon.test3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class Main {
 

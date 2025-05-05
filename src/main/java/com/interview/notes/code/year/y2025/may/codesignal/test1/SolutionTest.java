@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.may.codesignal.test1;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.stream.IntStream;
 
 public class SolutionTest {
@@ -8,49 +10,49 @@ public class SolutionTest {
     public static void main(String[] args) {
         // provided examples
         runTest(
-            new int[]{1000, 1500},
-            new String[]{
-                "withdraw 1613327630 2 480",
-                "withdraw 1613327644 2 800",
-                "withdraw 1614105244 1 100",
-                "deposit 1614108844 2 200",
-                "withdraw 1614108845 2 150"
-            },
-            new int[]{900, 295}
+                new int[]{1000, 1500},
+                new String[]{
+                        "withdraw 1613327630 2 480",
+                        "withdraw 1613327644 2 800",
+                        "withdraw 1614105244 1 100",
+                        "deposit 1614108844 2 200",
+                        "withdraw 1614108845 2 150"
+                },
+                new int[]{900, 295}
         );
 
         runTest(
-            new int[]{20, 1000, 500, 40, 90},
-            new String[]{
-                "deposit 1613327630 3 400",
-                "withdraw 1613327635 1 20",
-                "withdraw 1613327651 1 50",
-                "deposit 1613327655 1 50"
-            },
-            new int[]{-3}
+                new int[]{20, 1000, 500, 40, 90},
+                new String[]{
+                        "deposit 1613327630 3 400",
+                        "withdraw 1613327635 1 20",
+                        "withdraw 1613327651 1 50",
+                        "deposit 1613327655 1 50"
+                },
+                new int[]{-3}
         );
 
         // large-data stress test
         int n = 100_000;
         int[] bigBalances = IntStream.generate(() -> 100_000).limit(n).toArray();
         String[] bigRequests = IntStream.range(0, n)
-            .mapToObj(i -> String.format("deposit %d %d 1", i, (i % n) + 1))
-            .toArray(String[]::new);
+                .mapToObj(i -> String.format("deposit %d %d 1", i, (i % n) + 1))
+                .toArray(String[]::new);
 
         long start = System.currentTimeMillis();
         int[] bigResult = solution(bigBalances.clone(), bigRequests);
         long elapsed = System.currentTimeMillis() - start;
         System.out.printf("Large test – result length %d, time %d ms%n",
-            bigResult.length, elapsed);
+                bigResult.length, elapsed);
     }
 
     private static void runTest(int[] balances, String[] requests, int[] expected) {
         int[] actual = solution(balances.clone(), requests);
         boolean pass = Arrays.equals(actual, expected);
         System.out.printf("Test %s: expected %s, got %s%n",
-            pass ? "PASS" : "FAIL",
-            Arrays.toString(expected),
-            Arrays.toString(actual)
+                pass ? "PASS" : "FAIL",
+                Arrays.toString(expected),
+                Arrays.toString(actual)
         );
     }
 
@@ -58,7 +60,12 @@ public class SolutionTest {
         class Cashback {
             long time;
             int idx, amount;
-            Cashback(long time, int idx, int amount) { this.time = time; this.idx = idx; this.amount = amount; }
+
+            Cashback(long time, int idx, int amount) {
+                this.time = time;
+                this.idx = idx;
+                this.amount = amount;
+            }
         }
         PriorityQueue<Cashback> pq = new PriorityQueue<>(Comparator.comparingLong(c -> c.time));
         long lastTs = 0;

@@ -8,32 +8,35 @@ public class TrafficLight {
     private int redDuration = 30;    // seconds
     private int yellowDuration = 5;  // seconds
     private int greenDuration = 25;  // seconds
-    
+
     /**
      * Creates a new traffic light starting with the red light
      */
     public TrafficLight() {
         this.currentState = TrafficLightState.RED;
     }
-    
+
     /**
      * Creates a traffic light with a specific initial state
+     *
      * @param initialState the starting state of the traffic light
      */
     public TrafficLight(TrafficLightState initialState) {
         this.currentState = initialState;
     }
-    
+
     /**
      * Gets the current state of the traffic light
+     *
      * @return the current state
      */
     public TrafficLightState getCurrentState() {
         return currentState;
     }
-    
+
     /**
      * Transitions to the next state based on the current state
+     *
      * @return the new state after transition
      */
     public TrafficLightState transition() {
@@ -50,7 +53,7 @@ public class TrafficLight {
         }
         return currentState;
     }
-    
+
     /**
      * Sets custom durations for each light state
      */
@@ -59,9 +62,10 @@ public class TrafficLight {
         this.yellowDuration = yellowDuration;
         this.greenDuration = greenDuration;
     }
-    
+
     /**
      * Gets the duration of the current state in seconds
+     *
      * @return duration in seconds
      */
     public int getCurrentStateDuration() {
@@ -76,7 +80,7 @@ public class TrafficLight {
                 return 0;
         }
     }
-    
+
     /**
      * Returns a string representation of the traffic light
      */

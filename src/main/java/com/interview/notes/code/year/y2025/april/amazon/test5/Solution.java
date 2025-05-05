@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.april.amazon.test5;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Solution {
     public static int countPossibleWinners(List<Integer> initialRewards) {
@@ -9,10 +10,10 @@ public class Solution {
         int max = initialRewards.stream().mapToInt(i -> i).max().orElse(0);
         long countMax = initialRewards.stream().filter(i -> i == max).count();
         int secondMax = initialRewards.stream()
-                                      .mapToInt(i -> i)
-                                      .filter(i -> i < max)
-                                      .max()
-                                      .orElse(Integer.MIN_VALUE);
+                .mapToInt(i -> i)
+                .filter(i -> i < max)
+                .max()
+                .orElse(Integer.MIN_VALUE);
 
         int result = 0;
         for (int x : initialRewards) {
@@ -41,7 +42,7 @@ public class Solution {
     private static void runTest(List<Integer> input, int expected, String name) {
         int got = countPossibleWinners(input);
         System.out.println(name + ": " +
-            (got == expected ? "PASS" : "FAIL") +
-            " (got=" + got + ", expected=" + expected + ")");
+                (got == expected ? "PASS" : "FAIL") +
+                " (got=" + got + ", expected=" + expected + ")");
     }
 }

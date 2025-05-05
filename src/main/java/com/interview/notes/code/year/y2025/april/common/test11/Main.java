@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.april.common.test11;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static String ArrayChallenge(int[] arr) {
@@ -42,8 +44,8 @@ public class Main {
     public static void main(String[] args) {
         // Test cases
         int[][] testCases = {
-            {7, 3, 5, 2, -4, 8, 11},
-            {17, 4, 5, 6, 10, 11, 4, -3, -5, 3, 15, 2, 7}
+                {7, 3, 5, 2, -4, 8, 11},
+                {17, 4, 5, 6, 10, 11, 4, -3, -5, 3, 15, 2, 7}
         };
 
         for (int[] testCase : testCases) {

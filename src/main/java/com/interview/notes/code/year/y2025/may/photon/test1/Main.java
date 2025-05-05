@@ -2,15 +2,15 @@ package com.interview.notes.code.year.y2025.may.photon.test1;
 
 import java.text.DecimalFormat;
 
+interface PaymentMethod {
+    void pay(double amount);
+}
+
 class Utils {
     public static String roundDouble(double d) {
         DecimalFormat df = new DecimalFormat("#.##");
         return df.format(d);
     }
-}
-
-interface PaymentMethod {
-    void pay(double amount);
 }
 
 class CreditCardPaymentMethod implements PaymentMethod {
@@ -67,29 +67,29 @@ public class Main {
 
         System.out.println("=== Test Case 1 ===");
         service.processPayment(
-            new CreditCardPaymentMethod("1234-5678-9101-1121", "123", "12/23", "JohnDoe"),
-            119.858
+                new CreditCardPaymentMethod("1234-5678-9101-1121", "123", "12/23", "JohnDoe"),
+                119.858
         );
         System.out.println("Expected: PASS\n");
 
         System.out.println("=== Test Case 2 ===");
         service.processPayment(
-            new PayPalPaymentMethod("amy.white@example.com", "password987"),
-            124.468
+                new PayPalPaymentMethod("amy.white@example.com", "password987"),
+                124.468
         );
         System.out.println("Expected: PASS\n");
 
         System.out.println("=== Test Case 3 ===");
         service.processPayment(
-            new CreditCardPaymentMethod("6666-7777-8888-9999", "432", "02/23", "AmyWhite"),
-            60.1619
+                new CreditCardPaymentMethod("6666-7777-8888-9999", "432", "02/23", "AmyWhite"),
+                60.1619
         );
         System.out.println("Expected: PASS\n");
 
         System.out.println("=== Test Case 4 ===");
         service.processPayment(
-            new PayPalPaymentMethod("chris.wilson@example.com", "12345678"),
-            145.737
+                new PayPalPaymentMethod("chris.wilson@example.com", "12345678"),
+                145.737
         );
         System.out.println("Expected: PASS\n");
     }

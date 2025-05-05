@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.april.Artech.test2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class SpiralMatrixTraversal {
 
@@ -49,22 +51,22 @@ public class SpiralMatrixTraversal {
     public static void main(String[] args) {
         // Test cases
         int[][] matrix1 = {
-            {1, 2, 3, 4},
-            {5, 6, 7, 8},
-            {9, 10, 11, 12}
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12}
         };
         int[][] matrix2 = {
-            {1}
+                {1}
         };
         int[][] matrix3 = {
-            {1, 2},
-            {3, 4},
-            {5, 6}
+                {1, 2},
+                {3, 4},
+                {5, 6}
         };
 
-        testSpiral(matrix1, Arrays.asList(1,2,3,4,8,12,11,10,9,5,6,7));
+        testSpiral(matrix1, Arrays.asList(1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7));
         testSpiral(matrix2, Arrays.asList(1));
-        testSpiral(matrix3, Arrays.asList(1,2,4,6,5,3));
+        testSpiral(matrix3, Arrays.asList(1, 2, 4, 6, 5, 3));
     }
 
     private static void testSpiral(int[][] matrix, List<Integer> expected) {

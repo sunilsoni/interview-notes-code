@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.april.common.tst6;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.IntStream;
 
 class Result {
 
@@ -13,11 +15,11 @@ class Result {
             for (int j = i + 1; j <= text.length(); j++) {
                 String sub = text.substring(i, j);
                 int prefixScore = IntStream.rangeClosed(1, Math.min(prefixString.length(), sub.length()))
-                    .filter(k -> sub.startsWith(prefixString.substring(prefixString.length() - k)))
-                    .max().orElse(0);
+                        .filter(k -> sub.startsWith(prefixString.substring(prefixString.length() - k)))
+                        .max().orElse(0);
                 int suffixScore = IntStream.rangeClosed(1, Math.min(suffixString.length(), sub.length()))
-                    .filter(k -> sub.endsWith(suffixString.substring(0, k)))
-                    .max().orElse(0);
+                        .filter(k -> sub.endsWith(suffixString.substring(0, k)))
+                        .max().orElse(0);
                 int textScore = prefixScore + suffixScore;
 
                 if (textScore > maxScore || (textScore == maxScore && sub.compareTo(result) < 0)) {
@@ -32,11 +34,11 @@ class Result {
 
     public static void main(String[] args) {
         List<String[]> testCases = Arrays.asList(
-            new String[]{"ab", "b", "a", "a"},
-            new String[]{"nothing", "bruno", "ingenious", "nothing"},
-            new String[]{"engine", "raven", "ginkgo", "engin"},
-            new String[]{"banana", "bana", "nana", "banana"},
-            new String[]{"aaaaaa", "aa", "aaa", "aaaaaa"} // Additional edge test case
+                new String[]{"ab", "b", "a", "a"},
+                new String[]{"nothing", "bruno", "ingenious", "nothing"},
+                new String[]{"engine", "raven", "ginkgo", "engin"},
+                new String[]{"banana", "bana", "nana", "banana"},
+                new String[]{"aaaaaa", "aa", "aaa", "aaaaaa"} // Additional edge test case
         );
 
         for (int i = 0; i < testCases.size(); i++) {

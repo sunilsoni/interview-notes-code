@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.april.common.test10;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 //WORKING 100%
 
 public class Solution {
@@ -27,7 +28,7 @@ public class Solution {
                 }
                 int score = ps + ss;
                 if (score > bestScore ||
-                   (score == bestScore && sub.compareTo(bestSub) < 0)) {
+                        (score == bestScore && sub.compareTo(bestSub) < 0)) {
                     bestScore = score;
                     bestSub = sub;
                 }
@@ -37,21 +38,53 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        class Test { String t, p, s, exp, d; }
+        class Test {
+            String t, p, s, exp, d;
+        }
         List<Test> tests = new ArrayList<Test>();
-        tests.add(new Test() {{ t="nothing";     p="bruno";     s="ingenious"; exp="nothing"; d="Sample0"; }});
-        tests.add(new Test() {{ t="ab";          p="b";         s="a";         exp="a";       d="Sample1"; }});
-        tests.add(new Test() {{ t="engine";      p="raven";     s="ginkgo";    exp="engin";   d="Example"; }});
-        tests.add(new Test() {{ t="banana";      p="bana";      s="nana";      exp="banana";  d="Overlap"; }});
-        tests.add(new Test() {{ t="abracadabra"; p="habrahabr"; s="bracket";   exp="abrac";   d="Custom"; }});
+        tests.add(new Test() {{
+            t = "nothing";
+            p = "bruno";
+            s = "ingenious";
+            exp = "nothing";
+            d = "Sample0";
+        }});
+        tests.add(new Test() {{
+            t = "ab";
+            p = "b";
+            s = "a";
+            exp = "a";
+            d = "Sample1";
+        }});
+        tests.add(new Test() {{
+            t = "engine";
+            p = "raven";
+            s = "ginkgo";
+            exp = "engin";
+            d = "Example";
+        }});
+        tests.add(new Test() {{
+            t = "banana";
+            p = "bana";
+            s = "nana";
+            exp = "banana";
+            d = "Overlap";
+        }});
+        tests.add(new Test() {{
+            t = "abracadabra";
+            p = "habrahabr";
+            s = "bracket";
+            exp = "abrac";
+            d = "Custom";
+        }});
 
         for (Test tc : tests) {
             String got = calculateScore(tc.t, tc.p, tc.s);
             System.out.println(
-                (got.equals(tc.exp) ? "PASS" : "FAIL")
-                + ": " + tc.d
-                + " expected=" + tc.exp
-                + " got=" + got
+                    (got.equals(tc.exp) ? "PASS" : "FAIL")
+                            + ": " + tc.d
+                            + " expected=" + tc.exp
+                            + " got=" + got
             );
         }
     }

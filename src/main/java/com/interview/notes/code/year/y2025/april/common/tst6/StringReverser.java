@@ -32,12 +32,12 @@ public class StringReverser {
         testCase("hello", "hello");
         testCase("abc def", "def cba");
         testCase("a b c d", "d a b c");
-        
+
         // Edge cases
         testCase(null, "");
         testCase("   ", "");
         testCase("hello   world", "world olleh");
-        
+
         // Large input test
         StringBuilder largeInput = new StringBuilder();
         for (int i = 0; i < 1000; i++) {

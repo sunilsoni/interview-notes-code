@@ -32,7 +32,7 @@ public class StringReverser {
         testCase("hello", "hello");
         testCase("abc def", "def cba");
         testCase("a b c d", "d a b c");
-        
+
         // Edge cases
         testCase(null, "");
         testCase("   ", "");

@@ -30,8 +30,8 @@ class SharedPrinter {
 
     synchronized void printFirstName(String name) {
         firstName = name;
-        System.out.println(Thread.currentThread().getName() + 
-                         " is printing First Name: " + firstName);
+        System.out.println(Thread.currentThread().getName() +
+                " is printing First Name: " + firstName);
         try {
             Thread.sleep(1000); // Add delay for better visualization
         } catch (InterruptedException e) {
@@ -41,8 +41,8 @@ class SharedPrinter {
 
     synchronized void printLastName(String name) {
         lastName = name;
-        System.out.println(Thread.currentThread().getName() + 
-                         " is printing Last Name: " + lastName);
+        System.out.println(Thread.currentThread().getName() +
+                " is printing Last Name: " + lastName);
         try {
             Thread.sleep(1000); // Add delay for better visualization
         } catch (InterruptedException e) {

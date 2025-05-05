@@ -9,7 +9,7 @@ public class WordReverser {
         char[] chars = input.toCharArray();
         String result = "";
         String word = "";
-        
+
         for (char c : chars) {
             if (Character.isLetterOrDigit(c)) {
                 word = c + word; // prepend character to build reversed word
@@ -18,32 +18,32 @@ public class WordReverser {
                 word = ""; // reset word
             }
         }
-        
+
         // Handle last word if exists
         if (!word.isEmpty()) {
             result += word;
         }
-        
+
         return result;
     }
 
     public static void main(String[] args) {
         // Test cases with expected results
         String[][] tests = {
-            {"When you are ready", "nehW uoy era ydaer"},
-            {"today is Thursday", "yadot si yadsruhT"},
-            {"Hello World!", "olleH dlroW!"},
-            {"", ""},
-            {"A", "A"},
-            {"Hello, World!", "olleH, dlroW!"},
-            {"   spaces   test   ", "   secaps   tset   "}
+                {"When you are ready", "nehW uoy era ydaer"},
+                {"today is Thursday", "yadot si yadsruhT"},
+                {"Hello World!", "olleH dlroW!"},
+                {"", ""},
+                {"A", "A"},
+                {"Hello, World!", "olleH, dlroW!"},
+                {"   spaces   test   ", "   secaps   tset   "}
         };
 
         for (String[] test : tests) {
             String input = test[0];
             String expected = test[1];
             String actual = reverseWords(input);
-            
+
             System.out.println("Input: " + input);
             System.out.println("Expected: " + expected);
             System.out.println("Actual: " + actual);

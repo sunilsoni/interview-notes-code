@@ -5,8 +5,8 @@ import java.util.stream.IntStream;
 public class MaxNonAdjacentSum {
 
     public static int findMaxSum(int[] nums) {
-        if(nums == null || nums.length == 0) return 0;
-        if(nums.length == 1) return nums[0];
+        if (nums == null || nums.length == 0) return 0;
+        if (nums.length == 1) return nums[0];
 
         int include = nums[0], exclude = 0;
 

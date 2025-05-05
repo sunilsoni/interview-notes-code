@@ -13,37 +13,37 @@ public class CharacterCounter {
 
         // Count characters using streams
         input.chars()
-            .mapToObj(ch -> (char) ch)
-            .collect(Collectors.groupingBy(
-                ch -> ch,
-                Collectors.counting()))
-            .forEach((character, count) -> 
-                System.out.println(character + "_variable = " + count));
+                .mapToObj(ch -> (char) ch)
+                .collect(Collectors.groupingBy(
+                        ch -> ch,
+                        Collectors.counting()))
+                .forEach((character, count) ->
+                        System.out.println(character + "_variable = " + count));
 
         System.out.println("\nSorted by character:");
         // Sort by character
         input.chars()
-            .mapToObj(ch -> (char) ch)
-            .collect(Collectors.groupingBy(
-                ch -> ch,
-                Collectors.counting()))
-            .entrySet()
-            .stream()
-            .sorted(Map.Entry.comparingByKey())
-            .forEach((entry) -> 
-                System.out.println(entry.getKey() + "_variable = " + entry.getValue()));
+                .mapToObj(ch -> (char) ch)
+                .collect(Collectors.groupingBy(
+                        ch -> ch,
+                        Collectors.counting()))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey())
+                .forEach((entry) ->
+                        System.out.println(entry.getKey() + "_variable = " + entry.getValue()));
 
         System.out.println("\nSorted by count (descending):");
         // Sort by count
         input.chars()
-            .mapToObj(ch -> (char) ch)
-            .collect(Collectors.groupingBy(
-                ch -> ch,
-                Collectors.counting()))
-            .entrySet()
-            .stream()
-            .sorted(Map.Entry.<Character, Long>comparingByValue().reversed())
-            .forEach((entry) -> 
-                System.out.println(entry.getKey() + "_variable = " + entry.getValue()));
+                .mapToObj(ch -> (char) ch)
+                .collect(Collectors.groupingBy(
+                        ch -> ch,
+                        Collectors.counting()))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.<Character, Long>comparingByValue().reversed())
+                .forEach((entry) ->
+                        System.out.println(entry.getKey() + "_variable = " + entry.getValue()));
     }
 }

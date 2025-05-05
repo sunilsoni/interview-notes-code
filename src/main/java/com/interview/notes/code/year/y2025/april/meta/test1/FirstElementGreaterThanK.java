@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.april.meta.test1;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class FirstElementGreaterThanK {

@@ -2,15 +2,15 @@ package com.interview.notes.code.year.y2025.may.photon.test2;
 
 import java.text.DecimalFormat;
 
+interface PaymentMethod {
+    void pay(double amount);
+}
+
 class Utils {
     public static String roundDouble(double d) {
         DecimalFormat df = new DecimalFormat("#.##");
         return df.format(d);
     }
-}
-
-interface PaymentMethod {
-    void pay(double amount);
 }
 
 class CreditCardPaymentMethod implements PaymentMethod {
@@ -67,29 +67,29 @@ public class Main {
 
         System.out.println("=== Test Case 1 ===");
         service.processPayment(
-            new CreditCardPaymentMethod("1234-5678-9101-1121", "123", "12/23", "JohnDoe"),
-            119.858
+                new CreditCardPaymentMethod("1234-5678-9101-1121", "123", "12/23", "JohnDoe"),
+                119.858
         );
         System.out.println("\nExpected Output:\nPaying $119.86 via Credit Card using Reward Points Redemption Feature.\nRedeemed $10 using reward points.\nPaying remaining amount of $109.86 via credit card.\n");
 
         System.out.println("=== Test Case 2 ===");
         service.processPayment(
-            new PayPalPaymentMethod("amy.white@example.com", "password987"),
-            124.468
+                new PayPalPaymentMethod("amy.white@example.com", "password987"),
+                124.468
         );
         System.out.println("\nExpected Output:\nPaying $124.47 via PayPal using Installment Payment Plan.\nPaid $62.23 in first installment.\nPaid $65.35 in second installment with 5% interest.\n");
 
         System.out.println("=== Test Case 3 ===");
         service.processPayment(
-            new CreditCardPaymentMethod("6666-7777-8888-9999", "432", "02/23", "AmyWhite"),
-            60.1619
+                new CreditCardPaymentMethod("6666-7777-8888-9999", "432", "02/23", "AmyWhite"),
+                60.1619
         );
         System.out.println("\nExpected Output:\nPaying $60.16 via Credit Card using Reward Points Redemption Feature.\nRedeemed $6.02 using reward points.\nPaying remaining amount of $54.15 via credit card.\n");
 
         System.out.println("=== Test Case 4 ===");
         service.processPayment(
-            new PayPalPaymentMethod("chris.wilson@example.com", "12345678"),
-            145.737
+                new PayPalPaymentMethod("chris.wilson@example.com", "12345678"),
+                145.737
         );
         System.out.println("\nExpected Output:\nPaying $145.74 via PayPal using Installment Payment Plan.\nPaid $72.87 in first installment.\nPaid $76.51 in second installment with 5% interest.\n");
     }

@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.april.amazon.test6;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class AmazonPlayToWin {
 
@@ -28,11 +32,11 @@ public class AmazonPlayToWin {
         // Test cases
         test(Arrays.asList(2, 5, 2, 5, 2), 2, 4);
         test(Arrays.asList(6, 4, 4, 6, 4, 4), 6, 5);
-        
+
         // Large Test Case
         List<Integer> largeTest = IntStream.range(0, 200000)
-                                           .map(i -> i % 5 + 1)
-                                           .boxed().collect(Collectors.toList());
+                .map(i -> i % 5 + 1)
+                .boxed().collect(Collectors.toList());
         test(largeTest, 3, 80000); // large test validation
     }
 

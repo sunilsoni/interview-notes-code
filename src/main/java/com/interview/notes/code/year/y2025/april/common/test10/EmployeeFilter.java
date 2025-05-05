@@ -19,13 +19,18 @@ class Employee {
 
     @Override
     public String toString() {
-        return "Employee{name='" + name + "', id=" + id + 
-               ", department='" + department + "', salary=" + salary + "}";
+        return "Employee{name='" + name + "', id=" + id +
+                ", department='" + department + "', salary=" + salary + "}";
     }
 
     // Getters
-    public String getDepartment() { return department; }
-    public double getSalary() { return salary; }
+    public String getDepartment() {
+        return department;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
 }
 
 public class EmployeeFilter {
@@ -58,7 +63,7 @@ public class EmployeeFilter {
         System.out.println("HR Employees with salary > 50000:");
         List<Employee> filteredEmployees = filterHREmployees(employees);
         filteredEmployees.forEach(System.out::println);
-        
+
         // Verify results
         boolean passed = filteredEmployees.size() == 2; // Should get 2 HR employees > 50k
         System.out.println("\nTest Status: " + (passed ? "PASS" : "FAIL"));

@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2025.may.meta.test2;
 import java.util.Arrays;
 
 public class RollingWindowAverageBruteForce {
-    
+
     // Brute force method to calculate rolling window averages
     public static double[] calculateAveragesBruteForce(int[] arr, int windowSize) {
         // Step 1: Input validation
@@ -20,12 +20,12 @@ public class RollingWindowAverageBruteForce {
         // Outer loop: moves the window start position
         for (int i = 0; i < resultSize; i++) {
             double sum = 0;
-            
+
             // Inner loop: calculates sum for current window
             for (int j = 0; j < windowSize; j++) {
                 sum += arr[i + j];
             }
-            
+
             // Calculate average for current window
             result[i] = sum / windowSize;
         }
@@ -37,34 +37,34 @@ public class RollingWindowAverageBruteForce {
     public static void main(String[] args) {
         // Test Case 1: Basic example
         testCase(
-            new int[]{1, 2, 3, 4, 5}, 
-            3, 
-            "Basic Test",
-            new double[]{2.0, 3.0, 4.0}
+                new int[]{1, 2, 3, 4, 5},
+                3,
+                "Basic Test",
+                new double[]{2.0, 3.0, 4.0}
         );
 
         // Test Case 2: Single window
         testCase(
-            new int[]{1, 2, 3}, 
-            3, 
-            "Single Window Test",
-            new double[]{2.0}
+                new int[]{1, 2, 3},
+                3,
+                "Single Window Test",
+                new double[]{2.0}
         );
 
         // Test Case 3: Empty array
         testCase(
-            new int[]{}, 
-            3, 
-            "Empty Array Test",
-            new double[]{}
+                new int[]{},
+                3,
+                "Empty Array Test",
+                new double[]{}
         );
 
         // Test Case 4: Window size equals 1
         testCase(
-            new int[]{1, 2, 3}, 
-            1, 
-            "Window Size 1 Test",
-            new double[]{1.0, 2.0, 3.0}
+                new int[]{1, 2, 3},
+                1,
+                "Window Size 1 Test",
+                new double[]{1.0, 2.0, 3.0}
         );
 
         // Test Case 5: Large array test
@@ -73,10 +73,10 @@ public class RollingWindowAverageBruteForce {
             largeArray[i] = i;
         }
         testCase(
-            largeArray, 
-            100, 
-            "Large Array Test",
-            null  // Not checking exact values for large array
+                largeArray,
+                100,
+                "Large Array Test",
+                null  // Not checking exact values for large array
         );
     }
 

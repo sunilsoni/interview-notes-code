@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.may.photon.test3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 interface PaymentMethod {
     void pay(double amount);

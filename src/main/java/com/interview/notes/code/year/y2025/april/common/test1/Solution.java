@@ -1,15 +1,17 @@
 package com.interview.notes.code.year.y2025.april.common.test1;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 //WORKING 100%
 public class Solution {
 
     public static int bestSumDownwardTreePath(List<Integer> parent, List<Integer> values) {
         int n = parent.size();
         List<List<Integer>> children = IntStream.range(0, n)
-            .mapToObj(i -> new ArrayList<Integer>())
-            .collect(Collectors.toList());
+                .mapToObj(i -> new ArrayList<Integer>())
+                .collect(Collectors.toList());
 
         IntStream.range(0, n).forEach(i -> {
             int p = parent.get(i);
@@ -44,18 +46,24 @@ public class Solution {
             List<Integer> p, v;
             int e;
             String d;
-            Test(List<Integer> p, List<Integer> v, int e, String d) { this.p = p; this.v = v; this.e = e; this.d = d; }
+
+            Test(List<Integer> p, List<Integer> v, int e, String d) {
+                this.p = p;
+                this.v = v;
+                this.e = e;
+                this.d = d;
+            }
         }
 
         List<Test> tests = Arrays.asList(
-            new Test(Arrays.asList(-1, 0, 1, 2, 0), Arrays.asList(-2, 10, 10, -3, 10), 20, "Sample"),
-            new Test(Collections.singletonList(-1), Collections.singletonList(5), 5, "Single"),
-            new Test(Arrays.asList(-1, 0, 0, 1, 1, 2), Arrays.asList(-5, -2, -3, -1, -4, -6), -1, "AllNegative"),
-            new Test(Arrays.asList(-1, 0, 1, 2, 3), Arrays.asList(1, 2, 3, 4, 5), 15, "Chain"),
-            new Test(
-                IntStream.range(0, 100000).map(i -> i - 1).boxed().collect(Collectors.toList()),
-                Collections.nCopies(100000, 1),
-                100000, "Large")
+                new Test(Arrays.asList(-1, 0, 1, 2, 0), Arrays.asList(-2, 10, 10, -3, 10), 20, "Sample"),
+                new Test(Collections.singletonList(-1), Collections.singletonList(5), 5, "Single"),
+                new Test(Arrays.asList(-1, 0, 0, 1, 1, 2), Arrays.asList(-5, -2, -3, -1, -4, -6), -1, "AllNegative"),
+                new Test(Arrays.asList(-1, 0, 1, 2, 3), Arrays.asList(1, 2, 3, 4, 5), 15, "Chain"),
+                new Test(
+                        IntStream.range(0, 100000).map(i -> i - 1).boxed().collect(Collectors.toList()),
+                        Collections.nCopies(100000, 1),
+                        100000, "Large")
         );
 
         tests.stream().forEach(t -> {

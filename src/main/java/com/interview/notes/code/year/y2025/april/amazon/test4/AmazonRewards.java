@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.april.amazon.test4;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class AmazonRewards {
 
@@ -37,7 +40,7 @@ public class AmazonRewards {
             int originalIdx = arr[p][1];
             long competitor =
                     Math.max(p > 0 ? prefixMax[p - 1] : Long.MIN_VALUE,
-                             p < n - 1 ? suffixMax[p + 1] : Long.MIN_VALUE);
+                            p < n - 1 ? suffixMax[p + 1] : Long.MIN_VALUE);
 
             long winnerTotal = initialRewards.get(originalIdx) + (long) n;
             if (winnerTotal > competitor) {
@@ -58,7 +61,7 @@ public class AmazonRewards {
         // large random test (n = 100 000)
         int n = 100_000;
         List<Integer> big = new Random().ints(n, 1, 100_001)
-                                        .boxed().collect(Collectors.toList());
+                .boxed().collect(Collectors.toList());
         tests.add(new TestCase(big, -1)); // expected unknown, just ensure no crash
 
         int passed = 0;
@@ -75,6 +78,10 @@ public class AmazonRewards {
     private static class TestCase {
         List<Integer> rewards;
         int expected; // -1 means unchecked
-        TestCase(List<Integer> r, int e) { rewards = r; expected = e; }
+
+        TestCase(List<Integer> r, int e) {
+            rewards = r;
+            expected = e;
+        }
     }
 }

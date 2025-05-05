@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2025.may.meta.test2;
 import java.util.Arrays;
 
 public class RollingWindowAverage {
-    
+
     // Main method to calculate rolling window averages
     public static double[] calculateAverages(int[] arr, int windowSize) {
         // Handle invalid inputs
@@ -20,7 +20,7 @@ public class RollingWindowAverage {
         for (int i = 0; i < windowSize; i++) {
             windowSum += arr[i];
         }
-        
+
         // Store first window average
         result[0] = windowSum / windowSize;
 
@@ -41,34 +41,34 @@ public class RollingWindowAverage {
     public static void main(String[] args) {
         // Test Case 1: Basic case
         testCase(
-            new int[]{1, 2, 3, 4, 5}, 
-            3, 
-            new double[]{2.0, 3.0, 4.0},
-            "Basic case"
+                new int[]{1, 2, 3, 4, 5},
+                3,
+                new double[]{2.0, 3.0, 4.0},
+                "Basic case"
         );
 
         // Test Case 2: Window size equals array length
         testCase(
-            new int[]{1, 2, 3}, 
-            3, 
-            new double[]{2.0},
-            "Window equals array length"
+                new int[]{1, 2, 3},
+                3,
+                new double[]{2.0},
+                "Window equals array length"
         );
 
         // Test Case 3: Empty array
         testCase(
-            new int[]{}, 
-            3, 
-            new double[]{},
-            "Empty array"
+                new int[]{},
+                3,
+                new double[]{},
+                "Empty array"
         );
 
         // Test Case 4: Window size larger than array
         testCase(
-            new int[]{1, 2}, 
-            3, 
-            new double[]{},
-            "Window larger than array"
+                new int[]{1, 2},
+                3,
+                new double[]{},
+                "Window larger than array"
         );
 
         // Test Case 5: Large array test
@@ -77,10 +77,10 @@ public class RollingWindowAverage {
             largeArray[i] = i;
         }
         testCase(
-            largeArray, 
-            100, 
-            null,  // Not checking exact values for large array
-            "Large array test"
+                largeArray,
+                100,
+                null,  // Not checking exact values for large array
+                "Large array test"
         );
     }
 

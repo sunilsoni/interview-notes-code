@@ -5,12 +5,13 @@ import lombok.Data;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 @Data
 class Employee {
     private int id;
     private String name;
     private String email;
-    
+
     // Constructor, getters, setters...
 }
 
@@ -53,7 +54,7 @@ public class EmployeeService {
 }
 
 // Usage examples:
- class Main {
+class Main {
     public static void main(String[] args) {
         EmployeeService service = new EmployeeService();
 

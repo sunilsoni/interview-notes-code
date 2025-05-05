@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.april.amazon.test6;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class PlayToWin {
 
@@ -66,8 +67,8 @@ public class PlayToWin {
     private static void runTest(String name, List<Integer> arr, int k, int expected) {
         int res = getMaximumCount(arr, k);
         System.out.println(name + ": " + (res == expected
-            ? "PASS"
-            : "FAIL (expected=" + expected + ", got=" + res + ")"));
+                ? "PASS"
+                : "FAIL (expected=" + expected + ", got=" + res + ")"));
     }
 
     public static void main(String[] args) {
@@ -82,9 +83,9 @@ public class PlayToWin {
         int n = 200_000;
         int kVal = 100;
         List<Integer> largeArr = IntStream.range(0, n)
-            .map(i -> kVal - 1)
-            .boxed()
-            .collect(Collectors.toList());
+                .map(i -> kVal - 1)
+                .boxed()
+                .collect(Collectors.toList());
         runTest("LargeAllKminus1", largeArr, kVal, n);
     }
 }

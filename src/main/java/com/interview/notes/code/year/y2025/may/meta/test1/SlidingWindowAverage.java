@@ -11,7 +11,7 @@ public class SlidingWindowAverage {
 
         int resultSize = arr.length - windowSize + 1;
         double[] result = new double[resultSize];
-        
+
         // Step 2: Calculate initial window sum
         double windowSum = 0;
         for (int i = 0; i < windowSize; i++) {
@@ -22,9 +22,9 @@ public class SlidingWindowAverage {
         // Step 3: Slide the window and update sum
         for (int i = 1; i < resultSize; i++) {
             // Subtract the element leaving the window
-            windowSum = windowSum - arr[i-1];
+            windowSum = windowSum - arr[i - 1];
             // Add the new element entering the window
-            windowSum = windowSum + arr[i+windowSize-1];
+            windowSum = windowSum + arr[i + windowSize - 1];
             // Calculate average
             result[i] = windowSum / windowSize;
         }
@@ -45,7 +45,7 @@ public class SlidingWindowAverage {
         System.out.println("Window Size: " + windowSize);
         double[] result = calculateAveragesSlidingWindow(arr, windowSize);
         System.out.println("Result: " + Arrays.toString(result));
-        
+
         // Print detailed calculation steps
         printCalculationSteps(arr, windowSize);
     }
@@ -53,7 +53,7 @@ public class SlidingWindowAverage {
     private static void printCalculationSteps(int[] arr, int windowSize) {
         System.out.println("\nDetailed Calculation Steps:");
         double windowSum = 0;
-        
+
         // First window calculation
         System.out.print("Initial Window: [");
         for (int i = 0; i < windowSize; i++) {
@@ -62,22 +62,22 @@ public class SlidingWindowAverage {
             if (i < windowSize - 1) System.out.print(", ");
         }
         System.out.println("]");
-        System.out.printf("Initial Sum: %.1f, Average: %.2f\n", 
-                         windowSum, windowSum/windowSize);
+        System.out.printf("Initial Sum: %.1f, Average: %.2f\n",
+                windowSum, windowSum / windowSize);
 
         // Sliding window calculations
         for (int i = 1; i <= arr.length - windowSize; i++) {
             System.out.printf("\nSlide %d:\n", i);
-            System.out.printf("Remove: %d, Add: %d\n", arr[i-1], arr[i+windowSize-1]);
-            windowSum = windowSum - arr[i-1] + arr[i+windowSize-1];
+            System.out.printf("Remove: %d, Add: %d\n", arr[i - 1], arr[i + windowSize - 1]);
+            windowSum = windowSum - arr[i - 1] + arr[i + windowSize - 1];
             System.out.print("Current Window: [");
             for (int j = i; j < i + windowSize; j++) {
                 System.out.print(arr[j]);
                 if (j < i + windowSize - 1) System.out.print(", ");
             }
             System.out.println("]");
-            System.out.printf("Current Sum: %.1f, Average: %.2f\n", 
-                             windowSum, windowSum/windowSize);
+            System.out.printf("Current Sum: %.1f, Average: %.2f\n",
+                    windowSum, windowSum / windowSize);
         }
     }
 }

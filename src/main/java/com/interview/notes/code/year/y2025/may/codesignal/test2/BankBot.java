@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.may.codesignal.test2;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.IntStream;
 
 public class BankBot {
 

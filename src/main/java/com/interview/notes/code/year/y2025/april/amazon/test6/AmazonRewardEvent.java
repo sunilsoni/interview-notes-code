@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.april.amazon.test6;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class AmazonRewardEvent {
 

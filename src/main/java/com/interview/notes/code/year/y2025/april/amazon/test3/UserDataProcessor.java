@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.april.amazon.test3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class UserDataProcessor {
@@ -35,10 +38,10 @@ public class UserDataProcessor {
     // Main processing method that fetches and processes user data
     public static List<User> processUserData(int ageThreshold) {
         return userDatabase.stream()
-            .filter(user -> user.isActive())                    // Filter active users
-            .filter(user -> user.getAge() > ageThreshold)      // Filter by age
-            .sorted(Comparator.comparing(User::getName))        // Sort by name
-            .collect(Collectors.toList());                      // Collect results
+                .filter(user -> user.isActive())                    // Filter active users
+                .filter(user -> user.getAge() > ageThreshold)      // Filter by age
+                .sorted(Comparator.comparing(User::getName))        // Sort by name
+                .collect(Collectors.toList());                      // Collect results
     }
 
     // Helper method to set up initial test data
@@ -55,9 +58,9 @@ public class UserDataProcessor {
         Random random = new Random();
         for (int i = 0; i < size; i++) {
             userDatabase.add(new User(
-                "User" + i,
-                random.nextInt(50) + 18,
-                random.nextBoolean()
+                    "User" + i,
+                    random.nextInt(50) + 18,
+                    random.nextBoolean()
             ));
         }
     }
@@ -75,7 +78,15 @@ class User {
         this.active = active;
     }
 
-    public String getName() { return name; }
-    public int getAge() { return age; }
-    public boolean isActive() { return active; }
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
 }

@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.april.amazon.test2;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 //WORKING 100%
 
@@ -59,6 +60,7 @@ public class PlayToWin {
         class Test {
             List<Integer> arr;
             int k, expected;
+
             Test(Integer[] a, int k, int e) {
                 this.arr = Arrays.asList(a);
                 this.k = k;
@@ -67,14 +69,14 @@ public class PlayToWin {
         }
 
         List<Test> tests = Arrays.asList(
-            new Test(new Integer[]{2, 5, 2, 5, 2}, 2, 4),
-            new Test(new Integer[]{6, 4, 4, 6, 4, 4}, 6, 5),
-            // edge: all already k
-            new Test(new Integer[]{3, 3, 3}, 3, 3),
-            // edge: no k, single value
-            new Test(new Integer[]{1, 2, 3}, 5, 1),
-            // mixed
-            new Test(new Integer[]{1, 5, 1, 5, 1, 5, 1}, 6, 4)
+                new Test(new Integer[]{2, 5, 2, 5, 2}, 2, 4),
+                new Test(new Integer[]{6, 4, 4, 6, 4, 4}, 6, 5),
+                // edge: all already k
+                new Test(new Integer[]{3, 3, 3}, 3, 3),
+                // edge: no k, single value
+                new Test(new Integer[]{1, 2, 3}, 5, 1),
+                // mixed
+                new Test(new Integer[]{1, 5, 1, 5, 1, 5, 1}, 6, 4)
         );
 
         int passed = 0;
@@ -83,7 +85,7 @@ public class PlayToWin {
             int result = getMaximumCount(t.arr, t.k);
             boolean ok = result == t.expected;
             System.out.printf("Test %d: %s (got=%d, expected=%d)%n",
-                              i + 1, ok ? "PASS" : "FAIL", result, t.expected);
+                    i + 1, ok ? "PASS" : "FAIL", result, t.expected);
             if (ok) passed++;
         }
         System.out.printf("%d/%d tests passed.%n", passed, tests.size());
@@ -91,11 +93,11 @@ public class PlayToWin {
         // large data test
         int N = 200_000;
         List<Integer> large = IntStream.range(0, N)
-                                       .map(i -> 1)
-                                       .boxed()
-                                       .collect(Collectors.toList());
+                .map(i -> 1)
+                .boxed()
+                .collect(Collectors.toList());
         int largeResult = getMaximumCount(large, 2);
         System.out.printf("Large test: size=%d result=%d (expected=%d)%n",
-                          N, largeResult, N);
+                N, largeResult, N);
     }
 }

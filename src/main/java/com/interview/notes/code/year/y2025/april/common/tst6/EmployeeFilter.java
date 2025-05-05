@@ -19,13 +19,18 @@ class Employee {
 
     @Override
     public String toString() {
-        return "Employee{name='" + name + "', id=" + id + 
-               ", department='" + department + "', salary=" + salary + "}";
+        return "Employee{name='" + name + "', id=" + id +
+                ", department='" + department + "', salary=" + salary + "}";
     }
 
     // Getters
-    public String getDepartment() { return department; }
-    public double getSalary() { return salary; }
+    public String getDepartment() {
+        return department;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
 }
 
 public class EmployeeFilter {
@@ -43,7 +48,7 @@ public class EmployeeFilter {
     public static void main(String[] args) {
         // Test cases
         List<Employee> employees = new ArrayList<>();
-        
+
         // Adding test data
         employees.add(new Employee("John", 1, "HR", 60000));
         employees.add(new Employee("Alice", 2, "HR", 45000));
@@ -78,10 +83,10 @@ public class EmployeeFilter {
         List<Employee> largeList = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
             largeList.add(new Employee(
-                "Emp" + i, 
-                i, 
-                i % 3 == 0 ? "HR" : "Other", 
-                40000 + (i * 100)
+                    "Emp" + i,
+                    i,
+                    i % 3 == 0 ? "HR" : "Other",
+                    40000 + (i * 100)
             ));
         }
         List<Employee> largeResult = filterHREmployees(largeList);

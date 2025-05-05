@@ -5,36 +5,36 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class WordFrequencyCounter {
-    
+
     public static Map<String, Long> countWords(String input) {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("Input cannot be null or empty");
         }
-        
+
         return Arrays.stream(input.toLowerCase().split("\\s+"))
-                    .collect(Collectors.groupingBy(
+                .collect(Collectors.groupingBy(
                         word -> word,
                         Collectors.counting()
-                    ));
+                ));
     }
 
     public static void main(String[] args) {
         // Test cases
-        runTest("Test Case 1", 
+        runTest("Test Case 1",
                 "I like Java i live java i love java",
                 Map.of("i", 3L, "like", 1L, "java", 3L, "live", 1L, "love", 1L));
 
-        runTest("Test Case 2", 
+        runTest("Test Case 2",
                 "hello hello world",
                 Map.of("hello", 2L, "world", 1L));
 
         // Edge case - single word
-        runTest("Test Case 3", 
+        runTest("Test Case 3",
                 "word",
                 Map.of("word", 1L));
 
         // Edge case - empty spaces
-        runTest("Test Case 4", 
+        runTest("Test Case 4",
                 "  word   word  ",
                 Map.of("word", 2L));
     }
@@ -43,7 +43,7 @@ public class WordFrequencyCounter {
         try {
             Map<String, Long> result = countWords(input);
             boolean passed = result.equals(expected);
-            
+
             System.out.println(testName + ": " + (passed ? "PASS" : "FAIL"));
             if (!passed) {
                 System.out.println("Expected: " + expected);
