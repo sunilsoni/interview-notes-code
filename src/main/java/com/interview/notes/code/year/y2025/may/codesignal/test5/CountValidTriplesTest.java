@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.may.codesignal.test5;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 public class CountValidTriplesTest {
 
@@ -53,29 +56,29 @@ public class CountValidTriplesTest {
     public static void main(String[] args) {
         // Example from prompt
         runTest("Example",
-            new String[]{"+4", "+5", "+6", "+4", "+3", "-4"},
-            1,
-            new int[]{0, 0, 1, 2, 4, 0}
+                new String[]{"+4", "+5", "+6", "+4", "+3", "-4"},
+                1,
+                new int[]{0, 0, 1, 2, 4, 0}
         );
 
         // Edge cases
         runTest("Single Add",
-            new String[]{"+10"},
-            5,
-            new int[]{0}
+                new String[]{"+10"},
+                5,
+                new int[]{0}
         );
         runTest("Add and Remove",
-            new String[]{"+1", "+2", "+3", "-2", "+4"},
-            1,
-            new int[]{0, 0, 1, 0, 0}
+                new String[]{"+1", "+2", "+3", "-2", "+4"},
+                1,
+                new int[]{0, 0, 1, 0, 0}
         );
 
         // Large random test for performance
         int N = 100_000;
         Random rnd = new Random(0);
         String[] bigQueries = IntStream.range(0, N)
-            .mapToObj(i -> (rnd.nextBoolean() ? "+" : "-") + rnd.nextInt(1000))
-            .toArray(String[]::new);
+                .mapToObj(i -> (rnd.nextBoolean() ? "+" : "-") + rnd.nextInt(1000))
+                .toArray(String[]::new);
         // Ensure first few are adds so removals are valid
         for (int i = 0; i < 10; i++) bigQueries[i] = "+" + rnd.nextInt(1000);
 

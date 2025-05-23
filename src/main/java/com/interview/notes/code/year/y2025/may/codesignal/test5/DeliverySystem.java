@@ -1,21 +1,25 @@
 package com.interview.notes.code.year.y2025.may.codesignal.test5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DeliverySystem {
     private Map<Integer, Double> driverRates = new HashMap<>();
     private List<Delivery> deliveries = new ArrayList<>();
 
-    private static class Delivery {
-        int driverId;
-        long startTime;  // in seconds
-        long endTime;    // in seconds
+    public static void main(String[] args) {
+        DeliverySystem billingSystem = new DeliverySystem();
 
-        Delivery(int driverId, long startTime, long endTime) {
-            this.driverId = driverId;
-            this.startTime = startTime;
-            this.endTime = endTime;
-        }
+        billingSystem.addDriver(1, 35.10);
+        billingSystem.addDriver(2, 15.15);
+        billingSystem.addDriver(3, 8.55);
+        billingSystem.addDriver(4, 11.28);
+        billingSystem.recordDelivery(1, 0, 3600);    // Jan 1 1970 00:00:00 - Jan 1 1970 01:00:00
+        billingSystem.recordDelivery(2, 0, 5400);    // Jan 1 1970 00:00:00 - Jan 1 1970 01:30:00
+        billingSystem.recordDelivery(2, 5400, 7200); // Jan 1 1970 01:30:00 - Jan 1 1970 02:00:00
+        System.out.println(billingSystem.getTotalCost());
     }
 
     public void addDriver(int driverId, double usdHourlyRate) {
@@ -37,24 +41,23 @@ public class DeliverySystem {
 
     public double getTotalCost() {
         return deliveries.stream()
-            .mapToDouble(delivery -> {
-                double hourlyRate = driverRates.get(delivery.driverId);
-                long durationSeconds = delivery.endTime - delivery.startTime;
-                return hourlyRate * durationSeconds / 3600.0; // Convert seconds to hours
-            })
-            .sum();
+                .mapToDouble(delivery -> {
+                    double hourlyRate = driverRates.get(delivery.driverId);
+                    long durationSeconds = delivery.endTime - delivery.startTime;
+                    return hourlyRate * durationSeconds / 3600.0; // Convert seconds to hours
+                })
+                .sum();
     }
 
-    public static void main(String[] args) {
-        DeliverySystem billingSystem = new DeliverySystem();
+    private static class Delivery {
+        int driverId;
+        long startTime;  // in seconds
+        long endTime;    // in seconds
 
-        billingSystem.addDriver(1, 35.10);
-        billingSystem.addDriver(2, 15.15);
-        billingSystem.addDriver(3, 8.55);
-        billingSystem.addDriver(4, 11.28);
-        billingSystem.recordDelivery(1, 0, 3600);    // Jan 1 1970 00:00:00 - Jan 1 1970 01:00:00
-        billingSystem.recordDelivery(2, 0, 5400);    // Jan 1 1970 00:00:00 - Jan 1 1970 01:30:00
-        billingSystem.recordDelivery(2, 5400, 7200); // Jan 1 1970 01:30:00 - Jan 1 1970 02:00:00
-        System.out.println(billingSystem.getTotalCost());
+        Delivery(int driverId, long startTime, long endTime) {
+            this.driverId = driverId;
+            this.startTime = startTime;
+            this.endTime = endTime;
+        }
     }
 }

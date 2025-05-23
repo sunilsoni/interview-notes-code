@@ -1,19 +1,23 @@
 package com.interview.notes.code.year.y2025.may.codesignal.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 //100% WORKING
+
 /**
  * Draw-Y — minimum changes to form the letter Y in an n×n matrix.
- *
- *  ▸ Works for odd 3 ≤ n ≤ 99, values 0 .. 2
- *  ▸ Uses only plain main() – no external test libraries
- *  ▸ Java 8 Stream API where it makes sense
+ * <p>
+ * ▸ Works for odd 3 ≤ n ≤ 99, values 0 .. 2
+ * ▸ Uses only plain main() – no external test libraries
+ * ▸ Java 8 Stream API where it makes sense
  */
 public class DrawY {
 
-    /** -------- core algorithm -------- */
+    /**
+     * -------- core algorithm --------
+     */
     public static int solution(int[][] matrix) {
         int n = matrix.length;                 // matrix is n × n and n is odd
         int c = n / 2;                         // index of the middle row / column
@@ -51,7 +55,9 @@ public class DrawY {
         return minChanges;
     }
 
-    /** ----------- small helper to build matrices quickly ----------- */
+    /**
+     * ----------- small helper to build matrices quickly -----------
+     */
     private static int[][] of(int... rowMajor) {
         int n = (int) Math.sqrt(rowMajor.length);                 // works because n×n
         int[][] m = new int[n][n];
@@ -61,36 +67,38 @@ public class DrawY {
         return m;
     }
 
-    /** -------------- Test harness – simple & self-explaining -------------- */
+    /**
+     * -------------- Test harness – simple & self-explaining --------------
+     */
     public static void main(String[] args) {
 
         /* === predefined test cases with expected answers === */
         List<TestCase> cases = Arrays.asList(
-            new TestCase(of(   // Example 1 from the statement
-                1,0,2,
-                1,2,0,
-                0,2,0
-            ), 2, "Example 1"),
+                new TestCase(of(   // Example 1 from the statement
+                        1, 0, 2,
+                        1, 2, 0,
+                        0, 2, 0
+                ), 2, "Example 1"),
 
-            new TestCase(new int[][]{           // Example 2 from the statement
-                {2,0,0,0,2},
-                {1,2,1,2,0},
-                {0,1,2,1,0},
-                {0,0,2,1,1},
-                {1,1,2,1,1}
-            }, 8, "Example 2"),
+                new TestCase(new int[][]{           // Example 2 from the statement
+                        {2, 0, 0, 0, 2},
+                        {1, 2, 1, 2, 0},
+                        {0, 1, 2, 1, 0},
+                        {0, 0, 2, 1, 1},
+                        {1, 1, 2, 1, 1}
+                }, 8, "Example 2"),
 
-            new TestCase(of(   // Already a perfect Y – should need 0 changes
-                1,0,1,
-                0,1,0,
-                0,1,0
-            ), 0, "Perfect Y"),
+                new TestCase(of(   // Already a perfect Y – should need 0 changes
+                        1, 0, 1,
+                        0, 1, 0,
+                        0, 1, 0
+                ), 0, "Perfect Y"),
 
-            new TestCase(of(   // All zeros (3×3) – needs 4 changes as explained
-                0,0,0,
-                0,0,0,
-                0,0,0
-            ), 4, "All zeros")
+                new TestCase(of(   // All zeros (3×3) – needs 4 changes as explained
+                        0, 0, 0,
+                        0, 0, 0,
+                        0, 0, 0
+                ), 4, "All zeros")
         );
 
         /* run & report */
@@ -116,11 +124,18 @@ public class DrawY {
                 changes, timeMs);
     }
 
-    /** tiny holder */
+    /**
+     * tiny holder
+     */
     private static class TestCase {
         int[][] matrix;
         int expected;
         String name;
-        TestCase(int[][] m, int exp, String name) { this.matrix = m; this.expected = exp; this.name = name; }
+
+        TestCase(int[][] m, int exp, String name) {
+            this.matrix = m;
+            this.expected = exp;
+            this.name = name;
+        }
     }
 }

@@ -1,50 +1,18 @@
 package com.interview.notes.code.year.y2025.may.codesignal.test4;
 
-import java.time.LocalDateTime;
 import java.time.Duration;
-import java.util.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DeliverySystem {
     // Store driver rates
     private Map<Integer, Double> driverRates = new HashMap<>();
-    
+
     // Store all deliveries (brute force approach)
     private List<Delivery> deliveries = new ArrayList<>();
-    
-    // Delivery class to store delivery details
-    private static class Delivery {
-        int driverId;
-        LocalDateTime startTime;
-        LocalDateTime endTime;
-        
-        Delivery(int driverId, LocalDateTime startTime, LocalDateTime endTime) {
-            this.driverId = driverId;
-            this.startTime = startTime;
-            this.endTime = endTime;
-        }
-    }
-
-    public void addDriver(int driverId, double usdHourlyRate) {
-        driverRates.put(driverId, usdHourlyRate);
-    }
-
-    public void recordDelivery(int driverId, LocalDateTime startTime, LocalDateTime endTime) {
-        deliveries.add(new Delivery(driverId, startTime, endTime));
-    }
-
-    public double getTotalCost() {
-        double totalCost = 0.0;
-        
-        // Iterate through each delivery and calculate cost
-        for(Delivery delivery : deliveries) {
-            double hourlyRate = driverRates.get(delivery.driverId);
-            Duration duration = Duration.between(delivery.startTime, delivery.endTime);
-            double hours = duration.toMinutes() / 60.0;
-            totalCost += hourlyRate * hours;
-        }
-        
-        return totalCost;
-    }
 
     public static void main(String[] args) {
         // Your specific test case
@@ -81,6 +49,41 @@ public class DeliverySystem {
 
         // [Rest of the original test cases...]
         // ... [Previous test cases remain unchanged]
+    }
+
+    public void addDriver(int driverId, double usdHourlyRate) {
+        driverRates.put(driverId, usdHourlyRate);
+    }
+
+    public void recordDelivery(int driverId, LocalDateTime startTime, LocalDateTime endTime) {
+        deliveries.add(new Delivery(driverId, startTime, endTime));
+    }
+
+    public double getTotalCost() {
+        double totalCost = 0.0;
+
+        // Iterate through each delivery and calculate cost
+        for (Delivery delivery : deliveries) {
+            double hourlyRate = driverRates.get(delivery.driverId);
+            Duration duration = Duration.between(delivery.startTime, delivery.endTime);
+            double hours = duration.toMinutes() / 60.0;
+            totalCost += hourlyRate * hours;
+        }
+
+        return totalCost;
+    }
+
+    // Delivery class to store delivery details
+    private static class Delivery {
+        int driverId;
+        LocalDateTime startTime;
+        LocalDateTime endTime;
+
+        Delivery(int driverId, LocalDateTime startTime, LocalDateTime endTime) {
+            this.driverId = driverId;
+            this.startTime = startTime;
+            this.endTime = endTime;
+        }
     }
 
 }

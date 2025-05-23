@@ -55,7 +55,7 @@ public class Main {
         boolean allPass = true;
         for (int k = 0; k < inputs.length; k++) {
             String result = SearchingChallenge(inputs[k]);
-            boolean pass   = result.equals(expected[k]);
+            boolean pass = result.equals(expected[k]);
             allPass &= pass;
             System.out.printf("Input: %-15s  Expected: %-10s  Got: %-10s  %s\n",
                     inputs[k], expected[k], result, pass ? "PASS" : "FAIL");

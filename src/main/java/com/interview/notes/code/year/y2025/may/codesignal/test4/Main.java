@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.may.codesignal.test4;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
 
@@ -21,23 +22,23 @@ public class Main {
 
     public static void main(String[] args) {
         String[] testCases = {
-            "da2kr32a2",
-            "sskfssbbb9bbb",
-            "123224",
-            "abcdabcdabcd",
-            "aaa",
-            "ababab",
-            "aabbccdd"
+                "da2kr32a2",
+                "sskfssbbb9bbb",
+                "123224",
+                "abcdabcdabcd",
+                "aaa",
+                "ababab",
+                "aabbccdd"
         };
 
         String[] expected = {
-            "yes a2",
-            "yes bbb",
-            "no null",
-            "yes abcd",
-            "yes aa",
-            "yes abab",
-            "yes aa"
+                "yes a2",
+                "yes bbb",
+                "no null",
+                "yes abcd",
+                "yes aa",
+                "yes abab",
+                "yes aa"
         };
 
         for (int i = 0; i < testCases.length; i++) {

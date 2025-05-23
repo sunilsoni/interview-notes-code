@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.may.codesignal.test3;
 
 import java.util.*;
-import java.util.stream.*;
 
 public class CountTriplesTest {
 
@@ -15,7 +14,7 @@ public class CountTriplesTest {
             if (q.charAt(0) == '+') {
                 // for new x, any y = x - diff and z = x - 2*diff
                 count += (long) freq.getOrDefault(x - diff, 0)
-                       * freq.getOrDefault(x - 2*diff, 0);
+                        * freq.getOrDefault(x - 2 * diff, 0);
                 // also existing pairs (y,z) where y = x + diff, z = x
                 // but removing all occurrences on '-' means no duplicates beyond freq
                 freq.merge(x, 1, Integer::sum);
@@ -25,8 +24,8 @@ public class CountTriplesTest {
                 if (removed > 0) {
                     // subtract triples where x was the largest: x, y=x-diff, z=x-2*diff
                     count -= (long) removed
-                           * freq.getOrDefault(x - diff, 0)
-                           * freq.getOrDefault(x - 2*diff, 0);
+                            * freq.getOrDefault(x - diff, 0)
+                            * freq.getOrDefault(x - 2 * diff, 0);
                     freq.remove(x);
                 }
             }
@@ -70,6 +69,6 @@ public class CountTriplesTest {
         long durationMs = (System.nanoTime() - start) / 1_000_000;
         boolean correct = Arrays.equals(gotBig, expBig);
         System.out.printf("Large Test (%d ops): %s in %d ms%n",
-                          n, correct ? "PASS" : "FAIL", durationMs);
+                n, correct ? "PASS" : "FAIL", durationMs);
     }
 }

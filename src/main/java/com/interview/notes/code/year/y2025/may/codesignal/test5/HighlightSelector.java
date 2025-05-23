@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.may.codesignal.test5;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 public class HighlightSelector {
 
@@ -9,16 +9,16 @@ public class HighlightSelector {
      * ---------- Core logic ----------
      * A height is a highlight if it is higher than BOTH neighbours
      * (missing neighbours are treated as -∞, so edges only need
-     *   to beat the single neighbour they have).
-     *
+     * to beat the single neighbour they have).
+     * <p>
      * We keep removing the smallest highlight and store the order.
      * ---------------------------------
      */
     public static int[] solution(int[] heights) {
         // Keep the data in a mutable list for easy removals
         List<Integer> list = Arrays.stream(heights)
-                                   .boxed()
-                                   .collect(Collectors.toCollection(ArrayList::new));
+                .boxed()
+                .collect(Collectors.toCollection(ArrayList::new));
 
         List<Integer> order = new ArrayList<>();
 
@@ -29,8 +29,8 @@ public class HighlightSelector {
             for (int i = 0; i < list.size(); i++) {
                 int curr = list.get(i);
 
-                boolean leftOK  = (i == 0)                 || curr > list.get(i - 1);
-                boolean rightOK = (i == list.size() - 1)   || curr > list.get(i + 1);
+                boolean leftOK = (i == 0) || curr > list.get(i - 1);
+                boolean rightOK = (i == list.size() - 1) || curr > list.get(i + 1);
 
                 if (leftOK && rightOK) {
                     highlights.add(curr);
@@ -100,7 +100,7 @@ public class HighlightSelector {
         /* ---------------- Run the small deterministic tests ---------------- */
         for (TestCase tc : tests) {
             int[] result = solution(tc.input);
-            boolean pass  = arraysEqual(result, tc.expected);
+            boolean pass = arraysEqual(result, tc.expected);
             System.out.println(tc.name + ": " + (pass ? "PASS" : "FAIL"));
             if (!pass) {
                 System.out.println("   expected = " + toStr(tc.expected));

@@ -8,14 +8,14 @@ public class LetterY {
 
         // Count how many cells of each value lie on the "Y" and off the "Y"
         int[] shapeCount = new int[3];
-        int[] bgCount    = new int[3];
+        int[] bgCount = new int[3];
         int shapeCells = 0;
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 // on the two diagonals down to center, or vertical from center down
                 boolean onDiagonalArm = (i <= mid && (i == j || j == n - 1 - i));
-                boolean onStem        = (i >= mid && j == mid);
+                boolean onStem = (i >= mid && j == mid);
                 if (onDiagonalArm || onStem) {
                     shapeCount[matrix[i][j]]++;
                     shapeCells++;
@@ -26,7 +26,7 @@ public class LetterY {
         }
 
         int totalCells = n * n;
-        int bgCells    = totalCells - shapeCells;
+        int bgCells = totalCells - shapeCells;
         int best = Integer.MAX_VALUE;
 
         // Try every (A = shape-value, B = background-value), A≠B
@@ -45,21 +45,21 @@ public class LetterY {
     // quick smoke tests
     public static void main(String[] args) {
         int[][] m1 = {
-            {1, 0, 2},
-            {1, 2, 0},
-            {0, 2, 0}
+                {1, 0, 2},
+                {1, 2, 0},
+                {0, 2, 0}
         };
         // expected 2
-        System.out.println(solution(m1));  
+        System.out.println(solution(m1));
 
         int[][] m2 = {
-            {2,0,0,0,2},
-            {1,2,1,2,0},
-            {0,1,2,1,0},
-            {0,0,2,1,1},
-            {1,1,2,1,1}
+                {2, 0, 0, 0, 2},
+                {1, 2, 1, 2, 0},
+                {0, 1, 2, 1, 0},
+                {0, 0, 2, 1, 1},
+                {1, 1, 2, 1, 1}
         };
         // expected 8
-        System.out.println(solution(m2));  
+        System.out.println(solution(m2));
     }
 }
