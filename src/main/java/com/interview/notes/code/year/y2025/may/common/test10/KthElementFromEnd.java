@@ -3,7 +3,10 @@ package com.interview.notes.code.year.y2025.may.common.test10;
 class ListNode {
     int val;
     ListNode next;
-    ListNode(int val) { this.val = val; }
+
+    ListNode(int val) {
+        this.val = val;
+    }
 }
 
 public class KthElementFromEnd {

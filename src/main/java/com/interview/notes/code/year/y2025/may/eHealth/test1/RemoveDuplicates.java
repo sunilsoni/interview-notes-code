@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.may.eHealth.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RemoveDuplicates {
     /**
@@ -23,12 +27,12 @@ public class RemoveDuplicates {
     public static void main(String[] args) {
         // list of test cases: {input array, expected length}
         List<int[]> inputs = Arrays.asList(
-            new int[] {1,1,1,2,2,3},
-            new int[] {0,0,1,1,1,1,2,3,3},
-            new int[] {}, 
-            new int[] {5},
-            new int[] {2,2},
-            new int[] {3,3,3,3}
+                new int[]{1, 1, 1, 2, 2, 3},
+                new int[]{0, 0, 1, 1, 1, 1, 2, 3, 3},
+                new int[]{},
+                new int[]{5},
+                new int[]{2, 2},
+                new int[]{3, 3, 3, 3}
         );
         int[] expected = {5, 7, 0, 1, 2, 2};
 
@@ -38,31 +42,31 @@ public class RemoveDuplicates {
             int got = removeDuplicates(arr);
             // verify length and that no number appears >2 times
             boolean ok = (got == expected[t]);
-            Map<Integer,Integer> count = new HashMap<>();
+            Map<Integer, Integer> count = new HashMap<>();
             for (int i = 0; i < got; i++) {
                 count.merge(arr[i], 1, Integer::sum);
                 if (count.get(arr[i]) > 2) ok = false;
             }
             System.out.printf("Test %d: expected=%d, got=%d → %s%n",
-                              t+1, expected[t], got, ok ? "PASS" : "FAIL");
+                    t + 1, expected[t], got, ok ? "PASS" : "FAIL");
         }
 
         // large data input: generate 200k sorted array where each value i appears i%3 + 1 times
         int N = 200_000;
         int[] large = IntStream
-                       .range(0, N)
-                       .flatMap(i -> IntStream.generate(() -> i)
-                                             .limit(i % 3 + 1))
-                       .toArray();
+                .range(0, N)
+                .flatMap(i -> IntStream.generate(() -> i)
+                        .limit(i % 3 + 1))
+                .toArray();
         long start = System.nanoTime();
         int newLen = removeDuplicates(large);
         long duration = System.nanoTime() - start;
         // quick sanity: no count >2 in the first newLen elements
         boolean valid = IntStream.range(0, newLen)
-                           .boxed()
-                           .collect(Collectors.groupingBy(i -> large[i], Collectors.counting()))
-                           .values().stream().allMatch(c -> c <= 2);
+                .boxed()
+                .collect(Collectors.groupingBy(i -> large[i], Collectors.counting()))
+                .values().stream().allMatch(c -> c <= 2);
         System.out.printf("Large input: newLen=%d, time=%.2fms, valid=%s%n",
-                          newLen, duration/1e6, valid ? "PASS" : "FAIL");
+                newLen, duration / 1e6, valid ? "PASS" : "FAIL");
     }
 }

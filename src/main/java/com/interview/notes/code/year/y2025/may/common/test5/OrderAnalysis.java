@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.may.common.test5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OrderAnalysis {
@@ -10,16 +12,16 @@ public class OrderAnalysis {
 
         // Process orders using Stream API
         Map<Long, Map<String, Double>> result = orders.stream()
-            .collect(Collectors.groupingBy(
-                Order::getCustomerId,
-                Collectors.flatMapping(
-                    order -> order.getItems().stream(),
-                    Collectors.groupingBy(
-                        OrderItem::getProductCategory,
-                        Collectors.summingDouble(OrderItem::getAmount)
-                    )
-                )
-            ));
+                .collect(Collectors.groupingBy(
+                        Order::getCustomerId,
+                        Collectors.flatMapping(
+                                order -> order.getItems().stream(),
+                                Collectors.groupingBy(
+                                        OrderItem::getProductCategory,
+                                        Collectors.summingDouble(OrderItem::getAmount)
+                                )
+                        )
+                ));
 
         // Print results
         printResults(result);

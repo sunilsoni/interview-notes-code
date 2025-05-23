@@ -1,10 +1,13 @@
 package com.interview.notes.code.year.y2025.may.common.test8;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class FindDuplicates {
-    
+
     // Method 1: Using Stream to find duplicates
     public static List<Integer> findDuplicatesUsingStream(List<Integer> numbers) {
         // Group by number and count occurrences, filter counts > 1, and get the numbers
@@ -48,18 +51,18 @@ public class FindDuplicates {
     // Helper method to run tests and print results
     private static void testAndPrint(String testName, List<Integer> input) {
         System.out.println("\n" + testName);
-        System.out.println("Input: " + (input.size() > 20 ? 
-                          input.subList(0, 20) + "... (size: " + input.size() + ")" : 
-                          input));
-        
+        System.out.println("Input: " + (input.size() > 20 ?
+                input.subList(0, 20) + "... (size: " + input.size() + ")" :
+                input));
+
         long startTime = System.currentTimeMillis();
         List<Integer> duplicates = findDuplicatesUsingStream(input);
         long endTime = System.currentTimeMillis();
 
-        System.out.println("Duplicates found: " + 
-                         (duplicates.size() > 20 ? 
-                         duplicates.subList(0, 20) + "... (total: " + duplicates.size() + ")" : 
-                         duplicates));
+        System.out.println("Duplicates found: " +
+                (duplicates.size() > 20 ?
+                        duplicates.subList(0, 20) + "... (total: " + duplicates.size() + ")" :
+                        duplicates));
         System.out.println("Execution time: " + (endTime - startTime) + "ms");
         System.out.println("Test Result: " + (validateTest(input, duplicates) ? "PASS" : "FAIL"));
     }
@@ -68,8 +71,8 @@ public class FindDuplicates {
     private static boolean validateTest(List<Integer> input, List<Integer> duplicates) {
         // Check if each number in duplicates appears at least twice in input
         return duplicates.stream()
-                .allMatch(num -> 
-                    input.stream().filter(x -> x.equals(num)).count() > 1
+                .allMatch(num ->
+                        input.stream().filter(x -> x.equals(num)).count() > 1
                 );
     }
 }

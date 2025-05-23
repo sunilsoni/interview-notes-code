@@ -1,10 +1,15 @@
 package com.interview.notes.code.year.y2025.may.common.test4;
 
-import java.nio.file.*;
-import java.security.*;
-import java.math.*;
-import java.util.*;
-import java.util.stream.*;
+import java.math.BigInteger;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DuplicateFilesFinder {
 
@@ -21,22 +26,22 @@ public class DuplicateFilesFinder {
 
         // Traverse the directory using Files.walk
         Files.walk(Paths.get(directoryPath))
-            .filter(Files::isRegularFile)
-            .forEach(path -> {
-                try {
-                    String checksum = getFileChecksum(path);
-                    contentToFilePaths
-                        .computeIfAbsent(checksum, k -> new ArrayList<>())
-                        .add(path.toString());
-                } catch (Exception e) {
-                    System.err.println("Error processing file: " + path + ", error: " + e.getMessage());
-                }
-            });
+                .filter(Files::isRegularFile)
+                .forEach(path -> {
+                    try {
+                        String checksum = getFileChecksum(path);
+                        contentToFilePaths
+                                .computeIfAbsent(checksum, k -> new ArrayList<>())
+                                .add(path.toString());
+                    } catch (Exception e) {
+                        System.err.println("Error processing file: " + path + ", error: " + e.getMessage());
+                    }
+                });
 
         // Filter groups that contain duplicates
         return contentToFilePaths.values().stream()
-            .filter(list -> list.size() > 1)
-            .collect(Collectors.toList());
+                .filter(list -> list.size() > 1)
+                .collect(Collectors.toList());
     }
 
     // Main method for testing

@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.may.amazon.test5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 //14/15 working
 
@@ -8,7 +11,7 @@ public class AmazonAcademyScholarship {
 
     public static long findMinimumDays(List<Integer> pages, int k, int p) {
         int n = pages.size();
-        long low = 1, high = (long)1e12;
+        long low = 1, high = (long) 1e12;
 
         while (low < high) {
             long mid = (low + high) / 2;

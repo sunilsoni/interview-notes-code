@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.may.common.test8;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class CarFleet {
 
@@ -14,7 +14,7 @@ public class CarFleet {
         for (int i = 0; i < n; i++) {
             cars[i][0] = position[i];
             // Calculate time taken to reach the target
-            cars[i][1] = (double)(target - position[i]) / speed[i];
+            cars[i][1] = (double) (target - position[i]) / speed[i];
         }
 
         // Sort cars based on their starting position (descending)
@@ -39,7 +39,7 @@ public class CarFleet {
         test(12, new int[]{10, 8, 0, 5, 3}, new int[]{2, 4, 1, 1, 3}, 3);
         test(10, new int[]{3}, new int[]{3}, 1);
         test(100, new int[]{0, 2, 4}, new int[]{4, 2, 1}, 1);
-        
+
         // Edge case with large input
         int largeN = 100000;
         int[] largePos = IntStream.range(0, largeN).toArray();

@@ -2,7 +2,10 @@ package com.interview.notes.code.year.y2025.may.common.test5;
 
 import java.io.*;
 import java.security.MessageDigest;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DuplicateFileFinder {
     public static void main(String[] args) {
@@ -15,7 +18,7 @@ public class DuplicateFileFinder {
     public static Map<String, List<String>> findDuplicateFiles(String directoryPath) {
         Map<String, List<String>> hashMap = new HashMap<>();
         File directory = new File(directoryPath);
-        
+
         if (!directory.exists() || !directory.isDirectory()) {
             System.out.println("Invalid directory path!");
             return hashMap;
@@ -49,14 +52,14 @@ public class DuplicateFileFinder {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         try (FileInputStream fis = new FileInputStream(file);
              BufferedInputStream bis = new BufferedInputStream(fis)) {
-            
+
             byte[] buffer = new byte[8192];
             int count;
             while ((count = bis.read(buffer)) != -1) {
                 md.update(buffer, 0, count);
             }
         }
-        
+
         byte[] hash = md.digest();
         StringBuilder hexString = new StringBuilder();
         for (byte b : hash) {

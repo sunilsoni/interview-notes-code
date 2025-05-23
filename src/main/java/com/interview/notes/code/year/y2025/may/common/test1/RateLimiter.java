@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.may.common.test1;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.Deque;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class RateLimiter {
 
@@ -13,25 +15,6 @@ public class RateLimiter {
         this.requestTimes = new ConcurrentHashMap<>();
         this.maxRequests = maxRequests;
         this.windowMillis = windowSeconds * 1000;
-    }
-
-    public boolean allowRequest(String ip) {
-        long currentTime = System.currentTimeMillis();
-        requestTimes.putIfAbsent(ip, new ConcurrentLinkedDeque<>());
-        Deque<Long> timestamps = requestTimes.get(ip);
-
-        synchronized (timestamps) {
-            while (!timestamps.isEmpty() && timestamps.peekFirst() <= currentTime - windowMillis) {
-                timestamps.pollFirst();
-            }
-
-            if (timestamps.size() < maxRequests) {
-                timestamps.addLast(currentTime);
-                return true;
-            } else {
-                return false;
-            }
-        }
     }
 
     // Simple main method for testing
@@ -68,5 +51,24 @@ public class RateLimiter {
             }
         }
         System.out.println("Edge Case Large Data Test: " + (largeDataTestPassed ? "PASS" : "FAIL"));
+    }
+
+    public boolean allowRequest(String ip) {
+        long currentTime = System.currentTimeMillis();
+        requestTimes.putIfAbsent(ip, new ConcurrentLinkedDeque<>());
+        Deque<Long> timestamps = requestTimes.get(ip);
+
+        synchronized (timestamps) {
+            while (!timestamps.isEmpty() && timestamps.peekFirst() <= currentTime - windowMillis) {
+                timestamps.pollFirst();
+            }
+
+            if (timestamps.size() < maxRequests) {
+                timestamps.addLast(currentTime);
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }

@@ -5,13 +5,6 @@ import java.util.stream.Collectors;
 
 public class VerticalOrderTraversal {
 
-    // ---------- Node definition ----------
-    static class Node {
-        int val;
-        Node left, right;
-        Node(int v) { val = v; }
-    }
-
     // ---------- Core algorithm ----------
     public static List<Integer> verticalOrder(Node root) {
         if (root == null) return Collections.emptyList();
@@ -24,21 +17,15 @@ public class VerticalOrderTraversal {
             Pair cur = q.poll();
             map.computeIfAbsent(cur.hd, k -> new ArrayList<>()).add(cur.node.val);
 
-            if (cur.node.left  != null) q.offer(new Pair(cur.node.left,  cur.hd - 1));
+            if (cur.node.left != null) q.offer(new Pair(cur.node.left, cur.hd - 1));
             if (cur.node.right != null) q.offer(new Pair(cur.node.right, cur.hd + 1));
         }
 
         // Flatten left-to-right, top-to-bottom
         return map.values()
-                  .stream()
-                  .flatMap(List::stream)
-                  .collect(Collectors.toList());
-    }
-
-    private static class Pair {
-        Node node;
-        int hd;
-        Pair(Node n, int h) { node = n; hd = h; }
+                .stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
     }
 
     // ---------- Test harness (simple main) ----------
@@ -57,10 +44,10 @@ public class VerticalOrderTraversal {
         tests.add(new TestCase(null, Collections.emptyList(), "Empty tree"));
 
         // Skewed left
-        tests.add(new TestCase(buildSkewed(false, 5), Arrays.asList(5,4,3,2,1), "Left-skewed"));
+        tests.add(new TestCase(buildSkewed(false, 5), Arrays.asList(5, 4, 3, 2, 1), "Left-skewed"));
 
         // Skewed right
-        tests.add(new TestCase(buildSkewed(true, 5), Arrays.asList(1,2,3,4,5), "Right-skewed"));
+        tests.add(new TestCase(buildSkewed(true, 5), Arrays.asList(1, 2, 3, 4, 5), "Right-skewed"));
 
         // Large balanced tree (depth 15 ≈ 65 535 nodes)
         tests.add(new TestCase(buildComplete(15), null, "Large tree (65k nodes)"));
@@ -103,11 +90,13 @@ public class VerticalOrderTraversal {
         Node n9 = new Node(9);
         Node n7 = new Node(7);
 
-        n6.left = n3; n6.right = n4;
+        n6.left = n3;
+        n6.right = n4;
         n3.left = n5;
         n5.right = n2;
         n2.left = n9;
-        n4.left = n1; n4.right = n0;
+        n4.left = n1;
+        n4.right = n0;
         n0.left = n8;
         n8.right = n7;
         return n6;
@@ -119,7 +108,8 @@ public class VerticalOrderTraversal {
         Node cur = head;
         for (int i = 2; i <= n; i++) {
             Node next = new Node(isRight ? i : n - i + 1);
-            if (isRight) cur.right = next; else cur.left = next;
+            if (isRight) cur.right = next;
+            else cur.left = next;
             cur = next;
         }
         return head;
@@ -145,13 +135,36 @@ public class VerticalOrderTraversal {
         return root;
     }
 
+    // ---------- Node definition ----------
+    static class Node {
+        int val;
+        Node left, right;
+
+        Node(int v) {
+            val = v;
+        }
+    }
+
+    private static class Pair {
+        Node node;
+        int hd;
+
+        Pair(Node n, int h) {
+            node = n;
+            hd = h;
+        }
+    }
+
     // Container for test cases
     private static class TestCase {
         Node root;
         List<Integer> expected;
         String name;
+
         TestCase(Node r, List<Integer> exp, String n) {
-            root = r; expected = exp; name = n;
+            root = r;
+            expected = exp;
+            name = n;
         }
     }
 }

@@ -1,16 +1,88 @@
 package com.interview.notes.code.year.y2025.may.ebay.test1;
 
-import java.io.*;
-import java.nio.file.*;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.util.*;
 
 public class DuplicateFileHandler {
-    private final Map<String, List<Path>> hashMap;
     private static final int BUFFER_SIZE = 8192;
+    private final Map<String, List<Path>> hashMap;
 
     public DuplicateFileHandler() {
         this.hashMap = new HashMap<>();
+    }
+
+    private static String bytesToHex(byte[] hash) {
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : hash) {
+            hexString.append(String.format("%02x", b));
+        }
+        return hexString.toString();
+    }
+
+    // Example usage and testing
+    public static void main(String[] args) {
+        // Create test directory structure
+        try {
+            createTestStructure();
+
+            DuplicateFileHandler handler = new DuplicateFileHandler();
+
+            // Test BFS
+            System.out.println("Testing BFS:");
+            handler.findDuplicatesBFS("testDir");
+            handler.printDuplicates();
+
+            // Remove duplicates (keep oldest files)
+            System.out.println("\nRemoving duplicates (keeping oldest files)...");
+            handler.removeDuplicates(true);
+
+            // Clear and test DFS
+            handler.clearResults();
+            System.out.println("\nTesting DFS:");
+            handler.findDuplicatesDFS("testDir");
+            handler.printDuplicates();
+
+            // Clean up test directory
+            deleteDirectory(Paths.get("testDir"));
+
+        } catch (Exception e) {
+            System.err.println("Test error: " + e.getMessage());
+        }
+    }
+
+    // Test utilities
+    private static void createTestStructure() throws IOException {
+        Path testDir = Files.createDirectories(Paths.get("testDir"));
+
+        // Create test files
+        Files.write(testDir.resolve("file1.txt"), "content1".getBytes());
+        Files.write(testDir.resolve("file2.txt"), "content1".getBytes());
+        Files.write(testDir.resolve("file3.txt"), "content2".getBytes());
+
+        Path subDir = Files.createDirectories(testDir.resolve("subDir"));
+        Files.write(subDir.resolve("file4.txt"), "content1".getBytes());
+
+        Path deepDir = Files.createDirectories(subDir.resolve("deepDir"));
+        Files.write(deepDir.resolve("file5.txt"), "content2".getBytes());
+    }
+
+    private static void deleteDirectory(Path directory) throws IOException {
+        Files.walk(directory)
+                .sorted(Comparator.reverseOrder())
+                .forEach(path -> {
+                    try {
+                        Files.delete(path);
+                    } catch (IOException e) {
+                        System.err.println("Failed to delete: " + path);
+                    }
+                });
     }
 
     // BFS implementation
@@ -87,21 +159,13 @@ public class DuplicateFileHandler {
         return bytesToHex(md.digest());
     }
 
-    private static String bytesToHex(byte[] hash) {
-        StringBuilder hexString = new StringBuilder();
-        for (byte b : hash) {
-            hexString.append(String.format("%02x", b));
-        }
-        return hexString.toString();
-    }
-
     public void removeDuplicates(boolean keepOldest) {
         for (List<Path> duplicates : hashMap.values()) {
             if (duplicates.size() > 1) {
-                Path fileToKeep = keepOldest ? 
-                    findOldestFile(duplicates) : 
-                    findNewestFile(duplicates);
-                
+                Path fileToKeep = keepOldest ?
+                        findOldestFile(duplicates) :
+                        findNewestFile(duplicates);
+
                 deleteDuplicatesExcept(duplicates, fileToKeep);
             }
         }
@@ -109,39 +173,39 @@ public class DuplicateFileHandler {
 
     private Path findOldestFile(List<Path> files) {
         return files.stream()
-            .min(Comparator.comparing(path -> {
-                try {
-                    return Files.getLastModifiedTime(path).toMillis();
-                } catch (IOException e) {
-                    return Long.MAX_VALUE;
-                }
-            }))
-            .orElse(files.get(0));
+                .min(Comparator.comparing(path -> {
+                    try {
+                        return Files.getLastModifiedTime(path).toMillis();
+                    } catch (IOException e) {
+                        return Long.MAX_VALUE;
+                    }
+                }))
+                .orElse(files.get(0));
     }
 
     private Path findNewestFile(List<Path> files) {
         return files.stream()
-            .max(Comparator.comparing(path -> {
-                try {
-                    return Files.getLastModifiedTime(path).toMillis();
-                } catch (IOException e) {
-                    return Long.MIN_VALUE;
-                }
-            }))
-            .orElse(files.get(0));
+                .max(Comparator.comparing(path -> {
+                    try {
+                        return Files.getLastModifiedTime(path).toMillis();
+                    } catch (IOException e) {
+                        return Long.MIN_VALUE;
+                    }
+                }))
+                .orElse(files.get(0));
     }
 
     private void deleteDuplicatesExcept(List<Path> files, Path fileToKeep) {
         files.stream()
-            .filter(file -> !file.equals(fileToKeep))
-            .forEach(file -> {
-                try {
-                    Files.delete(file);
-                    System.out.println("Deleted duplicate: " + file);
-                } catch (IOException e) {
-                    System.err.println("Failed to delete: " + file + " - " + e.getMessage());
-                }
-            });
+                .filter(file -> !file.equals(fileToKeep))
+                .forEach(file -> {
+                    try {
+                        Files.delete(file);
+                        System.out.println("Deleted duplicate: " + file);
+                    } catch (IOException e) {
+                        System.err.println("Failed to delete: " + file + " - " + e.getMessage());
+                    }
+                });
     }
 
     public void printDuplicates() {
@@ -160,64 +224,5 @@ public class DuplicateFileHandler {
 
     public void clearResults() {
         hashMap.clear();
-    }
-
-    // Example usage and testing
-    public static void main(String[] args) {
-        // Create test directory structure
-        try {
-            createTestStructure();
-
-            DuplicateFileHandler handler = new DuplicateFileHandler();
-            
-            // Test BFS
-            System.out.println("Testing BFS:");
-            handler.findDuplicatesBFS("testDir");
-            handler.printDuplicates();
-            
-            // Remove duplicates (keep oldest files)
-            System.out.println("\nRemoving duplicates (keeping oldest files)...");
-            handler.removeDuplicates(true);
-            
-            // Clear and test DFS
-            handler.clearResults();
-            System.out.println("\nTesting DFS:");
-            handler.findDuplicatesDFS("testDir");
-            handler.printDuplicates();
-
-            // Clean up test directory
-            deleteDirectory(Paths.get("testDir"));
-
-        } catch (Exception e) {
-            System.err.println("Test error: " + e.getMessage());
-        }
-    }
-
-    // Test utilities
-    private static void createTestStructure() throws IOException {
-        Path testDir = Files.createDirectories(Paths.get("testDir"));
-        
-        // Create test files
-        Files.write(testDir.resolve("file1.txt"), "content1".getBytes());
-        Files.write(testDir.resolve("file2.txt"), "content1".getBytes());
-        Files.write(testDir.resolve("file3.txt"), "content2".getBytes());
-
-        Path subDir = Files.createDirectories(testDir.resolve("subDir"));
-        Files.write(subDir.resolve("file4.txt"), "content1".getBytes());
-
-        Path deepDir = Files.createDirectories(subDir.resolve("deepDir"));
-        Files.write(deepDir.resolve("file5.txt"), "content2".getBytes());
-    }
-
-    private static void deleteDirectory(Path directory) throws IOException {
-        Files.walk(directory)
-            .sorted(Comparator.reverseOrder())
-            .forEach(path -> {
-                try {
-                    Files.delete(path);
-                } catch (IOException e) {
-                    System.err.println("Failed to delete: " + path);
-                }
-            });
     }
 }

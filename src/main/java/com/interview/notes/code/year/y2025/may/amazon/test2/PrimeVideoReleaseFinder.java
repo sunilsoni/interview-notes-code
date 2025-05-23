@@ -2,7 +2,7 @@ package com.interview.notes.code.year.y2025.may.amazon.test2;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.TreeMap;
 
 public class PrimeVideoReleaseFinder {
 
@@ -10,31 +10,6 @@ public class PrimeVideoReleaseFinder {
 
     public PrimeVideoReleaseFinder() {
         this.releaseDates = new TreeMap<>();
-    }
-
-    public void addMovie(String date, String movieName) {
-        LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE);
-        releaseDates.put(localDate, movieName);
-    }
-
-    public String findMovie(String date) {
-        LocalDate targetDate = LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE);
-        if (releaseDates.containsKey(targetDate)) {
-            return releaseDates.get(targetDate);
-        }
-
-        LocalDate floor = releaseDates.floorKey(targetDate);
-        LocalDate ceiling = releaseDates.ceilingKey(targetDate);
-
-        if (floor == null) return releaseDates.get(ceiling);
-        if (ceiling == null) return releaseDates.get(floor);
-
-        if (Math.abs(floor.toEpochDay() - targetDate.toEpochDay()) <= 
-            Math.abs(ceiling.toEpochDay() - targetDate.toEpochDay())) {
-            return releaseDates.get(floor);
-        } else {
-            return releaseDates.get(ceiling);
-        }
     }
 
     public static void main(String[] args) {
@@ -66,6 +41,31 @@ public class PrimeVideoReleaseFinder {
             System.out.println("Test PASS for date " + testDate);
         } else {
             System.out.println("Test FAIL for date " + testDate + ": expected " + expected + ", got " + result);
+        }
+    }
+
+    public void addMovie(String date, String movieName) {
+        LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE);
+        releaseDates.put(localDate, movieName);
+    }
+
+    public String findMovie(String date) {
+        LocalDate targetDate = LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE);
+        if (releaseDates.containsKey(targetDate)) {
+            return releaseDates.get(targetDate);
+        }
+
+        LocalDate floor = releaseDates.floorKey(targetDate);
+        LocalDate ceiling = releaseDates.ceilingKey(targetDate);
+
+        if (floor == null) return releaseDates.get(ceiling);
+        if (ceiling == null) return releaseDates.get(floor);
+
+        if (Math.abs(floor.toEpochDay() - targetDate.toEpochDay()) <=
+                Math.abs(ceiling.toEpochDay() - targetDate.toEpochDay())) {
+            return releaseDates.get(floor);
+        } else {
+            return releaseDates.get(ceiling);
         }
     }
 }

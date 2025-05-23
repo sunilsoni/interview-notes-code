@@ -2,7 +2,8 @@ package com.interview.notes.code.year.y2025.may.cisco.test1;
 
 import java.util.*;
 import java.util.function.Function;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MeanModeSolver {
 
@@ -17,18 +18,18 @@ public class MeanModeSolver {
         // mode
         Map<Integer, Long> freq =
                 Arrays.stream(inputArr)
-                      .boxed()
-                      .collect(Collectors.groupingBy(Function.identity(),
-                                                     Collectors.counting()));
+                        .boxed()
+                        .collect(Collectors.groupingBy(Function.identity(),
+                                Collectors.counting()));
 
         int mode = freq.entrySet()
-                       .stream()
-                       .sorted(Comparator.<Map.Entry<Integer,Long>>comparingLong(Map.Entry::getValue)
-                                         .reversed()               // biggest count first
-                                         .thenComparingInt(Map.Entry::getKey)) // smallest value on tie
-                       .findFirst()
-                       .get()
-                       .getKey();
+                .stream()
+                .sorted(Comparator.<Map.Entry<Integer, Long>>comparingLong(Map.Entry::getValue)
+                        .reversed()               // biggest count first
+                        .thenComparingInt(Map.Entry::getKey)) // smallest value on tie
+                .findFirst()
+                .get()
+                .getKey();
 
         return new int[]{mean, mode};
     }
@@ -60,8 +61,8 @@ public class MeanModeSolver {
             int[] res = funcMeanMode(t.input);
             boolean ok = res[0] == t.expMean && res[1] == t.expMode;
             System.out.println("Test " + i + ": " + (ok ? "PASS" : "FAIL")
-                               + "  expected=(" + t.expMean + "," + t.expMode + ")"
-                               + " got=(" + res[0] + "," + res[1] + ")");
+                    + "  expected=(" + t.expMean + "," + t.expMode + ")"
+                    + " got=(" + res[0] + "," + res[1] + ")");
             if (ok) pass++;
         }
         System.out.println(pass + "/" + tests.size() + " tests passed");
@@ -71,6 +72,7 @@ public class MeanModeSolver {
         int[] input;
         int expMean;
         int expMode;
+
         TestCase(int[] input, int expMean, int expMode) {
             this.input = input;
             this.expMean = expMean;

@@ -14,13 +14,15 @@ public class RateLimiterTest {
         }
 
         // 11-th inside same 3 s → should FAIL
-        if (limiter.allowRequest(ip)) failed++; else passed++;
+        if (limiter.allowRequest(ip)) failed++;
+        else passed++;
 
         // Wait 3 s, bucket refills
         Thread.sleep(3_100);
 
         // Next request should PASS again
-        if (limiter.allowRequest(ip)) passed++; else failed++;
+        if (limiter.allowRequest(ip)) passed++;
+        else failed++;
 
         System.out.println("PASS: " + passed + "  FAIL: " + failed);
     }

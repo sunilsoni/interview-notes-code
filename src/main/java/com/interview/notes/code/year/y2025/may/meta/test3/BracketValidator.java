@@ -1,19 +1,22 @@
 package com.interview.notes.code.year.y2025.may.meta.test3;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class BracketValidator {
-    
-    /** 
+
+    /**
      * Returns true if s is a balanced bracket string.
      */
     public static boolean isValid(String s) {
         if (s.length() % 2 != 0) return false;  // odd length can't be balanced
 
         Map<Character, Character> closingToOpening = Map.of(
-            ')', '(', 
-            ']', '[', 
-            '}', '{'
+                ')', '(',
+                ']', '[',
+                '}', '{'
         );
         Deque<Character> stack = new ArrayDeque<>();
 
@@ -57,7 +60,7 @@ public class BracketValidator {
             boolean result = isValid(input);
             String label = (result == expected) ? "PASS" : "FAIL";
             System.out.printf("%s | input length=%d | expected=%b, got=%b%n",
-                              label, input.length(), expected, result);
+                    label, input.length(), expected, result);
         });
     }
 }

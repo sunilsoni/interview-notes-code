@@ -18,8 +18,8 @@ public class StringFrequency {
 
         // Print results
         System.out.println("Method 1 Results:");
-        frequency1.forEach((word, count) -> 
-            System.out.println(word + ": " + count));
+        frequency1.forEach((word, count) ->
+                System.out.println(word + ": " + count));
 
         // Method 2: Using Collectors.toMap
         Map<String, Integer> frequency2 = Arrays.stream(words)
@@ -30,7 +30,7 @@ public class StringFrequency {
                 ));
 
         System.out.println("\nMethod 2 Results:");
-        frequency2.forEach((word, count) -> 
-            System.out.println(word + ": " + count));
+        frequency2.forEach((word, count) ->
+                System.out.println(word + ": " + count));
     }
 }

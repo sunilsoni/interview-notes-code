@@ -1,20 +1,23 @@
 package com.interview.notes.code.year.y2025.may.common.test4;
 
-import java.nio.file.*;
-import java.util.*;
-import java.util.stream.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class StdDevCalculator {
     public static double computeStdDev(List<Double> data) {
         int n = data.size();
         if (n < 2) return 0.0;
         double mean = data.stream()
-                          .mapToDouble(Double::doubleValue)
-                          .average()
-                          .orElse(0.0);
+                .mapToDouble(Double::doubleValue)
+                .average()
+                .orElse(0.0);
         double variance = data.stream()
-                              .mapToDouble(d -> (d - mean) * (d - mean))
-                              .sum() / n;
+                .mapToDouble(d -> (d - mean) * (d - mean))
+                .sum() / n;
         return Math.sqrt(variance);
     }
 
@@ -24,28 +27,28 @@ public class StdDevCalculator {
         if (Math.abs(actual - expected) <= eps) {
             System.out.println(name + ": PASS");
         } else {
-            System.out.printf("%s: FAIL (expected=%.6f, actual=%.6f)%n", 
-                              name, expected, actual);
+            System.out.printf("%s: FAIL (expected=%.6f, actual=%.6f)%n",
+                    name, expected, actual);
         }
     }
 
     public static void main(String[] args) throws Exception {
-        test("Test1 [1,2,3,4,5]", Arrays.asList(1.,2.,3.,4.,5.), 1.41421356);
-        test("Test2 [2,2,2,2]", Arrays.asList(2.,2.,2.,2.), 0.0);
+        test("Test1 [1,2,3,4,5]", Arrays.asList(1., 2., 3., 4., 5.), 1.41421356);
+        test("Test2 [2,2,2,2]", Arrays.asList(2., 2., 2., 2.), 0.0);
 
         List<Double> randomData = new Random()
-            .doubles(1_000, 0, 100)
-            .boxed()
-            .collect(Collectors.toList());
+                .doubles(1_000, 0, 100)
+                .boxed()
+                .collect(Collectors.toList());
         System.out.println("Random 1000 run σ = " + computeStdDev(randomData));
 
         // read “nasdaq data.txt” from current directory
         String path = args.length > 0 ? args[0] : "nasdaq data.txt";
         List<Double> closePrices = Files.lines(Paths.get(path))
-            .skip(1)
-            .map(line -> line.split("\\s+|,")[4])
-            .map(Double::parseDouble)
-            .collect(Collectors.toList());
+                .skip(1)
+                .map(line -> line.split("\\s+|,")[4])
+                .map(Double::parseDouble)
+                .collect(Collectors.toList());
         System.out.println("CSV σ = " + computeStdDev(closePrices));
     }
 }

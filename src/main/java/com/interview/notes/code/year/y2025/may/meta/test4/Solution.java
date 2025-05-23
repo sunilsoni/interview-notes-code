@@ -10,19 +10,9 @@ class Node {
         this.data = data;
         left = right = null;
     }
-}class Solution {
-    static class NodeInfo {
-        Node node;
-        int hd;    // horizontal distance
-        int level; // tree level
+}
 
-        NodeInfo(Node node, int hd, int level) {
-            this.node = node;
-            this.hd = hd;
-            this.level = level;
-        }
-    }
-
+class Solution {
     public List<Integer> verticalTraversal(Node root) {
         // Handle empty tree
         if (root == null) return new ArrayList<>();
@@ -62,6 +52,18 @@ class Node {
         }
 
         return result;
+    }
+
+    static class NodeInfo {
+        Node node;
+        int hd;    // horizontal distance
+        int level; // tree level
+
+        NodeInfo(Node node, int hd, int level) {
+            this.node = node;
+            this.hd = hd;
+            this.level = level;
+        }
     }
 }
 

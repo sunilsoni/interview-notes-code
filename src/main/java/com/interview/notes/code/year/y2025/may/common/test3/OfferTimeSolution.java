@@ -3,24 +3,24 @@ package com.interview.notes.code.year.y2025.may.common.test3;
 import java.util.Arrays;
 
 public class OfferTimeSolution {
-    
+
     public static int offerTime(int N, int[] A) {
         // Input validation
         if (N < 1 || N > 1000 || A == null || A.length != N) {
             return -404;
         }
-        
+
         // Sort array in ascending order using Stream API
         int[] sortedPrices = Arrays.stream(A)
-                                  .sorted()
-                                  .toArray();
-        
+                .sorted()
+                .toArray();
+
         // Calculate minimum cost
         int totalCost = 0;
         for (int i = N - 1; i >= 0; i -= 2) {
             totalCost += sortedPrices[i];
         }
-        
+
         return totalCost;
     }
 
@@ -50,7 +50,7 @@ public class OfferTimeSolution {
     private static void testCase(int[] input, int expectedOutput, String testName) {
         int result = offerTime(input.length, input);
         String status = result == expectedOutput ? "PASS" : "FAIL";
-        
+
         System.out.println("Test: " + testName);
         System.out.println("Input: " + Arrays.toString(input));
         System.out.println("Expected: " + expectedOutput);

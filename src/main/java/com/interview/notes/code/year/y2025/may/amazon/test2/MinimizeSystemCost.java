@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.may.amazon.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MinimizeSystemCost {
 
@@ -46,6 +48,6 @@ public class MinimizeSystemCost {
     private static void test(int k, List<Integer> machines, long expected) {
         long result = minimizeSystemCost(k, machines);
         System.out.println("Test case k=" + k + ": " + (result == expected ? "PASS" : "FAIL") +
-                           " | Expected=" + expected + " Got=" + result);
+                " | Expected=" + expected + " Got=" + result);
     }
 }

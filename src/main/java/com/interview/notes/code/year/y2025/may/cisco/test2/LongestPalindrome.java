@@ -17,7 +17,8 @@ public class LongestPalindrome {
 
         // 1. Transform
         char[] t = new char[2 * n + 3];
-        t[0] = '^'; t[t.length - 1] = '$';
+        t[0] = '^';
+        t[t.length - 1] = '$';
         for (int i = 0; i < n; i++) {
             t[2 * i + 1] = '#';
             t[2 * i + 2] = s.charAt(i);
@@ -85,8 +86,8 @@ public class LongestPalindrome {
             String out = longestPal(e.getKey());
             boolean ok = out.equals(e.getValue());
             System.out.println("Test " + id + ": " + (ok ? "PASS" : "FAIL")
-                               + " | Expected: " + e.getValue().length()
-                               + " | Got: " + out.length());
+                    + " | Expected: " + e.getValue().length()
+                    + " | Got: " + out.length());
             if (ok) pass++;
             id++;
         }

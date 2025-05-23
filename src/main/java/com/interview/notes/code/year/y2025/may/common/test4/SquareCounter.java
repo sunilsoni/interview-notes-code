@@ -1,14 +1,21 @@
 package com.interview.notes.code.year.y2025.may.common.test4;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class Point {
     int x, y;
-    Point(int x, int y) { this.x = x; this.y = y; }
+
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     @Override
-    public int hashCode() { return Objects.hash(x, y); }
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -44,20 +51,20 @@ public class SquareCounter {
     public static void main(String[] args) {
         // Test case 1: Minimal reproducible example
         List<Point> points1 = Arrays.asList(
-            new Point(2, 3), new Point(4, 3), new Point(2, 1), new Point(4, 1)
+                new Point(2, 3), new Point(4, 3), new Point(2, 1), new Point(4, 1)
         );
         System.out.println("Test Case 1: " + (countSquares(points1) == 1 ? "PASS" : "FAIL"));
 
         // Test case 2: Multiple squares
         List<Point> points2 = Arrays.asList(
-            new Point(2, 3), new Point(4, 3), new Point(6, 3),
-            new Point(2, 1), new Point(4, 1), new Point(6, 1)
+                new Point(2, 3), new Point(4, 3), new Point(6, 3),
+                new Point(2, 1), new Point(4, 1), new Point(6, 1)
         );
         System.out.println("Test Case 2: " + (countSquares(points2) == 2 ? "PASS" : "FAIL"));
 
         // Test case 3: Edge case, no squares
         List<Point> points3 = Arrays.asList(
-            new Point(0, 0), new Point(1, 1), new Point(2, 2)
+                new Point(0, 0), new Point(1, 1), new Point(2, 2)
         );
         System.out.println("Test Case 3: " + (countSquares(points3) == 0 ? "PASS" : "FAIL"));
 

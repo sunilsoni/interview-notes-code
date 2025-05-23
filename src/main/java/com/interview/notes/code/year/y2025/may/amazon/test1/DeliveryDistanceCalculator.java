@@ -1,15 +1,17 @@
 package com.interview.notes.code.year.y2025.may.amazon.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DeliveryDistanceCalculator {
-    public static List<List<Integer>> calculateDistances(List<List<Integer>> cityGrid, 
-                                                       List<List<Integer>> deliveryHubs) {
+    public static List<List<Integer>> calculateDistances(List<List<Integer>> cityGrid,
+                                                         List<List<Integer>> deliveryHubs) {
         // Create result grid with same dimensions
         int rows = cityGrid.size();
         int cols = cityGrid.get(0).size();
         List<List<Integer>> result = new ArrayList<>();
-        
+
         // Initialize result grid
         for (int i = 0; i < rows; i++) {
             List<Integer> row = new ArrayList<>();
@@ -34,32 +36,31 @@ public class DeliveryDistanceCalculator {
                 result.get(i).set(j, minDistance);
             }
         }
-        
+
         return result;
     }
 
     public static void main(String[] args) {
 
 
-
         // Test Case 1: Simple 3x3 grid
         List<List<Integer>> cityGrid1 = Arrays.asList(
-            Arrays.asList(0, 0, 0),
-            Arrays.asList(0, 0, 0),
-            Arrays.asList(0, 0, 0)
+                Arrays.asList(0, 0, 0),
+                Arrays.asList(0, 0, 0),
+                Arrays.asList(0, 0, 0)
         );
         List<List<Integer>> hubs1 = Arrays.asList(
-            Arrays.asList(0, 1),  // Hub at (0,1)
-            Arrays.asList(2, 2)   // Hub at (2,2)
+                Arrays.asList(0, 1),  // Hub at (0,1)
+                Arrays.asList(2, 2)   // Hub at (2,2)
         );
 
         List<List<Integer>> result1 = calculateDistances(cityGrid1, hubs1);
-        
+
         // Expected result
         List<List<Integer>> expected1 = Arrays.asList(
-            Arrays.asList(1, 0, 1),
-            Arrays.asList(2, 1, 1),
-            Arrays.asList(2, 1, 0)
+                Arrays.asList(1, 0, 1),
+                Arrays.asList(2, 1, 1),
+                Arrays.asList(2, 1, 0)
         );
 
         // Verify result
@@ -86,15 +87,15 @@ public class DeliveryDistanceCalculator {
         }
 
         List<List<Integer>> largeHubs = Arrays.asList(
-            Arrays.asList(0, 0),
-            Arrays.asList(size-1, size-1)
+                Arrays.asList(0, 0),
+                Arrays.asList(size - 1, size - 1)
         );
 
         long startTime = System.currentTimeMillis();
         calculateDistances(largeGrid, largeHubs);
         long endTime = System.currentTimeMillis();
 
-        System.out.println("Large Grid Test (" + size + "x" + size + "): " + 
-                         (endTime - startTime) + "ms");
+        System.out.println("Large Grid Test (" + size + "x" + size + "): " +
+                (endTime - startTime) + "ms");
     }
 }

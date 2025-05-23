@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.may.common.test8;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TextFormatter {
     public static List<String> formatText(String[] words, int width) {
@@ -11,8 +12,8 @@ public class TextFormatter {
         // Process each word
         for (String word : words) {
             // Check if adding new word exceeds width
-            if (currentLineLength + word.length() + 
-                (currentLineLength > 0 ? 1 : 0) > width) {
+            if (currentLineLength + word.length() +
+                    (currentLineLength > 0 ? 1 : 0) > width) {
                 // Add padding spaces to match width
                 while (currentLine.length() < width) {
                     currentLine.append(" ");
@@ -44,14 +45,14 @@ public class TextFormatter {
 
     public static void main(String[] args) {
         // Test Case 1
-        String[] words1 = {"My", "cherry", "Popsicle", "melted", 
-                          "and", "fell", "on", "the", "sandy", "ground"};
+        String[] words1 = {"My", "cherry", "Popsicle", "melted",
+                "and", "fell", "on", "the", "sandy", "ground"};
         int width1 = 20;
-        
+
         System.out.println("Test Case 1:");
         List<String> result1 = formatText(words1, width1);
         result1.forEach(System.out::println);
-        
+
         System.out.println("\nTest Case 2:");
         // Test Case 2
         int width2 = 25;

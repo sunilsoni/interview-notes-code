@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.may.common.test5;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class TextFormatter {
 
@@ -77,9 +81,9 @@ public class TextFormatter {
 
         int width1 = 20;
         List<String> expected1 = Arrays.asList(
-            "My  cherry  Popsicle",
-            "melted  and  fell on",
-            "the   sandy   ground"
+                "My  cherry  Popsicle",
+                "melted  and  fell on",
+                "the   sandy   ground"
         );
         List<String> result1 = formatText(words1, width1);
         verifyTest(result1, expected1, 1);
@@ -87,9 +91,9 @@ public class TextFormatter {
 
         int width2 = 25;
         List<String> expected2 = Arrays.asList(
-            "My cherry Popsicle melted",
-            "and  fell  on the sandy",
-            "ground                     "
+                "My cherry Popsicle melted",
+                "and  fell  on the sandy",
+                "ground                     "
         );
         List<String> result2 = formatText(words1, width2);
         verifyTest(result2, expected2, 2);

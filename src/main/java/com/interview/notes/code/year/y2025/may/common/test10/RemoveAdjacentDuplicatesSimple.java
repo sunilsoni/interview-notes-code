@@ -20,7 +20,7 @@ public class RemoveAdjacentDuplicatesSimple {
         String result = removeAdjDuplicates(input);           // run the method
         boolean pass = result.equals(expected);               // compare to expected
         System.out.printf("\"%s\" -> %s (expected=\"%s\", got=\"%s\")%n",
-                          input, pass ? "PASS" : "FAIL", expected, result);
+                input, pass ? "PASS" : "FAIL", expected, result);
     }
 
     public static void main(String[] args) {

@@ -4,7 +4,7 @@ class PageView {
     long timestamp;
     int pageId;
     int customerId;
-    
+
     public PageView(long timestamp, int pageId, int customerId) {
         this.timestamp = timestamp;
         this.pageId = pageId;

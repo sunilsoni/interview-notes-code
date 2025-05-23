@@ -7,15 +7,11 @@ public class RateLimiter {
     private static final int CAPACITY = 10;          // max tokens
     private static final long WINDOW_MS = 3_000L;    // 3 seconds
     private static final double REFILL_RATE = 10.0 / WINDOW_MS; // tokens per ms
-
-    private static class Bucket {
-        double tokens = CAPACITY;
-        long lastRefillTime = System.currentTimeMillis();
-    }
-
     private final Map<String, Bucket> buckets = new ConcurrentHashMap<>();
 
-    /** Returns true if the request should be processed. */
+    /**
+     * Returns true if the request should be processed.
+     */
     public boolean allowRequest(String ip) {
         Bucket bucket = buckets.computeIfAbsent(ip, k -> new Bucket());
         synchronized (bucket) {                    // per-bucket lock
@@ -36,5 +32,10 @@ public class RateLimiter {
             }
             return false;                          // **blocked**
         }
+    }
+
+    private static class Bucket {
+        double tokens = CAPACITY;
+        long lastRefillTime = System.currentTimeMillis();
     }
 }

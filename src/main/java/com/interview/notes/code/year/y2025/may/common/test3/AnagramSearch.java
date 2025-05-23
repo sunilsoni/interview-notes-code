@@ -49,7 +49,7 @@ public class AnagramSearch {
         // Print results
         System.out.println("Search Word: " + inputWord);
         System.out.println("Matched Words: " + result);
-        
+
         // Validate result
         boolean isPass = result.size() == expectedOutput.size() && expectedOutput.containsAll(result);
         System.out.println("Test Case 1: " + (isPass ? "PASS" : "FAIL"));

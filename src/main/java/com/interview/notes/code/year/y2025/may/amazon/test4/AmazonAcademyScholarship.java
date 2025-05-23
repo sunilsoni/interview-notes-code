@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.may.amazon.test4;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class AmazonAcademyScholarship {
 
@@ -39,9 +41,9 @@ public class AmazonAcademyScholarship {
 
         // Large test case
         List<Integer> largeTest = IntStream.generate(() -> 1000000000)
-                                           .limit(100000)
-                                           .boxed()
-                                           .collect(Collectors.toList());
+                .limit(100000)
+                .boxed()
+                .collect(Collectors.toList());
         test(largeTest, 100000, 1000000000, 1); // Expected output: 1
     }
 

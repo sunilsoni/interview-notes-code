@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.may.amazon.test4;
 
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Amazon Academy – minimum days to finish all chapters.
@@ -9,7 +11,9 @@ import java.util.*;
  */
 public class AmazonAcademy {
 
-    /** Core routine -------------------------------------------------------- */
+    /**
+     * Core routine --------------------------------------------------------
+     */
     public static long findMinimumDays(List<Integer> pages, int k, int p) {
         int n = pages.size();
 
@@ -27,7 +31,7 @@ public class AmazonAcademy {
         /* 3 — Greedy sweep with a difference array */
         long[] diff = new long[n + 1];          // diff[x] = windows that end at x
         long active = 0;                        // windows covering current index
-        long days   = 0;                        // answer accumulator
+        long days = 0;                        // answer accumulator
 
         for (int i = 0; i < n; i++) {
             active += diff[i];                  // drop windows expiring here
@@ -39,8 +43,8 @@ public class AmazonAcademy {
                 throw new IllegalStateException("Input unreachable – check data");
 
             /* Start ‘deficit’ new windows at position i */
-            days       += deficit;              // count extra days
-            active     += deficit;              // they cover the *current* index
+            days += deficit;              // count extra days
+            active += deficit;              // they cover the *current* index
             diff[i + k] -= deficit;             // ...and expire after i+k-1
         }
         return days;
@@ -49,7 +53,10 @@ public class AmazonAcademy {
     /** --------------------------------------------------------------------- */
     /* Minimal reproducible example + quick sanity tests.                     */
     /* No JUnit – a plain main method prints PASS / FAIL per test case.       */
-    /** --------------------------------------------------------------------- */
+
+    /**
+     * ---------------------------------------------------------------------
+     */
     public static void main(String[] args) throws Exception {
 
         /* If data arrives on stdin, solve that single instance and exit. */
@@ -67,21 +74,27 @@ public class AmazonAcademy {
 
         /* Otherwise run a tiny self-test suite -------------------------------- */
         class Case {
-            final List<Integer> pages; final int k, p; final long expect;
+            final List<Integer> pages;
+            final int k, p;
+            final long expect;
+
             Case(int[] pg, int k, int p, long exp) {
                 List<Integer> tmp = new ArrayList<>(pg.length);
                 for (int v : pg) tmp.add(v);
-                this.pages = tmp; this.k = k; this.p = p; this.expect = exp;
+                this.pages = tmp;
+                this.k = k;
+                this.p = p;
+                this.expect = exp;
             }
         }
 
         List<Case> tests = Arrays.asList(
-            /* sample 0 */ new Case(new int[]{3, 4},            1, 2, 4),
-            /* sample 1 */ new Case(new int[]{5, 1, 2},         3, 3, 2),
-            /* visual  */ new Case(new int[]{3, 1, 4},          2, 2, 4),
-            /* k == n  */ new Case(new int[]{1, 2},             2, 1, 2),
-            /* k == 1  */ new Case(new int[]{2, 2, 2, 2, 2},    1, 1, 10),
-            /* big     */ new Case(new int[]{1_000_000_000},    1, 3, 333_333_334)
+                /* sample 0 */ new Case(new int[]{3, 4}, 1, 2, 4),
+                /* sample 1 */ new Case(new int[]{5, 1, 2}, 3, 3, 2),
+                /* visual  */ new Case(new int[]{3, 1, 4}, 2, 2, 4),
+                /* k == n  */ new Case(new int[]{1, 2}, 2, 1, 2),
+                /* k == 1  */ new Case(new int[]{2, 2, 2, 2, 2}, 1, 1, 10),
+                /* big     */ new Case(new int[]{1_000_000_000}, 1, 3, 333_333_334)
         );
 
         int pass = 0;
@@ -90,7 +103,7 @@ public class AmazonAcademy {
             long got = findMinimumDays(c.pages, c.k, c.p);
             boolean ok = got == c.expect;
             System.out.printf("Case %-2d expected=%-10d got=%-10d  %s%n",
-                              i, c.expect, got, ok ? "PASS" : "FAIL");
+                    i, c.expect, got, ok ? "PASS" : "FAIL");
             if (ok) pass++;
         }
         System.out.printf("%nSummary: %d / %d cases passed%n", pass, tests.size());

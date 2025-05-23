@@ -14,8 +14,13 @@ class AccountDetails {
         this.balance = balance;
     }
 
-    public String getAccountNo() { return accountNo; }
-    public double getBalance() { return balance; }
+    public String getAccountNo() {
+        return accountNo;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -41,28 +46,28 @@ public class Main {
         // Filter by account number
         String searchAccountNo = "ACC001";
         Map<AccountDetails, String> filteredByAccountNo = map.entrySet().stream()
-            .filter(entry -> entry.getKey().getAccountNo().equals(searchAccountNo))
-            .collect(Collectors.toMap(
-                Map.Entry::getKey,
-                Map.Entry::getValue
-            ));
+                .filter(entry -> entry.getKey().getAccountNo().equals(searchAccountNo))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue
+                ));
 
         // Filter by status
         String searchStatus = "Active";
         Map<AccountDetails, String> filteredByStatus = map.entrySet().stream()
-            .filter(entry -> entry.getValue().equals(searchStatus))
-            .collect(Collectors.toMap(
-                Map.Entry::getKey,
-                Map.Entry::getValue
-            ));
+                .filter(entry -> entry.getValue().equals(searchStatus))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue
+                ));
 
         // Filter by balance
         double minBalance = 2000.0;
         Map<AccountDetails, String> filteredByBalance = map.entrySet().stream()
-            .filter(entry -> entry.getKey().getBalance() >= minBalance)
-            .collect(Collectors.toMap(
-                Map.Entry::getKey,
-                Map.Entry::getValue
-            ));
+                .filter(entry -> entry.getKey().getBalance() >= minBalance)
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue
+                ));
     }
 }

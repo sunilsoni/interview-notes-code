@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.may.DoorDash.test3;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.IntStream;
 
 public class LargestHotArea {
 
@@ -65,31 +65,31 @@ public class LargestHotArea {
     // Simple test method to validate test cases
     public static void main(String[] args) {
         int[][] test1 = {
-            {0, 1, 0},
-            {0, 0, 1},
-            {0, 1, 1}
+                {0, 1, 0},
+                {0, 0, 1},
+                {0, 1, 1}
         };
 
         System.out.println("Test1: " + (largestHotArea(copyGrid(test1)) == 5 ? "PASS" : "FAIL")); // Expected 5
 
         int[][] test2 = {
-            {1, 1},
-            {1, 1}
+                {1, 1},
+                {1, 1}
         };
 
         System.out.println("Test2: " + (largestHotArea(copyGrid(test2)) == 4 ? "PASS" : "FAIL")); // Expected 4
 
         int[][] test3 = {
-            {0, 0},
-            {0, 0}
+                {0, 0},
+                {0, 0}
         };
 
         System.out.println("Test3: " + (largestHotArea(copyGrid(test3)) == 1 ? "PASS" : "FAIL")); // Expected 1
 
         int[][] test4 = {
-            {1, 0, 1},
-            {0, 0, 0},
-            {1, 0, 1}
+                {1, 0, 1},
+                {0, 0, 0},
+                {1, 0, 1}
         };
 
         System.out.println("Test4: " + (largestHotArea(copyGrid(test4)) == 3 ? "PASS" : "FAIL")); // Expected 3
@@ -105,7 +105,7 @@ public class LargestHotArea {
     // Utility method to copy grid
     private static int[][] copyGrid(int[][] grid) {
         return Arrays.stream(grid)
-                     .map(int[]::clone)
-                     .toArray(int[][]::new);
+                .map(int[]::clone)
+                .toArray(int[][]::new);
     }
 }

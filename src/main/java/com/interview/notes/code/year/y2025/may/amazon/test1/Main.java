@@ -103,8 +103,8 @@ public class Main {
         System.out.println("Testing with large dataset...");
         for (int i = 0; i < 1000; i++) {
             finder.addMovie(
-                "Movie" + i, 
-                LocalDate.of(2000 + i/100, 1 + i%12, 1 + i%28)
+                    "Movie" + i,
+                    LocalDate.of(2000 + i / 100, 1 + i % 12, 1 + i % 28)
             );
         }
         Movie result5 = finder.findMovie(LocalDate.of(2005, 6, 15));

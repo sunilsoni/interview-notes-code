@@ -42,7 +42,7 @@ class AccountDetails {
 public class Main {
     public static void main(String[] args) {
         Map<AccountDetails, String> map = new HashMap<>();
-        
+
         // Adding some sample data
         map.put(new AccountDetails("ACC001", 1000.0), "Active");
         map.put(new AccountDetails("ACC002", 2000.0), "Inactive");
@@ -51,36 +51,36 @@ public class Main {
         // Filter by account number
         String searchAccountNo = "ACC001";
         map.entrySet().stream()
-            .filter(entry -> entry.getKey().getAccountNo().equals(searchAccountNo))
-            .forEach(entry -> System.out.println(
-                "Account: " + entry.getKey().getAccountNo() + 
-                ", Balance: " + entry.getKey().getBalance() + 
-                ", Status: " + entry.getValue()));
+                .filter(entry -> entry.getKey().getAccountNo().equals(searchAccountNo))
+                .forEach(entry -> System.out.println(
+                        "Account: " + entry.getKey().getAccountNo() +
+                                ", Balance: " + entry.getKey().getBalance() +
+                                ", Status: " + entry.getValue()));
 
         // Filter by status value
         String searchStatus = "Active";
         map.entrySet().stream()
-            .filter(entry -> entry.getValue().equals(searchStatus))
-            .forEach(entry -> System.out.println(
-                "Account: " + entry.getKey().getAccountNo() + 
-                ", Balance: " + entry.getKey().getBalance() + 
-                ", Status: " + entry.getValue()));
+                .filter(entry -> entry.getValue().equals(searchStatus))
+                .forEach(entry -> System.out.println(
+                        "Account: " + entry.getKey().getAccountNo() +
+                                ", Balance: " + entry.getKey().getBalance() +
+                                ", Status: " + entry.getValue()));
 
         // Filter by balance
         double minBalance = 2000.0;
         map.entrySet().stream()
-            .filter(entry -> entry.getKey().getBalance() >= minBalance)
-            .forEach(entry -> System.out.println(
-                "Account: " + entry.getKey().getAccountNo() + 
-                ", Balance: " + entry.getKey().getBalance() + 
-                ", Status: " + entry.getValue()));
+                .filter(entry -> entry.getKey().getBalance() >= minBalance)
+                .forEach(entry -> System.out.println(
+                        "Account: " + entry.getKey().getAccountNo() +
+                                ", Balance: " + entry.getKey().getBalance() +
+                                ", Status: " + entry.getValue()));
 
         // Collect filtered results into a new Map
         Map<AccountDetails, String> filteredMap = map.entrySet().stream()
-            .filter(entry -> entry.getKey().getBalance() >= minBalance)
-            .collect(Collectors.toMap(
-                Map.Entry::getKey,
-                Map.Entry::getValue
-            ));
+                .filter(entry -> entry.getKey().getBalance() >= minBalance)
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue
+                ));
     }
 }

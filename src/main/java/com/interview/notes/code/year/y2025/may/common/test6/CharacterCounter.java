@@ -8,7 +8,7 @@ public class CharacterCounter {
         runTest("aaa", "Repeated characters");
         runTest("123!@#", "Special characters");
         runTest(null, "Null string");
-        
+
         // Large data test
         StringBuilder large = new StringBuilder();
         for (int i = 0; i < 100000; i++) {
@@ -25,18 +25,18 @@ public class CharacterCounter {
 
         // Create array to store character counts (ASCII values)
         int[] counts = new int[128];
-        
+
         // Count characters
         for (char c : input.toCharArray()) {
             if (!Character.isWhitespace(c)) {
                 counts[c]++;
             }
         }
-        
+
         // Print results for characters that appear at least once
         for (int i = 0; i < counts.length; i++) {
             if (counts[i] > 0) {
-                System.out.println((char)i + ": " + counts[i]);
+                System.out.println((char) i + ": " + counts[i]);
             }
         }
     }

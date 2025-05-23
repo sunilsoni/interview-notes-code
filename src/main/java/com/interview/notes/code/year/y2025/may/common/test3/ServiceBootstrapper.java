@@ -3,51 +3,39 @@ package com.interview.notes.code.year.y2025.may.common.test3;
 import java.util.*;
 
 public class ServiceBootstrapper {
-    static class Service {
-        String name;
-        int bootTime;
-        List<String> dependencies;
-
-        Service(String name, int bootTime, List<String> dependencies) {
-            this.name = name;
-            this.bootTime = bootTime;
-            this.dependencies = dependencies;
-        }
-    }
-
     // Brute Force Solution
     public static int calculateMinBootTime(Map<String, Service> services) {
         if (services.isEmpty()) return 0;
-        
+
         int maxTime = 0;
         Set<String> visited = new HashSet<>();
-        
+
         // Calculate boot time for each service
         for (Service service : services.values()) {
             if (!visited.contains(service.name)) {
                 maxTime = Math.max(maxTime, getServiceBootTime(service, services, new HashSet<>()));
             }
         }
-        
+
         return maxTime;
     }
 
-    private static int getServiceBootTime(Service service, 
-                                        Map<String, Service> services, 
-                                        Set<String> visited) {
+    private static int getServiceBootTime(Service service,
+                                          Map<String, Service> services,
+                                          Set<String> visited) {
         if (visited.contains(service.name)) {
             throw new RuntimeException("Circular dependency detected!");
         }
 
         visited.add(service.name);
-        
+
         // If no dependencies, return just the boot time
         if (service.dependencies.isEmpty()) {
             return service.bootTime;
         }
 
         int maxDependencyTime = 0;
-        
+
         // Find the maximum time among dependencies
         for (String dep : service.dependencies) {
             Service dependentService = services.get(dep);
@@ -98,6 +86,18 @@ public class ServiceBootstrapper {
             System.out.println("Expected: " + expectedResult + ", Got: " + result);
         } catch (Exception e) {
             System.out.println(testName + ": FAIL (Exception: " + e.getMessage() + ")");
+        }
+    }
+
+    static class Service {
+        String name;
+        int bootTime;
+        List<String> dependencies;
+
+        Service(String name, int bootTime, List<String> dependencies) {
+            this.name = name;
+            this.bootTime = bootTime;
+            this.dependencies = dependencies;
         }
     }
 }

@@ -9,19 +9,6 @@ class CustomHashMap<K, V> {
     private Entry<K, V>[] buckets;
     private int size = 0;
 
-    // Node structure
-    static class Entry<K, V> {
-        K key;
-        V value;
-        Entry<K, V> next;
-
-        Entry(K key, V value) {
-            this.key = key;
-            this.value = value;
-            this.next = null;
-        }
-    }
-
     // Constructor
     public CustomHashMap() {
         buckets = new Entry[DEFAULT_CAPACITY];
@@ -76,7 +63,7 @@ class CustomHashMap<K, V> {
     private void resize() {
         Entry<K, V>[] oldBuckets = buckets;
         buckets = new Entry[oldBuckets.length * 2];
-        size = 0; 
+        size = 0;
 
         for (Entry<K, V> entry : oldBuckets) {
             while (entry != null) {
@@ -110,6 +97,19 @@ class CustomHashMap<K, V> {
     // Size method
     public int size() {
         return size;
+    }
+
+    // Node structure
+    static class Entry<K, V> {
+        K key;
+        V value;
+        Entry<K, V> next;
+
+        Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+            this.next = null;
+        }
     }
 }
 

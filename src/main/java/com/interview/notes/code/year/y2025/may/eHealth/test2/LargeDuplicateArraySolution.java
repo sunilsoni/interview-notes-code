@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LargeDuplicateArraySolution {
-    
+
     // Method to handle large arrays using chunking
     public static int removeDuplicatesFromLargeArray(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -15,16 +15,16 @@ public class LargeDuplicateArraySolution {
         // For very large arrays, process in chunks
         final int CHUNK_SIZE = 1_000_000; // Process 1 million elements at a time
         int writeIndex = Math.min(2, nums.length); // Initialize with up to 2 elements
-        
+
         try {
             for (int i = 2; i < nums.length; i += CHUNK_SIZE) {
                 int endIndex = Math.min(i + CHUNK_SIZE, nums.length);
                 writeIndex = processChunk(nums, i, endIndex, writeIndex);
-                
+
                 // Optional: Add progress monitoring
                 if (i % (CHUNK_SIZE * 10) == 0) {
-                    System.out.printf("Processed %d elements (%.2f%%)\n", 
-                        i, (100.0 * i / nums.length));
+                    System.out.printf("Processed %d elements (%.2f%%)\n",
+                            i, (100.0 * i / nums.length));
                 }
             }
         } catch (OutOfMemoryError e) {
@@ -32,7 +32,7 @@ public class LargeDuplicateArraySolution {
             System.out.println("Switching to stream processing due to memory constraints");
             return processUsingStream(nums);
         }
-        
+
         return writeIndex;
     }
 
@@ -51,16 +51,16 @@ public class LargeDuplicateArraySolution {
         try {
             AtomicInteger writeIndex = new AtomicInteger(2);
             Arrays.stream(nums)
-                  .skip(2)
-                  .parallel()
-                  .forEach(num -> {
-                      synchronized (writeIndex) {
-                          if (num != nums[writeIndex.get() - 2]) {
-                              nums[writeIndex.get()] = num;
-                              writeIndex.incrementAndGet();
-                          }
-                      }
-                  });
+                    .skip(2)
+                    .parallel()
+                    .forEach(num -> {
+                        synchronized (writeIndex) {
+                            if (num != nums[writeIndex.get() - 2]) {
+                                nums[writeIndex.get()] = num;
+                                writeIndex.incrementAndGet();
+                            }
+                        }
+                    });
             return writeIndex.get();
         } catch (Exception e) {
             System.out.println("Error processing stream: " + e.getMessage());
@@ -79,34 +79,34 @@ public class LargeDuplicateArraySolution {
 
     private static void testWithSize(int size) {
         System.out.println("\nTesting with array size: " + size);
-        
+
         // Generate large test array
         int[] largeArray = generateLargeArray(size);
-        
+
         // Measure time and memory
         long startTime = System.currentTimeMillis();
         Runtime runtime = Runtime.getRuntime();
         long usedMemoryBefore = runtime.totalMemory() - runtime.freeMemory();
-        
+
         int result = removeDuplicatesFromLargeArray(largeArray);
-        
+
         long usedMemoryAfter = runtime.totalMemory() - runtime.freeMemory();
         long endTime = System.currentTimeMillis();
-        
+
         // Print results
         System.out.printf("Time taken: %d ms\n", (endTime - startTime));
         System.out.printf("Memory used: %d MB\n", (usedMemoryAfter - usedMemoryBefore) / (1024 * 1024));
         System.out.printf("Result length: %d\n", result);
-        
+
         // Validate first few elements
-        System.out.println("First 5 elements after processing: " + 
-            Arrays.toString(Arrays.copyOfRange(largeArray, 0, Math.min(5, result))));
+        System.out.println("First 5 elements after processing: " +
+                Arrays.toString(Arrays.copyOfRange(largeArray, 0, Math.min(5, result))));
     }
 
     private static int[] generateLargeArray(int size) {
         int[] array = new int[size];
         Random random = new Random();
-        
+
         // Generate sorted array with duplicates
         int currentNum = 0;
         for (int i = 0; i < size; i++) {
@@ -124,8 +124,8 @@ public class LargeDuplicateArraySolution {
         long totalMemory = runtime.totalMemory() / (1024 * 1024);
         long freeMemory = runtime.freeMemory() / (1024 * 1024);
         long usedMemory = totalMemory - freeMemory;
-        
+
         System.out.printf("Memory - Total: %dMB, Used: %dMB, Free: %dMB\n",
-            totalMemory, usedMemory, freeMemory);
+                totalMemory, usedMemory, freeMemory);
     }
 }
