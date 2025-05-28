@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.may.common;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 public class ArrayOperations {
     public static void main(String[] args) {
@@ -40,12 +40,12 @@ public class ArrayOperations {
 
         // Find elements that appear only once (difference)
         Map<Integer, Long> frequency = combined.stream()
-            .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
-        
+                .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+
         List<Integer> difference = frequency.entrySet().stream()
-            .filter(e -> e.getValue() == 1)
-            .map(Map.Entry::getKey)
-            .collect(Collectors.toList());
+                .filter(e -> e.getValue() == 1)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
 
         // Print results
         System.out.println("Unique elements: " + uniqueElements);

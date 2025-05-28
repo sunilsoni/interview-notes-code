@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.may.amazon.test7;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class GenomeMutationTime {
@@ -8,22 +9,22 @@ public class GenomeMutationTime {
     // Main logic for finding mutation time
     public static int findTime(String genome, char mutation) {
         // Convert genome to a modifiable list
-        List<Character> chars = genome.chars().mapToObj(c -> (char)c).collect(Collectors.toList());
+        List<Character> chars = genome.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
         int time = 0;
 
         while (true) {
             List<Integer> toRemove = new ArrayList<>();
             // Go through the list from left to right
             for (int i = 1; i < chars.size(); i++) {
-                if (chars.get(i) == mutation && chars.get(i-1) != mutation) {
-                    toRemove.add(i-1);
+                if (chars.get(i) == mutation && chars.get(i - 1) != mutation) {
+                    toRemove.add(i - 1);
                 }
             }
             if (toRemove.isEmpty()) break; // No more nucleotides can be removed
 
             // Remove from end to avoid index shifting
-            for (int j = toRemove.size()-1; j >= 0; j--) {
-                chars.remove((int)toRemove.get(j));
+            for (int j = toRemove.size() - 1; j >= 0; j--) {
+                chars.remove((int) toRemove.get(j));
             }
             time++;
         }
@@ -70,6 +71,6 @@ public class GenomeMutationTime {
         long start = System.currentTimeMillis();
         int result = findTime(largeGenome, 'y');
         long end = System.currentTimeMillis();
-        System.out.printf("Large test (len=100_000): result=%d, time=%dms => %s%n", result, (end-start), result == 1 ? "PASS":"FAIL");
+        System.out.printf("Large test (len=100_000): result=%d, time=%dms => %s%n", result, (end - start), result == 1 ? "PASS" : "FAIL");
     }
 }

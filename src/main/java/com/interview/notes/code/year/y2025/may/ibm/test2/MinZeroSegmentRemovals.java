@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.may.ibm.test2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class MinZeroSegmentRemovals {
     /**
@@ -49,8 +51,8 @@ public class MinZeroSegmentRemovals {
     private static void runTest(String s, int m, int k, int expected) {
         int got = getMinOperations(s, m, k);
         System.out.printf(
-            "s=\"%s\", m=%d, k=%d → got %d, want %d [%s]%n",
-            s, m, k, got, expected, (got == expected ? "PASS" : "FAIL")
+                "s=\"%s\", m=%d, k=%d → got %d, want %d [%s]%n",
+                s, m, k, got, expected, (got == expected ? "PASS" : "FAIL")
         );
     }
 
@@ -73,7 +75,7 @@ public class MinZeroSegmentRemovals {
         // Large stress test
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 200_000; i++) sb.append('0');
-        int expected = (int) Math.ceil((200_000 - 50_000 + 1) / (double)(100_000 + 50_000 - 1));
+        int expected = (int) Math.ceil((200_000 - 50_000 + 1) / (double) (100_000 + 50_000 - 1));
         runTest(sb.toString(), 50_000, 100_000, expected);
     }
 }

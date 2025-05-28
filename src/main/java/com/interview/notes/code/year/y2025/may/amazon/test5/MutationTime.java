@@ -1,23 +1,12 @@
 package com.interview.notes.code.year.y2025.may.amazon.test5;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 public class MutationTime {
-
-    static class Node {
-        char c;
-        Node prev, next;
-        boolean removed = false;
-        Node(char c) { this.c = c; }
-    }
-
-    static class Event {
-        Node mNode;
-        int time;
-        Event(Node mNode, int time) { this.mNode = mNode; this.time = time; }
-    }
 
     public static int findTime(String genome, char mutation) {
         int n = genome.length();
@@ -42,7 +31,7 @@ public class MutationTime {
         while (!pq.isEmpty()) {
             Event ev = pq.poll();
             Node mNode = ev.mNode;
-            int t     = ev.time;
+            int t = ev.time;
 
             // ←— skip any events whose mutation has already been deleted
             if (mNode.removed) continue;
@@ -71,26 +60,26 @@ public class MutationTime {
     public static void main(String[] args) {
         // the two failing cases you gave, plus a sanity check
         String[] genomes = {
-            "ttttttttttttttqtqtqqttttttqttttqtttqttqtqq",
-            // really long all-q string (length ~500)
-            String.join("", Collections.nCopies(500, "q")),
-            "tamem"
+                "ttttttttttttttqtqtqqttttttqttttqtttqttqtqq",
+                // really long all-q string (length ~500)
+                String.join("", Collections.nCopies(500, "q")),
+                "tamem"
         };
-        char[] muts = { 'q', 'q', 'm' };
-        int[] exps  = { 2,   1,      2   };
+        char[] muts = {'q', 'q', 'm'};
+        int[] exps = {2, 1, 2};
 
         AtomicInteger pass = new AtomicInteger();
         IntStream.range(0, genomes.length).forEach(i -> {
             int res = findTime(genomes[i], muts[i]);
             if (res == exps[i]) {
                 System.out.println("PASS: " + genomes[i].substring(0, 20)
-                                   + (genomes[i].length()>20?"…":"")
-                                   + "  → " + res);
+                        + (genomes[i].length() > 20 ? "…" : "")
+                        + "  → " + res);
                 pass.getAndIncrement();
             } else {
                 System.out.println("FAIL: " + genomes[i].substring(0, 20)
-                                   + (genomes[i].length()>20?"…":"")
-                                   + "  → got " + res + " but expected " + exps[i]);
+                        + (genomes[i].length() > 20 ? "…" : "")
+                        + "  → got " + res + " but expected " + exps[i]);
             }
         });
         System.out.println("Passed " + pass.get() + " of " + genomes.length + " tests\n");
@@ -103,5 +92,25 @@ public class MutationTime {
         int t = findTime(sb.toString(), 'q');
         long dt = System.currentTimeMillis() - start;
         System.out.println("All-q of length " + N + " → time=" + t + "  computed in " + dt + "ms");
+    }
+
+    static class Node {
+        char c;
+        Node prev, next;
+        boolean removed = false;
+
+        Node(char c) {
+            this.c = c;
+        }
+    }
+
+    static class Event {
+        Node mNode;
+        int time;
+
+        Event(Node mNode, int time) {
+            this.mNode = mNode;
+            this.time = time;
+        }
     }
 }

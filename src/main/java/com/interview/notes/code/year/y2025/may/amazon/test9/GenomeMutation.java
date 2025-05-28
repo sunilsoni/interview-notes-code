@@ -1,25 +1,10 @@
 package com.interview.notes.code.year.y2025.may.amazon.test9;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.PriorityQueue;
 
 public class GenomeMutation {
-
-    static class Wave implements Comparable<Wave> {
-        int time;       // when this wavefront reaches nextTarget
-        int origin;     // original index of the mutation that spawned it
-        int nextTarget; // the index it will remove at `time`
-
-        Wave(int time, int origin, int nextTarget) {
-            this.time = time;
-            this.origin = origin;
-            this.nextTarget = nextTarget;
-        }
-
-        @Override
-        public int compareTo(Wave o) {
-            return Integer.compare(this.time, o.time);
-        }
-    }
 
     public static int findTime(String genome, char mut) {
         int n = genome.length();
@@ -45,7 +30,7 @@ public class GenomeMutation {
 
             // if out of bounds, or already removed, or the origin itself got removed before,
             // skip this front:
-            if (tgt < 0 || removedAt[tgt] != -1 || removedAt[org] != -1) 
+            if (tgt < 0 || removedAt[tgt] != -1 || removedAt[org] != -1)
                 continue;
 
             // remove tgt at time t
@@ -65,16 +50,23 @@ public class GenomeMutation {
 
     public static void main(String[] args) {
         class Test {
-            final String g; final char m; final int e;
-            Test(String g, char m, int e) { this.g = g; this.m = m; this.e = e; }
+            final String g;
+            final char m;
+            final int e;
+
+            Test(String g, char m, int e) {
+                this.g = g;
+                this.m = m;
+                this.e = e;
+            }
         }
         List<Test> tests = Arrays.asList(
-            new Test("tamem", 'm', 2),
-            new Test("momoz", 'm', 2),
-            new Test("luvzliz", 'z', 3),
-            new Test("aaaaa", 'a', 4),
-            new Test("xxxxx", 'm', 0),
-            new Test("m",     'm', 0)
+                new Test("tamem", 'm', 2),
+                new Test("momoz", 'm', 2),
+                new Test("luvzliz", 'z', 3),
+                new Test("aaaaa", 'a', 4),
+                new Test("xxxxx", 'm', 0),
+                new Test("m", 'm', 0)
         );
 
         // large test
@@ -89,9 +81,26 @@ public class GenomeMutation {
             int got = findTime(t.g, t.m);
             boolean ok = got == t.e;
             System.out.printf("Test %2d: %s (got=%d, expected=%d)%n",
-                              i+1, ok ? "PASS " : "FAIL ", got, t.e);
+                    i + 1, ok ? "PASS " : "FAIL ", got, t.e);
             if (ok) passed++;
         }
         System.out.printf("%n%d/%d tests passed.%n", passed, tests.size());
+    }
+
+    static class Wave implements Comparable<Wave> {
+        int time;       // when this wavefront reaches nextTarget
+        int origin;     // original index of the mutation that spawned it
+        int nextTarget; // the index it will remove at `time`
+
+        Wave(int time, int origin, int nextTarget) {
+            this.time = time;
+            this.origin = origin;
+            this.nextTarget = nextTarget;
+        }
+
+        @Override
+        public int compareTo(Wave o) {
+            return Integer.compare(this.time, o.time);
+        }
     }
 }

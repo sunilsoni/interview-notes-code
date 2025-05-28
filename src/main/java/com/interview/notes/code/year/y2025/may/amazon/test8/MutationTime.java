@@ -1,23 +1,11 @@
 package com.interview.notes.code.year.y2025.may.amazon.test8;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 public class MutationTime {
-
-    static class Node {
-        char c;
-        Node prev, next;
-        boolean removed = false;
-        Node(char c) { this.c = c; }
-    }
-
-    static class Event {
-        Node mNode;
-        int time;
-        Event(Node mNode, int time) { this.mNode = mNode; this.time = time; }
-    }
 
     public static int findTime(String genome, char mutation) {
         int n = genome.length();
@@ -59,17 +47,17 @@ public class MutationTime {
     }
 
     public static void main(String[] args) {
-        String[] genomes   = { "tamem", "momoz", "luvzliz", "aaaa", "bbb" };
-        char[]   mutations = {   'm',     'm',      'z',    'a',   'b'  };
-        int[]    expecteds = {     2,       2,        3,      1,     1  };  // <<< corrected here
+        String[] genomes = {"tamem", "momoz", "luvzliz", "aaaa", "bbb"};
+        char[] mutations = {'m', 'm', 'z', 'a', 'b'};
+        int[] expecteds = {2, 2, 3, 1, 1};  // <<< corrected here
 
         AtomicInteger passed = new AtomicInteger();
 
         IntStream.range(0, genomes.length).forEach(i -> {
             String g = genomes[i];
-            char m   = mutations[i];
-            int  exp = expecteds[i];
-            int  res = findTime(g, m);
+            char m = mutations[i];
+            int exp = expecteds[i];
+            int res = findTime(g, m);
             if (res == exp) {
                 System.out.println("PASS: \"" + g + "\" with '" + m + "' -> " + res);
                 passed.getAndIncrement();
@@ -90,7 +78,27 @@ public class MutationTime {
         String largeGenome = sb.toString();
         long start = System.currentTimeMillis();
         int largeTime = findTime(largeGenome, bigMutation);
-        long dur   = System.currentTimeMillis() - start;
+        long dur = System.currentTimeMillis() - start;
         System.out.println("Large input (n=" + largeN + "): time=" + largeTime + " units, computed in " + dur + " ms");
+    }
+
+    static class Node {
+        char c;
+        Node prev, next;
+        boolean removed = false;
+
+        Node(char c) {
+            this.c = c;
+        }
+    }
+
+    static class Event {
+        Node mNode;
+        int time;
+
+        Event(Node mNode, int time) {
+            this.mNode = mNode;
+            this.time = time;
+        }
     }
 }

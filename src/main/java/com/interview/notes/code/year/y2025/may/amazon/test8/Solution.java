@@ -1,8 +1,12 @@
 package com.interview.notes.code.year.y2025.may.amazon.test8;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Solution {
 
@@ -13,28 +17,18 @@ public class Solution {
         /* Build frequency map: value -> occurrences */
         Map<Integer, Long> freq =
                 powers.stream()
-                      .collect(Collectors.groupingBy(Function.identity(),
-                                                     Collectors.counting()));
+                        .collect(Collectors.groupingBy(Function.identity(),
+                                Collectors.counting()));
 
         int best = 0;
 
         /* For each distinct value, check itself and its next neighbour (+1) */
         for (Integer val : freq.keySet()) {
-            long onlyThis   = freq.get(val);                 // all val
-            long withNext   = onlyThis + freq.getOrDefault(val + 1, 0L);
+            long onlyThis = freq.get(val);                 // all val
+            long withNext = onlyThis + freq.getOrDefault(val + 1, 0L);
             best = (int) Math.max(best, withNext);
         }
         return best;
-    }
-
-    /* ---------- simple test harness ---------- */
-    private static class TestCase {
-        final List<Integer> data;
-        final int expected;
-        TestCase(List<Integer> data, int expected) {
-            this.data = data;
-            this.expected = expected;
-        }
     }
 
     public static void main(String[] args) {
@@ -56,9 +50,9 @@ public class Solution {
 
         /* Large-data performance check: 100 000 × 100 plus 100 000 × 101 */
         List<Integer> big = IntStream.concat(
-                                IntStream.generate(() -> 100).limit(100_000),
-                                IntStream.generate(() -> 101).limit(100_000)
-                             ).boxed().collect(Collectors.toList());
+                IntStream.generate(() -> 100).limit(100_000),
+                IntStream.generate(() -> 101).limit(100_000)
+        ).boxed().collect(Collectors.toList());
         tests.add(new TestCase(big, 200_000));
 
         /* Run and report */
@@ -66,8 +60,19 @@ public class Solution {
         for (TestCase tc : tests) {
             int got = getMaxServers(tc.data);
             System.out.printf("Test %2d: %s (got=%d, expected=%d)%n",
-                              idx++, (got == tc.expected ? "PASS" : "FAIL"),
-                              got, tc.expected);
+                    idx++, (got == tc.expected ? "PASS" : "FAIL"),
+                    got, tc.expected);
+        }
+    }
+
+    /* ---------- simple test harness ---------- */
+    private static class TestCase {
+        final List<Integer> data;
+        final int expected;
+
+        TestCase(List<Integer> data, int expected) {
+            this.data = data;
+            this.expected = expected;
         }
     }
 }

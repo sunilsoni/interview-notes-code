@@ -4,14 +4,14 @@ public class RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {
         // Array of test cases: each entry is { inputArray, expectedUniqueCount, expectedUniqueElements... }
         Object[][] tests = {
-            { new int[] {},           0 },                              // empty
-            { new int[] {1},          1, 1 },                           // single element
-            { new int[] {2, 2},       1, 2 },                           // all same
-            { new int[] {1, 2, 3},     3, 1, 2, 3 },                     // no duplicates
-            { new int[] {1,2,2,3,4,4}, 4, 1, 2, 3, 4 },                  // mixed duplicates
-            { new int[] {1,1,1,1,1},   1, 1 },                           // all duplicates
-            // large test: 1M elements, half duplicates
-            { generateLargeTest(1_000_000), 500_000 /* expected unique count */ }
+                {new int[]{}, 0},                              // empty
+                {new int[]{1}, 1, 1},                           // single element
+                {new int[]{2, 2}, 1, 2},                           // all same
+                {new int[]{1, 2, 3}, 3, 1, 2, 3},                     // no duplicates
+                {new int[]{1, 2, 2, 3, 4, 4}, 4, 1, 2, 3, 4},                  // mixed duplicates
+                {new int[]{1, 1, 1, 1, 1}, 1, 1},                           // all duplicates
+                // large test: 1M elements, half duplicates
+                {generateLargeTest(1_000_000), 500_000 /* expected unique count */}
         };
 
         // Run each test
@@ -38,6 +38,7 @@ public class RemoveDuplicatesFromSortedArray {
 
     /**
      * Removes duplicates from a sorted array in-place.
+     *
      * @param arr the sorted input array
      * @param n   the original length of arr
      * @return the length of the array after removing duplicates

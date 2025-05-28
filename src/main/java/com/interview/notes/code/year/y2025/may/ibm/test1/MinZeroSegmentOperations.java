@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.may.ibm.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class MinZeroSegmentOperations {
     // Returns minimum operations to eliminate exactly m-length zero segments
@@ -31,14 +32,47 @@ public class MinZeroSegmentOperations {
 
     // Simple main for testing
     public static void main(String[] args) {
-        class Test { String s; int m, k, expected; }
+        class Test {
+            String s;
+            int m, k, expected;
+        }
         List<Test> tests = Arrays.asList(
-            new Test() {{ s = "000000"; m = 3; k = 2; expected = 1; }},
-            new Test() {{ s = "10101"; m = 1; k = 1; expected = 2; }},
-            new Test() {{ s = "10101"; m = 2; k = 3; expected = 0; }},
-            new Test() {{ s = "000";    m = 3; k = 3; expected = 1; }},
-            new Test() {{ s = "0000";   m = 3; k = 1; expected = 1; }},
-            new Test() {{ s = "11111";  m = 1; k = 2; expected = 0; }}
+                new Test() {{
+                    s = "000000";
+                    m = 3;
+                    k = 2;
+                    expected = 1;
+                }},
+                new Test() {{
+                    s = "10101";
+                    m = 1;
+                    k = 1;
+                    expected = 2;
+                }},
+                new Test() {{
+                    s = "10101";
+                    m = 2;
+                    k = 3;
+                    expected = 0;
+                }},
+                new Test() {{
+                    s = "000";
+                    m = 3;
+                    k = 3;
+                    expected = 1;
+                }},
+                new Test() {{
+                    s = "0000";
+                    m = 3;
+                    k = 1;
+                    expected = 1;
+                }},
+                new Test() {{
+                    s = "11111";
+                    m = 1;
+                    k = 2;
+                    expected = 0;
+                }}
         );
 
         System.out.println("Running predefined tests...");
@@ -60,6 +94,6 @@ public class MinZeroSegmentOperations {
         int ops = getMinOperations(large, 1000, 100);
         long duration = System.currentTimeMillis() - startTime;
         System.out.printf("Large test: n=%d, m=1000, k=100 -> ops=%d, time=%dms\n",
-            n, ops, duration);
+                n, ops, duration);
     }
 }

@@ -33,30 +33,30 @@ public class MutationTime {
 
     public static void main(String[] args) {
         String[] genomes = {
-            "tamem",
-            "momoz",
-            "luvzliz",
-            "aaaa",
-            "bbb",
-            // the two you reported as “failing”:
-            "ttttttttttttttqtqtqqttttttqttttqtttqttqtqq",
-            String.join("", java.util.Collections.nCopies(500, "q"))
+                "tamem",
+                "momoz",
+                "luvzliz",
+                "aaaa",
+                "bbb",
+                // the two you reported as “failing”:
+                "ttttttttttttttqtqtqqttttttqttttqtttqttqtqq",
+                String.join("", java.util.Collections.nCopies(500, "q"))
         };
-        char[] muts = { 'm', 'm', 'z', 'a', 'b', 'q', 'q' };
-        int[] exps  = {   2,   2,   3,   1,   1,    2,     1  };
+        char[] muts = {'m', 'm', 'z', 'a', 'b', 'q', 'q'};
+        int[] exps = {2, 2, 3, 1, 1, 2, 1};
 
         AtomicInteger passed = new AtomicInteger();
         IntStream.range(0, genomes.length).forEach(i -> {
             int res = findTime(genomes[i], muts[i]);
             if (res == exps[i]) {
                 System.out.println("PASS: [" + genomes[i].substring(0, Math.min(20, genomes[i].length()))
-                                   + (genomes[i].length()>20 ? "…" : "")
-                                   + "] → " + res);
+                        + (genomes[i].length() > 20 ? "…" : "")
+                        + "] → " + res);
                 passed.getAndIncrement();
             } else {
                 System.out.println("FAIL: [" + genomes[i].substring(0, Math.min(20, genomes[i].length()))
-                                   + (genomes[i].length()>20 ? "…" : "")
-                                   + "] → got " + res + " but expected " + exps[i]);
+                        + (genomes[i].length() > 20 ? "…" : "")
+                        + "] → got " + res + " but expected " + exps[i]);
             }
         });
         System.out.println("Passed " + passed + " out of " + genomes.length + " tests\n");

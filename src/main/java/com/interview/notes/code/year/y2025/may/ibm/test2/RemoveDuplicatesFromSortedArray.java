@@ -47,11 +47,11 @@ public class RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {
         // Basic/edge test cases
         testCase(new Integer[]{2, 2}, new Integer[]{2, null}, "All same elements");
-        testCase(new Integer[]{1, 2, 2, 3, 4, 4}, new Integer[]{1,2,3,4,null,null}, "Example with some dups");
-        testCase(new Integer[]{1, 2, 3, 4}, new Integer[]{1,2,3,4}, "No duplicates");
+        testCase(new Integer[]{1, 2, 2, 3, 4, 4}, new Integer[]{1, 2, 3, 4, null, null}, "Example with some dups");
+        testCase(new Integer[]{1, 2, 3, 4}, new Integer[]{1, 2, 3, 4}, "No duplicates");
         testCase(new Integer[]{}, new Integer[]{}, "Empty array");
         testCase(new Integer[]{5}, new Integer[]{5}, "Single element");
-        testCase(new Integer[]{-2,-2,-1,0,0,1,1,2}, new Integer[]{-2,-1,0,1,2,null,null,null}, "Negative and zero");
+        testCase(new Integer[]{-2, -2, -1, 0, 0, 1, 1, 2}, new Integer[]{-2, -1, 0, 1, 2, null, null, null}, "Negative and zero");
 
         // Large test case (100,000 elements, all same)
         Integer[] bigArr = new Integer[100_000];

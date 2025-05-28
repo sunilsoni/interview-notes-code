@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.may.ibm.test1;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -26,8 +27,8 @@ public class MinOperationsToRemoveZeroSegments {
                     // For every possible segment of exactly m zeroes
                     for (int j = start; j + m <= i; j++) {
                         // Isolated segment check: must not be part of a longer zero-run
-                        boolean isExact = (j == start || arr[j-1] == '1') &&
-                                          (j + m == i || arr[j + m] == '1');
+                        boolean isExact = (j == start || arr[j - 1] == '1') &&
+                                (j + m == i || arr[j + m] == '1');
                         if (isExact) {
                             // One operation: flip k chars starting at j (covering at least part of m-segment)
                             ans++;
@@ -52,17 +53,17 @@ public class MinOperationsToRemoveZeroSegments {
     public static void main(String[] args) {
         // List of test cases: {s, m, k, expected}
         List<Object[]> tests = Arrays.asList(
-            new Object[]{"000000", 3, 2, 1},
-            new Object[]{"10101", 1, 1, 2},
-            new Object[]{"10101", 2, 3, 0},
-            new Object[]{"1111", 1, 2, 0},
-            new Object[]{"00000", 2, 1, 2},
-            new Object[]{"00000", 2, 3, 1},
-            new Object[]{"000000", 2, 2, 2},
-            // Large test cases
-            new Object[]{repeat("0", 200000), 4, 5, 0}, // only one segment of length 200000, no exact 4
-            new Object[]{IntStream.range(0, 200000).mapToObj(i -> i % 10 == 0 ? "1" : "0").collect(Collectors.joining()), 3, 2, 0}, // no exact 3
-            new Object[]{repeat("1", 199999) + "0", 1, 1, 1} // only last char is 0
+                new Object[]{"000000", 3, 2, 1},
+                new Object[]{"10101", 1, 1, 2},
+                new Object[]{"10101", 2, 3, 0},
+                new Object[]{"1111", 1, 2, 0},
+                new Object[]{"00000", 2, 1, 2},
+                new Object[]{"00000", 2, 3, 1},
+                new Object[]{"000000", 2, 2, 2},
+                // Large test cases
+                new Object[]{repeat("0", 200000), 4, 5, 0}, // only one segment of length 200000, no exact 4
+                new Object[]{IntStream.range(0, 200000).mapToObj(i -> i % 10 == 0 ? "1" : "0").collect(Collectors.joining()), 3, 2, 0}, // no exact 3
+                new Object[]{repeat("1", 199999) + "0", 1, 1, 1} // only last char is 0
         );
 
         int idx = 1;

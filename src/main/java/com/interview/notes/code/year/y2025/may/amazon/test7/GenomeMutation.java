@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.may.amazon.test7;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GenomeMutation {
 
@@ -34,16 +37,21 @@ public class GenomeMutation {
             final String genome;
             final char mut;
             final int expected;
-            Test(String g, char m, int e) { genome = g; mut = m; expected = e; }
+
+            Test(String g, char m, int e) {
+                genome = g;
+                mut = m;
+                expected = e;
+            }
         }
 
         List<Test> tests = new ArrayList<>(Arrays.asList(
-            new Test("tamem", 'm', 2),
-            new Test("momoz", 'm', 2),
-            new Test("luvzliz", 'z', 3),
-            new Test("aaaaa", 'a', 4),    // every 'a' removes the one to its left
-            new Test("xxxxx", 'm', 0),    // no mutation at all
-            new Test("m", 'm', 0)         // single mutation, nothing to its left
+                new Test("tamem", 'm', 2),
+                new Test("momoz", 'm', 2),
+                new Test("luvzliz", 'z', 3),
+                new Test("aaaaa", 'a', 4),    // every 'a' removes the one to its left
+                new Test("xxxxx", 'm', 0),    // no mutation at all
+                new Test("m", 'm', 0)         // single mutation, nothing to its left
         ));
 
         // large test: 100_000 a’s then one 'm' at the end → time = 100_000
@@ -56,7 +64,7 @@ public class GenomeMutation {
             int result = findTime(t.genome, t.mut);
             boolean ok = result == t.expected;
             System.out.printf("Test %2d: %s (got=%d, expected=%d)%n",
-                              i + 1, ok ? "PASS" : "FAIL", result, t.expected);
+                    i + 1, ok ? "PASS" : "FAIL", result, t.expected);
             if (ok) pass++;
         }
         System.out.printf("%n%d/%d tests passed.%n", pass, tests.size());

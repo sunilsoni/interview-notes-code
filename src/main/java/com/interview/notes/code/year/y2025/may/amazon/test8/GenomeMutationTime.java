@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.may.amazon.test8;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
 
 public class GenomeMutationTime {
 

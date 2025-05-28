@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.may.ibm.test2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MinZeroSegmentOperations {
     // Returns minimum operations to eliminate exactly m-length zero segments
@@ -41,15 +43,53 @@ public class MinZeroSegmentOperations {
 
     // Simple main for testing
     public static void main(String[] args) {
-        class Test { String s; int m, k, expected; }
+        class Test {
+            String s;
+            int m, k, expected;
+        }
         List<Test> tests = Arrays.asList(
-            new Test() {{ s = "000000"; m = 3; k = 2; expected = 1; }},
-            new Test() {{ s = "10101"; m = 1; k = 1; expected = 2; }},
-            new Test() {{ s = "10101"; m = 2; k = 3; expected = 0; }},
-            new Test() {{ s = "000";    m = 3; k = 3; expected = 1; }},
-            new Test() {{ s = "0000";   m = 3; k = 1; expected = 1; }},
-            new Test() {{ s = "11111";  m = 1; k = 2; expected = 0; }},
-            new Test() {{ s = "000000000110011100"; m = 2; k = 7; expected = 2; }}
+                new Test() {{
+                    s = "000000";
+                    m = 3;
+                    k = 2;
+                    expected = 1;
+                }},
+                new Test() {{
+                    s = "10101";
+                    m = 1;
+                    k = 1;
+                    expected = 2;
+                }},
+                new Test() {{
+                    s = "10101";
+                    m = 2;
+                    k = 3;
+                    expected = 0;
+                }},
+                new Test() {{
+                    s = "000";
+                    m = 3;
+                    k = 3;
+                    expected = 1;
+                }},
+                new Test() {{
+                    s = "0000";
+                    m = 3;
+                    k = 1;
+                    expected = 1;
+                }},
+                new Test() {{
+                    s = "11111";
+                    m = 1;
+                    k = 2;
+                    expected = 0;
+                }},
+                new Test() {{
+                    s = "000000000110011100";
+                    m = 2;
+                    k = 7;
+                    expected = 2;
+                }}
         );
 
         System.out.println("Running predefined tests...");

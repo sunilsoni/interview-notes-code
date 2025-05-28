@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.may.amazon.test8;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class AWSServerSelection {
 
@@ -64,7 +67,7 @@ public class AWSServerSelection {
         testCase(bigTest, 200_000, 6);
 
         // Edge test: alternating
-        testCase(Arrays.asList(1,2,1,2,1,2,1,2), 8, 7);
+        testCase(Arrays.asList(1, 2, 1, 2, 1, 2, 1, 2), 8, 7);
 
         // Custom: [1, 2, 2, 2, 3, 3]
         testCase(Arrays.asList(1, 2, 2, 2, 3, 3), 5, 8);
