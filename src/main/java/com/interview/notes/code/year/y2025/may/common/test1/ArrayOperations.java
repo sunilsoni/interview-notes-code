@@ -1,4 +1,4 @@
-package com.interview.notes.code.year.y2025.may.common;
+package com.interview.notes.code.year.y2025.may.common.test1;
 
 import java.util.*;
 import java.util.stream.Collectors;
