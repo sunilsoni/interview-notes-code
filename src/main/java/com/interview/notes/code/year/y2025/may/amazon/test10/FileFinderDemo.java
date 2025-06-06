@@ -8,10 +8,10 @@ public class FileFinderDemo {
 
     /**
      * Usage (example):
-     *
-     *   > javac SearchCriteria.java SizeGreaterThanCriteria.java ExtensionCriteria.java FileFinder.java FileFinderDemo.java
-     *   > java FileFinderDemo /path/to/your/root_directory
-     *
+     * <p>
+     * > javac SearchCriteria.java SizeGreaterThanCriteria.java ExtensionCriteria.java FileFinder.java FileFinderDemo.java
+     * > java FileFinderDemo /path/to/your/root_directory
+     * <p>
      * Replace "/path/to/your/root_directory" with the directory you want to search.
      */
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.may.apple.test2;
 
 public class StockProfit {
-    
+
     /**
      * Calculates maximum profit from one buy-sell transaction
      * Uses Java 8 Stream API for cleaner implementation
@@ -22,10 +22,10 @@ public class StockProfit {
         for (int i = 1; i < prices.length; i++) {
             // Update minimum price if current price is lower
             minPrice = Math.min(minPrice, prices[i]);
-            
+
             // Calculate potential profit if we sell at current price
             int currentProfit = prices[i] - minPrice;
-            
+
             // Update maximum profit if current profit is higher
             maxProfit = Math.max(maxProfit, currentProfit);
         }
@@ -91,7 +91,7 @@ public class StockProfit {
         if (prices.length <= 1) return 0;
         int minPrice = Integer.MAX_VALUE;
         int maxProfit = 0;
-        
+
         for (int price : prices) {
             if (price < minPrice) {
                 minPrice = price;

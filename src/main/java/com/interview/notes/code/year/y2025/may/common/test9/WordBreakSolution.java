@@ -3,28 +3,23 @@ package com.interview.notes.code.year.y2025.may.common.test9;
 import java.util.*;
 
 public class WordBreakSolution {
-    
-    // Main class to store the result during recursion
-    static class Result {
-        List<String> sentences = new ArrayList<>();
-    }
 
     public static List<String> wordBreak(String s, List<String> wordDict) {
         // Create a HashSet for O(1) word lookup
         Set<String> dictionary = new HashSet<>(wordDict);
-        
+
         // Create result object to store all valid sentences
         Result result = new Result();
-        
+
         // Start recursive process with initial empty StringBuilder
         findSentences(s, 0, dictionary, new StringBuilder(), result);
-        
+
         return result.sentences;
     }
 
     // Recursive helper method to find all possible valid sentences
-    private static void findSentences(String s, int start, Set<String> dict, 
-                                    StringBuilder current, Result result) {
+    private static void findSentences(String s, int start, Set<String> dict,
+                                      StringBuilder current, Result result) {
         // Base case: if we've processed the entire string
         if (start >= s.length()) {
             // Remove trailing space and add to results
@@ -36,18 +31,18 @@ public class WordBreakSolution {
         for (int end = start + 1; end <= s.length(); end++) {
             // Extract potential word
             String word = s.substring(start, end);
-            
+
             // If word exists in dictionary, process it
             if (dict.contains(word)) {
                 // Save current length to backtrack later
                 int len = current.length();
-                
+
                 // Add word and space to current sentence
                 current.append(word).append(" ");
-                
+
                 // Recurse with remaining string
                 findSentences(s, end, dict, current, result);
-                
+
                 // Backtrack by removing the added word and space
                 current.setLength(len);
             }
@@ -64,7 +59,7 @@ public class WordBreakSolution {
         // Test Case 2: Normal message
         String s2 = "pineapplepenapple";
         List<String> dict2 = Arrays.asList("apple", "pen", "applepen", "pine", "pineapple");
-        testCase("Test 2", s2, dict2, 
+        testCase("Test 2", s2, dict2,
                 Arrays.asList("pine apple pen apple", "pineapple pen apple", "pine applepen apple"));
 
         // Test Case 3: Edge case - Empty string
@@ -80,12 +75,12 @@ public class WordBreakSolution {
     }
 
     // Helper method to run and validate test cases
-    private static void testCase(String testName, String input, List<String> dict, 
-                               List<String> expected) {
+    private static void testCase(String testName, String input, List<String> dict,
+                                 List<String> expected) {
         System.out.println("\nRunning " + testName + ":");
         System.out.println("Input: " + input);
         System.out.println("Dictionary: " + dict);
-        
+
         long startTime = System.currentTimeMillis();
         List<String> result = wordBreak(input, dict);
         long endTime = System.currentTimeMillis();
@@ -97,5 +92,10 @@ public class WordBreakSolution {
             boolean passed = new HashSet<>(result).equals(new HashSet<>(expected));
             System.out.println("Test " + (passed ? "PASSED" : "FAILED"));
         }
+    }
+
+    // Main class to store the result during recursion
+    static class Result {
+        List<String> sentences = new ArrayList<>();
     }
 }

@@ -9,7 +9,7 @@ import java.nio.file.Path;
  * A criterion that checks if a file’s size is strictly greater than a given threshold.
  */
 public class SizeGreaterThanCriteria implements SearchCriteria {
-    private final long thresholdBytes; 
+    private final long thresholdBytes;
     // Holds the byte‐size threshold (e.g. 5 * 1024 * 1024 for 5 MB).
 
     /**

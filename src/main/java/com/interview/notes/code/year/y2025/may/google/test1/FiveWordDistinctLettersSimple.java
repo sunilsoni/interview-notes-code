@@ -8,53 +8,41 @@ import java.util.stream.Collectors;
 
 public class FiveWordDistinctLettersSimple {
 
-    /**
-     * Helper class: a 5-letter word plus its Set<Character>.
-     */
-    private static class WordLetters {
-        final String word;
-        final Set<Character> letters;
-        WordLetters(String w, Set<Character> letters) {
-            this.word = w;
-            this.letters = letters;
-        }
-    }
-
     // Once we find one valid 5-word combo, we store it here and stop searching.
     private static List<String> solution = null;
 
     public static void main(String[] args) {
         // --------- TEST CASE 1: corrected, now has a valid solution ----------
         List<String> dict1 = Arrays.asList(
-            "chunk",   // c,h,u,n,k
-            "fjord",   // f,j,o,r,d
-            "gymps",   // g,y,m,p,s
-            "vibex",   // v,i,b,e,x
-            "waltz"    // w,a,l,t,z
-            // These five cover exactly 25 letters (only 'q' is missing).
+                "chunk",   // c,h,u,n,k
+                "fjord",   // f,j,o,r,d
+                "gymps",   // g,y,m,p,s
+                "vibex",   // v,i,b,e,x
+                "waltz"    // w,a,l,t,z
+                // These five cover exactly 25 letters (only 'q' is missing).
         );
         runTest("Test 1", dict1, true);
 
         // --------- TEST CASE 2: correctly has no solution ----------
         List<String> dict2 = Arrays.asList(
-            "apple",   // duplicates inside → filtered out
-            "altar",   // all share 'a'
-            "agent",   // all share 'a'
-            "angle",   // all share 'a'
-            "amuse",   // all share 'a'
-            "abril"    // all share 'a'
+                "apple",   // duplicates inside → filtered out
+                "altar",   // all share 'a'
+                "agent",   // all share 'a'
+                "angle",   // all share 'a'
+                "amuse",   // all share 'a'
+                "abril"    // all share 'a'
         );
         runTest("Test 2", dict2, false);
 
         // --------- TEST CASE 3: minimal example that does have a solution ----------
         List<String> dict3 = Arrays.asList(
-            "abcde",   // a,b,c,d,e
-            "fghij",   // f,g,h,i,j
-            "klmno",   // k,l,m,n,o
-            "pqrst",   // p,q,r,s,t
-            "uvwxy",   // u,v,w,x,y
-            "aaaaa",   // invalid (duplicates)
-            "zzzzz"    // invalid (duplicates)
+                "abcde",   // a,b,c,d,e
+                "fghij",   // f,g,h,i,j
+                "klmno",   // k,l,m,n,o
+                "pqrst",   // p,q,r,s,t
+                "uvwxy",   // u,v,w,x,y
+                "aaaaa",   // invalid (duplicates)
+                "zzzzz"    // invalid (duplicates)
         );
         runTest("Test 3", dict3, true);
 
@@ -123,13 +111,13 @@ public class FiveWordDistinctLettersSimple {
     public static List<String> findFiveWordsWith25DistinctLetters(List<String> dictionary) {
         // 1) Filter & map: keep only 5-letter words with distinct letters.
         List<WordLetters> wordList = dictionary.stream()
-            .filter(Objects::nonNull)                                // drop nulls
-            .map(String::trim)                                        // strip whitespace
-            .map(String::toLowerCase)                                 // normalize to lowercase
-            .filter(w -> w.length() == 5)                             // only length‐5
-            .map(FiveWordDistinctLettersSimple::toWordLetters)        // build WordLetters or null
-            .filter(Objects::nonNull)                                 // drop invalid
-            .collect(Collectors.toList());                            // collect
+                .filter(Objects::nonNull)                                // drop nulls
+                .map(String::trim)                                        // strip whitespace
+                .map(String::toLowerCase)                                 // normalize to lowercase
+                .filter(w -> w.length() == 5)                             // only length‐5
+                .map(FiveWordDistinctLettersSimple::toWordLetters)        // build WordLetters or null
+                .filter(Objects::nonNull)                                 // drop invalid
+                .collect(Collectors.toList());                            // collect
 
         // If fewer than 5 survive, no solution is possible.
         if (wordList.size() < 5) {
@@ -237,5 +225,18 @@ public class FiveWordDistinctLettersSimple {
             }
         }
         return (seen.size() == 25);
+    }
+
+    /**
+     * Helper class: a 5-letter word plus its Set<Character>.
+     */
+    private static class WordLetters {
+        final String word;
+        final Set<Character> letters;
+
+        WordLetters(String w, Set<Character> letters) {
+            this.word = w;
+            this.letters = letters;
+        }
     }
 }

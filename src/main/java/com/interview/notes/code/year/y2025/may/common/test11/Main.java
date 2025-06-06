@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.may.common.test11;
 
-import java.util.*;
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 // Book class to store book information
 class Book {
@@ -20,17 +22,28 @@ class Book {
     }
 
     // Getters and setters with validation
-    public String getIsbn() { return isbn; }
-    public String getTitle() { return title; }
-    public String getAuthor() { return author; }
-    public int getAvailableCopies() { return availableCopies; }
-    
-    public void borrowCopy() { 
-        if (availableCopies > 0) availableCopies--; 
+    public String getIsbn() {
+        return isbn;
     }
-    
-    public void returnCopy() { 
-        if (availableCopies < totalCopies) availableCopies++; 
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getAvailableCopies() {
+        return availableCopies;
+    }
+
+    public void borrowCopy() {
+        if (availableCopies > 0) availableCopies--;
+    }
+
+    public void returnCopy() {
+        if (availableCopies < totalCopies) availableCopies++;
     }
 }
 
@@ -86,7 +99,7 @@ class LibrarySystem {
 //            .toList();
 //    }
 
-    // Get available copies
+// Get available copies
 //    public int getAvailableCopies(String isbn) {
 //        return Optional.ofNullable(booksByIsbn.get(isbn))
 //            .map(Book::getAvailableCopies)
@@ -94,7 +107,7 @@ class LibrarySystem {
 //    }
 //}
 //
-//// Main class for testing
+/// / Main class for testing
 //public class Main {
 //    public static void main(String[] args) {
 //        LibrarySystem library = new LibrarySystem();

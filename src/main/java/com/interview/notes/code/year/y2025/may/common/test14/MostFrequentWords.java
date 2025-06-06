@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.may.common.test14;
 
-import java.util.*;                       // Utilities for Map, List, Arrays
-import java.util.stream.*;                // Stream API
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Finds the k most frequent words using Java 8 Streams.
@@ -14,19 +14,19 @@ public class MostFrequentWords {
     public static void main(String[] args) {
         /* ------------- Define test cases -------------- */
         // Example from the prompt
-        String[] words1 = {"java","kafka","spring","java","aws","spring","kafka","java"};
+        String[] words1 = {"java", "kafka", "spring", "java", "aws", "spring", "kafka", "java"};
         int k1 = 2;
-        List<String> expected1 = Arrays.asList("java","kafka");
+        List<String> expected1 = Arrays.asList("java", "kafka");
 
         // All words same frequency -> lexicographic tie-breaker
-        String[] words2 = {"c","b","a"};
+        String[] words2 = {"c", "b", "a"};
         int k2 = 2;
-        List<String> expected2 = Arrays.asList("a","b");
+        List<String> expected2 = Arrays.asList("a", "b");
 
         // k larger than unique words
-        String[] words3 = {"a","a","b"};
+        String[] words3 = {"a", "a", "b"};
         int k3 = 5;
-        List<String> expected3 = Arrays.asList("a","b");
+        List<String> expected3 = Arrays.asList("a", "b");
 
         // Empty input
         String[] words4 = {};
@@ -36,7 +36,7 @@ public class MostFrequentWords {
         // Large data test (100 000 “x”, 100 000 “y”, 50 000 “z”)
         String[] words5 = buildLargeInput();
         int k5 = 3;
-        List<String> expected5 = Arrays.asList("x","y","z"); // by freq then alpha
+        List<String> expected5 = Arrays.asList("x", "y", "z"); // by freq then alpha
 
         /* ------------- Run tests -------------- */
         runTest(words1, k1, expected1, "Provided example");
@@ -53,7 +53,7 @@ public class MostFrequentWords {
      *
      * @param words input array of words
      * @param k     number of top frequent words requested
-     * @return      list of words satisfying the criteria
+     * @return list of words satisfying the criteria
      */
     public static List<String> topKFrequent(String[] words, int k) {
         // Handle edge cases first – if k <= 0 or no words, return empty list.
@@ -103,7 +103,7 @@ public class MostFrequentWords {
     private static String[] buildLargeInput() {
         int xCount = 100_000;
         int yCount = 100_000;
-        int zCount =  50_000;
+        int zCount = 50_000;
         String[] arr = new String[xCount + yCount + zCount];
         int idx = 0;
 

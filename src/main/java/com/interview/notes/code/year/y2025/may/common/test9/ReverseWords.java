@@ -9,11 +9,11 @@ public class ReverseWords {
     public static void main(String[] args) {
         // Define test cases: input string and expected output
         String[][] testCases = {
-            {"  the sky   is blue  ", "blue is sky the"},            // example with extra spaces
-            {"hello world", "world hello"},                          // simple two words
-            {"   singleWord   ", "singleWord"},                     // single word with spaces
-            {"", ""},                                              // empty string
-            {"      ", ""},                                        // only spaces
+                {"  the sky   is blue  ", "blue is sky the"},            // example with extra spaces
+                {"hello world", "world hello"},                          // simple two words
+                {"   singleWord   ", "singleWord"},                     // single word with spaces
+                {"", ""},                                              // empty string
+                {"      ", ""},                                        // only spaces
         };
 
         // Run each test and print PASS or FAIL
@@ -23,9 +23,9 @@ public class ReverseWords {
             String result = reverseWords(input);                       // compute reversed
             // Compare result with expected and print outcome
             if (result.equals(expected)) {
-                System.out.println("Test Case " + (i+1) + ": PASS");
+                System.out.println("Test Case " + (i + 1) + ": PASS");
             } else {
-                System.out.println("Test Case " + (i+1) + ": FAIL");
+                System.out.println("Test Case " + (i + 1) + ": FAIL");
                 System.out.println("  Input   : '" + input + "'");
                 System.out.println("  Expected: '" + expected + "'");
                 System.out.println("  Got     : '" + result + "'");
@@ -45,6 +45,7 @@ public class ReverseWords {
 
     /**
      * Reverse the words in the input string, removing extra spaces.
+     *
      * @param s the original string
      * @return a new string with words in reverse order and single spaces
      */
@@ -57,7 +58,7 @@ public class ReverseWords {
 
         // Step 3: Convert array to list for reversal
         List<String> wordList = Arrays.stream(words)
-            .collect(Collectors.toList());                           // collect words into a List
+                .collect(Collectors.toList());                           // collect words into a List
 
         // Step 4: Reverse the list in-place
         Collections.reverse(wordList);                               // reverse order of words

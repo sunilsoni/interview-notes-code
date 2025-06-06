@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.may.common.test10;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * WordBreakSentences
@@ -71,8 +70,8 @@ public class WordBreakSentences {
         runTest("pineapplepenapple",
                 Arrays.asList("apple", "pen", "applepen", "pine", "pineapple"),
                 Arrays.asList("pine apple pen apple",
-                              "pineapple pen apple",
-                              "pine applepen apple"));
+                        "pineapple pen apple",
+                        "pine applepen apple"));
 
         // Edge-case: no solution
         runTest("catsandog",
@@ -83,8 +82,9 @@ public class WordBreakSentences {
         StringBuilder longStr = new StringBuilder();
         for (int i = 0; i < 25; i++) longStr.append('a');
         List<String> dict = new ArrayList<>();
-        for (int len = 1; len <= 5; len++) dict.add(String.join("",
-                Collections.nCopies(len, "a")));
+        for (int len = 1; len <= 5; len++)
+            dict.add(String.join("",
+                    Collections.nCopies(len, "a")));
         // We only verify non-emptiness to avoid printing millions of sentences
         System.out.println("Stress-test result count = " +
                 wordBreak(longStr.toString(), dict).size());

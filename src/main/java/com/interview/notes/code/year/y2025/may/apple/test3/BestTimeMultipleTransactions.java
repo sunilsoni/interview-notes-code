@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.may.apple.test3;
 
-import java.util.stream.IntStream;   // For Java 8 IntStream.rangeClosed(...) in main
-import java.util.Arrays;             // (Optional) For Arrays.toString(...) if needed for debugging
+import java.util.stream.IntStream;
 
 public class BestTimeMultipleTransactions {
 
@@ -21,7 +20,7 @@ public class BestTimeMultipleTransactions {
         }
 
         // 2) Initialize an accumulator for total profit.
-        int totalProfit = 0; 
+        int totalProfit = 0;
         // We will add (prices[i+1] − prices[i]) whenever that difference is positive.
 
         // 3) Loop through indices i = 0 to (n − 2). We'll compare prices[i] with prices[i+1].
@@ -54,54 +53,54 @@ public class BestTimeMultipleTransactions {
         // ---------- SMALL TEST CASES ----------
 
         // 1) We’ll store each test as { description, pricesArray, expectedProfit }
-        Object[][] testCases = new Object[][] {
-            {
-                "Example from prompt: [7,1,5,3,6,4]",
-                new int[] {7, 1, 5, 3, 6, 4},
-                7
-            },
-            {
-                "Strictly decreasing: [7, 6, 4, 3, 1]",
-                new int[] {7, 6, 4, 3, 1},
-                0
-            },
-            {
-                "Strictly increasing: [1, 2, 3, 4, 5]",
-                new int[] {1, 2, 3, 4, 5},
-                4  // profit = (2−1)+(3−2)+(4−3)+(5−4) = 4
-            },
-            {
-                "All equal: [5, 5, 5, 5]",
-                new int[] {5, 5, 5, 5},
-                0
-            },
-            {
-                "Single element: [10]",
-                new int[] {10},
-                0
-            },
-            {
-                "Empty array",
-                new int[] {}, 
-                0
-            },
-            {
-                "Mixed ups and downs: [3, 2, 6, 5, 0, 3]",
-                new int[] {3, 2, 6, 5, 0, 3},
-                // Explanation:
-                //   - Buy 2→sell 6: gain = 6−2 = 4
-                //   - Then next segment: prices drop to 5 then 0, so skip
-                //   - Finally, buy 0→sell 3: gain = 3−0 = 3
-                //   Total = 4 + 3 = 7
-                7
-            }
+        Object[][] testCases = new Object[][]{
+                {
+                        "Example from prompt: [7,1,5,3,6,4]",
+                        new int[]{7, 1, 5, 3, 6, 4},
+                        7
+                },
+                {
+                        "Strictly decreasing: [7, 6, 4, 3, 1]",
+                        new int[]{7, 6, 4, 3, 1},
+                        0
+                },
+                {
+                        "Strictly increasing: [1, 2, 3, 4, 5]",
+                        new int[]{1, 2, 3, 4, 5},
+                        4  // profit = (2−1)+(3−2)+(4−3)+(5−4) = 4
+                },
+                {
+                        "All equal: [5, 5, 5, 5]",
+                        new int[]{5, 5, 5, 5},
+                        0
+                },
+                {
+                        "Single element: [10]",
+                        new int[]{10},
+                        0
+                },
+                {
+                        "Empty array",
+                        new int[]{},
+                        0
+                },
+                {
+                        "Mixed ups and downs: [3, 2, 6, 5, 0, 3]",
+                        new int[]{3, 2, 6, 5, 0, 3},
+                        // Explanation:
+                        //   - Buy 2→sell 6: gain = 6−2 = 4
+                        //   - Then next segment: prices drop to 5 then 0, so skip
+                        //   - Finally, buy 0→sell 3: gain = 3−0 = 3
+                        //   Total = 4 + 3 = 7
+                        7
+                }
         };
 
         // 2) Loop through small test cases and check PASS/FAIL
         for (int i = 0; i < testCases.length; i++) {
             String description = (String) testCases[i][0];   // e.g. "Example from prompt: [7,1,5,3,6,4]"
-            int[] prices       = (int[]) testCases[i][1];    // the array itself
-            int expected       = (int) testCases[i][2];      // the expected integer profit
+            int[] prices = (int[]) testCases[i][1];    // the array itself
+            int expected = (int) testCases[i][2];      // the expected integer profit
 
             // 2.1) Call our method
             int actual = maxProfitMultipleTx(prices);
@@ -109,12 +108,12 @@ public class BestTimeMultipleTransactions {
             // 2.2) Compare and print PASS/FAIL
             if (actual == expected) {
                 System.out.println(
-                    "Test " + (i + 1) + " (" + description + "): PASS"
+                        "Test " + (i + 1) + " (" + description + "): PASS"
                 );
             } else {
                 System.out.println(
-                    "Test " + (i + 1) + " (" + description + "): FAIL - Expected "
-                    + expected + ", Got " + actual
+                        "Test " + (i + 1) + " (" + description + "): FAIL - Expected "
+                                + expected + ", Got " + actual
                 );
             }
         }
@@ -141,9 +140,9 @@ public class BestTimeMultipleTransactions {
         //    Use IntStream to build this array:
         int n = 1_000_000;
         int[] largePrices = IntStream.range(0, n)
-                                     // For each index i, map to 1 or 2
-                                     .map(i -> (i % 2 == 0) ? 1 : 2)
-                                     .toArray();
+                // For each index i, map to 1 or 2
+                .map(i -> (i % 2 == 0) ? 1 : 2)
+                .toArray();
 
         // 4) Because pattern is [1,2,1,2,1,2,…], each (1→2) gives +1 profit.
         //    There are exactly 500,000 such upward transitions in a length‐1,000,000 array.
@@ -152,21 +151,21 @@ public class BestTimeMultipleTransactions {
         // 5) Time the computation
         long startTime = System.currentTimeMillis();
         int actualLargeProfit = maxProfitMultipleTx(largePrices);
-        long endTime   = System.currentTimeMillis();
+        long endTime = System.currentTimeMillis();
 
         // 6) Print result + elapsed time
         if (actualLargeProfit == expectedLargeProfit) {
             System.out.println(
-                "Large-data test: PASS (profit = " + actualLargeProfit + ")"
+                    "Large-data test: PASS (profit = " + actualLargeProfit + ")"
             );
         } else {
             System.out.println(
-                "Large-data test: FAIL - Expected " + expectedLargeProfit
-                + ", Got " + actualLargeProfit
+                    "Large-data test: FAIL - Expected " + expectedLargeProfit
+                            + ", Got " + actualLargeProfit
             );
         }
         System.out.println(
-            "Time taken for large data: " + (endTime - startTime) + " ms"
+                "Time taken for large data: " + (endTime - startTime) + " ms"
         );
     }
 }

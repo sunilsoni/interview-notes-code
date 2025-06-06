@@ -1,14 +1,14 @@
 package com.interview.notes.code.year.y2025.may.apple.test4;
 
-import java.util.*;
+import java.util.Random;
 
 /**
  * StockTradingConstrained.java
- *
+ * <p>
  * This class provides a method to compute the maximum profit from stock trading
  * when each sale incurs a fixed transaction fee and after each sale, there is
  * a cooldown period of a specified number of days before the next buy.
- *
+ * <p>
  * It also includes a simple main method demonstrating usage with sample inputs.
  */
 public class StockTradingConstrained {
@@ -16,10 +16,10 @@ public class StockTradingConstrained {
     /**
      * Compute maximum profit with both a transaction fee and an arbitrary cooldown period.
      *
-     * @param prices        array of stock prices by day
-     * @param fee           fixed transaction fee per sale
-     * @param cooldownDays  number of days to wait after selling before buying again
-     * @return              maximum net profit under the given constraints
+     * @param prices       array of stock prices by day
+     * @param fee          fixed transaction fee per sale
+     * @param cooldownDays number of days to wait after selling before buying again
+     * @return maximum net profit under the given constraints
      */
     public static int maxProfitConstrained(int[] prices, int fee, int cooldownDays) {
         // If there are fewer than 2 days, we cannot complete any buy-sell → profit = 0
@@ -122,7 +122,7 @@ public class StockTradingConstrained {
         long start = System.currentTimeMillis();
         int largeResult = maxProfitConstrained(largePrices, largeFee, largeCooldown);
         long end = System.currentTimeMillis();
-        System.out.println("Large test (n=100000, fee=5, cooldown=3) → Profit=" 
-                           + largeResult + ", Time=" + (end - start) + " ms");
+        System.out.println("Large test (n=100000, fee=5, cooldown=3) → Profit="
+                + largeResult + ", Time=" + (end - start) + " ms");
     }
 }

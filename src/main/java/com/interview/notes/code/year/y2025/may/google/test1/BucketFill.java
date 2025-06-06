@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.may.google.test1;
 
 import java.util.*;
-import java.util.stream.*;
+
 /*
 Problem Description
 Digital graphics tools often make available a “bucket fill” tool that will recolor only adjacent cells. In this problem, you have a modified bucket tool that recolors all adjacent cells (connected horizontally or vertically, but not diagonally) that share the same color.
@@ -39,8 +39,8 @@ public class BucketFill {
         //    The call `.map(String::toCharArray)` turns each row‐string into a char[].
         //    Then `toArray(char[][]::new)` collects them into a char[][] of size [h][w].
         char[][] grid = picture.stream()
-                                .map(String::toCharArray)
-                                .toArray(char[][]::new);
+                .map(String::toCharArray)
+                .toArray(char[][]::new);
 
         // 3) Create a boolean visited array of the same dimensions (h x w),
         //    initialized to false. We'll mark cells as visited as we discover them.
@@ -49,10 +49,10 @@ public class BucketFill {
         // 4) Directions for exploring 4 orthogonal neighbors (up, down, left, right).
         //    Each pair is (rowOffset, colOffset).
         int[][] directions = {
-            { -1,  0 },  // move up
-            {  1,  0 },  // move down
-            {  0, -1 },  // move left
-            {  0,  1 }   // move right
+                {-1, 0},  // move up
+                {1, 0},  // move down
+                {0, -1},  // move left
+                {0, 1}   // move right
         };
 
         int strokes = 0;  // This will accumulate the number of connected components.
@@ -67,7 +67,7 @@ public class BucketFill {
                     // Perform an iterative DFS flood‐fill from (r, c).
                     // We use a Stack<int[]> where each int[] is a 2‐element array {row, col}.
                     Stack<int[]> stack = new Stack<>();
-                    stack.push(new int[] { r, c });
+                    stack.push(new int[]{r, c});
 
                     // Capture which character this component belongs to.
                     char targetChar = grid[r][c];
@@ -103,7 +103,7 @@ public class BucketFill {
 
                             // 5d) If we reach here, (nr, nc) is part of the same component.
                             visited[nr][nc] = true;         // mark as visited
-                            stack.push(new int[] { nr, nc }); // add to stack for further expansion
+                            stack.push(new int[]{nr, nc}); // add to stack for further expansion
                         }
                     }
                     // when this while‐loop ends, we've marked the entire connected component.
@@ -118,19 +118,6 @@ public class BucketFill {
     }
 
     /**
-     * A simple helper class to hold each test case.
-     */
-    private static class TestCase {
-        final List<String> picture;
-        final int expected;
-
-        TestCase(List<String> picture, int expected) {
-            this.picture = picture;
-            this.expected = expected;
-        }
-    }
-
-    /**
      * Main method: creates test cases, runs strokesRequired on each,
      * and prints PASS/FAIL along with details.
      */
@@ -142,29 +129,29 @@ public class BucketFill {
         // picture = ["aa a b a",  "a b a b a",  "a a a c a"]
         // After filling, letter 'a' has 2 components, 'b' has 2, 'c' has 1 → total = 5.
         tests.add(new TestCase(
-            Arrays.asList("aaaba", "ababa", "aaaca"),
-            5
+                Arrays.asList("aaaba", "ababa", "aaaca"),
+                5
         ));
 
         // --- Sample Case 1 from prompt ---
         // picture = ["bbba", "abba", "acaa", "aaac"]
         // We see 'b' has 1 component, 'a' has 1 component, 'c' has 2 components → total = 4.
         tests.add(new TestCase(
-            Arrays.asList("bbba", "abba", "acaa", "aaac"),
-            4
+                Arrays.asList("bbba", "abba", "acaa", "aaac"),
+                4
         ));
 
         // --- Example in Description: ["aabba", "aabba", "aaacb"] ---
         // From the prompt diagram, 'a' has 2 disconnected regions, 'b' has 2, 'c' has 1 → total = 5.
         tests.add(new TestCase(
-            Arrays.asList("aabba", "aabba", "aaacb"),
-            5
+                Arrays.asList("aabba", "aabba", "aaacb"),
+                5
         ));
 
         // --- Minimum size: h = 1, w = 1. Single cell 'c'. Answer = 1. ---
         tests.add(new TestCase(
-            Collections.singletonList("c"),
-            1
+                Collections.singletonList("c"),
+                1
         ));
 
         // --- Uniform large grid test (stress test) ---
@@ -223,5 +210,18 @@ public class BucketFill {
         // Final summary
         System.out.println();
         System.out.println("Summary: Passed " + passedCount + " out of " + tests.size() + " tests.");
+    }
+
+    /**
+     * A simple helper class to hold each test case.
+     */
+    private static class TestCase {
+        final List<String> picture;
+        final int expected;
+
+        TestCase(List<String> picture, int expected) {
+            this.picture = picture;
+            this.expected = expected;
+        }
     }
 }

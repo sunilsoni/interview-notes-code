@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class FrequentWordsFinder {
-    
+
     public static List<String> findTopKFrequentWords(String[] words, int k) {
         // Edge case: if input array is empty or k is 0
         if (words == null || words.length == 0 || k <= 0) {
@@ -14,20 +14,20 @@ public class FrequentWordsFinder {
         // Step 1: Count word frequencies using HashMap
         Map<String, Integer> wordFreq = new HashMap<>();
         Arrays.stream(words)
-              .forEach(word -> wordFreq.merge(word, 1, Integer::sum));
+                .forEach(word -> wordFreq.merge(word, 1, Integer::sum));
 
         // Step 2: Sort words based on frequency and lexicographical order
         return wordFreq.entrySet()
-                      .stream()
-                      .sorted((e1, e2) -> {
-                          // If frequencies are different, sort by frequency in descending order
-                          int freqCompare = e2.getValue().compareTo(e1.getValue());
-                          // If frequencies are same, sort alphabetically
-                          return freqCompare != 0 ? freqCompare : e1.getKey().compareTo(e2.getKey());
-                      })
-                      .limit(k) // Take only k elements
-                      .map(Map.Entry::getKey) // Extract just the words
-                      .collect(Collectors.toList());
+                .stream()
+                .sorted((e1, e2) -> {
+                    // If frequencies are different, sort by frequency in descending order
+                    int freqCompare = e2.getValue().compareTo(e1.getValue());
+                    // If frequencies are same, sort alphabetically
+                    return freqCompare != 0 ? freqCompare : e1.getKey().compareTo(e2.getKey());
+                })
+                .limit(k) // Take only k elements
+                .map(Map.Entry::getKey) // Extract just the words
+                .collect(Collectors.toList());
     }
 
     // Main method for testing

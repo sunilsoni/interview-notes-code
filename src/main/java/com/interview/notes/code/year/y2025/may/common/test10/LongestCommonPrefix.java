@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.may.common.test10;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class LongestCommonPrefix {
 

@@ -10,11 +10,11 @@ import java.util.List;
 
 /**
  * A simple test driver with a main method.  It:
- *   1) Creates a temporary root directory.
- *   2) Fills it with a “big” file (> 5 MB), some XML files, some other files, and a nested subdir.
- *   3) Creates a “manyFiles” subdir with 1,000 small files to simulate a large tree.
- *   4) Runs FileFinder.find(...) for each test scenario, printing PASS or FAIL.
- *
+ * 1) Creates a temporary root directory.
+ * 2) Fills it with a “big” file (> 5 MB), some XML files, some other files, and a nested subdir.
+ * 3) Creates a “manyFiles” subdir with 1,000 small files to simulate a large tree.
+ * 4) Runs FileFinder.find(...) for each test scenario, printing PASS or FAIL.
+ * <p>
  * We do NOT use JUnit; instead, we run everything in a single main(...) for demonstration.
  */
 public class FileFinderTest {

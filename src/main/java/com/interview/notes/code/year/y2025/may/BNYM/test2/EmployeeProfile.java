@@ -1,18 +1,21 @@
 package com.interview.notes.code.year.y2025.may.BNYM.test2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  * This version’s main() method directly runs all built-in test cases
  * (including the provided samples) without expecting any user input.
- *
+ * <p>
  * To compile:
- *   javac EmployeeProfile.java
- *
+ * javac EmployeeProfile.java
+ * <p>
  * To run:
- *   java EmployeeProfile
- *
+ * java EmployeeProfile
+ * <p>
  * The program will immediately execute PASS/FAIL tests and exit.
  */
 
@@ -20,10 +23,13 @@ import java.util.stream.Collectors;
 // 1. Abstract class //
 ///////////////////////
 abstract class Employee {
-    public abstract void setSalary(int salary);
     public abstract int getSalary();
-    public abstract void setGrade(String grade);
+
+    public abstract void setSalary(int salary);
+
     public abstract String getGrade();
+
+    public abstract void setGrade(String grade);
 
     // Prints the label for an employee
     public void label() {
@@ -31,64 +37,67 @@ abstract class Employee {
     }
 }
 
-//////////////////////
+/// ///////////////////
 // 2. Engineer class //
+
 //////////////////////
 class Engineer extends Employee {
     private int salary;
     private String grade;
 
     @Override
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    @Override
     public int getSalary() {
         return this.salary;
     }
 
     @Override
-    public void setGrade(String grade) {
-        this.grade = grade;
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
     @Override
     public String getGrade() {
         return this.grade;
     }
+
+    @Override
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
 }
 
 //////////////////////
 // 3. Manager class //
+
 //////////////////////
 class Manager extends Employee {
     private int salary;
     private String grade;
 
     @Override
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    @Override
     public int getSalary() {
         return this.salary;
     }
 
     @Override
-    public void setGrade(String grade) {
-        this.grade = grade;
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
     @Override
     public String getGrade() {
         return this.grade;
     }
+
+    @Override
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
 }
 
 ///////////////////////////
 // 4. EmployeeProfile    //
+
 ///////////////////////////
 public class EmployeeProfile {
 
@@ -115,7 +124,7 @@ public class EmployeeProfile {
 
         if (lines.size() < 1 + n) {
             throw new IllegalArgumentException(
-                "Expected " + n + " employee lines but got only " + (lines.size() - 1) + "."
+                    "Expected " + n + " employee lines but got only " + (lines.size() - 1) + "."
             );
         }
 
@@ -123,51 +132,51 @@ public class EmployeeProfile {
 
         // Use Java 8 stream to process exactly n lines after the first
         lines.stream()
-             .skip(1)
-             .limit(n)
-             .forEach(line -> {
-                 String trimmed = line.trim();
-                 if (trimmed.isEmpty()) {
-                     throw new IllegalArgumentException("Employee line cannot be empty.");
-                 }
+                .skip(1)
+                .limit(n)
+                .forEach(line -> {
+                    String trimmed = line.trim();
+                    if (trimmed.isEmpty()) {
+                        throw new IllegalArgumentException("Employee line cannot be empty.");
+                    }
 
-                 String[] parts = trimmed.split("\\s+");
-                 if (parts.length != 3) {
-                     throw new IllegalArgumentException(
-                         "Each employee line must have 3 tokens: TYPE GRADE SALARY. Got: \"" + line + "\""
-                     );
-                 }
+                    String[] parts = trimmed.split("\\s+");
+                    if (parts.length != 3) {
+                        throw new IllegalArgumentException(
+                                "Each employee line must have 3 tokens: TYPE GRADE SALARY. Got: \"" + line + "\""
+                        );
+                    }
 
-                 String type       = parts[0];   // "ENGINEER" or "MANAGER"
-                 String gradeInput = parts[1];   // e.g. "A"
-                 String salaryStr  = parts[2];   // e.g. "50000"
+                    String type = parts[0];   // "ENGINEER" or "MANAGER"
+                    String gradeInput = parts[1];   // e.g. "A"
+                    String salaryStr = parts[2];   // e.g. "50000"
 
-                 int salaryValue;
-                 try {
-                     salaryValue = Integer.parseInt(salaryStr);
-                 } catch (NumberFormatException ex) {
-                     throw new IllegalArgumentException("Invalid salary: \"" + salaryStr + "\"");
-                 }
+                    int salaryValue;
+                    try {
+                        salaryValue = Integer.parseInt(salaryStr);
+                    } catch (NumberFormatException ex) {
+                        throw new IllegalArgumentException("Invalid salary: \"" + salaryStr + "\"");
+                    }
 
-                 Employee emp;
-                 switch (type) {
-                     case "ENGINEER":
-                         emp = new Engineer();
-                         break;
-                     case "MANAGER":
-                         emp = new Manager();
-                         break;
-                     default:
-                         throw new IllegalArgumentException("Unknown employee type: \"" + type + "\"");
-                 }
+                    Employee emp;
+                    switch (type) {
+                        case "ENGINEER":
+                            emp = new Engineer();
+                            break;
+                        case "MANAGER":
+                            emp = new Manager();
+                            break;
+                        default:
+                            throw new IllegalArgumentException("Unknown employee type: \"" + type + "\"");
+                    }
 
-                 emp.setGrade(gradeInput);
-                 emp.setSalary(salaryValue);
+                    emp.setGrade(gradeInput);
+                    emp.setSalary(salaryValue);
 
-                 output.add("Employee's data:");
-                 output.add("GRADE : " + emp.getGrade());
-                 output.add("SALARY : " + emp.getSalary());
-             });
+                    output.add("Employee's data:");
+                    output.add("GRADE : " + emp.getGrade());
+                    output.add("SALARY : " + emp.getSalary());
+                });
 
         return output;
     }
@@ -182,26 +191,27 @@ public class EmployeeProfile {
 
     ////////////////////////////
     // 5. Testing harness     //
+
     ////////////////////////////
     private static void runAllTests() {
         System.out.println("===== Running Built-In Tests =====\n");
 
         // ---- Sample Case 0 ----
         String sampleCase0InputStr =
-            "2\n" +
-            "ENGINEER B 50000\n" +
-            "MANAGER A 70000\n";
+                "2\n" +
+                        "ENGINEER B 50000\n" +
+                        "MANAGER A 70000\n";
         List<String> sampleCase0InputLines = Arrays.stream(sampleCase0InputStr.split("\\R"))
-                                                   .collect(Collectors.toList());
+                .collect(Collectors.toList());
         List<String> sampleCase0Result = processLines(sampleCase0InputLines);
 
         List<String> sampleCase0Expected = Arrays.asList(
-            "Employee's data:",
-            "GRADE : B",
-            "SALARY : 50000",
-            "Employee's data:",
-            "GRADE : A",
-            "SALARY : 70000"
+                "Employee's data:",
+                "GRADE : B",
+                "SALARY : 50000",
+                "Employee's data:",
+                "GRADE : A",
+                "SALARY : 70000"
         );
 
         boolean pass0 = sampleCase0Result.equals(sampleCase0Expected);
@@ -216,24 +226,24 @@ public class EmployeeProfile {
 
         // ---- Sample Case 1 ----
         String sampleCase1InputStr =
-            "3\n" +
-            "ENGINEER B 50000\n" +
-            "MANAGER A 70000\n" +
-            "MANAGER A 90000\n";
+                "3\n" +
+                        "ENGINEER B 50000\n" +
+                        "MANAGER A 70000\n" +
+                        "MANAGER A 90000\n";
         List<String> sampleCase1InputLines = Arrays.stream(sampleCase1InputStr.split("\\R"))
-                                                   .collect(Collectors.toList());
+                .collect(Collectors.toList());
         List<String> sampleCase1Result = processLines(sampleCase1InputLines);
 
         List<String> sampleCase1Expected = Arrays.asList(
-            "Employee's data:",
-            "GRADE : B",
-            "SALARY : 50000",
-            "Employee's data:",
-            "GRADE : A",
-            "SALARY : 70000",
-            "Employee's data:",
-            "GRADE : A",
-            "SALARY : 90000"
+                "Employee's data:",
+                "GRADE : B",
+                "SALARY : 50000",
+                "Employee's data:",
+                "GRADE : A",
+                "SALARY : 70000",
+                "Employee's data:",
+                "GRADE : A",
+                "SALARY : 90000"
         );
 
         boolean pass1 = sampleCase1Result.equals(sampleCase1Expected);
@@ -262,27 +272,27 @@ public class EmployeeProfile {
 
         // ---- Additional Custom Test: All ENGINEER lines ----
         String multiEngineerStr =
-            "4\n" +
-            "ENGINEER C 30000\n" +
-            "ENGINEER C 40000\n" +
-            "ENGINEER D 50000\n" +
-            "ENGINEER E 60000\n";
+                "4\n" +
+                        "ENGINEER C 30000\n" +
+                        "ENGINEER C 40000\n" +
+                        "ENGINEER D 50000\n" +
+                        "ENGINEER E 60000\n";
         List<String> multiEngineerLines = Arrays.stream(multiEngineerStr.split("\\R"))
-                                                .collect(Collectors.toList());
+                .collect(Collectors.toList());
         List<String> multiEngineerResult = processLines(multiEngineerLines);
         List<String> multiEngineerExpected = Arrays.asList(
-            "Employee's data:",
-            "GRADE : C",
-            "SALARY : 30000",
-            "Employee's data:",
-            "GRADE : C",
-            "SALARY : 40000",
-            "Employee's data:",
-            "GRADE : D",
-            "SALARY : 50000",
-            "Employee's data:",
-            "GRADE : E",
-            "SALARY : 60000"
+                "Employee's data:",
+                "GRADE : C",
+                "SALARY : 30000",
+                "Employee's data:",
+                "GRADE : C",
+                "SALARY : 40000",
+                "Employee's data:",
+                "GRADE : D",
+                "SALARY : 50000",
+                "Employee's data:",
+                "GRADE : E",
+                "SALARY : 60000"
         );
         boolean passMultiEng = multiEngineerResult.equals(multiEngineerExpected);
         System.out.println("Custom Case (4 ENGINEERS): " + (passMultiEng ? "PASS" : "FAIL"));
@@ -304,8 +314,8 @@ public class EmployeeProfile {
 
         long startTime = System.currentTimeMillis();
         List<String> largeResult = processLines(largeInputLines);
-        long endTime   = System.currentTimeMillis();
-        long elapsed   = endTime - startTime; // in milliseconds
+        long endTime = System.currentTimeMillis();
+        long elapsed = endTime - startTime; // in milliseconds
 
         boolean passLarge = (largeResult.size() == LARGE_N * 3);
         System.out.println("Large Data Test (n = " + LARGE_N + "): " + (passLarge ? "PASS" : "FAIL"));

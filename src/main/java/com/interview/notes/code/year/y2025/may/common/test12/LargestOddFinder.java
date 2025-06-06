@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class LargestOddFinder {
 
     /**
-     * Extracts all numeric substrings from input S, filters odd ones, 
+     * Extracts all numeric substrings from input S, filters odd ones,
      * and returns the largest odd number as a string. Returns "-1" if none.
      */
     public static String largestOddNumber(String S) {
@@ -19,7 +19,7 @@ public class LargestOddFinder {
 
         // Iterate through all occurrences of digit-groups in S
         while (matcher.find()) {
-            String digitGroup = matcher.group();  
+            String digitGroup = matcher.group();
             // digitGroup is a substring of S consisting only of digits
             // e.g., if S = "a12b3c45", digitGroup sequence: "12", "3", "45"
 
@@ -28,7 +28,7 @@ public class LargestOddFinder {
             // 'lastChar' is something like '2', '3', '5', etc.
 
             // Convert the char digit to integer: subtract '0'
-            int lastDigit = lastChar - '0';  
+            int lastDigit = lastChar - '0';
             // Now lastDigit is an int between 0 and 9
 
             // If lastDigit % 2 != 0, it’s an odd number
@@ -37,7 +37,7 @@ public class LargestOddFinder {
                 BigInteger currentValue = new BigInteger(digitGroup);
                 // If maxOdd is null (no odd found yet), or currentValue > maxOdd, update
                 if (maxOdd == null || currentValue.compareTo(maxOdd) > 0) {
-                    maxOdd = currentValue;  
+                    maxOdd = currentValue;
                     // Now maxOdd holds the largest odd found so far
                 }
             }
@@ -60,11 +60,11 @@ public class LargestOddFinder {
     private static void runTest(String input, String expected) {
         String actual = largestOddNumber(input);
         if (actual.equals(expected)) {
-            System.out.println("PASS | Input: \"" + input + "\" | Expected: \"" 
-                                + expected + "\" | Actual: \"" + actual + "\"");
+            System.out.println("PASS | Input: \"" + input + "\" | Expected: \""
+                    + expected + "\" | Actual: \"" + actual + "\"");
         } else {
-            System.out.println("FAIL | Input: \"" + input + "\" | Expected: \"" 
-                                + expected + "\" | Actual: \"" + actual + "\"");
+            System.out.println("FAIL | Input: \"" + input + "\" | Expected: \""
+                    + expected + "\" | Actual: \"" + actual + "\"");
         }
     }
 
@@ -74,7 +74,7 @@ public class LargestOddFinder {
     public static void main(String[] args) {
         System.out.println("=== Running Provided Example Tests ===");
         // Example 1: "gt12cty65mt1" → groups: 12, 65, 1 → odd: 65, 1 → max = 65
-        runTest("gt12cty65mt1", "65");  
+        runTest("gt12cty65mt1", "65");
 
         // Example 2: "mkf43kd1cmk32k1mv123" → groups: 43,1,32,1,123 → odd: 43,1,1,123 → max = 123
         runTest("mkf43kd1cmk32k1mv123", "123");
@@ -111,7 +111,7 @@ public class LargestOddFinder {
         }
         String largeEven = largeEvenBuilder.toString();
         String mixed = largeEven + "3";  // “2222…2223” → last substring is “2222…2223”, an odd 251-digit number
-        runTest(mixed, mixed);  
+        runTest(mixed, mixed);
 
         System.out.println("\n=== Running Additional Random / Large Input Test ===");
         // 8. Generate a 500-character random mixture of letters/digits, 
@@ -123,13 +123,13 @@ public class LargestOddFinder {
     }
 
     /**
-     * Generates a random string of length 'len' composed of lowercase letters (a–z) 
+     * Generates a random string of length 'len' composed of lowercase letters (a–z)
      * and digits (0–9). Used for performance testing.
      */
     private static String generateRandomMixedString(int len) {
         StringBuilder sb = new StringBuilder(len);
         String chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-        java.util.Random rand = new java.util.Random(0);  
+        java.util.Random rand = new java.util.Random(0);
         // Use fixed seed (0) so result is reproducible if needed
         for (int i = 0; i < len; i++) {
             int idx = rand.nextInt(chars.length());

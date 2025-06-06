@@ -8,11 +8,12 @@ import java.nio.file.Path;
  * We perform a case‐insensitive check (convert both to lowercase).
  */
 public class ExtensionCriteria implements SearchCriteria {
-    private final String extensionLower; 
+    private final String extensionLower;
     // e.g., ".xml" (converted to lowercase in constructor)
 
     /**
      * Constructs the criterion for the given extension.
+     *
      * @param extension file extension to match, e.g. ".xml" (dot included)
      */
     public ExtensionCriteria(String extension) {

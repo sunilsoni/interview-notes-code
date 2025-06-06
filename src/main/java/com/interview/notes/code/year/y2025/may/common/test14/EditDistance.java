@@ -1,11 +1,13 @@
 package com.interview.notes.code.year.y2025.may.common.test14;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EditDistance {
 
     /**
      * Compute the minimum edit distance (Levenshtein distance) between word1 and word2.
+     *
      * @param word1 The source string.
      * @param word2 The target string.
      * @return The minimum number of single-character edits to transform word1 into word2.
@@ -112,19 +114,19 @@ public class EditDistance {
             boolean passed = (actual == tc.expected);
             // Print result
             if (passed) {
-                System.out.println("Test " + testNumber + ": PASS (\"" 
-                    + tc.word1 + "\" -> \"" + tc.word2 + "\" => " + actual + ")");
+                System.out.println("Test " + testNumber + ": PASS (\""
+                        + tc.word1 + "\" -> \"" + tc.word2 + "\" => " + actual + ")");
             } else {
-                System.out.println("Test " + testNumber + ": FAIL (\"" 
-                    + tc.word1 + "\" -> \"" + tc.word2 + "\" => expected " 
-                    + tc.expected + ", but got " + actual + ")");
+                System.out.println("Test " + testNumber + ": FAIL (\""
+                        + tc.word1 + "\" -> \"" + tc.word2 + "\" => expected "
+                        + tc.expected + ", but got " + actual + ")");
             }
             testNumber++;
         }
     }
 
-    /**  
-     * Helper class to store a single test case.  
+    /**
+     * Helper class to store a single test case.
      */
     static class TestCase {
         String word1;

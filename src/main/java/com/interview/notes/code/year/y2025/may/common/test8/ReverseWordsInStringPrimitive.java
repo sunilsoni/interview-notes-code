@@ -4,6 +4,7 @@ public class ReverseWordsInStringPrimitive {
 
     /**
      * Reverses words in the string, removes extra spaces.
+     *
      * @param s input string
      * @return reversed words string, single-spaced
      */
@@ -54,14 +55,14 @@ public class ReverseWordsInStringPrimitive {
     // --- Minimal main method for testing ---
     public static void main(String[] args) {
         String[][] testCases = {
-            {"  the sky   is blue  ", "blue is sky the"},
-            {"hello world", "world hello"},
-            {"  a   good   example ", "example good a"},
-            {"   ", ""},
-            {"", ""},
-            {"one", "one"},
-            {"   singleWord   ", "singleWord"},
-            {generateLargeInput(10000), generateLargeOutput(10000)}
+                {"  the sky   is blue  ", "blue is sky the"},
+                {"hello world", "world hello"},
+                {"  a   good   example ", "example good a"},
+                {"   ", ""},
+                {"", ""},
+                {"one", "one"},
+                {"   singleWord   ", "singleWord"},
+                {generateLargeInput(10000), generateLargeOutput(10000)}
         };
 
         int passCount = 0;

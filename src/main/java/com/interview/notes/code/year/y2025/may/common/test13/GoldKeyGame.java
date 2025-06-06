@@ -1,8 +1,6 @@
 package com.interview.notes.code.year.y2025.may.common.test13;
 
-import java.io.*;
 import java.util.*;
-import java.util.stream.*;
 
 public class GoldKeyGame {
 
@@ -110,10 +108,10 @@ public class GoldKeyGame {
         String actual = gameResult(N, P, M, X);
         if (actual.equals(expected)) {
             System.out.println("PASS | N=" + N + " P=" + P + " M=" + M + " X=" + X +
-                               " | Expected=" + expected + " | Actual=" + actual);
+                    " | Expected=" + expected + " | Actual=" + actual);
         } else {
             System.out.println("FAIL | N=" + N + " P=" + P + " M=" + M + " X=" + X +
-                               " | Expected=" + expected + " | Actual=" + actual);
+                    " | Expected=" + expected + " | Actual=" + actual);
         }
     }
 

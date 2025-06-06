@@ -45,13 +45,13 @@ public class FileFinder {
         //    try-with-resources so the Stream is closed automatically.
         try (Stream<Path> stream = Files.walk(startDir)) {
             return stream
-                // 4a) We only want regular files (not directories).  isRegularFile may return false
-                //     if a path is a directory or if we lack permission.  That’s OK: filter it out.
-                .filter(path -> Files.isRegularFile(path))
-                // 4b) For each regular file, check if ALL criteria are satisfied.
-                .filter(path -> matchesAll(path, criteria))
-                // 4c) Collect the matching files into a List<Path>.
-                .collect(Collectors.toList());
+                    // 4a) We only want regular files (not directories).  isRegularFile may return false
+                    //     if a path is a directory or if we lack permission.  That’s OK: filter it out.
+                    .filter(path -> Files.isRegularFile(path))
+                    // 4b) For each regular file, check if ALL criteria are satisfied.
+                    .filter(path -> matchesAll(path, criteria))
+                    // 4c) Collect the matching files into a List<Path>.
+                    .collect(Collectors.toList());
         } catch (IOException e) {
             // Wrap any checked IOException in a runtime exception so the caller knows.
             throw new UncheckedIOException("Error walking the file tree at: " + startDir, e);

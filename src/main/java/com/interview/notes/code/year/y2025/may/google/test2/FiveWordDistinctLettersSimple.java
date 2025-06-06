@@ -8,58 +8,43 @@ import java.util.stream.Collectors;
 
 public class FiveWordDistinctLettersSimple {
 
-    /**
-     * A helper class that pairs a 5-letter word with its Set<Character>.
-     * We use this so that, during DFS, we can quickly check letter-overlap
-     * by calling set operations, rather than recomputing characters each time.
-     */
-    private static class WordLetters {
-        final String word;               // the 5-letter word itself
-        final Set<Character> letters;    // a Set of its 5 distinct letters
-
-        WordLetters(String w, Set<Character> letters) {
-            this.word = w;
-            this.letters = letters;
-        }
-    }
-
     // Once we find any valid 5-word combination, we store it here and stop searching.
     private static List<String> solution = null;
 
     public static void main(String[] args) {
         // --------- TEST CASE 1: should find a solution ----------
         List<String> dict1 = Arrays.asList(
-            "chunk",  // c, h, u, n, k
-            "fjord",  // f, j, o, r, d
-            "vibex",  // v, i, b, e, x
-            "gucks",  // g, u, c, k, s
-            "waltz"   // w, a, l, t, z
-            // One valid 5-word combo: ["chunk","fjord","vibex","gucks","waltz"]
-            // covers 25 distinct letters (missing only 'm').
+                "chunk",  // c, h, u, n, k
+                "fjord",  // f, j, o, r, d
+                "vibex",  // v, i, b, e, x
+                "gucks",  // g, u, c, k, s
+                "waltz"   // w, a, l, t, z
+                // One valid 5-word combo: ["chunk","fjord","vibex","gucks","waltz"]
+                // covers 25 distinct letters (missing only 'm').
         );
         runTest("Test 1", dict1, true);
 
         // --------- TEST CASE 2: should NOT find a solution ----------
         List<String> dict2 = Arrays.asList(
-            "apple",  // has duplicates → filtered out
-            "altar",  // all share 'a'
-            "agent",  // all share 'a'
-            "angle",  // all share 'a'
-            "amuse",  // all share 'a'
-            "abril"   // all share 'a'
+                "apple",  // has duplicates → filtered out
+                "altar",  // all share 'a'
+                "agent",  // all share 'a'
+                "angle",  // all share 'a'
+                "amuse",  // all share 'a'
+                "abril"   // all share 'a'
         );
         runTest("Test 2", dict2, false);
 
         // --------- TEST CASE 3: minimal example that DOES have a solution ----------
         List<String> dict3 = Arrays.asList(
-            "abcde",  // a, b, c, d, e
-            "fghij",  // f, g, h, i, j
-            "klmno",  // k, l, m, n, o
-            "pqrst",  // p, q, r, s, t
-            "uvwxy",  // u, v, w, x, y
-            // "aaaaa", "zzzzz" would be filtered out automatically
-            "aaaaa",  // invalid (duplicates)
-            "zzzzz"   // invalid (duplicates)
+                "abcde",  // a, b, c, d, e
+                "fghij",  // f, g, h, i, j
+                "klmno",  // k, l, m, n, o
+                "pqrst",  // p, q, r, s, t
+                "uvwxy",  // u, v, w, x, y
+                // "aaaaa", "zzzzz" would be filtered out automatically
+                "aaaaa",  // invalid (duplicates)
+                "zzzzz"   // invalid (duplicates)
         );
         runTest("Test 3", dict3, true);
 
@@ -127,24 +112,24 @@ public class FiveWordDistinctLettersSimple {
 
     /**
      * The main solver. Steps:
-     *   1. Normalize dictionary to lowercase, filter to 5-letter words with distinct letters.
-     *   2. Convert each to a WordLetters (word + Set<Character>).
-     *   3. Run DFS to try all combinations of 5 words, carrying a Set<Character> of used letters.
-     *   4. As soon as we find depth=5 with 25 distinct letters, we store it in 'solution'.
-     *
+     * 1. Normalize dictionary to lowercase, filter to 5-letter words with distinct letters.
+     * 2. Convert each to a WordLetters (word + Set<Character>).
+     * 3. Run DFS to try all combinations of 5 words, carrying a Set<Character> of used letters.
+     * 4. As soon as we find depth=5 with 25 distinct letters, we store it in 'solution'.
+     * <p>
      * Worst-case time: O(N) to filter, plus O(W^5) to DFS (where W is # of valid 5-letter words).
      * In practice, the pruning (reject as soon as any letter overlaps) makes it much faster.
      */
     public static List<String> findFiveWordsWith25DistinctLetters(List<String> dictionary) {
         // 1) Filter & map: keep only 5-letter words with all distinct letters.
         List<WordLetters> wordList = dictionary.stream()
-            .filter(Objects::nonNull)                                // remove nulls
-            .map(String::trim)                                        // strip whitespace
-            .map(String::toLowerCase)                                 // normalize to lowercase
-            .filter(w -> w.length() == 5)                             // keep only length==5
-            .map(FiveWordDistinctLettersSimple::toWordLetters)        // build WordLetters or null if invalid
-            .filter(Objects::nonNull)                                 // remove invalid ones
-            .collect(Collectors.toList());                            // collect into List<WordLetters>
+                .filter(Objects::nonNull)                                // remove nulls
+                .map(String::trim)                                        // strip whitespace
+                .map(String::toLowerCase)                                 // normalize to lowercase
+                .filter(w -> w.length() == 5)                             // keep only length==5
+                .map(FiveWordDistinctLettersSimple::toWordLetters)        // build WordLetters or null if invalid
+                .filter(Objects::nonNull)                                 // remove invalid ones
+                .collect(Collectors.toList());                            // collect into List<WordLetters>
 
         // If fewer than 5 valid words remain, no solution is possible.
         if (wordList.size() < 5) {
@@ -161,9 +146,9 @@ public class FiveWordDistinctLettersSimple {
     /**
      * Converts a 5-letter string 'w' into a WordLetters (word + Set of its chars).
      * Returns null if:
-     *   - any character is not in [a..z], or
-     *   - the word has any repeated letter inside it.
-     *
+     * - any character is not in [a..z], or
+     * - the word has any repeated letter inside it.
+     * <p>
      * Time: O(5) = O(1), since length is exactly 5.
      */
     private static WordLetters toWordLetters(String w) {
@@ -182,16 +167,16 @@ public class FiveWordDistinctLettersSimple {
     }
 
     /**
-     * Recursive DFS. 
+     * Recursive DFS.
      *
-     * @param wordList   List of WordLetters (word + its letter set).
-     * @param startIdx   Next index in wordList we can pick from.
-     * @param used       Set<Character> of letters already chosen so far.
-     * @param combo      List<String> of chosen words so far.
-     *
-     * At each level, we try to add one more word, as long as it shares no letter with 'used'.
-     * As soon as combo.size() == 5 and used.size() == 25, we record 'combo' in 'solution'.
-     * We then stop descending further.
+     * @param wordList List of WordLetters (word + its letter set).
+     * @param startIdx Next index in wordList we can pick from.
+     * @param used     Set<Character> of letters already chosen so far.
+     * @param combo    List<String> of chosen words so far.
+     *                 <p>
+     *                 At each level, we try to add one more word, as long as it shares no letter with 'used'.
+     *                 As soon as combo.size() == 5 and used.size() == 25, we record 'combo' in 'solution'.
+     *                 We then stop descending further.
      */
     private static void dfs(
             List<WordLetters> wordList,
@@ -276,5 +261,20 @@ public class FiveWordDistinctLettersSimple {
         }
         // Finally, we need exactly 25 different letters
         return (seen.size() == 25);
+    }
+
+    /**
+     * A helper class that pairs a 5-letter word with its Set<Character>.
+     * We use this so that, during DFS, we can quickly check letter-overlap
+     * by calling set operations, rather than recomputing characters each time.
+     */
+    private static class WordLetters {
+        final String word;               // the 5-letter word itself
+        final Set<Character> letters;    // a Set of its 5 distinct letters
+
+        WordLetters(String w, Set<Character> letters) {
+            this.word = w;
+            this.letters = letters;
+        }
     }
 }

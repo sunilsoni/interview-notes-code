@@ -6,6 +6,7 @@ public class ReverseWordsInStringPrimitive {
      * Reverses words in a string while handling multiple spaces.
      * Input: "  the sky   is blue  "
      * Output: "blue is sky the"
+     *
      * @param s input string that may contain multiple spaces
      * @return string with words in reverse order, single-spaced
      */
@@ -13,7 +14,7 @@ public class ReverseWordsInStringPrimitive {
         // Initialize array to store words - size = string length as worst case scenario
         // (if every character is a single-letter word)
         String[] words = new String[s.length()];
-        
+
         // Counter to track actual number of words found
         // Needed because array size != actual word count
         int wordCount = 0;
@@ -74,38 +75,38 @@ public class ReverseWordsInStringPrimitive {
     public static void main(String[] args) {
         // Array of test cases, each containing input and expected output
         String[][] testCases = {
-            // Normal case with multiple spaces
-            {"  the sky   is blue  ", "blue is sky the"},
-            // Simple two-word case
-            {"hello world", "world hello"},
-            // Multiple spaces between words
-            {"  a   good   example ", "example good a"},
-            // Edge case: only spaces
-            {"   ", ""},
-            // Edge case: empty string
-            {"", ""},
-            // Single word case
-            {"one", "one"},
-            // Single word with surrounding spaces
-            {"   singleWord   ", "singleWord"},
-            // Large input test case
-            {generateLargeInput(10000), generateLargeOutput(10000)}
+                // Normal case with multiple spaces
+                {"  the sky   is blue  ", "blue is sky the"},
+                // Simple two-word case
+                {"hello world", "world hello"},
+                // Multiple spaces between words
+                {"  a   good   example ", "example good a"},
+                // Edge case: only spaces
+                {"   ", ""},
+                // Edge case: empty string
+                {"", ""},
+                // Single word case
+                {"one", "one"},
+                // Single word with surrounding spaces
+                {"   singleWord   ", "singleWord"},
+                // Large input test case
+                {generateLargeInput(10000), generateLargeOutput(10000)}
         };
 
         // Track number of passing tests
         int passCount = 0;
-        
+
         // Run each test case
         for (int i = 0; i < testCases.length; i++) {
             String input = testCases[i][0];
             String expected = testCases[i][1];
             String actual = reverseWords(input);
             boolean pass = expected.equals(actual);
-            
+
             // Print test results
-            System.out.println("Test Case " + (i + 1) + ": " + 
-                             (pass ? "PASS" : "FAIL"));
-            
+            System.out.println("Test Case " + (i + 1) + ": " +
+                    (pass ? "PASS" : "FAIL"));
+
             // If test failed, show detailed information
             if (!pass) {
                 System.out.println("  Input:    \"" + input + "\"");
@@ -115,14 +116,15 @@ public class ReverseWordsInStringPrimitive {
                 passCount++;
             }
         }
-        
+
         // Print summary of test results
-        System.out.println("\nSummary: " + passCount + "/" + 
-                          testCases.length + " test cases passed.");
+        System.out.println("\nSummary: " + passCount + "/" +
+                testCases.length + " test cases passed.");
     }
 
     /**
      * Generates a large test input string
+     *
      * @param n number of words to generate
      * @return string with n words separated by varying spaces
      */
@@ -138,6 +140,7 @@ public class ReverseWordsInStringPrimitive {
 
     /**
      * Generates expected output for large input test
+     *
      * @param n number of words in output
      * @return string with n words in reverse order
      */

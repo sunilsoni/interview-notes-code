@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class LongestCommonPrefix {
-    
+
     public static String longestCommonPrefix(List<String> strs) {
         /* Why we need sorting:
          * 1. Sorting arranges strings in lexicographical order
@@ -43,9 +43,9 @@ public class LongestCommonPrefix {
          * Result: "fl"
          */
         int i = 0;
-        while (i < first.length() && 
-               i < last.length() && 
-               first.charAt(i) == last.charAt(i)) {
+        while (i < first.length() &&
+                i < last.length() &&
+                first.charAt(i) == last.charAt(i)) {
             i++;
         }
 

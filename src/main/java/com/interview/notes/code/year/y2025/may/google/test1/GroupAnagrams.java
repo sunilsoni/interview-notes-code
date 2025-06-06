@@ -7,7 +7,7 @@ public class GroupAnagrams {
 
     /**
      * Groups a list of strings into lists of anagrams.
-     * 
+     *
      * @param strs Array of input strings (can be null or empty)
      * @return List of groups, where each group is a list of anagrams
      */
@@ -52,71 +52,71 @@ public class GroupAnagrams {
 
         // 1. Example from problem statement
         testCases.add(new TestCase(
-            new String[] {"eat", "tea", "tan", "ate", "nat", "bat"},
-            Arrays.asList(
-                Arrays.asList("eat", "tea", "ate"),
-                Arrays.asList("tan", "nat"),
-                Arrays.asList("bat")
-            )
+                new String[]{"eat", "tea", "tan", "ate", "nat", "bat"},
+                Arrays.asList(
+                        Arrays.asList("eat", "tea", "ate"),
+                        Arrays.asList("tan", "nat"),
+                        Arrays.asList("bat")
+                )
         ));
 
         // 2. Empty array → expect empty output
         testCases.add(new TestCase(
-            new String[] {},
-            Collections.emptyList()
+                new String[]{},
+                Collections.emptyList()
         ));
 
         // 3. Array with one string only → that string forms one group
         testCases.add(new TestCase(
-            new String[] {"hello"},
-            Arrays.asList(
-                Arrays.asList("hello")
-            )
+                new String[]{"hello"},
+                Arrays.asList(
+                        Arrays.asList("hello")
+                )
         ));
 
         // 4. All strings are identical → all go into one group
         testCases.add(new TestCase(
-            new String[] {"abc", "abc", "abc"},
-            Arrays.asList(
-                Arrays.asList("abc", "abc", "abc")
-            )
+                new String[]{"abc", "abc", "abc"},
+                Arrays.asList(
+                        Arrays.asList("abc", "abc", "abc")
+                )
         ));
 
         // 5. No two strings are anagrams → each string is its own group
         testCases.add(new TestCase(
-            new String[] {"one", "two", "three", "four"},
-            Arrays.asList(
-                Collections.singletonList("one"),
-                Collections.singletonList("two"),
-                Collections.singletonList("three"),
-                Collections.singletonList("four")
-            )
+                new String[]{"one", "two", "three", "four"},
+                Arrays.asList(
+                        Collections.singletonList("one"),
+                        Collections.singletonList("two"),
+                        Collections.singletonList("three"),
+                        Collections.singletonList("four")
+                )
         ));
 
         // 6. Strings with empty string edge case
         testCases.add(new TestCase(
-            new String[] {"", ""},
-            Arrays.asList(
-                Arrays.asList("", "")
-            )
+                new String[]{"", ""},
+                Arrays.asList(
+                        Arrays.asList("", "")
+                )
         ));
 
         // 7. Mixed-case strings and unicode (we treat them literally)
         testCases.add(new TestCase(
-            new String[] {"bAt", "tab", "TAb"}, 
-            Arrays.asList(
-                Arrays.asList("bAt"),           // "bAt" sorts to "Abt"
-                Arrays.asList("tab", "TAb")     // "tab" sorts to "abt", "TAb" sorts to "ATb"
-                // Note: because case matters, "bAt" != "tab" in sorted form
-            )
+                new String[]{"bAt", "tab", "TAb"},
+                Arrays.asList(
+                        Arrays.asList("bAt"),           // "bAt" sorts to "Abt"
+                        Arrays.asList("tab", "TAb")     // "tab" sorts to "abt", "TAb" sorts to "ATb"
+                        // Note: because case matters, "bAt" != "tab" in sorted form
+                )
         ));
 
         // 8. Large data scenario (performance check): 100,000 small strings
         //    Here we just generate random strings of length 5, but skip verifying expected grouping
         //    We just ensure no exception and reasonable runtime. We'll treat as PASS if code runs.
         testCases.add(new TestCase(
-            generateRandomStrings(100_000, 5),
-            null   // don't check exact grouping, just that it returns quickly
+                generateRandomStrings(100_000, 5),
+                null   // don't check exact grouping, just that it returns quickly
         ));
 
         // Run each test case
@@ -159,7 +159,7 @@ public class GroupAnagrams {
      * Generate an array of random lowercase strings of given length.
      * Used for performance / large-data test.
      *
-     * @param count Number of strings to generate
+     * @param count  Number of strings to generate
      * @param length Length of each random string
      * @return Array of random strings
      */
@@ -200,12 +200,12 @@ public class GroupAnagrams {
         // then see if the two collections of multisets match exactly.
 
         List<Map<String, Integer>> actualMultisets = actual.stream()
-            .map(GroupAnagrams::toCountMap)
-            .collect(Collectors.toList());
+                .map(GroupAnagrams::toCountMap)
+                .collect(Collectors.toList());
 
         List<Map<String, Integer>> expectedMultisets = expected.stream()
-            .map(GroupAnagrams::toCountMap)
-            .collect(Collectors.toList());
+                .map(GroupAnagrams::toCountMap)
+                .collect(Collectors.toList());
 
         // For each expected multiset, try to find a matching one in actualMultisets
         // and remove it once matched. If anything remains unmatched, fail.

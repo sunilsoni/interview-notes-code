@@ -1,25 +1,27 @@
 package com.interview.notes.code.year.y2025.may.hackerank.test1;
 
-import java.io.*;
-import java.util.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 public class SocialNetworkTest {
     public static void main(String[] args) {
         Platform platform = new Platform();
-        
+
         // Store expected output
         List<String> expectedOutput = Arrays.asList(
-            "Alexander added successfully.",
-            "Isabella added successfully.",
-            "Emma added successfully.",
-            "Isabella is now following Alexander.",
-            "Alexander posted: \"Hiking in the mountains.\".",
-            "Isabella received notification: Alexander posted: \"Hiking in the mountains.\".",
-            "Emma is now following Alexander.",
-            "Alexander posted: \"Enjoying a beautiful day!\".",
-            "Isabella received notification: Alexander posted: \"Enjoying a beautiful day!\".",
-            "Emma received notification: Alexander posted: \"Enjoying a beautiful day!\".",
-            "Isabella has unfollowed Alexander."
+                "Alexander added successfully.",
+                "Isabella added successfully.",
+                "Emma added successfully.",
+                "Isabella is now following Alexander.",
+                "Alexander posted: \"Hiking in the mountains.\".",
+                "Isabella received notification: Alexander posted: \"Hiking in the mountains.\".",
+                "Emma is now following Alexander.",
+                "Alexander posted: \"Enjoying a beautiful day!\".",
+                "Isabella received notification: Alexander posted: \"Enjoying a beautiful day!\".",
+                "Emma received notification: Alexander posted: \"Enjoying a beautiful day!\".",
+                "Isabella has unfollowed Alexander."
         );
 
         // Redirect System.out to capture output
@@ -52,8 +54,8 @@ public class SocialNetworkTest {
             String expected = expectedOutput.get(i);
             String actual = i < actualOutput.size() ? actualOutput.get(i).trim() : "<missing>";
             boolean pass = expected.equals(actual);
-            System.out.printf("%s | Expected: %-70s | Actual: %-70s\n", 
-                pass ? "PASS" : "FAIL", expected, actual);
+            System.out.printf("%s | Expected: %-70s | Actual: %-70s\n",
+                    pass ? "PASS" : "FAIL", expected, actual);
             if (!pass) allPass = false;
         }
 

@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2025.may.google.test3;
 import java.util.*;
 
 public class AnagramGrouper {
-    
+
     public static List<List<String>> groupAnagrams(String[] strs) {
         // Edge case: if input array is null or empty
         if (strs == null || strs.length == 0) {
@@ -22,7 +22,7 @@ public class AnagramGrouper {
             // Sort characters to create a key
             Arrays.sort(chars);
             String key = new String(chars);
-            
+
             // Get or create list for this anagram group
             anagramMap.computeIfAbsent(key, k -> new ArrayList<>()).add(str);
         });
@@ -35,7 +35,7 @@ public class AnagramGrouper {
     public static void main(String[] args) {
         // Test Case 1: Normal case
         test(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"},
-             "[[eat, tea, ate], [tan, nat], [bat]]");
+                "[[eat, tea, ate], [tan, nat], [bat]]");
 
         // Test Case 2: Empty array
         test(new String[]{}, "[]");
@@ -69,11 +69,11 @@ public class AnagramGrouper {
         for (int i = 0; i < 10000; i++) {
             largeInput[i] = "word" + i;
         }
-        
+
         long startTime = System.currentTimeMillis();
         List<List<String>> result = groupAnagrams(largeInput);
         long endTime = System.currentTimeMillis();
-        
+
         System.out.println("Large Input Test (10000 elements)");
         System.out.println("Time taken: " + (endTime - startTime) + "ms");
         System.out.println("Number of groups: " + result.size());

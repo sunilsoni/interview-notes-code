@@ -1,58 +1,30 @@
 package com.interview.notes.code.year.y2025.may.common.test14;
 
 import java.util.*;
-import java.util.stream.*;
 
 public class LogAnalysis2 {
 
     /**
-     * Data structure to hold a single log entry (serverId, time).
-     * We sort by `time` ascending.
-     */
-    private static class LogEntry {
-        int serverId; 
-        int time;
-        LogEntry(int serverId, int time) {
-            this.serverId = serverId;
-            this.time = time;
-        }
-    }
-
-    /**
-     * Data structure to hold a single query (queryTime, originalIndex).
-     * We sort by `queryTime` ascending, but we remember where it was originally
-     * so that we can put the answer back in the correct index.
-     */
-    private static class QueryEntry {
-        int queryTime;
-        int originalIdx;
-        QueryEntry(int queryTime, int originalIdx) {
-            this.queryTime = queryTime;
-            this.originalIdx = originalIdx;
-        }
-    }
-
-    /**
      * getStaleServerCount:
-     *
+     * <p>
      * n        = total number of servers (1..n)
      * log_data = List of pairs [serverId, time], length = m
      * query    = List of query times, length = q
      * x        = window size
-     *
+     * <p>
      * Returns an array (List<Integer>) of length q, where
-     *   answer[i] = number of servers that did NOT get any request in [query[i] - x, query[i]].
-     *
+     * answer[i] = number of servers that did NOT get any request in [query[i] - x, query[i]].
+     * <p>
      * We implement the “two-pointer sliding window” approach:
-     *   1. Sort logs by time.
-     *   2. Sort queries by time, keeping original indices.
-     *   3. Maintain a sliding window [windowStart, windowEnd] over the logs,
-     *      where windowEnd moves forward to include logs ≤ currentQueryTime,
-     *      and windowStart moves forward to exclude logs < (currentQueryTime - x).
-     *   4. Keep an array countPerServer[1..n] that tracks how many logs of each
-     *      server are currently inside the window; and an integer activeServers
-     *      = number of distinct servers with countPerServer[srv] > 0.
-     *   5. For each query, stale = n - activeServers.
+     * 1. Sort logs by time.
+     * 2. Sort queries by time, keeping original indices.
+     * 3. Maintain a sliding window [windowStart, windowEnd] over the logs,
+     * where windowEnd moves forward to include logs ≤ currentQueryTime,
+     * and windowStart moves forward to exclude logs < (currentQueryTime - x).
+     * 4. Keep an array countPerServer[1..n] that tracks how many logs of each
+     * server are currently inside the window; and an integer activeServers
+     * = number of distinct servers with countPerServer[srv] > 0.
+     * 5. For each query, stale = n - activeServers.
      */
     public static List<Integer> getStaleServerCount(
             int n,
@@ -68,7 +40,7 @@ public class LogAnalysis2 {
         for (int i = 0; i < m; i++) {
             // Each log_data.get(i) is a List<Integer> of size 2: [serverId, time]
             int srv = log_data.get(i).get(0);
-            int t   = log_data.get(i).get(1);
+            int t = log_data.get(i).get(1);
             logs[i] = new LogEntry(srv, t);
         }
 
@@ -96,7 +68,7 @@ public class LogAnalysis2 {
         int activeServers = 0;
 
         // 8) Two pointers for the sliding window over `logs[]`
-        int leftPtr  = 0; // will move forward to drop logs from window
+        int leftPtr = 0; // will move forward to drop logs from window
         int rightPtr = 0; // will move forward to add logs into window
 
         // 9) Now iterate all queries in ascending order:
@@ -135,7 +107,7 @@ public class LogAnalysis2 {
             }
 
             // 9c) Now activeServers = number of distinct servers in [windowStart, currentTime]
-            int staleCount = n - activeServers; 
+            int staleCount = n - activeServers;
             answer[qe.originalIdx] = staleCount;
         }
 
@@ -143,13 +115,13 @@ public class LogAnalysis2 {
         return Arrays.asList(answer);
     }
 
-    /** 
-     * A simple test harness (no JUnit!).  
+    /**
+     * A simple test harness (no JUnit!).
      * We hardcode multiple test cases. For each:
-     *   1) Build n, log_data, query, x
-     *   2) call getStaleServerCount(...)
-     *   3) Compare with the expected output
-     *   4) Print PASS/FAIL
+     * 1) Build n, log_data, query, x
+     * 2) call getStaleServerCount(...)
+     * 3) Compare with the expected output
+     * 4) Print PASS/FAIL
      */
     public static void main(String[] args) {
         List<TestCase> tests = new ArrayList<>();
@@ -158,10 +130,10 @@ public class LogAnalysis2 {
         {
             int n = 6;
             List<List<Integer>> logData = Arrays.asList(
-                Arrays.asList(3, 2),
-                Arrays.asList(4, 3),
-                Arrays.asList(2, 6),
-                Arrays.asList(6, 3)
+                    Arrays.asList(3, 2),
+                    Arrays.asList(4, 3),
+                    Arrays.asList(2, 6),
+                    Arrays.asList(6, 3)
             );
             List<Integer> queries = Arrays.asList(3, 2, 6);
             int x = 2;
@@ -211,9 +183,9 @@ public class LogAnalysis2 {
         {
             int n = 4;
             List<List<Integer>> logData = Arrays.asList(
-                Arrays.asList(1, 10),
-                Arrays.asList(2, 20),
-                Arrays.asList(4, 30)
+                    Arrays.asList(1, 10),
+                    Arrays.asList(2, 20),
+                    Arrays.asList(4, 30)
             );
             List<Integer> queries = Arrays.asList(5, 15, 25, 35);
             int x = 5;
@@ -228,7 +200,7 @@ public class LogAnalysis2 {
         // ---- TestCase 5: Large‐scale random log to test performance ----
         {
             int n = 100_000;
-            int m = 100_000; 
+            int m = 100_000;
             int q = 100_000;
             int x = 50_000;
 
@@ -238,7 +210,7 @@ public class LogAnalysis2 {
             List<List<Integer>> logData = new ArrayList<>(m);
             for (int i = 0; i < m; i++) {
                 int srv = 1 + rnd.nextInt(n);
-                int t   = 1 + rnd.nextInt(100_000);
+                int t = 1 + rnd.nextInt(100_000);
                 logData.add(Arrays.asList(srv, t));
             }
 
@@ -249,7 +221,7 @@ public class LogAnalysis2 {
             }
 
             // We do not know the “expected” exactly in advance, so for this large test we simply run:
-            //   answer = getStaleServerCount(...) 
+            //   answer = getStaleServerCount(...)
             //   and verify that it runs “quickly” (< 2s). Since we do not have a ground‐truth array,
             //   we will just check that it returns an array of length q with values in [0..n].
             List<Integer> expected = null; // indicate “no exact expected; just performance check”
@@ -292,7 +264,7 @@ public class LogAnalysis2 {
                 if (actual.size() != tc.queries.size()) {
                     pass = false;
                     System.out.println("RESULT: FAIL → returned array length " + actual.size() +
-                                       " but expected " + tc.queries.size());
+                            " but expected " + tc.queries.size());
                 } else {
                     // Check each answer is in [0..n]
                     for (Integer ans : actual) {
@@ -311,7 +283,36 @@ public class LogAnalysis2 {
         }
     }
 
-    /** 
+    /**
+     * Data structure to hold a single log entry (serverId, time).
+     * We sort by `time` ascending.
+     */
+    private static class LogEntry {
+        int serverId;
+        int time;
+
+        LogEntry(int serverId, int time) {
+            this.serverId = serverId;
+            this.time = time;
+        }
+    }
+
+    /**
+     * Data structure to hold a single query (queryTime, originalIndex).
+     * We sort by `queryTime` ascending, but we remember where it was originally
+     * so that we can put the answer back in the correct index.
+     */
+    private static class QueryEntry {
+        int queryTime;
+        int originalIdx;
+
+        QueryEntry(int queryTime, int originalIdx) {
+            this.queryTime = queryTime;
+            this.originalIdx = originalIdx;
+        }
+    }
+
+    /**
      * Helper class to bundle each test’s data together.
      */
     private static class TestCase {
