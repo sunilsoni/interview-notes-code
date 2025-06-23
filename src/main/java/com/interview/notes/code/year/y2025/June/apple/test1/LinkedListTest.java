@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2025.June.apple.test1;
 class ListNode {
     ListNode next;
     int data;
-    
+
     public ListNode(int d) {
         this.data = d;
     }
@@ -39,7 +39,7 @@ class LinkedListUtils {
         if (head == null) {
             return null;
         }
-        
+
         // Base case 2: Single node
         if (head.next == null) {
             return head;
@@ -56,7 +56,7 @@ class LinkedListUtils {
         /* Step 3: Since head is now the last node, 
            its next should point to null */
         head.next = null;
-        
+
         // Return the new head of the reversed list
         return reversedList;
     }

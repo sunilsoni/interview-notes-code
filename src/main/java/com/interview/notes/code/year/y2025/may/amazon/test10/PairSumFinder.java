@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.may.amazon.test10;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.IntStream;
 
 public class PairSumFinder {
 
@@ -12,21 +12,21 @@ public class PairSumFinder {
 
         // Iterate over the array using Java 8 Stream
         return Arrays.stream(arr)
-            .mapToObj(num -> {
-                // Check if the complement (target - num) is already seen
-                if (seen.contains(target - num)) {
-                    // If complement found, return the pair
-                    return new int[]{num, target - num};
-                }
-                // Add current number to seen numbers
-                seen.add(num);
-                // Return null if no pair is found yet
-                return null;
-            })
-            // Filter out nulls (no pair found cases)
-            .filter(Objects::nonNull)
-            // Return the first found pair
-            .findFirst();
+                .mapToObj(num -> {
+                    // Check if the complement (target - num) is already seen
+                    if (seen.contains(target - num)) {
+                        // If complement found, return the pair
+                        return new int[]{num, target - num};
+                    }
+                    // Add current number to seen numbers
+                    seen.add(num);
+                    // Return null if no pair is found yet
+                    return null;
+                })
+                // Filter out nulls (no pair found cases)
+                .filter(Objects::nonNull)
+                // Return the first found pair
+                .findFirst();
     }
 
     // Simple test method to verify correctness

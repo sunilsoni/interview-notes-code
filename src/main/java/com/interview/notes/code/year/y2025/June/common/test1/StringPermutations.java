@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.June.common.test1;
 
 public class StringPermutations {
-    
+
     // Main method containing test cases
     public static void main(String[] args) {
         // Test different scenarios
@@ -21,20 +21,20 @@ public class StringPermutations {
 
         // Convert string to char array for easier manipulation
         char[] chars = str.toCharArray();
-        
+
         // Track which characters have been used
         boolean[] used = new boolean[chars.length];
-        
+
         // StringBuilder to build each permutation
         StringBuilder currentPerm = new StringBuilder();
-        
+
         // Start recursive permutation generation
         generatePermutations(chars, used, currentPerm);
     }
 
     // Recursive method to generate permutations
-    private static void generatePermutations(char[] chars, boolean[] used, 
-                                           StringBuilder currentPerm) {
+    private static void generatePermutations(char[] chars, boolean[] used,
+                                             StringBuilder currentPerm) {
         // Base case: if current permutation length equals input length
         if (currentPerm.length() == chars.length) {
             System.out.println(currentPerm.toString());
@@ -64,8 +64,8 @@ public class StringPermutations {
     // Test method to verify permutations
     private static void testPermutations(String input) {
         System.out.println("\nTesting permutations for: " + input);
-        System.out.println("Expected number of permutations: " + 
-                          calculateFactorial(input.length()));
+        System.out.println("Expected number of permutations: " +
+                calculateFactorial(input.length()));
         System.out.println("Actual permutations:");
         printPermutations(input);
     }

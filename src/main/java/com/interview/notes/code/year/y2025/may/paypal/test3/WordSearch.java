@@ -67,17 +67,17 @@ public class WordSearch {
     public static void main(String[] args) {
         // Test cases from the problem
         char[][] grid1 = {
-            {'b', 'b', 'b', 'a', 'l', 'l', 'o', 'o'},
-            {'b', 'a', 'c', 'c', 'e', 's', 'c', 'n'},
-            {'a', 'l', 't', 'e', 'w', 'c', 'e', 'w'},
-            {'a', 'l', 'o', 's', 's', 'e', 'c', 'c'},
-            {'w', 'o', 'o', 'w', 'a', 'c', 'a', 'w'},
-            {'i', 'b', 'w', 'o', 'w', 'w', 'o', 'w'}
+                {'b', 'b', 'b', 'a', 'l', 'l', 'o', 'o'},
+                {'b', 'a', 'c', 'c', 'e', 's', 'c', 'n'},
+                {'a', 'l', 't', 'e', 'w', 'c', 'e', 'w'},
+                {'a', 'l', 'o', 's', 's', 'e', 'c', 'c'},
+                {'w', 'o', 'o', 'w', 'a', 'c', 'a', 'w'},
+                {'i', 'b', 'w', 'o', 'w', 'w', 'o', 'w'}
         };
 
         // Test words
         String[] testWords = {"access", "balloon", "wow", "sec", "bbaal"};
-        
+
         // Run tests and print results
         for (String word : testWords) {
             List<List<int[]>> results = findWord(grid1, word);

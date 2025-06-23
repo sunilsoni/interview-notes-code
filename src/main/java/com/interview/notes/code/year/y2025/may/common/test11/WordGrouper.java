@@ -4,12 +4,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class WordGrouper {
-    
+
     /**
      * Groups words by their length and returns a map where:
      * - Key: length of words
      * - Value: list of words with that length
-     * 
+     *
      * @param words List of input strings to be grouped
      * @return Map with word lengths as keys and lists of words as values
      */
@@ -22,12 +22,12 @@ public class WordGrouper {
         // Using Java 8 Stream API to group words
         // Collectors.groupingBy creates a map with word length as key
         return words.stream()
-                   .filter(word -> word != null && !word.isEmpty()) // Filter out null/empty words
-                   .collect(Collectors.groupingBy(
-                           String::length, // Key function: gets length of each word
-                           HashMap::new,   // Map type to be created
-                           Collectors.toList() // Value function: collects words into a List
-                   ));
+                .filter(word -> word != null && !word.isEmpty()) // Filter out null/empty words
+                .collect(Collectors.groupingBy(
+                        String::length, // Key function: gets length of each word
+                        HashMap::new,   // Map type to be created
+                        Collectors.toList() // Value function: collects words into a List
+                ));
     }
 
     public static void main(String[] args) {
@@ -59,7 +59,7 @@ public class WordGrouper {
         List<String> largeList = new ArrayList<>();
         String[] sampleWords = {"cat", "dog", "elephant", "ant", "tiger", "lion"};
         Random random = new Random();
-        
+
         for (int i = 0; i < size; i++) {
             largeList.add(sampleWords[random.nextInt(sampleWords.length)]);
         }

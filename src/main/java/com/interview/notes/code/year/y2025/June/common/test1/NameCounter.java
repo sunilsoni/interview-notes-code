@@ -34,10 +34,10 @@ public class NameCounter {
         try {
             // Group names by their value and count occurrences
             Map<String, Long> nameCount = names.stream()
-                .collect(Collectors.groupingBy(
-                    name -> name,    // Key is the name itself
-                    Collectors.counting()  // Count occurrences
-                ));
+                    .collect(Collectors.groupingBy(
+                            name -> name,    // Key is the name itself
+                            Collectors.counting()  // Count occurrences
+                    ));
 
             // Check if the list is empty
             if (nameCount.isEmpty()) {
@@ -46,8 +46,8 @@ public class NameCounter {
             }
 
             // Print each name and its count
-            nameCount.forEach((name, count) -> 
-                System.out.println(name + ": " + count));
+            nameCount.forEach((name, count) ->
+                    System.out.println(name + ": " + count));
 
         } catch (Exception e) {
             System.out.println("Error processing names: " + e.getMessage());
@@ -59,7 +59,7 @@ public class NameCounter {
         List<String> largeList = new ArrayList<>();
         String[] sampleNames = {"John", "Jane", "Bob", "Alice", "Mike"};
         Random random = new Random();
-        
+
         for (int i = 0; i < size; i++) {
             largeList.add(sampleNames[random.nextInt(sampleNames.length)]);
         }

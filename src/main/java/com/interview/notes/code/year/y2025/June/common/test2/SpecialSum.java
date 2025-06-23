@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.June.common.test2;
 
-import java.util.*;
-import java.util.stream.IntStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class SpecialSum {
 
@@ -104,10 +106,13 @@ public class SpecialSum {
         System.out.printf("Large test result = %d; time = %.2f ms%n", resultLarge, elapsedMs);
     }
 
-    /** Helper class to hold a test case. */
+    /**
+     * Helper class to hold a test case.
+     */
     private static class TestCase {
         int[] input;
         int expected;
+
         TestCase(int[] input, int expected) {
             this.input = input;
             this.expected = expected;

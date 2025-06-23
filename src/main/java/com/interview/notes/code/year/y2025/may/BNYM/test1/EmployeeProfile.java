@@ -61,7 +61,7 @@ abstract class Employee {
 /// ///////////////////
 // 2. Engineer class //
 
-//////////////////////
+/// ///////////////////
 class Engineer extends Employee {
     // PER-EMPLOYEE fields
     private int salary;
@@ -88,7 +88,7 @@ class Engineer extends Employee {
     }
 }
 
-//////////////////////
+/// ///////////////////
 // 3. Manager class //
 
 //////////////////////

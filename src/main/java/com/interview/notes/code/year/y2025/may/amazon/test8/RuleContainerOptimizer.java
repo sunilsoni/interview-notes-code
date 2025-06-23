@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.may.amazon.test8;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class RuleContainerOptimizer {
@@ -42,8 +45,8 @@ public class RuleContainerOptimizer {
     public static void main(String[] args) {
         // Minimal reproducible example
         List<String> rules = Arrays.asList(
-            "EnableGuardDuty", "UseIAMRole", "LogS3Events", 
-            "AccessBilling", "DenyEC2Start", "EnableMFA"
+                "EnableGuardDuty", "UseIAMRole", "LogS3Events",
+                "AccessBilling", "DenyEC2Start", "EnableMFA"
         );
         int maxCharsPerContainer = 32;
         int containerCount = 5;

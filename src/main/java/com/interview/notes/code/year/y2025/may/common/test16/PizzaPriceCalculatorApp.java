@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.may.common.test16;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 // Enum for pizza sizes with associated base prices
 enum PizzaSize {
@@ -10,8 +12,14 @@ enum PizzaSize {
     LARGE(10.0);   // large size costs $10.00
 
     private final double price;
-    PizzaSize(double price) { this.price = price; }
-    public double getPrice() { return price; }  // expose price for calculation
+
+    PizzaSize(double price) {
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }  // expose price for calculation
 }
 
 // Enum for crust types with associated extra costs
@@ -21,8 +29,14 @@ enum CrustType {
     CHEESE_STUFFED(3.0); // cheese-stuffed adds $3.00
 
     private final double price;
-    CrustType(double price) { this.price = price; }
-    public double getPrice() { return price; }  // expose price for calculation
+
+    CrustType(double price) {
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }  // expose price for calculation
 }
 
 // Enum for toppings with associated costs
@@ -36,8 +50,14 @@ enum Topping {
     BLACK_OLIVES(1.0);
 
     private final double price;
-    Topping(double price) { this.price = price; }
-    public double getPrice() { return price; }  // expose price for calculation
+
+    Topping(double price) {
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }  // expose price for calculation
 }
 
 // Domain class representing a pizza order
@@ -54,9 +74,17 @@ class Pizza {
         this.toppings = new ArrayList<>(toppings);
     }
 
-    public PizzaSize getSize() { return size; }
-    public CrustType getCrust() { return crust; }
-    public List<Topping> getToppings() { return Collections.unmodifiableList(toppings); }
+    public PizzaSize getSize() {
+        return size;
+    }
+
+    public CrustType getCrust() {
+        return crust;
+    }
+
+    public List<Topping> getToppings() {
+        return Collections.unmodifiableList(toppings);
+    }
 }
 
 // Utility class to calculate pizza prices
@@ -66,8 +94,8 @@ class PriceCalculator {
         double sizePrice = pizza.getSize().getPrice();   // base size cost
         double crustPrice = pizza.getCrust().getPrice(); // crust extra cost
         double toppingsPrice = pizza.getToppings().stream()
-            .mapToDouble(Topping::getPrice)               // extract each topping cost
-            .sum();                                       // sum all topping costs
+                .mapToDouble(Topping::getPrice)               // extract each topping cost
+                .sum();                                       // sum all topping costs
         return sizePrice + crustPrice + toppingsPrice;   // total price
     }
 }
@@ -87,21 +115,21 @@ public class PizzaPriceCalculatorApp {
     public static void main(String[] args) {
         // Prepare test cases
         List<TestCase> tests = Arrays.asList(
-            new TestCase(
-                new Pizza(PizzaSize.SMALL, CrustType.THIN,
-                          Arrays.asList(Topping.PEPPERONI, Topping.MUSHROOM)),
-                5.0 + 1.0 + 1.5 + 1.0  // SMALL + THIN + PEPPERONI + MUSHROOM
-            ),
-            new TestCase(
-                new Pizza(PizzaSize.LARGE, CrustType.CHEESE_STUFFED,
-                          Collections.emptyList()),
-                10.0 + 3.0             // LARGE + CHEESE_STUFFED, no toppings
-            ),
-            new TestCase(
-                new Pizza(PizzaSize.MEDIUM, CrustType.THICK,
-                          Arrays.asList(Topping.BACON, Topping.EXTRA_CHEESE, Topping.SAUSAGE)),
-                7.5 + 2.0 + 2.0 + 1.25 + 1.75  // MEDIUM + THICK + BACON + EXTRA_CHEESE + SAUSAGE
-            )
+                new TestCase(
+                        new Pizza(PizzaSize.SMALL, CrustType.THIN,
+                                Arrays.asList(Topping.PEPPERONI, Topping.MUSHROOM)),
+                        5.0 + 1.0 + 1.5 + 1.0  // SMALL + THIN + PEPPERONI + MUSHROOM
+                ),
+                new TestCase(
+                        new Pizza(PizzaSize.LARGE, CrustType.CHEESE_STUFFED,
+                                Collections.emptyList()),
+                        10.0 + 3.0             // LARGE + CHEESE_STUFFED, no toppings
+                ),
+                new TestCase(
+                        new Pizza(PizzaSize.MEDIUM, CrustType.THICK,
+                                Arrays.asList(Topping.BACON, Topping.EXTRA_CHEESE, Topping.SAUSAGE)),
+                        7.5 + 2.0 + 2.0 + 1.25 + 1.75  // MEDIUM + THICK + BACON + EXTRA_CHEESE + SAUSAGE
+                )
         );
 
         // Run small test suite
@@ -110,31 +138,31 @@ public class PizzaPriceCalculatorApp {
             double actual = PriceCalculator.calculate(tc.pizza);
             // Compare with a small epsilon for floating point
             if (Math.abs(actual - tc.expected) < 1e-6) {
-                System.out.println("Test " + (i+1) + ": PASS");
+                System.out.println("Test " + (i + 1) + ": PASS");
             } else {
-                System.out.println("Test " + (i+1) + ": FAIL (expected "
-                    + tc.expected + ", got " + actual + ")");
+                System.out.println("Test " + (i + 1) + ": FAIL (expected "
+                        + tc.expected + ", got " + actual + ")");
             }
         }
 
         // Performance check with large volume
         int largeN = 100_000;                        // number of pizzas
         Pizza sample = new Pizza(                    // sample pizza for repetition
-            PizzaSize.LARGE, CrustType.THICK,
-            Arrays.asList(Topping.PEPPERONI, Topping.BACON)
+                PizzaSize.LARGE, CrustType.THICK,
+                Arrays.asList(Topping.PEPPERONI, Topping.BACON)
         );
         List<Pizza> bulk = Collections.nCopies(largeN, sample);  // list of identical pizzas
 
         long start = System.currentTimeMillis();     // start timer
         double total = bulk.stream()
-            .mapToDouble(PriceCalculator::calculate) // price per pizza
-            .sum();                                  // sum all prices
+                .mapToDouble(PriceCalculator::calculate) // price per pizza
+                .sum();                                  // sum all prices
         long duration = System.currentTimeMillis() - start;  // elapsed time
 
         // Sanity check: total should equal largeN * price(sample)
         double expectedBulk = largeN * PriceCalculator.calculate(sample);
         String result = Math.abs(total - expectedBulk) < 1e-3 ? "PASS" : "FAIL";
         System.out.println("Bulk test (" + largeN + " pizzas): " + result
-            + " in " + duration + " ms");
+                + " in " + duration + " ms");
     }
 }

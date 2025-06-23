@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.June.amazon.test6;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RobotAllocation {
 
@@ -13,14 +14,14 @@ public class RobotAllocation {
                                             List<Integer> extraBoost) {
         int n = initialSpeed.size();
         long totalInitial = initialSpeed.stream()
-                                        .mapToLong(Integer::longValue)
-                                        .sum();
+                .mapToLong(Integer::longValue)
+                .sum();
 
         // compute gains = 2*initial + extra, sort descending
         List<Long> gains = IntStream.range(0, n)
-            .mapToObj(i -> 2L * initialSpeed.get(i) + extraBoost.get(i))
-            .sorted(Comparator.reverseOrder())
-            .collect(Collectors.toList());
+                .mapToObj(i -> 2L * initialSpeed.get(i) + extraBoost.get(i))
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
 
         long accumulated = 0;
         for (int i = 0; i < gains.size(); i++) {
@@ -40,12 +41,12 @@ public class RobotAllocation {
     public static void main(String[] args) {
         // sample cases
         List<List<Integer>> inits = Arrays.asList(
-            Arrays.asList(3, 4, 5, 6),
-            Arrays.asList(2, 4, 6, 7, 10)
+                Arrays.asList(3, 4, 5, 6),
+                Arrays.asList(2, 4, 6, 7, 10)
         );
         List<List<Integer>> boosts = Arrays.asList(
-            Arrays.asList(3, 2, 1, 1),
-            Arrays.asList(4, 1, 3, 7, 4)
+                Arrays.asList(3, 2, 1, 1),
+                Arrays.asList(4, 1, 3, 7, 4)
         );
         int[] expected = {2, 2};
 
@@ -55,7 +56,7 @@ public class RobotAllocation {
                 System.out.println("Test " + t + " PASS");
             } else {
                 System.out.println("Test " + t + " FAIL: expected "
-                                   + expected[t] + ", got " + result);
+                        + expected[t] + ", got " + result);
             }
         }
 
@@ -72,6 +73,6 @@ public class RobotAllocation {
         int resLarge = calcMinimumAllocation(bigInit, bigBoost);
         long elapsedMs = (System.nanoTime() - start) / 1_000_000;
         System.out.println("Large test done in " + elapsedMs
-                           + "ms, result = " + resLarge);
+                + "ms, result = " + resLarge);
     }
 }

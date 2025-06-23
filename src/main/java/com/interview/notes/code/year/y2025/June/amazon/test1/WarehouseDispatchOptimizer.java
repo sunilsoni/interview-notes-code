@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.June.amazon.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /*
 ## **Code Question: Warehouse Dispatch Optimization**
@@ -119,14 +121,15 @@ Here is the **combined and structured version** of the second coding question ba
 
 
  */
+
 /**
  * Warehouse Dispatch Optimization
- * 
+ * <p>
  * You and a co-worker take turns dispatching items from warehouses.
  * You remove 'dispatch1' units, then co-worker removes 'dispatch2'.
  * Co-worker can skip up to 'skips' turns (shared budget across all warehouses).
  * You earn a credit when you empty a warehouse on your turn.
- * 
+ * <p>
  * This implementation computes the minimum skips needed per warehouse
  * to ensure you end on your turn, then uses a greedy strategy to
  * maximize credits within the skip budget.
@@ -136,11 +139,11 @@ public class WarehouseDispatchOptimizer {
     /**
      * Compute maximum credits (warehouses you empty on your turn).
      *
-     * @param inventory  List of inventory counts per warehouse
-     * @param dispatch1  Units you dispatch each turn
-     * @param dispatch2  Units co-worker dispatches each turn
-     * @param skips      Maximum co-worker skips available
-     * @return           Maximum credits
+     * @param inventory List of inventory counts per warehouse
+     * @param dispatch1 Units you dispatch each turn
+     * @param dispatch2 Units co-worker dispatches each turn
+     * @param skips     Maximum co-worker skips available
+     * @return Maximum credits
      */
     public static int getMaximumCredits(List<Integer> inventory, int dispatch1, int dispatch2, int skips) {
         long a = dispatch1;
@@ -157,7 +160,7 @@ public class WarehouseDispatchOptimizer {
                 r = cycle;
             }
             // Minimum extra your-turns beyond the first: ceil(r/a) - 1
-            int k = (int)((r + a - 1) / a) - 1;
+            int k = (int) ((r + a - 1) / a) - 1;
             needed[i] = Math.max(k, 0);
         }
 
@@ -182,17 +185,17 @@ public class WarehouseDispatchOptimizer {
      */
     public static void main(String[] args) {
         List<TestCase> tests = Arrays.asList(
-            new TestCase(Arrays.asList(10, 6, 12, 8, 15, 1), 2, 3, 3, 5),
-            new TestCase(Arrays.asList(3, 7, 17, 21, 12, 19), 4, 3, 2, 4),
-            new TestCase(Arrays.asList(1, 101), 1, 100, 2, 1),
-            // Edge cases
-            new TestCase(Arrays.asList(5), 10, 5, 0, 1),    // you empty immediately
-            new TestCase(Arrays.asList(6), 4, 4, 1, 1),    // skip to get credit
-            new TestCase(Arrays.asList(9, 9, 9), 3, 6, 3, 3), // all need exactly 2 skips each; only one credit
-            // Large-data test: 100k warehouses, small values
-            new TestCase(IntStream.range(0, 100_000)
-                .map(i -> 1)
-                .boxed().collect(Collectors.toList()), 2, 2, 0, 100_000)
+                new TestCase(Arrays.asList(10, 6, 12, 8, 15, 1), 2, 3, 3, 5),
+                new TestCase(Arrays.asList(3, 7, 17, 21, 12, 19), 4, 3, 2, 4),
+                new TestCase(Arrays.asList(1, 101), 1, 100, 2, 1),
+                // Edge cases
+                new TestCase(Arrays.asList(5), 10, 5, 0, 1),    // you empty immediately
+                new TestCase(Arrays.asList(6), 4, 4, 1, 1),    // skip to get credit
+                new TestCase(Arrays.asList(9, 9, 9), 3, 6, 3, 3), // all need exactly 2 skips each; only one credit
+                // Large-data test: 100k warehouses, small values
+                new TestCase(IntStream.range(0, 100_000)
+                        .map(i -> 1)
+                        .boxed().collect(Collectors.toList()), 2, 2, 0, 100_000)
         );
 
         int idx = 1;
@@ -200,25 +203,28 @@ public class WarehouseDispatchOptimizer {
             int result = getMaximumCredits(tc.inventory, tc.dispatch1, tc.dispatch2, tc.skips);
             boolean pass = (tc.expected >= 0 ? result == tc.expected : true);
             String label = (tc.expected >= 0) ? (pass ? "PASS" : "FAIL")
-                                            : "RESULT";
+                    : "RESULT";
             System.out.printf("Test %d: %s (expected=%d, actual=%d)%n",
-                              idx++, label, tc.expected, result);
+                    idx++, label, tc.expected, result);
         }
 
         // Clarifying questions / suggestions
         System.out.println("\nClarifications Needed:");
         System.out.println("- Is the skip budget shared across all warehouses or reset per warehouse?");
         System.out.println("- Can the co-worker choose to skip non-consecutive turns? " +
-                           "(Our solution assumes any distribution of skips.)");
+                "(Our solution assumes any distribution of skips.)");
         System.out.println("\nImprovement Ideas:");
         System.out.println("- If 'skips' is very large compared to n, we can shortcut and return n immediately.");
         System.out.println("- For extremely large inputs, consider counting sort on skip needs if range is small.");
     }
 
-    /** Helper class for testing */
+    /**
+     * Helper class for testing
+     */
     private static class TestCase {
         List<Integer> inventory;
         int dispatch1, dispatch2, skips, expected;
+
         TestCase(List<Integer> inv, int d1, int d2, int s, int exp) {
             this.inventory = inv;
             this.dispatch1 = d1;

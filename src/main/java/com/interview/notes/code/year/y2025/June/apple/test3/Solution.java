@@ -40,13 +40,13 @@ class Solution {
 
  */
 public class Solution {
-    
+
     public static String longestCommonPrefix(String[] strings) {
         // Handle edge cases - if array is null or empty
         if (strings == null || strings.length == 0) {
             return "";
         }
-        
+
         // If array has only one string, return that string
         if (strings.length == 1) {
             return strings[0];
@@ -54,7 +54,7 @@ public class Solution {
 
         // Take first string as initial prefix
         String prefix = strings[0];
-        
+
         // Iterate through remaining strings
         for (int i = 1; i < strings.length; i++) {
             // While current string doesn't start with prefix
@@ -97,7 +97,7 @@ public class Solution {
     private static void test(String[] input, String expectedOutput) {
         String result = longestCommonPrefix(input);
         String inputStr = input == null ? "null" : String.join(", ", input);
-        
+
         System.out.println("Input: [" + inputStr + "]");
         System.out.println("Expected: " + expectedOutput);
         System.out.println("Result: " + result);

@@ -10,7 +10,10 @@ public class DeadlockExample {
             synchronized (lock1) {
                 System.out.println("Thread 1: Locked lock1");
 
-                try { Thread.sleep(100); } catch (InterruptedException e) {}
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                }
 
                 synchronized (lock2) {
                     System.out.println("Thread 1: Locked lock2");
@@ -22,7 +25,10 @@ public class DeadlockExample {
             synchronized (lock2) {
                 System.out.println("Thread 2: Locked lock2");
 
-                try { Thread.sleep(100); } catch (InterruptedException e) {}
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                }
 
                 synchronized (lock1) {
                     System.out.println("Thread 2: Locked lock1");

@@ -40,7 +40,7 @@ abstract class Employee {
 /// ///////////////////
 // 2. Engineer class //
 
-//////////////////////
+/// ///////////////////
 class Engineer extends Employee {
     private int salary;
     private String grade;
@@ -66,7 +66,7 @@ class Engineer extends Employee {
     }
 }
 
-//////////////////////
+/// ///////////////////
 // 3. Manager class //
 
 //////////////////////

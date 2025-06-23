@@ -8,16 +8,16 @@ public class TopKFrequent {
      */
     public static List<Integer> topKFrequentElements(int[] nums, int k) {
         // 1. Count frequencies
-        Map<Integer,Integer> freq = new HashMap<>();
+        Map<Integer, Integer> freq = new HashMap<>();
         for (int n : nums) {
             freq.put(n, freq.getOrDefault(n, 0) + 1);
         }
 
         // 2. Maintain a min-heap of size k, ordered by frequency
-        PriorityQueue<Map.Entry<Integer,Integer>> heap =
-            new PriorityQueue<>(Comparator.comparingInt(Map.Entry::getValue));
+        PriorityQueue<Map.Entry<Integer, Integer>> heap =
+                new PriorityQueue<>(Comparator.comparingInt(Map.Entry::getValue));
 
-        for (Map.Entry<Integer,Integer> e : freq.entrySet()) {
+        for (Map.Entry<Integer, Integer> e : freq.entrySet()) {
             heap.offer(e);
             if (heap.size() > k) {
                 heap.poll();  // remove the entry with lowest frequency
@@ -35,7 +35,7 @@ public class TopKFrequent {
 
     // Simple main to demo
     public static void main(String[] args) {
-        int[] a = {1,1,3,4,5,6,6,7,7,7};
+        int[] a = {1, 1, 3, 4, 5, 6, 6, 7, 7, 7};
         List<Integer> top3 = topKFrequentElements(a, 3);
         System.out.println(top3);  // ➞ [7, 6, 1]
     }

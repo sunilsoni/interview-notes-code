@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+
+interface Answerer {
+    boolean ask(Question q);
+}
+
 /*
 
 The problem is clear - it's essentially implementing a decision tree or binary search algorithm to identify a person by asking optimal yes/no questions. Here's my understanding:
@@ -70,24 +75,20 @@ abstract class Question {
     public abstract boolean ask(Person p);
 }
 
-interface Answerer {
-    boolean ask(Question q);
-}
-
 class Person implements Answerer {
     private String name;
     private Map<Question, Boolean> answers;
-    
+
     public Person(String name, Map<Question, Boolean> answers) {
         this.name = name;
         this.answers = answers;
     }
-    
+
     @Override
     public boolean ask(Question q) {
         return answers.get(q);
     }
-    
+
     @Override
     public String toString() {
         return name;
@@ -97,31 +98,31 @@ class Person implements Answerer {
 class PersonGuesser {
     private List<Person> persons;
     private List<Question> questions;
-    
+
     public PersonGuesser(List<Person> persons, List<Question> questions) {
         this.persons = new ArrayList<>(persons);
         this.questions = new ArrayList<>(questions);
     }
-    
+
     public Person guessPerson(Answerer opponent) {
         List<Person> candidates = new ArrayList<>(persons);
-        
+
         while (candidates.size() > 1 && !questions.isEmpty()) {
             Question bestQuestion = findBestQuestion(candidates);
             boolean answer = opponent.ask(bestQuestion);
             candidates.removeIf(p -> p.ask(bestQuestion) != answer);
             questions.remove(bestQuestion);
         }
-        
+
         return candidates.isEmpty() ? null : candidates.get(0);
     }
-    
+
     private Question findBestQuestion(List<Person> candidates) {
         return questions.stream()
-            .min(Comparator.comparingDouble(q ->
-                Math.abs(candidates.stream()
-                    .filter(p -> p.ask(q)).count() 
-                    - candidates.size() / 2.0)))
-            .orElse(questions.get(0));
+                .min(Comparator.comparingDouble(q ->
+                        Math.abs(candidates.stream()
+                                .filter(p -> p.ask(q)).count()
+                                - candidates.size() / 2.0)))
+                .orElse(questions.get(0));
     }
 }

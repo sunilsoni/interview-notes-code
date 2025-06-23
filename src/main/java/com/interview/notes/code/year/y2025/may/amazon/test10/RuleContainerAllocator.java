@@ -1,14 +1,17 @@
 package com.interview.notes.code.year.y2025.may.amazon.test10;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class RuleContainerAllocator {
-    // Global best count of rules placed
-    private int bestCount = 0;
     // Number of containers and their capacity
     private final int containerCount, capacity;
     // Sorted list of rules
     private final List<String> rules;
+    // Global best count of rules placed
+    private int bestCount = 0;
 
     public RuleContainerAllocator(List<String> rules, int capacity, int containerCount) {
         // Sort rules ascending by length for better pruning
@@ -16,6 +19,36 @@ public class RuleContainerAllocator {
         this.rules.sort(Comparator.comparingInt(String::length));
         this.capacity = capacity;
         this.containerCount = containerCount;
+    }
+
+    /**
+     * Simple main method for testing PASS/FAIL of test cases.
+     */
+    public static void main(String[] args) {
+        // Define test cases
+        List<TestCase> tests = Arrays.asList(
+                new TestCase(
+                        Arrays.asList("EnableGuardDuty", "UseIAMRole", "LogS3Events", "AccessBilling", "DenyEC2Start", "EnableMFA"),
+                        32, 5, 6
+                ),
+                new TestCase(
+                        Arrays.asList("aaa", "bbbb", "cc", "ddddd"),
+                        10, 2, 4
+                ),
+                new TestCase(
+                        Arrays.asList("ruleOneLongerThanCap", "small"),
+                        5, 1, 0
+                )
+        );
+
+        // Run each test
+        for (TestCase tc : tests) {
+            RuleContainerAllocator alloc =
+                    new RuleContainerAllocator(tc.rules, tc.capacity, tc.containers);
+            int result = alloc.maximize();
+            String status = (result == tc.expected) ? "PASS" : "FAIL";
+            System.out.printf("%s: got %d, expected %d%n", status, result, tc.expected);
+        }
     }
 
     /**
@@ -31,6 +64,7 @@ public class RuleContainerAllocator {
 
     /**
      * Recursive backtracking:
+     *
      * @param idx    current rule index
      * @param placed number of rules placed so far
      * @param used   usedChars per container
@@ -63,38 +97,13 @@ public class RuleContainerAllocator {
         backtrack(idx + 1, placed, used);
     }
 
-    /** Simple main method for testing PASS/FAIL of test cases. */
-    public static void main(String[] args) {
-        // Define test cases
-        List<TestCase> tests = Arrays.asList(
-            new TestCase(
-                Arrays.asList("EnableGuardDuty","UseIAMRole","LogS3Events","AccessBilling","DenyEC2Start","EnableMFA"),
-                32, 5, 6
-            ),
-            new TestCase(
-                Arrays.asList("aaa","bbbb","cc","ddddd"),
-                10, 2, 4
-            ),
-            new TestCase(
-                Arrays.asList("ruleOneLongerThanCap","small"),
-                5, 1, 0
-            )
-        );
-
-        // Run each test
-        for (TestCase tc : tests) {
-            RuleContainerAllocator alloc =
-                new RuleContainerAllocator(tc.rules, tc.capacity, tc.containers);
-            int result = alloc.maximize();
-            String status = (result == tc.expected) ? "PASS" : "FAIL";
-            System.out.printf("%s: got %d, expected %d%n", status, result, tc.expected);
-        }
-    }
-
-    /** Helper class for tests */
+    /**
+     * Helper class for tests
+     */
     static class TestCase {
         List<String> rules;
         int capacity, containers, expected;
+
         TestCase(List<String> rules, int capacity, int containers, int expected) {
             this.rules = rules;
             this.capacity = capacity;

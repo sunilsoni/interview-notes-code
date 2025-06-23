@@ -1,7 +1,5 @@
 package com.interview.notes.code.year.y2025.may.common.test10;
 
-import java.util.*;
-
 public class RotatedArraySearch {
 
     // Method to find target in rotated sorted array using binary search
@@ -37,18 +35,18 @@ public class RotatedArraySearch {
     public static void main(String[] args) {
         // Test cases
         int[][] testArrays = {
-            {4,5,6,7,0,1,2},
-            {1},
-            {5,1,2,3,4},
-            {1,2,3,4,5,6,7,8,9,10},
-            {30,40,50,10,20}
+                {4, 5, 6, 7, 0, 1, 2},
+                {1},
+                {5, 1, 2, 3, 4},
+                {1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+                {30, 40, 50, 10, 20}
         };
         int[] targets = {0, 1, 4, 7, 10};
         int[] expected = {4, 0, 4, 6, 3};
 
         for (int i = 0; i < testArrays.length; i++) {
             int result = search(testArrays[i], targets[i]);
-            System.out.println("Test case " + (i+1) + ": " + (result == expected[i] ? "PASS" : "FAIL") + " (Output: " + result + ")");
+            System.out.println("Test case " + (i + 1) + ": " + (result == expected[i] ? "PASS" : "FAIL") + " (Output: " + result + ")");
         }
 
         // Edge case: large array

@@ -1,27 +1,40 @@
 package com.interview.notes.code.year.y2025.June.cts.test1;
 
-import java.io.*;
 import java.util.*;
 
 interface IBook {
-    void setId(int id);
     int getId();
-    void setTitle(String title);
+
+    void setId(int id);
+
     String getTitle();
-    void setAuthor(String author);
+
+    void setTitle(String title);
+
     String getAuthor();
-    void setCategory(String category);
+
+    void setAuthor(String author);
+
     String getCategory();
-    void setPrice(int price);
+
+    void setCategory(String category);
+
     int getPrice();
+
+    void setPrice(int price);
 }
 
 interface ILibrarySystem {
     void addBook(IBook book, int quantity);
+
     void removeBook(IBook book, int quantity);
+
     int calculateTotal();
+
     Map<String, Integer> categoryTotalPrice();
+
     List<BooksInfo> booksInfo();
+
     List<CategoryAuthorWithCount> categoryAndAuthorWithCount();
 }
 
@@ -29,6 +42,7 @@ class BooksInfo {
     String title;
     int quantity;
     int price;
+
     BooksInfo(String title, int quantity, int price) {
         this.title = title;
         this.quantity = quantity;
@@ -40,6 +54,7 @@ class CategoryAuthorWithCount {
     String category;
     String author;
     int count;
+
     CategoryAuthorWithCount(String category, String author, int count) {
         this.category = category;
         this.author = author;
@@ -54,22 +69,51 @@ class Book implements IBook {
     private String category;
     private int price;
 
-    public void setId(int id) { this.id = id; }
-    public int getId() { return id; }
-    public void setTitle(String title) { this.title = title; }
-    public String getTitle() { return title; }
-    public void setAuthor(String author) { this.author = author; }
-    public String getAuthor() { return author; }
-    public void setCategory(String category) { this.category = category; }
-    public String getCategory() { return category; }
-    public void setPrice(int price) { this.price = price; }
-    public int getPrice() { return price; }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof IBook)) return false;
-        return id == ((IBook)o).getId();
+        return id == ((IBook) o).getId();
     }
 
     @Override
@@ -94,46 +138,46 @@ class LibrarySystem implements ILibrarySystem {
 
     public int calculateTotal() {
         int total = 0;
-        for (Map.Entry<IBook,Integer> e : _books.entrySet()) {
+        for (Map.Entry<IBook, Integer> e : _books.entrySet()) {
             total += e.getKey().getPrice() * e.getValue();
         }
         return total;
     }
 
     public Map<String, Integer> categoryTotalPrice() {
-        Map<String,Integer> m = new TreeMap<>();
-        for (Map.Entry<IBook,Integer> e : _books.entrySet()) {
+        Map<String, Integer> m = new TreeMap<>();
+        for (Map.Entry<IBook, Integer> e : _books.entrySet()) {
             String cat = e.getKey().getCategory();
             int v = e.getKey().getPrice() * e.getValue();
-            m.put(cat, m.getOrDefault(cat,0) + v);
+            m.put(cat, m.getOrDefault(cat, 0) + v);
         }
         return m;
     }
 
     public List<BooksInfo> booksInfo() {
         List<BooksInfo> list = new ArrayList<>();
-        for (Map.Entry<IBook,Integer> e : _books.entrySet()) {
+        for (Map.Entry<IBook, Integer> e : _books.entrySet()) {
             IBook b = e.getKey();
             list.add(new BooksInfo(b.getTitle(), e.getValue(), b.getPrice()));
         }
         list.sort(Comparator
-            .comparing((BooksInfo bi) -> bi.title)
-            .thenComparingInt(bi -> bi.quantity));
+                .comparing((BooksInfo bi) -> bi.title)
+                .thenComparingInt(bi -> bi.quantity));
         return list;
     }
 
     public List<CategoryAuthorWithCount> categoryAndAuthorWithCount() {
-        Map<String,Map<String,Integer>> m = new TreeMap<>();
-        for (Map.Entry<IBook,Integer> e : _books.entrySet()) {
+        Map<String, Map<String, Integer>> m = new TreeMap<>();
+        for (Map.Entry<IBook, Integer> e : _books.entrySet()) {
             String cat = e.getKey().getCategory();
             String auth = e.getKey().getAuthor();
             int q = e.getValue();
-            m.computeIfAbsent(cat, k->new TreeMap<>())
-             .put(auth, m.get(cat).getOrDefault(auth,0) + q);
+            m.computeIfAbsent(cat, k -> new TreeMap<>())
+                    .put(auth, m.get(cat).getOrDefault(auth, 0) + q);
         }
         List<CategoryAuthorWithCount> list = new ArrayList<>();
-        for (Map.Entry<String,Map<String,Integer>> e : m.entrySet()) {
-            for (Map.Entry<String,Integer> e2 : e.getValue().entrySet()) {
+        for (Map.Entry<String, Map<String, Integer>> e : m.entrySet()) {
+            for (Map.Entry<String, Integer> e2 : e.getValue().entrySet()) {
                 list.add(new CategoryAuthorWithCount(e.getKey(), e2.getKey(), e2.getValue()));
             }
         }
@@ -164,17 +208,17 @@ public class Main {
         System.out.println("Book Info:");
         for (BooksInfo bi : lib.booksInfo()) {
             System.out.printf("Book Name:%s, Quantity:%d, Price:%d%n",
-                bi.title, bi.quantity, bi.price);
+                    bi.title, bi.quantity, bi.price);
         }
         System.out.println("Category Total Price:");
-        for (Map.Entry<String,Integer> e : lib.categoryTotalPrice().entrySet()) {
+        for (Map.Entry<String, Integer> e : lib.categoryTotalPrice().entrySet()) {
             System.out.printf("Category:%s, Total Price:%d%n",
-                e.getKey(), e.getValue());
+                    e.getKey(), e.getValue());
         }
         System.out.println("Category And Author With Count:");
         for (CategoryAuthorWithCount ca : lib.categoryAndAuthorWithCount()) {
             System.out.printf("Category:%s, Author:%s, Count:%d%n",
-                ca.category, ca.author, ca.count);
+                    ca.category, ca.author, ca.count);
         }
         System.out.printf("Total Price:%d%n", lib.calculateTotal());
     }

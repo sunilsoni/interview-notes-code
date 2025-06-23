@@ -4,16 +4,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-record Employee(int id, String name, String city) {}
+record Employee(int id, String name, String city) {
+}
 
 public class EmployeeStreamExample {
     public static void main(String[] args) {
         var employees = List.of(
-            new Employee(1, "John", "New York"),
-            new Employee(2, "Alice", "London"),
-            new Employee(3, "Bob", "New York"),
-            new Employee(4, "Sarah", "Paris"),
-            new Employee(5, "Mike", "London")
+                new Employee(1, "John", "New York"),
+                new Employee(2, "Alice", "London"),
+                new Employee(3, "Bob", "New York"),
+                new Employee(4, "Sarah", "Paris"),
+                new Employee(5, "Mike", "London")
         );
 
         // Method 1: Using Collectors.toSet()

@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.June.glider.test1;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class Outcome {
 
@@ -9,7 +10,7 @@ class Outcome {
         // Count the frequency of each doll size
         Map<Integer, Integer> freq = new HashMap<>();
         dolls.forEach(d -> freq.put(d, freq.getOrDefault(d, 0) + 1));
-        
+
         // The answer is the maximum frequency (most duplicates)
         return Collections.max(freq.values());
     }
@@ -19,8 +20,8 @@ class Outcome {
 
         // Provided Test Cases
         List<List<Integer>> testCases = Arrays.asList(
-            Arrays.asList(2, 2, 3, 3), // Expected output: 2
-            Arrays.asList(1, 2, 2, 3, 4, 5) // Expected output: 2
+                Arrays.asList(2, 2, 3, 3), // Expected output: 2
+                Arrays.asList(1, 2, 2, 3, 4, 5) // Expected output: 2
         );
         List<Integer> expectedResults = Arrays.asList(2, 2);
 

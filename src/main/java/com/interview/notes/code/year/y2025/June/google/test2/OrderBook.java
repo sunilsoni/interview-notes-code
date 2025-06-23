@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.June.google.test2;
 
-import java.util.*;
+import java.util.Map;
+import java.util.TreeMap;
+
 /*
 
 
@@ -49,6 +51,41 @@ public class OrderBook {
         orderBook = new TreeMap<>();
     }
 
+    // Main method for testing
+    public static void main(String[] args) {
+        OrderBook book = new OrderBook();
+
+        // Test Case 1: Basic ordering
+        book.insert_order("seller1", 10.00, 1000L);
+        book.insert_order("seller2", 5.00, 1001L);
+        book.insert_order("seller3", 5.00, 1002L);
+
+        // Should print: seller2 (lowest price, earliest timestamp)
+        System.out.println("Test 1: " + book.get_lowest_seller_id());
+
+        // Should print: seller3 (same price, later timestamp)
+        System.out.println("Test 2: " + book.get_lowest_seller_id());
+
+        // Should print: seller1 (highest price)
+        System.out.println("Test 3: " + book.get_lowest_seller_id());
+
+        // Test Case 2: Empty order book
+        System.out.println("Test 4 (Empty book): " + book.get_lowest_seller_id());
+
+        // Test Case 3: Edge cases
+        try {
+            book.insert_order("seller4", 0.00, 1003L); // Should throw exception
+        } catch (IllegalArgumentException e) {
+            System.out.println("Test 5: Successfully caught invalid price");
+        }
+
+        // Test Case 4: Large number of orders
+        for (int i = 0; i < 1000; i++) {
+            book.insert_order("seller" + i, 50.00 + (i % 10), System.currentTimeMillis() + i);
+        }
+        System.out.println("Test 6: Successfully inserted 1000 orders");
+    }
+
     public void insert_order(String seller_id, double price, long timestamp) {
         // Validate price range ($0.01 to $100.00)
         if (price < 0.01 || price > 100.00) {
@@ -57,7 +94,7 @@ public class OrderBook {
 
         // Get or create the TreeMap for this price level
         TreeMap<Long, String> sellersAtPrice = orderBook.computeIfAbsent(price, k -> new TreeMap<>());
-        
+
         // Add the order with timestamp and seller_id
         sellersAtPrice.put(timestamp, seller_id);
     }
@@ -70,54 +107,19 @@ public class OrderBook {
 
         // Get lowest price entry
         Map.Entry<Double, TreeMap<Long, String>> lowestPriceEntry = orderBook.firstEntry();
-        
+
         // Get earliest timestamp for this price
         TreeMap<Long, String> sellersAtLowestPrice = lowestPriceEntry.getValue();
         Map.Entry<Long, String> earliestSeller = sellersAtLowestPrice.firstEntry();
-        
+
         // Remove the seller
         sellersAtLowestPrice.remove(earliestSeller.getKey());
-        
+
         // If no more sellers at this price, remove the price level
         if (sellersAtLowestPrice.isEmpty()) {
             orderBook.remove(lowestPriceEntry.getKey());
         }
 
         return earliestSeller.getValue();
-    }
-
-    // Main method for testing
-    public static void main(String[] args) {
-        OrderBook book = new OrderBook();
-        
-        // Test Case 1: Basic ordering
-        book.insert_order("seller1", 10.00, 1000L);
-        book.insert_order("seller2", 5.00, 1001L);
-        book.insert_order("seller3", 5.00, 1002L);
-        
-        // Should print: seller2 (lowest price, earliest timestamp)
-        System.out.println("Test 1: " + book.get_lowest_seller_id());
-        
-        // Should print: seller3 (same price, later timestamp)
-        System.out.println("Test 2: " + book.get_lowest_seller_id());
-        
-        // Should print: seller1 (highest price)
-        System.out.println("Test 3: " + book.get_lowest_seller_id());
-        
-        // Test Case 2: Empty order book
-        System.out.println("Test 4 (Empty book): " + book.get_lowest_seller_id());
-        
-        // Test Case 3: Edge cases
-        try {
-            book.insert_order("seller4", 0.00, 1003L); // Should throw exception
-        } catch (IllegalArgumentException e) {
-            System.out.println("Test 5: Successfully caught invalid price");
-        }
-        
-        // Test Case 4: Large number of orders
-        for (int i = 0; i < 1000; i++) {
-            book.insert_order("seller" + i, 50.00 + (i % 10), System.currentTimeMillis() + i);
-        }
-        System.out.println("Test 6: Successfully inserted 1000 orders");
     }
 }

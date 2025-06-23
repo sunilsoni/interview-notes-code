@@ -29,15 +29,22 @@ class Pizza {
     private double calculateBasePrice() {
         double price = 0;
         // Base price calculation logic based on size
-        switch(size.toLowerCase()) {
-            case "small": price = 10.0; break;
-            case "medium": price = 12.0; break;
-            case "large": price = 14.0; break;
-            default: price = 10.0;
+        switch (size.toLowerCase()) {
+            case "small":
+                price = 10.0;
+                break;
+            case "medium":
+                price = 12.0;
+                break;
+            case "large":
+                price = 14.0;
+                break;
+            default:
+                price = 10.0;
         }
-        
+
         // Additional price for crust type
-        if(crust.toLowerCase().equals("thick")) {
+        if (crust.toLowerCase().equals("thick")) {
             price += 2.0;
         }
         return price;
@@ -62,14 +69,14 @@ public class PizzaPriceCalculator {
         pizza1.addTopping("cheese");
         pizza1.addTopping("mushroom");
         System.out.println("Test Case 1: $" + pizza1.calculateTotalPrice());
-        
+
         // Test Case 2: Large thick crust pizza with 3 toppings
         Pizza pizza2 = new Pizza("thick", "large");
         pizza2.addTopping("cheese");
         pizza2.addTopping("pepperoni");
         pizza2.addTopping("olives");
         System.out.println("Test Case 2: $" + pizza2.calculateTotalPrice());
-        
+
         // Edge Case: Invalid size with multiple toppings
         Pizza pizza3 = new Pizza("thin", "extra-large");
         pizza3.addTopping("cheese");

@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.may.paypal.test1;
 
-import java.io.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Solution {
     public static void main(String[] args) {
@@ -14,7 +14,7 @@ public class Solution {
         String note5 = "dad";
         String note6 = "breadmaking";
         String note7 = "dadaa";
-        
+
         System.out.println(find(words, note1)); // cat
         System.out.println(find(words, note2)); // cat
         System.out.println(find(words, note3)); // -

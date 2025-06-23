@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.June.common.test1;
 
 public class StringCombinations {
-    
+
     // Main method to test the solution
     public static void main(String[] args) {
         // Test cases to verify the solution
@@ -21,13 +21,13 @@ public class StringCombinations {
 
         // Convert string to char array for easier manipulation
         char[] chars = str.toCharArray();
-        
+
         // Boolean array to keep track of used characters
         boolean[] used = new boolean[chars.length];
-        
+
         // StringBuilder to build combinations
         StringBuilder output = new StringBuilder();
-        
+
         // Generate combinations of different lengths
         for (int length = 1; length <= chars.length; length++) {
             generateCombinations(chars, used, output, length, 0);
@@ -35,8 +35,8 @@ public class StringCombinations {
     }
 
     // Recursive method to generate combinations
-    private static void generateCombinations(char[] chars, boolean[] used, 
-                                           StringBuilder output, int length, int startPosition) {
+    private static void generateCombinations(char[] chars, boolean[] used,
+                                             StringBuilder output, int length, int startPosition) {
         // If we've reached desired length, print the combination
         if (output.length() == length) {
             System.out.println(output.toString());
@@ -64,8 +64,8 @@ public class StringCombinations {
     // Test method to verify combinations
     private static void testCombinations(String input) {
         System.out.println("\nTesting combinations for: " + input);
-        System.out.println("Expected number of combinations: " + 
-                          calculateExpectedCombinations(input.length()));
+        System.out.println("Expected number of combinations: " +
+                calculateExpectedCombinations(input.length()));
         System.out.println("Actual combinations:");
         printCombinations(input);
     }

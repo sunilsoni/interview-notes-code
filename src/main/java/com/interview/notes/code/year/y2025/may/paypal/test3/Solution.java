@@ -1,12 +1,14 @@
 package com.interview.notes.code.year.y2025.may.paypal.test3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Solution {
     public static void main(String[] args) {
         // Test cases
         runTests();
-        
+
         // Additional large data test
         testLargeInput();
     }
@@ -49,27 +51,27 @@ public class Solution {
 
     private static void runTests() {
         String[] words = {"baby", "referee", "cat", "dada", "dog", "bird", "ax", "baz"};
-        
+
         // Test cases with expected results
         TestCase[] testCases = {
-            new TestCase("ctay", "cat"),
-            new TestCase("bcanihjsrrrferet", "cat"),
-            new TestCase("tbaykkjlga", "-"),
-            new TestCase("bbbbklkjbaby", "baby"),
-            new TestCase("dad", "-"),
-            new TestCase("breadmaking", "bird"),
-            new TestCase("dadaa", "dada")
+                new TestCase("ctay", "cat"),
+                new TestCase("bcanihjsrrrferet", "cat"),
+                new TestCase("tbaykkjlga", "-"),
+                new TestCase("bbbbklkjbaby", "baby"),
+                new TestCase("dad", "-"),
+                new TestCase("breadmaking", "bird"),
+                new TestCase("dadaa", "dada")
         };
 
         // Run each test case and verify results
         for (int i = 0; i < testCases.length; i++) {
             String result = find(words, testCases[i].input);
             boolean passed = result.equals(testCases[i].expected);
-            System.out.printf("Test Case %d: %s (Expected: %s, Got: %s)%n", 
-                i + 1, 
-                passed ? "PASS" : "FAIL",
-                testCases[i].expected,
-                result);
+            System.out.printf("Test Case %d: %s (Expected: %s, Got: %s)%n",
+                    i + 1,
+                    passed ? "PASS" : "FAIL",
+                    testCases[i].expected,
+                    result);
         }
     }
 
@@ -78,7 +80,7 @@ public class Solution {
         String[] largeWords = new String[1000];
         Arrays.fill(largeWords, "testword");
         largeWords[999] = "needle";
-        
+
         // Create a large note with the needle word hidden inside
         StringBuilder largeNote = new StringBuilder();
         for (int i = 0; i < 10000; i++) {

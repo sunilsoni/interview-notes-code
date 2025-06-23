@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.may.amazon.test3;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 class Profile {
     String name;

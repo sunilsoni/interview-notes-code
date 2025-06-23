@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.June.common.test4;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class SpecialSum {
 
@@ -20,9 +22,9 @@ public class SpecialSum {
         for (int i = 2; i < n; i++) {
             // Option 1: skip current, take dp[i-1]
             // Option 2: take current, add to dp[i-2]
-            dp[i] = Math.max(dp[i-1], ar.get(i) + dp[i-2]);
+            dp[i] = Math.max(dp[i - 1], ar.get(i) + dp[i - 2]);
         }
-        return dp[n-1];
+        return dp[n - 1];
     }
 
     // Helper to parse input line (e.g., "5 5 10 1 100" to List<Integer>)
@@ -36,19 +38,19 @@ public class SpecialSum {
     public static void main(String[] args) {
         // Each test: input, expected
         List<TestCase> tests = Arrays.asList(
-            new TestCase("5 5 10 1 100", 115),
-            new TestCase("1 2 2 1", 3),
-            new TestCase("4 3 6 11 8", 18),
-            new TestCase("10", 10), // Single element
-            new TestCase("1 2", 2), // Two elements
-            new TestCase("2 7 9 3 1", 12), // 2+9+1
-            // Large data: alternating 500/1, should pick all 500s
-            new TestCase(IntStream.range(0, 100).mapToObj(i -> i % 2 == 0 ? 500 : 1)
-                    .map(String::valueOf).collect(Collectors.joining(" ")),
-                    25000),
-            // All ones
-            new TestCase(IntStream.range(0, 100).mapToObj(i -> "1").collect(Collectors.joining(" ")),
-                    50)
+                new TestCase("5 5 10 1 100", 115),
+                new TestCase("1 2 2 1", 3),
+                new TestCase("4 3 6 11 8", 18),
+                new TestCase("10", 10), // Single element
+                new TestCase("1 2", 2), // Two elements
+                new TestCase("2 7 9 3 1", 12), // 2+9+1
+                // Large data: alternating 500/1, should pick all 500s
+                new TestCase(IntStream.range(0, 100).mapToObj(i -> i % 2 == 0 ? 500 : 1)
+                        .map(String::valueOf).collect(Collectors.joining(" ")),
+                        25000),
+                // All ones
+                new TestCase(IntStream.range(0, 100).mapToObj(i -> "1").collect(Collectors.joining(" ")),
+                        50)
         );
 
         // Run all tests
@@ -58,7 +60,7 @@ public class SpecialSum {
             int result = maxSum(parseLine(t.input));
             boolean ok = result == t.expected;
             System.out.printf("Test #%d: %s | Expected: %d | Got: %d | %s\n",
-                    i+1, t.input.length() < 40 ? t.input : "[LARGE]", t.expected, result, ok ? "PASS" : "FAIL");
+                    i + 1, t.input.length() < 40 ? t.input : "[LARGE]", t.expected, result, ok ? "PASS" : "FAIL");
             if (ok) pass++;
         }
         System.out.printf("Passed %d/%d tests\n", pass, tests.size());
@@ -68,6 +70,7 @@ public class SpecialSum {
     static class TestCase {
         String input;
         int expected;
+
         TestCase(String input, int expected) {
             this.input = input;
             this.expected = expected;

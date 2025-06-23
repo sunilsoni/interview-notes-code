@@ -1,17 +1,6 @@
 package com.interview.notes.code.year.y2025.June.apple.test3;
 
 public class BinaryTreeLCA {
-    // Node structure for binary tree
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-    }
-
     // Main method to find Lowest Common Ancestor
     public static TreeNode findLowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // Base case: if root is null or matches either p or q
@@ -90,12 +79,23 @@ public class BinaryTreeLCA {
         TreeNode pNode = findNode(root, p);
         TreeNode qNode = findNode(root, q);
         TreeNode result = findLowestCommonAncestor(root, pNode, qNode);
-        
+
         boolean passed = result != null && result.val == expectedLCA;
-        System.out.printf("%s: %s (Expected: %d, Got: %d)%n", 
-                         testName, 
-                         passed ? "PASS" : "FAIL", 
-                         expectedLCA, 
-                         result != null ? result.val : -1);
+        System.out.printf("%s: %s (Expected: %d, Got: %d)%n",
+                testName,
+                passed ? "PASS" : "FAIL",
+                expectedLCA,
+                result != null ? result.val : -1);
+    }
+
+    // Node structure for binary tree
+    static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int val) {
+            this.val = val;
+        }
     }
 }

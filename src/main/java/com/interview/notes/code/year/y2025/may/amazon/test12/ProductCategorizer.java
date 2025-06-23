@@ -3,14 +3,14 @@ package com.interview.notes.code.year.y2025.may.amazon.test12;
 import java.util.*;
 
 public class ProductCategorizer {
-    
+
     // Main method to demonstrate and test the solution
     public static void main(String[] args) {
         // Test Case 1: Basic test with given example
         List<int[]> pairs1 = Arrays.asList(
-            new int[]{1, 5}, new int[]{7, 2}, 
-            new int[]{3, 4}, new int[]{4, 8}, 
-            new int[]{6, 3}, new int[]{5, 2}
+                new int[]{1, 5}, new int[]{7, 2},
+                new int[]{3, 4}, new int[]{4, 8},
+                new int[]{6, 3}, new int[]{5, 2}
         );
         testCase(1, pairs1, 8);
 
@@ -31,13 +31,13 @@ public class ProductCategorizer {
     public static List<List<Integer>> groupProducts(List<int[]> pairs, int n) {
         // Create disjoint set to track product relationships
         DisjointSet ds = new DisjointSet(n + 1);
-        
+
         // Union all pairs to form connected components
         pairs.forEach(pair -> ds.union(pair[0], pair[1]));
-        
+
         // Use Map to group products by their root (category)
         Map<Integer, List<Integer>> categoryMap = new HashMap<>();
-        
+
         // Group products by their root (category)
         for (int i = 1; i <= n; i++) {
             int root = ds.find(i);
@@ -49,6 +49,25 @@ public class ProductCategorizer {
         return new ArrayList<>(categoryMap.values()).stream()
                 .filter(list -> !list.isEmpty())
                 .collect(java.util.stream.Collectors.toList());
+    }
+
+    // Helper method to test cases
+    private static void testCase(int testNumber, List<int[]> pairs, int n) {
+        System.out.println("Test Case " + testNumber + ":");
+        System.out.println("Input pairs: " + Arrays.deepToString(pairs.toArray()));
+        List<List<Integer>> result = groupProducts(pairs, n);
+        System.out.println("Result: " + result);
+        System.out.println("Status: PASS");
+        System.out.println();
+    }
+
+    // Helper method to generate large dataset
+    private static List<int[]> generateLargeDataset(int size) {
+        List<int[]> pairs = new ArrayList<>();
+        for (int i = 1; i < size; i++) {
+            pairs.add(new int[]{i, i + 1});
+        }
+        return pairs;
     }
 
     // DisjointSet class for tracking connected components
@@ -74,7 +93,7 @@ public class ProductCategorizer {
         public void union(int x, int y) {
             int rootX = find(x);
             int rootY = find(y);
-            
+
             if (rootX != rootY) {
                 if (rank[rootX] < rank[rootY]) {
                     parent[rootX] = rootY;
@@ -86,24 +105,5 @@ public class ProductCategorizer {
                 }
             }
         }
-    }
-
-    // Helper method to test cases
-    private static void testCase(int testNumber, List<int[]> pairs, int n) {
-        System.out.println("Test Case " + testNumber + ":");
-        System.out.println("Input pairs: " + Arrays.deepToString(pairs.toArray()));
-        List<List<Integer>> result = groupProducts(pairs, n);
-        System.out.println("Result: " + result);
-        System.out.println("Status: PASS");
-        System.out.println();
-    }
-
-    // Helper method to generate large dataset
-    private static List<int[]> generateLargeDataset(int size) {
-        List<int[]> pairs = new ArrayList<>();
-        for (int i = 1; i < size; i++) {
-            pairs.add(new int[]{i, i + 1});
-        }
-        return pairs;
     }
 }

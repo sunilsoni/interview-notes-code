@@ -2,8 +2,8 @@ package com.interview.notes.code.year.y2025.may.amazon.test1;
 
 import java.util.*;
 import java.util.function.BiConsumer;
-import java.util.stream.IntStream;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class FriendPathFinder {
 
@@ -88,7 +88,7 @@ public class FriendPathFinder {
         addFriend.accept("Maria", "David");
         addFriend.accept("David", "Stephen");
         List<String> result1 = findFriendPath(graph1, "Gordon", "Stephen");
-        List<String> expected1 = Arrays.asList("Gordon","Shantel","Maria","David","Stephen");
+        List<String> expected1 = Arrays.asList("Gordon", "Shantel", "Maria", "David", "Stephen");
         System.out.println("Test 1 (basic chain): " + (result1.equals(expected1) ? "PASS" : "FAIL"));
 
         // --- Test 2: No path exists ---
