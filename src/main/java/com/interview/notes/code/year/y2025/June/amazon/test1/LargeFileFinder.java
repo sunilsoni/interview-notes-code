@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.June.amazon.test1;
 
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -37,19 +39,19 @@ public class LargeFileFinder {
         // Walk the entire tree (unlimited depth), auto-closing the stream
         try (Stream<Path> stream = Files.walk(startPath)) {
             return stream
-                // Only consider normal files, not directories or special files
-                .filter(Files::isRegularFile)
-                // Keep only those whose size is greater than our threshold
-                .filter(path -> {
-                    try {
-                        return Files.size(path) > SIZE_THRESHOLD;
-                    } catch (IOException e) {
-                        // If we can’t read the size, skip this file
-                        return false;
-                    }
-                })
-                // Collect the results into a List<Path>
-                .collect(Collectors.toList());
+                    // Only consider normal files, not directories or special files
+                    .filter(Files::isRegularFile)
+                    // Keep only those whose size is greater than our threshold
+                    .filter(path -> {
+                        try {
+                            return Files.size(path) > SIZE_THRESHOLD;
+                        } catch (IOException e) {
+                            // If we can’t read the size, skip this file
+                            return false;
+                        }
+                    })
+                    // Collect the results into a List<Path>
+                    .collect(Collectors.toList());
         }
     }
 
@@ -74,9 +76,9 @@ public class LargeFileFinder {
 
     /**
      * A very basic test harness that:
-     *  1. Creates a temp directory.
-     *  2. Puts one small file (1 KB) and one large file (5 MB + 1 KB) in it.
-     *  3. Verifies only the large file is found.
+     * 1. Creates a temp directory.
+     * 2. Puts one small file (1 KB) and one large file (5 MB + 1 KB) in it.
+     * 3. Verifies only the large file is found.
      */
     private static void runTests() {
         System.out.println("Running tests…");
@@ -86,7 +88,7 @@ public class LargeFileFinder {
             Files.write(smallFile, new byte[1024]);  // 1 KB
 
             Path largeFile = tempDir.resolve("large.bin");
-            Files.write(largeFile, new byte[(int)(SIZE_THRESHOLD + 1024)]);  // 5 MB + 1 KB
+            Files.write(largeFile, new byte[(int) (SIZE_THRESHOLD + 1024)]);  // 5 MB + 1 KB
 
             List<Path> found = findLargeFiles(tempDir.toString());
             if (found.size() == 1 && found.get(0).equals(largeFile)) {

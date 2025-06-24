@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.June.OCI.test1;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class RemoveCoveredIntervals {
 

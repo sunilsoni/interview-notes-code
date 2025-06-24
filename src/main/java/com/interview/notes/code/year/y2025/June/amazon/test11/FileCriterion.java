@@ -38,7 +38,7 @@ class SizeCriterion implements FileCriterion {
 /**
  * Walks a directory tree and filters by one or more criteria.
  */
-  class FileFinder {
+class FileFinder {
     private final List<FileCriterion> criteria = new ArrayList<>();
     private boolean followSymlinks = false;
 
@@ -66,8 +66,8 @@ class SizeCriterion implements FileCriterion {
         List<Path> result = new ArrayList<>();
         // Choose link options based on configuration
         LinkOption[] linkOpts = followSymlinks
-            ? new LinkOption[0]
-            : new LinkOption[] { LinkOption.NOFOLLOW_LINKS };
+                ? new LinkOption[0]
+                : new LinkOption[]{LinkOption.NOFOLLOW_LINKS};
 
         // Walk file tree
         try (DirectoryStream<Path> ds = Files.newDirectoryStream(root)) {
@@ -95,7 +95,7 @@ class SizeCriterion implements FileCriterion {
 /**
  * Application entry point: parses args and invokes FileFinder.
  */
-  class App {
+class App {
     private static final long DEFAULT_THRESHOLD = 5L * 1024 * 1024;
 
     public static void main(String[] args) {
@@ -106,11 +106,11 @@ class SizeCriterion implements FileCriterion {
 
         Path root = Paths.get(args[0]);
         long threshold = args.length > 1
-            ? Long.parseLong(args[1])
-            : DEFAULT_THRESHOLD;
+                ? Long.parseLong(args[1])
+                : DEFAULT_THRESHOLD;
 
         FileFinder finder = new FileFinder()
-            .addCriterion(new SizeCriterion(threshold));
+                .addCriterion(new SizeCriterion(threshold));
 
         try {
             List<Path> largeFiles = finder.find(root);

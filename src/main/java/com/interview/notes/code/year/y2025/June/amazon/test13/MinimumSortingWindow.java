@@ -1,11 +1,9 @@
 package com.interview.notes.code.year.y2025.June.amazon.test13;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class MinimumSortingWindow {
-    
+
     public static int[] findMinSortingWindows(int[] nums, int k) {
         // Edge case check for invalid inputs
         if (nums == null || nums.length < k || k <= 0) {
@@ -57,18 +55,18 @@ public class MinimumSortingWindow {
         // Test cases
         runTest(new int[]{1, 3, 2, 4, 5}, 3, new int[]{2, 2, 0}, "Test Case 1");
         runTest(new int[]{5, 4, 3, 2, 1}, 4, new int[]{4, 4}, "Test Case 2");
-        
+
         // Edge cases
         runTest(new int[]{1, 2, 3}, 3, new int[]{0}, "Already Sorted");
         runTest(new int[]{3, 2, 1}, 3, new int[]{3}, "Reverse Sorted");
-        
+
         // Large input test
         int[] largeInput = generateLargeInput(10000);
         long startTime = System.currentTimeMillis();
         findMinSortingWindows(largeInput, 1000);
         long endTime = System.currentTimeMillis();
-        System.out.println("Large input (10000 elements) processing time: " + 
-                          (endTime - startTime) + "ms");
+        System.out.println("Large input (10000 elements) processing time: " +
+                (endTime - startTime) + "ms");
     }
 
     private static void runTest(int[] nums, int k, int[] expected, String testName) {

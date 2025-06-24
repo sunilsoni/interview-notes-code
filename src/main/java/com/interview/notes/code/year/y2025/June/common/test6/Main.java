@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.June.common.test6;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 
 ### **LRU Cache Operations**
@@ -104,52 +106,28 @@ PUT,11,25 PUT,22,50 PUT,11,75 GET,11 GET,22
 
  */
 public class Main {
-    // LRU Cache implementation using LinkedHashMap
-    static class LRUCache {
-        private final LinkedHashMap<Integer, Integer> map;
-        private final int capacity;
-
-        public LRUCache(int capacity) {
-            this.capacity = capacity;
-            this.map = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {
-                @Override
-                protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
-                    return size() > LRUCache.this.capacity;
-                }
-            };
-        }
-
-        public int get(int key) {
-            return map.getOrDefault(key, -1);
-        }
-
-        public void put(int key, int value) {
-            map.put(key, value);
-        }
-    }
-
     // Parses and processes the operations, returns list of GET results
     public static List<Integer> solve(int capacity, List<String> ops) {
         LRUCache cache = new LRUCache(capacity);
 
         return ops.stream()
-            .map(op -> {
-                String[] parts = op.split(",");
-                String cmd = parts[0].trim();
-                if ("GET".equals(cmd)) {
-                    int k = Integer.parseInt(parts[1].trim());
-                    return cache.get(k);            // side-effect: marks as recently used
-                } else if ("PUT".equals(cmd)) {
-                    int k = Integer.parseInt(parts[1].trim());
-                    int v = Integer.parseInt(parts[2].trim());
-                    cache.put(k, v);
-                    return null;                   // no output for PUT
-                } else {
-                    throw new IllegalArgumentException("Unknown op: " + op);
-                }
-            })
-            .filter(Objects::nonNull)             // keep only GET results
-            .collect(Collectors.toList());
+                .map(op -> {
+                    String[] parts = op.split(",");
+                    String cmd = parts[0].trim();
+                    if ("GET".equals(cmd)) {
+                        int k = Integer.parseInt(parts[1].trim());
+                        return cache.get(k);            // side-effect: marks as recently used
+                    } else if ("PUT".equals(cmd)) {
+                        int k = Integer.parseInt(parts[1].trim());
+                        int v = Integer.parseInt(parts[2].trim());
+                        cache.put(k, v);
+                        return null;                   // no output for PUT
+                    } else {
+                        throw new IllegalArgumentException("Unknown op: " + op);
+                    }
+                })
+                .filter(Objects::nonNull)             // keep only GET results
+                .collect(Collectors.toList());
     }
 
     // Simple equality check for lists
@@ -186,24 +164,48 @@ public class Main {
         int cap = 1000, M = 10_000;
         Random rnd = new Random(0);
         List<String> largeOps = IntStream.range(0, M)
-            .mapToObj(i -> {
-                if (rnd.nextBoolean()) {
-                    int k = rnd.nextInt(2000);
-                    int v = rnd.nextInt(1_000_000);
-                    return "PUT," + k + "," + v;
-                } else {
-                    int k = rnd.nextInt(2000);
-                    return "GET," + k;
-                }
-            })
-            .collect(Collectors.toList());
+                .mapToObj(i -> {
+                    if (rnd.nextBoolean()) {
+                        int k = rnd.nextInt(2000);
+                        int v = rnd.nextInt(1_000_000);
+                        return "PUT," + k + "," + v;
+                    } else {
+                        int k = rnd.nextInt(2000);
+                        return "GET," + k;
+                    }
+                })
+                .collect(Collectors.toList());
 
         long start = System.nanoTime();
         List<Integer> largeRes = solve(cap, largeOps);
         long elapsedMs = (System.nanoTime() - start) / 1_000_000;
         // We expect it to finish in well under 2000 ms
         System.out.println("Large test (" + M + " ops): "
-            + (elapsedMs < 2000 ? "PASS" : "FAIL")
-            + " [" + elapsedMs + " ms]");
+                + (elapsedMs < 2000 ? "PASS" : "FAIL")
+                + " [" + elapsedMs + " ms]");
+    }
+
+    // LRU Cache implementation using LinkedHashMap
+    static class LRUCache {
+        private final LinkedHashMap<Integer, Integer> map;
+        private final int capacity;
+
+        public LRUCache(int capacity) {
+            this.capacity = capacity;
+            this.map = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {
+                @Override
+                protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+                    return size() > LRUCache.this.capacity;
+                }
+            };
+        }
+
+        public int get(int key) {
+            return map.getOrDefault(key, -1);
+        }
+
+        public void put(int key, int value) {
+            map.put(key, value);
+        }
     }
 }

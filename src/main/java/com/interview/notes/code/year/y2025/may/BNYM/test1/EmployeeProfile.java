@@ -91,7 +91,7 @@ class Engineer extends Employee {
 /// ///////////////////
 // 3. Manager class //
 
-//////////////////////
+/// ///////////////////
 class Manager extends Employee {
     // PER-EMPLOYEE fields
     private int salary;
@@ -118,7 +118,7 @@ class Manager extends Employee {
     }
 }
 
-///////////////////////////
+/// ////////////////////////
 // 4. EmployeeProfile    //
 
 ///////////////////////////

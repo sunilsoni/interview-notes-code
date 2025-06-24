@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class NestedListCalculator {
-    
+
     // Main method to demonstrate and test the solution
     public static void main(String[] args) {
         // Test Case 1: Given example
         List<Object> input1 = Arrays.asList(1, 2, 3, Arrays.asList(1, 2), 3,
-                                          Arrays.asList(1, Arrays.asList(2, 4)), 3, 4);
+                Arrays.asList(1, Arrays.asList(2, 4)), 3, 4);
         testCase(input1, 4536, "Basic Test Case");
 
         // Test Case 2: Simple list without nesting
@@ -35,7 +35,7 @@ public class NestedListCalculator {
 
         // Initialize result to 1 for multiplication
         int result = 1;
-        
+
         // Iterate through each element in the list
         for (Object element : list) {
             if (element instanceof List) {
@@ -69,7 +69,7 @@ public class NestedListCalculator {
     private static void testCase(List<Object> input, int expectedOutput, String testName) {
         int result = calculateNestedList(input);
         boolean passed = result == expectedOutput;
-        
+
         System.out.println("Test: " + testName);
         System.out.println("Input: " + input);
         System.out.println("Expected: " + expectedOutput);

@@ -38,7 +38,7 @@ class SizeCriterion implements FileCriterion {
 /**
  * Walks a directory tree and filters by one or more criteria.
  */
-  class FileFinder {
+class FileFinder {
     private final List<FileCriterion> criteria = new ArrayList<>();
     private boolean followSymlinks = false;
 
@@ -66,26 +66,26 @@ class SizeCriterion implements FileCriterion {
         List<Path> result = new ArrayList<>();
         // Choose link options based on configuration
         LinkOption[] linkOpts = followSymlinks
-            ? new LinkOption[0]
-            : new LinkOption[] { LinkOption.NOFOLLOW_LINKS };
+                ? new LinkOption[0]
+                : new LinkOption[]{LinkOption.NOFOLLOW_LINKS};
 
         // Walk file tree
         // Build a filter that allows directories (for recursion) and files matching all criteria
-DirectoryStream.Filter<Path> filter = entry -> {
-    // Directories are always included so we can recurse into them
-    if (Files.isDirectory(entry, linkOpts)) return true;
-    // For files, apply all criteria; skip on exception
-    for (FileCriterion c : criteria) {
-        try {
-            if (!c.test(entry)) return false;
-        } catch (IOException e) {
-            return false;
-        }
-    }
-    return true;
-};
+        DirectoryStream.Filter<Path> filter = entry -> {
+            // Directories are always included so we can recurse into them
+            if (Files.isDirectory(entry, linkOpts)) return true;
+            // For files, apply all criteria; skip on exception
+            for (FileCriterion c : criteria) {
+                try {
+                    if (!c.test(entry)) return false;
+                } catch (IOException e) {
+                    return false;
+                }
+            }
+            return true;
+        };
 // Use custom filter when opening the directory
-try (DirectoryStream<Path> ds = Files.newDirectoryStream(root, filter)) {
+        try (DirectoryStream<Path> ds = Files.newDirectoryStream(root, filter)) {
             for (Path entry : ds) {
                 if (Files.isDirectory(entry, linkOpts)) {
                     result.addAll(find(entry));  // recurse
@@ -110,7 +110,7 @@ try (DirectoryStream<Path> ds = Files.newDirectoryStream(root, filter)) {
 /**
  * Application entry point: parses args and invokes FileFinder.
  */
-  class App {
+class App {
     private static final long DEFAULT_THRESHOLD = 5L * 1024 * 1024;
 
     public static void main(String[] args) {
@@ -121,11 +121,11 @@ try (DirectoryStream<Path> ds = Files.newDirectoryStream(root, filter)) {
 
         Path root = Paths.get(args[0]);
         long threshold = args.length > 1
-            ? Long.parseLong(args[1])
-            : DEFAULT_THRESHOLD;
+                ? Long.parseLong(args[1])
+                : DEFAULT_THRESHOLD;
 
         FileFinder finder = new FileFinder()
-            .addCriterion(new SizeCriterion(threshold));
+                .addCriterion(new SizeCriterion(threshold));
 
         try {
             List<Path> largeFiles = finder.find(root);

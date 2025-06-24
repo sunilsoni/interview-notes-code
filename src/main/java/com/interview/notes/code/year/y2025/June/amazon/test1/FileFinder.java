@@ -13,10 +13,10 @@ public class FileFinder {
     public static List<File> findLargeFiles(String directoryPath) {
         // Create File object for the starting directory
         File directory = new File(directoryPath);
-        
+
         // List to store files that meet our criteria
         List<File> results = new ArrayList<>();
-        
+
         // Check if directory exists and is actually a directory
         if (!directory.exists() || !directory.isDirectory()) {
             System.out.println("Invalid directory path: " + directoryPath);
@@ -26,10 +26,10 @@ public class FileFinder {
         try {
             // Use Java 8 Stream API to process files
             results = java.nio.file.Files.walk(directory.toPath())
-                .filter(path -> path.toFile().isFile()) // Only process files, not directories
-                .map(path -> path.toFile()) // Convert Path to File
-                .filter(file -> file.length() > SIZE_THRESHOLD) // Filter files > 5MB
-                .collect(Collectors.toList());
+                    .filter(path -> path.toFile().isFile()) // Only process files, not directories
+                    .map(path -> path.toFile()) // Convert Path to File
+                    .filter(file -> file.length() > SIZE_THRESHOLD) // Filter files > 5MB
+                    .collect(Collectors.toList());
         } catch (Exception e) {
             System.err.println("Error searching directory: " + e.getMessage());
         }
@@ -65,9 +65,9 @@ public class FileFinder {
         } else {
             System.out.println("Found " + largeFiles.size() + " files larger than 5MB:");
             largeFiles.forEach(file -> {
-                System.out.printf("File: %s (Size: %.2f MB)%n", 
-                    file.getAbsolutePath(), 
-                    file.length() / (1024.0 * 1024.0));
+                System.out.printf("File: %s (Size: %.2f MB)%n",
+                        file.getAbsolutePath(),
+                        file.length() / (1024.0 * 1024.0));
             });
         }
     }

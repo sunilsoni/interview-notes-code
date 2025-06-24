@@ -1,8 +1,12 @@
 package com.interview.notes.code.year.y2025.June.common.test7;
 
 import java.math.BigInteger;
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /*
 
@@ -99,6 +103,7 @@ public class FactorialChallenge {
         }
         return ans;
     }
+
     /**
      * Returns all integers i in [m, n] whose factorial starts with an even digit.
      */
@@ -107,17 +112,17 @@ public class FactorialChallenge {
             return Collections.emptyList();
         }
         return IntStream.rangeClosed(m, n)
-            .filter(i -> {
-                // compute i! via a stream of BigInteger
-                BigInteger fact = IntStream.rangeClosed(1, i)
-                                           .mapToObj(BigInteger::valueOf)
-                                           .reduce(BigInteger.ONE, BigInteger::multiply);
-                // check first digit
-                char first = fact.toString().charAt(0);
-                return first == '2' || first == '4' || first == '6' || first == '8';
-            })
-            .boxed()
-            .collect(Collectors.toList());
+                .filter(i -> {
+                    // compute i! via a stream of BigInteger
+                    BigInteger fact = IntStream.rangeClosed(1, i)
+                            .mapToObj(BigInteger::valueOf)
+                            .reduce(BigInteger.ONE, BigInteger::multiply);
+                    // check first digit
+                    char first = fact.toString().charAt(0);
+                    return first == '2' || first == '4' || first == '6' || first == '8';
+                })
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     /**
@@ -129,30 +134,35 @@ public class FactorialChallenge {
         class TestCase {
             final int m, n;
             final List<Integer> expected;
-            TestCase(int m, int n, List<Integer> e) { this.m = m; this.n = n; this.expected = e; }
+
+            TestCase(int m, int n, List<Integer> e) {
+                this.m = m;
+                this.n = n;
+                this.expected = e;
+            }
         }
-        
+
         List<TestCase> tests = Arrays.asList(
-            new TestCase(1, 10, Arrays.asList(2, 3, 4, 8)),
-            new TestCase(5, 7, Collections.emptyList()),
-            new TestCase(10, 10, Arrays.asList()),          // 10! = 3628800 → starts with '3'
-            new TestCase(8, 9, Arrays.asList(8))           // 8! starts '4', 9! starts '3'
+                new TestCase(1, 10, Arrays.asList(2, 3, 4, 8)),
+                new TestCase(5, 7, Collections.emptyList()),
+                new TestCase(10, 10, Arrays.asList()),          // 10! = 3628800 → starts with '3'
+                new TestCase(8, 9, Arrays.asList(8))           // 8! starts '4', 9! starts '3'
         );
-        
+
         for (TestCase tc : tests) {
             List<Integer> result = solve(tc.m, tc.n);
             boolean pass = result.equals(tc.expected);
             System.out.printf("Test [%d, %d]: expected=%s, got=%s → %s%n",
-                              tc.m, tc.n, tc.expected, result, pass ? "PASS" : "FAIL");
+                    tc.m, tc.n, tc.expected, result, pass ? "PASS" : "FAIL");
         }
-        
+
         // Large‐input demonstration (max bounds)
         System.out.println("\nFull range [1,100]:");
         List<Integer> full = solve(1, 100);
         System.out.printf("Count = %d, Values = %s%n",
-                          full.size(),
-                          full.stream()
-                              .map(String::valueOf)
-                              .collect(Collectors.joining(" ")));
+                full.size(),
+                full.stream()
+                        .map(String::valueOf)
+                        .collect(Collectors.joining(" ")));
     }
 }

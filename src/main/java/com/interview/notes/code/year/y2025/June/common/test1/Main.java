@@ -1,8 +1,11 @@
 package com.interview.notes.code.year.y2025.June.common.test1;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     // returns all i in [m,n] whose factorial starts with 2,4,6, or 8

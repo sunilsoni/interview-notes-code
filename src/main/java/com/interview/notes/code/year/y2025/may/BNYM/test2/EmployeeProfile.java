@@ -69,7 +69,7 @@ class Engineer extends Employee {
 /// ///////////////////
 // 3. Manager class //
 
-//////////////////////
+/// ///////////////////
 class Manager extends Employee {
     private int salary;
     private String grade;
@@ -95,7 +95,7 @@ class Manager extends Employee {
     }
 }
 
-///////////////////////////
+/// ////////////////////////
 // 4. EmployeeProfile    //
 
 ///////////////////////////

@@ -1,10 +1,13 @@
 package com.interview.notes.code.year.y2025.June.amazon.test13;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class CharacterFrequencyFinder {
-    
+
     // Main method to find kth most frequent character
     public static char findKthMostFrequent(List<Character> chars, int k) {
         // Handle edge cases
@@ -14,22 +17,22 @@ public class CharacterFrequencyFinder {
 
         // Group characters by frequency using Java 8 Streams
         Map<Character, Long> frequencyMap = chars.stream()
-            .collect(Collectors.groupingBy(
-                ch -> ch,    // Key: character
-                Collectors.counting()  // Value: frequency count
-            ));
+                .collect(Collectors.groupingBy(
+                        ch -> ch,    // Key: character
+                        Collectors.counting()  // Value: frequency count
+                ));
 
         // Sort characters by frequency (descending) and then alphabetically (descending)
         return frequencyMap.entrySet().stream()
-            .sorted((e1, e2) -> {
-                int freqCompare = e2.getValue().compareTo(e1.getValue());
-                // If frequencies are equal, sort alphabetically in descending order
-                return freqCompare != 0 ? freqCompare : e2.getKey().compareTo(e1.getKey());
-            })
-            .map(Map.Entry::getKey)  // Get only the characters
-            .skip(k - 1)             // Skip to kth position
-            .findFirst()             // Get the kth element
-            .orElseThrow(() -> new IllegalArgumentException("K is out of range"));
+                .sorted((e1, e2) -> {
+                    int freqCompare = e2.getValue().compareTo(e1.getValue());
+                    // If frequencies are equal, sort alphabetically in descending order
+                    return freqCompare != 0 ? freqCompare : e2.getKey().compareTo(e1.getKey());
+                })
+                .map(Map.Entry::getKey)  // Get only the characters
+                .skip(k - 1)             // Skip to kth position
+                .findFirst()             // Get the kth element
+                .orElseThrow(() -> new IllegalArgumentException("K is out of range"));
     }
 
     // Main method for testing
@@ -46,7 +49,7 @@ public class CharacterFrequencyFinder {
         // Test Case 4: Large input
         List<Character> largeInput = new ArrayList<>();
         for (int i = 0; i < 10000; i++) {
-            largeInput.add((char)('a' + i % 26));
+            largeInput.add((char) ('a' + i % 26));
         }
         testCase(largeInput, 3, 'x', "Large input");
 

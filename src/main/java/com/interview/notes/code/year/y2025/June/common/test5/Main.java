@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.June.common.test5;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.IntStream;
+
 //100% WORKING
 /*
 
@@ -105,7 +106,7 @@ public class Main {
             final int end = i;
             // check any j in [start, i) where dp[j] is true and s[j:i] is a dict word
             dp[i] = IntStream.rangeClosed(start, end - 1)
-                             .anyMatch(j -> dp[j] && dict.contains(s.substring(j, end)));
+                    .anyMatch(j -> dp[j] && dict.contains(s.substring(j, end)));
         }
 
         return dp[n] ? "true" : "false";
@@ -117,25 +118,28 @@ public class Main {
             String s;
             List<String> dict;
             String expected;
+
             Test(String s, List<String> dict, String expected) {
-                this.s = s; this.dict = dict; this.expected = expected;
+                this.s = s;
+                this.dict = dict;
+                this.expected = expected;
             }
         }
 
         List<Test> tests = Arrays.asList(
-            new Test("applepenapple", Arrays.asList("apple", "pen"), "true"),
-            new Test("catsandog",    Arrays.asList("cats", "dog", "sand", "and", "cat"), "false"),
-            new Test("",             Collections.emptyList(),                        "true"),  // empty string
-            new Test("a",            Arrays.asList("b"),                               "false")
-            // you can add more edge / large cases here
+                new Test("applepenapple", Arrays.asList("apple", "pen"), "true"),
+                new Test("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat"), "false"),
+                new Test("", Collections.emptyList(), "true"),  // empty string
+                new Test("a", Arrays.asList("b"), "false")
+                // you can add more edge / large cases here
         );
 
         for (Test t : tests) {
             String result = solve(t.s, t.dict);
             String status = result.equals(t.expected) ? "PASS" : "FAIL";
             System.out.printf(
-                "Input: \"%s\", Dict: %s => got %s, expected %s [%s]%n",
-                t.s, t.dict, result, t.expected, status
+                    "Input: \"%s\", Dict: %s => got %s, expected %s [%s]%n",
+                    t.s, t.dict, result, t.expected, status
             );
         }
     }

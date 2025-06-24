@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.June.common.test6;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 /*
 ### **The Only Way is Up**
 
@@ -79,13 +82,16 @@ public static int solve(int B, List<Integer> ar)
 1
 ```
  */
+
 /**
  * The Only Way is Up – minimal, self-contained solution.
  * Compiles under Java 8 -source 1.8.
  */
 public class RisingSequence {
 
-    /** ---------- Required method ---------- */
+    /**
+     * ---------- Required method ----------
+     */
     public static int solve(int B, List<Integer> ar) {
         long ops = 0;                  // long to stay perfectly safe
         int prev = ar.get(0);
@@ -103,16 +109,6 @@ public class RisingSequence {
             prev = cur;                                    // next comparison base
         }
         return (int) ops;                                  // fits comfortably
-    }
-
-    /** ---------- Simple test harness ---------- */
-    private static class Case {
-        final int B;
-        final List<Integer> ar;
-        final int expected;
-        Case(int B, List<Integer> ar, int expected) {
-            this.B = B; this.ar = ar; this.expected = expected;
-        }
     }
 
     public static void main(String[] args) {
@@ -155,5 +151,20 @@ public class RisingSequence {
             if (ok) pass++;
         }
         System.out.printf("%nSummary: %d / %d tests passed%n", pass, tests.size());
+    }
+
+    /**
+     * ---------- Simple test harness ----------
+     */
+    private static class Case {
+        final int B;
+        final List<Integer> ar;
+        final int expected;
+
+        Case(int B, List<Integer> ar, int expected) {
+            this.B = B;
+            this.ar = ar;
+            this.expected = expected;
+        }
     }
 }

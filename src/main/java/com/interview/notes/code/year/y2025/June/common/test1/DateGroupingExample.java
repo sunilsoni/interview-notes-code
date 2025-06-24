@@ -32,9 +32,9 @@ public class DateGroupingExample {
         // Print results
         System.out.println("Original dates:");
         dateList.forEach(System.out::println);
-        
+
         System.out.println("\nGrouped by month with count:");
-        result.forEach((month, count) -> 
-            System.out.println(month + ", " + count));
+        result.forEach((month, count) ->
+                System.out.println(month + ", " + count));
     }
 }
