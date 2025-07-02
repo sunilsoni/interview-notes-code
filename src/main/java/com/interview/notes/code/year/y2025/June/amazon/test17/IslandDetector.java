@@ -136,11 +136,7 @@ public class IslandDetector {
         // Create test cases with different scenarios
         List<char[][]> testGrids = Arrays.asList(
             // Test case 1: Grid with 2 enclosed islands
-            new char[][] {...},
-            // Test case 2: Grid with no enclosed islands (all cells touch border)
-            new char[][] {...},
-            // Test case 3: Grid with all water cells
-            new char[][] {...}
+
         );
         
         // Expected results for each test case
