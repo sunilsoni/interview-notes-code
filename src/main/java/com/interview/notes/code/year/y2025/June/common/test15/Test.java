@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Test
-{
+public class Test {
     public static void main(String[] args) {
         // Assume we already have this list from the parsed input
         List<Student> students = Arrays.asList(

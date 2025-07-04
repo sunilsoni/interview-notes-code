@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.June.common.test6;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class RobotDirection {
 
@@ -10,11 +11,11 @@ public class RobotDirection {
      */
     static String solution(String commands) {
         // count 'U' with a stream; the rest are 'D'
-        long ups   = commands.chars().filter(c -> c == 'U').count();
+        long ups = commands.chars().filter(c -> c == 'U').count();
         long downs = commands.length() - ups;
 
-        if (ups > downs)   return "U";
-        if (downs > ups)   return "D";
+        if (ups > downs) return "U";
+        if (downs > ups) return "D";
         return "";
     }
 
@@ -37,7 +38,7 @@ public class RobotDirection {
             String out = solution(inputs.get(i));
             boolean ok = out.equals(expected.get(i));
             System.out.printf("Test %02d : %s  (expected \"%s\", got \"%s\")%n",
-                              i + 1, ok ? "PASS" : "FAIL", expected.get(i), out);
+                    i + 1, ok ? "PASS" : "FAIL", expected.get(i), out);
         }
     }
 

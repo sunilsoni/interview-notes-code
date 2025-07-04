@@ -7,30 +7,38 @@ public class Theater {
     private final int columns;
     private final Seat[][] seats;
 
-    // Inner class representing a seat
-    private static class Seat {
-        private final ReentrantLock lock = new ReentrantLock();
-        private boolean isBooked = false;
-        private final int row;
-        private final int column;
-
-        public Seat(int row, int column) {
-            this.row = row;
-            this.column = column;
-        }
-    }
-
     public Theater(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
         this.seats = new Seat[rows][columns];
-        
+
         // Initialize all seats
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 seats[i][j] = new Seat(i, j);
             }
         }
+    }
+
+    // Test the implementation
+    public static void main(String[] args) {
+        Theater theater = new Theater(3, 4);  // 3x4 theater
+
+        // Print initial layout
+        System.out.println("Initial theater layout:");
+        theater.printTheaterLayout();
+
+        // Test booking some seats
+        theater.bookSeat(0, 0);
+        theater.bookSeat(1, 2);
+
+        // Try to book an already booked seat
+        boolean result = theater.bookSeat(0, 0);
+        System.out.println("Trying to book already booked seat: " + result);
+
+        // Print final layout
+        System.out.println("\nFinal theater layout:");
+        theater.printTheaterLayout();
     }
 
     public boolean bookSeat(int row, int column) {
@@ -62,24 +70,16 @@ public class Theater {
         }
     }
 
-    // Test the implementation
-    public static void main(String[] args) {
-        Theater theater = new Theater(3, 4);  // 3x4 theater
-        
-        // Print initial layout
-        System.out.println("Initial theater layout:");
-        theater.printTheaterLayout();
+    // Inner class representing a seat
+    private static class Seat {
+        private final ReentrantLock lock = new ReentrantLock();
+        private final int row;
+        private final int column;
+        private boolean isBooked = false;
 
-        // Test booking some seats
-        theater.bookSeat(0, 0);
-        theater.bookSeat(1, 2);
-        
-        // Try to book an already booked seat
-        boolean result = theater.bookSeat(0, 0);
-        System.out.println("Trying to book already booked seat: " + result);
-
-        // Print final layout
-        System.out.println("\nFinal theater layout:");
-        theater.printTheaterLayout();
+        public Seat(int row, int column) {
+            this.row = row;
+            this.column = column;
+        }
     }
 }

@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.June.common.test9;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.AbstractMap;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
 /*
 
 
@@ -89,7 +92,9 @@ public class SensorReadingsTester {
         return 0; // unreachable
     }
 
-    /** Computes the repeated‐sum‐of‐digits (“digital root”) in O(1) time */
+    /**
+     * Computes the repeated‐sum‐of‐digits (“digital root”) in O(1) time
+     */
     private static int digitalRoot(int n) {
         if (n == 0) return 0;
         return 1 + (n - 1) % 9;
@@ -98,11 +103,11 @@ public class SensorReadingsTester {
     public static void main(String[] args) {
         // define test cases: (input array → expected result)
         List<Map.Entry<int[], Integer>> tests = Arrays.asList(
-            new AbstractMap.SimpleEntry<>(new int[]{123, 456, 789, 101}, 6),
-            new AbstractMap.SimpleEntry<>(new int[]{6},               6),
-            new AbstractMap.SimpleEntry<>(new int[]{3, 12, 23, 32, 0}, 5),
-            new AbstractMap.SimpleEntry<>(new int[]{0, 0, 0},         0),
-            new AbstractMap.SimpleEntry<>(new int[]{10, 19, 28, 37},   1)
+                new AbstractMap.SimpleEntry<>(new int[]{123, 456, 789, 101}, 6),
+                new AbstractMap.SimpleEntry<>(new int[]{6}, 6),
+                new AbstractMap.SimpleEntry<>(new int[]{3, 12, 23, 32, 0}, 5),
+                new AbstractMap.SimpleEntry<>(new int[]{0, 0, 0}, 0),
+                new AbstractMap.SimpleEntry<>(new int[]{10, 19, 28, 37}, 1)
         );
 
         int passed = 0;
@@ -112,13 +117,13 @@ public class SensorReadingsTester {
             int actual = solution(input);
             boolean ok = actual == expected;
             System.out.printf(
-                "Test %02d: %-4s  expected=%d  got=%d  input=%s%n",
-                i+1, ok ? "PASS" : "FAIL", expected, actual,
-                Arrays.toString(input)
+                    "Test %02d: %-4s  expected=%d  got=%d  input=%s%n",
+                    i + 1, ok ? "PASS" : "FAIL", expected, actual,
+                    Arrays.toString(input)
             );
             if (ok) passed++;
         }
         System.out.printf("Passed %d/%d tests%n",
-                          passed, tests.size());
+                passed, tests.size());
     }
 }

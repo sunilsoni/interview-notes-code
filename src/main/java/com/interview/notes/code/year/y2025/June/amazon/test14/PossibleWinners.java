@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.June.amazon.test14;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 
 ---
@@ -122,15 +124,15 @@ public class PossibleWinners {
         int n = initialRewards.size();
         // highest initial reward
         int max = initialRewards.stream()
-                                .mapToInt(Integer::intValue)
-                                .max()
-                                .orElse(0);
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(0);
         // threshold = max-1, since runner-up can get at most (n–1) extra points
         int threshold = max - 1;
         // anyone with reward >= threshold can tie or beat the best competitor
         return (int) initialRewards.stream()
-                                   .filter(r -> r >= threshold)
-                                   .count();
+                .filter(r -> r >= threshold)
+                .count();
     }
 
     public static void main(String[] args) {
@@ -139,7 +141,7 @@ public class PossibleWinners {
         samples.put(Arrays.asList(8, 10, 9), 2);
         samples.put(Arrays.asList(5, 7, 9, 11), 1);
         samples.put(Arrays.asList(1, 3, 4), 2);
-        
+
         System.out.println("=== Sample Tests ===");
         int passed = 0, total = 0;
         for (var entry : samples.entrySet()) {
@@ -149,7 +151,7 @@ public class PossibleWinners {
             boolean ok = got == want;
             if (ok) passed++;
             System.out.printf("Test %d: got=%d want=%d → %s%n",
-                              total, got, want, ok ? "PASS" : "FAIL");
+                    total, got, want, ok ? "PASS" : "FAIL");
         }
         System.out.printf("Sample results: %d/%d passed%n%n", passed, total);
 
@@ -158,9 +160,9 @@ public class PossibleWinners {
         Random rnd = new Random(123);
         int N = 1_000_000;
         List<Integer> big = IntStream.range(0, N)
-                                     .map(i -> rnd.nextInt(100_000) + 1)
-                                     .boxed()
-                                     .collect(Collectors.toList());
+                .map(i -> rnd.nextInt(100_000) + 1)
+                .boxed()
+                .collect(Collectors.toList());
         long start = System.nanoTime();
         int result = countPossibleWinners(big);
         long ms = (System.nanoTime() - start) / 1_000_000;

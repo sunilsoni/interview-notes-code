@@ -1,11 +1,12 @@
 package com.interview.notes.code.year.y2025.June.common.test8;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.TreeMap;
 
 public class ViewingGapTester {
 
     /**
-     * Returns the smallest |heights[a] - heights[b]| 
+     * Returns the smallest |heights[a] - heights[b]|
      * for all pairs with |a - b| >= viewingGap.
      */
     public static int solution(int[] heights, int viewingGap) {
@@ -31,7 +32,7 @@ public class ViewingGapTester {
             int out = heights[i + viewingGap];
             int cnt = map.get(out);
             if (cnt == 1) map.remove(out);
-            else            map.put(out, cnt - 1);
+            else map.put(out, cnt - 1);
         }
 
         return best;
@@ -40,10 +41,10 @@ public class ViewingGapTester {
     public static void main(String[] args) {
         // each test: {heights}, viewingGap, expected
         Object[][] tests = {
-            { new int[]{1, 5, 4,10, 9}, 3, 4 },
-            { new int[]{3,10, 5, 8},    1, 2 },
-            { new int[]{2, 2, 2, 2},    2, 0 },
-            { new int[]{5, 1},          1, 4 }
+                {new int[]{1, 5, 4, 10, 9}, 3, 4},
+                {new int[]{3, 10, 5, 8}, 1, 2},
+                {new int[]{2, 2, 2, 2}, 2, 0},
+                {new int[]{5, 1}, 1, 4}
         };
 
         int pass = 0;
@@ -54,8 +55,8 @@ public class ViewingGapTester {
             int got = solution(h, gap);
             boolean ok = got == exp;
             System.out.printf(
-              "Test %02d: %-4s  gap=%d  exp=%d  got=%d  heights=%s%n",
-              t+1, ok ? "PASS" : "FAIL", gap, exp, got, Arrays.toString(h)
+                    "Test %02d: %-4s  gap=%d  exp=%d  got=%d  heights=%s%n",
+                    t + 1, ok ? "PASS" : "FAIL", gap, exp, got, Arrays.toString(h)
             );
             if (ok) pass++;
         }

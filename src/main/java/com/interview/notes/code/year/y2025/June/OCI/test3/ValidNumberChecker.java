@@ -5,9 +5,9 @@ import java.util.Arrays;
 public class ValidNumberChecker {
     /**
      * Determines if the given string is a valid number with:
-     *  - optional leading '+' or '-'
-     *  - digits
-     *  - at most one decimal point
+     * - optional leading '+' or '-'
+     * - digits
+     * - at most one decimal point
      * Examples of valid: "2", "0089", "-0.1", "+3.14", "4.", "-.9", ".5"
      * Examples of invalid: "abc", "1a", "--6", "-+3", ".", "+", ""
      */
@@ -67,10 +67,10 @@ public class ValidNumberChecker {
     public static void main(String[] args) {
         // Given examples
         String[] validExamples = {
-            "2", "0089", "-0.1", "+3.14", "4.", "-.9", ".5"
+                "2", "0089", "-0.1", "+3.14", "4.", "-.9", ".5"
         };
         String[] invalidExamples = {
-            "abc", "1a", "--6", "-+3", "", "+", "-", ".", "..", ".-5", "5-", "3.1.4", " 3", "3 ", "3. ", " . ", "6..", "+.", "-.", "+.e", "e9"
+                "abc", "1a", "--6", "-+3", "", "+", "-", ".", "..", ".-5", "5-", "3.1.4", " 3", "3 ", "3. ", " . ", "6..", "+.", "-.", "+.e", "e9"
         };
         System.out.println("Testing valid examples:");
         // For each valid example, expect true
@@ -97,7 +97,7 @@ public class ValidNumberChecker {
         boolean largeResult = isValidNumber(largeNumeric);
         long duration = System.currentTimeMillis() - start;
         System.out.println("Large numeric string of length " + largeSize + " => result: " + largeResult +
-                           " (expected: true), time: " + duration + " ms");
+                " (expected: true), time: " + duration + " ms");
         // Also test a large invalid string: e.g., insert a letter in middle
         StringBuilder sb = new StringBuilder(largeNumeric);
         sb.setCharAt(largeSize / 2, 'a');
@@ -106,6 +106,6 @@ public class ValidNumberChecker {
         boolean largeInvalidResult = isValidNumber(largeInvalid);
         duration = System.currentTimeMillis() - start;
         System.out.println("Large string with a letter inserted => result: " + largeInvalidResult +
-                           " (expected: false), time: " + duration + " ms");
+                " (expected: false), time: " + duration + " ms");
     }
 }

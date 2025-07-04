@@ -1,26 +1,28 @@
 package com.interview.notes.code.year.y2025.June.amazon.test20;
 
-import java.util.*;                   // List, Set, Random, Objects, Arrays
-import java.util.stream.*;            // Java 8 streams
+import java.util.*;
 
 // represent the result of firing at a square
-enum ShotResult { MISS, HIT, SUNK; }  // three possible outcomes
+enum ShotResult {MISS, HIT, SUNK;}  // three possible outcomes
 
 // simple (row,col) holder with proper equals/hashCode
 class Coordinate {
     int row;                          // row index
     int col;                          // column index
+
     Coordinate(int row, int col) {   // constructor
         this.row = row;               // set row
         this.col = col;               // set col
     }
+
     @Override
     public boolean equals(Object o) { // equality by row+col
-        if (this == o) return true;  
+        if (this == o) return true;
         if (!(o instanceof Coordinate)) return false;
         Coordinate c = (Coordinate) o;
         return row == c.row && col == c.col;
     }
+
     @Override
     public int hashCode() {           // allow in hash-based sets
         return Objects.hash(row, col);
@@ -33,7 +35,7 @@ class Ship {
     Set<Coordinate> hits;            // subset that have been hit
 
     Ship(List<Coordinate> positions) {
-        this.positions = positions;  
+        this.positions = positions;
         this.hits = new HashSet<>(); // no hits at start
     }
 
@@ -95,7 +97,7 @@ class Player {
             ships.forEach(ship -> ship.registerHit(target));
             // check if this hit sank a ship
             boolean sank = ships.stream()
-                        .anyMatch(ship ->
+                    .anyMatch(ship ->
                             ship.positions.contains(target) && ship.isSunk());
             return sank ? ShotResult.SUNK : ShotResult.HIT;
         } else {
@@ -118,29 +120,29 @@ public class Battleship {
 
         // Test 1: valid placement of length-2 ship
         List<Coordinate> s1 = Arrays.asList(
-            new Coordinate(0,0), new Coordinate(0,1)
+                new Coordinate(0, 0), new Coordinate(0, 1)
         );
         boolean ok1 = p1.placeShip(s1);
         System.out.println("Place valid ship: " + (ok1 ? "PASS" : "FAIL"));
 
         // Test 2: overlapping placement should fail
         List<Coordinate> s2 = Arrays.asList(
-            new Coordinate(0,1), new Coordinate(0,2)
+                new Coordinate(0, 1), new Coordinate(0, 2)
         );
         boolean ok2 = p1.placeShip(s2);
         System.out.println("Overlap detection: " + (!ok2 ? "PASS" : "FAIL"));
 
         // Test 3: hit then sink
-        ShotResult r1 = p1.hitSquare(new Coordinate(0,0));
+        ShotResult r1 = p1.hitSquare(new Coordinate(0, 0));
         System.out.println("Hit detection: " + (r1 == ShotResult.HIT ? "PASS" : "FAIL"));
-        ShotResult r2 = p1.hitSquare(new Coordinate(0,1));
+        ShotResult r2 = p1.hitSquare(new Coordinate(0, 1));
         System.out.println("Sink detection: " + (r2 == ShotResult.SUNK ? "PASS" : "FAIL"));
 
         // Test 4: has_lost after sinking all
         System.out.println("Loss detection: " + (p1.hasLost() ? "PASS" : "FAIL"));
 
         // Test 5: out-of-bounds shot treated as MISS
-        ShotResult r3 = p1.hitSquare(new Coordinate(-1,5));
+        ShotResult r3 = p1.hitSquare(new Coordinate(-1, 5));
         System.out.println("Bounds check: " + (r3 == ShotResult.MISS ? "PASS" : "FAIL"));
 
         // Performance test: many random shots on p2 (no crash)

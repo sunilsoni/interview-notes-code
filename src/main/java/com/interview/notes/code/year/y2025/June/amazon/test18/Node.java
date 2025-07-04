@@ -1,6 +1,10 @@
 package com.interview.notes.code.year.y2025.June.amazon.test18;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /*
 
 ### **Question: Connect nodes in Zig Zag order**
@@ -45,7 +49,7 @@ class Node {
 class Node {
     int val;
     Node left, right, next;
-    
+
     Node(int val) {
         this.val = val;
     }
@@ -55,28 +59,28 @@ class ZigZagConnector {
     // Main method to connect nodes in zigzag pattern
     public static void connectNodesZigZag(Node root) {
         if (root == null) return;
-        
+
         // Using queue for level order traversal
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
-        
+
         // Track if current level should be processed left to right
         boolean leftToRight = true;
-        
+
         while (!queue.isEmpty()) {
             int levelSize = queue.size();
             Node[] levelNodes = new Node[levelSize];
-            
+
             // Store current level nodes in array
             for (int i = 0; i < levelSize; i++) {
                 Node current = queue.poll();
                 levelNodes[i] = current;
-                
+
                 // Add children for next level processing
                 if (current.left != null) queue.offer(current.left);
                 if (current.right != null) queue.offer(current.right);
             }
-            
+
             // Connect nodes based on direction
             if (leftToRight) {
                 // Connect left to right
@@ -91,7 +95,7 @@ class ZigZagConnector {
                 }
                 levelNodes[0].next = null;
             }
-            
+
             // Toggle direction for next level
             leftToRight = !leftToRight;
         }
@@ -112,22 +116,22 @@ class ZigZagConnector {
     // Helper method to verify connections
     private static boolean verifyConnections(Node root) {
         if (root == null) return true;
-        
+
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
         boolean leftToRight = true;
-        
+
         while (!queue.isEmpty()) {
             int levelSize = queue.size();
             List<Node> level = new ArrayList<>();
-            
+
             for (int i = 0; i < levelSize; i++) {
                 Node current = queue.poll();
                 level.add(current);
                 if (current.left != null) queue.offer(current.left);
                 if (current.right != null) queue.offer(current.right);
             }
-            
+
             // Verify connections
             if (leftToRight) {
                 for (int i = 0; i < level.size() - 1; i++) {
@@ -140,7 +144,7 @@ class ZigZagConnector {
                 }
                 if (level.get(0).next != null) return false;
             }
-            
+
             leftToRight = !leftToRight;
         }
         return true;
@@ -173,7 +177,7 @@ class ZigZagConnector {
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
         int count = 2;
-        
+
         while (count <= size) {
             Node current = queue.poll();
             current.left = new Node(count++);

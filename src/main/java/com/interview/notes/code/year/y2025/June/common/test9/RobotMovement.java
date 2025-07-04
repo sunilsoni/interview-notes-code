@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.June.common.test9;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class RobotMovement {
 
@@ -16,18 +18,18 @@ public class RobotMovement {
 
     public static void main(String[] args) {
         Map<String, String> testCases = new LinkedHashMap<>();
-        
+
         // Sample tests
         testCases.put("UDUDDD", "D");
         testCases.put("DDUUUDDUUUU", "");
-        
+
         // Edge case: 1 character
         testCases.put("U", "U");
         testCases.put("D", "D");
 
         // Large input: equal U and D
         String largeBalanced = String.join("", Collections.nCopies(500, "U")) +
-                               String.join("", Collections.nCopies(500, "D"));
+                String.join("", Collections.nCopies(500, "D"));
         testCases.put(largeBalanced, "");
 
         // Large input: 999 D, 1 U

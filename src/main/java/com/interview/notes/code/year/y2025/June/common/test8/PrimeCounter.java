@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.June.common.test8;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.stream.IntStream;
+
 /*
 
 ---
@@ -87,23 +90,23 @@ public class PrimeCounter {
 
         // Java 8 Stream to count
         return (int) IntStream.range(2, N)
-                              .filter(i -> isPrime[i])
-                              .count();
+                .filter(i -> isPrime[i])
+                .count();
     }
 
     // simple main to run pass/fail tests + one large case
     public static void main(String[] args) {
         Map<Integer, Integer> tests = new LinkedHashMap<>();
-        tests.put(0,    0);
-        tests.put(1,    0);
-        tests.put(2,    0);
-        tests.put(3,    1);
-        tests.put(10,   4);
-        tests.put(20,   8);   // {2,3,5,7,11,13,17,19}
+        tests.put(0, 0);
+        tests.put(1, 0);
+        tests.put(2, 0);
+        tests.put(3, 1);
+        tests.put(10, 4);
+        tests.put(20, 8);   // {2,3,5,7,11,13,17,19}
         tests.put(100, 25);   // known π(100)=25
 
         boolean allPass = true;
-        for (Map.Entry<Integer,Integer> e : tests.entrySet()) {
+        for (Map.Entry<Integer, Integer> e : tests.entrySet()) {
             int n = e.getKey(), exp = e.getValue();
             int got = solve(n);
             if (got == exp) {
@@ -121,6 +124,6 @@ public class PrimeCounter {
         int cnt = solve(largeN);
         long t1 = System.currentTimeMillis();
         System.out.printf("For N=%d → %d primes (computed in %d ms)%n",
-                          largeN, cnt, (t1 - t0));
+                largeN, cnt, (t1 - t0));
     }
 }

@@ -63,11 +63,11 @@ public class IslandDetector {
         // Get dimensions of the grid
         int n = grid.length;                             // Number of rows in the grid
         int m = grid[0].length;                          // Number of columns in the grid
-        
+
         // Create visited array to track explored cells
         // We use boolean[][] instead of HashSet for O(1) lookup and less memory overhead
-        boolean[][] visited = new boolean[n][m];         
-        
+        boolean[][] visited = new boolean[n][m];
+
         // ArrayList to store all valid enclosed islands
         // Each island is represented as a List<int[]> containing coordinates
         List<List<int[]>> islands = new ArrayList<>();
@@ -80,14 +80,14 @@ public class IslandDetector {
                 if (grid[i][j] == 'L' && !visited[i][j]) {
                     // Create new list to store coordinates of current island
                     List<int[]> island = new ArrayList<>();
-                    
+
                     // Use boolean array of size 1 to track if island touches border
                     // We use array instead of primitive to allow modification in recursive calls
                     boolean[] touchesBorder = new boolean[1];
-                    
+
                     // Start DFS from current cell
                     dfs(grid, visited, i, j, island, touchesBorder);
-                    
+
                     // Only add island if it doesn't touch any border
                     if (!touchesBorder[0]) {
                         islands.add(island);
@@ -100,30 +100,30 @@ public class IslandDetector {
 
     // DFS helper method
     private static void dfs(char[][] grid, boolean[][] visited,
-                          int i, int j, List<int[]> island, boolean[] touchesBorder) {
+                            int i, int j, List<int[]> island, boolean[] touchesBorder) {
         int n = grid.length, m = grid[0].length;
-        
+
         // Base cases to stop DFS:
         // 1. Out of grid bounds
         // 2. Cell is water ('W')
         // 3. Cell already visited
         if (i < 0 || i >= n || j < 0 || j >= m
-            || grid[i][j] == 'W' || visited[i][j]) {
+                || grid[i][j] == 'W' || visited[i][j]) {
             return;
         }
-        
+
         // Mark current cell as visited
         visited[i][j] = true;
-        
+
         // Check if current cell is on border
         // If yes, mark entire island as touching border
         if (i == 0 || i == n - 1 || j == 0 || j == m - 1) {
             touchesBorder[0] = true;
         }
-        
+
         // Add current cell coordinates to island
         island.add(new int[]{i, j});
-        
+
         // Recursively explore all 4 adjacent cells (up, down, left, right)
         dfs(grid, visited, i - 1, j, island, touchesBorder); // up
         dfs(grid, visited, i + 1, j, island, touchesBorder); // down
@@ -135,10 +135,10 @@ public class IslandDetector {
     public static void main(String[] args) {
         // Create test cases with different scenarios
         List<char[][]> testGrids = Arrays.asList(
-            // Test case 1: Grid with 2 enclosed islands
+                // Test case 1: Grid with 2 enclosed islands
 
         );
-        
+
         // Expected results for each test case
         List<String> expected = Arrays.asList("Count=2", "Count=0", "Count=0");
 
@@ -147,8 +147,8 @@ public class IslandDetector {
             List<List<int[]>> isl = findIslands(testGrids.get(i));
             String actual = "Count=" + isl.size();
             String result = actual.equals(expected.get(i)) ? "PASS" : "FAIL";
-            System.out.println("Test " + (i+1) + ": expected " 
-                + expected.get(i) + ", got " + actual + " => " + result);
+            System.out.println("Test " + (i + 1) + ": expected "
+                    + expected.get(i) + ", got " + actual + " => " + result);
         });
 
         // Performance test with large grid
@@ -160,13 +160,13 @@ public class IslandDetector {
                 large[r][c] = Math.random() < 0.5 ? 'L' : 'W';
             }
         }
-        
+
         // Measure execution time
         long start = System.currentTimeMillis();
         List<List<int[]>> bigIslands = findIslands(large);
         long ms = System.currentTimeMillis() - start;
-        System.out.println("Large grid " + size + "×" + size 
-            + " → islands=" + bigIslands.size() 
-            + ", time=" + ms + "ms");
+        System.out.println("Large grid " + size + "×" + size
+                + " → islands=" + bigIslands.size()
+                + ", time=" + ms + "ms");
     }
 }

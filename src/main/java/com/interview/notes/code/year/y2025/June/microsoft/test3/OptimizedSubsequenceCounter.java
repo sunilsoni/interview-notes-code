@@ -1,9 +1,9 @@
 package com.interview.notes.code.year.y2025.June.microsoft.test3;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class OptimizedSubsequenceCounter {
-    
+
     /**
      * Optimized method to count matching subsequences using character position mapping
      * Time Complexity: O(N + sum(len(words)))
@@ -16,10 +16,10 @@ public class OptimizedSubsequenceCounter {
         for (int i = 0; i < 26; i++) {
             waiting[i] = new ArrayList<>();
         }
-        
+
         // Count of successful matches
         int count = 0;
-        
+
         // Initialize waiting lists - each word starts waiting for its first character
         for (String word : words) {
             if (word.length() > 0) {
@@ -30,18 +30,18 @@ public class OptimizedSubsequenceCounter {
                 count++;
             }
         }
-        
+
         // Process each character in the main string
         for (char c : s.toCharArray()) {
             int index = c - 'a';
             // Get all words waiting for current character
             ArrayList<Pair> currentWaiting = waiting[index];
             waiting[index] = new ArrayList<>(); // Reset waiting list for this character
-            
+
             // Process all words waiting for current character
             for (Pair pair : currentWaiting) {
                 pair.position++; // Move to next character in word
-                
+
                 if (pair.position == pair.word.length()) {
                     // Word complete - found a valid subsequence
                     count++;
@@ -52,37 +52,26 @@ public class OptimizedSubsequenceCounter {
                 }
             }
         }
-        
+
         return count;
-    }
-    
-    // Helper class to store word and current position
-    private static class Pair {
-        String word;
-        int position;
-        
-        Pair(String word, int position) {
-            this.word = word;
-            this.position = position;
-        }
     }
 
     public static void main(String[] args) {
         // Test Case 1: Basic test
-        runTest("abcde", 
-                new String[]{"a", "bb", "ace", "aec"}, 
+        runTest("abcde",
+                new String[]{"a", "bb", "ace", "aec"},
                 2,
                 "Basic Test");
 
         // Test Case 2: Empty words
-        runTest("abc", 
-                new String[]{""}, 
+        runTest("abc",
+                new String[]{""},
                 1,
                 "Empty Word Test");
 
         // Test Case 3: Repeated characters
-        runTest("aaaa", 
-                new String[]{"a", "aa", "aaa", "aaaa"}, 
+        runTest("aaaa",
+                new String[]{"a", "aa", "aaa", "aaaa"},
                 4,
                 "Repeated Characters Test");
 
@@ -90,13 +79,13 @@ public class OptimizedSubsequenceCounter {
         StringBuilder largeSb = new StringBuilder();
         String[] largeWords = new String[1000];
         for (int i = 0; i < 5000; i++) {
-            largeSb.append((char)('a' + (i % 26)));
+            largeSb.append((char) ('a' + (i % 26)));
         }
         for (int i = 0; i < 1000; i++) {
             largeWords[i] = "abc";
         }
-        runTest(largeSb.toString(), 
-                largeWords, 
+        runTest(largeSb.toString(),
+                largeWords,
                 1000,
                 "Large String Test");
 
@@ -105,8 +94,8 @@ public class OptimizedSubsequenceCounter {
         for (int i = 0; i < 100; i++) {
             longWords[i] = "abcdefghijklmnopqrstuvwxyz";
         }
-        runTest("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", 
-                longWords, 
+        runTest("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz",
+                longWords,
                 100,
                 "Long Words Test");
     }
@@ -119,12 +108,23 @@ public class OptimizedSubsequenceCounter {
         int result = numMatchingSubseq(s, words);
         long endTime = System.nanoTime();
         double duration = (endTime - startTime) / 1_000_000.0; // Convert to milliseconds
-        
+
         System.out.printf("%s: %s (Expected: %d, Got: %d) - Time: %.2f ms%n",
-                         testName,
-                         result == expected ? "PASS" : "FAIL",
-                         expected,
-                         result,
-                         duration);
+                testName,
+                result == expected ? "PASS" : "FAIL",
+                expected,
+                result,
+                duration);
+    }
+
+    // Helper class to store word and current position
+    private static class Pair {
+        String word;
+        int position;
+
+        Pair(String word, int position) {
+            this.word = word;
+            this.position = position;
+        }
     }
 }

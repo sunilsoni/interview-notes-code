@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.June.amazon.test15;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class AmazonErrorMinimizer {
     private static final int MOD = 1_000_000_007;
@@ -69,6 +70,7 @@ public class AmazonErrorMinimizer {
     static class TestCase {
         String errorString;
         int x, y, expected;
+
         TestCase(String errorString, int x, int y, int expected) {
             this.errorString = errorString;
             this.x = x;

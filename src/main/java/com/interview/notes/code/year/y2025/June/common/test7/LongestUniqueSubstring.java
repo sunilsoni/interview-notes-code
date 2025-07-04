@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.June.common.test7;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
@@ -37,22 +40,22 @@ public class LongestUniqueSubstring {
     public static void main(String[] args) {
         // Put every test case in this list: input, expected output
         List<String[]> tests = Arrays.asList(
-            new String[]{"abcabcbb", "3"},
-            new String[]{"bbbbb",     "1"},
-            new String[]{"",          "0"},        // edge: empty
-            new String[]{"abcdef",    "6"},        // edge: all unique
-            new String[]{"pwwkew",    "3"}         // classic LeetCode case
+                new String[]{"abcabcbb", "3"},
+                new String[]{"bbbbb", "1"},
+                new String[]{"", "0"},        // edge: empty
+                new String[]{"abcdef", "6"},        // edge: all unique
+                new String[]{"pwwkew", "3"}         // classic LeetCode case
         );
 
         // Run tests and print simple PASS / FAIL lines
         tests.forEach(t -> {
             String input = t[0];
             int expected = Integer.parseInt(t[1]);
-            int actual   = lengthOfLongestSubstring(input);
+            int actual = lengthOfLongestSubstring(input);
             String status = (actual == expected) ? "PASS" : "FAIL";
             System.out.println(String.format(
-                "Input: %-10s  Expected: %d  Actual: %d  -> %s",
-                "\"" + input + "\"", expected, actual, status));
+                    "Input: %-10s  Expected: %d  Actual: %d  -> %s",
+                    "\"" + input + "\"", expected, actual, status));
         });
 
         // Large-data sanity check: 100 000 unique chars (prints length only)
@@ -61,9 +64,9 @@ public class LongestUniqueSubstring {
         IntStream.range(0, bigLen).forEach(i -> sb.append((char) ('a' + (i % 26))));
         long start = System.nanoTime();
         int result = lengthOfLongestSubstring(sb.toString());
-        long end   = System.nanoTime();
+        long end = System.nanoTime();
         System.out.println("Large input length: " + bigLen
-                         + ", answer: " + result
-                         + ", time: " + (end - start)/1_000_000 + " ms");
+                + ", answer: " + result
+                + ", time: " + (end - start) / 1_000_000 + " ms");
     }
 }

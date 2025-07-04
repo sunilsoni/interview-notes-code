@@ -57,65 +57,13 @@ class TreeNode {
     TreeNode left;
     TreeNode right;
     TreeNode next;
-    
+
     TreeNode(int val) {
         this.val = val;
     }
 }
 
 class Solution {
-    public void connect(TreeNode root) {
-        if (root == null) return;
-        
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-        q.offer(null);
-        
-        TreeNode prev = null;
-        int level = 0;
-        
-        while (q.size() > 1) {
-            TreeNode curr = q.poll();
-            
-            if (curr == null) {
-                level++;
-                q.offer(null);
-                prev = null;
-                continue;
-            }
-            
-            if (curr.left != null) q.offer(curr.left);
-            if (curr.right != null) q.offer(curr.right);
-            
-            if (prev != null) {
-                if (level % 2 == 0) {
-                    prev.next = curr;
-                } else {
-                    curr.next = prev;
-                }
-            }
-            prev = curr;
-        }
-    }
-
-    // Helper method to print the tree connections
-    public void printConnections(TreeNode root) {
-        TreeNode levelStart = root;
-        
-        while (levelStart != null) {
-            TreeNode curr = levelStart;
-            while (curr != null) {
-                System.out.print(curr.val);
-                if (curr.next != null) {
-                    System.out.print(" -> ");
-                }
-                curr = curr.next;
-            }
-            System.out.println();
-            levelStart = levelStart.left;
-        }
-    }
-
     public static void main(String[] args) {
         Solution solution = new Solution();
 
@@ -154,5 +102,57 @@ class Solution {
         2 -> 3
         5 -> 4
         */
+    }
+
+    public void connect(TreeNode root) {
+        if (root == null) return;
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        q.offer(null);
+
+        TreeNode prev = null;
+        int level = 0;
+
+        while (q.size() > 1) {
+            TreeNode curr = q.poll();
+
+            if (curr == null) {
+                level++;
+                q.offer(null);
+                prev = null;
+                continue;
+            }
+
+            if (curr.left != null) q.offer(curr.left);
+            if (curr.right != null) q.offer(curr.right);
+
+            if (prev != null) {
+                if (level % 2 == 0) {
+                    prev.next = curr;
+                } else {
+                    curr.next = prev;
+                }
+            }
+            prev = curr;
+        }
+    }
+
+    // Helper method to print the tree connections
+    public void printConnections(TreeNode root) {
+        TreeNode levelStart = root;
+
+        while (levelStart != null) {
+            TreeNode curr = levelStart;
+            while (curr != null) {
+                System.out.print(curr.val);
+                if (curr.next != null) {
+                    System.out.print(" -> ");
+                }
+                curr = curr.next;
+            }
+            System.out.println();
+            levelStart = levelStart.left;
+        }
     }
 }

@@ -1,20 +1,23 @@
 package com.interview.notes.code.year.y2025.June.common.test14;
 
-import java.util.*;                                 // for Map, List, Arrays
-import java.util.stream.*;                          // for Stream, Collectors
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BiddingPriceClassifier {
 
     // Build a flip map once using Java 8 streams: original → flipped
-    private static final Map<Character,Character> FLIP_MAP =
-        Stream.of(new Object[][] {
-            {'0','0'}, {'1','1'}, {'6','9'},
-            {'8','8'}, {'9','6'}
-        })
-        .collect(Collectors.toMap(
-            e -> (Character)e[0],                 // key: original digit
-            e -> (Character)e[1]                  // value: flipped digit
-        ));
+    private static final Map<Character, Character> FLIP_MAP =
+            Stream.of(new Object[][]{
+                            {'0', '0'}, {'1', '1'}, {'6', '9'},
+                            {'8', '8'}, {'9', '6'}
+                    })
+                    .collect(Collectors.toMap(
+                            e -> (Character) e[0],                 // key: original digit
+                            e -> (Character) e[1]                  // value: flipped digit
+                    ));
 
 
     public static String classify(String bid) {
@@ -46,6 +49,7 @@ public class BiddingPriceClassifier {
 
         return "Ambiguous";                              // otherwise, Ambiguous
     }
+
     /**
      * Classify the bid string as Ambiguous / Not Ambiguous / Invalid.
      */
@@ -92,28 +96,28 @@ public class BiddingPriceClassifier {
     public static void main(String[] args) {
         // list of test cases: each is { inputBid, expectedResult }
         List<String[]> tests = Arrays.asList(
-            new String[]{"901", "Ambiguous"},
-            new String[]{"609", "Not Ambiguous"},
-            new String[]{"123", "Invalid"},
-            new String[]{"100", "Not Ambiguous"},      // now passes
-            new String[]{"806", "Ambiguous"},
-            new String[]{"6",   "Ambiguous"},
-            new String[]{"",    "Invalid"}             // empty → invalid
+                new String[]{"901", "Ambiguous"},
+                new String[]{"609", "Not Ambiguous"},
+                new String[]{"123", "Invalid"},
+                new String[]{"100", "Not Ambiguous"},      // now passes
+                new String[]{"806", "Ambiguous"},
+                new String[]{"6", "Ambiguous"},
+                new String[]{"", "Invalid"}             // empty → invalid
         );
 
         int passed = 0;                                  // counter for successes
 
         // iterate through all tests
         for (String[] t : tests) {
-            String input    = t[0];                      // the bid string
+            String input = t[0];                      // the bid string
             String expected = t[1];                      // what we expect
-            String result   = classify(input);           // run our classifier
-            boolean ok      = result.equals(expected);   // did it match?
+            String result = classify(input);           // run our classifier
+            boolean ok = result.equals(expected);   // did it match?
 
             // print formatted PASS/FAIL line
             System.out.printf(
-                "Input: %-5s Expected: %-13s Got: %-13s %s%n",
-                input, expected, result, ok ? "PASS" : "FAIL"
+                    "Input: %-5s Expected: %-13s Got: %-13s %s%n",
+                    input, expected, result, ok ? "PASS" : "FAIL"
             );
 
             if (ok) passed++;                            // increment if correct

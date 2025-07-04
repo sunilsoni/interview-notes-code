@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.June.common.test8;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+
 /*
 
 ---
@@ -74,8 +75,8 @@ public class MoveZeros {
     public static List<Integer> solve(List<Integer> nums) {
         // 1) count zeros via a stream
         long zeroCount = nums.stream()
-                             .filter(i -> i == 0)
-                             .count();
+                .filter(i -> i == 0)
+                .count();
 
         // 2) remove all zeros in-place
         nums.removeIf(i -> i == 0);
@@ -90,14 +91,14 @@ public class MoveZeros {
     public static void main(String[] args) {
         //–– small hard-coded test cases
         List<TestCase> tests = Arrays.asList(
-            new TestCase(Arrays.asList(0, 1, 0, 3, 12),
-                         Arrays.asList(1, 3, 12, 0, 0)),
-            new TestCase(Arrays.asList(0),
-                         Collections.singletonList(0)),
-            new TestCase(Arrays.asList(1, 2, 3),
-                         Arrays.asList(1, 2, 3)),
-            new TestCase(Collections.emptyList(),
-                         Collections.emptyList())
+                new TestCase(Arrays.asList(0, 1, 0, 3, 12),
+                        Arrays.asList(1, 3, 12, 0, 0)),
+                new TestCase(Arrays.asList(0),
+                        Collections.singletonList(0)),
+                new TestCase(Arrays.asList(1, 2, 3),
+                        Arrays.asList(1, 2, 3)),
+                new TestCase(Collections.emptyList(),
+                        Collections.emptyList())
         );
 
         boolean allPass = true;
@@ -109,34 +110,35 @@ public class MoveZeros {
                 System.out.printf("PASS: %s → %s%n", tc.input, out);
             } else {
                 System.out.printf("FAIL: %s → got %s, expected %s%n",
-                                  tc.input, out, tc.expected);
+                        tc.input, out, tc.expected);
                 allPass = false;
             }
         }
         System.out.println(allPass
-                           ? "All small tests passed."
-                           : "Some small tests failed.");
+                ? "All small tests passed."
+                : "Some small tests failed.");
 
         //–– large-data sanity check
         final int LARGE_N = 100_000;
         List<Integer> large = new Random(0)
-            .ints(LARGE_N, 0, 10)          // 10% zeros on average
-            .map(i -> i == 0 ? 0 : i)      // make exactly zero or non-zero
-            .boxed()
-            .collect(Collectors.toList());
+                .ints(LARGE_N, 0, 10)          // 10% zeros on average
+                .map(i -> i == 0 ? 0 : i)      // make exactly zero or non-zero
+                .boxed()
+                .collect(Collectors.toList());
 
         long t0 = System.currentTimeMillis();
         solve(large);
         long t1 = System.currentTimeMillis();
         System.out.printf("Large test N=%d done in %d ms%n",
-                          LARGE_N, (t1 - t0));
+                LARGE_N, (t1 - t0));
     }
 
     // simple holder for our tests
     private static class TestCase {
         final List<Integer> input, expected;
+
         TestCase(List<Integer> in, List<Integer> exp) {
-            this.input   = in;
+            this.input = in;
             this.expected = exp;
         }
     }

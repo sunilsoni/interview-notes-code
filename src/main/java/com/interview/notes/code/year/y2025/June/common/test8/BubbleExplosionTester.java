@@ -15,9 +15,9 @@ public class BubbleExplosionTester {
         int C = bubbles[0].length;
 
         boolean[][] removed = new boolean[R][C];
-        boolean[][] seen    = new boolean[R][C];
-        int[] dr = { -1, 1, 0, 0 };
-        int[] dc = {  0, 0,-1, 1 };
+        boolean[][] seen = new boolean[R][C];
+        int[] dr = {-1, 1, 0, 0};
+        int[] dc = {0, 0, -1, 1};
 
         // 1) Find & mark every component of size >= 3
         for (int i = 0; i < R; i++) {
@@ -37,9 +37,9 @@ public class BubbleExplosionTester {
                             int ni = p[0] + dr[d], nj = p[1] + dc[d];
                             // **correct bounds check** allows row/col == 0
                             if (ni >= 0 && ni < R
-                             && nj >= 0 && nj < C
-                             && !seen[ni][nj]
-                             && bubbles[ni][nj] == color) {
+                                    && nj >= 0 && nj < C
+                                    && !seen[ni][nj]
+                                    && bubbles[ni][nj] == color) {
                                 seen[ni][nj] = true;
                                 q.add(new int[]{ni, nj});
                             }
@@ -77,7 +77,9 @@ public class BubbleExplosionTester {
         return res;
     }
 
-    /** Utility to return a string representation of a 2D grid. */
+    /**
+     * Utility to return a string representation of a 2D grid.
+     */
     private static String gridToString(int[][] g) {
         StringBuilder sb = new StringBuilder();
         for (int[] row : g) {
@@ -89,51 +91,51 @@ public class BubbleExplosionTester {
     public static void main(String[] args) {
         // define all test cases (input → expected)
         List<int[][]> inputs = Arrays.asList(
-            // original example
-            new int[][] {
-                {3,1,2,1},
-                {1,1,1,4},
-                {3,1,2,2},
-                {3,3,3,4}
-            },
-            // Test 2: all same color → remove all
-            new int[][] {
-                {1,1},
-                {1,1}
-            },
-            // Test 7: single long row with big groups
-            new int[][] {
-                {1,2,2,2,2,2,2,2,3,3,3,2,1,1,2}
-            }
+                // original example
+                new int[][]{
+                        {3, 1, 2, 1},
+                        {1, 1, 1, 4},
+                        {3, 1, 2, 2},
+                        {3, 3, 3, 4}
+                },
+                // Test 2: all same color → remove all
+                new int[][]{
+                        {1, 1},
+                        {1, 1}
+                },
+                // Test 7: single long row with big groups
+                new int[][]{
+                        {1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 2}
+                }
         );
 
         List<int[][]> expects = Arrays.asList(
-            // original expected
-            new int[][] {
-                {0,0,0,1},
-                {0,0,0,4},
-                {0,0,2,2},
-                {3,0,2,4}
-            },
-            // Test 2 expected: all zeros
-            new int[][] {
-                {0,0},
-                {0,0}
-            },
-            // Test 7 expected
-            new int[][] {
-                {1,0,0,0,0,0,0,0,0,0,0,2,1,1,2}
-            }
+                // original expected
+                new int[][]{
+                        {0, 0, 0, 1},
+                        {0, 0, 0, 4},
+                        {0, 0, 2, 2},
+                        {3, 0, 2, 4}
+                },
+                // Test 2 expected: all zeros
+                new int[][]{
+                        {0, 0},
+                        {0, 0}
+                },
+                // Test 7 expected
+                new int[][]{
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2}
+                }
         );
 
         int passed = 0;
         for (int t = 0; t < inputs.size(); t++) {
-            int[][] in   = inputs.get(t);
-            int[][] exp  = expects.get(t);
-            int[][] got  = solution(in);
-            boolean ok   = Arrays.deepEquals(got, exp);
+            int[][] in = inputs.get(t);
+            int[][] exp = expects.get(t);
+            int[][] got = solution(in);
+            boolean ok = Arrays.deepEquals(got, exp);
 
-            System.out.println("==== Test " + (t+1) + " ====");
+            System.out.println("==== Test " + (t + 1) + " ====");
             System.out.println("Input:");
             System.out.print(gridToString(in));
             System.out.println("Expected:");
@@ -145,6 +147,6 @@ public class BubbleExplosionTester {
             if (ok) passed++;
         }
         System.out.printf("Summary: passed %d/%d tests%n",
-                          passed, inputs.size());
+                passed, inputs.size());
     }
 }

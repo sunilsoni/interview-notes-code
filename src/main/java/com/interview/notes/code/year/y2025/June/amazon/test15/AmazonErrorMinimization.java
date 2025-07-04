@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.June.amazon.test15;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class AmazonErrorMinimization {
     private static final int MOD = 1_000_000_007;
@@ -34,11 +35,11 @@ public class AmazonErrorMinimization {
     // Simple test method without JUnit
     public static void main(String[] args) {
         List<TestCase> testCases = Arrays.asList(
-            new TestCase("0!1!1!", 2, 3, 10),
-            new TestCase("!!!!!!!", 23, 47, 0),
-            new TestCase("010101", 1, 1, 9),
-            new TestCase("!0!1!0", 5, 10, 25),
-            new TestCase("!", 1000, 1000, 0)
+                new TestCase("0!1!1!", 2, 3, 10),
+                new TestCase("!!!!!!!", 23, 47, 0),
+                new TestCase("010101", 1, 1, 9),
+                new TestCase("!0!1!0", 5, 10, 25),
+                new TestCase("!", 1000, 1000, 0)
         );
 
         for (TestCase tc : testCases) {

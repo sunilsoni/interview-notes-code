@@ -24,7 +24,7 @@ public class RobotMovement {
         testCases.put("D", "D");
 
         String largeBalanced = String.join("", Collections.nCopies(500, "U")) +
-                               String.join("", Collections.nCopies(500, "D"));
+                String.join("", Collections.nCopies(500, "D"));
         testCases.put(largeBalanced, "");
 
         String largeUnbalanced = String.join("", Collections.nCopies(999, "D")) + "U";

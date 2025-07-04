@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.June.amazon.test19;
 
-import java.util.*;                    // utilities for collections and random numbers
-import java.util.stream.*;             // Java 8 Stream API for concise collection processing
+import java.util.*;
+
 /*
 ### **Implement the Game: Battleship**
 
@@ -142,8 +142,8 @@ class Player {
 
     /**
      * placeShip:
-     *   validates coords are in-bounds and non-overlapping,
-     *   then marks shipGrid and adds the Ship to the fleet.
+     * validates coords are in-bounds and non-overlapping,
+     * then marks shipGrid and adds the Ship to the fleet.
      */
     boolean placeShip(List<Coordinate> coords) {
         // bounds & overlap check
@@ -163,8 +163,8 @@ class Player {
 
     /**
      * receiveShot:
-     *   defender’s method. Fires at this player's shipGrid.
-     *   Updates shipGrid and ships list. Returns MISS, HIT, or SUNK.
+     * defender’s method. Fires at this player's shipGrid.
+     * Updates shipGrid and ships list. Returns MISS, HIT, or SUNK.
      */
     ShotResult receiveShot(Coordinate target) {
         int r = target.row, c = target.col;
@@ -181,9 +181,9 @@ class Player {
             ships.forEach(ship -> ship.registerHit(target));
             // check if this shot caused any ship to sink
             boolean sank = ships.stream()
-                            .anyMatch(ship ->
-                                ship.positions.contains(target) && ship.isSunk()
-                            );
+                    .anyMatch(ship ->
+                            ship.positions.contains(target) && ship.isSunk()
+                    );
             return sank ? ShotResult.SUNK : ShotResult.HIT;
         } else {
             shipGrid[r][c] = 3;             // mark as miss
@@ -193,8 +193,8 @@ class Player {
 
     /**
      * fireAt:
-     *   attacker’s method. Fires at opponent, updates own targetGrid.
-     *   Returns the result from opponent.receiveShot(...).
+     * attacker’s method. Fires at opponent, updates own targetGrid.
+     * Returns the result from opponent.receiveShot(...).
      */
     ShotResult fireAt(Player opponent, Coordinate target) {
         ShotResult result = opponent.receiveShot(target);  // ask opponent to process shot
@@ -217,64 +217,64 @@ public class Battleship {
 
         // ========== TEST 1: Valid ship placement on p1 ==========
         List<Coordinate> ship1 = Arrays.asList(
-            new Coordinate(0,0),
-            new Coordinate(0,1)
+                new Coordinate(0, 0),
+                new Coordinate(0, 1)
         );
         System.out.println("Test 1 - Place valid ship: " +
-            (p1.placeShip(ship1) ? "PASS" : "FAIL")
+                (p1.placeShip(ship1) ? "PASS" : "FAIL")
         );
 
         // ========== TEST 2: Overlap detection on p1 ==========
         List<Coordinate> ship2 = Arrays.asList(
-            new Coordinate(0,1),
-            new Coordinate(0,2)
+                new Coordinate(0, 1),
+                new Coordinate(0, 2)
         );
         System.out.println("Test 2 - Overlap detection: " +
-            (!p1.placeShip(ship2) ? "PASS" : "FAIL")
+                (!p1.placeShip(ship2) ? "PASS" : "FAIL")
         );
 
         // ========== TEST 3: p1 fires at p2 (no ships yet) ==========
-        ShotResult r0 = p1.fireAt(p2, new Coordinate(5,5));
+        ShotResult r0 = p1.fireAt(p2, new Coordinate(5, 5));
         System.out.println("Test 3 - Fire at empty p2: " +
-            (r0 == ShotResult.MISS ? "PASS" : "FAIL")
+                (r0 == ShotResult.MISS ? "PASS" : "FAIL")
         );
 
         // ========== SETUP: place a ship on p2 ==========
         List<Coordinate> ship3 = Arrays.asList(
-            new Coordinate(3,3),
-            new Coordinate(3,4),
-            new Coordinate(3,5)
+                new Coordinate(3, 3),
+                new Coordinate(3, 4),
+                new Coordinate(3, 5)
         );
         p2.placeShip(ship3);
 
         // ========== TEST 4: Hit detection ==========
-        ShotResult r1 = p1.fireAt(p2, new Coordinate(3,4));
+        ShotResult r1 = p1.fireAt(p2, new Coordinate(3, 4));
         System.out.println("Test 4 - Hit detection: " +
-            (r1 == ShotResult.HIT ? "PASS" : "FAIL")
+                (r1 == ShotResult.HIT ? "PASS" : "FAIL")
         );
 
         // ========== TEST 5: Sink detection ==========
-        p1.fireAt(p2, new Coordinate(3,3)); // first hit
-        ShotResult r2 = p1.fireAt(p2, new Coordinate(3,5)); // final hit
+        p1.fireAt(p2, new Coordinate(3, 3)); // first hit
+        ShotResult r2 = p1.fireAt(p2, new Coordinate(3, 5)); // final hit
         System.out.println("Test 5 - Sink detection: " +
-            (r2 == ShotResult.SUNK ? "PASS" : "FAIL")
+                (r2 == ShotResult.SUNK ? "PASS" : "FAIL")
         );
 
         // ========== TEST 6: Loss detection for p2 ==========
         System.out.println("Test 6 - Loss detection p2: " +
-            (p2.hasLost() ? "PASS" : "FAIL")
+                (p2.hasLost() ? "PASS" : "FAIL")
         );
 
         // ========== TEST 7: targetGrid updated on p1 ==========
         boolean recorded = (p1.targetGrid[3][3] == 2 && p1.targetGrid[3][4] == 2 && p1.targetGrid[3][5] == 2);
         System.out.println("Test 7 - targetGrid update: " +
-            (recorded ? "PASS" : "FAIL")
+                (recorded ? "PASS" : "FAIL")
         );
 
         // ========== TEST 8: Out-of-bounds shot ==========
-        ShotResult r3 = p1.fireAt(p2, new Coordinate(-1,9));
+        ShotResult r3 = p1.fireAt(p2, new Coordinate(-1, 9));
         System.out.println("Test 8 - Out-of-bounds shot: " +
-            (r3 == ShotResult.MISS ? "PASS" : "FAIL")
+                (r3 == ShotResult.MISS ? "PASS" : "FAIL")
         );
 
         // ========== TEST 9: Performance test ==========

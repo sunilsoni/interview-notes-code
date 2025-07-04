@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.June.common.test6;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LongestUniqueSubstring {
 

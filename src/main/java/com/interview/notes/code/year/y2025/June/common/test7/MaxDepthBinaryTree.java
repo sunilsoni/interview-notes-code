@@ -4,17 +4,6 @@ import java.util.stream.Stream;
 
 public class MaxDepthBinaryTree {
 
-    // Definition for a binary tree node.
-    static class TreeNode {
-        int val;              // value held by the node
-        TreeNode left;        // reference to left child
-        TreeNode right;       // reference to right child
-
-        TreeNode(int val) {   // constructor to set node value
-            this.val = val;    // assign passed-in value
-        }
-    }
-
     // Method to compute maximum depth of a binary tree
     public static int maxDepth(TreeNode root) {
         // if node is null, tree has no nodes ⇒ depth 0
@@ -27,8 +16,8 @@ public class MaxDepthBinaryTree {
         int rightDepth = maxDepth(root.right);
         // use Stream API to pick the larger depth
         int maxSubDepth = Stream.of(leftDepth, rightDepth)
-                                .max(Integer::compare)  // find max of the two
-                                .get();                // extract the integer
+                .max(Integer::compare)  // find max of the two
+                .get();                // extract the integer
         // add 1 to include current node
         return maxSubDepth + 1;
     }
@@ -76,8 +65,19 @@ public class MaxDepthBinaryTree {
             System.out.println("PASS: " + caseName);   // correct
         } else {
             System.out.println("FAIL: " + caseName +
-                               " expected=" + expected +
-                               " got=" + result);       // incorrect
+                    " expected=" + expected +
+                    " got=" + result);       // incorrect
+        }
+    }
+
+    // Definition for a binary tree node.
+    static class TreeNode {
+        int val;              // value held by the node
+        TreeNode left;        // reference to left child
+        TreeNode right;       // reference to right child
+
+        TreeNode(int val) {   // constructor to set node value
+            this.val = val;    // assign passed-in value
         }
     }
 }

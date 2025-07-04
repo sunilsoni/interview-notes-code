@@ -8,9 +8,11 @@ public class VowelSubstringCounter {
     // quick vowel → index map
     private static final String VOWELS = "aeiou";
     private static final Set<Character> VOWEL_SET =
-            new HashSet<>(Arrays.asList('a','e','i','o','u'));
+            new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
 
-    /** O(n) – counts qualifying substrings */
+    /**
+     * O(n) – counts qualifying substrings
+     */
     public static long vowelSubstring(String s) {
         long total = 0L;
         int start = 0;                     // left edge of current all-vowel block
@@ -38,12 +40,6 @@ public class VowelSubstringCounter {
         return total;
     }
 
-    /* ---------- simple test harness (no JUnit) ---------- */
-    private static final class Case {
-        final String in; final long exp;
-        Case(String in, long exp) { this.in = in; this.exp = exp; }
-    }
-
     private static String bigRandom(int n) {
         Random rnd = new Random(42);
         StringBuilder sb = new StringBuilder(n);
@@ -53,11 +49,11 @@ public class VowelSubstringCounter {
 
     public static void main(String[] args) {
         List<Case> tests = Arrays.asList(
-            new Case("aaeiouxa", 2),
-            new Case("axyzaeiou", 1),
-            new Case("aeiouaeiou", 21),
-            // large 100 000-char random vowel string – expected value not pre-computed
-            new Case(bigRandom(100_000), -1)
+                new Case("aaeiouxa", 2),
+                new Case("axyzaeiou", 1),
+                new Case("aeiouaeiou", 21),
+                // large 100 000-char random vowel string – expected value not pre-computed
+                new Case(bigRandom(100_000), -1)
         );
 
         int id = 1;
@@ -71,6 +67,17 @@ public class VowelSubstringCounter {
                         id, got);
             }
             id++;
+        }
+    }
+
+    /* ---------- simple test harness (no JUnit) ---------- */
+    private static final class Case {
+        final String in;
+        final long exp;
+
+        Case(String in, long exp) {
+            this.in = in;
+            this.exp = exp;
         }
     }
 }

@@ -8,24 +8,24 @@ public class Singleton {
             throw new IllegalStateException("Singleton already constructed");
         }
     }
-    
-    // Static holder class - thread safe by JVM guarantee
-    private static class SingletonHolder {
-        private static final Singleton INSTANCE = new Singleton();
-    }
-    
+
     public static Singleton getInstance() {
         return SingletonHolder.INSTANCE;
     }
-    
+
     // Prevent cloning
     @Override
     protected Object clone() throws CloneNotSupportedException {
         throw new CloneNotSupportedException("Cloning not allowed");
     }
-    
+
     // Prevent serialization
     private Object readResolve() {
         return SingletonHolder.INSTANCE;
+    }
+
+    // Static holder class - thread safe by JVM guarantee
+    private static class SingletonHolder {
+        private static final Singleton INSTANCE = new Singleton();
     }
 }

@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.June.common.test8;
 
 import java.util.*;
-import java.util.stream.*;
+
 /*
 
 ---
@@ -112,11 +112,87 @@ Would you like the complete Java code that:
 
  */
 public class ZigzagTraversal {
+    // ---- simple test harness ----
+    public static void main(String[] args) {
+        // small holder types for tests
+        class Edge {
+            int p, c;
+            char d;
+
+            Edge(int p, int c, char d) {
+                this.p = p;
+                this.c = c;
+                this.d = d;
+            }
+        }
+        class Test {
+            List<Edge> edges;
+            int[] expect;
+
+            Test(List<Edge> e, int[] x) {
+                edges = e;
+                expect = x;
+            }
+        }
+
+        List<Test> tests = Arrays.asList(
+                // Example #1
+                new Test(
+                        Arrays.asList(new Edge(10, 20, 'R'), new Edge(10, 30, 'L')),
+                        new int[]{10, 30, 20}
+                ),
+                // Example #2
+                new Test(
+                        Arrays.asList(
+                                new Edge(2, 4, 'L'), new Edge(2, 6, 'R'),
+                                new Edge(4, 8, 'L'), new Edge(4, 10, 'R')
+                        ),
+                        new int[]{2, 4, 6, 10, 8}
+                ),
+                // empty‐tree
+                new Test(Collections.emptyList(), new int[]{})
+        );
+
+        boolean allPass = true;
+        for (Test t : tests) {
+            BT tree = new BT();
+            t.edges.forEach(e -> tree.addNode(e.p, e.c, e.d));
+            int[] out = tree.getLevelSpiral();
+
+            if (Arrays.equals(out, t.expect)) {
+                System.out.println("PASS → " + Arrays.toString(out));
+            } else {
+                System.out.printf("FAIL → got %s; expected %s%n",
+                        Arrays.toString(out),
+                        Arrays.toString(t.expect));
+                allPass = false;
+            }
+        }
+        System.out.println(allPass
+                ? "All tests passed."
+                : "Some tests failed.");
+
+        // optional performance sanity‐check:
+        // build a complete tree of depth ~10 (≈1023 nodes)
+        BT big = new BT();
+        for (int i = 1; i <= 512; i++) {
+            big.addNode(i, 2 * i, 'L');
+            big.addNode(i, 2 * i + 1, 'R');
+        }
+        long t0 = System.currentTimeMillis();
+        big.getLevelSpiral();
+        long t1 = System.currentTimeMillis();
+        System.out.printf("Complete‐tree (1023 nodes) in %d ms%n", (t1 - t0));
+    }
+
     // ---- given classes ----
     static class Node {
         int data;
         Node left, right;
-        Node(int value) { data = value; }
+
+        Node(int value) {
+            data = value;
+        }
     }
 
     static class BT {
@@ -126,10 +202,10 @@ public class ZigzagTraversal {
         // call this for each (parent, child, 'L' or 'R')
         void addNode(int parent, int child, char dir) {
             Node p = map.computeIfAbsent(parent, k -> new Node(k));
-            Node c = map.computeIfAbsent(child,  k -> new Node(k));
+            Node c = map.computeIfAbsent(child, k -> new Node(k));
             if (root == null) root = p;
-            if (dir == 'L') p.left  = c;
-            else           p.right = c;
+            if (dir == 'L') p.left = c;
+            else p.right = c;
         }
 
         // returns the zigzag (spiral) order as an int[]
@@ -148,7 +224,7 @@ public class ZigzagTraversal {
                 for (int i = 0; i < size; i++) {
                     Node n = queue.poll();
                     level.add(n.data);
-                    if (n.left  != null) queue.add(n.left);
+                    if (n.left != null) queue.add(n.left);
                     if (n.right != null) queue.add(n.right);
                 }
 
@@ -160,62 +236,5 @@ public class ZigzagTraversal {
             // Java 8 Stream to convert List<Integer> → int[]
             return result.stream().mapToInt(i -> i).toArray();
         }
-    }
-
-    // ---- simple test harness ----
-    public static void main(String[] args) {
-        // small holder types for tests
-        class Edge  { int p, c; char d; Edge(int p,int c,char d){this.p=p;this.c=c;this.d=d;} }
-        class Test  { List<Edge> edges; int[] expect;
-                      Test(List<Edge> e, int[] x){ edges = e; expect = x; } }
-
-        List<Test> tests = Arrays.asList(
-            // Example #1
-            new Test(
-                Arrays.asList(new Edge(10,20,'R'), new Edge(10,30,'L')),
-                new int[]{10, 30, 20}
-            ),
-            // Example #2
-            new Test(
-                Arrays.asList(
-                  new Edge(2,4,'L'), new Edge(2,6,'R'),
-                  new Edge(4,8,'L'), new Edge(4,10,'R')
-                ),
-                new int[]{2, 4, 6, 10, 8}
-            ),
-            // empty‐tree
-            new Test(Collections.emptyList(), new int[]{})
-        );
-
-        boolean allPass = true;
-        for (Test t : tests) {
-            BT tree = new BT();
-            t.edges.forEach(e -> tree.addNode(e.p, e.c, e.d));
-            int[] out = tree.getLevelSpiral();
-
-            if (Arrays.equals(out, t.expect)) {
-                System.out.println("PASS → " + Arrays.toString(out));
-            } else {
-                System.out.printf("FAIL → got %s; expected %s%n",
-                                  Arrays.toString(out),
-                                  Arrays.toString(t.expect));
-                allPass = false;
-            }
-        }
-        System.out.println(allPass
-                           ? "All tests passed."
-                           : "Some tests failed.");
-
-        // optional performance sanity‐check:
-        // build a complete tree of depth ~10 (≈1023 nodes)
-        BT big   = new BT();
-        for (int i = 1; i <= 512; i++) {
-            big.addNode(i, 2*i,   'L');
-            big.addNode(i, 2*i+1, 'R');
-        }
-        long t0 = System.currentTimeMillis();
-        big.getLevelSpiral();
-        long t1 = System.currentTimeMillis();
-        System.out.printf("Complete‐tree (1023 nodes) in %d ms%n", (t1 - t0));
     }
 }

@@ -6,9 +6,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class ConcurrentHashMapExample {
-    
+
     private static final ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
-    
+
     public static void main(String[] args) {
         // Initialize the map with some values
         map.put("A", 1);

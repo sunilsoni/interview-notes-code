@@ -16,8 +16,8 @@ public class ValidNumberChecker {
 
         // Count how many '+' or '-' appear
         long signCount = s.chars()
-                          .filter(c -> c == '+' || c == '-')
-                          .count();
+                .filter(c -> c == '+' || c == '-')
+                .count();
         // More than one sign is invalid
         if (signCount > 1) {
             return false;
@@ -29,8 +29,8 @@ public class ValidNumberChecker {
 
         // Count how many decimal points
         long dotCount = s.chars()
-                         .filter(c -> c == '.')
-                         .count();
+                .filter(c -> c == '.')
+                .count();
         // More than one '.' is invalid
         if (dotCount > 1) {
             return false;
@@ -38,28 +38,30 @@ public class ValidNumberChecker {
 
         // Ensure no illegal characters are present
         boolean hasIllegal = s.chars()
-                              .anyMatch(c -> !(Character.isDigit(c) || c == '+' || c == '-' || c == '.'));
+                .anyMatch(c -> !(Character.isDigit(c) || c == '+' || c == '-' || c == '.'));
         if (hasIllegal) {
             return false;
         }
 
         // There must be at least one digit somewhere
         long digitCount = s.chars()
-                           .filter(Character::isDigit)
-                           .count();
+                .filter(Character::isDigit)
+                .count();
         return digitCount > 0;
     }
 
-    /** Simple main method to run test cases and report PASS/FAIL. */
+    /**
+     * Simple main method to run test cases and report PASS/FAIL.
+     */
     public static void main(String[] args) {
         // Test cases from the prompt
         String[] inputs = {
-            "2", "0089", "-0.1", "+3.14", "4.", "-.9", ".5",  // valid
-            "abc", "1a", "--6", "-+3", ".", "+", "-"          // invalid
+                "2", "0089", "-0.1", "+3.14", "4.", "-.9", ".5",  // valid
+                "abc", "1a", "--6", "-+3", ".", "+", "-"          // invalid
         };
         boolean[] expected = {
-            true, true, true, true, true, true, true,
-            false, false, false, false, false, false, false
+                true, true, true, true, true, true, true,
+                false, false, false, false, false, false, false
         };
 
         System.out.println("Running predefined tests:");
@@ -67,7 +69,7 @@ public class ValidNumberChecker {
             boolean result = isValidNumber(inputs[i]);
             String status = (result == expected[i]) ? "PASS" : "FAIL";
             System.out.printf("%-5s input=\"%s\"  expected=%-5s got=%-5s%n",
-                              status, inputs[i], expected[i], result);
+                    status, inputs[i], expected[i], result);
         }
 
         // Large-data stress test: one million '9's
@@ -76,6 +78,6 @@ public class ValidNumberChecker {
         String largeNumber = sb.toString();
         boolean largeResult = isValidNumber(largeNumber);
         System.out.printf("%nStress test (1M digits): %s (expected=true)%n",
-                          largeResult ? "PASS" : "FAIL");
+                largeResult ? "PASS" : "FAIL");
     }
 }

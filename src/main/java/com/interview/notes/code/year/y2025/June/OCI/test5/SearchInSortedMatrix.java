@@ -4,9 +4,10 @@ public class SearchInSortedMatrix {
 
     /**
      * Custom binary search on a sorted array.
-     * @param arr     the sorted 1D array to search
-     * @param target  the value we’re looking for
-     * @return        true if found, false otherwise
+     *
+     * @param arr    the sorted 1D array to search
+     * @param target the value we’re looking for
+     * @return true if found, false otherwise
      */
     private static boolean binarySearch(int[] arr, int target) {
         int left = 0;                   // start index of current search window
@@ -34,9 +35,10 @@ public class SearchInSortedMatrix {
 
     /**
      * Searches each row with our custom binarySearch.
-     * @param matrix  the 2D sorted matrix
-     * @param target  the value to find
-     * @return        true if target exists anywhere, false otherwise
+     *
+     * @param matrix the 2D sorted matrix
+     * @param target the value to find
+     * @return true if target exists anywhere, false otherwise
      */
     public static boolean searchRowBinaryCustom(int[][] matrix, int target) {
         if (matrix == null) {
@@ -57,12 +59,14 @@ public class SearchInSortedMatrix {
         return false;                  // checked all rows → not found
     }
 
-    /** Simple main to demonstrate it runs. */
+    /**
+     * Simple main to demonstrate it runs.
+     */
     public static void main(String[] args) {
         int[][] mat = {
-            {1, 2, 3},
-            {3, 4, 5},
-            {7, 8, 9}
+                {1, 2, 3},
+                {3, 4, 5},
+                {7, 8, 9}
         };
 
         System.out.println(searchRowBinaryCustom(mat, 5));   // true
