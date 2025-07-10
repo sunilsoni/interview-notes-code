@@ -8,9 +8,9 @@ import lombok.Setter;
 public class ListNode {
 
     private int data;
-    private ListNode next;
+    public ListNode next;
 
-    ListNode(int data) {
+    public ListNode(int data) {
         this.data = data;
         this.next = null;
     }
