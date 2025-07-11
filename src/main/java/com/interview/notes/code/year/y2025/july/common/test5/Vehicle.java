@@ -6,14 +6,14 @@ public interface Vehicle {
 }
 
 // Step 2: Create concrete implementations
-  class Car implements Vehicle {
+class Car implements Vehicle {
     @Override
     public void drive() {
         System.out.println("Driving a car...");
     }
 }
 
-  class Bike implements Vehicle {
+class Bike implements Vehicle {
     @Override
     public void drive() {
         System.out.println("Riding a bike...");
@@ -21,7 +21,7 @@ public interface Vehicle {
 }
 
 // Step 3: Create the Factory
-  class VehicleFactory {
+class VehicleFactory {
     public static Vehicle getVehicle(String type) {
         return switch (type.toLowerCase()) {
             case "car" -> new Car();
@@ -32,7 +32,7 @@ public interface Vehicle {
 }
 
 // Step 4: Use the factory
-  class Main1 {
+class Main1 {
     public static void main(String[] args) {
         Vehicle vehicle = VehicleFactory.getVehicle("car");
         vehicle.drive(); // Output: Driving a car...

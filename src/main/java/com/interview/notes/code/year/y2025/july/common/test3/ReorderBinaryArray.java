@@ -16,15 +16,15 @@ public class ReorderBinaryArray {
     public static int[] reorderArray(int[] array) {
         // Create a stream over the input, keeping only elements == 1
         IntStream onesStream = Arrays.stream(array)
-                                     .filter(i -> i == 1);
+                .filter(i -> i == 1);
 
         // Create a stream over the input, keeping only elements == 0
         IntStream zerosStream = Arrays.stream(array)
-                                      .filter(i -> i == 0);
+                .filter(i -> i == 0);
 
         // Join the 1s‐stream then the 0s‐stream, collect into a new array
         return IntStream.concat(onesStream, zerosStream)
-                        .toArray();
+                .toArray();
     }
 
     /**
@@ -34,25 +34,25 @@ public class ReorderBinaryArray {
     public static void main(String[] args) {
         // Define several test cases and their expected outputs
         int[][] testCases = {
-            {},                         // empty array
-            {1, 1, 1, 1},               // all ones
-            {0, 0, 0, 0},               // all zeros
-            {1, 0, 1, 1, 0, 0, 1, 0},   // mixed
-            {0, 1, 0, 1, 1, 0}          // another mixed
+                {},                         // empty array
+                {1, 1, 1, 1},               // all ones
+                {0, 0, 0, 0},               // all zeros
+                {1, 0, 1, 1, 0, 0, 1, 0},   // mixed
+                {0, 1, 0, 1, 1, 0}          // another mixed
         };
         int[][] expected = {
-            {},
-            {1, 1, 1, 1},
-            {0, 0, 0, 0},
-            {1, 1, 1, 1, 0, 0, 0, 0},
-            {1, 1, 1, 0, 0, 0}
+                {},
+                {1, 1, 1, 1},
+                {0, 0, 0, 0},
+                {1, 1, 1, 1, 0, 0, 0, 0},
+                {1, 1, 1, 0, 0, 0}
         };
 
         // Test each case and report PASS/FAIL
         for (int i = 0; i < testCases.length; i++) {
             int[] input = testCases[i];
-            int[] exp   = expected[i];
-            int[] out   = reorderArray(input);
+            int[] exp = expected[i];
+            int[] out = reorderArray(input);
             boolean pass = Arrays.equals(out, exp);
             System.out.printf("Test case %d: %s%n", i + 1, pass ? "PASS" : "FAIL");
         }
@@ -70,8 +70,8 @@ public class ReorderBinaryArray {
         // Measure execution time
         long start = System.currentTimeMillis();
         reorderArray(large);
-        long end   = System.currentTimeMillis();
+        long end = System.currentTimeMillis();
         System.out.printf("Large input (%d elements) reorder took: %d ms%n",
-                          size, (end - start));
+                size, (end - start));
     }
 }

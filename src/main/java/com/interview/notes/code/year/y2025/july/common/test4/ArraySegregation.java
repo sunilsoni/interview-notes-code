@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.july.common.test4;
 
 public class ArraySegregation {
-    
+
     // Method to segregate 0s and 1s using single loop
     public static void segregateArray(int[] arr) {
         // Edge case check
@@ -12,7 +12,7 @@ public class ArraySegregation {
         // Single pointer from left side
         // Keep track of position where next 1 should be placed
         int nextOnePosition = 0;
-        
+
         // Single loop through the array
         for (int i = 0; i < arr.length; i++) {
             // If we find 1, place it at nextOnePosition and increment the position

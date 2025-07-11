@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 public class ListNode {
 
-    private int data;
     public ListNode next;
+    private int data;
 
     public ListNode(int data) {
         this.data = data;

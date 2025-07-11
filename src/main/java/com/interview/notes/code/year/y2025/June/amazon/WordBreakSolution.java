@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.June.amazon;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.IntStream;
 
 public class WordBreakSolution {
 
@@ -46,11 +46,11 @@ public class WordBreakSolution {
         Object[][] tests = {
                 {"leetcode", Arrays.asList("leet", "code"), true},
                 {"applepenapple", Arrays.asList("apple", "pen"), true},
-                {"catsandog", Arrays.asList("cats","dog","sand","and","cat"), false},
+                {"catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat"), false},
                 {"", Collections.emptyList(), true},  // edge: empty string
                 // large test: 300 'a's with dict = {"a"}
-                { String.join("", Collections.nCopies(300, "a")),
-                        Collections.singletonList("a"), true }
+                {String.join("", Collections.nCopies(300, "a")),
+                        Collections.singletonList("a"), true}
         };
 
         // Execute each test and report result

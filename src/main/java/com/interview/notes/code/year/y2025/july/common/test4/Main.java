@@ -1,13 +1,17 @@
 package com.interview.notes.code.year.y2025.july.common.test4;
 
-import java.util.*;
-import java.io.*;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.*;
-import java.util.regex.*;
-import com.google.gson.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class Main {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         System.setProperty("http.agent", "Chrome");
         try {
             URI uri = new URI("https://coderbyte.com/api/challenges/json/age-counting");
@@ -18,7 +22,7 @@ class Main {
             // ——— READ RESPONSE INTO A STRING ———
             StringBuilder sb = new StringBuilder();
             try (BufferedReader reader = new BufferedReader(
-                     new InputStreamReader(connection.getInputStream()))) {
+                    new InputStreamReader(connection.getInputStream()))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     sb.append(line);
@@ -27,8 +31,8 @@ class Main {
 
             // ——— PARSE JSON & EXTRACT data FIELD ———
             JsonObject root = JsonParser
-                .parseString(sb.toString())
-                .getAsJsonObject();
+                    .parseString(sb.toString())
+                    .getAsJsonObject();
             String data = root.get("data").getAsString();
 
             // ——— REGEX-DRIVEN AGE COUNTING ———

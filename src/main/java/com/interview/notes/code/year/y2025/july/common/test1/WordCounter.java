@@ -2,13 +2,13 @@ package com.interview.notes.code.year.y2025.july.common.test1;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.Arrays;
 
 public class WordCounter {
 
@@ -23,17 +23,17 @@ public class WordCounter {
         // Open the file as a stream of lines; ensures file is closed automatically
         try (Stream<String> lines = Files.lines(Paths.get(filePath))) {
             return lines
-                // Split each line into words by non-word characters (punctuation, spaces, etc.)
-                .flatMap(line -> Arrays.stream(line.split("\\W+")))
-                // Remove any empty strings resulting from consecutive non-word chars
-                .filter(word -> !word.isEmpty())
-                // Normalize to lowercase for case-insensitive counting
-                .map(String::toLowerCase)
-                // Collect into a map: word → count
-                .collect(Collectors.groupingBy(
-                    Function.identity(),            // key = the word itself
-                    Collectors.counting()           // value = number of occurrences
-                ));
+                    // Split each line into words by non-word characters (punctuation, spaces, etc.)
+                    .flatMap(line -> Arrays.stream(line.split("\\W+")))
+                    // Remove any empty strings resulting from consecutive non-word chars
+                    .filter(word -> !word.isEmpty())
+                    // Normalize to lowercase for case-insensitive counting
+                    .map(String::toLowerCase)
+                    // Collect into a map: word → count
+                    .collect(Collectors.groupingBy(
+                            Function.identity(),            // key = the word itself
+                            Collectors.counting()           // value = number of occurrences
+                    ));
         }
     }
 
@@ -45,16 +45,16 @@ public class WordCounter {
             // ---------- Test Case 1: small sample ----------
             Path test1 = Files.createTempFile("test1", ".txt");
             Files.write(test1, Arrays.asList(
-                "Hello world",
-                "HELLO, world!",
-                "foo bar foo"
+                    "Hello world",
+                    "HELLO, world!",
+                    "foo bar foo"
             ));
             Map<String, Long> result1 = countWords(test1.toString());
             Map<String, Long> expected1 = Map.of(
-                "hello", 2L,
-                "world", 2L,
-                "foo",   2L,
-                "bar",   1L
+                    "hello", 2L,
+                    "world", 2L,
+                    "foo", 2L,
+                    "bar", 1L
             );
             System.out.println("Test 1: " + (result1.equals(expected1) ? "PASS" : "FAIL"));
 
@@ -66,8 +66,8 @@ public class WordCounter {
             }
             Map<String, Long> result2 = countWords(test2.toString());
             boolean pass2 = result2.getOrDefault("alpha", 0L) == 100_000L
-                         && result2.getOrDefault("beta",  0L) == 100_000L
-                         && result2.size() == 2;
+                    && result2.getOrDefault("beta", 0L) == 100_000L
+                    && result2.size() == 2;
             System.out.println("Test 2 (large data): " + (pass2 ? "PASS" : "FAIL"));
 
         } catch (IOException e) {

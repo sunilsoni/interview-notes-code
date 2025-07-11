@@ -1,28 +1,31 @@
 package com.interview.notes.code.year.y2025.july.common.test3;
 
-import java.net.http.*;
+import com.google.gson.JsonParser;
+
 import java.net.URI;
-import java.util.regex.*;
-import com.google.gson.*;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         // 1) Fetch the JSON payload
         var client = HttpClient.newHttpClient();
         var req = HttpRequest.newBuilder(URI.create(
-            "https://coderbyte.com/api/challenges/json/age-counting"))
-          .GET()
-          .build();
+                        "https://coderbyte.com/api/challenges/json/age-counting"))
+                .GET()
+                .build();
         String json = client
-          .send(req, HttpResponse.BodyHandlers.ofString())
-          .body();
+                .send(req, HttpResponse.BodyHandlers.ofString())
+                .body();
 
         // 2) Pull out the "data" field
         String data = JsonParser
-          .parseString(json)
-          .getAsJsonObject()
-          .get("data")
-          .getAsString();
+                .parseString(json)
+                .getAsJsonObject()
+                .get("data")
+                .getAsString();
 
         // 3) Find all age=(number) and count how many ≥ 50
         Pattern p = Pattern.compile("age=(\\d+)");

@@ -121,7 +121,7 @@ class Manager extends Employee {
 /// ////////////////////////
 // 4. EmployeeProfile    //
 
-///////////////////////////
+/// ////////////////////////
 public class EmployeeProfile {
 
     /**
@@ -256,9 +256,9 @@ public class EmployeeProfile {
     /**
      * Utility to run sample & large-data tests and print PASS/FAIL.
      * We define:
-     *   - sampleCase0Input, sampleCase0Expected
-     *   - sampleCase1Input, sampleCase1Expected
-     *   - largeDataTest
+     * - sampleCase0Input, sampleCase0Expected
+     * - sampleCase1Input, sampleCase1Expected
+     * - largeDataTest
      */
     private static void runAllTests() {
         System.out.println("===== Running Built-In Tests =====\n");

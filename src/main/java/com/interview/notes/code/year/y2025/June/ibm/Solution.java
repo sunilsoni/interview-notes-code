@@ -12,7 +12,7 @@ public class Solution {
             if (position == MAX_POSITION) {
                 reachedEnd = true;
             }
-            
+
             switch (instruction) {
                 case 'R':
                     position++;

@@ -17,14 +17,14 @@ public class GameNavigation {
                     }
                     previousMove = 'R';
                     break;
-                    
+
                 case 'L':
                     if (position > MIN_POSITION) {
                         position--;
                     }
                     previousMove = 'L';
                     break;
-                    
+
                 case 'J':
                     // Jump 2 positions based on previous direction
                     if (previousMove == 'R') {

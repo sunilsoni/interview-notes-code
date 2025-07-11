@@ -32,7 +32,7 @@ public class Application {
 
         // 5) Print results
         statusMap.forEach((id, frozen) ->
-            System.out.println("Account " + id + " frozen? " + frozen)
+                System.out.println("Account " + id + " frozen? " + frozen)
         );
     }
 }
@@ -40,7 +40,7 @@ public class Application {
 class AccountService {
     // Single SQL to fetch _all_ frozen accounts at once
     private static final String SQL_FROZEN_IN =
-        "SELECT account_id FROM frozen_accounts WHERE account_id IN (:ids)";
+            "SELECT account_id FROM frozen_accounts WHERE account_id IN (:ids)";
 
     private final NamedParameterJdbcTemplate jdbc;
 

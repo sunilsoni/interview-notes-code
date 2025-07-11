@@ -4,29 +4,33 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ * Minimal interface to simulate Spring's NamedParameterJdbcTemplate.
+ */
+interface NamedParameterJdbcTemplate {
+    <T> List<T> queryForList(String sql, MapSqlParameterSource params, Class<T> elementType);
+}
+
+/**
  * Simulated MapSqlParameterSource for named parameters.
  */
 class MapSqlParameterSource {
     private final Map<String, Object> values = new HashMap<>();
 
-    /** Add a named parameter. */
+    /**
+     * Add a named parameter.
+     */
     public MapSqlParameterSource addValue(String key, Object value) {
         values.put(key, value);
         return this;
     }
 
-    /** Retrieve a parameter by name. */
+    /**
+     * Retrieve a parameter by name.
+     */
     @SuppressWarnings("unchecked")
     public <T> T getValue(String key) {
         return (T) values.get(key);
     }
-}
-
-/**
- * Minimal interface to simulate Spring's NamedParameterJdbcTemplate.
- */
-interface NamedParameterJdbcTemplate {
-    <T> List<T> queryForList(String sql, MapSqlParameterSource params, Class<T> elementType);
 }
 
 /**
@@ -46,7 +50,7 @@ class FrozenAccountStatus {
         if (!(o instanceof FrozenAccountStatus)) return false;
         FrozenAccountStatus other = (FrozenAccountStatus) o;
         return this.accountId.equals(other.accountId)
-            && this.isFrozen == other.isFrozen;
+                && this.isFrozen == other.isFrozen;
     }
 
     @Override
@@ -76,13 +80,13 @@ class AccountService {
     public List<FrozenAccountStatus> checkFrozenAccounts(List<String> accountIds) {
         // 1. Prepare named parameters for the SQL IN clause
         MapSqlParameterSource params = new MapSqlParameterSource()
-            .addValue("accountIds", accountIds);
+                .addValue("accountIds", accountIds);
 
         // 2. Single query: get all account_ids that are frozen
         List<String> frozenIds = jdbcTemplate.queryForList(
-            "SELECT account_id FROM frozen_account WHERE account_id IN (:accountIds)",
-            params,
-            String.class
+                "SELECT account_id FROM frozen_account WHERE account_id IN (:accountIds)",
+                params,
+                String.class
         );
 
         // 3. Build a Set for O(1) contains() checks
@@ -90,8 +94,8 @@ class AccountService {
 
         // 4. Map each accountId to its FrozenAccountStatus via a Stream
         return accountIds.stream()
-            .map(id -> new FrozenAccountStatus(id, frozenSet.contains(id)))
-            .collect(Collectors.toList());
+                .map(id -> new FrozenAccountStatus(id, frozenSet.contains(id)))
+                .collect(Collectors.toList());
     }
 }
 
@@ -134,10 +138,10 @@ public class FrozenAccountsTest {
         List<FrozenAccountStatus> actual1 = svc1.checkFrozenAccounts(testIds1);
 
         List<FrozenAccountStatus> expected1 = Arrays.asList(
-            new FrozenAccountStatus("A1", false),
-            new FrozenAccountStatus("A2", true),
-            new FrozenAccountStatus("A3", false),
-            new FrozenAccountStatus("A4", true)
+                new FrozenAccountStatus("A1", false),
+                new FrozenAccountStatus("A2", true),
+                new FrozenAccountStatus("A3", false),
+                new FrozenAccountStatus("A4", true)
         );
         System.out.println("Test 1: " + (actual1.equals(expected1) ? "PASS" : "FAIL"));
 

@@ -98,13 +98,13 @@ class Manager extends Employee {
 /// ////////////////////////
 // 4. EmployeeProfile    //
 
-///////////////////////////
+/// ////////////////////////
 public class EmployeeProfile {
 
     /**
      * Helper method: Parses the list of input lines and returns output lines.
-     *   - lines.get(0) should be an integer n
-     *   - next n lines are of the form: "TYPE GRADE SALARY"
+     * - lines.get(0) should be an integer n
+     * - next n lines are of the form: "TYPE GRADE SALARY"
      */
     public static List<String> processLines(List<String> lines) {
         if (lines.isEmpty()) {
@@ -192,7 +192,7 @@ public class EmployeeProfile {
     ////////////////////////////
     // 5. Testing harness     //
 
-    ////////////////////////////
+    /// /////////////////////////
     private static void runAllTests() {
         System.out.println("===== Running Built-In Tests =====\n");
 

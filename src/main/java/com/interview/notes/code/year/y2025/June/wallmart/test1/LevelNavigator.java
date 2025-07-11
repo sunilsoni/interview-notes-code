@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.June.wallmart.test1;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 public class LevelNavigator {
 
@@ -12,7 +12,7 @@ public class LevelNavigator {
     public static boolean level(List<Integer> obstacles, String instr) {
         // Convert obstacle list to HashSet for O(1) checks
         Set<Integer> obs = obstacles.stream()
-                                    .collect(Collectors.toSet());
+                .collect(Collectors.toSet());
         int pos = 0;                // current position
         char lastMove = 'R';        // the first move is always R by rule
 
@@ -56,31 +56,31 @@ public class LevelNavigator {
     public static void main(String[] args) {
         // define test cases: {obstacles, instructions, expectedResult}
         Object[][] tests = {
-            {Arrays.asList(4, 6), "RRRJJRRR", true},
-            {Arrays.asList(4, 6), "RRRLJ",     false},
-            {Arrays.asList(4, 6), "RRRJJRRL", true},
-            {Arrays.asList(4, 6), "RRRLRJJRRR", true},
-            {Arrays.asList(4, 6), "RRRRRRRRRR", false},
-            {Arrays.asList(4, 6), "RRJJJ",     false},
-            {Arrays.asList(4, 6), "RLRRRLRJLRJLLJJJLRRR", true},
-            {Arrays.asList(4, 6), "RRLRRLJJJRRR", false},
-            {Arrays.asList(4, 6), "R",          false},
-            {Arrays.asList(4, 6), "RJJJR",      true},
-            {Arrays.asList(9, 4, 2), "RJJRRRRR", false},
-            {Arrays.asList(9, 4, 2), "RJJRRRJ",  true},
-            {Arrays.asList(9, 4, 2), "RJJJLJRJR",false},
-            {Collections.emptyList(),  "R",     false},
+                {Arrays.asList(4, 6), "RRRJJRRR", true},
+                {Arrays.asList(4, 6), "RRRLJ", false},
+                {Arrays.asList(4, 6), "RRRJJRRL", true},
+                {Arrays.asList(4, 6), "RRRLRJJRRR", true},
+                {Arrays.asList(4, 6), "RRRRRRRRRR", false},
+                {Arrays.asList(4, 6), "RRJJJ", false},
+                {Arrays.asList(4, 6), "RLRRRLRJLRJLLJJJLRRR", true},
+                {Arrays.asList(4, 6), "RRLRRLJJJRRR", false},
+                {Arrays.asList(4, 6), "R", false},
+                {Arrays.asList(4, 6), "RJJJR", true},
+                {Arrays.asList(9, 4, 2), "RJJRRRRR", false},
+                {Arrays.asList(9, 4, 2), "RJJRRRJ", true},
+                {Arrays.asList(9, 4, 2), "RJJJLJRJR", false},
+                {Collections.emptyList(), "R", false},
         };
 
         // run and report
         for (int i = 0; i < tests.length; i++) {
             List<Integer> obs = (List<Integer>) tests[i][0];
-            String instr       = (String)      tests[i][1];
-            boolean expected   = (Boolean)     tests[i][2];
-            boolean result     = level(obs, instr);
-            String status      = (result == expected) ? "PASS" : "FAIL";
+            String instr = (String) tests[i][1];
+            boolean expected = (Boolean) tests[i][2];
+            boolean result = level(obs, instr);
+            String status = (result == expected) ? "PASS" : "FAIL";
             System.out.printf("Test %2d: %s (got=%b, expected=%b)%n",
-                              i+1, status, result, expected);
+                    i + 1, status, result, expected);
         }
 
         // large random test for performance

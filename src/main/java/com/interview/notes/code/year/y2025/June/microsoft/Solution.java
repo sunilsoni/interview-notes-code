@@ -8,7 +8,7 @@ public class Solution {
 
         for (char instruction : instructions.toCharArray()) {
             int prevPosition = position;
-            
+
             switch (instruction) {
                 case 'R':
                     position++;

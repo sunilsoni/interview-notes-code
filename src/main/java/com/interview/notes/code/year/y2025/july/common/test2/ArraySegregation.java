@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.july.common.test2;
 
 public class ArraySegregation {
-    
+
     // Method to segregate 0s and 1s in an array
     public static void segregateArray(int[] arr) {
         // Edge case check for null or empty array
@@ -19,12 +19,12 @@ public class ArraySegregation {
             while (left < right && arr[left] == 1) {
                 left++;
             }
-            
+
             // Move right pointer until we find 1
             while (left < right && arr[right] == 0) {
                 right--;
             }
-            
+
             // Swap elements if pointers haven't crossed
             if (left < right) {
                 int temp = arr[left];

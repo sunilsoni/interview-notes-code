@@ -4,7 +4,9 @@ package com.interview.notes.code.year.y2025.july.common.codility.test1;
 
 public class ReverseNodes {
 
-    /** Build a linked list from an int[] */
+    /**
+     * Build a linked list from an int[]
+     */
     public static ListNode createLinkedList(int[] arr) {
         ListNode dummy = new ListNode(0);
         ListNode cur = dummy;
@@ -15,7 +17,9 @@ public class ReverseNodes {
         return dummy.next;
     }
 
-    /** Serialize to “1->2->3” for easy comparison */
+    /**
+     * Serialize to “1->2->3” for easy comparison
+     */
     public static String linkedListToString(ListNode head) {
         StringBuilder sb = new StringBuilder();
         ListNode cur = head;
@@ -47,7 +51,7 @@ public class ReverseNodes {
 
             // 2) reverse [groupPrev.next ... kth]
             ListNode groupStart = groupPrev.next;
-            ListNode nextGroup  = kth.next;
+            ListNode nextGroup = kth.next;
             ListNode prev = nextGroup;
             ListNode curr = groupStart;
             while (curr != nextGroup) {

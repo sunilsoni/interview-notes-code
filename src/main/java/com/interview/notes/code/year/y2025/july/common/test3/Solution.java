@@ -1,4 +1,5 @@
 package com.interview.notes.code.year.y2025.july.common.test3;
+
 /*
 # 💎 Problem Name: ***Optimal Path***
 
@@ -88,19 +89,19 @@ public class Solution {
     public static void main(String[] args) {
         // Base test from problem statement
         runTest("Base Test",
-            new int[][] {
-                {0, 0, 0, 0, 5},
-                {0, 1, 1, 1, 0},
-                {2, 0, 0, 0, 0}
-            },
-            10
+                new int[][]{
+                        {0, 0, 0, 0, 5},
+                        {0, 1, 1, 1, 0},
+                        {2, 0, 0, 0, 0}
+                },
+                10
         );
 
         // Test with empty grid
-        runTest("Empty Grid", new int[][] {}, 0);
+        runTest("Empty Grid", new int[][]{}, 0);
 
         // Test with single-cell grid
-        runTest("Single Cell", new int[][] { {7} }, 7);
+        runTest("Single Cell", new int[][]{{7}}, 7);
 
         // Performance test: large 1000×1000 grid of all 1s
         int size = 1000;                                   // grid dimension
@@ -124,8 +125,8 @@ public class Solution {
         if (result == expected) {
             System.out.println(name + ": PASS");
         } else {
-            System.out.println(name + ": FAIL (expected " 
-                + expected + " but got " + result + ")");
+            System.out.println(name + ": FAIL (expected "
+                    + expected + " but got " + result + ")");
         }
     }
 }

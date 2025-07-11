@@ -8,7 +8,7 @@ public class ListNode {
     public int val;
     public ListNode next;
 
-    /** 
+    /**
      * Make this constructor public so other packages
      * (like your ReverseNodes) can call `new ListNode(...)`.
      */
@@ -17,11 +17,11 @@ public class ListNode {
         this.next = null;
     }
 
-    /** 
+    /**
      * Optional convenience constructor. Also must be public.
      */
     public ListNode(int val, ListNode next) {
-        this.val  = val;
+        this.val = val;
         this.next = next;
     }
 }

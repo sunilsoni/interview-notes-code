@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class ArraySegregation {
-    
+
     // Main method to segregate array containing 0s, 1s, and 2s
     public static void segregateArray(int[] arr) {
         // Edge case check for null or empty array
@@ -26,12 +26,12 @@ public class ArraySegregation {
                     low++;
                     mid++;
                     break;
-                    
+
                 case 1:
                     // If we find 1, just move mid pointer forward
                     mid++;
                     break;
-                    
+
                 case 2:
                     // If we find 2, swap with high pointer and decrement high
                     swap(arr, mid, high);
@@ -56,7 +56,7 @@ public class ArraySegregation {
     // Verify if array is correctly segregated
     private static boolean isCorrectlySegregated(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
-            if (arr[i] < arr[i-1]) {
+            if (arr[i] < arr[i - 1]) {
                 return false;
             }
         }
