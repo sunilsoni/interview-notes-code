@@ -1,4 +1,4 @@
-package com.interview.notes.code.year.y2025.july.common.hackerank.test2;
+package com.interview.notes.code.year.y2025.july.hackerank.test2;
 
 /**
  * Here's a combined and clear textual description of the problem statement and requirements extracted from your screenshots:

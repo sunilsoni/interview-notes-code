@@ -1,4 +1,4 @@
-package com.interview.notes.code.year.y2025.july.common.hackerank.test4;
+package com.interview.notes.code.year.y2025.july.hackerank.test4;
 
 import java.util.*;
 import java.util.stream.Collectors;

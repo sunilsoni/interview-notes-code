@@ -1,5 +1,5 @@
 // File: src/main/java/com/interview/notes/code/year/y2025/july/common/codility/test1/ReverseNodes.java
-package com.interview.notes.code.year.y2025.july.common.codility.test1;
+package com.interview.notes.code.year.y2025.july.codility.test1;
 
 
 public class ReverseNodes {

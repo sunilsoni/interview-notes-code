@@ -1,4 +1,4 @@
-package com.interview.notes.code.year.y2025.july.common.hackerank.test3;
+package com.interview.notes.code.year.y2025.july.hackerank.test3;
 
 public class Main {
     public static void main(String[] args) {

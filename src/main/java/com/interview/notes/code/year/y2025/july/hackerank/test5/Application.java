@@ -1,4 +1,4 @@
-package com.interview.notes.code.year.y2025.july.common.hackerank.test5;
+package com.interview.notes.code.year.y2025.july.hackerank.test5;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

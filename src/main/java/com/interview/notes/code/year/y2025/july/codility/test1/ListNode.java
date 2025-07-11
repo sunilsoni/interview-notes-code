@@ -1,5 +1,5 @@
 // File: src/main/java/com/interview/notes/code/linkedlist/ListNode.java
-package com.interview.notes.code.year.y2025.july.common.codility.test1;
+package com.interview.notes.code.year.y2025.july.codility.test1;
 
 /**
  * A simple singly-linked-list node.
