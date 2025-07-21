@@ -71,7 +71,7 @@ public class BrowserTest {
     private static void testBasicNavigation() {
         System.out.println("Testing basic navigation...");
         BrowserHistory browser = new BrowserHistory();
-        
+
         browser.visitPage("google.com", "Google");
         browser.visitPage("facebook.com", "Facebook");
         browser.visitPage("twitter.com", "Twitter");
@@ -98,7 +98,7 @@ public class BrowserTest {
         browser.visitPage("page1.com", "Page 1");
         // Test single page navigation
         assert browser.back() == browser.getCurrentPage();
-        
+
         System.out.println("Edge cases test: PASSED");
     }
 

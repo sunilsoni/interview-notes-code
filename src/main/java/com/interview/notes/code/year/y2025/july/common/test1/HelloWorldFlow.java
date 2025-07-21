@@ -9,10 +9,10 @@ public class HelloWorldFlow {
 
         // Combine both and trigger final logic
         hello.thenCombine(world, (h, w) -> h + " " + w)
-             .thenAccept(result -> {
-                 System.out.println(result);       // Prints: Hello World
-                 System.out.println("Completed");  // Prints after both are done
-             });
+                .thenAccept(result -> {
+                    System.out.println(result);       // Prints: Hello World
+                    System.out.println("Completed");  // Prints after both are done
+                });
     }
 }
 

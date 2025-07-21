@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.july.amazon.test4;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /*
 
 
@@ -58,6 +62,47 @@ Design and implement the necessary **APIs and classes** to run **text processing
  */
 public class TextProcessingPipeline {
 
+    // Main for testing PASS/FAIL and performance
+    public static void main(String[] args) {
+        // sample document
+        String sample = "Hello\tWorld\nThis is Java\nStreams are cool";
+        Document doc1 = new Document(sample);
+        System.out.println("=== Running Pipeline p1 ===");
+        PipelineFactory.p1().run(doc1);
+
+        // expected checks (very simple assertions)
+        boolean pass1 = doc1.avgWords == ((2 + 3 + 3) / 3.0);
+        System.out.println(pass1 ? "p1 PASS" : "p1 FAIL");
+
+        // pipeline 2
+        Document doc2 = new Document(sample);
+        System.out.println("\n=== Running Pipeline p2 ===");
+        PipelineFactory.p2().run(doc2);
+        boolean pass2 = doc2.avgWords == doc1.avgWords;
+        System.out.println(pass2 ? "p2 PASS" : "p2 FAIL");
+
+        // large input performance test
+        StringBuilder large = new StringBuilder();
+        for (int i = 0; i < 100_000; i++) {
+            large.append("word1 word2 word3\n");
+        }
+        Document bigDoc = new Document(large.toString());
+        long start = System.currentTimeMillis();
+        PipelineFactory.p1().run(bigDoc);
+        long duration = System.currentTimeMillis() - start;
+        System.out.println("Large doc p1 took " + duration + " ms");
+    }
+
+    // Document-level operation interface
+    interface DocumentOperation {
+        void apply(Document doc);
+    }
+
+    // Sentence-level operation interface
+    interface SentenceOperation {
+        void apply(Sentence sentence);
+    }
+
     // Model for a sentence
     static class Sentence {
         String content;    // sentence text
@@ -82,16 +127,6 @@ public class TextProcessingPipeline {
         }
     }
 
-    // Document-level operation interface
-    interface DocumentOperation {
-        void apply(Document doc);
-    }
-
-    // Sentence-level operation interface
-    interface SentenceOperation {
-        void apply(Sentence sentence);
-    }
-
     // d1: Replace tabs with spaces
     static class ReplaceTabs implements DocumentOperation {
         @Override
@@ -114,8 +149,8 @@ public class TextProcessingPipeline {
         public void apply(Document doc) {
             // stream lines, wrap each as Sentence
             doc.sentences = Arrays.stream(doc.content.split("\\r?\\n"))
-                                  .map(Sentence::new)
-                                  .collect(Collectors.toList());
+                    .map(Sentence::new)
+                    .collect(Collectors.toList());
         }
     }
 
@@ -125,8 +160,8 @@ public class TextProcessingPipeline {
         public void apply(Sentence s) {
             // split on whitespace, filter out empty, count
             s.wordCount = (int) Arrays.stream(s.content.trim().split("\\s+"))
-                                      .filter(w -> !w.isEmpty())
-                                      .count();
+                    .filter(w -> !w.isEmpty())
+                    .count();
             System.out.println("Word count: " + s.wordCount);  // print count
         }
     }
@@ -137,8 +172,8 @@ public class TextProcessingPipeline {
         public void apply(Sentence s) {
             // reverse chars
             s.content = new StringBuilder(s.content)
-                            .reverse()
-                            .toString();
+                    .reverse()
+                    .toString();
             System.out.println("Reversed sentence: " + s.content);
         }
     }
@@ -149,9 +184,9 @@ public class TextProcessingPipeline {
         public void apply(Document doc) {
             // sum wordCount, divide by sentence count
             doc.avgWords = doc.sentences.stream()
-                                  .mapToInt(s -> s.wordCount)
-                                  .average()
-                                  .orElse(0.0);
+                    .mapToInt(s -> s.wordCount)
+                    .average()
+                    .orElse(0.0);
         }
     }
 
@@ -160,8 +195,8 @@ public class TextProcessingPipeline {
         @Override
         public void apply(Document doc) {
             doc.content = new StringBuilder(doc.content)
-                            .reverse()
-                            .toString();
+                    .reverse()
+                    .toString();
         }
     }
 
@@ -206,53 +241,23 @@ public class TextProcessingPipeline {
         // p1: d1,d2,d3, then s1,s2, then d4,d5,d6,d7
         static Pipeline p1() {
             return new Pipeline(
-                Arrays.asList(
-                    new ReplaceTabs(), new ToLowerCase(), new SplitSentences(),
-                    new ComputeAverage(), new ReverseDocument(), new PrintAverage(), new PrintDocument()
-                ),
-                Arrays.asList(new CountWords(), new ReverseLetters())
+                    Arrays.asList(
+                            new ReplaceTabs(), new ToLowerCase(), new SplitSentences(),
+                            new ComputeAverage(), new ReverseDocument(), new PrintAverage(), new PrintDocument()
+                    ),
+                    Arrays.asList(new CountWords(), new ReverseLetters())
             );
         }
+
         // p2: d1,d2,d3, then s2, then d4,d5,d6,d7  (we added d4 so d6 works)
         static Pipeline p2() {
             return new Pipeline(
-                Arrays.asList(
-                    new ReplaceTabs(), new ToLowerCase(), new SplitSentences(),
-                    new ComputeAverage(), new ReverseDocument(), new PrintAverage(), new PrintDocument()
-                ),
-                Collections.singletonList(new ReverseLetters())
+                    Arrays.asList(
+                            new ReplaceTabs(), new ToLowerCase(), new SplitSentences(),
+                            new ComputeAverage(), new ReverseDocument(), new PrintAverage(), new PrintDocument()
+                    ),
+                    Collections.singletonList(new ReverseLetters())
             );
         }
-    }
-
-    // Main for testing PASS/FAIL and performance
-    public static void main(String[] args) {
-        // sample document
-        String sample = "Hello\tWorld\nThis is Java\nStreams are cool";
-        Document doc1 = new Document(sample);
-        System.out.println("=== Running Pipeline p1 ===");
-        PipelineFactory.p1().run(doc1);
-
-        // expected checks (very simple assertions)
-        boolean pass1 = doc1.avgWords == ( (2+3+3) / 3.0 );
-        System.out.println(pass1 ? "p1 PASS" : "p1 FAIL");
-
-        // pipeline 2
-        Document doc2 = new Document(sample);
-        System.out.println("\n=== Running Pipeline p2 ===");
-        PipelineFactory.p2().run(doc2);
-        boolean pass2 = doc2.avgWords == doc1.avgWords;
-        System.out.println(pass2 ? "p2 PASS" : "p2 FAIL");
-
-        // large input performance test
-        StringBuilder large = new StringBuilder();
-        for (int i = 0; i < 100_000; i++) {
-            large.append("word1 word2 word3\n");
-        }
-        Document bigDoc = new Document(large.toString());
-        long start = System.currentTimeMillis();
-        PipelineFactory.p1().run(bigDoc);
-        long duration = System.currentTimeMillis() - start;
-        System.out.println("Large doc p1 took " + duration + " ms");
     }
 }

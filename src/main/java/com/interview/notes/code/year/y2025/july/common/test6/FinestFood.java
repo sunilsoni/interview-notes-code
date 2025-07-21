@@ -1,11 +1,13 @@
 package com.interview.notes.code.year.y2025.july.common.test6;
 
-import java.io.*;
-import java.net.*;
-import java.net.http.*;
-import java.util.*;
-import java.util.stream.*;
-import com.google.gson.*;
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 // No other imports beyond the list you provided
 /*
@@ -160,17 +162,17 @@ public class FinestFood {
 
         do {
             String uri = String.format(
-              "https://jsonmock.hackerrank.com/api/food_outlets?city=%s&page=%d",
-              cityEnc, page
+                    "https://jsonmock.hackerrank.com/api/food_outlets?city=%s&page=%d",
+                    cityEnc, page
             );
 
             HttpRequest req = HttpRequest.newBuilder()
-                                  .uri(URI.create(uri))
-                                  .GET()
-                                  .build();
+                    .uri(URI.create(uri))
+                    .GET()
+                    .build();
 
             String body = HTTP.send(req, HttpResponse.BodyHandlers.ofString())
-                              .body();
+                    .body();
 
             ApiResponse resp = GSON.fromJson(body, ApiResponse.class);
             totalPages = resp.total_pages;
@@ -183,8 +185,8 @@ public class FinestFood {
 
                 if (r > bestRating || (r == bestRating && v > bestVotes)) {
                     bestRating = r;
-                    bestVotes  = v;
-                    bestName   = o.name;
+                    bestVotes = v;
+                    bestName = o.name;
                 }
             }
         } while (++page <= totalPages);
@@ -192,26 +194,12 @@ public class FinestFood {
         return bestName.isEmpty() ? "No outlet found" : bestName;
     }
 
-    // --- JSON mapping classes for Gson ---
-    static class ApiResponse {
-        int total_pages;
-        Outlet[] data;
-    }
-    static class Outlet {
-        String name;
-        Rating user_rating;
-    }
-    static class Rating {
-        double average_rating;
-        int votes;
-    }
-
     // --- simple main for pass/fail tests ---
     public static void main(String[] args) throws Exception {
         String[][] tests = {
-            {"Seattle","500","Cafe Juanita"},
-            {"Miami","1000","Pirates of Grill"},
-            {"Gotham","10","No outlet found"}  // extra edge case
+                {"Seattle", "500", "Cafe Juanita"},
+                {"Miami", "1000", "Pirates of Grill"},
+                {"Gotham", "10", "No outlet found"}  // extra edge case
         };
 
         for (var t : tests) {
@@ -219,9 +207,25 @@ public class FinestFood {
             int mv = Integer.parseInt(t[1]);
             String got = finestFoodOutlet(city, mv);
             System.out.printf(
-              "Test %s(minVotes=%d): got='%s' [%s]\n",
-              city, mv, got, got.equals(expect) ? "PASS" : "FAIL"
+                    "Test %s(minVotes=%d): got='%s' [%s]\n",
+                    city, mv, got, got.equals(expect) ? "PASS" : "FAIL"
             );
         }
+    }
+
+    // --- JSON mapping classes for Gson ---
+    static class ApiResponse {
+        int total_pages;
+        Outlet[] data;
+    }
+
+    static class Outlet {
+        String name;
+        Rating user_rating;
+    }
+
+    static class Rating {
+        double average_rating;
+        int votes;
     }
 }

@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.july.hackerank.test7;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 class Node {
     int val;
@@ -23,6 +26,7 @@ public class SubtreeExtractor {
 
     /**
      * Extracts the subtree rooted at targetId.
+     *
      * @param root     the root of the full N-ary tree
      * @param targetId the value to find
      * @return the Node whose val == targetId, or null if not found
@@ -36,14 +40,15 @@ public class SubtreeExtractor {
         }
         // search each child in turn, using Java 8 streams
         return root.children.stream()
-            .map(child -> extractSubtree(child, targetId)) // recurse
-            .filter(Objects::nonNull)                       // keep only hits
-            .findFirst()                                     // take first hit
-            .orElse(null);                                   // or return null
+                .map(child -> extractSubtree(child, targetId)) // recurse
+                .filter(Objects::nonNull)                       // keep only hits
+                .findFirst()                                     // take first hit
+                .orElse(null);                                   // or return null
     }
 
     /**
      * Counts nodes in a subtree (null subtree → count 0).
+     *
      * @param node the root of the subtree
      * @return number of nodes under (and including) this node
      */
@@ -53,15 +58,16 @@ public class SubtreeExtractor {
         }
         // 1 for this node, plus sum of all children
         return 1 + node.children.stream()
-                    .mapToInt(SubtreeExtractor::countNodes)
-                    .sum();
+                .mapToInt(SubtreeExtractor::countNodes)
+                .sum();
     }
 
     /**
      * Runs a single test and prints PASS/FAIL.
-     * @param root           full tree root
-     * @param targetId       value to extract
-     * @param expectedCount  expected number of nodes in that subtree
+     *
+     * @param root          full tree root
+     * @param targetId      value to extract
+     * @param expectedCount expected number of nodes in that subtree
      */
     private static void runTest(Node root, int targetId, int expectedCount) {
         Node subtree = extractSubtree(root, targetId);
@@ -70,8 +76,8 @@ public class SubtreeExtractor {
             System.out.println("Test targetId=" + targetId + " PASSED");
         } else {
             System.out.println("Test targetId=" + targetId
-                + " FAILED: expected " + expectedCount
-                + " but got " + actualCount);
+                    + " FAILED: expected " + expectedCount
+                    + " but got " + actualCount);
         }
     }
 
@@ -83,8 +89,8 @@ public class SubtreeExtractor {
         //      / \   / \
         //     4   5 6   7
         Node root = new Node(1, Arrays.asList(
-            new Node(2, Arrays.asList(new Node(4), new Node(5))),
-            new Node(3, Arrays.asList(new Node(6), new Node(7)))
+                new Node(2, Arrays.asList(new Node(4), new Node(5))),
+                new Node(3, Arrays.asList(new Node(6), new Node(7)))
         ));
 
         // Test cases:

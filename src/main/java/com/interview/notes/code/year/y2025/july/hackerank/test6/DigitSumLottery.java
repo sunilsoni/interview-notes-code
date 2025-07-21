@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.july.hackerank.test6;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * DigitSumLottery solves the ticket lottery problem:
@@ -12,7 +13,8 @@ public class DigitSumLottery {
 
     /**
      * Compute the result [ways, maxCount] for the input range.
-     * @param lowLimit inclusive lower bound of ticket numbers
+     *
+     * @param lowLimit  inclusive lower bound of ticket numbers
      * @param highLimit inclusive upper bound of ticket numbers
      * @return List of two elements: [number of sums with max frequency, max frequency]
      */
@@ -21,18 +23,18 @@ public class DigitSumLottery {
         // get distribution of digit sums for [0, highLimit]
         long[] highDist = countDigitSumDistribution(highLimit);
         // get distribution of digit sums for [0, lowLimit - 1]
-        long[] lowDist  = countDigitSumDistribution(lowLimit - 1);
+        long[] lowDist = countDigitSumDistribution(lowLimit - 1);
 
         int n = highDist.length;        // possible sums: 0..n-1
         long maxCount = 0;             // track highest ticket count for any sum
-        long ways     = 0;             // count of sums that reach maxCount
+        long ways = 0;             // count of sums that reach maxCount
 
         // for each possible digit sum, find count in [lowLimit, highLimit]
         for (int sum = 0; sum < n; sum++) {
             long count = highDist[sum] - (sum < lowDist.length ? lowDist[sum] : 0);
             if (count > maxCount) {
                 maxCount = count;  // new highest frequency
-                ways     = 1;      // reset ways to 1
+                ways = 1;      // reset ways to 1
             } else if (count == maxCount) {
                 ways++;            // another sum ties for highest
             }
@@ -43,6 +45,7 @@ public class DigitSumLottery {
 
     /**
      * Digit DP: count how many numbers from 0..N have each possible digit sum.
+     *
      * @param N upper bound (inclusive)
      * @return array dist where dist[s] = count of numbers with digit sum s
      */
@@ -51,7 +54,7 @@ public class DigitSumLottery {
             return new long[0];   // no numbers in negative range
         }
         String s = Long.toString(N);   // digits of N, most significant first
-        int len    = s.length();       // number of digits
+        int len = s.length();       // number of digits
         int maxSum = 9 * len;         // maximum possible digit sum
 
         // dpPrev[tight][sum] = number of ways to build prefix
@@ -93,16 +96,16 @@ public class DigitSumLottery {
     public static void main(String[] args) {
         // prepare sample test cases with expected output
         List<TestCase> tests = Arrays.asList(
-            new TestCase(1,   5,  5, 1),  // sample 0
-            new TestCase(3,  12,  1, 2),  // sample 1
-            new TestCase(1,  10,  1, 2)   // example in description
+                new TestCase(1, 5, 5, 1),  // sample 0
+                new TestCase(3, 12, 1, 2),  // sample 1
+                new TestCase(1, 10, 1, 2)   // example in description
         );
 
         // execute each test
         for (TestCase t : tests) {
             List<Long> out = waysToChooseSum(t.low, t.high);
             boolean pass = out.get(0).equals(t.expWays)
-                        && out.get(1).equals(t.expMaxCount);
+                    && out.get(1).equals(t.expMaxCount);
             // print formatted result
             System.out.printf("Test [%d, %d]: expected=(%d,%d), got=(%d,%d) => %s%n",
                     t.low, t.high,
@@ -121,6 +124,7 @@ public class DigitSumLottery {
     // helper class to store test parameters and expected results
     private static class TestCase {
         long low, high, expWays, expMaxCount;
+
         TestCase(long low, long high, long w, long m) {
             this.low = low;
             this.high = high;

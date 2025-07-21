@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.july.codesignal.test3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.TreeSet;
 
 public class MostSimilarPeaks {
 
@@ -14,7 +17,7 @@ public class MostSimilarPeaks {
         int n = heights.length;
         if (viewingGap >= n) {
             throw new IllegalArgumentException(
-                "viewingGap must be less than number of peaks");
+                    "viewingGap must be less than number of peaks");
         }
 
         TreeSet<Integer> seen = new TreeSet<>();
@@ -49,14 +52,19 @@ public class MostSimilarPeaks {
             int[] heights;
             int gap;
             int expected;
-            Test(int[] h, int g, int e) { heights = h; gap = g; expected = e; }
+
+            Test(int[] h, int g, int e) {
+                heights = h;
+                gap = g;
+                expected = e;
+            }
         }
 
         List<Test> tests = Arrays.asList(
-            new Test(new int[]{1, 5, 4, 10, 9}, 3, 4),
-            new Test(new int[]{3, 10, 5, 8},    1, 2),
-            new Test(new int[]{7, 7},           1, 0),  // same heights
-            new Test(new int[]{2, 100, 3, 101}, 2, 1)   // (100,101) or (2,3)
+                new Test(new int[]{1, 5, 4, 10, 9}, 3, 4),
+                new Test(new int[]{3, 10, 5, 8}, 1, 2),
+                new Test(new int[]{7, 7}, 1, 0),  // same heights
+                new Test(new int[]{2, 100, 3, 101}, 2, 1)   // (100,101) or (2,3)
         );
 
         int passCount = 0;
@@ -65,12 +73,12 @@ public class MostSimilarPeaks {
             int result = solution(t.heights, t.gap);
             boolean pass = result == t.expected;
             System.out.printf("Test %d: %s (expected=%d, got=%d)%n",
-                              i+1, pass ? "PASS" : "FAIL",
-                              t.expected, result);
+                    i + 1, pass ? "PASS" : "FAIL",
+                    t.expected, result);
             if (pass) passCount++;
         }
         System.out.printf("Passed %d/%d basic tests.%n",
-                          passCount, tests.size());
+                passCount, tests.size());
 
         // Large random test to check performance
         final int N = 200_000;
@@ -85,6 +93,6 @@ public class MostSimilarPeaks {
         int ans = solution(large, gap);
         long t1 = System.nanoTime();
         System.out.printf("Large test (n=%d, gap=%d) → result=%d, time=%.3f ms%n",
-                          N, gap, ans, (t1 - t0) / 1e6);
+                N, gap, ans, (t1 - t0) / 1e6);
     }
 }

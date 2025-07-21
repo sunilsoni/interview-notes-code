@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.july.hackerank.test5;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 /*
 Here is the combined and properly formatted version of the **"Digit Sum"** problem from the provided screenshots:
 
@@ -154,6 +155,7 @@ public static List<Long> waysToChooseSum(long lowLimit, long highLimit)
 Would you like me to provide a complete Java implementation using `Stream API` and a simple `main` method for testing?
 
  */
+
 /**
  * DigitSumLottery solves the ticket lottery problem:
  * tickets from lowLimit to highLimit have coupon codes equal to digit sums.
@@ -164,7 +166,8 @@ public class DigitSumLottery {
 
     /**
      * Compute the result [ways, maxCount] for the input range.
-     * @param lowLimit inclusive lower bound of ticket numbers
+     *
+     * @param lowLimit  inclusive lower bound of ticket numbers
      * @param highLimit inclusive upper bound of ticket numbers
      * @return List of two elements: [number of sums with max frequency, max frequency]
      */
@@ -172,17 +175,17 @@ public class DigitSumLottery {
         // get distribution of digit sums for [0, highLimit]
         long[] highDist = countDigitSumDistribution(highLimit);
         // get distribution of digit sums for [0, lowLimit - 1]
-        long[] lowDist  = countDigitSumDistribution(lowLimit - 1);
+        long[] lowDist = countDigitSumDistribution(lowLimit - 1);
 
         long maxCount = 0;
-        long ways     = 0;
+        long ways = 0;
 
         // loop over all possible sums
         for (int sum = 0; sum < highDist.length; sum++) {
             long count = highDist[sum] - (sum < lowDist.length ? lowDist[sum] : 0);
             if (count > maxCount) {
                 maxCount = count;
-                ways     = 1;
+                ways = 1;
             } else if (count == maxCount) {
                 ways++;
             }
@@ -196,7 +199,7 @@ public class DigitSumLottery {
     private static long[] countDigitSumDistribution(long N) {
         if (N < 0) return new long[0];
         String s = Long.toString(N);
-        int len    = s.length();
+        int len = s.length();
         int maxSum = 9 * len;
 
         long[][] dpPrev = new long[2][maxSum + 1];
@@ -232,10 +235,10 @@ public class DigitSumLottery {
      */
     public static void main(String[] args) {
         List<TestCase> tests = Arrays.asList(
-            new TestCase(1,   5,  5, 1),  // sample 0
-            new TestCase(3,  12,  1, 2),  // sample 1
-            new TestCase(1,   9,  9, 1),  // new test
-            new TestCase(1,  10,  1, 2)   // description example
+                new TestCase(1, 5, 5, 1),  // sample 0
+                new TestCase(3, 12, 1, 2),  // sample 1
+                new TestCase(1, 9, 9, 1),  // new test
+                new TestCase(1, 10, 1, 2)   // description example
         );
 
         for (TestCase t : tests) {
@@ -256,6 +259,7 @@ public class DigitSumLottery {
 
     private static class TestCase {
         long low, high, expWays, expMaxCount;
+
         TestCase(long low, long high, long w, long m) {
             this.low = low;
             this.high = high;

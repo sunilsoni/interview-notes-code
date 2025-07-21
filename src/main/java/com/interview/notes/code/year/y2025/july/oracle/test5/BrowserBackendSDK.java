@@ -8,9 +8,23 @@ import java.util.stream.Collectors;
  */
 interface NavigationService {
     void visit(String url);
+
     String back();
+
     String forward();
+
     String getCurrentPage();
+}
+
+/**
+ * Defines bookmark operations.
+ */
+interface BookmarkService {
+    void addBookmark(String url);
+
+    void removeBookmark(String url);
+
+    List<String> listBookmarks();
 }
 
 /**
@@ -57,15 +71,6 @@ class BrowserNavigationService implements NavigationService {
 }
 
 /**
- * Defines bookmark operations.
- */
-interface BookmarkService {
-    void addBookmark(String url);
-    void removeBookmark(String url);
-    List<String> listBookmarks();
-}
-
-/**
  * Implements BookmarkService using a LinkedHashSet to preserve insertion order.
  */
 class BrowserBookmarkService implements BookmarkService {
@@ -85,7 +90,7 @@ class BrowserBookmarkService implements BookmarkService {
     public List<String> listBookmarks() {
         // return a new list; use streams if we wanted filtering/sorting
         return bookmarks.stream()
-                        .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 }
 
@@ -97,11 +102,13 @@ public class BrowserBackendSDK {
     public static void main(String[] args) {
         // -- Test 1: Simple navigation --
         BrowserNavigationService nav = new BrowserNavigationService();
-        nav.visit("A"); nav.visit("B"); nav.visit("C");
+        nav.visit("A");
+        nav.visit("B");
+        nav.visit("C");
         boolean simpleNav = "B".equals(nav.back())       // C -> B
-                         && "A".equals(nav.back())       // B -> A
-                         && "B".equals(nav.forward())    // A -> B
-                         && "C".equals(nav.forward());   // B -> C
+                && "A".equals(nav.back())       // B -> A
+                && "B".equals(nav.forward())    // A -> B
+                && "C".equals(nav.forward());   // B -> C
         System.out.println("Test Simple Navigation: " + (simpleNav ? "PASS" : "FAIL"));
 
         // -- Test 2: Large navigation stress test --
@@ -124,14 +131,14 @@ public class BrowserBackendSDK {
 
         // -- Test 3: Bookmark operations --
         BrowserBookmarkService bm = new BrowserBookmarkService();
-        bm.addBookmark("A"); 
+        bm.addBookmark("A");
         bm.addBookmark("B");
         bm.addBookmark("A");            // duplicate, should be ignored
         bm.removeBookmark("C");         // non-existent, no effect
         List<String> list = bm.listBookmarks();
         boolean bmCorrect = list.size() == 2
-                          && list.get(0).equals("A")
-                          && list.get(1).equals("B");
+                && list.get(0).equals("A")
+                && list.get(1).equals("B");
         System.out.println("Test Bookmark Service: " + (bmCorrect ? "PASS" : "FAIL"));
     }
 }

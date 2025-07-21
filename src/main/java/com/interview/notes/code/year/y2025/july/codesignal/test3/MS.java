@@ -1,4 +1,5 @@
 package com.interview.notes.code.year.y2025.july.codesignal.test3;
+
 /*
 Here’s the **full combined version** of your problem statement, as seen in your screenshots:
 
@@ -88,31 +89,31 @@ Valid pairs include:
 
  */
 class MS {
-  public static void main(String[] a) {
-    int[][] H = {{1,5,4,10,9},{3,10,5,8},{7,7},{2,100,3,101}};
-    int[] G = {3,1,1,2}, E = {4,2,0,1};
-    for (int i = 0; i < H.length; i++) {
-      int r = solution(H[i], G[i]);
-      System.out.printf("T%d:%s%n", i+1, r==E[i]?"PASS":"FAIL");
+    public static void main(String[] a) {
+        int[][] H = {{1, 5, 4, 10, 9}, {3, 10, 5, 8}, {7, 7}, {2, 100, 3, 101}};
+        int[] G = {3, 1, 1, 2}, E = {4, 2, 0, 1};
+        for (int i = 0; i < H.length; i++) {
+            int r = solution(H[i], G[i]);
+            System.out.printf("T%d:%s%n", i + 1, r == E[i] ? "PASS" : "FAIL");
+        }
+        int N = 200_000, g = 5_000;
+        int[] L = new int[N];
+        java.util.Random R = new java.util.Random(123);
+        for (int i = 0; i < N; i++) L[i] = R.nextInt(1_000_000_000);
+        long t = System.nanoTime();
+        solution(L, g);
+        System.out.printf("Large:%.3fms%n", (System.nanoTime() - t) / 1e6);
     }
-    int N = 200_000, g = 5_000;
-    int[] L = new int[N];
-    java.util.Random R = new java.util.Random(123);
-    for (int i = 0; i < N; i++) L[i] = R.nextInt(1_000_000_000);
-    long t = System.nanoTime();
-    solution(L, g);
-    System.out.printf("Large:%.3fms%n", (System.nanoTime() - t)/1e6);
-  }
 
-  public static int solution(int[] heights, int viewingGap) {
-    java.util.TreeSet<Integer> s = new java.util.TreeSet<>();
-    int m = Integer.MAX_VALUE;
-    for (int i = viewingGap; i < heights.length; i++) {
-      s.add(heights[i - viewingGap]);
-      Integer lo = s.floor(heights[i]), hi = s.ceiling(heights[i]);
-      if (lo != null) m = Math.min(m, heights[i] - lo);
-      if (hi != null) m = Math.min(m, hi - heights[i]);
+    public static int solution(int[] heights, int viewingGap) {
+        java.util.TreeSet<Integer> s = new java.util.TreeSet<>();
+        int m = Integer.MAX_VALUE;
+        for (int i = viewingGap; i < heights.length; i++) {
+            s.add(heights[i - viewingGap]);
+            Integer lo = s.floor(heights[i]), hi = s.ceiling(heights[i]);
+            if (lo != null) m = Math.min(m, heights[i] - lo);
+            if (hi != null) m = Math.min(m, hi - heights[i]);
+        }
+        return m;
     }
-    return m;
-  }
 }

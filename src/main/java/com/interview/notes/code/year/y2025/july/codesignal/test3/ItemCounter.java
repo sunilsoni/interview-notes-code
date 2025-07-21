@@ -15,16 +15,16 @@ public class ItemCounter {
         // 3. Group by item string, using TreeMap to sort by key
         // 4. Count each group
         Map<String, Long> counts = items.stream()
-            .filter(Objects::nonNull)                                     // skip any null entries
-            .collect(Collectors.groupingBy(
-                Function.identity(),                                      // grouping key = the string itself
-                TreeMap::new,                                             // supplier for a sorted map
-                Collectors.counting()                                     // downstream collector to count occurrences
-            ));
+                .filter(Objects::nonNull)                                     // skip any null entries
+                .collect(Collectors.groupingBy(
+                        Function.identity(),                                      // grouping key = the string itself
+                        TreeMap::new,                                             // supplier for a sorted map
+                        Collectors.counting()                                     // downstream collector to count occurrences
+                ));
 
         // Print each entry as "key-count"
         counts.forEach((key, count) ->
-            System.out.println(key + " - " + count)
+                System.out.println(key + " - " + count)
         );
     }
 
@@ -34,50 +34,50 @@ public class ItemCounter {
 
         // 1. Basic example from prompt
         tests.put("Basic",
-            new TestCase(
-                Arrays.asList("Pen", "Eraser", "Note Book", "Pen", "Pencil", "Stapler", "Note Book", "Pencil"),
-                new TreeMap<>(Map.of(
-                    "Eraser", 1L,
-                    "Note Book", 2L,
-                    "Pen", 2L,
-                    "Pencil", 2L,
-                    "Stapler", 1L
-                ))
-            )
+                new TestCase(
+                        Arrays.asList("Pen", "Eraser", "Note Book", "Pen", "Pencil", "Stapler", "Note Book", "Pencil"),
+                        new TreeMap<>(Map.of(
+                                "Eraser", 1L,
+                                "Note Book", 2L,
+                                "Pen", 2L,
+                                "Pencil", 2L,
+                                "Stapler", 1L
+                        ))
+                )
         );
 
         // 2. Empty list
         tests.put("EmptyList",
-            new TestCase(
-                Collections.emptyList(),
-                new TreeMap<>()
-            )
+                new TestCase(
+                        Collections.emptyList(),
+                        new TreeMap<>()
+                )
         );
 
         // 3. All same
         tests.put("AllSame",
-            new TestCase(
-                Arrays.asList("X", "X", "X"),
-                new TreeMap<>(Map.of("X", 3L))
-            )
+                new TestCase(
+                        Arrays.asList("X", "X", "X"),
+                        new TreeMap<>(Map.of("X", 3L))
+                )
         );
 
         // 4. Contains nulls and blanks
         tests.put("NullsAndEmpty",
-            new TestCase(
-                Arrays.asList("A", null, "", "A", ""),
-                new TreeMap<>(Map.of(
-                    "", 2L,
-                    "A", 2L
-                ))
-            )
+                new TestCase(
+                        Arrays.asList("A", null, "", "A", ""),
+                        new TreeMap<>(Map.of(
+                                "", 2L,
+                                "A", 2L
+                        ))
+                )
         );
 
         // Run each test
         tests.forEach((name, tc) -> {
             Map<String, Long> result = tc.input.stream()
-                .filter(Objects::nonNull)
-                .collect(Collectors.groupingBy(Function.identity(), TreeMap::new, Collectors.counting()));
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.groupingBy(Function.identity(), TreeMap::new, Collectors.counting()));
             boolean pass = result.equals(tc.expected);
             System.out.printf("Test %-12s: %s%n", name, pass ? "PASS" : "FAIL");
             if (!pass) {
@@ -102,6 +102,7 @@ public class ItemCounter {
     private static class TestCase {
         final List<String> input;
         final Map<String, Long> expected;
+
         TestCase(List<String> input, Map<String, Long> expected) {
             this.input = input;
             this.expected = expected;

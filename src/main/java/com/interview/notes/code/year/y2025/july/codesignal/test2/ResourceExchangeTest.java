@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.july.codesignal.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class ResourceExchangeTest {
 
@@ -31,9 +32,9 @@ public class ResourceExchangeTest {
     // Simple test runner: each test is an int[]{conversionRate, expected, ...resource array...}
     public static void main(String[] args) {
         List<TestCase> tests = Arrays.asList(
-            new TestCase(new String[]{"A","A","A","P","P","P"}, 2, 13),
-            new TestCase(new String[]{"A","A"},           2, 4),
-            new TestCase(new String[]{"P","P","P"},       3, 2)
+                new TestCase(new String[]{"A", "A", "A", "P", "P", "P"}, 2, 13),
+                new TestCase(new String[]{"A", "A"}, 2, 4),
+                new TestCase(new String[]{"P", "P", "P"}, 3, 2)
         );
 
         // Run sample tests
@@ -42,7 +43,7 @@ public class ResourceExchangeTest {
             int actual = solution(tc.resources, tc.conversionRate);
             String result = (actual == tc.expected) ? "PASS" : "FAIL";
             System.out.printf("%s | rate=%d, expected=%d, got=%d%n",
-                              result, tc.conversionRate, tc.expected, actual);
+                    result, tc.conversionRate, tc.expected, actual);
         });
 
         // Large random test at the stated limits
@@ -51,7 +52,7 @@ public class ResourceExchangeTest {
         String[] large = new String[N];
         Random rnd = new Random(12345);
         // fill half A's then half P's (to respect ordering)
-        int half = N/2;
+        int half = N / 2;
         for (int i = 0; i < half; i++) large[i] = "A";
         for (int i = half; i < N; i++) large[i] = "P";
 
@@ -59,13 +60,14 @@ public class ResourceExchangeTest {
         int cycles = solution(large, rate);
         long elapsed = System.currentTimeMillis() - start;
         System.out.printf("Large case: N=%d, rate=%d → cycles=%d  (took %d ms)%n",
-                          N, rate, cycles, elapsed);
+                N, rate, cycles, elapsed);
     }
 
     // Helper to bundle a test
     static class TestCase {
         String[] resources;
         int conversionRate, expected;
+
         TestCase(String[] r, int rate, int exp) {
             this.resources = r;
             this.conversionRate = rate;

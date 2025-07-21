@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.july.amazon.test3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 /*
@@ -110,7 +111,7 @@ public class SortingFactorK {
     /**
      * Returns the maximum k such that you can sort the given permutation
      * by swapping arr[i] and arr[j] only when (arr[i] & arr[j]) == k.
-     *
+     * <p>
      * By inspection & by exhaustive small-n testing, the answer is simply
      * the bitwise-AND of all values that are not already in place
      * (i.e. all v with arr[i] != i).  If the array is already sorted,
@@ -119,15 +120,15 @@ public class SortingFactorK {
     public static int getSortingFactorK(List<Integer> arr) {
         // Quick check: if already sorted, return 0
         boolean sorted = IntStream.range(0, arr.size())
-                                  .allMatch(i -> arr.get(i) == i);
+                .allMatch(i -> arr.get(i) == i);
         if (sorted) return 0;
-        
+
         // Otherwise AND together all values that need moving
         return IntStream.range(0, arr.size())
-                        .filter(i -> arr.get(i) != i)
-                        .map(arr::get)
-                        .reduce((a, b) -> a & b)
-                        .orElse(0);
+                .filter(i -> arr.get(i) != i)
+                .map(arr::get)
+                .reduce((a, b) -> a & b)
+                .orElse(0);
     }
 
     public static void main(String[] args) {
@@ -136,6 +137,7 @@ public class SortingFactorK {
             final String name;
             final List<Integer> arr;
             final int expected;
+
             Test(String name, List<Integer> arr, int expected) {
                 this.name = name;
                 this.arr = arr;
@@ -144,13 +146,13 @@ public class SortingFactorK {
         }
 
         List<Test> tests = Arrays.asList(
-            new Test("Sample 0 (custom)",    Arrays.asList(3, 0, 2, 1), 0),
-            new Test("Example in desc [0,3,2,1]", Arrays.asList(0, 3, 2, 1), 1),
-            new Test("Sample 1",             Arrays.asList(0, 1, 3, 2, 4), 2),
-            new Test("Already sorted",       Arrays.asList(0, 1, 2, 3, 4), 0),
-            new Test("Tiny swap [1,0]",      Arrays.asList(1, 0),       0),
-            new Test("3-cycle [1,2,0,3]",    Arrays.asList(1, 2, 0, 3), 0),
-            new Test("Another [2,0,1]",      Arrays.asList(2, 0, 1),    0)
+                new Test("Sample 0 (custom)", Arrays.asList(3, 0, 2, 1), 0),
+                new Test("Example in desc [0,3,2,1]", Arrays.asList(0, 3, 2, 1), 1),
+                new Test("Sample 1", Arrays.asList(0, 1, 3, 2, 4), 2),
+                new Test("Already sorted", Arrays.asList(0, 1, 2, 3, 4), 0),
+                new Test("Tiny swap [1,0]", Arrays.asList(1, 0), 0),
+                new Test("3-cycle [1,2,0,3]", Arrays.asList(1, 2, 0, 3), 0),
+                new Test("Another [2,0,1]", Arrays.asList(2, 0, 1), 0)
         );
 
         System.out.println("=== getSortingFactorK Tests ===");
@@ -158,8 +160,8 @@ public class SortingFactorK {
             int got = getSortingFactorK(t.arr);
             String pass = got == t.expected ? "PASS" : "FAIL";
             System.out.printf(
-                "%-24s arr=%s → got=%d, exp=%d [%s]%n",
-                t.name, t.arr, got, t.expected, pass
+                    "%-24s arr=%s → got=%d, exp=%d [%s]%n",
+                    t.name, t.arr, got, t.expected, pass
             );
         }
     }

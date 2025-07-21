@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.july.amazon.test1;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BitwiseAndSort {
 
@@ -77,25 +78,6 @@ public class BitwiseAndSort {
         return true;
     }
 
-    // Simple Union Find / Disjoint Set Union structure
-    static class UnionFind {
-        int[] parent;
-        UnionFind(int n) {
-            parent = new int[n];
-            for (int i = 0; i < n; i++) parent[i] = i;
-        }
-        int find(int x) {
-            if (parent[x] != x) parent[x] = find(parent[x]);
-            return parent[x];
-        }
-        void union(int x, int y) {
-            int px = find(x), py = find(y);
-            if (px != py) parent[px] = py;
-        }
-    }
-
-    // ----------- TESTING -----------
-
     public static void main(String[] args) {
         // Test cases as described
         test(Arrays.asList(3, 0, 2, 1), 0, "Sample Case 0");
@@ -126,6 +108,8 @@ public class BitwiseAndSort {
         // Test all outputs and time for large input
     }
 
+    // ----------- TESTING -----------
+
     // Helper test method
     static void test(List<Integer> arr, int expected, String caseName) {
         long start = System.currentTimeMillis();
@@ -133,5 +117,25 @@ public class BitwiseAndSort {
         long time = System.currentTimeMillis() - start;
         String status = (res == expected) ? "PASS" : "FAIL";
         System.out.printf("%s: got=%d, exp=%d [%s] (time: %dms)%n", caseName, res, expected, status, time);
+    }
+
+    // Simple Union Find / Disjoint Set Union structure
+    static class UnionFind {
+        int[] parent;
+
+        UnionFind(int n) {
+            parent = new int[n];
+            for (int i = 0; i < n; i++) parent[i] = i;
+        }
+
+        int find(int x) {
+            if (parent[x] != x) parent[x] = find(parent[x]);
+            return parent[x];
+        }
+
+        void union(int x, int y) {
+            int px = find(x), py = find(y);
+            if (px != py) parent[px] = py;
+        }
     }
 }

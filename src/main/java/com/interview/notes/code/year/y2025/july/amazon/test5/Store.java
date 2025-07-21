@@ -25,6 +25,7 @@ Assumptions & Clarifications
 	•	Provide a simple main-based test harness that checks all provided scenarios (empty store, partially filled, full store, equal durations, large inputs).
 
  */
+
 /**
  * Store class manages virtual queue system for retail stores during COVID-19
  * Handles customer entry/exit tracking and wait time calculations
@@ -45,6 +46,7 @@ public class Store {
 
     /**
      * Initializes a new store with specified capacity limit
+     *
      * @param capacity Maximum number of customers allowed simultaneously
      * @throws IllegalArgumentException if capacity is negative or zero
      */
@@ -58,29 +60,8 @@ public class Store {
     }
 
     /**
-     * Inner class representing a customer in the store
-     * Encapsulates customer timing data for wait time calculations
-     */
-    private static class Customer {
-        // Timestamp when customer entered store (in milliseconds)
-        long entryTime;
-
-        // How long customer plans to stay (in minutes)
-        int plannedDuration;
-
-        /**
-         * Creates new customer with entry time and planned shopping duration
-         * @param entryTime System time when customer enters
-         * @param plannedDuration Expected shopping duration in minutes
-         */
-        Customer(long entryTime, int plannedDuration) {
-            this.entryTime = entryTime;
-            this.plannedDuration = plannedDuration;
-        }
-    }
-
-    /**
      * Attempts to add a new customer to the store
+     *
      * @param plannedDurationMinutes Expected shopping duration for customer
      * @return true if customer can enter, false if store is at capacity
      * @throws IllegalArgumentException if planned duration is negative
@@ -105,6 +86,7 @@ public class Store {
 
     /**
      * Calculates wait time for next customer trying to enter
+     *
      * @return Expected wait time in minutes, 0 if no wait
      */
     public int getWaitTimeMinutes() {
@@ -122,7 +104,7 @@ public class Store {
         // Calculate wait time based on when earliest customer will leave
         Customer earliestLeaving = customersInStore.peek();
         // Convert from milliseconds to minutes, rounding up
-        return (int)((earliestLeaving.entryTime +
+        return (int) ((earliestLeaving.entryTime +
                 (earliestLeaving.plannedDuration * 60000) - currentTime) / 60000);
     }
 
@@ -147,6 +129,7 @@ public class Store {
 
     /**
      * Advances simulation time for testing purposes
+     *
      * @param minutes Number of minutes to advance time
      * @throws IllegalArgumentException if minutes is negative
      */
@@ -155,5 +138,28 @@ public class Store {
             throw new IllegalArgumentException("Cannot advance time backwards");
         }
         currentTime += minutes * 60000; // Convert minutes to milliseconds
+    }
+
+    /**
+     * Inner class representing a customer in the store
+     * Encapsulates customer timing data for wait time calculations
+     */
+    private static class Customer {
+        // Timestamp when customer entered store (in milliseconds)
+        long entryTime;
+
+        // How long customer plans to stay (in minutes)
+        int plannedDuration;
+
+        /**
+         * Creates new customer with entry time and planned shopping duration
+         *
+         * @param entryTime       System time when customer enters
+         * @param plannedDuration Expected shopping duration in minutes
+         */
+        Customer(long entryTime, int plannedDuration) {
+            this.entryTime = entryTime;
+            this.plannedDuration = plannedDuration;
+        }
     }
 }

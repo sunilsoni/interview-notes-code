@@ -1,17 +1,19 @@
 package com.interview.notes.code.year.y2025.july.common.test6;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Solution {
 
     /**
      * Complete the 'getUmbrellas' function below.
-     *
+     * <p>
      * The function is expected to return an INTEGER.
      * The function accepts the following parameters:
-     *  1. INTEGER requirement
-     *  2. INTEGER_ARRAY sizes
+     * 1. INTEGER requirement
+     * 2. INTEGER_ARRAY sizes
      */
     public static int getUmbrellas(int requirement, List<Integer> sizes) {
         // Sentinel “infinity” (you’ll never need more than `requirement` umbrellas)
@@ -45,15 +47,15 @@ public class Solution {
      */
     public static void main(String[] args) {
         // Define test inputs
-        int[] requirements = { 5, 8, 7, 4, 1 };
+        int[] requirements = {5, 8, 7, 4, 1};
         List<List<Integer>> allSizes = Arrays.asList(
-            Arrays.asList(3, 5),
-            Arrays.asList(3, 5),
-            Arrays.asList(3, 5),
-            Arrays.asList(2, 4),
-            Arrays.asList(2)
+                Arrays.asList(3, 5),
+                Arrays.asList(3, 5),
+                Arrays.asList(3, 5),
+                Arrays.asList(2, 4),
+                Arrays.asList(2)
         );
-        int[] expected = { 1, 2, -1, 1, -1 };
+        int[] expected = {1, 2, -1, 1, -1};
 
         // Run provided test cases
         for (int i = 0; i < requirements.length; i++) {
@@ -64,8 +66,8 @@ public class Solution {
                 System.out.println("Test case " + i + ": PASS");
             } else {
                 System.out.println(
-                    "Test case " + i + ": FAIL (expected " 
-                    + expected[i] + ", got " + result + ")"
+                        "Test case " + i + ": FAIL (expected "
+                                + expected[i] + ", got " + result + ")"
                 );
             }
         }
@@ -74,8 +76,8 @@ public class Solution {
         int largeReq = 1000;
         // Generate sizes [1, 2, 3, ..., 1000]
         List<Integer> largeSizes = IntStream.rangeClosed(1, largeReq)
-                                            .boxed()
-                                            .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
         // We expect 1 umbrella of size 1000 to cover exactly 1000 people
         int largeResult = getUmbrellas(largeReq, largeSizes);
         if (largeResult == 1) {

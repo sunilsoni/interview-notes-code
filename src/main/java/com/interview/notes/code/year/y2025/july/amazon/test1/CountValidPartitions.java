@@ -4,114 +4,112 @@ import java.util.Random;
 
 /**
  * WORKING SOLUTION
-
- ---
-
- ## 💼 Problem: Amazon Prime Day Sale Partitioning
-
- **Context:**
-
- Amazon Prime Day is a sale event where a list of items is categorized using lowercase English letters. The company wants to split this list into **two contiguous, non-empty parts** (prefix and suffix), for two sale days, such that both parts share a **sufficient number of similar categories**.
-
- To ensure enough overlap in product types, we define a valid partition where the **number of distinct characters shared by both the prefix and suffix is greater than a given integer `k`**.
-
- ---
-
- ## ✅ Objective:
-
- Write a function:
-
- ```java
- public static int countValidPartitions(String itemCategories, int k)
- ```
-
- **Where:**
-
+ * <p>
+ * ---
+ * <p>
+ * ## 💼 Problem: Amazon Prime Day Sale Partitioning
+ * <p>
+ * *Context:**
+ * <p>
+ * Amazon Prime Day is a sale event where a list of items is categorized using lowercase English letters. The company wants to split this list into **two contiguous, non-empty parts** (prefix and suffix), for two sale days, such that both parts share a **sufficient number of similar categories**.
+ * <p>
+ * To ensure enough overlap in product types, we define a valid partition where the **number of distinct characters shared by both the prefix and suffix is greater than a given integer `k`**.
+ * <p>
+ * ---
+ * <p>
+ * ## ✅ Objective:
+ * <p>
+ * Write a function:
+ * <p>
+ * ```java
+ * public static int countValidPartitions(String itemCategories, int k)
+ * ```
+ * <p>
+ * *Where:**
+ * <p>
  * `itemCategories`: a string of lowercase English letters representing item categories.
  * `k`: an integer threshold (0 ≤ k ≤ 26).
-
- **Return:**
- The number of ways to partition the string into prefix and suffix such that the number of **shared distinct characters** between them is **greater than `k`**.
-
- ---
-
- ## 🧩 Input Format:
-
+ * <p>
+ * *Return:**
+ * The number of ways to partition the string into prefix and suffix such that the number of **shared distinct characters** between them is **greater than `k`**.
+ * <p>
+ * ---
+ * <p>
+ * ## 🧩 Input Format:
+ * <p>
  * First line: a string `itemCategories`
  * Second line: an integer `k`
-
- ---
-
- ## 🔁 Constraints:
-
+ * <p>
+ * ---
+ * <p>
+ * ## 🔁 Constraints:
+ * <p>
  * 1 ≤ length(`itemCategories`) ≤ 10⁵
  * 0 ≤ `k` ≤ 26
  * The string only contains lowercase English characters.
-
- ---
-
- ## 🧪 Example:
-
- ### Sample Case 1
-
- **Input:**
-
- ```
- itemCategories = "wxyzzxyw"
- k = 1
- ```
-
- **Output:**
-
- ```
- 5
- ```
-
- **Explanation:**
-
- Only 5 valid partitions exist where the number of shared characters between prefix and suffix is > 1.
-
- ---
-
- ### Sample Case 0
-
- **Input:**
-
- ```
- itemCategories = "adbccdbada"
- k = 2
- ```
-
- **Output:**
-
- ```
- 4
- ```
-
- **Explanation:**
-
- Valid partitions exist at indices 2, 3, 4, and 5 where shared distinct character count > 2.
-
- ---
-
- ### Additional Example:
-
- **Input:**
-
- ```
- itemCategories = "abbcac"
- k = 1
- ```
-
- **Output:**
-
- ```
- 2
- ```
-
- ---
-
-
+ * <p>
+ * ---
+ * <p>
+ * ## 🧪 Example:
+ * <p>
+ * ### Sample Case 1
+ * <p>
+ * *Input:**
+ * <p>
+ * ```
+ * itemCategories = "wxyzzxyw"
+ * k = 1
+ * ```
+ * <p>
+ * *Output:**
+ * <p>
+ * ```
+ * 5
+ * ```
+ * <p>
+ * *Explanation:**
+ * <p>
+ * Only 5 valid partitions exist where the number of shared characters between prefix and suffix is > 1.
+ * <p>
+ * ---
+ * <p>
+ * ### Sample Case 0
+ * <p>
+ * *Input:**
+ * <p>
+ * ```
+ * itemCategories = "adbccdbada"
+ * k = 2
+ * ```
+ * <p>
+ * *Output:**
+ * <p>
+ * ```
+ * 4
+ * ```
+ * <p>
+ * *Explanation:**
+ * <p>
+ * Valid partitions exist at indices 2, 3, 4, and 5 where shared distinct character count > 2.
+ * <p>
+ * ---
+ * <p>
+ * ### Additional Example:
+ * <p>
+ * *Input:**
+ * <p>
+ * ```
+ * itemCategories = "abbcac"
+ * k = 1
+ * ```
+ * <p>
+ * *Output:**
+ * <p>
+ * ```
+ * 2
+ * ```
+ * <p>
+ * ---
  */
 public class CountValidPartitions {
 
@@ -148,23 +146,23 @@ public class CountValidPartitions {
     public static void main(String[] args) {
         // --- all prompt samples + tiny strings ---
         String[] tests = {
-            "abbcac",       // sample in prompt description
-            "wxyzzyxw",     // sample case 1
-            "adbccdbada",   // sample case 0
-            "a",            // too short
-            "aa",           // minimal, same letters
-            "ab"            // minimal, different letters
+                "abbcac",       // sample in prompt description
+                "wxyzzyxw",     // sample case 1
+                "adbccdbada",   // sample case 0
+                "a",            // too short
+                "aa",           // minimal, same letters
+                "ab"            // minimal, different letters
         };
-        int[] ks        = { 1, 1, 2, 0, 0, 0 };
-        int[] expected  = { 2, 5, 4, 0, 1, 0 };  // <<< fixed last expected from 1 to 0
+        int[] ks = {1, 1, 2, 0, 0, 0};
+        int[] expected = {2, 5, 4, 0, 1, 0};  // <<< fixed last expected from 1 to 0
 
         System.out.println("=== Basic Tests ===");
         for (int i = 0; i < tests.length; i++) {
             int got = countValidPartitions(tests[i], ks[i]);
             String pass = (got == expected[i]) ? "PASS" : "FAIL";
             System.out.printf(
-                "Case %d: s=\"%s\", k=%d → got=%d, exp=%d [%s]\n",
-                i+1, tests[i], ks[i], got, expected[i], pass
+                    "Case %d: s=\"%s\", k=%d → got=%d, exp=%d [%s]\n",
+                    i + 1, tests[i], ks[i], got, expected[i], pass
             );
         }
 
@@ -176,17 +174,17 @@ public class CountValidPartitions {
         System.out.println("\n=== Edge Cases ===");
         // k=0 → every split shares 'x' ⇒ 9 splits
         System.out.printf("allX, k=0 → %d (exp=9)\n",
-            countValidPartitions(allX, 0));
+                countValidPartitions(allX, 0));
         // k=1 → no split has more than 1 distinct common ⇒ 0
         System.out.printf("allX, k=1 → %d (exp=0)\n",
-            countValidPartitions(allX, 1));
+                countValidPartitions(allX, 1));
 
         // --- large random test for performance ---
         int N = 100_000;
         Random rnd = new Random(123);
         sb.setLength(0);
         for (int i = 0; i < N; i++) {
-            sb.append((char)('a' + rnd.nextInt(26)));
+            sb.append((char) ('a' + rnd.nextInt(26)));
         }
         String large = sb.toString();
 
@@ -194,8 +192,8 @@ public class CountValidPartitions {
         int largeResult = countValidPartitions(large, 0);
         long ms = (System.nanoTime() - start) / 1_000_000;
         System.out.printf(
-            "\nLarge random (n=%d), k=0 → %d splits in %d ms\n",
-            N, largeResult, ms
+                "\nLarge random (n=%d), k=0 → %d splits in %d ms\n",
+                N, largeResult, ms
         );
     }
 }

@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.july.hackerank.test5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 /*
 Here’s a properly constructed question based on the visual and the hint text you provided:
@@ -107,10 +110,10 @@ public class SubtreeExtractor {
         if (root == null) return null;                      // Base case: empty tree
         if (root.val == targetId) return root;              // Found target node
         return root.children.stream()                       // Search in children
-            .map(child -> extractSubtree(child, targetId))  // Recursive call for each child
-            .filter(Objects::nonNull)                       // Filter out null results
-            .findFirst()                                    // Get first valid result
-            .orElse(null);                                  // Return null if not found
+                .map(child -> extractSubtree(child, targetId))  // Recursive call for each child
+                .filter(Objects::nonNull)                       // Filter out null results
+                .findFirst()                                    // Get first valid result
+                .orElse(null);                                  // Return null if not found
     }
 
     // Utility method to convert tree to readable string format
@@ -135,8 +138,8 @@ public class SubtreeExtractor {
     private static int countNodes(Node node) {
         if (node == null) return 0;
         return 1 + node.children.stream()                   // Count current node + all children
-                    .mapToInt(SubtreeExtractor::countNodes) // Recursive count for each child
-                    .sum();
+                .mapToInt(SubtreeExtractor::countNodes) // Recursive count for each child
+                .sum();
     }
 
     // Test helper method to run and validate test cases
@@ -149,7 +152,7 @@ public class SubtreeExtractor {
             System.out.println("→ PASS (size=" + actualCount + ")\n");
         } else {
             System.out.println("→ FAIL: expected size=" + expectedCount
-                + " but got " + actualCount + "\n");
+                    + " but got " + actualCount + "\n");
         }
     }
 
@@ -157,8 +160,8 @@ public class SubtreeExtractor {
     public static void main(String[] args) {
         // Create test tree using the concise constructor
         Node root = new Node(1, Arrays.asList(
-            new Node(2, Arrays.asList(new Node(4), new Node(5))),
-            new Node(3, Arrays.asList(new Node(6), new Node(7)))
+                new Node(2, Arrays.asList(new Node(4), new Node(5))),
+                new Node(3, Arrays.asList(new Node(6), new Node(7)))
         ));
 
         System.out.println("Full tree: " + formatTree(root) + "\n");

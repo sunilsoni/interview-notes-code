@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.july.codesignal.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class ResourceExchangeCycles {
     public static int solution(String[] resources, int conversionRate) {
@@ -38,12 +40,12 @@ public class ResourceExchangeCycles {
     // Simple main method for manual tests
     public static void main(String[] args) {
         List<TestCase> tests = Arrays.asList(
-            new TestCase(new String[]{"A", "A", "A", "P", "P", "P"}, 2, 13),
-            new TestCase(new String[]{"A", "A"}, 2, 4),
-            new TestCase(new String[]{"P", "P", "P"}, 3, 2),
-            new TestCase(new String[]{"A", "A", "A", "A", "A", "A"}, 2, 11), // All A's
-            new TestCase(new String[]{"P", "P"}, 2, 1), // All P's
-            new TestCase(generateResources(250, 250), 10, 374) // Large input
+                new TestCase(new String[]{"A", "A", "A", "P", "P", "P"}, 2, 13),
+                new TestCase(new String[]{"A", "A"}, 2, 4),
+                new TestCase(new String[]{"P", "P", "P"}, 3, 2),
+                new TestCase(new String[]{"A", "A", "A", "A", "A", "A"}, 2, 11), // All A's
+                new TestCase(new String[]{"P", "P"}, 2, 1), // All P's
+                new TestCase(generateResources(250, 250), 10, 374) // Large input
         );
 
         int passCount = 0;
@@ -51,7 +53,7 @@ public class ResourceExchangeCycles {
             TestCase test = tests.get(i);
             int result = solution(test.resources, test.conversionRate);
             boolean pass = result == test.expected;
-            System.out.println("Test #" + (i+1) + ": " + (pass ? "PASS" : "FAIL") + " (Expected: " + test.expected + ", Got: " + result + ")");
+            System.out.println("Test #" + (i + 1) + ": " + (pass ? "PASS" : "FAIL") + " (Expected: " + test.expected + ", Got: " + result + ")");
             if (pass) passCount++;
         }
         System.out.println("Total Passed: " + passCount + "/" + tests.size());

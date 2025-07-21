@@ -4,6 +4,30 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ * Navigation API for browser history.
+ */
+interface NavigationService {
+    void visit(BrowserPage page);
+
+    BrowserPage back();
+
+    BrowserPage forward();
+
+    BrowserPage getCurrentPage();
+}
+
+/**
+ * Bookmark API for BrowserPage.
+ */
+interface BookmarkService {
+    void addBookmark(BrowserPage page);
+
+    void removeBookmark(BrowserPage page);
+
+    List<BrowserPage> listBookmarks();
+}
+
+/**
  * Represents a visited browser page with URL, title, and timestamp.
  */
 class BrowserPage {
@@ -17,9 +41,17 @@ class BrowserPage {
         this.timestamp = System.currentTimeMillis();
     }
 
-    public String getUrl() { return url; }
-    public String getTitle() { return title; }
-    public long getTimestamp() { return timestamp; }
+    public String getUrl() {
+        return url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
 
     @Override
     public String toString() {
@@ -32,23 +64,13 @@ class BrowserPage {
         if (!(o instanceof BrowserPage)) return false;
         BrowserPage that = (BrowserPage) o;
         return Objects.equals(url, that.url) &&
-               Objects.equals(title, that.title);
+                Objects.equals(title, that.title);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(url, title);
     }
-}
-
-/**
- * Navigation API for browser history.
- */
-interface NavigationService {
-    void visit(BrowserPage page);
-    BrowserPage back();
-    BrowserPage forward();
-    BrowserPage getCurrentPage();
 }
 
 /**
@@ -91,15 +113,6 @@ class BrowserHistory implements NavigationService {
 }
 
 /**
- * Bookmark API for BrowserPage.
- */
-interface BookmarkService {
-    void addBookmark(BrowserPage page);
-    void removeBookmark(BrowserPage page);
-    List<BrowserPage> listBookmarks();
-}
-
-/**
  * Stores bookmarks in insertion order, ignores duplicates.
  */
 class BrowserBookmarkService implements BookmarkService {
@@ -137,9 +150,9 @@ public class BrowserBackendSDK {
         history.visit(pC);
 
         boolean nav1 = pB.equals(history.back())    // from C to B
-                    && pA.equals(history.back())    // from B to A
-                    && pB.equals(history.forward()) // from A to B
-                    && pC.equals(history.forward()); // from B to C
+                && pA.equals(history.back())    // from B to A
+                && pB.equals(history.forward()) // from A to B
+                && pC.equals(history.forward()); // from B to C
 
         System.out.println("Test Simple Navigation: " + (nav1 ? "PASS" : "FAIL"));
 
@@ -170,8 +183,8 @@ public class BrowserBackendSDK {
 
         List<BrowserPage> list = bm.listBookmarks();
         boolean bmOK = list.size() == 2
-                     && list.get(0).equals(pA)
-                     && list.get(1).equals(pB);
+                && list.get(0).equals(pA)
+                && list.get(1).equals(pB);
 
         System.out.println("Test Bookmark Service: " + (bmOK ? "PASS" : "FAIL"));
     }

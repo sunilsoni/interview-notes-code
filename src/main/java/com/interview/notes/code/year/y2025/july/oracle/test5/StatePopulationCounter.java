@@ -1,20 +1,12 @@
 package com.interview.notes.code.year.y2025.july.oracle.test5;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class StatePopulationCounter {
-    // Simulate state data
-    static class State {
-        String name;
-        int population;
-
-        State(String name, int population) {
-            this.name = name;
-            this.population = population;
-        }
-    }
-
     public static long calculateTotalPopulation(List<State> states, int threadCount) {
         // Break states into chunks for parallel processing
         int chunkSize = states.size() / threadCount;
@@ -25,7 +17,7 @@ public class StatePopulationCounter {
         for (int i = 0; i < threadCount; i++) {
             int startIndex = i * chunkSize;
             int endIndex = (i == threadCount - 1) ? states.size() : (i + 1) * chunkSize;
-            
+
             futures.add(executor.submit(() -> {
                 long sum = 0;
                 for (int j = startIndex; j < endIndex; j++) {
@@ -54,7 +46,7 @@ public class StatePopulationCounter {
     public static void main(String[] args) {
         // Test with sample data
         List<State> states = new ArrayList<>();
-        
+
         // Add sample states (normally would be 50)
         states.add(new State("California", 39538223));
         states.add(new State("Texas", 29145505));
@@ -64,16 +56,27 @@ public class StatePopulationCounter {
 
         // Test with different thread counts
         int[] threadCounts = {1, 2, 4};
-        
+
         for (int threadCount : threadCounts) {
             long startTime = System.currentTimeMillis();
             long totalPop = calculateTotalPopulation(states, threadCount);
             long endTime = System.currentTimeMillis();
-            
+
             System.out.println("Thread count: " + threadCount);
             System.out.println("Total population: " + totalPop);
             System.out.println("Time taken: " + (endTime - startTime) + "ms");
             System.out.println("------------------------");
+        }
+    }
+
+    // Simulate state data
+    static class State {
+        String name;
+        int population;
+
+        State(String name, int population) {
+            this.name = name;
+            this.population = population;
         }
     }
 }

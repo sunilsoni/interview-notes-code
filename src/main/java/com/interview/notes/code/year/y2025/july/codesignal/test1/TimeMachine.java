@@ -2,6 +2,7 @@ package com.interview.notes.code.year.y2025.july.codesignal.test1;
 
 import java.util.Random;
 import java.util.stream.IntStream;
+
 /*WORKING SOLUTION
  *
  * This solution calculates the total hours required to travel through a sequence of years.
@@ -108,29 +109,31 @@ public class TimeMachine {
 
     /**
      * Returns the total hours required to travel through the given years in order.
-     *  - 0 hours if A == B
-     *  - 1 hour  if A < B (forward)
-     *  - 2 hours if A > B (backward)
+     * - 0 hours if A == B
+     * - 1 hour  if A < B (forward)
+     * - 2 hours if A > B (backward)
      */
     public static int solution(int[] years) {
         // Sum over each consecutive pair
         return IntStream.range(0, years.length - 1)
-                        .map(i -> {
-                            int a = years[i], b = years[i + 1];
-                            return (a == b) ? 0 : (a < b ? 1 : 2);
-                        })
-                        .sum();
+                .map(i -> {
+                    int a = years[i], b = years[i + 1];
+                    return (a == b) ? 0 : (a < b ? 1 : 2);
+                })
+                .sum();
     }
 
-    /** Helper for running a single test case and printing PASS/FAIL. */
+    /**
+     * Helper for running a single test case and printing PASS/FAIL.
+     */
     private static void testCase(int[] years, int expected, int id) {
         int got = solution(years);
         if (got == expected) {
             System.out.printf("Test %2d: PASS (got %d)%n", id, got);
         } else {
             System.out.printf(
-                "Test %2d: FAIL (expected %d but got %d)%n",
-                id, expected, got
+                    "Test %2d: FAIL (expected %d but got %d)%n",
+                    id, expected, got
             );
         }
     }
@@ -138,14 +141,14 @@ public class TimeMachine {
     public static void main(String[] args) {
         // ——— Provided examples ———
         testCase(new int[]{2000, 1990, 2005, 2050}, 4, 1);
-        testCase(new int[]{2000, 2021, 2005},         3, 2);
-        testCase(new int[]{2021, 2021, 2005},         2, 3);
+        testCase(new int[]{2000, 2021, 2005}, 3, 2);
+        testCase(new int[]{2021, 2021, 2005}, 2, 3);
 
         // ——— Edge cases ———
-        testCase(new int[]{2025},                     0, 4);
-        testCase(new int[]{1000, 1000, 1000},         0, 5);
-        testCase(new int[]{1000,  999, 1001, 1001},   3, 6);
-        
+        testCase(new int[]{2025}, 0, 4);
+        testCase(new int[]{1000, 1000, 1000}, 0, 5);
+        testCase(new int[]{1000, 999, 1001, 1001}, 3, 6);
+
         // ——— Large randomized input for performance check ———
         int N = 100_000;
         int[] large = new int[N];
@@ -157,8 +160,8 @@ public class TimeMachine {
         int result = solution(large);
         long elapsed = System.currentTimeMillis() - start;
         System.out.printf(
-            "Large input of %,d years processed in %d ms, result = %d%n",
-            N, elapsed, result
+                "Large input of %,d years processed in %d ms, result = %d%n",
+                N, elapsed, result
         );
     }
 }

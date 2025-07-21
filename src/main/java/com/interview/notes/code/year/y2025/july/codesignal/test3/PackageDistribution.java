@@ -3,6 +3,7 @@ package com.interview.notes.code.year.y2025.july.codesignal.test3;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.stream.IntStream;
+
 /*
 Here is the **complete combined and structured version** of your problem statement based on all uploaded screenshots:
 
@@ -106,11 +107,11 @@ Step 7: PACKAGE  → center 0 → all center capacities reset except closed → 
 public class PackageDistribution {
 
     public static int solution(int[] cap, String[] log) {
-        var n      = cap.length;
-        var rem    = Arrays.copyOf(cap, n);
-        var proc   = new int[n];
+        var n = cap.length;
+        var rem = Arrays.copyOf(cap, n);
+        var proc = new int[n];
         var closed = new boolean[n];
-        var cur    = 0;
+        var cur = 0;
 
         for (var op : log) {
             if (op.charAt(0) == 'P') {                // PACKAGE
@@ -121,19 +122,21 @@ public class PackageDistribution {
                         for (var j = 0; j < n; j++)   // reset all open centers
                             if (!closed[j]) rem[j] = cap[j];
                 }
-                proc[i]++; rem[i]--; cur = i;
+                proc[i]++;
+                rem[i]--;
+                cur = i;
             } else {                                   // CLOSURE j
-                closed[ Integer.parseInt(op.split(" ")[1]) ] = true;
+                closed[Integer.parseInt(op.split(" ")[1])] = true;
             }
         }
 
         // pick highest‐index among those with max proc count
         return IntStream.range(0, n)
-                        .boxed()
-                        .max(Comparator
-                             .comparingInt((Integer i) -> proc[i])
-                             .thenComparingInt(i -> i))
-                        .orElse(0);
+                .boxed()
+                .max(Comparator
+                        .comparingInt((Integer i) -> proc[i])
+                        .thenComparingInt(i -> i))
+                .orElse(0);
     }
 
 
@@ -151,29 +154,29 @@ public class PackageDistribution {
     public static void main(String[] args) {
         // Provided example
         test(
-                new int[]{1,2,1,2,1},
+                new int[]{1, 2, 1, 2, 1},
                 new String[]{
-                        "PACKAGE","PACKAGE","CLOSURE 2",
-                        "PACKAGE","CLOSURE 3","PACKAGE","PACKAGE"
+                        "PACKAGE", "PACKAGE", "CLOSURE 2",
+                        "PACKAGE", "CLOSURE 3", "PACKAGE", "PACKAGE"
                 },
                 1, 1
         );
 
         // Some edge‐case checks
         test(new int[]{3},
-                new String[]{"PACKAGE","PACKAGE","PACKAGE"},
+                new String[]{"PACKAGE", "PACKAGE", "PACKAGE"},
                 0, 2);
 
-        test(new int[]{2,1},
-                new String[]{"PACKAGE","PACKAGE","PACKAGE"},
+        test(new int[]{2, 1},
+                new String[]{"PACKAGE", "PACKAGE", "PACKAGE"},
                 0, 3);
 
-        test(new int[]{1,1,1},
-                new String[]{"PACKAGE","CLOSURE 0","PACKAGE","PACKAGE"},
+        test(new int[]{1, 1, 1},
+                new String[]{"PACKAGE", "CLOSURE 0", "PACKAGE", "PACKAGE"},
                 2, 4);
 
-        test(new int[]{1,2,3},
-                new String[]{"CLOSURE 0","CLOSURE 2","PACKAGE","PACKAGE"},
+        test(new int[]{1, 2, 3},
+                new String[]{"CLOSURE 0", "CLOSURE 2", "PACKAGE", "PACKAGE"},
                 1, 5);
 
         // Stress test

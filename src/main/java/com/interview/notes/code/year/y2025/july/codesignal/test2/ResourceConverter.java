@@ -127,7 +127,7 @@ public class ResourceConverter {
         int countA = 0, countP = 0;
         for (String s : resources) {
             if ("A".equals(s)) countA++;
-            else               countP++;
+            else countP++;
         }
 
         int cycles = 0;
@@ -135,17 +135,15 @@ public class ResourceConverter {
         while (true) {
             if (countP >= conversionRate) {
                 // Option 1: remove conversionRate P's, add one A
-                countP    -= conversionRate;
-                countA    += 1;
+                countP -= conversionRate;
+                countA += 1;
                 cycles++;
-            }
-            else if (countA >= 1) {
+            } else if (countA >= 1) {
                 // Option 2: turn one A into P
                 countA--;
                 countP++;
                 cycles++;
-            }
-            else {
+            } else {
                 // Option 3: halt
                 break;
             }
@@ -153,40 +151,42 @@ public class ResourceConverter {
         return cycles;
     }
 
-    /** Helper to run & report a single test case. */
+    /**
+     * Helper to run & report a single test case.
+     */
     private static void testCase(String[] resources, int rate, int expected, int id) {
         int got = solution(resources, rate);
         String passFail = (got == expected) ? "PASS" : "FAIL";
         System.out.printf(
-            "Test %2d [%s, rate=%d]: %s (expected %d, got %d)%n",
-            id, String.join("", resources), rate, passFail, expected, got
+                "Test %2d [%s, rate=%d]: %s (expected %d, got %d)%n",
+                id, String.join("", resources), rate, passFail, expected, got
         );
     }
 
     public static void main(String[] args) {
         // —— Provided examples —— 
-        testCase(new String[]{"A","A","A","P","P","P"}, 2, 13, 1);
-        testCase(new String[]{"A","A"},             2,  4, 2);
-        testCase(new String[]{"P","P","P"},         3,  2, 3);
+        testCase(new String[]{"A", "A", "A", "P", "P", "P"}, 2, 13, 1);
+        testCase(new String[]{"A", "A"}, 2, 4, 2);
+        testCase(new String[]{"P", "P", "P"}, 3, 2, 3);
 
         // —— Edge / small cases —— 
-        testCase(new String[]{"A","P"},             2,  3, 4);
-        testCase(new String[]{"P","P"},             3,  0, 5);
-        testCase(new String[]{"A","A","P","P"},     5,  4, 6);
+        testCase(new String[]{"A", "P"}, 2, 3, 4);
+        testCase(new String[]{"P", "P"}, 3, 0, 5);
+        testCase(new String[]{"A", "A", "P", "P"}, 5, 4, 6);
 
         // —— Randomized stress test —— 
         int N = 500;
         String[] large = new String[N];
         Random rnd = new Random(123);
         for (int i = 0; i < N; i++) {
-            large[i] = (i < N/2 ? "A" : "P");
+            large[i] = (i < N / 2 ? "A" : "P");
         }
         long start = System.currentTimeMillis();
         int cycles = solution(large, 5);
         long millis = System.currentTimeMillis() - start;
         System.out.printf(
-            "Large test (N=%d, rate=5): %d cycles in %d ms%n",
-            N, cycles, millis
+                "Large test (N=%d, rate=5): %d cycles in %d ms%n",
+                N, cycles, millis
         );
     }
 }

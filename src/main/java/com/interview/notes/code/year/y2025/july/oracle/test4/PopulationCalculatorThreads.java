@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.july.oracle.test4;// Import List and ArrayList for working with collections
-import java.util.List;
+
 import java.util.ArrayList;
-// Import AtomicLong for a thread-safe long accumulator
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -9,43 +9,6 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class PopulationCalculatorThreads {
 
-    // ──────────────────────────────────────────────────────────────────────────────
-    // Simple POJO representing a US state and its population
-    // ──────────────────────────────────────────────────────────────────────────────
-    public static class State {
-        private final String name;         // the state's name (e.g. "California")
-        private final long population;     // the state's population
-
-        /**
-         * Constructor to initialize the state.
-         * @param name       the name of the state
-         * @param population the population of the state
-         */
-        public State(String name, long population) {
-            this.name = name;              // store the provided name
-            this.population = population;  // store the provided population
-        }
-
-        /**
-         * Getter for the state's population.
-         * @return the population value
-         */
-        public long getPopulation() {
-            return population;             // return the stored population
-        }
-
-        /**
-         * Getter for the state's name.
-         * @return the name value
-         */
-        public String getName() {
-            return name;                   // return the stored name
-        }
-    }
-
-    // ──────────────────────────────────────────────────────────────────────────────
-    // Method: sum populations using raw Thread objects
-    // ──────────────────────────────────────────────────────────────────────────────
     /**
      * Launches one Thread per State, each adding its population to a shared AtomicLong.
      *
@@ -79,35 +42,39 @@ public class PopulationCalculatorThreads {
     }
 
     // ──────────────────────────────────────────────────────────────────────────────
+    // Method: sum populations using raw Thread objects
+    // ──────────────────────────────────────────────────────────────────────────────
+
+    // ──────────────────────────────────────────────────────────────────────────────
     // Main method: run two tests and print PASS/FAIL
     // ──────────────────────────────────────────────────────────────────────────────
     public static void main(String[] args) {
         try {
             // ─── Test 1: Small dataset ───────────────────────────────────────────────
             List<State> small = List.of(
-                new State("A", 10_000),    // State A population 10,000
-                new State("B", 20_000),    // State B population 20,000
-                new State("C", 30_000)     // State C population 30,000
+                    new State("A", 10_000),    // State A population 10,000
+                    new State("B", 20_000),    // State B population 20,000
+                    new State("C", 30_000)     // State C population 30,000
             );
             long expectedSmall = 60_000L; // known sum: 10k + 20k + 30k
             long resultSmall = totalPopulationWithThreads(small);
             System.out.printf(
-                "Thread Test 1 (small): expected=%d, got=%d → %s%n",
-                expectedSmall,                   // expected placeholder
-                resultSmall,                     // actual result placeholder
-                resultSmall == expectedSmall     // check PASS/FAIL
-                    ? "PASS"
-                    : "FAIL"
+                    "Thread Test 1 (small): expected=%d, got=%d → %s%n",
+                    expectedSmall,                   // expected placeholder
+                    resultSmall,                     // actual result placeholder
+                    resultSmall == expectedSmall     // check PASS/FAIL
+                            ? "PASS"
+                            : "FAIL"
             );
 
             // ─── Test 2: Large dataset ───────────────────────────────────────────────
             // Build a 5-state template to simulate “50 states”
             List<State> template = List.of(
-                new State("S1", 1_000_000),  // 1 million
-                new State("S2", 2_000_000),  // 2 million
-                new State("S3", 3_000_000),  // 3 million
-                new State("S4", 4_000_000),  // 4 million
-                new State("S5", 5_000_000)   // 5 million
+                    new State("S1", 1_000_000),  // 1 million
+                    new State("S2", 2_000_000),  // 2 million
+                    new State("S3", 3_000_000),  // 3 million
+                    new State("S4", 4_000_000),  // 4 million
+                    new State("S5", 5_000_000)   // 5 million
             );
             int replicas = 100_000;          // repeat template 100k times → 500k entries
             // Pre-size the list for performance
@@ -120,19 +87,56 @@ public class PopulationCalculatorThreads {
             long expectedLarge = singleSum * replicas;
             long resultLarge = totalPopulationWithThreads(large);
             System.out.printf(
-                "Thread Test 2 (large): templateSum=%d, replicas=%d → expected=%d, got=%d → %s%n",
-                singleSum,                      // sum of template
-                replicas,                       // how many times we repeated
-                expectedLarge,                  // expected total
-                resultLarge,                    // actual total
-                resultLarge == expectedLarge    // PASS/FAIL
-                    ? "PASS"
-                    : "FAIL"
+                    "Thread Test 2 (large): templateSum=%d, replicas=%d → expected=%d, got=%d → %s%n",
+                    singleSum,                      // sum of template
+                    replicas,                       // how many times we repeated
+                    expectedLarge,                  // expected total
+                    resultLarge,                    // actual total
+                    resultLarge == expectedLarge    // PASS/FAIL
+                            ? "PASS"
+                            : "FAIL"
             );
 
         } catch (InterruptedException e) {
             // If any join() is interrupted, print stack trace
             e.printStackTrace();
+        }
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────────
+    // Simple POJO representing a US state and its population
+    // ──────────────────────────────────────────────────────────────────────────────
+    public static class State {
+        private final String name;         // the state's name (e.g. "California")
+        private final long population;     // the state's population
+
+        /**
+         * Constructor to initialize the state.
+         *
+         * @param name       the name of the state
+         * @param population the population of the state
+         */
+        public State(String name, long population) {
+            this.name = name;              // store the provided name
+            this.population = population;  // store the provided population
+        }
+
+        /**
+         * Getter for the state's population.
+         *
+         * @return the population value
+         */
+        public long getPopulation() {
+            return population;             // return the stored population
+        }
+
+        /**
+         * Getter for the state's name.
+         *
+         * @return the name value
+         */
+        public String getName() {
+            return name;                   // return the stored name
         }
     }
 }

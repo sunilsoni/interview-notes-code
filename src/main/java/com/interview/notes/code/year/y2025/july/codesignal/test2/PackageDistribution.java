@@ -10,9 +10,9 @@ public class PackageDistribution {
      */
     public static int solution(int[] cap, String[] dailyLog) {
         int n = cap.length;
-        int[] rem       = Arrays.copyOf(cap, n);
+        int[] rem = Arrays.copyOf(cap, n);
         int[] processed = new int[n];
-        boolean[] closed= new boolean[n];
+        boolean[] closed = new boolean[n];
         int current = -1;
 
         // We'll reset "rem" for all open centers whenever we wrap  n-1 → 0
@@ -65,40 +65,40 @@ public class PackageDistribution {
     private static void test(int[] cap, String[] log, int expected, int id) {
         int got = solution(cap, log);
         System.out.printf(
-          "Test %2d: %s (expected=%d, got=%d)%n",
-          id,
-          (got == expected ? "PASS" : "FAIL"),
-          expected, got
+                "Test %2d: %s (expected=%d, got=%d)%n",
+                id,
+                (got == expected ? "PASS" : "FAIL"),
+                expected, got
         );
     }
 
     public static void main(String[] args) {
         // Provided example
         test(
-          new int[]{1,2,1,2,1},
-          new String[]{
-            "PACKAGE","PACKAGE","CLOSURE 2",
-            "PACKAGE","CLOSURE 3","PACKAGE","PACKAGE"
-          },
-          1, 1
+                new int[]{1, 2, 1, 2, 1},
+                new String[]{
+                        "PACKAGE", "PACKAGE", "CLOSURE 2",
+                        "PACKAGE", "CLOSURE 3", "PACKAGE", "PACKAGE"
+                },
+                1, 1
         );
 
         // Some edge‐case checks
         test(new int[]{3},
-             new String[]{"PACKAGE","PACKAGE","PACKAGE"},
-             0, 2);
+                new String[]{"PACKAGE", "PACKAGE", "PACKAGE"},
+                0, 2);
 
-        test(new int[]{2,1},
-             new String[]{"PACKAGE","PACKAGE","PACKAGE"},
-             0, 3);
+        test(new int[]{2, 1},
+                new String[]{"PACKAGE", "PACKAGE", "PACKAGE"},
+                0, 3);
 
-        test(new int[]{1,1,1},
-             new String[]{"PACKAGE","CLOSURE 0","PACKAGE","PACKAGE"},
-             2, 4);
+        test(new int[]{1, 1, 1},
+                new String[]{"PACKAGE", "CLOSURE 0", "PACKAGE", "PACKAGE"},
+                2, 4);
 
-        test(new int[]{1,2,3},
-             new String[]{"CLOSURE 0","CLOSURE 2","PACKAGE","PACKAGE"},
-             1, 5);
+        test(new int[]{1, 2, 3},
+                new String[]{"CLOSURE 0", "CLOSURE 2", "PACKAGE", "PACKAGE"},
+                1, 5);
 
         // Stress test
         int N = 100, M = 500;
@@ -110,8 +110,8 @@ public class PackageDistribution {
         int winner = solution(caps, bulk);
         long dt = System.currentTimeMillis() - t0;
         System.out.printf(
-          "Stress (N=%d,M=%d) → center %d in %dms%n",
-          N, M, winner, dt
+                "Stress (N=%d,M=%d) → center %d in %dms%n",
+                N, M, winner, dt
         );
     }
 }

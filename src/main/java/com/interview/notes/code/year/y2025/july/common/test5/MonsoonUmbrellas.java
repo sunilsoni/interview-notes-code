@@ -1,10 +1,7 @@
 package com.interview.notes.code.year.y2025.july.common.test5;
 
-import com.interview.notes.code.year.y2023.june23.test8.Input;
-import org.apache.kafka.common.utils.Java;
-import org.hibernate.result.Output;
-
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 /*
 Great! Based on all your screenshots and the partial function stub provided, here's the **complete problem description with Java function signature** and example inputs/outputs bundled together properly:
@@ -97,17 +94,17 @@ If it's **impossible** to achieve the exact requirement, return `-1`.
 
  */
 public class MonsoonUmbrellas {
-    
+
     public static int getUmbrellas(int requirement, List<Integer> sizes) {
         // Create array to store minimum umbrellas needed for each requirement value
         int[] dp = new int[requirement + 1];
-        
+
         // Initialize with a value larger than maximum possible umbrellas needed
         Arrays.fill(dp, requirement + 1);
-        
+
         // Base case: 0 people need 0 umbrellas
         dp[0] = 0;
-        
+
         // For each possible requirement from 1 to target
         for (int i = 1; i <= requirement; i++) {
             // Try each umbrella size
@@ -119,29 +116,29 @@ public class MonsoonUmbrellas {
                 }
             }
         }
-        
+
         // Return -1 if no solution found, otherwise return minimum umbrellas needed
         return dp[requirement] > requirement ? -1 : dp[requirement];
     }
-    
+
     public static void main(String[] args) {
         // Test cases
         runTest(5, Arrays.asList(3, 5), 1, "Test Case 1");
         runTest(8, Arrays.asList(3, 5), 2, "Test Case 2");
         runTest(7, Arrays.asList(3, 5), -1, "Test Case 3");
         runTest(4, Arrays.asList(2, 4), 1, "Test Case 4");
-        
+
         // Edge cases
         runTest(1000, Arrays.asList(2, 5, 10), 100, "Large Input Test");
         runTest(1, Arrays.asList(2), -1, "Small Impossible Test");
         runTest(10, Arrays.asList(1), 10, "Single Size Test");
     }
-    
-    private static void runTest(int requirement, List<Integer> sizes, 
-                              int expectedOutput, String testName) {
+
+    private static void runTest(int requirement, List<Integer> sizes,
+                                int expectedOutput, String testName) {
         int result = getUmbrellas(requirement, sizes);
-        System.out.println(testName + ": " + 
-            (result == expectedOutput ? "PASS" : "FAIL") +
-            " (Expected: " + expectedOutput + ", Got: " + result + ")");
+        System.out.println(testName + ": " +
+                (result == expectedOutput ? "PASS" : "FAIL") +
+                " (Expected: " + expectedOutput + ", Got: " + result + ")");
     }
 }
