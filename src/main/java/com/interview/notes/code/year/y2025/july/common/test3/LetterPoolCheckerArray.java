@@ -29,16 +29,16 @@ public class LetterPoolCheckerArray {
 
         // small tests against basePool
         Map<String, Boolean> smallTests = Map.of(
-            "mat",  true,
-            "maat", false,
-            "pat",  false
+                "mat", true,
+                "maat", false,
+                "pat", false
         );
         for (var e : smallTests.entrySet()) {
             boolean actual = canFormWithArray(basePool, e.getKey());
             System.out.printf(
-              "Test \"%s\" -> expected %s, got %s : %s%n",
-              e.getKey(), e.getValue(), actual,
-              actual == e.getValue() ? "PASS" : "FAIL"
+                    "Test \"%s\" -> expected %s, got %s : %s%n",
+                    e.getKey(), e.getValue(), actual,
+                    actual == e.getValue() ? "PASS" : "FAIL"
             );
         }
 
@@ -46,13 +46,13 @@ public class LetterPoolCheckerArray {
         String bigPool = basePool.repeat(10_000);
         boolean exactMatch = canFormWithArray(bigPool, bigPool);
         System.out.printf(
-          "Large exact -> expected true, got %s : %s%n",
-          exactMatch, exactMatch ? "PASS" : "FAIL"
+                "Large exact -> expected true, got %s : %s%n",
+                exactMatch, exactMatch ? "PASS" : "FAIL"
         );
         boolean oneExtra = canFormWithArray(bigPool, bigPool + "e");
         System.out.printf(
-          "Large + extra -> expected false, got %s : %s%n",
-          oneExtra, (!oneExtra) ? "PASS" : "FAIL"
+                "Large + extra -> expected false, got %s : %s%n",
+                oneExtra, (!oneExtra) ? "PASS" : "FAIL"
         );
     }
 }

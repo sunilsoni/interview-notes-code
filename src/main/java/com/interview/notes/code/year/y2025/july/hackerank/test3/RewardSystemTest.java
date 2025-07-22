@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.july.hackerank.test3;
 
 import java.util.*;
-import java.util.stream.*;
 
 enum TransactionType {
     P2M, P2P, Self;
@@ -23,6 +22,7 @@ class TransactionSummary {
 }
 
 class Payment {
+    private static final int TOP_K = 100;
     private Map<Integer, Map<TransactionType, Integer>> txnCounts = new HashMap<>();
     private Map<Integer, Long> userP2mSum = new HashMap<>();
     private PriorityQueue<long[]> top100 = new PriorityQueue<>((a, b) -> {
@@ -30,7 +30,6 @@ class Payment {
         return Long.compare(a[0], b[0]);
     });
     private Set<Integer> top100Ids = new HashSet<>();
-    private static final int TOP_K = 100;
 
     private void updateTop100(int senderId, long newTotal) {
         if (top100Ids.contains(senderId)) {
@@ -51,7 +50,7 @@ class Payment {
 
     public TransactionSummary makePayment(int transactionId, int senderId, int amount, TransactionType transactionType) {
         txnCounts.computeIfAbsent(senderId, k -> new EnumMap<>(TransactionType.class))
-                 .merge(transactionType, 1, Integer::sum);
+                .merge(transactionType, 1, Integer::sum);
 
         boolean eligible = false;
 
@@ -66,7 +65,7 @@ class Payment {
 
     public int getNumberOfTransactions(int senderId, TransactionType transactionType) {
         return txnCounts.getOrDefault(senderId, Collections.emptyMap())
-                        .getOrDefault(transactionType, 0);
+                .getOrDefault(transactionType, 0);
     }
 }
 
@@ -83,53 +82,53 @@ public class RewardSystemTest {
 
         // Sample Input Test
         testCases.add(new TestCase(
-            Arrays.asList(
-                "makePayment 0 2 100 P2P",
-                "makePayment 1 4 18 P2M",
-                "makePayment 2 2 50 P2M",
-                "getNumberOfTransactions 2 P2P"
-            ),
-            Arrays.asList(
-                "0 false",
-                "1 true",
-                "2 true",
-                "1"
-            ),
-            "Sample Input Test"
+                Arrays.asList(
+                        "makePayment 0 2 100 P2P",
+                        "makePayment 1 4 18 P2M",
+                        "makePayment 2 2 50 P2M",
+                        "getNumberOfTransactions 2 P2P"
+                ),
+                Arrays.asList(
+                        "0 false",
+                        "1 true",
+                        "2 true",
+                        "1"
+                ),
+                "Sample Input Test"
         ));
 
         // Edge Case: Only one user, multiple P2M
         testCases.add(new TestCase(
-            Arrays.asList(
-                "makePayment 10 99 999 P2M",
-                "makePayment 11 99 1 P2M",
-                "getNumberOfTransactions 99 P2M"
-            ),
-            Arrays.asList(
-                "10 true",
-                "11 true",
-                "2"
-            ),
-            "One User Multiple P2M"
+                Arrays.asList(
+                        "makePayment 10 99 999 P2M",
+                        "makePayment 11 99 1 P2M",
+                        "getNumberOfTransactions 99 P2M"
+                ),
+                Arrays.asList(
+                        "10 true",
+                        "11 true",
+                        "2"
+                ),
+                "One User Multiple P2M"
         ));
 
         // Edge: Two users, tie on P2M, check lexicographical order
         testCases.add(new TestCase(
-            Arrays.asList(
-                "makePayment 1 100 100 P2M",
-                "makePayment 2 200 100 P2M",
-                "makePayment 3 100 1 P2M",   // 101 for 100, 100 for 200
-                "makePayment 4 200 1 P2M",   // both now at 101
-                "getNumberOfTransactions 200 P2M"
-            ),
-            Arrays.asList(
-                "1 true",
-                "2 true",
-                "3 true",
-                "4 true",
-                "2"
-            ),
-            "Tie on P2M"
+                Arrays.asList(
+                        "makePayment 1 100 100 P2M",
+                        "makePayment 2 200 100 P2M",
+                        "makePayment 3 100 1 P2M",   // 101 for 100, 100 for 200
+                        "makePayment 4 200 1 P2M",   // both now at 101
+                        "getNumberOfTransactions 200 P2M"
+                ),
+                Arrays.asList(
+                        "1 true",
+                        "2 true",
+                        "3 true",
+                        "4 true",
+                        "2"
+                ),
+                "Tie on P2M"
         ));
 
         // Run each test
@@ -175,7 +174,7 @@ public class RewardSystemTest {
             }
         }
         // Big sender jumps into top 100
-        TransactionSummary ts = payment.makePayment(N+1, 999_999, 10_000_000, TransactionType.P2M);
+        TransactionSummary ts = payment.makePayment(N + 1, 999_999, 10_000_000, TransactionType.P2M);
         if (!ts.isSenderEligibleForReward) {
             error = true;
             System.out.println("FAIL: Big sender not marked as eligible");

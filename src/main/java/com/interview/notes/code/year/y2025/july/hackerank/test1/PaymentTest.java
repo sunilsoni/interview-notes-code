@@ -1,7 +1,12 @@
 package com.interview.notes.code.year.y2025.july.hackerank.test1;
 
-import java.io.*;
-import java.util.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PaymentTest {
     public static void main(String[] args) throws Exception {
@@ -9,20 +14,20 @@ public class PaymentTest {
 
         // --- Sample test from prompt ---
         tests.add(new TestCase(
-            "Sample",
-            new String[]{
-                "4",
-                "makePayment 0 2 100 P2P",
-                "makePayment 1 4 18 P2M",
-                "makePayment 2 2 50 P2M",
-                "getNumberOfTransactions 2 P2P"
-            },
-            new String[]{
-                "0 false",
-                "1 true",
-                "2 true",
-                "1"
-            }
+                "Sample",
+                new String[]{
+                        "4",
+                        "makePayment 0 2 100 P2P",
+                        "makePayment 1 4 18 P2M",
+                        "makePayment 2 2 50 P2M",
+                        "getNumberOfTransactions 2 P2P"
+                },
+                new String[]{
+                        "0 false",
+                        "1 true",
+                        "2 true",
+                        "1"
+                }
         ));
 
         // --- Large-scale performance & correctness test ---
@@ -37,9 +42,9 @@ public class PaymentTest {
         // One final query: how many P2M did sender 42 make? → should be 200
         largeInput[N + 1] = "getNumberOfTransactions 42 P2M";
         tests.add(new TestCase(
-            "LargePerformance",
-            largeInput,
-            new String[]{ "200" }
+                "LargePerformance",
+                largeInput,
+                new String[]{"200"}
         ));
 
         // --- run all tests ---
@@ -48,9 +53,9 @@ public class PaymentTest {
             String input = String.join("\n", tc.input) + "\n";
 
             // swap in our test input / capture output
-            InputStream  oldIn  = System.in;
-            PrintStream  oldOut = System.out;
-            ByteArrayInputStream  inBuf  = new ByteArrayInputStream(input.getBytes());
+            InputStream oldIn = System.in;
+            PrintStream oldOut = System.out;
+            ByteArrayInputStream inBuf = new ByteArrayInputStream(input.getBytes());
             ByteArrayOutputStream outBuf = new ByteArrayOutputStream();
             System.setIn(inBuf);
             System.setOut(new PrintStream(outBuf));
@@ -80,6 +85,7 @@ public class PaymentTest {
         final String name;
         final String[] input;
         final String[] expected;
+
         TestCase(String name, String[] input, String[] expected) {
             this.name = name;
             this.input = input;

@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.july.hackerank.test2;
 
 import java.util.*;
-import java.util.stream.*;
 
 enum TransactionType {
     P2M, P2P, Self;
@@ -23,19 +22,17 @@ class TransactionSummary {
 }
 
 class Payment {
+    private static final int TOP_K = 100;
     // Track transaction counts per user/type
     private Map<Integer, Map<TransactionType, Integer>> txnCounts = new HashMap<>();
-
     // Track total P2M amount per user
     private Map<Integer, Long> userP2mSum = new HashMap<>();
-
     // Min-heap of size 100 for top P2M senders (amount, senderId)
     private PriorityQueue<long[]> top100 = new PriorityQueue<>((a, b) -> {
         if (a[0] == b[0]) return Long.compare(a[1], b[1]);
         return Long.compare(a[0], b[0]);
     });
     private Set<Integer> top100Ids = new HashSet<>();
-    private static final int TOP_K = 100;
 
     // Rebuilds the heap if a user's P2M amount increases
     private void updateTop100(int senderId, long newTotal) {
@@ -59,7 +56,7 @@ class Payment {
     public TransactionSummary makePayment(int transactionId, int senderId, int amount, TransactionType transactionType) {
         // Count transaction
         txnCounts.computeIfAbsent(senderId, k -> new EnumMap<>(TransactionType.class))
-                 .merge(transactionType, 1, Integer::sum);
+                .merge(transactionType, 1, Integer::sum);
 
         boolean eligible = false;
 
@@ -74,7 +71,7 @@ class Payment {
 
     public int getNumberOfTransactions(int senderId, TransactionType transactionType) {
         return txnCounts.getOrDefault(senderId, Collections.emptyMap())
-                        .getOrDefault(transactionType, 0);
+                .getOrDefault(transactionType, 0);
     }
 }
 
@@ -125,7 +122,7 @@ public class RewardSystemMain {
             p.makePayment(i, sender, amount, TransactionType.P2M);
         }
         // Query: Is user 1 in top 100?
-        TransactionSummary last = p.makePayment(txns+1, 1, 1000, TransactionType.P2M);
+        TransactionSummary last = p.makePayment(txns + 1, 1, 1000, TransactionType.P2M);
         System.out.println("User 1 eligible: " + last.isSenderEligibleForReward);
     }
 }

@@ -1,17 +1,20 @@
 package com.interview.notes.code.year.y2025.july.common.test5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class FileSystemPathFinder {
-    
+
     public static List<String> findFilePaths(Map<String, Object> fileSystem) {
         List<String> paths = new ArrayList<>();
         traverseFileSystem("", fileSystem, paths);
         return paths.stream()
-                   .filter(path -> path.contains(".")) // Only return file paths
-                   .sorted()
-                   .collect(Collectors.toList());
+                .filter(path -> path.contains(".")) // Only return file paths
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private static void traverseFileSystem(String currentPath, Map<String, Object> directory, List<String> paths) {
@@ -30,18 +33,18 @@ public class FileSystemPathFinder {
     public static void main(String[] args) {
         // Test Case 1: Basic file system structure
         Map<String, Object> fileSystem1 = Map.of(
-            "root", Map.of(
-                "dir1", Map.of(
-                    "file1.txt", null,
-                    "file2.txt", null
-                ),
-                "dir2", Map.of(
-                    "subdir1", Map.of(
-                        "file3.txt", null
-                    ),
-                    "file4.txt", null
+                "root", Map.of(
+                        "dir1", Map.of(
+                                "file1.txt", null,
+                                "file2.txt", null
+                        ),
+                        "dir2", Map.of(
+                                "subdir1", Map.of(
+                                        "file3.txt", null
+                                ),
+                                "file4.txt", null
+                        )
                 )
-            )
         );
 
         // Test Case 2: Empty file system
@@ -49,9 +52,9 @@ public class FileSystemPathFinder {
 
         // Test Case 3: Single file
         Map<String, Object> fileSystem3 = Map.of(
-            "root", Map.of(
-                "single.txt", null
-            )
+                "root", Map.of(
+                        "single.txt", null
+                )
         );
 
         // Run tests
@@ -65,7 +68,7 @@ public class FileSystemPathFinder {
         System.out.println("Input: " + fileSystem);
         List<String> result = findFilePaths(fileSystem);
         System.out.println("Output: " + result);
-        
+
         // Verify results
         boolean passed = verifyResults(fileSystem, result);
         System.out.println("Test " + (passed ? "PASSED" : "FAILED"));

@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.july.common.test6;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FileSystemStreamer {
 
@@ -11,20 +12,20 @@ public class FileSystemStreamer {
     @SuppressWarnings("unchecked")
     private static Stream<String> traverse(Map<String, Object> node, String pathSoFar) {
         return node.entrySet().stream()
-            .flatMap(entry -> {
-                String name = entry.getKey();
-                Object val = entry.getValue();
-                // build the next path segment
-                String nextPath = pathSoFar.isEmpty() ? name : pathSoFar + "/" + name;
+                .flatMap(entry -> {
+                    String name = entry.getKey();
+                    Object val = entry.getValue();
+                    // build the next path segment
+                    String nextPath = pathSoFar.isEmpty() ? name : pathSoFar + "/" + name;
 
-                if (val instanceof Map) {
-                    // directory: recurse
-                    return traverse((Map<String, Object>) val, nextPath);
-                } else {
-                    // file: emit the full path
-                    return Stream.of(nextPath);
-                }
-            });
+                    if (val instanceof Map) {
+                        // directory: recurse
+                        return traverse((Map<String, Object>) val, nextPath);
+                    } else {
+                        // file: emit the full path
+                        return Stream.of(nextPath);
+                    }
+                });
     }
 
     /**
@@ -40,46 +41,46 @@ public class FileSystemStreamer {
     public static void main(String[] args) {
         // --- Test 1: Provided example ---
         Map<String, Object> fileSystem = Map.of(
-            "root", Map.of(
-                "dir1", Map.of(
-                    "file1.txt", null,
-                    "file2.txt", null
-                ),
-                "dir2", Map.of(
-                    "subdir1", Map.of(
-                        "file3.txt", null
-                    ),
-                    "file4.txt", null
+                "root", Map.of(
+                        "dir1", Map.of(
+                                "file1.txt", null,
+                                "file2.txt", null
+                        ),
+                        "dir2", Map.of(
+                                "subdir1", Map.of(
+                                        "file3.txt", null
+                                ),
+                                "file4.txt", null
+                        )
                 )
-            )
         );
         List<String> expected1 = Arrays.asList(
-            "root/dir1/file1.txt",
-            "root/dir1/file2.txt",
-            "root/dir2/subdir1/file3.txt",
-            "root/dir2/file4.txt"
+                "root/dir1/file1.txt",
+                "root/dir1/file2.txt",
+                "root/dir2/subdir1/file3.txt",
+                "root/dir2/file4.txt"
         );
         runTest("Example Test", fileSystem, expected1);
 
         // --- Test 2: Empty map ---
         runTest("Empty FS Test",
-                Collections.<String,Object>emptyMap(),
+                Collections.<String, Object>emptyMap(),
                 Collections.<String>emptyList());
 
         // --- Test 3: Single file at root ---
-        Map<String,Object> single = Map.of("foo.txt", null);
+        Map<String, Object> single = Map.of("foo.txt", null);
         runTest("Single File Test", single, List.of("foo.txt"));
 
         // --- Test 4: Large flat map ---
-        Map<String,Object> largeDir = new HashMap<>();
+        Map<String, Object> largeDir = new HashMap<>();
         int N = 10_000;
         for (int i = 0; i < N; i++) {
             largeDir.put("file" + i + ".txt", null);
         }
-        Map<String,Object> largeFs = Map.of("root", largeDir);
+        Map<String, Object> largeFs = Map.of("root", largeDir);
         List<String> resultLarge = listAllFiles(largeFs).collect(Collectors.toList());
         System.out.println("Large Input Test: " +
-            (resultLarge.size() == N ? "PASS" : "FAIL (got " + resultLarge.size() + ")"));
+                (resultLarge.size() == N ? "PASS" : "FAIL (got " + resultLarge.size() + ")"));
     }
 
     /**

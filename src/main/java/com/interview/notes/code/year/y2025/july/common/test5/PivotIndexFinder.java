@@ -15,14 +15,14 @@ public class PivotIndexFinder {
         AtomicInteger leftSum = new AtomicInteger(0);
 
         return IntStream.range(0, nums.length)
-                        .filter(i -> {
-                            int ls = leftSum.get();
-                            int rs = total - ls - nums[i];
-                            boolean isPivot = (ls == rs);
-                            leftSum.addAndGet(nums[i]);
-                            return isPivot;
-                        })
-                        .findFirst()
-                        .orElse(-1);
+                .filter(i -> {
+                    int ls = leftSum.get();
+                    int rs = total - ls - nums[i];
+                    boolean isPivot = (ls == rs);
+                    leftSum.addAndGet(nums[i]);
+                    return isPivot;
+                })
+                .findFirst()
+                .orElse(-1);
     }
 }

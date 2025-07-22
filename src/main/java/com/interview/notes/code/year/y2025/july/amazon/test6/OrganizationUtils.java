@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.july.amazon.test6;
 
 import java.util.*;
+
 /*
 
 **Problem Statement:**
@@ -102,22 +103,22 @@ public class OrganizationUtils {
         // --- Build a small example hierarchy ---
         Employee ceo = new Employee(1, "CEO", null);
         Employee alice = new Employee(2, "Alice", ceo);
-        Employee bob   = new Employee(3, "Bob",   ceo);
+        Employee bob = new Employee(3, "Bob", ceo);
         ceo.reports.add(alice);
         ceo.reports.add(bob);
 
         Employee carol = new Employee(4, "Carol", alice);
-        Employee dave  = new Employee(5, "Dave",  alice);
+        Employee dave = new Employee(5, "Dave", alice);
         alice.reports.add(carol);
         alice.reports.add(dave);
 
-        Employee eve   = new Employee(6, "Eve",   bob);
+        Employee eve = new Employee(6, "Eve", bob);
         bob.reports.add(eve);
 
         // --- Basic Tests ---
         runTest("Same manager (Carol, Dave)", carol, dave, alice);
         runTest("Cross branches (Carol, Eve)", carol, eve, ceo);
-        runTest("Self vs. self (Bob, Bob)",    bob,   bob,   bob);
+        runTest("Self vs. self (Bob, Bob)", bob, bob, bob);
         runTest("Manager and report (Alice, Dave)", alice, dave, alice);
 
         // --- Large Data Test: deep linear chain of 10_000 levels ---

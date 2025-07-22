@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.july.common.test5;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.IntStream;
 
 public class SlotMachine {
 
@@ -23,9 +23,9 @@ public class SlotMachine {
         for (int i = 0; i < n; i++) {
             // convert to int array and sort
             int[] digs = history.get(i).chars()
-                              .map(c -> c - '0')
-                              .sorted()
-                              .toArray();
+                    .map(c -> c - '0')
+                    .sorted()
+                    .toArray();
             sortedDigits[i] = digs;
         }
 
@@ -34,9 +34,9 @@ public class SlotMachine {
         for (int j = m - 1; j >= 0; j--) {
             final int col = j;
             int maxAtJ = IntStream.range(0, n)
-                                  .map(i -> sortedDigits[i][col])
-                                  .max()
-                                  .orElse(0);
+                    .map(i -> sortedDigits[i][col])
+                    .max()
+                    .orElse(0);
             total += maxAtJ;
         }
         return total;
@@ -46,16 +46,16 @@ public class SlotMachine {
         // ---- sample cases ----
         LinkedHashMap<List<String>, Integer> samples = new LinkedHashMap<>();
         samples.put(
-            Arrays.asList("712","246","365","312"), 
-            15
+                Arrays.asList("712", "246", "365", "312"),
+                15
         );
         samples.put(
-            Arrays.asList("1112","1111","1211","1111"), 
-            5
+                Arrays.asList("1112", "1111", "1211", "1111"),
+                5
         );
         samples.put(
-            Arrays.asList("137","364","115","724"), 
-            14
+                Arrays.asList("137", "364", "115", "724"),
+                14
         );
 
         System.out.println("=== Sample Tests ===");
@@ -63,7 +63,7 @@ public class SlotMachine {
             int got = slotWheels(hist);
             String passFail = (got == expected) ? "PASS" : "FAIL";
             System.out.printf("%s => expected=%d, got=%d [%s]%n",
-                              hist, expected, got, passFail);
+                    hist, expected, got, passFail);
         });
 
         // ---- a large random test ----
@@ -77,7 +77,7 @@ public class SlotMachine {
             }
             big.add(sb.toString());
         }
-        System.out.println("\n=== Large random test (n=50, m=50) stops=" 
-                           + slotWheels(big));
+        System.out.println("\n=== Large random test (n=50, m=50) stops="
+                + slotWheels(big));
     }
 }

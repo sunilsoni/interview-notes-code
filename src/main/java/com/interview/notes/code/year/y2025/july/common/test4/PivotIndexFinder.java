@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.july.common.test4;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class PivotIndexFinder {
     // Function to find pivot index
