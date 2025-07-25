@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.july.common.test5;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.TreeMap;
+import java.util.stream.IntStream;
 
 public class NStableSubarray {
 
@@ -42,13 +44,13 @@ public class NStableSubarray {
         // Helper function for test output and pass/fail check
         // Each test: arr, N, expected
         List<TestCase> tests = Arrays.asList(
-            new TestCase(new int[]{4,2,3,6,2,2,3,2,7}, 1, 4), // Example 1
-            new TestCase(new int[]{8,2,4,7}, 4, 2),           // Example 2
-            new TestCase(new int[]{1,3,4,5,6,7,8,9,9,9}, 7, 9), // Example 3
-            new TestCase(new int[]{1,1,1,1,1}, 0, 5),         // All same, N=0
-            new TestCase(new int[]{10, 20, 30, 40, 50}, 5, 1),// No subarray longer than 1
-            new TestCase(IntStream.range(0, 100_000).toArray(), 1_000_000, 100_000), // Large data, large N
-            new TestCase(IntStream.range(0, 100_000).map(i -> (i % 10)).toArray(), 9, 100_000) // Large, all in range
+                new TestCase(new int[]{4, 2, 3, 6, 2, 2, 3, 2, 7}, 1, 4), // Example 1
+                new TestCase(new int[]{8, 2, 4, 7}, 4, 2),           // Example 2
+                new TestCase(new int[]{1, 3, 4, 5, 6, 7, 8, 9, 9, 9}, 7, 9), // Example 3
+                new TestCase(new int[]{1, 1, 1, 1, 1}, 0, 5),         // All same, N=0
+                new TestCase(new int[]{10, 20, 30, 40, 50}, 5, 1),// No subarray longer than 1
+                new TestCase(IntStream.range(0, 100_000).toArray(), 1_000_000, 100_000), // Large data, large N
+                new TestCase(IntStream.range(0, 100_000).map(i -> (i % 10)).toArray(), 9, 100_000) // Large, all in range
         );
 
         int passed = 0;
@@ -56,7 +58,7 @@ public class NStableSubarray {
             TestCase tc = tests.get(i);
             int result = longestNStableSubarray(tc.arr, tc.N);
             System.out.printf("Test %d: Expected=%d, Got=%d -- %s\n",
-                i+1, tc.expected, result, result == tc.expected ? "PASS" : "FAIL");
+                    i + 1, tc.expected, result, result == tc.expected ? "PASS" : "FAIL");
             if (result == tc.expected) passed++;
         }
         System.out.printf("Passed %d/%d tests\n", passed, tests.size());
@@ -67,6 +69,7 @@ public class NStableSubarray {
         int[] arr;
         int N;
         int expected;
+
         TestCase(int[] arr, int N, int expected) {
             this.arr = arr;
             this.N = N;

@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.july.google.test6;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 
 ### 🧩 Problem Statement: Flatten Nested Function Inlined Ranges
@@ -90,10 +92,10 @@ We’ll:
 
  */
 class Node {
-    String name;        
-    Long start;         
-    Long end;          
-    List<Node> children = new ArrayList<>();  
+    String name;
+    Long start;
+    Long end;
+    List<Node> children = new ArrayList<>();
 
     Node(String name, Long start, Long end) {
         this.name = name;
@@ -103,55 +105,38 @@ class Node {
 }
 
 class FunctionRangeFlattener {
-    
-    static class Range {
-        String name;
-        Long start;
-        Long end;
-        
-        Range(String name, Long start, Long end) {
-            this.name = name;
-            this.start = start;
-            this.end = end;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("%s(): %d-%d", name, start, end);
-        }
-    }
 
     public static List<Range> flattenRanges(Node root) {
         List<Range> result = new ArrayList<>();
-        
+
         // If no children, return the full range
         if (root.children.isEmpty()) {
             result.add(new Range(root.name, root.start, root.end));
             return result;
         }
-        
+
         // Sort children by start position
         root.children.sort((a, b) -> a.start.compareTo(b.start));
-        
+
         Long currentPos = root.start;
-        
+
         // Process each child
         for (Node child : root.children) {
             // Add parent's range before child
             if (currentPos < child.start) {
                 result.add(new Range(root.name, currentPos, child.start));
             }
-            
+
             // Add child's range
             result.add(new Range(child.name, child.start, child.end));
             currentPos = child.end;
         }
-        
+
         // Add final parent range if needed
         if (currentPos < root.end) {
             result.add(new Range(root.name, currentPos, root.end));
         }
-        
+
         return result;
     }
 
@@ -162,15 +147,15 @@ class FunctionRangeFlattener {
         Node car = new Node("car", 65L, 85L);
         foo.children.add(bar);
         foo.children.add(car);
-        
+
         System.out.println("Test Case 1:");
         System.out.println("Input structure:");
         System.out.println("foo(): 1-100");
         System.out.println("  bar(): 25-45");
         System.out.println("  car(): 65-85");
-        
+
         List<Range> result = flattenRanges(foo);
-        
+
         System.out.println("\nFlattened output:");
         for (Range r : result) {
             System.out.println(r);
@@ -181,9 +166,9 @@ class FunctionRangeFlattener {
         Node single = new Node("single", 1L, 50L);
         System.out.println("Input structure:");
         System.out.println("single(): 1-50");
-        
+
         result = flattenRanges(single);
-        
+
         System.out.println("\nFlattened output:");
         for (Range r : result) {
             System.out.println(r);
@@ -194,16 +179,33 @@ class FunctionRangeFlattener {
         Node parent = new Node("parent", 1L, 100L);
         Node child = new Node("child", 30L, 60L);
         parent.children.add(child);
-        
+
         System.out.println("Input structure:");
         System.out.println("parent(): 1-100");
         System.out.println("  child(): 30-60");
-        
+
         result = flattenRanges(parent);
-        
+
         System.out.println("\nFlattened output:");
         for (Range r : result) {
             System.out.println(r);
+        }
+    }
+
+    static class Range {
+        String name;
+        Long start;
+        Long end;
+
+        Range(String name, Long start, Long end) {
+            this.name = name;
+            this.start = start;
+            this.end = end;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("%s(): %d-%d", name, start, end);
         }
     }
 }

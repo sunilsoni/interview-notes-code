@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.july.google.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 class Node {
     String name;
@@ -18,19 +20,6 @@ class Node {
 }
 
 public class FlattenFunctionRanges {
-
-    // Helper class to represent flattened range
-    static class Range {
-        String name;
-        Long start;
-        Long end;
-
-        Range(String name, Long start, Long end) {
-            this.name = name;
-            this.start = start;
-            this.end = end;
-        }
-    }
 
     // Recursively traverse the tree, prioritize deeper nodes
     private static void flatten(Node node, List<Range> result) {
@@ -75,7 +64,7 @@ public class FlattenFunctionRanges {
         foo1.children.add(bar1);
 
         flattenAndPrint(foo1);
-        
+
         System.out.println("\nTest Case 2: Sequential Functions (No Overlaps)");
         Node foo2 = new Node("foo", 1L, 25L);
         Node bar2 = new Node("bar", 25L, 35L);
@@ -93,7 +82,7 @@ public class FlattenFunctionRanges {
         // Large data test (to check performance)
         Node largeRoot = new Node("root", 1L, 1000000L);
         for (int i = 0; i < 1000; i++) {
-            Node child = new Node("func" + i, (long)(i * 1000 + 1), (long)((i + 1) * 1000));
+            Node child = new Node("func" + i, (long) (i * 1000 + 1), (long) ((i + 1) * 1000));
             largeRoot.children.add(child);
         }
 
@@ -101,5 +90,18 @@ public class FlattenFunctionRanges {
 
         // Simple validation
         System.out.println("\nAll Test Cases Completed.");
+    }
+
+    // Helper class to represent flattened range
+    static class Range {
+        String name;
+        Long start;
+        Long end;
+
+        Range(String name, Long start, Long end) {
+            this.name = name;
+            this.start = start;
+            this.end = end;
+        }
     }
 }

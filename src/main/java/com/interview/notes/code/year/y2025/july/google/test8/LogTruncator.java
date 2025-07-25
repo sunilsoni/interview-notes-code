@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.july.google.test8;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 /*
 
 
@@ -40,20 +43,20 @@ public class LogTruncator {
 
         // Group messages by source file using Java 8 Collectors
         Map<String, List<LogMessage>> messagesBySource = logList.stream()
-            .collect(Collectors.groupingBy(msg -> msg.sourceFile));
+                .collect(Collectors.groupingBy(msg -> msg.sourceFile));
 
         // Find optimal X using binary search helper method
         int optimalX = findOptimalX(messagesBySource, maxLogMessages, logList.size());
 
         // Apply the found limit (optimalX) to each source file's messages
         return messagesBySource.values().stream()
-            .flatMap(list -> list.stream().limit(optimalX))
-            .collect(Collectors.toList());
+                .flatMap(list -> list.stream().limit(optimalX))
+                .collect(Collectors.toList());
     }
 
     // Helper method to find optimal X using binary search
     private static int findOptimalX(Map<String, List<LogMessage>> messagesBySource,
-                                  int maxLogMessages, int totalSize) {
+                                    int maxLogMessages, int totalSize) {
         int left = 0;
         int right = totalSize;
         int optimalX = 0;
@@ -64,8 +67,8 @@ public class LogTruncator {
             // Calculate total messages if we limit each source to 'mid' messages
             final int messagesPerSource = mid;  // Create effectively final variable for lambda
             int totalMessages = messagesBySource.values().stream()
-                .mapToInt(list -> Math.min(list.size(), messagesPerSource))
-                .sum();
+                    .mapToInt(list -> Math.min(list.size(), messagesPerSource))
+                    .sum();
 
             if (totalMessages <= maxLogMessages) {
                 optimalX = mid;
@@ -76,22 +79,6 @@ public class LogTruncator {
         }
 
         return optimalX;
-    }
-
-    // Test class for LogMessage
-    static class LogMessage {
-        String sourceFile;
-        String message;
-
-        LogMessage(String sourceFile, String message) {
-            this.sourceFile = sourceFile;
-            this.message = message;
-        }
-
-        @Override
-        public String toString() {
-            return sourceFile + ": " + message;
-        }
     }
 
     // Main method for testing
@@ -137,15 +124,31 @@ public class LogTruncator {
     // Helper method to verify message order preservation within source files
     private static boolean verifyOrderPreservation(List<LogMessage> messages) {
         Map<String, List<LogMessage>> grouped = messages.stream()
-            .collect(Collectors.groupingBy(msg -> msg.sourceFile));
+                .collect(Collectors.groupingBy(msg -> msg.sourceFile));
 
         for (List<LogMessage> sourceMessages : grouped.values()) {
             for (int i = 1; i < sourceMessages.size(); i++) {
-                String prev = sourceMessages.get(i-1).message;
+                String prev = sourceMessages.get(i - 1).message;
                 String curr = sourceMessages.get(i).message;
                 if (prev.compareTo(curr) > 0) return false;
             }
         }
         return true;
+    }
+
+    // Test class for LogMessage
+    static class LogMessage {
+        String sourceFile;
+        String message;
+
+        LogMessage(String sourceFile, String message) {
+            this.sourceFile = sourceFile;
+            this.message = message;
+        }
+
+        @Override
+        public String toString() {
+            return sourceFile + ": " + message;
+        }
     }
 }

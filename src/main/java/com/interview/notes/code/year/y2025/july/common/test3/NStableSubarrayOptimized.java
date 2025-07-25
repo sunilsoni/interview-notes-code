@@ -2,7 +2,7 @@ package com.interview.notes.code.year.y2025.july.common.test3;
 
 public class NStableSubarrayOptimized {
     public static void main(String[] args) {
-        int[] a = {4,2,3,6,2,2,3,2,7};
+        int[] a = {4, 2, 3, 6, 2, 2, 3, 2, 7};
         System.out.println(longestNStableSubarray(a, 1)); // 4
     }
 
@@ -57,16 +57,18 @@ public class NStableSubarrayOptimized {
          */
         void push(int value, int index, boolean isMax) {
             if (isMax) {
-                while (head < tail && vals[(tail-1)] < value) tail--;
+                while (head < tail && vals[(tail - 1)] < value) tail--;
             } else {
-                while (head < tail && vals[(tail-1)] > value) tail--;
+                while (head < tail && vals[(tail - 1)] > value) tail--;
             }
             vals[tail] = value;
             idxs[tail] = index;
             tail++;
         }
 
-        /** Return the value at head (current window’s max or min). */
+        /**
+         * Return the value at head (current window’s max or min).
+         */
         int firstValue() {
             return vals[head];
         }

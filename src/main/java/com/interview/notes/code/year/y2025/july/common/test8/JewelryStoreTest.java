@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.july.common.test8;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 Here's the combined and structured version of your provided question:
 
@@ -87,14 +89,14 @@ public class JewelryStoreTest {
         if (K == null || K.isEmpty()) return 0;
         // count frequencies
         Map<Integer, Long> freq = K.stream()
-                                   .collect(Collectors.groupingBy(i -> i,
-                                          Collectors.counting()));
+                .collect(Collectors.groupingBy(i -> i,
+                        Collectors.counting()));
         int distinct = freq.size();
         long maxFreq = freq.values().stream()
-                           .mapToLong(l -> l)
-                           .max()
-                           .getAsLong();
-        return (int)(distinct * maxFreq);
+                .mapToLong(l -> l)
+                .max()
+                .getAsLong();
+        return (int) (distinct * maxFreq);
     }
 
     public static void main(String[] args) {
@@ -103,22 +105,25 @@ public class JewelryStoreTest {
             final List<Integer> K;
             final int expected;
             final String name;
+
             TC(int N, List<Integer> K, int expected, String name) {
-                this.N = N; this.K = K;
-                this.expected = expected; this.name = name;
+                this.N = N;
+                this.K = K;
+                this.expected = expected;
+                this.name = name;
             }
         }
 
         List<TC> fixedTests = Arrays.asList(
-            new TC(5, Arrays.asList(4, 11),       2, "Example #1"),
-            new TC(5, Arrays.asList(4, 11, 4),    4, "Example #2"),
-            new TC(1, Collections.singletonList(42),
-                                               1, "Single element"),
-            new TC(10, IntStream.rangeClosed(1,10)
-                                .boxed()
-                                .collect(Collectors.toList()),
-                                              10, "All distinct (R=N)"),
-            new TC(10, Collections.nCopies(5, 7), 5, "All same (5 copies)")
+                new TC(5, Arrays.asList(4, 11), 2, "Example #1"),
+                new TC(5, Arrays.asList(4, 11, 4), 4, "Example #2"),
+                new TC(1, Collections.singletonList(42),
+                        1, "Single element"),
+                new TC(10, IntStream.rangeClosed(1, 10)
+                        .boxed()
+                        .collect(Collectors.toList()),
+                        10, "All distinct (R=N)"),
+                new TC(10, Collections.nCopies(5, 7), 5, "All same (5 copies)")
         );
 
         for (TC tc : fixedTests) {
@@ -127,7 +132,7 @@ public class JewelryStoreTest {
                 System.out.printf("%-20s PASS%n", tc.name);
             } else {
                 System.out.printf("%-20s FAIL (expected=%d, got=%d)%n",
-                                  tc.name, tc.expected, out);
+                        tc.name, tc.expected, out);
             }
         }
 
@@ -136,13 +141,13 @@ public class JewelryStoreTest {
         int R = 100_000;
         Random rnd = new Random(0);
         List<Integer> largeK = rnd.ints(R, 1, N + 1)
-                                  .boxed()
-                                  .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
 
         long t0 = System.currentTimeMillis();
         int result = solve(N, largeK);
         long t1 = System.currentTimeMillis();
         System.out.printf("Large random test: result=%d, time=%dms%n",
-                          result, (t1 - t0));
+                result, (t1 - t0));
     }
 }

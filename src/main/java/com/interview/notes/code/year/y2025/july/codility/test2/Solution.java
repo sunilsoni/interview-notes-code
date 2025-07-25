@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.july.codility.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+
 /*
 
 ### 🧩 Problem Statement: Maximum Sum of Two Non-Attacking Rooks
@@ -98,6 +100,39 @@ class Solution {
 
  */
 public class Solution {
+    // Simple main() to run provided tests and a large random test
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        // --- Provided examples ---
+        List<int[][]> tests = Arrays.asList(
+                new int[][]{{1, 4}, {2, 3}},                 // 2×2 → 6
+                new int[][]{{15, 1, 5}, {16, 3, 8}, {2, 6, 4}},    // 3×3 → 23
+                new int[][]{{12, 12}, {12, 12}, {0, 7}},     // 3×2 → 24
+                new int[][]{{1, 2, 14}, {8, 3, 15}}              // 2×3 → 22
+        );
+        List<Integer> expected = Arrays.asList(6, 23, 24, 22);
+
+        IntStream.range(0, tests.size()).forEach(i -> {
+            int res = sol.solution(tests.get(i));
+            System.out.printf("Test #%d: %s (expected=%d, got=%d)%n",
+                    i + 1,
+                    res == expected.get(i) ? "PASS" : "FAIL",
+                    expected.get(i), res);
+        });
+
+        // --- Large test: 600×600, only two high cells at (0,0)=100 and (1,1)=200 ---
+        int N = 600, M = 600;
+        int[][] large = new int[N][M];
+        for (int i = 0; i < N; i++) Arrays.fill(large[i], 0);
+        large[0][0] = 100;
+        large[1][1] = 200;
+        int want = 300;
+        int got = sol.solution(large);
+        System.out.printf("Large test: %s (expected=%d, got=%d)%n",
+                got == want ? "PASS" : "FAIL", want, got);
+    }
+
     // Returns the max sum of two non-attacking rooks
     public int solution(int[][] A) {
         int N = A.length, M = A[0].length;
@@ -112,14 +147,19 @@ public class Solution {
                 long val = A[i][j];
                 if (val > max1) {
                     // bump down previous max1→max2
-                    max2 = max1; col2 = col1;
-                    max1 = val; col1 = j;
+                    max2 = max1;
+                    col2 = col1;
+                    max1 = val;
+                    col1 = j;
                 } else if (val > max2) {
-                    max2 = val; col2 = j;
+                    max2 = val;
+                    col2 = j;
                 }
             }
-            v1[i] = max1; v2[i] = max2;
-            c1[i] = col1; c2[i] = col2;
+            v1[i] = max1;
+            v2[i] = max2;
+            c1[i] = col1;
+            c2[i] = col2;
         }
 
         long best = 0;
@@ -138,38 +178,5 @@ public class Solution {
             }
         }
         return (int) best;  // fits in 32-bit since max A[i][j]≤10^9
-    }
-
-    // Simple main() to run provided tests and a large random test
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-
-        // --- Provided examples ---
-        List<int[][]> tests = Arrays.asList(
-            new int[][] { {1,4},      {2,3} },                 // 2×2 → 6
-            new int[][] { {15,1,5},   {16,3,8}, {2,6,4} },    // 3×3 → 23
-            new int[][] { {12,12},    {12,12},  {0,7} },     // 3×2 → 24
-            new int[][] { {1,2,14},   {8,3,15} }              // 2×3 → 22
-        );
-        List<Integer> expected = Arrays.asList(6, 23, 24, 22);
-
-        IntStream.range(0, tests.size()).forEach(i -> {
-            int res = sol.solution(tests.get(i));
-            System.out.printf("Test #%d: %s (expected=%d, got=%d)%n",
-                i+1,
-                res == expected.get(i) ? "PASS" : "FAIL",
-                expected.get(i), res);
-        });
-
-        // --- Large test: 600×600, only two high cells at (0,0)=100 and (1,1)=200 ---
-        int N = 600, M = 600;
-        int[][] large = new int[N][M];
-        for (int i = 0; i < N; i++) Arrays.fill(large[i], 0);
-        large[0][0] = 100;
-        large[1][1] = 200;
-        int want = 300;
-        int got = sol.solution(large);
-        System.out.printf("Large test: %s (expected=%d, got=%d)%n",
-            got == want ? "PASS" : "FAIL", want, got);
     }
 }

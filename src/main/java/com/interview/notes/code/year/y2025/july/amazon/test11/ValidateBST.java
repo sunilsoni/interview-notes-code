@@ -1,8 +1,11 @@
 package com.interview.notes.code.year.y2025.july.amazon.test11;
 
-import java.util.*;                        // For Map, List, LinkedHashMap
-import java.util.stream.Collectors;         // For collecting streams
-import java.util.stream.IntStream;         // For generating integer streams
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 ### Problem Statement:
 
@@ -19,16 +22,6 @@ public class TreeNode {
 ```
  */
 public class ValidateBST {
-
-    // Definition of the tree node
-    static class TreeNode {
-        int value;                          // The node's integer value
-        TreeNode left;                      // Reference to left child
-        TreeNode right;                     // Reference to right child
-        TreeNode(int value) {               // Constructor to set node value
-            this.value = value;
-        }
-    }
 
     // Public method to initiate BST validation
     public static boolean isValidBST(TreeNode root) {
@@ -91,22 +84,22 @@ public class ValidateBST {
 
         // Test 3: Small valid BST
         TreeNode small = new TreeNode(2);
-        small.left  = new TreeNode(1);
+        small.left = new TreeNode(1);
         small.right = new TreeNode(3);
         testTrees.put("Small valid BST", small);
         expected.put("Small valid BST", true);
 
         // Test 4: Invalid BST (left child > parent)
         TreeNode bad1 = new TreeNode(2);
-        bad1.left  = new TreeNode(5);  // Violation here
+        bad1.left = new TreeNode(5);  // Violation here
         bad1.right = new TreeNode(3);
         testTrees.put("Invalid BST 1", bad1);
         expected.put("Invalid BST 1", false);
 
         // Test 5: Large valid BST (100,000 nodes)
         List<Integer> bigList = IntStream.rangeClosed(1, 100_000)
-                                 .boxed()
-                                 .collect(Collectors.toList());  // Generate 1..100000
+                .boxed()
+                .collect(Collectors.toList());  // Generate 1..100000
         TreeNode bigValid = buildBSTFromSortedList(bigList);
         testTrees.put("Large valid BST", bigValid);
         expected.put("Large valid BST", true);
@@ -121,9 +114,20 @@ public class ValidateBST {
         System.out.println("BST Validation Tests:");
         testTrees.forEach((name, tree) -> {
             boolean result = isValidBST(tree);        // Run validator
-            boolean exp    = expected.get(name);      // Expected outcome
-            String status  = (result == exp) ? "PASS" : "FAIL";
+            boolean exp = expected.get(name);      // Expected outcome
+            String status = (result == exp) ? "PASS" : "FAIL";
             System.out.printf("%-20s : %s%n", name, status);
         });
+    }
+
+    // Definition of the tree node
+    static class TreeNode {
+        int value;                          // The node's integer value
+        TreeNode left;                      // Reference to left child
+        TreeNode right;                     // Reference to right child
+
+        TreeNode(int value) {               // Constructor to set node value
+            this.value = value;
+        }
     }
 }

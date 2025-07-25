@@ -1,12 +1,12 @@
 package com.interview.notes.code.year.y2025.july.common.test8;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 public class JewelryStore {
     public static int solve(int N, List<Integer> K) {
         Map<Integer, Long> freq = K.stream()
-                                   .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+                .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
         int total = 0;
         for (int i = 1; i <= N; i++) {
             long count = freq.getOrDefault(i, 0L);
@@ -30,7 +30,7 @@ public class JewelryStore {
 
         // Edge Case: All jewels same type, N=3, K=[2,2,2,2]
         int N3 = 3;
-        List<Integer> K3 = Arrays.asList(2,2,2,2);
+        List<Integer> K3 = Arrays.asList(2, 2, 2, 2);
         int expected3 = 6; // Each type not seen must have at least 1
         System.out.println("Test3: " + (solve(N3, K3) == expected3 ? "PASS" : "FAIL"));
 
@@ -42,7 +42,7 @@ public class JewelryStore {
 
         // Edge: Each type appears once, N=4, K=[1,2,3,4]
         int N5 = 4;
-        List<Integer> K5 = Arrays.asList(1,2,3,4);
+        List<Integer> K5 = Arrays.asList(1, 2, 3, 4);
         int expected5 = 4;
         System.out.println("Test5: " + (solve(N5, K5) == expected5 ? "PASS" : "FAIL"));
     }

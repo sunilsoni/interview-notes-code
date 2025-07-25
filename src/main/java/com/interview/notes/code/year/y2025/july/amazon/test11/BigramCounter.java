@@ -1,11 +1,6 @@
 package com.interview.notes.code.year.y2025.july.amazon.test11;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 
 /*
 
@@ -28,25 +23,25 @@ public class BigramCounter {
     public static Map<String, Integer> countBigrams(List<String> reviews) {
         // This map will hold the final counts of each bigram
         Map<String, Integer> bigramCounts = new HashMap<String, Integer>();
-        
+
         // Process each review one by one
         for (String review : reviews) {
             // Use a set to remember which bigrams we already counted in this review
             Set<String> seenInThisReview = new HashSet<String>();
-            
+
             // Split the review on whitespace to get individual words
             String[] words = review.split("\\s+");
-            
+
             // Walk through the words and form bigrams
             for (int i = 0; i < words.length - 1; i++) {
                 // Build the bigram by joining word[i] and word[i+1] with a space
                 String bigram = words[i] + " " + words[i + 1];
-                
+
                 // If we haven't counted this bigram yet in this review
                 if (!seenInThisReview.contains(bigram)) {
                     // Mark it as seen
                     seenInThisReview.add(bigram);
-                    
+
                     // Increase its global count by 1 (or start at 1 if new)
                     Integer count = bigramCounts.get(bigram);
                     if (count == null) {
@@ -57,7 +52,7 @@ public class BigramCounter {
                 }
             }
         }
-        
+
         // Return the completed counts
         return bigramCounts;
     }

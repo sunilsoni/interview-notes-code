@@ -15,7 +15,7 @@ public class NStableSubarray {
      * Space Complexity: O(n) for the deques in worst case
      *
      * @param nums Input array of integers
-     * @param N Maximum allowed difference between max and min elements
+     * @param N    Maximum allowed difference between max and min elements
      * @return Length of longest N-stable subarray
      */
     public static int longestNStableSubarray(int[] nums, int N) {
@@ -23,13 +23,13 @@ public class NStableSubarray {
         // Each element in deques is processed at most twice (add/remove)
         Deque<Integer> minDeque = new LinkedList<>();  // Maintains increasing order
         Deque<Integer> maxDeque = new LinkedList<>();  // Maintains decreasing order
-        
+
         int maxLen = 0;  // Stores the maximum valid window length found
         int left = 0;    // Left pointer of sliding window
 
         // Right pointer iterates through array - O(n)
         for (int right = 0; right < nums.length; right++) {
-            
+
             // Maintain monotonic increasing queue for minimum values
             // Each element is added/removed exactly once - O(1) amortized
             while (!minDeque.isEmpty() && nums[right] <= nums[minDeque.getLast()]) {

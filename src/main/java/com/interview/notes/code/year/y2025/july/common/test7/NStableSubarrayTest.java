@@ -7,9 +7,9 @@ public class NStableSubarrayTest {
     public static void main(String[] args) {
         // Sample arrays to test against
         int[][] testArrays = {
-            {4, 2, 3, 6, 2, 2, 3, 2, 7},   // Test case 1 array
-            {8, 2, 4, 7},                  // Test case 2 array
-            {1, 3, 4, 5, 6, 7, 8, 9, 9, 9} // Test case 3 array
+                {4, 2, 3, 6, 2, 2, 3, 2, 7},   // Test case 1 array
+                {8, 2, 4, 7},                  // Test case 2 array
+                {1, 3, 4, 5, 6, 7, 8, 9, 9, 9} // Test case 3 array
         };
         // N values for each sample
         int[] Ns = {1, 4, 7};
@@ -26,8 +26,8 @@ public class NStableSubarrayTest {
                 System.out.println("Test " + (i + 1) + ": PASS");
             } else {
                 // Print FAIL with details if it does not
-                System.out.println("Test " + (i + 1) + ": FAIL - expected " 
-                                    + expected[i] + " but got " + result);
+                System.out.println("Test " + (i + 1) + ": FAIL - expected "
+                        + expected[i] + " but got " + result);
             }
         }
 
@@ -35,9 +35,9 @@ public class NStableSubarrayTest {
         int largeSize = 100000;
         // Generate a large array filled with the same number (7) using Java 8 Streams
         int[] largeTest = java.util.stream.IntStream
-                                .generate(() -> 7)  // always produce 7
-                                .limit(largeSize)    // repeat 100,000 times
-                                .toArray();          // collect into an int[]
+                .generate(() -> 7)  // always produce 7
+                .limit(largeSize)    // repeat 100,000 times
+                .toArray();          // collect into an int[]
 
         // Set N to 0 so all identical elements form a stable subarray
         int Nlarge = 0;
@@ -50,8 +50,8 @@ public class NStableSubarrayTest {
         if (largeResult == expectedLarge) {
             System.out.println("Large test: PASS");
         } else {
-            System.out.println("Large test: FAIL - expected " 
-                                + expectedLarge + " but got " + largeResult);
+            System.out.println("Large test: FAIL - expected "
+                    + expectedLarge + " but got " + largeResult);
         }
     }
 

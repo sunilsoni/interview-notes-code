@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.july.google.test2;
 
 import java.util.*;
-import java.util.stream.*;
+
 /*
 
 ### 🧩 Problem Statement: Flatten Nested Function Inlined Ranges
@@ -94,19 +94,6 @@ We’ll:
  */
 public class FunctionInliningResolver {
 
-    // Simple class to hold a function's name and its address range
-    static class FunctionRange {
-        String name;   // function name
-        int start;     // inclusive start address
-        int end;       // inclusive end address
-
-        FunctionRange(String name, int start, int end) {
-            this.name = name;
-            this.start = start;
-            this.end   = end;
-        }
-    }
-
     // Given a list of FunctionRange and an address, returns the innermost function name
     static String resolveAddress(List<FunctionRange> funcs, int address) {
         // Stream over all functions
@@ -124,17 +111,17 @@ public class FunctionInliningResolver {
     public static void main(String[] args) {
         // --- Define a small test suite ---
         List<FunctionRange> funcs = Arrays.asList(
-            new FunctionRange("foo()",  1,   100),  // outermost
-            new FunctionRange("bar()", 25,   75),   // inlined into foo
-            new FunctionRange("baz()", 35,   45)    // inlined into bar
+                new FunctionRange("foo()", 1, 100),  // outermost
+                new FunctionRange("bar()", 25, 75),   // inlined into foo
+                new FunctionRange("baz()", 35, 45)    // inlined into bar
         );
 
         // Map of query address → expected function
         Map<Integer, String> tests = new LinkedHashMap<>();
-        tests.put( 10, "foo()");    // only foo covers 10
-        tests.put( 30, "bar()");    // foo+bar cover 30, bar is smaller
-        tests.put( 40, "baz()");    // foo+bar+baz cover 40, baz is smallest
-        tests.put( 80, "foo()");    // only foo covers 80
+        tests.put(10, "foo()");    // only foo covers 10
+        tests.put(30, "bar()");    // foo+bar cover 30, bar is smaller
+        tests.put(40, "baz()");    // foo+bar+baz cover 40, baz is smallest
+        tests.put(80, "foo()");    // only foo covers 80
         tests.put(200, "NOT_FOUND");// no function covers 200
 
         System.out.println("=== Small Test Suite ===");
@@ -142,8 +129,8 @@ public class FunctionInliningResolver {
             String actual = resolveAddress(funcs, addr);
             // Print PASS or FAIL
             System.out.printf("Address %3d: expected=%-11s actual=%-11s %s%n",
-                addr, expected, actual,
-                expected.equals(actual) ? "PASS" : "FAIL");
+                    addr, expected, actual,
+                    expected.equals(actual) ? "PASS" : "FAIL");
         });
 
         // --- Large data test to demonstrate handling big inputs ---
@@ -160,7 +147,20 @@ public class FunctionInliningResolver {
         // We expect the last one f10000 (smallest span among all that include it)
         System.out.println("\n=== Large Data Test ===");
         System.out.printf("Address %d → %s (%s)%n",
-            query, insideMost,
-            insideMost.equals("f" + MAX) ? "PASS" : "FAIL");
+                query, insideMost,
+                insideMost.equals("f" + MAX) ? "PASS" : "FAIL");
+    }
+
+    // Simple class to hold a function's name and its address range
+    static class FunctionRange {
+        String name;   // function name
+        int start;     // inclusive start address
+        int end;       // inclusive end address
+
+        FunctionRange(String name, int start, int end) {
+            this.name = name;
+            this.start = start;
+            this.end = end;
+        }
     }
 }

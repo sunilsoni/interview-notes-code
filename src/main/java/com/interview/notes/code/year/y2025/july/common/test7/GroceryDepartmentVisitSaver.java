@@ -2,7 +2,6 @@ package com.interview.notes.code.year.y2025.july.common.test7;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -10,53 +9,55 @@ import java.util.stream.IntStream;
  * GroceryDepartmentVisitSaver
  * ---------------------------------
  * Problem:
- *   You have an unsorted master catalog of products -> departments and a shopping list (ordered).
- *   If you buy strictly in the given list order you may bounce between departments many times.
- *   Instead, you can optimize by finishing all items from a department before moving to the next department.
- *
+ * You have an unsorted master catalog of products -> departments and a shopping list (ordered).
+ * If you buy strictly in the given list order you may bounce between departments many times.
+ * Instead, you can optimize by finishing all items from a department before moving to the next department.
+ * <p>
  * Goal:
- *   Return the time saved measured as the number of department visits eliminated:
- *       timeSaved = (visits when following list order) - (visits when grouping by department).
- *
+ * Return the time saved measured as the number of department visits eliminated:
+ * timeSaved = (visits when following list order) - (visits when grouping by department).
+ * <p>
  * Definitions:
- *   A "department visit" is counted each time you newly enter a department to pick at least one item.
- *   When following the shopping list order you count a visit the first time you see its department, and again
- *   whenever the next item in the list belongs to a different department than the previous item.
- *   (So visits = number of department runs in the list order.)
- *
- *   When optimizing, you will consolidate all items from the same department into a single continuous visit.
- *   Thus optimized visits = number of *distinct* departments appearing among the needed items.
- *
+ * A "department visit" is counted each time you newly enter a department to pick at least one item.
+ * When following the shopping list order you count a visit the first time you see its department, and again
+ * whenever the next item in the list belongs to a different department than the previous item.
+ * (So visits = number of department runs in the list order.)
+ * <p>
+ * When optimizing, you will consolidate all items from the same department into a single continuous visit.
+ * Thus optimized visits = number of *distinct* departments appearing among the needed items.
+ * <p>
  * Edge Handling:
- *   - If an item in the shopping list has no known department in the catalog, we treat that item as belonging to a
- *     synthetic department named "__UNKNOWN__:<itemName>" so that each unknown item forces its own visit. This is a
- *     conservative choice that does not under-estimate visits. (You may change this policy; see TODO below.)
- *   - Shopping list may contain duplicates; duplicates in the same department and adjacent do NOT add visits; if separated
- *     by items from other departments they do (in the list-order calculation).
- *   - Empty shopping list => 0 visits => 0 time saved.
- *
+ * - If an item in the shopping list has no known department in the catalog, we treat that item as belonging to a
+ * synthetic department named "__UNKNOWN__:<itemName>" so that each unknown item forces its own visit. This is a
+ * conservative choice that does not under-estimate visits. (You may change this policy; see TODO below.)
+ * - Shopping list may contain duplicates; duplicates in the same department and adjacent do NOT add visits; if separated
+ * by items from other departments they do (in the list-order calculation).
+ * - Empty shopping list => 0 visits => 0 time saved.
+ * <p>
  * Complexity:
- *   Let L = shopping list length.
- *   Building item->dept lookup: O(P) where P = number of catalog entries. (Done once.)
- *   Counting original visits: O(L).
- *   Counting optimized visits: O(L) to collect departments then dedupe via HashSet.
- *   Space: O(P + D) where D is #distinct departments encountered in the list.
- *
+ * Let L = shopping list length.
+ * Building item->dept lookup: O(P) where P = number of catalog entries. (Done once.)
+ * Counting original visits: O(L).
+ * Counting optimized visits: O(L) to collect departments then dedupe via HashSet.
+ * Space: O(P + D) where D is #distinct departments encountered in the list.
+ * <p>
  * Why Streams?
- *   We use Java 8 streams where it aids clarity (mapping catalog to Map; gathering departments; generating tests), but we
- *   keep imperative loops in performance-critical or comment-heavy sections for readability in simple language.
- *
+ * We use Java 8 streams where it aids clarity (mapping catalog to Map; gathering departments; generating tests), but we
+ * keep imperative loops in performance-critical or comment-heavy sections for readability in simple language.
+ * <p>
  * Usage:
- *   See main() for demo tests (small, edge, and large randomized stress tests). The program prints PASS/FAIL per test.
- *
+ * See main() for demo tests (small, edge, and large randomized stress tests). The program prints PASS/FAIL per test.
+ * <p>
  * Originality Notes:
- *   - Solution derived from first principles: visits in list order are simply the number of contiguous department blocks.
- *   - Optimized visits equal the count of unique departments required.
- *   - Time saved = difference. Nothing fancy needed; correctness is straightforward to reason about and to test exhaustively.
+ * - Solution derived from first principles: visits in list order are simply the number of contiguous department blocks.
+ * - Optimized visits equal the count of unique departments required.
+ * - Time saved = difference. Nothing fancy needed; correctness is straightforward to reason about and to test exhaustively.
  */
 public class GroceryDepartmentVisitSaver {
 
-    /** Synthetic prefix used when a product cannot be found in the catalog. */
+    /**
+     * Synthetic prefix used when a product cannot be found in the catalog.
+     */
     private static final String UNKNOWN_PREFIX = "__UNKNOWN__:";
 
     /**
@@ -70,7 +71,7 @@ public class GroceryDepartmentVisitSaver {
             // Defensive: skip null / malformed rows.
             if (row == null || row.length < 2) continue;
             String product = row[0];
-            String dept    = row[1];
+            String dept = row[1];
             // Only record if we do not already have a mapping for this product.
             map.putIfAbsent(product, dept);
         }
@@ -128,39 +129,24 @@ public class GroceryDepartmentVisitSaver {
      * ------------------ TEST HARNESS ------------------
      * -------------------------------------------------- */
 
-    /** Simple container to hold a named test case. */
-    private static class TestCase {
-        final String name;                 // Human-friendly label printed in results.
-        final String[][] catalog;          // Master product->dept data.
-        final List<String> shoppingList;   // Ordered shopping list.
-        final Integer expectedSaved;       // Expected time saved; null means auto-calc via reference.
-
-        TestCase(String name, String[][] catalog, List<String> shoppingList, Integer expectedSaved) {
-            this.name = name;
-            this.catalog = catalog;
-            this.shoppingList = shoppingList;
-            this.expectedSaved = expectedSaved;
-        }
-    }
-
     /**
      * Build the sample catalog used in the problem statement.
      */
     private static String[][] sampleCatalog() {
-        return new String[][] {
-                {"Cheese",          "Dairy"},
-                {"Carrots",         "Produce"},
-                {"Potatoes",        "Produce"},
-                {"Canned Tuna",     "Pantry"},
+        return new String[][]{
+                {"Cheese", "Dairy"},
+                {"Carrots", "Produce"},
+                {"Potatoes", "Produce"},
+                {"Canned Tuna", "Pantry"},
                 {"Romaine Lettuce", "Produce"},
-                {"Chocolate Milk",  "Dairy"},
-                {"Flour",           "Pantry"},
+                {"Chocolate Milk", "Dairy"},
+                {"Flour", "Pantry"},
                 {"Iceberg Lettuce", "Produce"},
-                {"Coffee",          "Pantry"},
-                {"Pasta",           "Pantry"},
-                {"Milk",            "Dairy"},
-                {"Blueberries",     "Produce"},
-                {"Pasta Sauce",     "Pantry"}
+                {"Coffee", "Pantry"},
+                {"Pasta", "Pantry"},
+                {"Milk", "Dairy"},
+                {"Blueberries", "Produce"},
+                {"Pasta Sauce", "Pantry"}
         };
     }
 
@@ -169,9 +155,9 @@ public class GroceryDepartmentVisitSaver {
      * We purposely implement in a slightly different way to catch accidental bugs in the main methods.
      */
     private static int referenceTimeSaved(String[][] catalogArr, List<String> list) {
-        Map<String,String> m = Arrays.stream(catalogArr)
+        Map<String, String> m = Arrays.stream(catalogArr)
                 .filter(r -> r != null && r.length >= 2)
-                .collect(Collectors.toMap(r -> r[0], r -> r[1], (a,b) -> a)); // first wins
+                .collect(Collectors.toMap(r -> r[0], r -> r[1], (a, b) -> a)); // first wins
         // visits list order
         int visitsInOrder = 0;
         String prev = null;
@@ -192,7 +178,7 @@ public class GroceryDepartmentVisitSaver {
      * Convenience method to run a single test case and print PASS/FAIL.
      */
     private static void runTest(TestCase tc) {
-        Map<String,String> catalog = buildCatalogLookup(tc.catalog);
+        Map<String, String> catalog = buildCatalogLookup(tc.catalog);
         int actual = timeSaved(catalog, tc.shoppingList);
         int expected = tc.expectedSaved != null ? tc.expectedSaved : referenceTimeSaved(tc.catalog, tc.shoppingList);
         boolean pass = (actual == expected);
@@ -206,9 +192,9 @@ public class GroceryDepartmentVisitSaver {
     /**
      * Generate a large random catalog and shopping list for stress testing performance + correctness.
      *
-     * @param numDepts   number of departments to generate.
-     * @param numProds   number of products.
-     * @param listLen    shopping list length.
+     * @param numDepts number of departments to generate.
+     * @param numProds number of products.
+     * @param listLen  shopping list length.
      */
     private static TestCase randomCase(String name, int numDepts, int numProds, int listLen) {
         ThreadLocalRandom rnd = ThreadLocalRandom.current();
@@ -278,7 +264,7 @@ public class GroceryDepartmentVisitSaver {
         ));
 
         // NOTE: need to correct expected above (typo). We'll temporarily put null and let reference compute.
-        tcs.set(tcs.size()-1, new TestCase(
+        tcs.set(tcs.size() - 1, new TestCase(
                 "BounceBetweenSameDept",
                 cat,
                 Arrays.asList("Cheese", "Coffee", "Milk", "Pasta", "Chocolate Milk"),
@@ -326,6 +312,23 @@ public class GroceryDepartmentVisitSaver {
         long start = System.currentTimeMillis();
         tests.forEach(GroceryDepartmentVisitSaver::runTest);
         long end = System.currentTimeMillis();
-        System.out.printf("--- Completed %d tests in %d ms ---%n", tests.size(), (end-start));
+        System.out.printf("--- Completed %d tests in %d ms ---%n", tests.size(), (end - start));
+    }
+
+    /**
+     * Simple container to hold a named test case.
+     */
+    private static class TestCase {
+        final String name;                 // Human-friendly label printed in results.
+        final String[][] catalog;          // Master product->dept data.
+        final List<String> shoppingList;   // Ordered shopping list.
+        final Integer expectedSaved;       // Expected time saved; null means auto-calc via reference.
+
+        TestCase(String name, String[][] catalog, List<String> shoppingList, Integer expectedSaved) {
+            this.name = name;
+            this.catalog = catalog;
+            this.shoppingList = shoppingList;
+            this.expectedSaved = expectedSaved;
+        }
     }
 }

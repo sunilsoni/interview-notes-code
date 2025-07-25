@@ -1,10 +1,9 @@
 package com.interview.notes.code.year.y2025.july.common.test7;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.stream.IntStream;
 
 public class NStableSubarray {
-    
+
     // Main method to find longest N-stable subarray length
     public static int findLongestNStableSubarray(int[] arr, int N) {
         // Handle edge case where array is empty or has only one element
@@ -61,8 +60,8 @@ public class NStableSubarray {
 
         // Test Case 6: Large array test (generated dynamically)
         int[] largeArray = IntStream.range(0, 100000)
-                                  .map(i -> i % 10)
-                                  .toArray();
+                .map(i -> i % 10)
+                .toArray();
         test(largeArray, 2, 10);
     }
 
