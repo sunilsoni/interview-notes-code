@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.july.codesignal.test4;
 
 import java.util.*;
+
 /*
 Here is the complete and properly formatted version of the **third coding question**:
 
@@ -124,17 +125,17 @@ public class TravelJourney {
     public static void main(String[] args) {
         // Tests
         int[][][] tests = {
-            {{3, 5}, {1, 4}, {2, 4}, {1, 5}},
-            {{1, 2}, {2, 3}, {3, 4}},
-            {{10, 20}},
-            {{100, 200}, {200, 300}, {300, 400}, {400, 500}, {500, 600}},
+                {{3, 5}, {1, 4}, {2, 4}, {1, 5}},
+                {{1, 2}, {2, 3}, {3, 4}},
+                {{10, 20}},
+                {{100, 200}, {200, 300}, {300, 400}, {400, 500}, {500, 600}},
         };
 
         int[][] expected = {
-            {3, 5, 1, 4, 2},
-            {1, 2, 3, 4},
-            {10, 20},
-            {100, 200, 300, 400, 500, 600}
+                {3, 5, 1, 4, 2},
+                {1, 2, 3, 4},
+                {10, 20},
+                {100, 200, 300, 400, 500, 600}
         };
 
         for (int i = 0; i < tests.length; i++) {

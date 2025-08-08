@@ -1,18 +1,17 @@
 package com.interview.notes.code.year.y2025.july.apple.test2;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class WordLadder {
 
     // Main method to execute tests
     public static void main(String[] args) {
-        test("hit", "cog", Arrays.asList("hot","dot","dog","lot","log","cog"), 5);
-        test("hit", "cog", Arrays.asList("hot","dot","dog","lot","log"), 0);
+        test("hit", "cog", Arrays.asList("hot", "dot", "dog", "lot", "log", "cog"), 5);
+        test("hit", "cog", Arrays.asList("hot", "dot", "dog", "lot", "log"), 0);
 
         // Large test case for performance check
         List<String> largeWordList = new ArrayList<>();
-        for(int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 10000; i++) {
             largeWordList.add("hit" + i);
         }
         largeWordList.add("cog");
@@ -22,7 +21,7 @@ public class WordLadder {
     // Helper method to perform tests and output pass/fail
     private static void test(String begin, String end, List<String> wordList, int expectedLength) {
         int result = ladderLength(begin, end, wordList);
-        if(result == expectedLength) {
+        if (result == expectedLength) {
             System.out.println("Test PASSED. Expected: " + expectedLength + " Got: " + result);
         } else {
             System.out.println("Test FAILED. Expected: " + expectedLength + " Got: " + result);

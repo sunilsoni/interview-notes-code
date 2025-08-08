@@ -48,13 +48,13 @@ public class LandmarkJourney {
 
     // Main for testing
     public static void main(String[] args) {
-        int[][] photos1 = {{3,5}, {1,4}, {2,4}, {1,5}};
+        int[][] photos1 = {{3, 5}, {1, 4}, {2, 4}, {1, 5}};
         System.out.println(Arrays.toString(solution(photos1))); // [3, 5, 1, 4, 2] or [2, 4, 1, 5, 3]
 
-        int[][] photos2 = {{1,2},{2,3},{3,4},{4,5}};
+        int[][] photos2 = {{1, 2}, {2, 3}, {3, 4}, {4, 5}};
         System.out.println(Arrays.toString(solution(photos2))); // [1,2,3,4,5] or [5,4,3,2,1]
 
-        int[][] photos3 = {{100,200}};
+        int[][] photos3 = {{100, 200}};
         System.out.println(Arrays.toString(solution(photos3))); // [100,200] or [200,100]
     }
 }

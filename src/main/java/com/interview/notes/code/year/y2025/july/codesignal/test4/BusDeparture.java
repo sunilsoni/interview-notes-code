@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.july.codesignal.test4;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalInt;
+
 /*
 Here is the complete and properly formatted version of the problem statement based on the images you provided:
 
@@ -73,7 +75,7 @@ Would you like the full Java 8 implementation with a `main` method for testing?
  */
 public class BusDeparture {
 
-    /** 
+    /**
      * Returns minutes since the last bus departed before current_time,
      * or –1 if no bus has left yet.
      */
@@ -83,16 +85,18 @@ public class BusDeparture {
         // Stream through departures, convert to minutes, keep only those < now,
         // then take the max (most recent). If none, return -1.
         OptionalInt last = Arrays.stream(departure_times)
-            .mapToInt(BusDeparture::toMinutes)
-            .filter(min -> min < now)
-            .max();
+                .mapToInt(BusDeparture::toMinutes)
+                .filter(min -> min < now)
+                .max();
 
         return last.isPresent()
-            ? now - last.getAsInt()
-            : -1;
+                ? now - last.getAsInt()
+                : -1;
     }
 
-    /** Helper to convert "HH:MM" → total minutes since midnight. */
+    /**
+     * Helper to convert "HH:MM" → total minutes since midnight.
+     */
     private static int toMinutes(String hhmm) {
         String[] parts = hhmm.split(":");
         int h = Integer.parseInt(parts[0]);
@@ -100,37 +104,40 @@ public class BusDeparture {
         return h * 60 + m;
     }
 
-    /** Simple test holder. */
-    private static class Test {
-        String[] departures;
-        String current;
-        int expected;
-        Test(String[] d, String c, int e) {
-            departures = d;
-            current = c;
-            expected = e;
-        }
-    }
-
     public static void main(String[] args) {
         List<Test> tests = Arrays.asList(
-            new Test(new String[]{"12:30","14:00","19:55"}, "14:30", 30),
-            new Test(new String[]{"00:00","14:00","19:55"}, "00:00", -1),
-            new Test(new String[]{"12:30","14:00","19:55"}, "14:00", 90),
-            new Test(new String[]{"08:15","08:45","09:00"}, "08:30", 15),
-            new Test(new String[]{"23:00","23:30","23:59"}, "00:10", -1)
+                new Test(new String[]{"12:30", "14:00", "19:55"}, "14:30", 30),
+                new Test(new String[]{"00:00", "14:00", "19:55"}, "00:00", -1),
+                new Test(new String[]{"12:30", "14:00", "19:55"}, "14:00", 90),
+                new Test(new String[]{"08:15", "08:45", "09:00"}, "08:30", 15),
+                new Test(new String[]{"23:00", "23:30", "23:59"}, "00:10", -1)
         );
 
         for (Test t : tests) {
             int result = solution(t.departures, t.current);
             if (result == t.expected) {
                 System.out.println("PASS: current=" + t.current +
-                                   ", got " + result);
+                        ", got " + result);
             } else {
                 System.out.println("FAIL: current=" + t.current +
-                                   ", expected " + t.expected +
-                                   ", got " + result);
+                        ", expected " + t.expected +
+                        ", got " + result);
             }
+        }
+    }
+
+    /**
+     * Simple test holder.
+     */
+    private static class Test {
+        String[] departures;
+        String current;
+        int expected;
+
+        Test(String[] d, String c, int e) {
+            departures = d;
+            current = c;
+            expected = e;
         }
     }
 }

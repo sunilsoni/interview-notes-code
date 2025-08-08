@@ -1,8 +1,10 @@
 package com.interview.notes.code.year.y2025.july.common.test11;
 
-import java.util.*;                                    // for Map, LinkedHashMap, Arrays
-import java.util.function.Function;                    // for Function.identity()
-import java.util.stream.Collectors;                    // for Collectors
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class WordFrequency {                            // Class to hold our methods
 
@@ -57,17 +59,17 @@ public class WordFrequency {                            // Class to hold our met
      *
      * @param text the input string (one or two lines)
      * @return a LinkedHashMap mapping each word to its frequency,
-     *         in the order words first appear
+     * in the order words first appear
      */
     public static Map<String, Long> countWordFrequency(String text) {                 // method to do counting
         return Arrays.stream(text                                              // turn the text into a stream
-                .toLowerCase()                                                  // make lowercase for uniformity
-                .split("\\s+"))                                                 // split on any whitespace
-            .filter(word -> !word.isEmpty())                                     // skip empty strings
-            .collect(Collectors.groupingBy(                                      // group words
-                Function.identity(),                                             // word itself is the key
-                LinkedHashMap::new,                                              // preserve insertion order
-                Collectors.counting()                                            // count occurrences
-            ));
+                        .toLowerCase()                                                  // make lowercase for uniformity
+                        .split("\\s+"))                                                 // split on any whitespace
+                .filter(word -> !word.isEmpty())                                     // skip empty strings
+                .collect(Collectors.groupingBy(                                      // group words
+                        Function.identity(),                                             // word itself is the key
+                        LinkedHashMap::new,                                              // preserve insertion order
+                        Collectors.counting()                                            // count occurrences
+                ));
     }
 }

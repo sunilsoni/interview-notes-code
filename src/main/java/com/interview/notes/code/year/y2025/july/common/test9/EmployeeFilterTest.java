@@ -1,87 +1,35 @@
 package com.interview.notes.code.year.y2025.july.common.test9;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 public class EmployeeFilterTest {
-
-    // Define the Employee class with name, age, and salary
-    static class Employee {
-        private String name;    // employee's name
-        private int age;        // employee's age
-        private double salary;  // employee's salary
-
-        // Constructor to set all fields when creating an Employee
-        public Employee(String name, int age, double salary) {
-            this.name = name;
-            this.age = age;
-            this.salary = salary;
-        }
-
-        // Getter for name
-        public String getName() {
-            return name;
-        }
-
-        // Getter for age
-        public int getAge() {
-            return age;
-        }
-
-        // Getter for salary
-        public double getSalary() {
-            return salary;
-        }
-
-        // Override equals so we can compare Employee objects in tests
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;                              // same reference?
-            if (o == null || getClass() != o.getClass()) return false; // null or different class?
-            Employee that = (Employee) o;                             // safe cast
-            return age == that.age                                   // compare age
-                && Double.compare(that.salary, salary) == 0          // compare salary
-                && Objects.equals(name, that.name);                  // compare name
-        }
-
-        // Override hashCode whenever equals is overridden
-        @Override
-        public int hashCode() {
-            return Objects.hash(name, age, salary);                  // generate hash
-        }
-
-        // Override toString for easy printing
-        @Override
-        public String toString() {
-            return name + " (" + age + ", " + salary + ")";          // show name, age, salary
-        }
-    }
 
     // Method that filters and sorts the list as required
     public static List<Employee> filterAndSort(List<Employee> employees) {
         return employees.stream()                                       // start a stream
-            .filter(e -> e.getAge() > 30                               // keep only age > 30
-                      && e.getSalary() > 10000)                        // and salary > 10000
-            .sorted(Comparator.comparing(Employee::getName))           // sort by name
-            .collect(Collectors.toList());                             // collect back to list
+                .filter(e -> e.getAge() > 30                               // keep only age > 30
+                        && e.getSalary() > 10000)                        // and salary > 10000
+                .sorted(Comparator.comparing(Employee::getName))           // sort by name
+                .collect(Collectors.toList());                             // collect back to list
     }
 
     // Simple main method to run tests and large-data check
     public static void main(String[] args) {
         // --- Test case 1: Sample data from the prompt ---
         List<Employee> sample = Arrays.asList(
-            new Employee("John", 35, 12000),
-            new Employee("Alice", 28, 15000),
-            new Employee("Buck", 40, 9500),
-            new Employee("Catherine", 45, 20000),
-            new Employee("Daniel", 32, 11000)
+                new Employee("John", 35, 12000),
+                new Employee("Alice", 28, 15000),
+                new Employee("Buck", 40, 9500),
+                new Employee("Catherine", 45, 20000),
+                new Employee("Daniel", 32, 11000)
         );
 
         // Expected result after filtering+sorting:
         List<Employee> expected = Arrays.asList(
-            new Employee("Catherine", 45, 20000),
-            new Employee("Daniel",   32, 11000),
-            new Employee("John",     35, 12000)
+                new Employee("Catherine", 45, 20000),
+                new Employee("Daniel", 32, 11000),
+                new Employee("John", 35, 12000)
         );
 
         // Run the method under test
@@ -118,5 +66,57 @@ public class EmployeeFilterTest {
         System.out.println("Large data test: input size = " + largeSize);
         System.out.println("Filtered size = " + filtered.size());
         System.out.println("Time taken = " + (end - start) + " ms");
+    }
+
+    // Define the Employee class with name, age, and salary
+    static class Employee {
+        private String name;    // employee's name
+        private int age;        // employee's age
+        private double salary;  // employee's salary
+
+        // Constructor to set all fields when creating an Employee
+        public Employee(String name, int age, double salary) {
+            this.name = name;
+            this.age = age;
+            this.salary = salary;
+        }
+
+        // Getter for name
+        public String getName() {
+            return name;
+        }
+
+        // Getter for age
+        public int getAge() {
+            return age;
+        }
+
+        // Getter for salary
+        public double getSalary() {
+            return salary;
+        }
+
+        // Override equals so we can compare Employee objects in tests
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;                              // same reference?
+            if (o == null || getClass() != o.getClass()) return false; // null or different class?
+            Employee that = (Employee) o;                             // safe cast
+            return age == that.age                                   // compare age
+                    && Double.compare(that.salary, salary) == 0          // compare salary
+                    && Objects.equals(name, that.name);                  // compare name
+        }
+
+        // Override hashCode whenever equals is overridden
+        @Override
+        public int hashCode() {
+            return Objects.hash(name, age, salary);                  // generate hash
+        }
+
+        // Override toString for easy printing
+        @Override
+        public String toString() {
+            return name + " (" + age + ", " + salary + ")";          // show name, age, salary
+        }
     }
 }

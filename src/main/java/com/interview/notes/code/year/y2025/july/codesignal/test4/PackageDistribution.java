@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.july.codesignal.test4;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class PackageDistribution {
@@ -69,8 +71,8 @@ public class PackageDistribution {
         // Provided example test case
         int[] capacities1 = {1, 2, 1, 2, 1};
         String[] dailyLog1 = {
-            "PACKAGE", "PACKAGE", "CLOSURE 2", "PACKAGE",
-            "CLOSURE 3", "PACKAGE", "PACKAGE"
+                "PACKAGE", "PACKAGE", "CLOSURE 2", "PACKAGE",
+                "CLOSURE 3", "PACKAGE", "PACKAGE"
         };
         runTest(capacities1, dailyLog1, 1, "Example Test Case");
 
@@ -83,7 +85,7 @@ public class PackageDistribution {
         // Additional test case: closure on all but one
         int[] capacities3 = {3, 3, 3};
         String[] dailyLog3 = {
-            "CLOSURE 0", "CLOSURE 1", "PACKAGE", "PACKAGE", "PACKAGE"
+                "CLOSURE 0", "CLOSURE 1", "PACKAGE", "PACKAGE", "PACKAGE"
         };
         // Only center 2 open and processes all 3 packages
         runTest(capacities3, dailyLog3, 2, "Only One Center Open");

@@ -1,6 +1,6 @@
 package com.interview.notes.code.year.y2025.july.common.test9;
 
-import java.util.*;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -32,8 +32,8 @@ public class RepeatedCharsFinder {
         if (result.equals(expected)) {
             System.out.println(testName + ": PASS");
         } else {
-            System.out.println(testName + ": FAIL (expected=" 
-                               + expected + ", got=" + result + ")");
+            System.out.println(testName + ": FAIL (expected="
+                    + expected + ", got=" + result + ")");
         }
     }
 
@@ -41,21 +41,21 @@ public class RepeatedCharsFinder {
     public static String findRepeatedChars(String input) {
         // 1. Count how many times each character appears
         Map<Character, Long> freqMap = input
-            .chars()                                           // turn String into IntStream of char codes
-            .mapToObj(c -> (char) c)                           // box each int to Character
-            .collect(Collectors.groupingBy(
-                Function.identity(),                          // group by the character itself
-                Collectors.counting()                         // count occurrences
-            ));
+                .chars()                                           // turn String into IntStream of char codes
+                .mapToObj(c -> (char) c)                           // box each int to Character
+                .collect(Collectors.groupingBy(
+                        Function.identity(),                          // group by the character itself
+                        Collectors.counting()                         // count occurrences
+                ));
 
         // 2. Stream again, keep only first occurrence of each
         //    and filter those whose count > 1, then join into a String
         return input
-            .chars()                                           // stream character codes again
-            .mapToObj(c -> (char) c)                           // box to Character
-            .distinct()                                        // only let each character pass once
-            .filter(ch -> freqMap.get(ch) > 1)                 // keep only repeated chars
-            .map(String::valueOf)                              // convert Character to String
-            .collect(Collectors.joining());                   // concatenate into one String
+                .chars()                                           // stream character codes again
+                .mapToObj(c -> (char) c)                           // box to Character
+                .distinct()                                        // only let each character pass once
+                .filter(ch -> freqMap.get(ch) > 1)                 // keep only repeated chars
+                .map(String::valueOf)                              // convert Character to String
+                .collect(Collectors.joining());                   // concatenate into one String
     }
 }

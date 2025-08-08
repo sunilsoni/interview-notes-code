@@ -16,8 +16,13 @@ final class Address {
     }
 
     // Getters only - no setters to maintain immutability
-    public String getStreet() { return street; }
-    public String getCity() { return city; }
+    public String getStreet() {
+        return street;
+    }
+
+    public String getCity() {
+        return city;
+    }
 
     // Override toString for better object representation
     @Override
@@ -36,27 +41,20 @@ final class ImmutableEmployee {
     private final Map<String, String> attributes;
 
     // Constructor with validation
-    public ImmutableEmployee(String employeeId, String name, Address address, 
-                           Date joiningDate, Map<String, String> attributes) {
+    public ImmutableEmployee(String employeeId, String name, Address address,
+                             Date joiningDate, Map<String, String> attributes) {
         // Validate all inputs
         this.employeeId = Objects.requireNonNull(employeeId, "Employee ID cannot be null");
         this.name = Objects.requireNonNull(name, "Name cannot be null");
         this.address = Objects.requireNonNull(address, "Address cannot be null");
-        
+
         // Create defensive copy of mutable Date object
         this.joiningDate = new Date(Objects.requireNonNull(joiningDate).getTime());
-        
+
         // Create defensive copy of mutable Map
         this.attributes = Collections.unmodifiableMap(
-            new HashMap<>(Objects.requireNonNull(attributes, "Attributes cannot be null")));
+                new HashMap<>(Objects.requireNonNull(attributes, "Attributes cannot be null")));
     }
-
-    // Getters with defensive copies where needed
-    public String getEmployeeId() { return employeeId; }
-    public String getName() { return name; }
-    public Address getAddress() { return address; }
-    public Date getJoiningDate() { return new Date(joiningDate.getTime()); }
-    public Map<String, String> getAttributes() { return attributes; }
 
     // Main method for testing
     public static void main(String[] args) {
@@ -67,11 +65,11 @@ final class ImmutableEmployee {
             attrs.put("position", "Developer");
 
             ImmutableEmployee emp = new ImmutableEmployee(
-                "E001", 
-                "John Doe",
-                new Address("123 Main St", "New York"),
-                new Date(),
-                attrs
+                    "E001",
+                    "John Doe",
+                    new Address("123 Main St", "New York"),
+                    new Date(),
+                    attrs
             );
 
             System.out.println("Test 1 - Basic Creation: PASS");
@@ -87,8 +85,8 @@ final class ImmutableEmployee {
 
             // Test null values
             try {
-                new ImmutableEmployee(null, "Name", 
-                    new Address("Street", "City"), new Date(), new HashMap<>());
+                new ImmutableEmployee(null, "Name",
+                        new Address("Street", "City"), new Date(), new HashMap<>());
                 System.out.println("Test 3 - Null Validation: FAIL");
             } catch (NullPointerException e) {
                 System.out.println("Test 3 - Null Validation: PASS");
@@ -100,10 +98,10 @@ final class ImmutableEmployee {
                 largeMap.put("key" + i, "value" + i);
             }
             ImmutableEmployee largeEmp = new ImmutableEmployee(
-                "E002", "Jane Doe",
-                new Address("456 Oak St", "Boston"),
-                new Date(),
-                largeMap
+                    "E002", "Jane Doe",
+                    new Address("456 Oak St", "Boston"),
+                    new Date(),
+                    largeMap
             );
             System.out.println("Test 4 - Large Data: PASS");
 
@@ -112,15 +110,36 @@ final class ImmutableEmployee {
         }
     }
 
+    // Getters with defensive copies where needed
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public Date getJoiningDate() {
+        return new Date(joiningDate.getTime());
+    }
+
+    public Map<String, String> getAttributes() {
+        return attributes;
+    }
+
     // Override toString for better object representation
     @Override
     public String toString() {
         return "ImmutableEmployee{" +
-               "employeeId='" + employeeId + '\'' +
-               ", name='" + name + '\'' +
-               ", address=" + address +
-               ", joiningDate=" + joiningDate +
-               ", attributes=" + attributes +
-               '}';
+                "employeeId='" + employeeId + '\'' +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                ", joiningDate=" + joiningDate +
+                ", attributes=" + attributes +
+                '}';
     }
 }

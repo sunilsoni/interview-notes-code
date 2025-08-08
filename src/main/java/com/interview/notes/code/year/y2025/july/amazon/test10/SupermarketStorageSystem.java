@@ -10,6 +10,7 @@ public class SupermarketStorageSystem {
     // Main inventory storage: maps product IDs to their batches
     private final Map<Integer, List<Batch>> inventory;  // Store products and their batches
     private long timestampCounter = 0;                  // Counter for generating unique timestamps
+
     // Initialize empty inventory
     public SupermarketStorageSystem() {
         inventory = new HashMap<>();                    // Create empty inventory map

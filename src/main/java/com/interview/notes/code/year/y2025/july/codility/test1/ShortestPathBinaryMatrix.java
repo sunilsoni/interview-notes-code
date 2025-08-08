@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.july.codility.test1;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class ShortestPathBinaryMatrix {
@@ -13,7 +16,7 @@ public class ShortestPathBinaryMatrix {
      */
     public static int shortestPathBinaryMatrix(int[][] grid) {
         int n = grid.length;
-        if (grid[0][0] != 0 || grid[n-1][n-1] != 0) return -1;
+        if (grid[0][0] != 0 || grid[n - 1][n - 1] != 0) return -1;
         if (n == 1) return 1;
 
         boolean[][] seen = new boolean[n][n];
@@ -22,14 +25,14 @@ public class ShortestPathBinaryMatrix {
         seen[0][0] = true;
 
         int[][] dirs = {
-            {1,0}, {-1,0}, {0,1}, {0,-1},
-            {1,1}, {1,-1}, {-1,1}, {-1,-1}
+                {1, 0}, {-1, 0}, {0, 1}, {0, -1},
+                {1, 1}, {1, -1}, {-1, 1}, {-1, -1}
         };
 
         while (!queue.isEmpty()) {
             int[] cur = queue.poll();
             int r = cur[0], c = cur[1], d = cur[2];
-            if (r == n-1 && c == n-1) return d;
+            if (r == n - 1 && c == n - 1) return d;
 
             for (int[] dir : dirs) {
                 int dr = dir[0], dc = dir[1];
@@ -53,57 +56,48 @@ public class ShortestPathBinaryMatrix {
         return -1;
     }
 
-    private static class TestCase {
-        final int[][] grid;
-        final int expected;
-        TestCase(int[][] grid, int expected) {
-            this.grid = grid;
-            this.expected = expected;
-        }
-    }
-
     public static void main(String[] args) {
         List<TestCase> tests = Arrays.asList(
-            // Example 1
-            new TestCase(
-                new int[][] {
-                    {0,0,0},
-                    {1,1,0},
-                    {1,1,0}
-                },
-                4
-            ),
-            // Example 2 (should now be -1)
-            new TestCase(
-                new int[][] {
-                    {0,1},
-                    {1,0}
-                },
-                -1
-            ),
-            // Edge: start blocked
-            new TestCase(
-                new int[][] {
-                    {1,0,0},
-                    {0,0,0},
-                    {0,0,0}
-                },
-                -1
-            ),
-            // Single 0 cell
-            new TestCase(
-                new int[][] {
-                    {0}
-                },
-                1
-            ),
-            // Single 1 cell
-            new TestCase(
-                new int[][] {
-                    {1}
-                },
-                -1
-            )
+                // Example 1
+                new TestCase(
+                        new int[][]{
+                                {0, 0, 0},
+                                {1, 1, 0},
+                                {1, 1, 0}
+                        },
+                        4
+                ),
+                // Example 2 (should now be -1)
+                new TestCase(
+                        new int[][]{
+                                {0, 1},
+                                {1, 0}
+                        },
+                        -1
+                ),
+                // Edge: start blocked
+                new TestCase(
+                        new int[][]{
+                                {1, 0, 0},
+                                {0, 0, 0},
+                                {0, 0, 0}
+                        },
+                        -1
+                ),
+                // Single 0 cell
+                new TestCase(
+                        new int[][]{
+                                {0}
+                        },
+                        1
+                ),
+                // Single 1 cell
+                new TestCase(
+                        new int[][]{
+                                {1}
+                        },
+                        -1
+                )
         );
 
         System.out.println("Running small test cases:");
@@ -113,17 +107,17 @@ public class ShortestPathBinaryMatrix {
             int result = shortestPathBinaryMatrix(t.grid);
             boolean pass = result == t.expected;
             System.out.printf(" Test %d: %s (expected=%d, got=%d)%n",
-                i+1, pass ? "PASS" : "FAIL", t.expected, result);
+                    i + 1, pass ? "PASS" : "FAIL", t.expected, result);
             if (pass) passCount++;
         }
         System.out.printf("Passed %d/%d small tests.%n%n",
-            passCount, tests.size());
+                passCount, tests.size());
 
         // Large-grid performance test
         int n = 500;
         int[][] largeGrid = IntStream.range(0, n)
-            .mapToObj(i -> IntStream.generate(() -> 0).limit(n).toArray())
-            .toArray(int[][]::new);
+                .mapToObj(i -> IntStream.generate(() -> 0).limit(n).toArray())
+                .toArray(int[][]::new);
 
         int expectedLarge = n;
         System.out.printf("Running large %dx%d all-zero grid test...%n", n, n);
@@ -132,6 +126,16 @@ public class ShortestPathBinaryMatrix {
         long elapsed = System.currentTimeMillis() - start;
         boolean largePass = largeResult == expectedLarge;
         System.out.printf(" Large Test: %s (expected=%d, got=%d) in %d ms%n",
-            largePass ? "PASS" : "FAIL", expectedLarge, largeResult, elapsed);
+                largePass ? "PASS" : "FAIL", expectedLarge, largeResult, elapsed);
+    }
+
+    private static class TestCase {
+        final int[][] grid;
+        final int expected;
+
+        TestCase(int[][] grid, int expected) {
+            this.grid = grid;
+            this.expected = expected;
+        }
     }
 }

@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.august.common.test11;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 // === Locked stub code ===
 abstract class Cuisine {
@@ -21,7 +25,8 @@ class FoodFactory {
     private static final FoodFactory INSTANCE = new FoodFactory();
     private final Map<String, Cuisine> registry = new HashMap<>();
 
-    private FoodFactory() { }
+    private FoodFactory() {
+    }
 
     public static FoodFactory getFactory() {
         return INSTANCE;
@@ -36,7 +41,7 @@ class FoodFactory {
         Cuisine c = registry.get(cuisineKey);
         if (c == null) {
             throw new UnservableCuisineRequestException(
-                "Unservable cuisine " + cuisineKey + " for dish " + dish
+                    "Unservable cuisine " + cuisineKey + " for dish " + dish
             );
         }
         // delegate to the cuisine’s serveFood, which returns
@@ -51,41 +56,64 @@ class ChineseCuisine extends Cuisine {
     public Cuisine serveFood(String dish) {
         // return an anonymous Cuisine whose toString() prints our message
         return new Cuisine() {
-            @Override public Cuisine serveFood(String d) { return this; }
-            @Override public String toString() {
+            @Override
+            public Cuisine serveFood(String d) {
+                return this;
+            }
+
+            @Override
+            public String toString() {
                 return "Serving " + dish + "(Chinese)";
             }
         };
     }
 }
+
 class ItalianCuisine extends Cuisine {
     @Override
     public Cuisine serveFood(String dish) {
         return new Cuisine() {
-            @Override public Cuisine serveFood(String d) { return this; }
-            @Override public String toString() {
+            @Override
+            public Cuisine serveFood(String d) {
+                return this;
+            }
+
+            @Override
+            public String toString() {
                 return "Serving " + dish + "(Italian)";
             }
         };
     }
 }
+
 class JapaneseCuisine extends Cuisine {
     @Override
     public Cuisine serveFood(String dish) {
         return new Cuisine() {
-            @Override public Cuisine serveFood(String d) { return this; }
-            @Override public String toString() {
+            @Override
+            public Cuisine serveFood(String d) {
+                return this;
+            }
+
+            @Override
+            public String toString() {
                 return "Serving " + dish + "(Japanese)";
             }
         };
     }
 }
+
 class MexicanCuisine extends Cuisine {
     @Override
     public Cuisine serveFood(String dish) {
         return new Cuisine() {
-            @Override public Cuisine serveFood(String d) { return this; }
-            @Override public String toString() {
+            @Override
+            public Cuisine serveFood(String d) {
+                return this;
+            }
+
+            @Override
+            public String toString() {
                 return "Serving " + dish + "(Mexican)";
             }
         };
@@ -95,11 +123,17 @@ class MexicanCuisine extends Cuisine {
 // Simple structs for our tests
 class Order {
     final String key, dish;
-    Order(String key, String dish) { this.key = key; this.dish = dish; }
+
+    Order(String key, String dish) {
+        this.key = key;
+        this.dish = dish;
+    }
 }
+
 class TestCase {
     final List<Order> orders;
     final List<String> expected;
+
     TestCase(List<Order> orders, List<String> expected) {
         this.orders = orders;
         this.expected = expected;
@@ -109,10 +143,10 @@ class TestCase {
 public class FoodFactoryTest {
     // Helper to register all built-ins once
     private static void registerBuiltIns(FoodFactory f) {
-        f.registerCuisine("Chinese",  new ChineseCuisine());
-        f.registerCuisine("Italian",  new ItalianCuisine());
+        f.registerCuisine("Chinese", new ChineseCuisine());
+        f.registerCuisine("Italian", new ItalianCuisine());
         f.registerCuisine("Japanese", new JapaneseCuisine());
-        f.registerCuisine("Mexican",  new MexicanCuisine());
+        f.registerCuisine("Mexican", new MexicanCuisine());
     }
 
     // Run through the orders and collect their messages
@@ -132,20 +166,20 @@ public class FoodFactoryTest {
 
     public static void main(String[] args) {
         List<TestCase> tests = Arrays.asList(
-            // --- Sample from prompt ---
-            new TestCase(
-                Arrays.asList(
-                    new Order("Italian",  "Lasagne"),
-                    new Order("Japanese", "Kamameshi"),
-                    new Order("Polish",   "Marjoram")
-                ),
-                Arrays.asList(
-                    "Serving Lasagne(Italian)",
-                    "Serving Kamameshi(Japanese)",
-                    "Unservable cuisine Polish for dish Marjoram"
+                // --- Sample from prompt ---
+                new TestCase(
+                        Arrays.asList(
+                                new Order("Italian", "Lasagne"),
+                                new Order("Japanese", "Kamameshi"),
+                                new Order("Polish", "Marjoram")
+                        ),
+                        Arrays.asList(
+                                "Serving Lasagne(Italian)",
+                                "Serving Kamameshi(Japanese)",
+                                "Unservable cuisine Polish for dish Marjoram"
+                        )
                 )
-            )
-            // ← add more TestCase(...) here as needed
+                // ← add more TestCase(...) here as needed
         );
 
         // Run each named test
@@ -153,7 +187,7 @@ public class FoodFactoryTest {
             TestCase tc = tests.get(i);
             List<String> actual = processOrders(tc.orders);
             boolean pass = actual.equals(tc.expected);
-            System.out.println("Test Case " + (i+1) + ": " + (pass ? "PASS" : "FAIL"));
+            System.out.println("Test Case " + (i + 1) + ": " + (pass ? "PASS" : "FAIL"));
             if (!pass) {
                 System.out.println("  Expected: " + tc.expected);
                 System.out.println("  Actual:   " + actual);
@@ -163,11 +197,11 @@ public class FoodFactoryTest {
         // --- Large-input performance check ---
         int N = 50_000;
         List<Order> large = IntStream.range(0, N)
-            .mapToObj(i -> new Order("Italian", "Dish" + i))
-            .collect(Collectors.toList());
+                .mapToObj(i -> new Order("Italian", "Dish" + i))
+                .collect(Collectors.toList());
         List<String> largeResult = processOrders(large);
         boolean largeOk = largeResult.size() == N
-            && largeResult.stream().allMatch(s -> s.startsWith("Serving Dish"));
+                && largeResult.stream().allMatch(s -> s.startsWith("Serving Dish"));
         System.out.println("Large Test Case: " + (largeOk ? "PASS" : "FAIL"));
     }
 }

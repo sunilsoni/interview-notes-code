@@ -7,6 +7,7 @@ public class SupermarketStorageSystem {
 
     private final Map<Integer, List<Batch>> inventory;     // Map productId → list of batches
     private long timestampCounter = 0;                     // Monotonic counter for timestamps
+
     // Constructor: initialize the inventory map
     public SupermarketStorageSystem() {
         inventory = new HashMap<>();                        // Create empty HashMap

@@ -1,8 +1,8 @@
 package com.interview.notes.code.year.y2025.august.common.test3;
 
 public class HelloGreetThread {
-    private static volatile boolean isHelloTurn = true;
     private static final Object lock = new Object();
+    private static volatile boolean isHelloTurn = true;
 
     public static void main(String[] args) {
         // Hello Thread

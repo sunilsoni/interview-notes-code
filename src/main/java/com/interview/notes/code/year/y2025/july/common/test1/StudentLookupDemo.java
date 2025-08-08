@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.july.common.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 // Student class to represent student information
@@ -49,7 +51,7 @@ public class StudentLookupDemo {
         // Creating lookup map using Stream API
         Map<Integer, Student> studentLookup = students.stream()
                 .collect(Collectors.toMap(
-                        s->s.getId(),    // Key mapper (student ID)
+                        s -> s.getId(),    // Key mapper (student ID)
                         student -> student // Value mapper (student object)
                 ));
 
@@ -69,11 +71,11 @@ public class StudentLookupDemo {
         List<Student> largeDataset = new ArrayList<>();
         for (int i = 0; i < 100000; i++) {
             largeDataset.add(new Student(
-                i, 
-                "Student" + i,
-                "Class" + (i % 10),
-                60 + (i % 40),
-                i % 2 == 0 ? "Science" : "Commerce"
+                    i,
+                    "Student" + i,
+                    "Class" + (i % 10),
+                    60 + (i % 40),
+                    i % 2 == 0 ? "Science" : "Commerce"
             ));
         }
 
@@ -88,7 +90,7 @@ public class StudentLookupDemo {
 
         System.out.println("Time taken for large dataset: " + (endTime - startTime) + "ms");
         System.out.println("Large lookup map size: " + largeLookup.size());
-        
+
         // Verify random access time
         startTime = System.currentTimeMillis();
         Student randomStudent = largeLookup.get(50000);

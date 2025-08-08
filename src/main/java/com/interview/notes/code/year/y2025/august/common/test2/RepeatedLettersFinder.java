@@ -1,18 +1,18 @@
 package com.interview.notes.code.year.y2025.august.common.test2;
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 public class RepeatedLettersFinder {
 
     public static void main(String[] args) {
         // Define test cases: each entry is [input, expectedOutput]
         List<String[]> tests = Arrays.asList(
-            new String[] {"This the input string", "thisn"},
-            new String[] {"aabbccddeeff", "abcdef"},
-            new String[] {"Hello World!", "lo"},            // 'l' appears 3×, 'o' appears 2×
-            new String[] {"ABC abc ABC", "abc"},             // 'a','b','c' each 2+×
-            new String[] {"No repeats here", ""}             // no letter repeats
+                new String[]{"This the input string", "thisn"},
+                new String[]{"aabbccddeeff", "abcdef"},
+                new String[]{"Hello World!", "lo"},            // 'l' appears 3×, 'o' appears 2×
+                new String[]{"ABC abc ABC", "abc"},             // 'a','b','c' each 2+×
+                new String[]{"No repeats here", ""}             // no letter repeats
         );
 
         // Run each test
@@ -25,19 +25,19 @@ public class RepeatedLettersFinder {
             if (actual.equals(expected)) {
                 System.out.println("PASS: \"" + input + "\" → \"" + actual + "\"");
             } else {
-                System.out.println("FAIL: \"" + input + "\" → expected \"" 
-                    + expected + "\", but got \"" + actual + "\"");
+                System.out.println("FAIL: \"" + input + "\" → expected \""
+                        + expected + "\", but got \"" + actual + "\"");
             }
         }
-        
+
         // Example of handling a very large input (for demonstration only)
         StringBuilder large = new StringBuilder();
         for (int i = 0; i < 1_000_000; i++) {
             large.append("abcxyz");
         }
         // This will still run quickly
-        System.out.println("Large input test length: " 
-            + findRepeatedLetters(large.toString()).length());
+        System.out.println("Large input test length: "
+                + findRepeatedLetters(large.toString()).length());
     }
 
     /**
@@ -47,16 +47,16 @@ public class RepeatedLettersFinder {
     public static String findRepeatedLetters(String input) {
         // 1. Normalize: lowercase and keep only a–z
         String normalized = input.toLowerCase()
-                                 .chars()                        // stream of codepoints
-                                 .filter(Character::isLetter)   // only letters
-                                 .mapToObj(c -> (char) c)       // back to Character
-                                 .map(String::valueOf)           // to String for joining
-                                 .collect(Collectors.joining());
+                .chars()                        // stream of codepoints
+                .filter(Character::isLetter)   // only letters
+                .mapToObj(c -> (char) c)       // back to Character
+                .map(String::valueOf)           // to String for joining
+                .collect(Collectors.joining());
 
         // 2. Count occurrences using a Map<Character, Long>
         Map<Character, Long> counts = normalized.chars()
-            .mapToObj(c -> (char) c)
-            .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
 
         // 3. Build the result by scanning again, picking letters with count>1 once
         StringBuilder result = new StringBuilder();

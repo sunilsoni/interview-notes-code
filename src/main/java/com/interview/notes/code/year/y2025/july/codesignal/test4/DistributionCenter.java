@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.july.codesignal.test4;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class DistributionCenter {
 
@@ -37,7 +37,8 @@ public class DistributionCenter {
                 boolean needReset = true;
                 for (int i = 0; i < n; i++) {
                     if (!closed[i] && remainingCap[i] > 0) {
-                        needReset = false; break;
+                        needReset = false;
+                        break;
                     }
                 }
                 if (needReset) {
@@ -51,9 +52,10 @@ public class DistributionCenter {
         // Find max processed, and highest index if tie
         int maxProcessed = IntStream.of(processed).max().getAsInt();
         int answer = -1;
-        for (int i = n-1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {
             if (processed[i] == maxProcessed) {
-                answer = i; break;
+                answer = i;
+                break;
             }
         }
         return answer;
@@ -62,20 +64,20 @@ public class DistributionCenter {
     // Simple main method for PASS/FAIL testing
     public static void main(String[] args) {
         // Test case 1: Example from problem
-        int[] c1 = {1,2,1,2,1};
-        String[] log1 = {"PACKAGE","PACKAGE","CLOSURE 2","PACKAGE","CLOSURE 3","PACKAGE","PACKAGE"};
+        int[] c1 = {1, 2, 1, 2, 1};
+        String[] log1 = {"PACKAGE", "PACKAGE", "CLOSURE 2", "PACKAGE", "CLOSURE 3", "PACKAGE", "PACKAGE"};
         int expected1 = 1;
         runTest(1, c1, log1, expected1);
 
         // Test case 2: Only 1 center
         int[] c2 = {3};
-        String[] log2 = {"PACKAGE","PACKAGE","PACKAGE","PACKAGE"};
+        String[] log2 = {"PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE"};
         int expected2 = 0;
         runTest(2, c2, log2, expected2);
 
         // Test case 3: All centers closed except one
-        int[] c3 = {2,3,2};
-        String[] log3 = {"CLOSURE 0","CLOSURE 2","PACKAGE","PACKAGE","PACKAGE"};
+        int[] c3 = {2, 3, 2};
+        String[] log3 = {"CLOSURE 0", "CLOSURE 2", "PACKAGE", "PACKAGE", "PACKAGE"};
         int expected3 = 1;
         runTest(3, c3, log3, expected3);
 
@@ -85,18 +87,18 @@ public class DistributionCenter {
         Arrays.fill(c4, 5);
         String[] log4 = new String[1000];
         for (int i = 0; i < 1000; i++) log4[i] = "PACKAGE";
-        int expected4 = n-1; // since all process equally, pick highest index
+        int expected4 = n - 1; // since all process equally, pick highest index
         runTest(4, c4, log4, expected4);
 
         // Test case 5: Edge reset
-        int[] c5 = {2,1};
-        String[] log5 = {"PACKAGE","PACKAGE","PACKAGE","PACKAGE","PACKAGE"};
+        int[] c5 = {2, 1};
+        String[] log5 = {"PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE"};
         int expected5 = 0; // [2, 2]
         runTest(5, c5, log5, expected5);
 
         // Test case 6: Closure before package
-        int[] c6 = {1,1,1};
-        String[] log6 = {"CLOSURE 2","PACKAGE","PACKAGE"};
+        int[] c6 = {1, 1, 1};
+        String[] log6 = {"CLOSURE 2", "PACKAGE", "PACKAGE"};
         int expected6 = 1;
         runTest(6, c6, log6, expected6);
     }

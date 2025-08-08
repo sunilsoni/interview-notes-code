@@ -1,8 +1,7 @@
 package com.interview.notes.code.year.y2025.august.common.test9;
 
-import java.util.*;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 // === Locked stub code ===
@@ -20,8 +19,14 @@ class UnservableCuisineRequestException extends Exception {
 // Concrete cuisines
 class Chinese extends Cuisine {
     private final String dish;
-    public Chinese() { this.dish = null; }
-    private Chinese(String dish) { this.dish = dish; }
+
+    public Chinese() {
+        this.dish = null;
+    }
+
+    private Chinese(String dish) {
+        this.dish = dish;
+    }
 
     @Override
     public Cuisine serveFood(String dish) {
@@ -35,8 +40,14 @@ class Chinese extends Cuisine {
 
 class Italian extends Cuisine {
     private final String dish;
-    public Italian() { this.dish = null; }
-    private Italian(String dish) { this.dish = dish; }
+
+    public Italian() {
+        this.dish = null;
+    }
+
+    private Italian(String dish) {
+        this.dish = dish;
+    }
 
     @Override
     public Cuisine serveFood(String dish) {
@@ -50,8 +61,14 @@ class Italian extends Cuisine {
 
 class Japanese extends Cuisine {
     private final String dish;
-    public Japanese() { this.dish = null; }
-    private Japanese(String dish) { this.dish = dish; }
+
+    public Japanese() {
+        this.dish = null;
+    }
+
+    private Japanese(String dish) {
+        this.dish = dish;
+    }
 
     @Override
     public Cuisine serveFood(String dish) {
@@ -65,8 +82,14 @@ class Japanese extends Cuisine {
 
 class Mexican extends Cuisine {
     private final String dish;
-    public Mexican() { this.dish = null; }
-    private Mexican(String dish) { this.dish = dish; }
+
+    public Mexican() {
+        this.dish = null;
+    }
+
+    private Mexican(String dish) {
+        this.dish = dish;
+    }
 
     @Override
     public Cuisine serveFood(String dish) {
@@ -83,7 +106,8 @@ class FoodFactory {
     private static final FoodFactory INSTANCE = new FoodFactory();
     private final Map<String, Cuisine> registry = new HashMap<>();
 
-    private FoodFactory() { }
+    private FoodFactory() {
+    }
 
     public static FoodFactory getFactory() {
         return INSTANCE;
@@ -98,7 +122,7 @@ class FoodFactory {
         Cuisine prototype = registry.get(cuisineKey);
         if (prototype == null) {
             throw new UnservableCuisineRequestException(
-                "Unservable cuisine " + cuisineKey + " for dish " + dish
+                    "Unservable cuisine " + cuisineKey + " for dish " + dish
             );
         }
         return prototype.serveFood(dish);
@@ -111,10 +135,10 @@ public class Solution {
     private static final FoodFactory FOOD_FACTORY = FoodFactory.getFactory();
 
     static {
-        FOOD_FACTORY.registerCuisine("Chinese",  new Chinese());
-        FOOD_FACTORY.registerCuisine("Italian",  new Italian());
+        FOOD_FACTORY.registerCuisine("Chinese", new Chinese());
+        FOOD_FACTORY.registerCuisine("Italian", new Italian());
         FOOD_FACTORY.registerCuisine("Japanese", new Japanese());
-        FOOD_FACTORY.registerCuisine("Mexican",  new Mexican());
+        FOOD_FACTORY.registerCuisine("Mexican", new Mexican());
     }
 
     public static void main(String[] args) {
@@ -122,7 +146,7 @@ public class Solution {
         while (totalNumberOfOrders-- > 0) {
             String[] food = INPUT_READER.nextLine().split(" ");
             String cuisine = food[0];
-            String dish    = food[1];
+            String dish = food[1];
 
             try {
                 Cuisine served = FOOD_FACTORY.serveCuisine(cuisine, dish);

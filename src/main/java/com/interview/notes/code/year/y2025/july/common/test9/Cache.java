@@ -6,5 +6,6 @@ abstract class Cache {
     abstract void evictNode();
 
     abstract void write(int key, int value);
+
     abstract int get(int key);
 }

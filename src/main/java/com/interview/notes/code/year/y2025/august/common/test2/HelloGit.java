@@ -10,8 +10,11 @@ public class HelloGit {
                 synchronized (lock) {
                     System.out.print("Hello ");
                     lock.notify();            // wake up t2
-                    try { lock.wait(); }      // wait for t2 to print
-                    catch (InterruptedException ignored) {}
+                    try {
+                        lock.wait();
+                    }      // wait for t2 to print
+                    catch (InterruptedException ignored) {
+                    }
                 }
             }
         });
@@ -22,8 +25,11 @@ public class HelloGit {
                 synchronized (lock) {
                     System.out.println("Git");
                     lock.notify();            // wake up t1
-                    try { lock.wait(); }      // wait for t1 to print
-                    catch (InterruptedException ignored) {}
+                    try {
+                        lock.wait();
+                    }      // wait for t1 to print
+                    catch (InterruptedException ignored) {
+                    }
                 }
             }
         });

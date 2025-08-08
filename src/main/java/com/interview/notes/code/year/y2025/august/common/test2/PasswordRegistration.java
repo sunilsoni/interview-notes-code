@@ -163,7 +163,6 @@ Would you like me to implement this method in Java using simple logic and Java 8
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class PasswordRegistration {
 

@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.july.codility.test3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class LongestSubstringKDistinct {
 
@@ -22,21 +25,21 @@ public class LongestSubstringKDistinct {
 
     public static void main(String[] args) {
         List<Object[]> tests = Arrays.asList(
-            new Object[]{"eceba", 2, 3},
-            new Object[]{"aa",    1, 2},
-            new Object[]{"a",     0, 0},
-            new Object[]{"",      5, 0},
-            new Object[]{"abc",   2, 2}
+                new Object[]{"eceba", 2, 3},
+                new Object[]{"aa", 1, 2},
+                new Object[]{"a", 0, 0},
+                new Object[]{"", 5, 0},
+                new Object[]{"abc", 2, 2}
         );
 
         tests.forEach(t -> {
             String s = (String) t[0];
-            int k    = (int)    t[1];
-            int exp  = (int)    t[2];
-            int got  = lengthOfLongestSubstringKDistinct(s, k);
+            int k = (int) t[1];
+            int exp = (int) t[2];
+            int got = lengthOfLongestSubstringKDistinct(s, k);
             System.out.printf(
-                "%s  s=\"%s\", k=%d → %d%n",
-                (got == exp ? "PASS" : "FAIL"), s, k, got
+                    "%s  s=\"%s\", k=%d → %d%n",
+                    (got == exp ? "PASS" : "FAIL"), s, k, got
             );
         });
     }

@@ -1,9 +1,9 @@
 package com.interview.notes.code.year.y2025.july.common.test9;
 
-import java.io.BufferedReader;                 // for efficient reading from stdin
-import java.io.InputStreamReader;              // to wrap System.in in a Reader
-import java.util.Arrays;                       // for Arrays.stream(...)
-import java.util.stream.IntStream;             // for generating a large test array
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class BinarySearchExample {
 
@@ -32,13 +32,13 @@ public class BinarySearchExample {
     public static void main(String[] args) throws Exception {
         // --- Test Harness ---
         int[][] testArrays = {
-            {1, 2, 3, 4, 5},                   // simple sorted array
-            {42},                              // single-element array
-            {},                                // empty array
-            IntStream.range(0, 1_000_000).toArray() // large array 0..999,999
+                {1, 2, 3, 4, 5},                   // simple sorted array
+                {42},                              // single-element array
+                {},                                // empty array
+                IntStream.range(0, 1_000_000).toArray() // large array 0..999,999
         };
 
-        int[] testTargets     = {3, 42, 10, 999_999};      // targets to find
+        int[] testTargets = {3, 42, 10, 999_999};      // targets to find
         int[] expectedResults = {2, 0, -1, 999_999};       // expected indices
 
         // run each test and print PASS/FAIL
@@ -55,8 +55,8 @@ public class BinarySearchExample {
 
         // read next line, split by spaces, parse to ints, collect into array
         int[] arr = Arrays.stream(reader.readLine().trim().split("\\s+"))
-                          .mapToInt(Integer::parseInt)
-                          .toArray();
+                .mapToInt(Integer::parseInt)
+                .toArray();
 
         int x = Integer.parseInt(reader.readLine().trim());       // read target value X
 

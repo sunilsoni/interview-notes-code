@@ -6,20 +6,15 @@ import java.util.Iterator;
 public class Codec {
 
     /**
-     * Definition for a binary tree node, using Java 17 record.
-     */
-    public static record TreeNode(int val, TreeNode left, TreeNode right) {}
-
-    /**
      * Encodes a tree to a single string.
      * Pre-order traversal, nulls as "#,".
      */
     public String serialize(TreeNode root) {
         return root == null
-            ? "#,"
-            : root.val() + "," +
-              serialize(root.left()) +
-              serialize(root.right());
+                ? "#,"
+                : root.val() + "," +
+                serialize(root.left()) +
+                serialize(root.right());
     }
 
     /**
@@ -38,9 +33,15 @@ public class Codec {
         }
         int v = Integer.parseInt(token);
         return new TreeNode(
-            v,
-            build(it),    // left subtree
-            build(it)     // right subtree
+                v,
+                build(it),    // left subtree
+                build(it)     // right subtree
         );
+    }
+
+    /**
+     * Definition for a binary tree node, using Java 17 record.
+     */
+    public static record TreeNode(int val, TreeNode left, TreeNode right) {
     }
 }

@@ -3,12 +3,12 @@ package com.interview.notes.code.year.y2025.august.common.test9;
 import java.util.stream.Stream;
 
 public class StringReverseOrder {
-    
+
     // Main method to process string reversal and run test cases
     public static void main(String[] args) {
         // Create instance of the class to access non-static methods
         StringReverseOrder solution = new StringReverseOrder();
-        
+
         // Run all test cases
         solution.runTestCases();
     }
@@ -17,12 +17,12 @@ public class StringReverseOrder {
     public String reverseStringOrder(String input) {
         // Handle null input case
         if (input == null) return "";
-        
+
         // Split input string into words, reverse order, and join with space
         return Stream.of(input.split("\\s+"))  // Split string into words array
-                    .filter(word -> !word.isEmpty())  // Remove empty strings
-                    .reduce((word1, word2) -> word2 + " " + word1)  // Reverse order
-                    .orElse("");  // Handle empty input case
+                .filter(word -> !word.isEmpty())  // Remove empty strings
+                .reduce((word1, word2) -> word2 + " " + word1)  // Reverse order
+                .orElse("");  // Handle empty input case
     }
 
     // Method to run and validate test cases
@@ -48,7 +48,7 @@ public class StringReverseOrder {
             largeInput.append("word").append(i).append(" ");
         }
         String expected = new StringBuilder(largeInput.toString().trim())
-                            .reverse().toString();
+                .reverse().toString();
         runTest(largeInput.toString(), expected, "Large Input Test");
     }
 
@@ -56,7 +56,7 @@ public class StringReverseOrder {
     private void runTest(String input, String expected, String testName) {
         String result = reverseStringOrder(input);
         boolean passed = expected.equals(result);
-        
+
         // Print test results with formatting
         System.out.println("Test: " + testName);
         System.out.println("Input: " + input);

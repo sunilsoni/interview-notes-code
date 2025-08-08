@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.july.common.test9;
 
-import java.util.*;               // import utility classes like List, Arrays, HashSet
-import java.util.stream.*;        // import Stream, IntStream, Collectors for stream operations
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class PermutationGenerator {
 
@@ -15,13 +19,13 @@ public class PermutationGenerator {
         }
         // for each position in the string, remove that char and permute the rest
         return IntStream.range(0, str.length())                              // stream of indexes 0..length-1
-            .boxed()                                                         // box each int to Integer
-            .flatMap(i -> {                                                  // for each index i
-                char ch = str.charAt(i);                                     //   pick the character at i
-                String rem = str.substring(0, i) + str.substring(i + 1);     //   build the remaining string without that char
-                return permutations(rem)                                     //   recursively get perms of the remainder
-                       .map(s -> ch + s);                                    //   prefix the removed char to each smaller perm
-            });
+                .boxed()                                                         // box each int to Integer
+                .flatMap(i -> {                                                  // for each index i
+                    char ch = str.charAt(i);                                     //   pick the character at i
+                    String rem = str.substring(0, i) + str.substring(i + 1);     //   build the remaining string without that char
+                    return permutations(rem)                                     //   recursively get perms of the remainder
+                            .map(s -> ch + s);                                    //   prefix the removed char to each smaller perm
+                });
     }
 
     /*
@@ -30,8 +34,8 @@ public class PermutationGenerator {
      */
     public static List<String> getPermutations(String str) {
         return permutations(str)                                              // get the raw stream
-            .distinct()                                                       // drop duplicates
-            .collect(Collectors.toList());                                    // collect into a List
+                .distinct()                                                       // drop duplicates
+                .collect(Collectors.toList());                                    // collect into a List
     }
 
     /*
@@ -41,10 +45,10 @@ public class PermutationGenerator {
     public static void main(String[] args) {
         // --------- Test 1: the example "ABC"  ---------
         String test1 = "ABC";                                                 // input string
-        List<String> expected1 = Arrays.asList("ABC","ACB","BAC","BCA","CAB","CBA");  // expected perms
+        List<String> expected1 = Arrays.asList("ABC", "ACB", "BAC", "BCA", "CAB", "CBA");  // expected perms
         List<String> result1 = getPermutations(test1);                        // generate perms
         // compare as sets so order does not matter
-        if (new HashSet<>(result1).equals(new HashSet<>(expected1))) {        
+        if (new HashSet<>(result1).equals(new HashSet<>(expected1))) {
             System.out.println("Test1 PASS");                                 // test passed
         } else {
             System.out.println("Test1 FAIL: expected " + expected1 + " but got " + result1);
@@ -72,7 +76,7 @@ public class PermutationGenerator {
 
         // --------- Test 4: two characters ---------
         String test4 = "AB";                                                  // two-char input
-        List<String> expected4 = Arrays.asList("AB","BA");                    // two permutations
+        List<String> expected4 = Arrays.asList("AB", "BA");                    // two permutations
         List<String> result4 = getPermutations(test4);                        // generate perms
         if (new HashSet<>(result4).equals(new HashSet<>(expected4))) {
             System.out.println("Test4 PASS");                                 // should pass
@@ -82,7 +86,7 @@ public class PermutationGenerator {
 
         // --------- Test 5: duplicate characters ---------
         String test5 = "AAB";                                                 // input with a repeat
-        List<String> expected5 = Arrays.asList("AAB","ABA","BAA");            // unique perms only
+        List<String> expected5 = Arrays.asList("AAB", "ABA", "BAA");            // unique perms only
         List<String> result5 = getPermutations(test5);                        // generate perms
         if (new HashSet<>(result5).equals(new HashSet<>(expected5))) {
             System.out.println("Test5 PASS");                                 // should pass
@@ -97,8 +101,8 @@ public class PermutationGenerator {
         if (resultLarge.size() == expectedSize) {
             System.out.println("Large Input Test PASS: size=" + resultLarge.size());
         } else {
-            System.out.println("Large Input Test FAIL: expected size " + expectedSize 
-                + " but got " + resultLarge.size());
+            System.out.println("Large Input Test FAIL: expected size " + expectedSize
+                    + " but got " + resultLarge.size());
         }
     }
 }

@@ -1,15 +1,18 @@
 package com.interview.notes.code.year.y2025.august.test1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class StringFilterDemo {
-    
+
     // Method to filter strings that start with given character, convert to uppercase and sort
     public static List<String> filterAndSortStrings(List<String> inputList, char startChar) {
         // Handle null input case to prevent NullPointerException
         if (inputList == null) return new ArrayList<>();
-        
+
         // Using Stream API to process the list:
         // 1. Filter strings starting with startChar (case insensitive)
         // 2. Convert to uppercase
@@ -63,7 +66,7 @@ public class StringFilterDemo {
         List<String> largeList = new ArrayList<>();
         Random random = new Random();
         String[] prefixes = {"s", "a", "b", "c", "d"};
-        
+
         for (int i = 0; i < size; i++) {
             String prefix = prefixes[random.nextInt(prefixes.length)];
             largeList.add(prefix + "test" + i);

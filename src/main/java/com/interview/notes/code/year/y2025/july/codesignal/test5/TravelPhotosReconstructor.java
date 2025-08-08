@@ -7,22 +7,22 @@ public class TravelPhotosReconstructor {
     public static int[] solution(int[][] travelPhotos) {
         int m = travelPhotos.length;
         if (m == 1) {
-            return new int[]{ travelPhotos[0][0], travelPhotos[0][1] };
+            return new int[]{travelPhotos[0][0], travelPhotos[0][1]};
         }
 
         // 1) Build adjacency list + degree count
         Map<Integer, List<Integer>> adj = new HashMap<>();
-        Map<Integer,Integer> degree = new HashMap<>();
+        Map<Integer, Integer> degree = new HashMap<>();
         for (int[] p : travelPhotos) {
-            adj.computeIfAbsent(p[0], k->new ArrayList<>()).add(p[1]);
-            adj.computeIfAbsent(p[1], k->new ArrayList<>()).add(p[0]);
-            degree.put(p[0], degree.getOrDefault(p[0],0)+1);
-            degree.put(p[1], degree.getOrDefault(p[1],0)+1);
+            adj.computeIfAbsent(p[0], k -> new ArrayList<>()).add(p[1]);
+            adj.computeIfAbsent(p[1], k -> new ArrayList<>()).add(p[0]);
+            degree.put(p[0], degree.getOrDefault(p[0], 0) + 1);
+            degree.put(p[1], degree.getOrDefault(p[1], 0) + 1);
         }
 
         // 2) Collect the two endpoints (degree == 1)
         Set<Integer> endpoints = new HashSet<>();
-        for (Map.Entry<Integer,Integer> e : degree.entrySet()) {
+        for (Map.Entry<Integer, Integer> e : degree.entrySet()) {
             if (e.getValue() == 1) {
                 endpoints.add(e.getKey());
             }
@@ -50,9 +50,9 @@ public class TravelPhotosReconstructor {
         path[1] = adj.get(start).get(0);
 
         for (int i = 2; i < n; i++) {
-            List<Integer> neigh = adj.get(path[i-1]);
-            int prev = path[i-2];
-            path[i] = (neigh.get(0)==prev ? neigh.get(1) : neigh.get(0));
+            List<Integer> neigh = adj.get(path[i - 1]);
+            int prev = path[i - 2];
+            path[i] = (neigh.get(0) == prev ? neigh.get(1) : neigh.get(0));
         }
 
         return path;
@@ -60,12 +60,12 @@ public class TravelPhotosReconstructor {
 
     // quick test
     public static void main(String[] args) {
-        int[][] photos = {{3,5},{1,4},{2,4},{1,5}};
-        int[] want    = {3,5,1,4,2};
-        int[] got     = solution(photos);
+        int[][] photos = {{3, 5}, {1, 4}, {2, 4}, {1, 5}};
+        int[] want = {3, 5, 1, 4, 2};
+        int[] got = solution(photos);
         System.out.println(Arrays.equals(got, want)
-            ? "PASS: " + Arrays.toString(got)
-            : "FAIL: got " + Arrays.toString(got)
-                   + " expected " + Arrays.toString(want));
+                ? "PASS: " + Arrays.toString(got)
+                : "FAIL: got " + Arrays.toString(got)
+                + " expected " + Arrays.toString(want));
     }
 }

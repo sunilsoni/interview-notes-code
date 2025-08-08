@@ -28,21 +28,27 @@ public class AdditionCheck {
         class TestCase {
             int a, b, c;
             String expected;
-            TestCase(int a, int b, int c, String expected) { this.a=a; this.b=b; this.c=c; this.expected=expected; }
+
+            TestCase(int a, int b, int c, String expected) {
+                this.a = a;
+                this.b = b;
+                this.c = c;
+                this.expected = expected;
+            }
         }
 
         TestCase[] tests = {
-            new TestCase(123, 672, 785, "1"), // Sample: wrong at tens
-            new TestCase(1, 2, 3, "ok"),
-            new TestCase(10000, 99999, 109999, "ok"),
-            new TestCase(10, 10, 21, "0"), // wrong at unit
-            new TestCase(800, 100, 900, "ok"),
-            new TestCase(55555, 44444, 99999, "ok"),
-            new TestCase(0, 0, 0, "ok"),
-            // Large input
-            new TestCase(99999, 99999, 199998, "ok"),
-            new TestCase(99999, 99999, 199997, "0"), // last digit wrong
-            new TestCase(99999, 99998, 199997, "1"), // second last digit wrong
+                new TestCase(123, 672, 785, "1"), // Sample: wrong at tens
+                new TestCase(1, 2, 3, "ok"),
+                new TestCase(10000, 99999, 109999, "ok"),
+                new TestCase(10, 10, 21, "0"), // wrong at unit
+                new TestCase(800, 100, 900, "ok"),
+                new TestCase(55555, 44444, 99999, "ok"),
+                new TestCase(0, 0, 0, "ok"),
+                // Large input
+                new TestCase(99999, 99999, 199998, "ok"),
+                new TestCase(99999, 99999, 199997, "0"), // last digit wrong
+                new TestCase(99999, 99998, 199997, "1"), // second last digit wrong
         };
 
         java.util.stream.IntStream.range(0, tests.length).forEach(i -> {

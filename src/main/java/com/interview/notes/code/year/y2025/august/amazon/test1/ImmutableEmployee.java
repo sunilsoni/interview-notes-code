@@ -1,12 +1,8 @@
 package com.interview.notes.code.year.y2025.august.amazon.test1;
 
-import java.util.Date;                             // for handling joiningDate
-import java.util.Map;                              // for attributes map
-import java.util.HashMap;                          // for defensive copy
-import java.util.Collections;                      // for unmodifiableMap wrapper
-import java.util.Objects;                          // for null checks & equals/hashCode
-import java.util.stream.Collectors;                // for large-data test
-import java.util.stream.IntStream;                 // for large-data test
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Immutable representation of an employee.
@@ -28,11 +24,11 @@ public final class ImmutableEmployee {
      * @param attributes  non-null Map; will be defensively copied
      */
     public ImmutableEmployee(
-        String employeeId,
-        String name,
-        Address address,
-        Date joiningDate,
-        Map<String, String> attributes
+            String employeeId,
+            String name,
+            Address address,
+            Date joiningDate,
+            Map<String, String> attributes
     ) {
         this.employeeId = Objects.requireNonNull(employeeId, "employeeId");       // null check
         if (employeeId.trim().isEmpty()) throw new IllegalArgumentException("employeeId blank"); // blank check
@@ -58,14 +54,84 @@ public final class ImmutableEmployee {
 
     // -------- getters with defensive copying --------
 
-    /** @return employeeId */
-    public String getEmployeeId() { return employeeId; }
+    /**
+     * Simple main method to test ImmutableEmployee.
+     * Uses PASS/FAIL prints and handles a large-data scenario.
+     */
+    public static void main(String[] args) {
+        // Test 1: Basic creation & getters
+        try {
+            Date d = new Date();                                      // original date
+            Map<String, String> m = new HashMap<>();                  // original map
+            m.put("role", "dev");
+            Address addr = new Address("123 Main St", "Metropolis");
+            ImmutableEmployee e = new ImmutableEmployee("E001", "Alice", addr, d, m);
+            // mutate originals
+            d.setTime(0);
+            m.put("role", "ops");
+            // check immutability
+            boolean pass1 = e.getJoiningDate().getTime() != 0
+                    && "dev".equals(e.getAttributes().get("role"));
+            System.out.println("Test 1 (immutability): " + (pass1 ? "PASS" : "FAIL"));
+        } catch (Exception ex) {
+            System.out.println("Test 1 (immutability): FAIL with exception " + ex);
+        }
 
-    /** @return name */
-    public String getName() { return name; }
+        // Test 2: equals() and hashCode()
+        try {
+            Address a1 = new Address("1 St", "CityX");
+            Address a2 = new Address("1 St", "CityX");
+            Date d1 = new Date(123456);
+            Date d2 = new Date(123456);
+            Map<String, String> map1 = Collections.singletonMap("k", "v");
+            Map<String, String> map2 = Collections.singletonMap("k", "v");
+            ImmutableEmployee e1 = new ImmutableEmployee("ID", "Bob", a1, d1, map1);
+            ImmutableEmployee e2 = new ImmutableEmployee("ID", "Bob", a2, d2, map2);
+            boolean pass2 = e1.equals(e2) && e1.hashCode() == e2.hashCode();
+            System.out.println("Test 2 (equals/hashCode): " + (pass2 ? "PASS" : "FAIL"));
+        } catch (Exception ex) {
+            System.out.println("Test 2 (equals/hashCode): FAIL with exception " + ex);
+        }
 
-    /** @return Address (immutable) */
-    public Address getAddress() { return address; }
+        // Test 3: Large attributes map
+        try {
+            // generate 100_000 attributes quickly
+            Map<String, String> largeMap = IntStream.range(0, 100_000)
+                    .boxed()
+                    .collect(Collectors.toMap(i -> "key" + i, i -> "val" + i));
+            ImmutableEmployee eLarge = new ImmutableEmployee(
+                    "LID", "Carol",
+                    new Address("Addr", "BigCity"),
+                    new Date(),
+                    largeMap
+            );
+            boolean pass3 = eLarge.getAttributes().size() == 100_000;
+            System.out.println("Test 3 (large data): " + (pass3 ? "PASS" : "FAIL"));
+        } catch (Exception ex) {
+            System.out.println("Test 3 (large data): FAIL with exception " + ex);
+        }
+    }
+
+    /**
+     * @return employeeId
+     */
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    /**
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return Address (immutable)
+     */
+    public Address getAddress() {
+        return address;
+    }
 
     /**
      * @return defensive copy of joiningDate
@@ -74,12 +140,14 @@ public final class ImmutableEmployee {
         return new Date(joiningDate.getTime());  // copy to protect internal state
     }
 
-    /** @return unmodifiable Map of attributes */
+    // -------- equals, hashCode, toString --------
+
+    /**
+     * @return unmodifiable Map of attributes
+     */
     public Map<String, String> getAttributes() {
         return attributes;                      // already unmodifiable
     }
-
-    // -------- equals, hashCode, toString --------
 
     @Override
     public boolean equals(Object o) {
@@ -87,10 +155,10 @@ public final class ImmutableEmployee {
         if (!(o instanceof ImmutableEmployee)) return false;   // correct type
         ImmutableEmployee that = (ImmutableEmployee) o;
         return employeeId.equals(that.employeeId)
-            && name.equals(that.name)
-            && address.equals(that.address)
-            && joiningDate.equals(that.joiningDate)
-            && attributes.equals(that.attributes);
+                && name.equals(that.name)
+                && address.equals(that.address)
+                && joiningDate.equals(that.joiningDate)
+                && attributes.equals(that.attributes);
     }
 
     @Override
@@ -101,12 +169,12 @@ public final class ImmutableEmployee {
     @Override
     public String toString() {
         return "ImmutableEmployee{" +
-               "employeeId='" + employeeId + '\'' +
-               ", name='" + name + '\'' +
-               ", address=" + address +
-               ", joiningDate=" + joiningDate +
-               ", attributes=" + attributes +
-               '}';
+                "employeeId='" + employeeId + '\'' +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                ", joiningDate=" + joiningDate +
+                ", attributes=" + attributes +
+                '}';
     }
 
     /**
@@ -127,8 +195,13 @@ public final class ImmutableEmployee {
             if (city.trim().isEmpty()) throw new IllegalArgumentException("city blank");
         }
 
-        public String getStreet() { return street; }
-        public String getCity()   { return city;   }
+        public String getStreet() {
+            return street;
+        }
+
+        public String getCity() {
+            return city;
+        }
 
         @Override
         public boolean equals(Object o) {
@@ -146,67 +219,9 @@ public final class ImmutableEmployee {
         @Override
         public String toString() {
             return "Address{" +
-                   "street='" + street + '\'' +
-                   ", city='" + city + '\'' +
-                   '}';
-        }
-    }
-
-    /**
-     * Simple main method to test ImmutableEmployee.
-     * Uses PASS/FAIL prints and handles a large-data scenario.
-     */
-    public static void main(String[] args) {
-        // Test 1: Basic creation & getters
-        try {
-            Date d = new Date();                                      // original date
-            Map<String, String> m = new HashMap<>();                  // original map
-            m.put("role", "dev");
-            Address addr = new Address("123 Main St", "Metropolis");
-            ImmutableEmployee e = new ImmutableEmployee("E001", "Alice", addr, d, m);
-            // mutate originals
-            d.setTime(0);
-            m.put("role", "ops");
-            // check immutability
-            boolean pass1 = e.getJoiningDate().getTime() != 0
-                         && "dev".equals(e.getAttributes().get("role"));
-            System.out.println("Test 1 (immutability): " + (pass1 ? "PASS" : "FAIL"));
-        } catch (Exception ex) {
-            System.out.println("Test 1 (immutability): FAIL with exception " + ex);
-        }
-
-        // Test 2: equals() and hashCode()
-        try {
-            Address a1 = new Address("1 St", "CityX");
-            Address a2 = new Address("1 St", "CityX");
-            Date d1 = new Date(123456);
-            Date d2 = new Date(123456);
-            Map<String, String> map1 = Collections.singletonMap("k","v");
-            Map<String, String> map2 = Collections.singletonMap("k","v");
-            ImmutableEmployee e1 = new ImmutableEmployee("ID", "Bob", a1, d1, map1);
-            ImmutableEmployee e2 = new ImmutableEmployee("ID", "Bob", a2, d2, map2);
-            boolean pass2 = e1.equals(e2) && e1.hashCode() == e2.hashCode();
-            System.out.println("Test 2 (equals/hashCode): " + (pass2 ? "PASS" : "FAIL"));
-        } catch (Exception ex) {
-            System.out.println("Test 2 (equals/hashCode): FAIL with exception " + ex);
-        }
-
-        // Test 3: Large attributes map
-        try {
-            // generate 100_000 attributes quickly
-            Map<String,String> largeMap = IntStream.range(0, 100_000)
-                .boxed()
-                .collect(Collectors.toMap(i -> "key"+i, i -> "val"+i));
-            ImmutableEmployee eLarge = new ImmutableEmployee(
-                "LID", "Carol",
-                new Address("Addr", "BigCity"),
-                new Date(),
-                largeMap
-            );
-            boolean pass3 = eLarge.getAttributes().size() == 100_000;
-            System.out.println("Test 3 (large data): " + (pass3 ? "PASS" : "FAIL"));
-        } catch (Exception ex) {
-            System.out.println("Test 3 (large data): FAIL with exception " + ex);
+                    "street='" + street + '\'' +
+                    ", city='" + city + '\'' +
+                    '}';
         }
     }
 }

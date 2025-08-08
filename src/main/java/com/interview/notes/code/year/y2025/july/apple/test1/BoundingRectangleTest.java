@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.july.apple.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class BoundingRectangleTest {
 
@@ -17,60 +19,47 @@ public class BoundingRectangleTest {
         int minY = points.stream().mapToInt(p -> p.get(1)).min().orElse(0);
         int maxY = points.stream().mapToInt(p -> p.get(1)).max().orElse(0);
 
-        int width  = maxX - minX;
+        int width = maxX - minX;
         int height = maxY - minY;
 
         return Arrays.asList(minX, minY, width, height);
     }
 
-    /** Simple holder for a test case. */
-    static class TestCase {
-        final String name;
-        final List<List<Integer>> input;
-        final List<Integer> expected;
-
-        TestCase(String name, List<List<Integer>> input, List<Integer> expected) {
-            this.name     = name;
-            this.input    = input;
-            this.expected = expected;
-        }
-    }
-
     public static void main(String[] args) {
         // define some fixed test cases
         List<TestCase> tests = Arrays.asList(
-            new TestCase("Example 1",
-                Arrays.asList(
-                    Arrays.asList(2, 39),
-                    Arrays.asList(99, 39),
-                    Arrays.asList(2, 130),
-                    Arrays.asList(99, 130)
+                new TestCase("Example 1",
+                        Arrays.asList(
+                                Arrays.asList(2, 39),
+                                Arrays.asList(99, 39),
+                                Arrays.asList(2, 130),
+                                Arrays.asList(99, 130)
+                        ),
+                        Arrays.asList(2, 39, 97, 91)
                 ),
-                Arrays.asList(2, 39, 97, 91)
-            ),
-            new TestCase("Two Points",
-                Arrays.asList(
-                    Arrays.asList(-5, 10),
-                    Arrays.asList(5, -10)
+                new TestCase("Two Points",
+                        Arrays.asList(
+                                Arrays.asList(-5, 10),
+                                Arrays.asList(5, -10)
+                        ),
+                        Arrays.asList(-5, -10, 10, 20)
                 ),
-                Arrays.asList(-5, -10, 10, 20)
-            ),
-            new TestCase("Vertical Line",
-                Arrays.asList(
-                    Arrays.asList(0, 0),
-                    Arrays.asList(0, 5),
-                    Arrays.asList(0, 2)
+                new TestCase("Vertical Line",
+                        Arrays.asList(
+                                Arrays.asList(0, 0),
+                                Arrays.asList(0, 5),
+                                Arrays.asList(0, 2)
+                        ),
+                        Arrays.asList(0, 0, 0, 5)
                 ),
-                Arrays.asList(0, 0, 0, 5)
-            ),
-            new TestCase("Horizontal Line",
-                Arrays.asList(
-                    Arrays.asList(3, 7),
-                    Arrays.asList(10, 7),
-                    Arrays.asList(6, 7)
-                ),
-                Arrays.asList(3, 7, 7, 0)
-            )
+                new TestCase("Horizontal Line",
+                        Arrays.asList(
+                                Arrays.asList(3, 7),
+                                Arrays.asList(10, 7),
+                                Arrays.asList(6, 7)
+                        ),
+                        Arrays.asList(3, 7, 7, 0)
+                )
         );
 
         // run fixed tests
@@ -80,8 +69,8 @@ public class BoundingRectangleTest {
                 System.out.println(tc.name + ": PASS");
             } else {
                 System.out.println(tc.name + ": FAIL"
-                    + " — expected=" + tc.expected
-                    + ", actual=" + actual);
+                        + " — expected=" + tc.expected
+                        + ", actual=" + actual);
             }
         }
 
@@ -100,5 +89,20 @@ public class BoundingRectangleTest {
 
         System.out.println("\nLarge‐data test (" + N + " points):");
         System.out.println("Result = " + result + "  processed in " + elapsedMs + " ms");
+    }
+
+    /**
+     * Simple holder for a test case.
+     */
+    static class TestCase {
+        final String name;
+        final List<List<Integer>> input;
+        final List<Integer> expected;
+
+        TestCase(String name, List<List<Integer>> input, List<Integer> expected) {
+            this.name = name;
+            this.input = input;
+            this.expected = expected;
+        }
     }
 }

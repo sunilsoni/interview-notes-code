@@ -1,9 +1,9 @@
 package com.interview.notes.code.year.y2025.august.common.test6;
 
-import java.util.Arrays;                   // For Arrays.stream
-import java.util.Map;                      // For Map interface
-import java.util.IntSummaryStatistics;     // For summary stats (sum, count, etc.)
-import java.util.stream.Collectors;        // For grouping and summarizing
+import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 class Solution {
     /**
@@ -14,18 +14,18 @@ class Solution {
             return 0;                                       //   return 0 as specified
         }
         // Group entries by student name and collect sum/count statistics of their scores
-        Map<String, IntSummaryStatistics> stats = Arrays.stream(scores) 
-            .collect(Collectors.groupingBy(
-                entry -> entry[0],                          //   key: student name at index 0
-                Collectors.summarizingInt(
-                    entry -> Integer.parseInt(entry[1])    //   parse score at index 1
-                )
-            ));
+        Map<String, IntSummaryStatistics> stats = Arrays.stream(scores)
+                .collect(Collectors.groupingBy(
+                        entry -> entry[0],                          //   key: student name at index 0
+                        Collectors.summarizingInt(
+                                entry -> Integer.parseInt(entry[1])    //   parse score at index 1
+                        )
+                ));
         // From each student's statistics, compute floor-average and pick the maximum
-        return stats.values().stream()              
-            .mapToInt(stat -> (int)(stat.getSum() / stat.getCount())) // floor(sum/count)
-            .max()                                                 // maximum average
-            .orElse(0);                                            // or 0 if no students
+        return stats.values().stream()
+                .mapToInt(stat -> (int) (stat.getSum() / stat.getCount())) // floor(sum/count)
+                .max()                                                 // maximum average
+                .orElse(0);                                            // or 0 if no students
     }
 
     /**
@@ -37,8 +37,8 @@ class Solution {
             System.out.println(testName + " PASS");              // Print PASS
         } else {
             System.out.println(
-                testName + " FAIL: expected=" + expected         // Print FAIL with details
-                + ", actual=" + result
+                    testName + " FAIL: expected=" + expected         // Print FAIL with details
+                            + ", actual=" + result
             );
         }
     }
@@ -49,10 +49,10 @@ class Solution {
     public static void main(String[] args) {
         // Test 1: Example from the prompt
         String[][] tc1 = {
-            {"Bobby","87"},
-            {"Charles","100"},
-            {"Eric","64"},
-            {"Charles","22"}
+                {"Bobby", "87"},
+                {"Charles", "100"},
+                {"Eric", "64"},
+                {"Charles", "22"}
         };
         checkTest("Test1", tc1, 87);    // Bobby=87, Charles=(100+22)/2=61, Eric=64 → max=87
 
@@ -62,10 +62,10 @@ class Solution {
 
         // Test 3: Two students with different averages
         String[][] tc3 = {
-            {"Alice","90"},
-            {"Bob","80"},
-            {"Alice","100"},
-            {"Bob","85"}
+                {"Alice", "90"},
+                {"Bob", "80"},
+                {"Alice", "100"},
+                {"Bob", "85"}
         };
         checkTest("Test3", tc3, 95);    // Alice=(90+100)/2=95, Bob=(80+85)/2=82 → max=95
 

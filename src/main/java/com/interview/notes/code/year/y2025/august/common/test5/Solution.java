@@ -1,56 +1,12 @@
 package com.interview.notes.code.year.y2025.august.common.test5;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Solution {
-
-    // Inner class housing our pangram logic
-    private static class PangramDetector {
-        // Constant alphabet string for reference
-        private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
-
-        /**
-         * Finds which lowercase letters in 'a'–'z' are missing from the input.
-         *
-         * @param sentence the text to inspect (may be null)
-         * @return a string of missing lowercase letters, in sorted order
-         */
-        public String findMissingLetters(String sentence) {
-            // If input is null, treat it as empty
-            if (sentence == null) {
-                // All letters are missing
-                return ALPHABET;
-            }
-
-            // 1. Build a set of all letters present in the sentence
-            Set<Character> present = sentence
-                // Turn the string into an IntStream of Unicode code points
-                .chars()
-                // Convert each code point to lowercase
-                .map(Character::toLowerCase)
-                // Keep only ASCII letters 'a' (97) to 'z' (122)
-                .filter(c -> c >= 'a' && c <= 'z')
-                // Box ints to Character objects
-                .mapToObj(c -> (char) c)
-                // Collect into a HashSet for fast lookup
-                .collect(Collectors.toSet());
-
-            // 2. Stream over the alphabet string, filter out letters that are present,
-            //    and join the rest into a single string
-            return ALPHABET
-                // Turn the alphabet into an IntStream of its code points
-                .chars()
-                // Box again to Character
-                .mapToObj(c -> (char) c)
-                // Keep only those not in the 'present' set
-                .filter(c -> !present.contains(c))
-                // Convert each Character to a String
-                .map(String::valueOf)
-                // Join all pieces without delimiter
-                .collect(Collectors.joining());
-        }
-    }
 
     /**
      * Simple test harness in main() to check PASS/FAIL for each case.
@@ -92,15 +48,15 @@ public class Solution {
 
             boolean passed = Objects.equals(actual, expected);
             System.out.printf(
-                "Test %2d: %s → expected=\"%s\", got=\"%s\" : %s%n",
-                count++,
-                // brief description: show first 30 chars or "null"
-                (input == null ? "null"
-                    : input.length() <= 30 ? "\"" + input + "\""
-                    : "\"" + input.substring(0, 30) + "...\""),
-                expected,
-                actual,
-                (passed ? "PASS" : "FAIL")
+                    "Test %2d: %s → expected=\"%s\", got=\"%s\" : %s%n",
+                    count++,
+                    // brief description: show first 30 chars or "null"
+                    (input == null ? "null"
+                            : input.length() <= 30 ? "\"" + input + "\""
+                            : "\"" + input.substring(0, 30) + "...\""),
+                    expected,
+                    actual,
+                    (passed ? "PASS" : "FAIL")
             );
 
             if (!passed) {
@@ -110,7 +66,54 @@ public class Solution {
 
         // Summary
         System.out.println(allPassed
-            ? "✅ All tests passed."
-            : "❌ Some tests failed.");
+                ? "✅ All tests passed."
+                : "❌ Some tests failed.");
+    }
+
+    // Inner class housing our pangram logic
+    private static class PangramDetector {
+        // Constant alphabet string for reference
+        private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+
+        /**
+         * Finds which lowercase letters in 'a'–'z' are missing from the input.
+         *
+         * @param sentence the text to inspect (may be null)
+         * @return a string of missing lowercase letters, in sorted order
+         */
+        public String findMissingLetters(String sentence) {
+            // If input is null, treat it as empty
+            if (sentence == null) {
+                // All letters are missing
+                return ALPHABET;
+            }
+
+            // 1. Build a set of all letters present in the sentence
+            Set<Character> present = sentence
+                    // Turn the string into an IntStream of Unicode code points
+                    .chars()
+                    // Convert each code point to lowercase
+                    .map(Character::toLowerCase)
+                    // Keep only ASCII letters 'a' (97) to 'z' (122)
+                    .filter(c -> c >= 'a' && c <= 'z')
+                    // Box ints to Character objects
+                    .mapToObj(c -> (char) c)
+                    // Collect into a HashSet for fast lookup
+                    .collect(Collectors.toSet());
+
+            // 2. Stream over the alphabet string, filter out letters that are present,
+            //    and join the rest into a single string
+            return ALPHABET
+                    // Turn the alphabet into an IntStream of its code points
+                    .chars()
+                    // Box again to Character
+                    .mapToObj(c -> (char) c)
+                    // Keep only those not in the 'present' set
+                    .filter(c -> !present.contains(c))
+                    // Convert each Character to a String
+                    .map(String::valueOf)
+                    // Join all pieces without delimiter
+                    .collect(Collectors.joining());
+        }
     }
 }

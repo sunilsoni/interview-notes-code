@@ -14,7 +14,7 @@ public class WordLadder {
         System.out.println("Test 1:");
         String beginWord = "hit";
         String endWord = "cog";
-        List<String> wordList = Arrays.asList("hot","dot","dog","lot","log","cog");
+        List<String> wordList = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
         List<List<List<String>>> result = findLaddersGroupedByLength(beginWord, endWord, wordList, 5);
         printResults(result);
     }
@@ -23,7 +23,7 @@ public class WordLadder {
         System.out.println("\nTest 2:");
         String beginWord = "red";
         String endWord = "tax";
-        List<String> wordList = Arrays.asList("ted","tex","red","tax","tad","den","rex","pee");
+        List<String> wordList = Arrays.asList("ted", "tex", "red", "tax", "tad", "den", "rex", "pee");
         List<List<List<String>>> result = findLaddersGroupedByLength(beginWord, endWord, wordList, 2);
         printResults(result);
     }
@@ -32,15 +32,15 @@ public class WordLadder {
         System.out.println("\nTest 3:");
         String beginWord = "cat";
         String endWord = "dog";
-        List<String> wordList = Arrays.asList("cat","cot","cog","dog","dat","dot");
+        List<String> wordList = Arrays.asList("cat", "cot", "cog", "dog", "dat", "dot");
         List<List<List<String>>> result = findLaddersGroupedByLength(beginWord, endWord, wordList, 3);
         printResults(result);
     }
 
-    public static List<List<List<String>>> findLaddersGroupedByLength(String beginWord, String endWord, 
-                                                                     List<String> wordList, int multiple) {
+    public static List<List<List<String>>> findLaddersGroupedByLength(String beginWord, String endWord,
+                                                                      List<String> wordList, int multiple) {
         List<List<String>> allPaths = findLadders(beginWord, endWord, wordList);
-        
+
         // Group paths by length
         Map<Integer, List<List<String>>> lengthToPathsMap = new HashMap<>();
         for (List<String> path : allPaths) {
@@ -50,9 +50,9 @@ public class WordLadder {
         // Filter paths by multiple and sort by length
         List<List<List<String>>> result = new ArrayList<>();
         lengthToPathsMap.keySet().stream()
-            .sorted()
-            .filter(length -> length % multiple == 0)
-            .forEach(length -> result.add(lengthToPathsMap.get(length)));
+                .sorted()
+                .filter(length -> length % multiple == 0)
+                .forEach(length -> result.add(lengthToPathsMap.get(length)));
 
         return result;
     }
@@ -77,7 +77,7 @@ public class WordLadder {
                     for (char c = 'a'; c <= 'z'; c++) {
                         wordArray[i] = c;
                         String newWord = new String(wordArray);
-                        
+
                         if (dictionary.contains(newWord)) {
                             nextLevel.add(newWord);
                             List<List<String>> newPaths = new ArrayList<>();

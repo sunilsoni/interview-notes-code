@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.july.apple.test4;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class ChecksumTest {
 
@@ -22,9 +24,9 @@ public class ChecksumTest {
             if (size > 0) {
                 // sum the next 'size' bytes, then mod 256
                 int sum = fileBytes.subList(i, i + size)
-                                   .stream()
-                                   .mapToInt(Integer::intValue)
-                                   .sum();
+                        .stream()
+                        .mapToInt(Integer::intValue)
+                        .sum();
                 checksums.add(sum & 0xFF);
             } else {
                 // zero-sized chunk → checksum 0
@@ -43,8 +45,10 @@ public class ChecksumTest {
         class TestCase {
             List<Integer> input;
             List<Integer> expected;
+
             TestCase(List<Integer> in, List<Integer> exp) {
-                input = in; expected = exp;
+                input = in;
+                expected = exp;
             }
         }
 
@@ -52,26 +56,26 @@ public class ChecksumTest {
 
         // example from prompt
         tests.add(new TestCase(
-            Arrays.asList(3, 44, 55, 66, 2, 110, 220),
-            Arrays.asList(165, 74)
+                Arrays.asList(3, 44, 55, 66, 2, 110, 220),
+                Arrays.asList(165, 74)
         ));
 
         // single zero-sized chunk
         tests.add(new TestCase(
-            Arrays.asList(0),
-            Arrays.asList(0)
+                Arrays.asList(0),
+                Arrays.asList(0)
         ));
 
         // mix of zero and non-zero chunks: [0] then [3,1,2,3]
         tests.add(new TestCase(
-            Arrays.asList(0, 3, 1, 2, 3),
-            Arrays.asList(0, 6)   // 1+2+3 = 6
+                Arrays.asList(0, 3, 1, 2, 3),
+                Arrays.asList(0, 6)   // 1+2+3 = 6
         ));
 
         // two small chunks
         tests.add(new TestCase(
-            Arrays.asList(2, 255, 255, 1, 128),
-            Arrays.asList(254, 128)  // 510%256=254, 128%256=128
+                Arrays.asList(2, 255, 255, 1, 128),
+                Arrays.asList(254, 128)  // 510%256=254, 128%256=128
         ));
 
         // large chunk test: header=999, then 999 ones → sum=999%256=231
@@ -79,8 +83,8 @@ public class ChecksumTest {
         big.add(999);
         for (int k = 0; k < 999; k++) big.add(1);
         tests.add(new TestCase(
-            big,
-            Collections.singletonList(999 % 256)
+                big,
+                Collections.singletonList(999 % 256)
         ));
 
         // run all tests
@@ -91,17 +95,17 @@ public class ChecksumTest {
             boolean pass = result.equals(tc.expected);
 
             System.out.printf(
-                "Test %d: %s\n  input: %s\n  expected: %s\n  got: %s\n\n",
-                t+1,
-                pass ? "PASS" : "FAIL",
-                tc.input,
-                tc.expected,
-                result
+                    "Test %d: %s\n  input: %s\n  expected: %s\n  got: %s\n\n",
+                    t + 1,
+                    pass ? "PASS" : "FAIL",
+                    tc.input,
+                    tc.expected,
+                    result
             );
             if (pass) passCount++;
         }
 
         System.out.printf("Summary: %d/%d tests passed.\n",
-                          passCount, tests.size());
+                passCount, tests.size());
     }
 }

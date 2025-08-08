@@ -1,6 +1,6 @@
 package com.interview.notes.code.year.y2025.july.GoldmanSachs.test2;
 
-import java.util.stream.IntStream; // import IntStream for Java 8 Stream API to generate large test arrays
+import java.util.stream.IntStream;
 
 public class MaxSubArray { // declare the class
 
@@ -20,9 +20,9 @@ public class MaxSubArray { // declare the class
     }
 
     // Simple main method to run test cases without any testing framework
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         // --- Test case 1: mix of positives and negatives ---
-        int[] test1 = { -2, 4, -1, 4, 7 }; // input array
+        int[] test1 = {-2, 4, -1, 4, 7}; // input array
         int expected1 = 14; // we know 4 + (-1) + 4 + 7 = 14 is the max
         int result1 = maxSubArray(test1); // compute result
         if (result1 == expected1) { // compare
@@ -32,7 +32,7 @@ public class MaxSubArray { // declare the class
         }
 
         // --- Test case 2: all negative numbers ---
-        int[] test2 = { -3, -1, -5, -2 }; // input array
+        int[] test2 = {-3, -1, -5, -2}; // input array
         int expected2 = -1; // the single largest element
         int result2 = maxSubArray(test2); // compute result
         if (result2 == expected2) {
@@ -42,7 +42,7 @@ public class MaxSubArray { // declare the class
         }
 
         // --- Test case 3: all positive numbers ---
-        int[] test3 = { 1, 2, 3, 4 }; // input array
+        int[] test3 = {1, 2, 3, 4}; // input array
         int expected3 = 10; // sum of all elements
         int result3 = maxSubArray(test3); // compute result
         if (result3 == expected3) {

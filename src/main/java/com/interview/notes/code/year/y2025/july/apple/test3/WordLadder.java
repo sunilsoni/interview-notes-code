@@ -37,7 +37,7 @@ public class WordLadder {
                     for (char c = 'a'; c <= 'z'; c++) {
                         // Replace character at position j with current char c
                         wordChars[j] = c;
-                        
+
                         // Create new word from modified char array
                         String transformed = new String(wordChars);
 

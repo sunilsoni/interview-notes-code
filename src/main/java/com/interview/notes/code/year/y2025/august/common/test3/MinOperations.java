@@ -127,22 +127,26 @@ Would you like me to implement the `getMinOperations` function using Java?
    - Large test: generate 10,000 random k-values to ensure performance.
 */
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class MinOperations {
 
     public static List<Integer> getMinOperations(List<Long> kValues) {
         return kValues.stream()
-            .map(k -> {
-                if (k == 0L) {
-                    return 0;
-                }
-                int bitLength = Long.SIZE - Long.numberOfLeadingZeros(k);
-                int ones = Long.bitCount(k);
-                return (bitLength - 1) + ones;
-            })
-            .collect(Collectors.toList());
+                .map(k -> {
+                    if (k == 0L) {
+                        return 0;
+                    }
+                    int bitLength = Long.SIZE - Long.numberOfLeadingZeros(k);
+                    int ones = Long.bitCount(k);
+                    return (bitLength - 1) + ones;
+                })
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {
@@ -158,19 +162,19 @@ public class MinOperations {
 
         // Random small values
         List<Long> small = IntStream.rangeClosed(1, 20)
-            .mapToObj(i -> (long) i)
-            .collect(Collectors.toList());
+                .mapToObj(i -> (long) i)
+                .collect(Collectors.toList());
         List<Integer> calcSmall = getMinOperations(small);
         boolean allMatch = IntStream.range(0, small.size())
-            .allMatch(i -> calcSmall.get(i).equals(manualCalc(small.get(i))));
+                .allMatch(i -> calcSmall.get(i).equals(manualCalc(small.get(i))));
         System.out.printf("Random 1–20 Test: %s%n", allMatch ? "PASS" : "FAIL");
 
         // Large random test
         Random rnd = new Random(0);
         int nLarge = 10_000;
         List<Long> large = Stream.generate(() -> Math.abs(rnd.nextLong()) % 1_000_000_000_000_000L)
-            .limit(nLarge)
-            .collect(Collectors.toList());
+                .limit(nLarge)
+                .collect(Collectors.toList());
         long start = System.currentTimeMillis();
         List<Integer> outLarge = getMinOperations(large);
         long duration = System.currentTimeMillis() - start;

@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.july.codesignal.test3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class DistributionCenters {
 
@@ -42,8 +43,7 @@ public class DistributionCenters {
                         current++;
                     }
                 }
-            }
-            else if (event.startsWith("CLOSURE")) {
+            } else if (event.startsWith("CLOSURE")) {
                 // mark the given center closed
                 int idx = Integer.parseInt(event.split("\\s+")[1]);
                 closed[idx] = true;
@@ -57,39 +57,27 @@ public class DistributionCenters {
         for (int i = 1; i < n; i++) {
             if (processed[i] >= bestCount) {
                 bestCount = processed[i];
-                bestIdx   = i;
+                bestIdx = i;
             }
         }
         return bestIdx;
     }
 
-    // simple test harness
-    private static class Test {
-        int[] caps;
-        String[] log;
-        int expect;
-        Test(int[] c, String[] l, int e) {
-            caps   = c;
-            log    = l;
-            expect = e;
-        }
-    }
-
     public static void main(String[] args) {
         List<Test> tests = Arrays.asList(
-            new Test(
-                new int[]{1,2,1,2,1},
-                new String[]{
-                  "PACKAGE",
-                  "PACKAGE",
-                  "CLOSURE 2",
-                  "PACKAGE",
-                  "CLOSURE 3",
-                  "PACKAGE",
-                  "PACKAGE"
-                },
-                1   // from prompt example
-            )
+                new Test(
+                        new int[]{1, 2, 1, 2, 1},
+                        new String[]{
+                                "PACKAGE",
+                                "PACKAGE",
+                                "CLOSURE 2",
+                                "PACKAGE",
+                                "CLOSURE 3",
+                                "PACKAGE",
+                                "PACKAGE"
+                        },
+                        1   // from prompt example
+                )
         );
 
         for (Test t : tests) {
@@ -97,9 +85,22 @@ public class DistributionCenters {
             if (out == t.expect) {
                 System.out.println("PASS");
             } else {
-                System.out.println("FAIL: expected=" 
-                    + t.expect + " got=" + out);
+                System.out.println("FAIL: expected="
+                        + t.expect + " got=" + out);
             }
+        }
+    }
+
+    // simple test harness
+    private static class Test {
+        int[] caps;
+        String[] log;
+        int expect;
+
+        Test(int[] c, String[] l, int e) {
+            caps = c;
+            log = l;
+            expect = e;
         }
     }
 }

@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.july.codesignal.test5;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 /*
 WORKING SOLUTION
 
@@ -192,20 +193,20 @@ public class DistributionCenter {
     // Main method for test cases (prints PASS/FAIL)
     public static void main(String[] args) {
         // Example test case (from problem)
-        int[] c1 = {1,2,1,2,1};
-        String[] log1 = {"PACKAGE","PACKAGE","CLOSURE 2","PACKAGE","CLOSURE 3","PACKAGE","PACKAGE"};
+        int[] c1 = {1, 2, 1, 2, 1};
+        String[] log1 = {"PACKAGE", "PACKAGE", "CLOSURE 2", "PACKAGE", "CLOSURE 3", "PACKAGE", "PACKAGE"};
         int expected1 = 1;
         runTest(1, c1, log1, expected1);
 
         // Test 2: Only 1 center
         int[] c2 = {3};
-        String[] log2 = {"PACKAGE","PACKAGE","PACKAGE","PACKAGE"};
+        String[] log2 = {"PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE"};
         int expected2 = 0;
         runTest(2, c2, log2, expected2);
 
         // Test 3: All centers closed except one
-        int[] c3 = {2,3,2};
-        String[] log3 = {"CLOSURE 0","CLOSURE 2","PACKAGE","PACKAGE","PACKAGE"};
+        int[] c3 = {2, 3, 2};
+        String[] log3 = {"CLOSURE 0", "CLOSURE 2", "PACKAGE", "PACKAGE", "PACKAGE"};
         int expected3 = 1;
         runTest(3, c3, log3, expected3);
 
@@ -215,18 +216,18 @@ public class DistributionCenter {
         Arrays.fill(c4, 5);
         String[] log4 = new String[1000];
         Arrays.fill(log4, "PACKAGE");
-        int expected4 = n-1;
+        int expected4 = n - 1;
         runTest(4, c4, log4, expected4);
 
         // Test 5: Edge reset
-        int[] c5 = {2,1};
-        String[] log5 = {"PACKAGE","PACKAGE","PACKAGE","PACKAGE","PACKAGE"};
+        int[] c5 = {2, 1};
+        String[] log5 = {"PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE"};
         int expected5 = 0; // [2,2]
         runTest(5, c5, log5, expected5);
 
         // Test 6: Closure before package
-        int[] c6 = {1,1,1};
-        String[] log6 = {"CLOSURE 2","PACKAGE","PACKAGE"};
+        int[] c6 = {1, 1, 1};
+        String[] log6 = {"CLOSURE 2", "PACKAGE", "PACKAGE"};
         int expected6 = 1;
         runTest(6, c6, log6, expected6);
 
@@ -237,8 +238,8 @@ public class DistributionCenter {
         runTest(7, c7, log7, expected7);
 
         // *** Test 8: Your other failing test case (was test 4 in screenshots) ***
-        int[] c8 = {1,1,2};
-        String[] log8 = {"PACKAGE","PACKAGE","PACKAGE","CLOSURE 2","PACKAGE"};
+        int[] c8 = {1, 1, 2};
+        String[] log8 = {"PACKAGE", "PACKAGE", "PACKAGE", "CLOSURE 2", "PACKAGE"};
         int expected8 = 0;
         runTest(8, c8, log8, expected8);
 

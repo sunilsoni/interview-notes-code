@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.july.codesignal.test3;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+
 /*
 Here is the complete and properly formatted version of the problem statement based on the images you provided:
 
@@ -79,10 +81,10 @@ public class VowelSubstringCounter {
             return 0;
         }
         return (int) IntStream
-            .range(0, text.length() - 2)
-            .mapToObj(i -> text.substring(i, i + 3))
-            .filter(s -> countVowels(s) == 2)
-            .count();
+                .range(0, text.length() - 2)
+                .mapToObj(i -> text.substring(i, i + 3))
+                .filter(s -> countVowels(s) == 2)
+                .count();
     }
 
     // helper: count vowels in a 3-char string
@@ -92,23 +94,13 @@ public class VowelSubstringCounter {
                 .count();
     }
 
-    // simple Test holder
-    private static class Test {
-        String input;
-        int expected;
-        Test(String input, int expected) {
-            this.input = input;
-            this.expected = expected;
-        }
-    }
-
     // main method: runs tests and reports PASS/FAIL
     public static void main(String[] args) {
         List<Test> tests = Arrays.asList(
-            new Test("aeiobe", 2),    // "iob", "obe"
-            new Test("", 0),          // too short
-            new Test("banana", 2),    // two "ana"s
-            new Test("abecidofu", 4)  // "abe","bec","eci","ido" etc.
+                new Test("aeiobe", 2),    // "iob", "obe"
+                new Test("", 0),          // too short
+                new Test("banana", 2),    // two "ana"s
+                new Test("abecidofu", 4)  // "abe","bec","eci","ido" etc.
         );
 
         for (Test t : tests) {
@@ -117,7 +109,7 @@ public class VowelSubstringCounter {
                 System.out.println("PASS: \"" + t.input + "\" -> " + result);
             } else {
                 System.out.println("FAIL: \"" + t.input + "\" -> expected "
-                                   + t.expected + ", got " + result);
+                        + t.expected + ", got " + result);
             }
         }
 
@@ -131,6 +123,17 @@ public class VowelSubstringCounter {
         int largeResult = solution(large);
         long duration = System.currentTimeMillis() - start;
         System.out.println("Large test (100k): result=" + largeResult
-                           + " time=" + duration + "ms");
+                + " time=" + duration + "ms");
+    }
+
+    // simple Test holder
+    private static class Test {
+        String input;
+        int expected;
+
+        Test(String input, int expected) {
+            this.input = input;
+            this.expected = expected;
+        }
     }
 }

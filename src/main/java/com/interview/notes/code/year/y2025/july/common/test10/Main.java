@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.july.common.test10;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
@@ -13,7 +17,7 @@ public class Main {
         }
 
         ExecutorService executor = Executors.newFixedThreadPool(3);
-        
+
         Future<Long> cubeSumFuture = executor.submit(() -> calculateSum(arr, 3));
         Future<Long> fourthPowerSumFuture = executor.submit(() -> calculateSum(arr, 4));
         Future<Long> fifthPowerSumFuture = executor.submit(() -> calculateSum(arr, 5));

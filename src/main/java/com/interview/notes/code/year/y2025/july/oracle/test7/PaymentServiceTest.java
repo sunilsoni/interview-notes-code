@@ -1,9 +1,17 @@
 package com.interview.notes.code.year.y2025.july.oracle.test7;
 
-import java.util.*;                         // for List, Arrays, etc.
-import java.util.stream.*;                  // for streams and IntStream
-import java.io.*;                           // for PrintStream, ByteArrayOutputStream
-import java.text.DecimalFormat;             // for DecimalFormat in rounding
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+
+// Common interface for all payment methods
+interface PaymentMethod {
+    void pay(double amount);                                                     // process a payment of given amount
+}
+
 /*
 
 
@@ -159,11 +167,6 @@ class Utils {
     }
 }
 
-// Common interface for all payment methods
-interface PaymentMethod {
-    void pay(double amount);                                                     // process a payment of given amount
-}
-
 // Credit‐card payment, with reward‐points redemption
 class CreditCardPaymentMethod implements PaymentMethod {
     private String cardNumber;                                                   // card number (not used in logic)
@@ -187,13 +190,13 @@ class CreditCardPaymentMethod implements PaymentMethod {
         double remaining = amount - redeemable;
         // print main payment line
         System.out.println("Paying " + Utils.roundDouble(amount)
-            + " via Credit Card using Reward Points Redemption Feature.");
+                + " via Credit Card using Reward Points Redemption Feature.");
         // print redeemed‐points line
         System.out.println("Redeemed " + Utils.roundDouble(redeemable)
-            + " using reward points.");
+                + " using reward points.");
         // print remaining‐amount line
         System.out.println("Paying remaining amount of " + Utils.roundDouble(remaining)
-            + " via credit card.");
+                + " via credit card.");
     }
 }
 
@@ -217,13 +220,13 @@ class PayPalPaymentMethod implements PaymentMethod {
         double secondWithInterest = second * 1.05;
         // print main payment line
         System.out.println("Paying " + Utils.roundDouble(amount)
-            + " via PayPal using Installment Payment Plan.");
+                + " via PayPal using Installment Payment Plan.");
         // print first‐installment line
         System.out.println("Paid " + Utils.roundDouble(first)
-            + " in first installment.");
+                + " in first installment.");
         // print second‐installment line
         System.out.println("Paid " + Utils.roundDouble(secondWithInterest)
-            + " in second installment with 5% interest.");
+                + " in second installment with 5% interest.");
     }
 }
 
@@ -256,36 +259,36 @@ public class PaymentServiceTest {
 
         // define a few small, deterministic test cases
         List<TestCase> testCases = Arrays.asList(
-            new TestCase(
-                "CC small",                                                     // test name
-                new CreditCardPaymentMethod("1234", "000", "12/25", "John Doe"),
-                50.0,                                                            // amount
-                Arrays.asList(                                                  // expected output lines
-                    "Paying 50 via Credit Card using Reward Points Redemption Feature.",
-                    "Redeemed 5 using reward points.",
-                    "Paying remaining amount of 45 via credit card."
+                new TestCase(
+                        "CC small",                                                     // test name
+                        new CreditCardPaymentMethod("1234", "000", "12/25", "John Doe"),
+                        50.0,                                                            // amount
+                        Arrays.asList(                                                  // expected output lines
+                                "Paying 50 via Credit Card using Reward Points Redemption Feature.",
+                                "Redeemed 5 using reward points.",
+                                "Paying remaining amount of 45 via credit card."
+                        )
+                ),
+                new TestCase(
+                        "CC cap",                                                       // test reward‐cap
+                        new CreditCardPaymentMethod("1234", "000", "12/25", "John Doe"),
+                        200.0,                                                           // amount
+                        Arrays.asList(
+                                "Paying 200 via Credit Card using Reward Points Redemption Feature.",
+                                "Redeemed 10 using reward points.",
+                                "Paying remaining amount of 190 via credit card."
+                        )
+                ),
+                new TestCase(
+                        "PP standard",                                                  // PayPal standard
+                        new PayPalPaymentMethod("user@example.com", "pass"),
+                        100.0,                                                           // amount
+                        Arrays.asList(
+                                "Paying 100 via PayPal using Installment Payment Plan.",
+                                "Paid 50 in first installment.",
+                                "Paid 52.5 in second installment with 5% interest."
+                        )
                 )
-            ),
-            new TestCase(
-                "CC cap",                                                       // test reward‐cap
-                new CreditCardPaymentMethod("1234", "000", "12/25", "John Doe"),
-                200.0,                                                           // amount
-                Arrays.asList(
-                    "Paying 200 via Credit Card using Reward Points Redemption Feature.",
-                    "Redeemed 10 using reward points.",
-                    "Paying remaining amount of 190 via credit card."
-                )
-            ),
-            new TestCase(
-                "PP standard",                                                  // PayPal standard
-                new PayPalPaymentMethod("user@example.com", "pass"),
-                100.0,                                                           // amount
-                Arrays.asList(
-                    "Paying 100 via PayPal using Installment Payment Plan.",
-                    "Paid 50 in first installment.",
-                    "Paid 52.5 in second installment with 5% interest."
-                )
-            )
         );
 
         // run all small test cases and print PASS/FAIL
@@ -301,24 +304,24 @@ public class PaymentServiceTest {
             System.setOut(oldOut);                                               // restore console
 
             // split captured output into lines
-            String[] actual = baos.toString().trim().split("\\r?\\n");           
+            String[] actual = baos.toString().trim().split("\\r?\\n");
             // compare actual vs expected exactly
-            boolean pass = Arrays.asList(actual).equals(tc.expected);           
+            boolean pass = Arrays.asList(actual).equals(tc.expected);
             // print result line
-            System.out.println(tc.name + ": " + (pass ? "PASS" : "FAIL"));       
+            System.out.println(tc.name + ": " + (pass ? "PASS" : "FAIL"));
         });
 
         // large‐data test: run 10 000 payments to check for exceptions/performance
         try {
             IntStream.range(0, 10_000).forEach(i -> {                            // loop 0..9999
                 double amt = i * 1.11;                                           // generate a test amount
-                service.processPayment(                                         
-                    new CreditCardPaymentMethod("0000","111","01/30","Test"),    
-                    amt                                                         
+                service.processPayment(
+                        new CreditCardPaymentMethod("0000", "111", "01/30", "Test"),
+                        amt
                 );
             });
             System.out.println("Large data test: PASS");                        // no exceptions = pass
-        } catch (Exception e) {                                                  
+        } catch (Exception e) {
             System.out.println("Large data test: FAIL – " + e.getMessage());     // report error
         }
     }

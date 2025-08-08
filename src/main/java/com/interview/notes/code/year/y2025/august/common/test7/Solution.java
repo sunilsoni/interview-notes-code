@@ -1,6 +1,22 @@
 package com.interview.notes.code.year.y2025.august.common.test7;
 
 class Solution {
+    public static void main(String[] args) {
+        PangramDetector pd = new PangramDetector();
+        boolean success = true;
+
+        success = success && "".equals(pd.findMissingLetters("The quick brown fox jumps over the lazy dog"));
+        success = success && "bfgjkvz".equals(pd.findMissingLetters("The slow purple oryx meanders past the quiescent canine"));
+        success = success && "cdfjklmopruvwxyz".equals(pd.findMissingLetters("We hates Bagginses!"));
+        success = success && "abcdefghijklmnopqrstuvwxyz".equals(pd.findMissingLetters(""));
+
+        if (success) {
+            System.out.println("All tests passed.");
+        } else {
+            System.out.println("At least one of your tests failed.");
+        }
+    }
+
     private static class PangramDetector {
         private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
@@ -30,22 +46,6 @@ class Solution {
                 }
             }
             return missing.toString();
-        }
-    }
-
-    public static void main(String[] args) {
-        PangramDetector pd = new PangramDetector();
-        boolean success = true;
-
-        success = success && "".equals(pd.findMissingLetters("The quick brown fox jumps over the lazy dog"));
-        success = success && "bfgjkvz".equals(pd.findMissingLetters("The slow purple oryx meanders past the quiescent canine"));
-        success = success && "cdfjklmopruvwxyz".equals(pd.findMissingLetters("We hates Bagginses!"));
-        success = success && "abcdefghijklmnopqrstuvwxyz".equals(pd.findMissingLetters(""));
-
-        if (success) {
-            System.out.println("All tests passed.");
-        } else {
-            System.out.println("At least one of your tests failed.");
         }
     }
 }
