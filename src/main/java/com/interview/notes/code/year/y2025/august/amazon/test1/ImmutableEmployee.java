@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 /**
  * Immutable representation of an employee.
  */
+
 public final class ImmutableEmployee {
     private final String employeeId;                 // unique ID, immutable once set
     private final String name;                       // employee name, immutable
