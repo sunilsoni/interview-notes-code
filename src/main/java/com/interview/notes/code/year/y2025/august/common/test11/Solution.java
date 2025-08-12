@@ -18,11 +18,11 @@ class Solution {
         public String findMissingLetters(String sentence) {
             // Step 1: Create a Set to store letters found in the input
             Set<Character> foundLetters = sentence
-                .toLowerCase()                // Normalize to lowercase
-                .chars()                       // Get IntStream of character codes
-                .filter(c -> c >= 'a' && c <= 'z') // Keep only 'a' to 'z'
-                .mapToObj(c -> (char) c)        // Convert int to char
-                .collect(Collectors.toSet());  // Store unique letters in a Set
+                    .toLowerCase()                // Normalize to lowercase
+                    .chars()                       // Get IntStream of character codes
+                    .filter(c -> c >= 'a' && c <= 'z') // Keep only 'a' to 'z'
+                    .mapToObj(c -> (char) c)        // Convert int to char
+                    .collect(Collectors.toSet());  // Store unique letters in a Set
 
             // Step 2: Stream over ALPHABET and filter letters not in foundLetters
             return ALPHABET.chars()                   // Stream over 'a' to 'z'

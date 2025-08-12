@@ -17,17 +17,17 @@ class Generic<T> {
 public class Main {
     public static void main(String[] args) {
         ArrayList<Generic> g = new ArrayList<>();
-        
+
         Generic<?> g1 = new Generic<>(10);
         Generic<?> g2 = new Generic<>("Hello");
-        
+
         g.add(g1);
         g.add(g2);
 
         // These lines will cause compile-time error
         int i = (int) g.get(0).getValue();   // Error: incompatible types
         String s = g.get(1).getValue().toString(); // Error: incompatible types
-        
+
         System.out.println(s);
         System.out.println(i);
     }
