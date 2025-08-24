@@ -1,8 +1,14 @@
 package com.interview.notes.code.year.y2025.august.common.test12;
 
-import java.util.*;
-
 public class Solution {
+    // For quick local testing
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.minWindow("ADOBECODEBANC", "ABC")); // BANC
+        System.out.println(sol.minWindow("a", "a"));               // a
+        System.out.println(sol.minWindow("a", "aa"));              // ""
+    }
+
     public String minWindow(String s, String t) {
         if (s == null || t == null || s.isEmpty() || t.isEmpty())
             return "";
@@ -48,14 +54,6 @@ public class Solution {
         }
 
         return (bestLen == Integer.MAX_VALUE) ? "" :
-               s.substring(bestStart, bestStart + bestLen);
-    }
-
-    // For quick local testing
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        System.out.println(sol.minWindow("ADOBECODEBANC", "ABC")); // BANC
-        System.out.println(sol.minWindow("a", "a"));               // a
-        System.out.println(sol.minWindow("a", "aa"));              // ""
+                s.substring(bestStart, bestStart + bestLen);
     }
 }

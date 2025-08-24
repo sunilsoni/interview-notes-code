@@ -1,7 +1,10 @@
 package com.interview.notes.code.year.y2025.august.common.test13;
 
-import java.util.*;                 // import utility classes like List, Arrays, Collections
-import java.util.stream.*;          // import Java 8 Stream APIs for concise list processing
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Balanced angle-brackets with limited replacements.
@@ -9,10 +12,10 @@ import java.util.stream.*;          // import Java 8 Stream APIs for concise lis
  * - Scan left to right.
  * - Keep `open` = unmatched '<' count.
  * - When we see '>', if open>0, pair it (open--).
- *   Else, if we still have replacement budget, replace this '>' with "<>" (use++), which fixes the prefix.
- *   Else fail immediately.
+ * Else, if we still have replacement budget, replace this '>' with "<>" (use++), which fixes the prefix.
+ * Else fail immediately.
  * - At the end, string is balanced iff open==0 (leftover '<' cannot be fixed by replacements).
- *
+ * <p>
  * The program prints PASS/FAIL for multiple test suites, including large random data.
  */
 public class BalancedExpressions {  // define class to contain solution and tests
@@ -52,26 +55,26 @@ public class BalancedExpressions {  // define class to contain solution and test
         // Suite 1: Basic correctness on simple cases
         runTest("Suite 1 - Basics",
                 Arrays.asList("<>", "<>", "<><", ">>", "<<>", "><><"),     // expressions
-                Arrays.asList(0,    1,     2,      2,    2,     2),        // max replacements
-                Arrays.asList(1,    1,     0,      1,    0,     0));       // expected (note: "<><" -> 0)
+                Arrays.asList(0, 1, 2, 2, 2, 2),        // max replacements
+                Arrays.asList(1, 1, 0, 1, 0, 0));       // expected (note: "<><" -> 0)
 
         // Suite 2: Example where a string needs exactly k replacements
         runTest("Suite 2 - Exact replacements",
                 Arrays.asList(">", ">>", ">>>", "<<>>", ">><<"),           // expressions
-                Arrays.asList(1,   2,    3,     0,      2),                // max replacements
-                Arrays.asList(1,   1,    1,     1,      0));               // expected results
+                Arrays.asList(1, 2, 3, 0, 2),                // max replacements
+                Arrays.asList(1, 1, 1, 1, 0));               // expected results
 
         // Suite 3: Already balanced or impossible because of leftover '<'
         runTest("Suite 3 - Balanced vs leftover opens",
                 Arrays.asList("<><>", "<<><", "<<<>>>", "<<><>>", "<<>"),  // expressions
-                Arrays.asList(0,      5,      0,        0,        10),     // max replacements
-                Arrays.asList(1,      0,      1,        1,        0));     // expected results
+                Arrays.asList(0, 5, 0, 0, 10),     // max replacements
+                Arrays.asList(1, 0, 1, 1, 0));     // expected results
 
         // Suite 4: Edge cases (empty, all opens, all closes)
         runTest("Suite 4 - Edge cases",
                 Arrays.asList("", "<<<", ">>>", "><", "<>"),               // expressions
-                Arrays.asList(0,   5,     2,     1,    0),                  // max replacements
-                Arrays.asList(1,   0,     1,     1,    1));                 // expected results
+                Arrays.asList(0, 5, 2, 1, 0),                  // max replacements
+                Arrays.asList(1, 0, 1, 1, 1));                 // expected results
 
         // Suite 5: Large random data to check performance and stability
         largeDataTest(200_000, 5); // generate 200k-length random string, allow up to 5 replacements

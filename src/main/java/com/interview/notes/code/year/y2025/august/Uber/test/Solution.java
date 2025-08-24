@@ -25,10 +25,10 @@ public class Solution {
                     int x = cur[0], y = cur[1];
                     component.add(cur);
 
-                    int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
+                    int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
                     for (int[] d : dirs) {
                         int nx = x + d[0], ny = y + d[1];
-                        if (nx >= 0 && nx < rows && ny >= 0 && ny < cols 
+                        if (nx >= 0 && nx < rows && ny >= 0 && ny < cols
                                 && !visited[nx][ny] && bubbles[nx][ny] == color) {
                             visited[nx][ny] = true;
                             q.add(new int[]{nx, ny});
@@ -40,10 +40,10 @@ public class Solution {
                 boolean eligible = false;
                 for (int[] cell : component) {
                     int x = cell[0], y = cell[1], count = 0;
-                    if (x > 0 && bubbles[x-1][y] == color) count++;
-                    if (x < rows-1 && bubbles[x+1][y] == color) count++;
-                    if (y > 0 && bubbles[x][y-1] == color) count++;
-                    if (y < cols-1 && bubbles[x][y+1] == color) count++;
+                    if (x > 0 && bubbles[x - 1][y] == color) count++;
+                    if (x < rows - 1 && bubbles[x + 1][y] == color) count++;
+                    if (y > 0 && bubbles[x][y - 1] == color) count++;
+                    if (y < cols - 1 && bubbles[x][y + 1] == color) count++;
                     if (count >= 2) {
                         eligible = true;
                         break;
@@ -83,17 +83,17 @@ public class Solution {
 
     public static void main(String[] args) {
         int[][] bubbles = {
-            {3, 1, 2, 1},
-            {1, 1, 1, 4},
-            {3, 1, 2, 2},
-            {3, 3, 3, 4}
+                {3, 1, 2, 1},
+                {1, 1, 1, 4},
+                {3, 1, 2, 2},
+                {3, 3, 3, 4}
         };
 
         int[][] expected = {
-            {0, 0, 0, 1},
-            {0, 0, 0, 4},
-            {0, 0, 2, 2},
-            {3, 0, 2, 4}
+                {0, 0, 0, 1},
+                {0, 0, 0, 4},
+                {0, 0, 2, 2},
+                {3, 0, 2, 4}
         };
 
         int[][] result = solution(bubbles);

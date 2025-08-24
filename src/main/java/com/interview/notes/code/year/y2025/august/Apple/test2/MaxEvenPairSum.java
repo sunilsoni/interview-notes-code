@@ -1,6 +1,6 @@
 package com.interview.notes.code.year.y2025.august.Apple.test2;
 
-import java.util.*; // import utilities for optional stream demo and testing support
+import java.util.*;
 
 public class MaxEvenPairSum {
 
@@ -22,12 +22,12 @@ public class MaxEvenPairSum {
 
         // Counts for parity to know if at least two values exist in each group
         int evenCount = 0; // how many evens encountered (distinct indices)
-        int oddCount  = 0; // how many odds encountered (distinct indices)
+        int oddCount = 0; // how many odds encountered (distinct indices)
 
         // Single pass over the array to update our top-two trackers
         for (int x : nums) {
             // Check parity using bit operation: (x & 1) == 0 => even; faster than x % 2
-            if ( (x & 1) == 0 ) { // x is even
+            if ((x & 1) == 0) { // x is even
                 evenCount++; // increase count of evens seen
 
                 // Maintain top two evens in descending order
@@ -53,7 +53,7 @@ public class MaxEvenPairSum {
 
         // Build candidate sums using long to avoid rare int overflow during addition
         Long bestEvenSum = null; // null indicates "no valid even pair"
-        Long bestOddSum  = null; // null indicates "no valid odd pair"
+        Long bestOddSum = null; // null indicates "no valid odd pair"
 
         // If at least two evens exist, we can form an even sum from e1 + e2
         if (evenCount >= 2) {
@@ -70,7 +70,7 @@ public class MaxEvenPairSum {
 
         // Compare candidates carefully, considering nulls
         if (bestEvenSum != null) ansLong = bestEvenSum;
-        if (bestOddSum  != null) {
+        if (bestOddSum != null) {
             if (ansLong == null || bestOddSum > ansLong) ansLong = bestOddSum;
         }
 
@@ -94,31 +94,31 @@ public class MaxEvenPairSum {
 
         // Using Streams: get top-2 evens in descending order via sort, then sum if present
         OptionalInt evenSumOpt =
-            Arrays.stream(nums)                            // stream over the array
-                  .filter(x -> (x & 1) == 0)               // keep evens
-                  .boxed()                                 // box to Integer to allow reverse sorting
-                  .sorted(Comparator.reverseOrder())       // sort descending
-                  .mapToInt(Integer::intValue)             // back to primitive int
-                  .limit(2)                                // keep only top two
-                  .reduce((a, b) -> a + b);                // sum top two if both exist
+                Arrays.stream(nums)                            // stream over the array
+                        .filter(x -> (x & 1) == 0)               // keep evens
+                        .boxed()                                 // box to Integer to allow reverse sorting
+                        .sorted(Comparator.reverseOrder())       // sort descending
+                        .mapToInt(Integer::intValue)             // back to primitive int
+                        .limit(2)                                // keep only top two
+                        .reduce((a, b) -> a + b);                // sum top two if both exist
 
         // Similarly for odds
         OptionalInt oddSumOpt =
-            Arrays.stream(nums)
-                  .filter(x -> (x & 1) != 0)               // keep odds
-                  .boxed()
-                  .sorted(Comparator.reverseOrder())
-                  .mapToInt(Integer::intValue)
-                  .limit(2)
-                  .reduce((a, b) -> a + b);
+                Arrays.stream(nums)
+                        .filter(x -> (x & 1) != 0)               // keep odds
+                        .boxed()
+                        .sorted(Comparator.reverseOrder())
+                        .mapToInt(Integer::intValue)
+                        .limit(2)
+                        .reduce((a, b) -> a + b);
 
         // Pick the maximum among the available optional sums
         boolean hasEven = evenSumOpt.isPresent();
-        boolean hasOdd  = oddSumOpt.isPresent();
+        boolean hasOdd = oddSumOpt.isPresent();
 
         if (!hasEven && !hasOdd) return -1;                // no valid even-sum pair at all
-        if (hasEven && !hasOdd)  return evenSumOpt.getAsInt();
-        if (!hasEven && hasOdd)  return oddSumOpt.getAsInt();
+        if (hasEven && !hasOdd) return evenSumOpt.getAsInt();
+        if (!hasEven && hasOdd) return oddSumOpt.getAsInt();
         return Math.max(evenSumOpt.getAsInt(), oddSumOpt.getAsInt());
     }
 
@@ -127,17 +127,17 @@ public class MaxEvenPairSum {
     public static void main(String[] args) {
         // Define test cases: array with expected answer
         List<TestCase> tests = Arrays.asList(
-            new TestCase(new int[]{5, 1, 3, 4, 2}, 8),      // from prompt: odd+odd (5+3)=8
-            new TestCase(new int[]{0, 1}, -1),              // from prompt: no even+even or odd+odd
-            new TestCase(new int[]{2, 2}, 4),               // even+even duplicate allowed
-            new TestCase(new int[]{1, 1, 2, 2, 1000001}, 1000002), // best is odd+odd
-            new TestCase(new int[]{2}, -1),                 // only one element
-            new TestCase(new int[]{1}, -1),                 // only one odd
-            new TestCase(new int[]{}, -1),                  // empty
-            new TestCase(new int[]{-2, -4, -3, -5}, -6),    // best is even+even (-2 + -4)
-            new TestCase(new int[]{0, 0}, 0),               // zeros: even+even
-            new TestCase(new int[]{7, 9, 11}, 20),          // odd+odd (11+9)
-            new TestCase(new int[]{8, 6, 4}, 14)            // even+even (8+6)
+                new TestCase(new int[]{5, 1, 3, 4, 2}, 8),      // from prompt: odd+odd (5+3)=8
+                new TestCase(new int[]{0, 1}, -1),              // from prompt: no even+even or odd+odd
+                new TestCase(new int[]{2, 2}, 4),               // even+even duplicate allowed
+                new TestCase(new int[]{1, 1, 2, 2, 1000001}, 1000002), // best is odd+odd
+                new TestCase(new int[]{2}, -1),                 // only one element
+                new TestCase(new int[]{1}, -1),                 // only one odd
+                new TestCase(new int[]{}, -1),                  // empty
+                new TestCase(new int[]{-2, -4, -3, -5}, -6),    // best is even+even (-2 + -4)
+                new TestCase(new int[]{0, 0}, 0),               // zeros: even+even
+                new TestCase(new int[]{7, 9, 11}, 20),          // odd+odd (11+9)
+                new TestCase(new int[]{8, 6, 4}, 14)            // even+even (8+6)
         );
 
         // Run functional tests on the optimal method
@@ -147,8 +147,9 @@ public class MaxEvenPairSum {
             int got = maxEvenPairSum(t.input);
             boolean ok = (got == t.expected);
             System.out.printf("Input=%s | Expected=%d | Got=%d | %s%n",
-                              Arrays.toString(t.input), t.expected, got, ok ? "PASS" : "FAIL");
-            if (ok) pass++; else fail++;
+                    Arrays.toString(t.input), t.expected, got, ok ? "PASS" : "FAIL");
+            if (ok) pass++;
+            else fail++;
         }
         System.out.printf("Summary: PASS=%d, FAIL=%d%n", pass, fail);
 
@@ -157,10 +158,10 @@ public class MaxEvenPairSum {
         for (int i = 0; i < Math.min(5, tests.size()); i++) {
             TestCase t = tests.get(i);
             int gotOptimal = maxEvenPairSum(t.input);
-            int gotStream  = maxEvenPairSumStreamSlower(t.input);
+            int gotStream = maxEvenPairSumStreamSlower(t.input);
             System.out.printf("Input=%s | Optimal=%d | Stream=%d | %s%n",
-                              Arrays.toString(t.input), gotOptimal, gotStream,
-                              (gotOptimal == gotStream) ? "MATCH" : "MISMATCH");
+                    Arrays.toString(t.input), gotOptimal, gotStream,
+                    (gotOptimal == gotStream) ? "MATCH" : "MISMATCH");
         }
 
         // Large data performance test: generate 5 million ints (mix of even/odd)
@@ -177,13 +178,14 @@ public class MaxEvenPairSum {
         int bigAns = maxEvenPairSum(big);
         long t2 = System.nanoTime();
         System.out.printf("Large test: N=%d | Result=%d | Time=%.2f ms%n",
-                          N, bigAns, (t2 - t1) / 1e6);
+                N, bigAns, (t2 - t1) / 1e6);
     }
 
     // Simple holder for test cases
     private static class TestCase {
         final int[] input;
         final int expected;
+
         TestCase(int[] input, int expected) {
             this.input = input;
             this.expected = expected;

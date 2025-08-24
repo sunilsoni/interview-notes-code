@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.august.oracle.test4;
 
-import java.util.*;                 // import utilities for List, Arrays, ArrayList
-import java.util.stream.*;          // import streams to use Java 8 Stream API
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /*
 
 
@@ -113,7 +115,7 @@ public class ExtractContiguousNumbersNoRegex {
         System.out.println("Test 5: " + (equalsList(out5, exp5) ? "PASS" : "FAIL"));
         System.out.println();
 
-        String[] in6 = {"" , "A", "1", "A2B3C", "0"};                    // includes empty and single-char cases
+        String[] in6 = {"", "A", "1", "A2B3C", "0"};                    // includes empty and single-char cases
         List<String> out6 = extractNumbers(in6);
         List<String> exp6 = Arrays.asList("1", "2", "3", "0");
         System.out.println("Test 6 Output  : " + asString(out6));

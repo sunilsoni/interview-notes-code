@@ -45,9 +45,17 @@ class Cart {
         this.trays = trays;
     }
 
-    public Long getId() { return id; }
-    public String getName() { return name; }
-    public List<Tray> getTrays() { return trays; }
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Tray> getTrays() {
+        return trays;
+    }
 }
 
 class Tray {
@@ -59,6 +67,11 @@ class Tray {
         this.name = name;
     }
 
-    public Long getId() { return id; }
-    public String getName() { return name; }
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

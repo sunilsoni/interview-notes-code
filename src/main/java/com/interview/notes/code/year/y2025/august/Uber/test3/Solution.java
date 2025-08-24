@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.august.Uber.test3;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class Solution {
     static int solution(int[] numbers, int threshold) {
@@ -15,11 +16,11 @@ public class Solution {
 
     public static void main(String[] args) {
         List<int[]> testCases = Arrays.asList(
-            new int[]{0, 1, 4, 3, 2, 5},
-            new int[]{-9, 95, 94, 4, 51},
-            new int[]{5, 6, 7, 8, 9},
-            new int[]{1, 1, 1, 1},
-            IntStream.range(0, 2000).toArray()
+                new int[]{0, 1, 4, 3, 2, 5},
+                new int[]{-9, 95, 94, 4, 51},
+                new int[]{5, 6, 7, 8, 9},
+                new int[]{1, 1, 1, 1},
+                IntStream.range(0, 2000).toArray()
         );
 
         List<Integer> thresholds = Arrays.asList(1, 42, 4, 2, 500);

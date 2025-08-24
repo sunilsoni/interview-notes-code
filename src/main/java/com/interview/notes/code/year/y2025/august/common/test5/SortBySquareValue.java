@@ -46,20 +46,20 @@ public class SortBySquareValue {
     public static void main(String[] args) {
         // Test cases
         int[][] testCases = {
-            {1, 5, 7, 7, 8, 10},
-            {-5, -3, -3, 2, 4, 4, 8},
-            {},                      // empty array
-            {-2, -1, 0, 1, 2},       // mixed negatives and positives
-            {-10, -5, -2, 0, 3, 6}   // varied range
+                {1, 5, 7, 7, 8, 10},
+                {-5, -3, -3, 2, 4, 4, 8},
+                {},                      // empty array
+                {-2, -1, 0, 1, 2},       // mixed negatives and positives
+                {-10, -5, -2, 0, 3, 6}   // varied range
         };
 
         // Expected results based on ascending squares
         int[][] expected = {
-            {1, 5, 7, 7, 8, 10},
-            {2, -3, -3, 4, 4, -5, 8},
-            {},
-            {0, -1, 1, -2, 2},
-            {0, -2, 3, -5, 6, -10}
+                {1, 5, 7, 7, 8, 10},
+                {2, -3, -3, 4, 4, -5, 8},
+                {},
+                {0, -1, 1, -2, 2},
+                {0, -2, 3, -5, 6, -10}
         };
 
         // Run all test cases

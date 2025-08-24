@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.august.HackerRank.test3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /*
@@ -94,7 +96,7 @@ public class PerfectTeam {
         Map<Character, Long> freq = skills.chars()
                 .mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
-        return (int) Arrays.asList('p','c','m','b','z')
+        return (int) Arrays.asList('p', 'c', 'm', 'b', 'z')
                 .stream()
                 .mapToLong(ch -> freq.getOrDefault(ch, 0L))
                 .min()

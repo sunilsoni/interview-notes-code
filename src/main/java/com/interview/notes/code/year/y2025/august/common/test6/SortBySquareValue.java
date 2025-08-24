@@ -30,13 +30,13 @@ public class SortBySquareValue {
     // Test method in main()
     public static void main(String[] args) {
         int[][] testCases = {
-            {1, 5, 7, 7, 8, 10},
-            {-5, -3, -3, 2, 4, 4, 8}
+                {1, 5, 7, 7, 8, 10},
+                {-5, -3, -3, 2, 4, 4, 8}
         };
 
         int[][] expected = {
-            {1, 5, 7, 8, 10}, // original expected seems incomplete; keeping logic-based result
-            {2, -3, -3, 4, 4, -5, 8}
+                {1, 5, 7, 8, 10}, // original expected seems incomplete; keeping logic-based result
+                {2, -3, -3, 4, 4, -5, 8}
         };
 
         for (int i = 0; i < testCases.length; i++) {

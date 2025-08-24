@@ -1,20 +1,10 @@
 package com.interview.notes.code.year.y2025.august.adobe.test3;
 
-import java.util.*;  // import List, ArrayList, Queue, LinkedList, Objects, Comparator, etc.
-import java.util.stream.Collectors; // import Collectors for Java 8 stream operations
+import java.util.*;
+import java.util.stream.Collectors;
 
 // Define a public class to hold everything in a single file for easy copy-run.
 public class PathSumII {
-
-    // Tree node definition used for building and traversing the binary tree.
-    static class TreeNode {
-        int val;             // holds the value of the current node
-        TreeNode left;       // reference to left child
-        TreeNode right;      // reference to right child
-        TreeNode(int v) {    // constructor to initialize node with a value
-            this.val = v;    // set node value
-        }
-    }
 
     // Core solution: returns all root-to-leaf paths where the sum equals targetSum.
     public static List<List<Integer>> pathSum(TreeNode root, int targetSum) {
@@ -43,8 +33,6 @@ public class PathSumII {
 
         current.remove(current.size() - 1); // backtrack: remove the last added value before returning
     }
-
-    // ------------------ Utilities for building trees and testing ------------------
 
     // Build a binary tree from a level-order array of Integers, where null means no node.
     public static TreeNode buildTreeLevelOrder(Integer[] arr) {
@@ -75,6 +63,8 @@ public class PathSumII {
         }
         return root;                                            // return the constructed tree
     }
+
+    // ------------------ Utilities for building trees and testing ------------------
 
     // Normalize list-of-list of integers into sorted list of strings for order-insensitive comparison.
     // Example: [[5,4,11,2], [5,8,4,5]] -> ["5,4,11,2", "5,8,4,5"] then sorted.
@@ -123,16 +113,14 @@ public class PathSumII {
         return root;                                            // return skewed tree
     }
 
-    // ------------------------------- TESTS in main -------------------------------
-
     public static void main(String[] args) {
         // Test 1: Example 1
-        Integer[] arr1 = {5,4,8,11,null,13,4,7,2,null,null,5,1}; // level-order with nulls
+        Integer[] arr1 = {5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1}; // level-order with nulls
         TreeNode root1 = buildTreeLevelOrder(arr1);               // build the tree
         int target1 = 22;                                         // target sum as given
         List<List<Integer>> expected1 = Arrays.asList(            // expected paths (order may vary)
-                Arrays.asList(5,4,11,2),
-                Arrays.asList(5,8,4,5)
+                Arrays.asList(5, 4, 11, 2),
+                Arrays.asList(5, 8, 4, 5)
         );
         List<List<Integer>> actual1 = pathSum(root1, target1);    // compute result
         boolean pass1 = assertPathsEqual(expected1, actual1);     // verify ignoring order
@@ -140,7 +128,7 @@ public class PathSumII {
                 + " | Output=" + displayPaths(actual1));          // print verdict and output
 
         // Test 2: Example 2
-        Integer[] arr2 = {1,2,3};                                 // simple small tree
+        Integer[] arr2 = {1, 2, 3};                                 // simple small tree
         TreeNode root2 = buildTreeLevelOrder(arr2);               // build tree
         int target2 = 5;                                          // target 5
         List<List<Integer>> expected2 = Collections.emptyList();  // expect empty result
@@ -150,7 +138,7 @@ public class PathSumII {
                 + " | Output=" + displayPaths(actual2));          // print verdict
 
         // Test 3: Example 3
-        Integer[] arr3 = {1,2};                                   // two nodes
+        Integer[] arr3 = {1, 2};                                   // two nodes
         TreeNode root3 = buildTreeLevelOrder(arr3);               // build tree
         int target3 = 0;                                          // target 0
         List<List<Integer>> expected3 = Collections.emptyList();  // expect empty
@@ -182,12 +170,12 @@ public class PathSumII {
                 + " | Output=" + displayPaths(actual5));          // print verdict
 
         // Edge Test 6: Negative numbers
-        Integer[] arr6 = {1,-2,-3,1,3,-2,null,-1};               // includes negatives
+        Integer[] arr6 = {1, -2, -3, 1, 3, -2, null, -1};               // includes negatives
         TreeNode root6 = buildTreeLevelOrder(arr6);               // build tree
         int target6 = -1;                                         // target includes negative
         // One valid path: 1 + (-2) + 1 + (-1) = -1
         List<List<Integer>> expected6 = Arrays.asList(
-                Arrays.asList(1,-2,1,-1)
+                Arrays.asList(1, -2, 1, -1)
         );
         List<List<Integer>> actual6 = pathSum(root6, target6);    // compute
         boolean pass6 = assertPathsEqual(expected6, actual6);     // verify
@@ -222,5 +210,18 @@ public class PathSumII {
                 && actual8.get(0).stream().allMatch(v -> v == 1); // all values are ones
         System.out.println("Test 8 (large skewed) -> " + (pass8 ? "PASS" : "FAIL")
                 + " | Paths=" + actual8.size());                  // print verdict and path count
+    }
+
+    // ------------------------------- TESTS in main -------------------------------
+
+    // Tree node definition used for building and traversing the binary tree.
+    static class TreeNode {
+        int val;             // holds the value of the current node
+        TreeNode left;       // reference to left child
+        TreeNode right;      // reference to right child
+
+        TreeNode(int v) {    // constructor to initialize node with a value
+            this.val = v;    // set node value
+        }
     }
 }

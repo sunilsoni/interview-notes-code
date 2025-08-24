@@ -1,17 +1,17 @@
 package com.interview.notes.code.year.y2025.august.common.test8;
 
-import java.util.*;                         // Import core collections (List, Map, LinkedHashMap, Arrays, etc.)
-import java.util.function.Function;         // Import Function.identity() used in groupingBy
-import java.util.stream.Collectors;         // Import Collectors for groupingBy and counting
-import java.util.stream.IntStream;          // Import IntStream to generate large synthetic datasets efficiently
-import java.util.concurrent.ThreadLocalRandom; // Import ThreadLocalRandom for large test data generation
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class EmailCounter {
 
     /**
      * Counts occurrences of each email.
-     * @param emails      input list of email strings (may be large)
-     * @param normalize   if true, we trim and lowercase each email to treat variants as the same
+     *
+     * @param emails    input list of email strings (may be large)
+     * @param normalize if true, we trim and lowercase each email to treat variants as the same
      * @return LinkedHashMap<email, count> preserving first-appearance order
      */
     public static LinkedHashMap<String, Long> countEmailOccurrences(List<String> emails, boolean normalize) {
@@ -36,7 +36,7 @@ public class EmailCounter {
      * - trim surrounding spaces
      * - to lowercase (case-insensitive comparison)
      * Note: We are NOT doing domain-specific email rules (like removing dots for Gmail),
-     *       because the problem statement said treat full strings as-is unless specified.
+     * because the problem statement said treat full strings as-is unless specified.
      */
     private static String normalizeEmail(String e) {
         // Replace null with empty so downstream operations don’t NPE
@@ -104,8 +104,9 @@ public class EmailCounter {
 
     /**
      * Generate a large synthetic dataset of emails like userNNN@domainK.com for performance/memory testing.
-     * @param total total number of events to generate
-     * @param distinctUsers number of distinct user ids to cycle through
+     *
+     * @param total           total number of events to generate
+     * @param distinctUsers   number of distinct user ids to cycle through
      * @param distinctDomains number of distinct domains to cycle through
      * @return List of generated emails of size 'total'
      */
@@ -156,8 +157,8 @@ public class EmailCounter {
         // Expected map in first-appearance order
         LinkedHashMap<String, Long> exp1 = mapOf(
                 "pooja.mani@lseg.com", 2L,
-                "abc@lseg.com",        1L,
-                "xyz@lseg.com",        1L
+                "abc@lseg.com", 1L,
+                "xyz@lseg.com", 1L
         );
 
         // Validate and print PASS/FAIL

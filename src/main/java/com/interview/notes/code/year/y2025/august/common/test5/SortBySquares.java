@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.august.common.test5;
 
-import java.util.*;                             // Import utility classes like Arrays and List
-import java.util.stream.*;                      // Import Stream/IntStream utilities for Java 8 usage
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 
 **Question 1:** Given an array of sorted integers, sort the array in ascending order of squares of its elements.
@@ -19,7 +21,8 @@ public class SortBySquares {                    // Define a public class to hold
     // --- Core Method 1: Reorder original numbers by ascending absolute value (matches your examples) ---
     public static int[] reorderByAbsoluteValue(int[] nums) {     // Public API: takes sorted array, returns reordered by |x|
         // Edge-case guard: if array is null or length <= 1, it's already "sorted by abs" trivially
-        if (nums == null || nums.length <= 1) return nums;       // Return original reference for performance; safe when size <= 1
+        if (nums == null || nums.length <= 1)
+            return nums;       // Return original reference for performance; safe when size <= 1
 
         int n = nums.length;                                     // Cache length for repeated use
         int[] out = new int[n];                                  // Output buffer to store the merged result
@@ -110,8 +113,8 @@ public class SortBySquares {                    // Define a public class to hold
     private static String arrToString(int[] a) {                 // Convert int[] to "[x, y, z]" string
         if (a == null) return "null";                            // Null-safe
         return IntStream.of(a)                                   // Stream over ints
-                         .mapToObj(Integer::toString)            // Convert each to String
-                         .collect(Collectors.joining(", ", "[", "]")); // Join with commas and bracket
+                .mapToObj(Integer::toString)            // Convert each to String
+                .collect(Collectors.joining(", ", "[", "]")); // Join with commas and bracket
     }
 
     // --- Utility: check equality of two int arrays ---
@@ -149,24 +152,24 @@ public class SortBySquares {                    // Define a public class to hold
         testReorder.accept(new int[]{}, new int[]{});                               // Empty -> Empty
         testReorder.accept(new int[]{7}, new int[]{7});                             // Single element
         testReorder.accept(new int[]{1, 5, 7, 7, 8, 10},                           // All positive
-                           new int[]{1, 5, 7, 8, 10});                              // Note: example shows dedup of 7, but sorting by abs keeps both 7s adjacent;
-                                                                                    // if you truly want dedup, we can add it—here we keep stable order by |x|
+                new int[]{1, 5, 7, 8, 10});                              // Note: example shows dedup of 7, but sorting by abs keeps both 7s adjacent;
+        // if you truly want dedup, we can add it—here we keep stable order by |x|
         testReorder.accept(new int[]{-5, -3, -3, 2, 4, 4, 8},                      // Mixed negatives/positives
-                           new int[]{2, -3, -3, 4, 4, -5, 8});                      // Matches your example (abs order, negatives first on ties)
+                new int[]{2, -3, -3, 4, 4, -5, 8});                      // Matches your example (abs order, negatives first on ties)
 
         testReorder.accept(new int[]{-4, -1, 0, 3, 10},                             // Common textbook case
-                           new int[]{0, -1, 3, -4, 10});                             // |0|=0, | -1 |=1, |3|=3, | -4 |=4, |10|=10
+                new int[]{0, -1, 3, -4, 10});                             // |0|=0, | -1 |=1, |3|=3, | -4 |=4, |10|=10
 
         testReorder.accept(new int[]{-2, -2, -2}, new int[]{-2, -2, -2});          // All negatives same value
 
         testReorder.accept(new int[]{0, 0, 1, -1},                                  // Zeros, tie abs(1)=abs(-1)
-                           new int[]{0, 0, -1, 1});                                  // Pick -1 before +1 on tie
+                new int[]{0, 0, -1, 1});                                  // Pick -1 before +1 on tie
 
         // --- Classic sortedSquares tests for completeness (many platforms ask this variant) ---
         testSquares.accept(new int[]{-4, -1, 0, 3, 10}, new int[]{0, 1, 9, 16, 100});
-        testSquares.accept(new int[]{-7, -3, 2, 3, 11},  new int[]{4, 9, 9, 49, 121});
-        testSquares.accept(new int[]{},                   new int[]{});
-        testSquares.accept(new int[]{5},                  new int[]{25});
+        testSquares.accept(new int[]{-7, -3, 2, 3, 11}, new int[]{4, 9, 9, 49, 121});
+        testSquares.accept(new int[]{}, new int[]{});
+        testSquares.accept(new int[]{5}, new int[]{25});
 
         // --- Large data test (performance & robustness) ---
         int size = 500_000;                                                       // Half a million elements for a realistic perf check
@@ -174,7 +177,7 @@ public class SortBySquares {                    // Define a public class to hold
         // Fill with a smooth ramp from negatives to positives:
         // [-250000, -249999, ..., -1, 0, 1, ..., 249999]
         IntStream.range(0, size)                                                  // 0..size-1
-                 .forEach(idx -> big[idx] = idx - (size / 2));                    // Center around zero; keeps input sorted
+                .forEach(idx -> big[idx] = idx - (size / 2));                    // Center around zero; keeps input sorted
 
         long t0 = System.currentTimeMillis();                                     // Start timing
         int[] bigOut = reorderByAbsoluteValue(big);                               // Run abs reordering

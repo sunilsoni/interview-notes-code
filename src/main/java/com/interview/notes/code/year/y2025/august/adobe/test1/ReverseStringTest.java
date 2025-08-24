@@ -35,28 +35,28 @@ public class ReverseStringTest {
     static void runTests() {
         // Array of test inputs
         String[] inputs = {
-            "hello",
-            "world",
-            "a",
-            "",
-            "Data Structure"
+                "hello",
+                "world",
+                "a",
+                "",
+                "Data Structure"
         };
 
         // Expected outputs for above inputs
         String[] expected = {
-            "olleh",
-            "dlrow",
-            "a",
-            "",
-            "erutcurtS ataD"
+                "olleh",
+                "dlrow",
+                "a",
+                "",
+                "erutcurtS ataD"
         };
 
         // Run each test and check result
         for (int i = 0; i < inputs.length; i++) {
             String result = reverse(inputs[i]);
             boolean pass = result.equals(expected[i]);
-            System.out.println("Test " + (i+1) + ": \"" + inputs[i] + 
-                               "\" -> \"" + result + "\" | " + (pass ? "PASS" : "FAIL"));
+            System.out.println("Test " + (i + 1) + ": \"" + inputs[i] +
+                    "\" -> \"" + result + "\" | " + (pass ? "PASS" : "FAIL"));
         }
 
         // Large data test: 10 million 'a's
@@ -66,9 +66,9 @@ public class ReverseStringTest {
         long startTime = System.currentTimeMillis();
         String reversedBig = reverse(bigStr);
         long endTime = System.currentTimeMillis();
-        System.out.println("Large Data Test: " + 
-                           (reversedBig.equals(bigStr) ? "PASS" : "FAIL") + 
-                           " | Time: " + (endTime - startTime) + " ms");
+        System.out.println("Large Data Test: " +
+                (reversedBig.equals(bigStr) ? "PASS" : "FAIL") +
+                " | Time: " + (endTime - startTime) + " ms");
     }
 
     public static void main(String[] args) {

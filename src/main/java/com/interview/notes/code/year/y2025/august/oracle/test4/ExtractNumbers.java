@@ -1,8 +1,11 @@
 package com.interview.notes.code.year.y2025.august.oracle.test4;
 
-import java.util.*;
-import java.util.regex.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class ExtractNumbers {
 

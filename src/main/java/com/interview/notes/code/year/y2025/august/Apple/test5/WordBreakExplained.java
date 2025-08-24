@@ -1,12 +1,8 @@
 package com.interview.notes.code.year.y2025.august.Apple.test5;
 
-import java.util.ArrayList; // Import ArrayList for building test cases and lists
-import java.util.Arrays;    // Import Arrays for easy list creation in tests
-import java.util.HashSet;   // Import HashSet for O(1) dictionary lookups
-import java.util.List;      // Import List interface for wordDict and tests
-import java.util.Set;       // Import Set interface for dictionary storage
-import java.util.stream.Collectors; // Import Collectors to build a Set from Stream
-import java.util.stream.IntStream;  // Import IntStream for stream-based loops in tests
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class WordBreakExplained {
 
@@ -66,44 +62,6 @@ public class WordBreakExplained {
         return dp[n]; // True if the whole string is segmentable, false otherwise
     }
 
-    /**
-     * Optional alternative (commented for reference): DP that avoids substring allocation by using startsWith.
-     * Keep in mind this iterates over dictionary words for each reachable index; fast when dict is small.
-     *
-     * public static boolean wordBreakDPStartsWith(final String s, final List<String> wordDict) {
-     *     if (s == null) return false;
-     *     if (s.isEmpty()) return true;
-     *     final Set<String> dict = wordDict == null ? new HashSet<>() : wordDict.stream().collect(Collectors.toSet());
-     *     if (dict.isEmpty()) return false;
-     *     final int n = s.length();
-     *     final boolean[] dp = new boolean[n + 1];
-     *     dp[0] = true;
-     *     for (int i = 0; i < n; i++) {
-     *         if (!dp[i]) continue;
-     *         for (String w : dict) {
-     *             int len = w.length();
-     *             if (i + len <= n && s.startsWith(w, i)) {
-     *                 dp[i + len] = true;
-     *             }
-     *         }
-     *     }
-     *     return dp[n];
-     * }
-     */
-
-    // Simple holder for test cases to keep main method tidy
-    private static class TestCase {
-        final String s;       // The input string to segment
-        final List<String> dict; // The dictionary of words
-        final boolean expected;  // The expected boolean result
-
-        TestCase(String s, List<String> dict, boolean expected) {
-            this.s = s;             // Assign given string
-            this.dict = dict;       // Assign given dictionary
-            this.expected = expected; // Assign expected outcome
-        }
-    }
-
     // Utility to run a single test and print PASS/FAIL with details
     private static void runTest(TestCase tc, int idx) {
         boolean actual = wordBreakDP(tc.s, tc.dict); // Invoke DP function under test
@@ -149,5 +107,43 @@ public class WordBreakExplained {
 
         // Run all tests and print results
         IntStream.range(0, tests.size()).forEach(i -> runTest(tests.get(i), i + 1)); // Use stream for concise iteration
+    }
+
+    /**
+     * Optional alternative (commented for reference): DP that avoids substring allocation by using startsWith.
+     * Keep in mind this iterates over dictionary words for each reachable index; fast when dict is small.
+     * <p>
+     * public static boolean wordBreakDPStartsWith(final String s, final List<String> wordDict) {
+     * if (s == null) return false;
+     * if (s.isEmpty()) return true;
+     * final Set<String> dict = wordDict == null ? new HashSet<>() : wordDict.stream().collect(Collectors.toSet());
+     * if (dict.isEmpty()) return false;
+     * final int n = s.length();
+     * final boolean[] dp = new boolean[n + 1];
+     * dp[0] = true;
+     * for (int i = 0; i < n; i++) {
+     * if (!dp[i]) continue;
+     * for (String w : dict) {
+     * int len = w.length();
+     * if (i + len <= n && s.startsWith(w, i)) {
+     * dp[i + len] = true;
+     * }
+     * }
+     * }
+     * return dp[n];
+     * }
+     */
+
+    // Simple holder for test cases to keep main method tidy
+    private static class TestCase {
+        final String s;       // The input string to segment
+        final List<String> dict; // The dictionary of words
+        final boolean expected;  // The expected boolean result
+
+        TestCase(String s, List<String> dict, boolean expected) {
+            this.s = s;             // Assign given string
+            this.dict = dict;       // Assign given dictionary
+            this.expected = expected; // Assign expected outcome
+        }
     }
 }

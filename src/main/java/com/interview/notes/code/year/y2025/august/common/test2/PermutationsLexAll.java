@@ -1,11 +1,11 @@
 package com.interview.notes.code.year.y2025.august.common.test2;
 
-import java.util.ArrayList;              // Import ArrayList to store permutations dynamically
-import java.util.Arrays;                 // Import Arrays for sorting and utility methods
-import java.util.Collections;            // Import Collections for potential manual sort (not strictly needed)
-import java.util.List;                   // Import List interface for method signatures and variables
-import java.util.stream.Collectors;      // Import Collectors to use stream().sorted().collect(toList())
-import java.math.BigInteger;             // Import BigInteger to compute factorial safely for large n
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /*
 
 **Group Anagrams Problem**
@@ -79,8 +79,8 @@ public class PermutationsLexAll {        // Define a public class to hold our so
 
         // Ensure final lexicographic order using Streams as requested (Java 8 Stream API)
         return all.stream()                                                  // Create a stream over all generated permutations
-                  .sorted()                                                  // Sort lexicographically
-                  .collect(Collectors.toList());                             // Collect back to a List<String>
+                .sorted()                                                  // Sort lexicographically
+                .collect(Collectors.toList());                             // Collect back to a List<String>
     }
 
     // Recursive helper to build permutations
@@ -91,7 +91,8 @@ public class PermutationsLexAll {        // Define a public class to hold our so
         }
 
         for (int i = 0; i < chars.length; i++) {                             // Iterate over every character position
-            if (used[i]) continue;                                           // Skip if this index is already used in current permutation
+            if (used[i])
+                continue;                                           // Skip if this index is already used in current permutation
 
             used[i] = true;                                                  // Choose: mark index i as used
             current.append(chars[i]);                                        // Append the chosen character to the partial permutation
@@ -122,38 +123,38 @@ public class PermutationsLexAll {        // Define a public class to hold our so
         // NOTE: For AAA (length 3), mathematically there are 6 permutations (3! = 6), all equal to "AAA".
         // The prompt’s '8' is incorrect; we will explicitly show/pass the correct expectation.
         String[] inputs = {
-            "ABC",   // Distinct letters: expect 3! = 6 distinct permutations
-            "XY",    // Distinct letters: expect 2 permutations
-            "AAA",   // All same letters: expect 3! = 6 permutations, all "AAA"
-            "",      // Empty string: by convention, 0! = 1 permutation -> [""]
-            "AAB"    // Contains duplicates: expect 3! = 6 permutations with duplicates (2 letters A identical)
+                "ABC",   // Distinct letters: expect 3! = 6 distinct permutations
+                "XY",    // Distinct letters: expect 2 permutations
+                "AAA",   // All same letters: expect 3! = 6 permutations, all "AAA"
+                "",      // Empty string: by convention, 0! = 1 permutation -> [""]
+                "AAB"    // Contains duplicates: expect 3! = 6 permutations with duplicates (2 letters A identical)
         };
 
         // Expected counts (n! regardless of duplicates because we count by positions)
         int[] expectedCounts = {
-            6,       // "ABC" -> 3! = 6
-            2,       // "XY"  -> 2! = 2
-            6,       // "AAA" -> 3! = 6 (all are the same string)
-            1,       // ""    -> 0! = 1 (the empty permutation)
-            6        // "AAB" -> 3! = 6 (duplicates appear in the list)
+                6,       // "ABC" -> 3! = 6
+                2,       // "XY"  -> 2! = 2
+                6,       // "AAA" -> 3! = 6 (all are the same string)
+                1,       // ""    -> 0! = 1 (the empty permutation)
+                6        // "AAB" -> 3! = 6 (duplicates appear in the list)
         };
 
         // Expected first and last (lexicographic) items for sanity (optional; helps assert sorting)
         // For duplicates, first and last are still well-defined lexicographically.
         String[] expectedFirst = {
-            "ABC",   // first of ABC perms
-            "XY",    // first of XY perms
-            "AAA",   // first of AAA perms
-            "",      // first of empty is empty string
-            "AAB"    // first of AAB perms
+                "ABC",   // first of ABC perms
+                "XY",    // first of XY perms
+                "AAA",   // first of AAA perms
+                "",      // first of empty is empty string
+                "AAB"    // first of AAB perms
         };
 
         String[] expectedLast = {
-            "CBA",   // last of ABC perms
-            "YX",    // last of XY perms
-            "AAA",   // last of AAA perms (same as first)
-            "",      // last of empty is empty string
-            "BAA"    // last of AAB perms
+                "CBA",   // last of ABC perms
+                "YX",    // last of XY perms
+                "AAA",   // last of AAA perms (same as first)
+                "",      // last of empty is empty string
+                "BAA"    // last of AAB perms
         };
 
         // Run tests
@@ -171,7 +172,7 @@ public class PermutationsLexAll {        // Define a public class to hold our so
             boolean pass = countOk && firstOk && lastOk && sortedOk;         // Overall PASS if all checks succeeded
 
             System.out.println("\nTest #" + (t + 1) + " | s = \"" + s + "\""); // Print test header
-            System.out.println("  -> Generated: " + result.size() + " permutations in " + (end - start)/1_000_000.0 + " ms"); // Show runtime and size
+            System.out.println("  -> Generated: " + result.size() + " permutations in " + (end - start) / 1_000_000.0 + " ms"); // Show runtime and size
             System.out.println("  -> Expected count: " + expectedCounts[t]); // Show expected count
             System.out.println("  -> First: " + result.get(0) + " | Expected first: " + expectedFirst[t]); // Show first vs expected
             System.out.println("  -> Last : " + result.get(result.size() - 1) + " | Expected last : " + expectedLast[t]); // Show last vs expected
@@ -190,7 +191,7 @@ public class PermutationsLexAll {        // Define a public class to hold our so
         long s1 = System.nanoTime();                                         // Start timing
         List<String> bigRes = permutationsAllWithDuplicatesLex(big);         // Generate all 120 perms (safe to materialize)
         long e1 = System.nanoTime();                                         // Stop timing
-        System.out.println("  -> Count = " + bigRes.size() + " (expected " + factorial(big.length()) + "), time = " + (e1 - s1)/1_000_000.0 + " ms"); // Show count/time
+        System.out.println("  -> Count = " + bigRes.size() + " (expected " + factorial(big.length()) + "), time = " + (e1 - s1) / 1_000_000.0 + " ms"); // Show count/time
 
         // Warning + example for truly large input (n >= 10 explodes)
         int nWarn = 10;                                                      // Choose 10 to illustrate factorial explosion (10! = 3,628,800)

@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.august.meta.test1.tes3;
 
-import java.util.*;  // import utilities for lists and maps used in testing/reporting
-import java.util.stream.*; // Java 8 streams for concise test printing and generation
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 /*
 Here’s the **final combined question** from your images and explanation, structured clearly:
 
@@ -106,26 +108,6 @@ public class BalancedTriangleBrackets {
         return needOpen + open;                // total insertions = missing opens + missing closes
     }
 
-    // Utility: A tiny record to hold a test case for Part A (validity)
-    static class ValidCase {
-        final String s;        // input string
-        final boolean expect;  // expected validity
-        ValidCase(String s, boolean expect) {
-            this.s = s;
-            this.expect = expect;
-        }
-    }
-
-    // Utility: A tiny record to hold a test case for Part B (min additions)
-    static class AddCase {
-        final String s;      // input string
-        final int expect;    // expected minimal insertions
-        AddCase(String s, int expect) {
-            this.s = s;
-            this.expect = expect;
-        }
-    }
-
     // Simple helper to mark PASS/FAIL text
     private static String passFail(boolean ok) {
         return ok ? "PASS" : "FAIL";
@@ -146,28 +128,28 @@ public class BalancedTriangleBrackets {
         // Part A: Validity test cases
         // ---------------------------
         List<ValidCase> validCases = Arrays.asList(
-            new ValidCase("", true),                // empty is valid (nothing to fix)
-            new ValidCase("<>", true),              // basic balanced
-            new ValidCase("<><>", true),            // two balanced pairs
-            new ValidCase("<<>>>", true),           // nested then extra closes; overall balanced scan is ok
-            new ValidCase("<<>", false),            // missing a closing
-            new ValidCase("<<>><", false),          // ends with extra open
-            new ValidCase(">>", false),             // starts with closing, invalid
-            new ValidCase("<<<>>>", true),          // perfectly nested triple
-            new ValidCase("<><><>", true),          // alternating pairs
-            new ValidCase("><", false)              // close before open
+                new ValidCase("", true),                // empty is valid (nothing to fix)
+                new ValidCase("<>", true),              // basic balanced
+                new ValidCase("<><>", true),            // two balanced pairs
+                new ValidCase("<<>>>", true),           // nested then extra closes; overall balanced scan is ok
+                new ValidCase("<<>", false),            // missing a closing
+                new ValidCase("<<>><", false),          // ends with extra open
+                new ValidCase(">>", false),             // starts with closing, invalid
+                new ValidCase("<<<>>>", true),          // perfectly nested triple
+                new ValidCase("<><><>", true),          // alternating pairs
+                new ValidCase("><", false)              // close before open
         );
 
         // Run Part A tests and print results using Java 8 streams for compact formatting
         System.out.println("=== Part A: Validity Tests ===");
         validCases.stream()
-            .map(tc -> {
-                boolean got = isValid(tc.s);       // compute validity
-                boolean ok = (got == tc.expect);   // compare to expected
-                return String.format("Input: %-10s Expected: %-5s Got: %-5s -> %s",
-                        "\"" + tc.s + "\"", tc.expect, got, passFail(ok));
-            })
-            .forEach(System.out::println);
+                .map(tc -> {
+                    boolean got = isValid(tc.s);       // compute validity
+                    boolean ok = (got == tc.expect);   // compare to expected
+                    return String.format("Input: %-10s Expected: %-5s Got: %-5s -> %s",
+                            "\"" + tc.s + "\"", tc.expect, got, passFail(ok));
+                })
+                .forEach(System.out::println);
 
         // -------------------------------
         // Part B: Min additions test cases
@@ -175,27 +157,27 @@ public class BalancedTriangleBrackets {
         // NOTE: Per the stated rules, "<>" is already valid => min additions = 0
         // (Prompt’s example "<> -> 1" conflicts with Part A rules; we follow the rules.)
         List<AddCase> addCases = Arrays.asList(
-            new AddCase("", 0),                   // nothing to add
-            new AddCase("<>", 0),                 // already valid
-            new AddCase("<<<", 3),                // need three '>' to close
-            new AddCase(">>>", 3),                // need three '<' upfront
-            new AddCase("<<>", 1),                // need one '>' at end
-            new AddCase("><", 2),                 // need one '<' before first '>' and one '>' after last '<'
-            new AddCase("<<>><", 1),              // one trailing '>'
-            new AddCase("<><><>", 0),             // valid alternating
-            new AddCase(">>><<<", 6),             // three opens needed first, then three closes needed at end
-            new AddCase("<<>>>", 0)               // given as valid in Part A example
+                new AddCase("", 0),                   // nothing to add
+                new AddCase("<>", 0),                 // already valid
+                new AddCase("<<<", 3),                // need three '>' to close
+                new AddCase(">>>", 3),                // need three '<' upfront
+                new AddCase("<<>", 1),                // need one '>' at end
+                new AddCase("><", 2),                 // need one '<' before first '>' and one '>' after last '<'
+                new AddCase("<<>><", 1),              // one trailing '>'
+                new AddCase("<><><>", 0),             // valid alternating
+                new AddCase(">>><<<", 6),             // three opens needed first, then three closes needed at end
+                new AddCase("<<>>>", 0)               // given as valid in Part A example
         );
 
         System.out.println("\n=== Part B: Min Additions Tests ===");
         addCases.stream()
-            .map(tc -> {
-                int got = minAdditionsToMakeValid(tc.s); // compute minimum insertions
-                boolean ok = (got == tc.expect);         // compare to expected
-                return String.format("Input: %-10s Expected: %-2d Got: %-2d -> %s",
-                        "\"" + tc.s + "\"", tc.expect, got, passFail(ok));
-            })
-            .forEach(System.out::println);
+                .map(tc -> {
+                    int got = minAdditionsToMakeValid(tc.s); // compute minimum insertions
+                    boolean ok = (got == tc.expect);         // compare to expected
+                    return String.format("Input: %-10s Expected: %-2d Got: %-2d -> %s",
+                            "\"" + tc.s + "\"", tc.expect, got, passFail(ok));
+                })
+                .forEach(System.out::println);
 
         // --------------------------------
         // Extra: Cross-check Part A vs Part B coherence
@@ -203,14 +185,14 @@ public class BalancedTriangleBrackets {
         // --------------------------------
         System.out.println("\n=== Consistency Check (Valid => 0 additions) ===");
         validCases.stream()
-            .filter(tc -> tc.expect)                        // only those expected valid
-            .map(tc -> {
-                int adds = minAdditionsToMakeValid(tc.s);   // compute additions
-                boolean ok = (adds == 0);                   // must be zero
-                return String.format("Input: %-10s minAdditions: %-2d -> %s",
-                        "\"" + tc.s + "\"", adds, passFail(ok));
-            })
-            .forEach(System.out::println);
+                .filter(tc -> tc.expect)                        // only those expected valid
+                .map(tc -> {
+                    int adds = minAdditionsToMakeValid(tc.s);   // compute additions
+                    boolean ok = (adds == 0);                   // must be zero
+                    return String.format("Input: %-10s minAdditions: %-2d -> %s",
+                            "\"" + tc.s + "\"", adds, passFail(ok));
+                })
+                .forEach(System.out::println);
 
         // --------------------------------
         // Large data stress tests
@@ -219,14 +201,14 @@ public class BalancedTriangleBrackets {
         // Worst-case 1: many initial '>' then many '<' => forces lots of insertions and scanning
         int n = 1_000_000; // 1 million (tunable; still quick in O(n))
         String worst1 = new String(new char[n]).replace('\0', '>') +
-                        new String(new char[n]).replace('\0', '<');
+                new String(new char[n]).replace('\0', '<');
         long t1 = System.nanoTime();
         int adds1 = minAdditionsToMakeValid(worst1);
         long t2 = System.nanoTime();
 
         // Worst-case 2: many '<' then many '>' => valid; checks linear pass time
         String worst2 = new String(new char[n]).replace('\0', '<') +
-                        new String(new char[n]).replace('\0', '>');
+                new String(new char[n]).replace('\0', '>');
         long t3 = System.nanoTime();
         boolean valid2 = isValid(worst2);
         long t4 = System.nanoTime();
@@ -244,5 +226,27 @@ public class BalancedTriangleBrackets {
                 worst2.length(), valid2, (t4 - t3) / 1_000_000.0));
         System.out.println(String.format("Random length=%d -> minAdditions=%d | time=%.3f ms",
                 rnd.length(), addsRnd, (t6 - t5) / 1_000_000.0));
+    }
+
+    // Utility: A tiny record to hold a test case for Part A (validity)
+    static class ValidCase {
+        final String s;        // input string
+        final boolean expect;  // expected validity
+
+        ValidCase(String s, boolean expect) {
+            this.s = s;
+            this.expect = expect;
+        }
+    }
+
+    // Utility: A tiny record to hold a test case for Part B (min additions)
+    static class AddCase {
+        final String s;      // input string
+        final int expect;    // expected minimal insertions
+
+        AddCase(String s, int expect) {
+            this.s = s;
+            this.expect = expect;
+        }
     }
 }

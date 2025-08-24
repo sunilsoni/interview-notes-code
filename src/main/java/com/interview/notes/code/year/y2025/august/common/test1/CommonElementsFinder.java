@@ -12,9 +12,9 @@ public class CommonElementsFinder {
 
         // Find common elements using Stream API
         List<Integer> commonElements = Arrays.stream(array1)   // stream of array1
-                                             .boxed()          // convert int -> Integer
-                                             .filter(list2::contains) // keep only elements also in list2
-                                             .collect(Collectors.toList()); // collect into list
+                .boxed()          // convert int -> Integer
+                .filter(list2::contains) // keep only elements also in list2
+                .collect(Collectors.toList()); // collect into list
 
         // Print the result
         System.out.println("Common elements: " + commonElements);

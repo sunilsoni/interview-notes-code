@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.august.adobe.test1;
 
-import java.util.*; // import utilities for List, Arrays, etc.
-import java.util.stream.*; // import Java 8 Stream API for test construction and formatting
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class MinimumWindowSubstring {
 
@@ -71,22 +75,6 @@ public class MinimumWindowSubstring {
 
         // If bestLen is still MAX_VALUE, no valid window was found; otherwise return the substring.
         return bestLen == Integer.MAX_VALUE ? "" : s.substring(bestStart, bestStart + bestLen);
-    }
-
-    // Simple container to hold a test case: s, t, expected answer, and a name/label.
-    static class TestCase {
-        final String name;   // label to identify the test
-        final String s;      // input string s
-        final String t;      // input string t
-        final String expect; // expected result
-
-        // Constructor to initialize all fields.
-        TestCase(String name, String s, String t, String expect) {
-            this.name = name;   // assign label
-            this.s = s;         // assign s
-            this.t = t;         // assign t
-            this.expect = expect; // assign expected answer
-        }
     }
 
     // Helper to run a single test case and print PASS/FAIL with details.
@@ -214,5 +202,21 @@ public class MinimumWindowSubstring {
             if (countWin[c] < countT[c]) return false; // missing multiplicity
         }
         return true; // all good
+    }
+
+    // Simple container to hold a test case: s, t, expected answer, and a name/label.
+    static class TestCase {
+        final String name;   // label to identify the test
+        final String s;      // input string s
+        final String t;      // input string t
+        final String expect; // expected result
+
+        // Constructor to initialize all fields.
+        TestCase(String name, String s, String t, String expect) {
+            this.name = name;   // assign label
+            this.s = s;         // assign s
+            this.t = t;         // assign t
+            this.expect = expect; // assign expected answer
+        }
     }
 }

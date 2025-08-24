@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2025.august.DoorDash.test2;
 
-import java.util.*;  // import utility classes like List, Arrays, Collections, Comparator, Random, etc.
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Problem: Maximize total pay by selecting non-overlapping deliveries within a given time window.
@@ -9,27 +12,14 @@ import java.util.*;  // import utility classes like List, Arrays, Collections, C
  */
 public class DeliveryScheduler {  // define a public class to hold our solution and tests
 
-    // A small immutable record-like class to store each delivery's start, end, and pay.
-    private static final class Job {  // make it private and final to encapsulate and ensure no subclassing
-        final int s;  // start time of the delivery
-        final int e;  // end time of the delivery
-        final int p;  // pay for completing the delivery
-
-        Job(int s, int e, int p) {  // constructor to set fields
-            this.s = s;  // assign start time
-            this.e = e;  // assign end time
-            this.p = p;  // assign pay
-        }
-    }
-
     /**
      * Compute maximum total pay from non-overlapping deliveries within [startTime, endTime].
-     *
+     * <p>
      * Rules applied:
-     *  - A delivery counts only if start >= startTime and end <= endTime.
-     *  - Deliveries must not overlap in time (exclusive overlap; we allow chaining where previous end == next start).
-     *  - If start >= end for a delivery, we ignore it (invalid or zero-length).
-     *
+     * - A delivery counts only if start >= startTime and end <= endTime.
+     * - Deliveries must not overlap in time (exclusive overlap; we allow chaining where previous end == next start).
+     * - If start >= end for a delivery, we ignore it (invalid or zero-length).
+     * <p>
      * Time Complexity: O(n log n) due to sort + binary searches.
      * Space Complexity: O(n) for DP arrays.
      */
@@ -115,8 +105,6 @@ public class DeliveryScheduler {  // define a public class to hold our solution 
         }
         return ans;               // return the rightmost non-overlapping job index, or -1
     }
-
-    // -------------------------- TEST HARNESS (simple main, no JUnit) --------------------------
 
     public static void main(String[] args) {
         // A tiny helper to run and print PASS/FAIL for each test case in a readable way.
@@ -207,6 +195,8 @@ public class DeliveryScheduler {  // define a public class to hold our solution 
         runLargeDataPerformanceTest();  // separate method to keep main tidy
     }
 
+    // -------------------------- TEST HARNESS (simple main, no JUnit) --------------------------
+
     // Generate many jobs and measure performance on O(n log n); also sanity-check by disallowing overlaps in generation.
     private static void runLargeDataPerformanceTest() {
         int N = 100_000;                         // number of jobs to generate; large enough to test performance
@@ -236,5 +226,18 @@ public class DeliveryScheduler {  // define a public class to hold our solution 
         double ms = (t1 - t0) / 1_000_000.0;     // convert to ms
         // We cannot know the exact expected value; just report timing and a sanity property.
         System.out.printf("LargeData: n=%d -> value=%d | time=%.2f ms | PASS (performance)%n", N, got, ms);  // print outcome
+    }
+
+    // A small immutable record-like class to store each delivery's start, end, and pay.
+    private static final class Job {  // make it private and final to encapsulate and ensure no subclassing
+        final int s;  // start time of the delivery
+        final int e;  // end time of the delivery
+        final int p;  // pay for completing the delivery
+
+        Job(int s, int e, int p) {  // constructor to set fields
+            this.s = s;  // assign start time
+            this.e = e;  // assign end time
+            this.p = p;  // assign pay
+        }
     }
 }

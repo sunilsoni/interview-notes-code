@@ -1,16 +1,9 @@
 package com.interview.notes.code.year.y2025.august.DoorDash.test1;
 
-import java.util.*; // Import utility classes (List, ArrayList, Comparator, Arrays, Random)
+import java.util.*;
 
 // Class that contains the solution and test harness
 public class DeliveryScheduler {
-
-    // Inner class representing one delivery job
-    private static final class Job {
-        final int s, e, p; // start time, end time, pay
-        // Constructor: store values for this job
-        Job(int s, int e, int p) { this.s = s; this.e = e; this.p = p; }
-    }
 
     /**
      * Method to compute maximum earnings.
@@ -43,13 +36,13 @@ public class DeliveryScheduler {
         // Prepare arrays of start, end, pay for faster access
         int m = jobs.size();       // number of valid jobs
         int[] starts = new int[m]; // store job start times
-        int[] ends   = new int[m]; // store job end times
-        int[] pays   = new int[m]; // store job pays
+        int[] ends = new int[m]; // store job end times
+        int[] pays = new int[m]; // store job pays
         for (int i = 0; i < m; i++) { // fill arrays
             Job jb = jobs.get(i);
             starts[i] = jb.s;
-            ends[i]   = jb.e;
-            pays[i]   = jb.p;
+            ends[i] = jb.e;
+            pays[i] = jb.p;
         }
 
         // DP array: dp[i] = max earnings considering jobs[0..i]
@@ -186,5 +179,17 @@ public class DeliveryScheduler {
         // Print result (no fixed expected, just performance check)
         System.out.printf("LargeData: n=%d -> value=%d | time=%.2f ms | PASS (performance)%n",
                 N, got, ms);
+    }
+
+    // Inner class representing one delivery job
+    private static final class Job {
+        final int s, e, p; // start time, end time, pay
+
+        // Constructor: store values for this job
+        Job(int s, int e, int p) {
+            this.s = s;
+            this.e = e;
+            this.p = p;
+        }
     }
 }

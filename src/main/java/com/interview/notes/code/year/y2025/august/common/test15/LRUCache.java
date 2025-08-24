@@ -13,6 +13,19 @@ class LRUCache<K, V> {
         this.dll = new DoublyLinkedList<>();
     }
 
+    // Demo
+    public static void main(String[] args) {
+        LRUCache<Integer, String> cache = new LRUCache<>(3);
+        cache.put(1, "A");
+        cache.put(2, "B");
+        cache.put(3, "C");
+        System.out.println(cache.get(1)); // A (moves 1 to most recent)
+        cache.put(4, "D"); // Evicts key 2 (least recently used)
+        System.out.println(cache.get(2)); // null
+        System.out.println(cache.get(3)); // C
+        System.out.println(cache.get(4)); // D
+    }
+
     public V get(K key) {
         if (!map.containsKey(key)) return null;
         Node<K, V> node = map.get(key);
@@ -41,7 +54,11 @@ class LRUCache<K, V> {
         K key;
         V value;
         Node<K, V> prev, next;
-        Node(K k, V v) { key = k; value = v; }
+
+        Node(K k, V v) {
+            key = k;
+            value = v;
+        }
     }
 
     // Doubly Linked List
@@ -77,18 +94,5 @@ class LRUCache<K, V> {
             removeNode(lru);
             return lru;
         }
-    }
-
-    // Demo
-    public static void main(String[] args) {
-        LRUCache<Integer, String> cache = new LRUCache<>(3);
-        cache.put(1, "A");
-        cache.put(2, "B");
-        cache.put(3, "C");
-        System.out.println(cache.get(1)); // A (moves 1 to most recent)
-        cache.put(4, "D"); // Evicts key 2 (least recently used)
-        System.out.println(cache.get(2)); // null
-        System.out.println(cache.get(3)); // C
-        System.out.println(cache.get(4)); // D
     }
 }

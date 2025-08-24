@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.august.common.test8;
 
-import java.util.*;                       // Import utility classes like Arrays and List
-import java.util.stream.*;                // Import Java 8 Stream utilities
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class SortedSquares {              // Define a public class to hold our solution and tests
 
@@ -30,7 +32,7 @@ public class SortedSquares {              // Define a public class to hold our s
         // Iterate until pointers cross; each iteration places exactly one number into res[k]
         while (l <= r) {
             // Take absolute values to compare magnitudes without sign
-            int leftAbs  = Math.abs(nums[l]);
+            int leftAbs = Math.abs(nums[l]);
             int rightAbs = Math.abs(nums[r]);
 
             // If left magnitude is larger, its square should go at position k
@@ -57,9 +59,9 @@ public class SortedSquares {              // Define a public class to hold our s
         // Stream the array, map to squares (careful with overflow for large ints),
         // and sort the result; then collect back to int[]
         return Arrays.stream(nums)                                  // Create an IntStream over the array
-                     .map(x -> x * x)                               // Square each element
-                     .sorted()                                      // Sort the squared values
-                     .toArray();                                    // Materialize into a new int[]
+                .map(x -> x * x)                               // Square each element
+                .sorted()                                      // Sort the squared values
+                .toArray();                                    // Materialize into a new int[]
     }
 
     // ------------------------------------------------------------
@@ -109,7 +111,7 @@ public class SortedSquares {              // Define a public class to hold our s
         // Large data test: generate a sorted range with negatives to positives
         final int N = 200_000;                                       // Choose large but reasonable for quick run
         int[] large = IntStream.rangeClosed(-N, N)                   // Stream from -N to N inclusive
-                               .toArray();                           // Materialize to array (naturally sorted)
+                .toArray();                           // Materialize to array (naturally sorted)
         inputs.add(large);                                           // Add to test set
 
         // Run tests
@@ -131,15 +133,16 @@ public class SortedSquares {              // Define a public class to hold our s
 
             // Print detailed result per case, including timing for both approaches
             System.out.printf(
-                "Case %02d: %-35s  -> %s | two-pointer: %.2f ms, stream+sort: %.2f ms%n",
-                caseNum++,
-                in.length <= 12 ? arrToString(in) : ("[size=" + in.length + "]"),
-                ok ? "PASS" : "FAIL",
-                (t2 - t1) / 1_000_000.0,
-                (t4 - t3) / 1_000_000.0
+                    "Case %02d: %-35s  -> %s | two-pointer: %.2f ms, stream+sort: %.2f ms%n",
+                    caseNum++,
+                    in.length <= 12 ? arrToString(in) : ("[size=" + in.length + "]"),
+                    ok ? "PASS" : "FAIL",
+                    (t2 - t1) / 1_000_000.0,
+                    (t4 - t3) / 1_000_000.0
             );
 
-            if (ok) pass++; else {
+            if (ok) pass++;
+            else {
                 fail++;
                 // If failed, print the mismatch to aid debugging
                 if (in.length <= 30) {

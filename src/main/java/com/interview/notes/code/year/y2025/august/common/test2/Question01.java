@@ -59,7 +59,7 @@ public class Question01 {
             test6[i] = i;
             test6[i + 500] = -i;
         }
-        System.out.println("Test 6 (Large array): " + 
-            (isBalanced(test6) == 1 ? "PASS" : "FAIL"));
+        System.out.println("Test 6 (Large array): " +
+                (isBalanced(test6) == 1 ? "PASS" : "FAIL"));
     }
 }

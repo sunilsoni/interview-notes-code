@@ -1,6 +1,6 @@
 package com.interview.notes.code.year.y2025.august.Uber.test2;
 
-import java.util.*;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 /*
@@ -45,6 +45,7 @@ Design the **quadtree data structure** and write a **function** that builds a qu
 
 
  */
+
 /**
  * QuadtreeBuilder
  * - Builds a quadtree from a 2D integer image.
@@ -54,69 +55,8 @@ Design the **quadtree data structure** and write a **function** that builds a qu
 public class QuadtreeBuilder {
 
     /**
-     * QuadNode represents a node in the quadtree.
-     * Each node is either a leaf (stores a value) or internal (has 4 children).
-     */
-    static final class QuadNode {
-        // Indicates whether this node is a leaf (uniform region)
-        final boolean isLeaf;
-        // The pixel value if leaf; undefined for internal nodes
-        final int value;
-        // Children for internal node; null for leaf
-        final QuadNode nw, ne, sw, se;
-        // Optional: region metadata for debugging/pretty print (not required for correctness)
-        final int x, y, h, w;
-
-        // Constructor for a leaf node
-        QuadNode(int value, int x, int y, int h, int w) {
-            this.isLeaf = true;    // mark as leaf
-            this.value = value;    // store uniform pixel value
-            this.nw = this.ne = this.sw = this.se = null; // no children
-            this.x = x; this.y = y; this.h = h; this.w = w; // store region meta for reference
-        }
-
-        // Constructor for an internal node with 4 children
-        QuadNode(QuadNode nw, QuadNode ne, QuadNode sw, QuadNode se, int x, int y, int h, int w) {
-            this.isLeaf = false;   // internal node
-            this.value = 0;        // value not used for internal nodes
-            this.nw = nw; this.ne = ne; this.sw = sw; this.se = se; // attach children
-            this.x = x; this.y = y; this.h = h; this.w = w;         // region meta
-        }
-
-        // Preorder string for light debugging/visual check
-        @Override
-        public String toString() {
-            // Use a StringBuilder to build a compact representation
-            StringBuilder sb = new StringBuilder();
-            toString(sb, 0);
-            return sb.toString();
-        }
-
-        // Helper: build indented tree string
-        private void toString(StringBuilder sb, int depth) {
-            // indent based on depth for readability
-            for (int i = 0; i < depth; i++) sb.append("  ");
-            if (isLeaf) {
-                // print leaf with value and region size
-                sb.append("Leaf(val=").append(value)
-                  .append(", x=").append(x).append(", y=").append(y)
-                  .append(", h=").append(h).append(", w=").append(w)
-                  .append(")\n");
-            } else {
-                // print internal node then recurse into children
-                sb.append("Node(x=").append(x).append(", y=").append(y)
-                  .append(", h=").append(h).append(", w=").append(w)
-                  .append(")\n");
-                if (nw != null) nw.toString(sb, depth + 1);
-                if (ne != null) ne.toString(sb, depth + 1);
-                if (sw != null) sw.toString(sb, depth + 1);
-                if (se != null) se.toString(sb, depth + 1);
-            }
-        }
-    }
-
-    /**
      * Public API: Build quadtree for the entire image.
+     *
      * @param img input 2D array
      * @return root QuadNode
      */
@@ -156,10 +96,10 @@ public class QuadtreeBuilder {
         int wRight = w - wLeft; // width of right half
 
         // Build children in NW, NE, SW, SE order
-        QuadNode nw = build(img, x,          y,          hTop, wLeft);  // top-left
-        QuadNode ne = build(img, x + wLeft,  y,          hTop, wRight); // top-right
-        QuadNode sw = build(img, x,          y + hTop,   hBot, wLeft);  // bottom-left
-        QuadNode se = build(img, x + wLeft,  y + hTop,   hBot, wRight); // bottom-right
+        QuadNode nw = build(img, x, y, hTop, wLeft);  // top-left
+        QuadNode ne = build(img, x + wLeft, y, hTop, wRight); // top-right
+        QuadNode sw = build(img, x, y + hTop, hBot, wLeft);  // bottom-left
+        QuadNode se = build(img, x + wLeft, y + hTop, hBot, wRight); // bottom-right
 
         // Create internal node with these children
         return new QuadNode(nw, ne, sw, se, x, y, h, w);
@@ -205,10 +145,10 @@ public class QuadtreeBuilder {
         int wRight = w - wLeft;
 
         // Decompress each child into its quadrant if child is not null
-        if (root.nw != null) decompress(root.nw, out, x,           y,           hTop, wLeft);
-        if (root.ne != null) decompress(root.ne, out, x + wLeft,   y,           hTop, wRight);
-        if (root.sw != null) decompress(root.sw, out, x,           y + hTop,    hBot, wLeft);
-        if (root.se != null) decompress(root.se, out, x + wLeft,   y + hTop,    hBot, wRight);
+        if (root.nw != null) decompress(root.nw, out, x, y, hTop, wLeft);
+        if (root.ne != null) decompress(root.ne, out, x + wLeft, y, hTop, wRight);
+        if (root.sw != null) decompress(root.sw, out, x, y + hTop, hBot, wLeft);
+        if (root.se != null) decompress(root.se, out, x + wLeft, y + hTop, hBot, wRight);
     }
 
     /**
@@ -383,5 +323,76 @@ public class QuadtreeBuilder {
 
         System.out.printf("Build time: %.2f ms, Decompress time: %.2f ms%n", buildMs, decompMs);
         System.out.println("Result: " + (ok ? "PASS" : "FAIL"));
+    }
+
+    /**
+     * QuadNode represents a node in the quadtree.
+     * Each node is either a leaf (stores a value) or internal (has 4 children).
+     */
+    static final class QuadNode {
+        // Indicates whether this node is a leaf (uniform region)
+        final boolean isLeaf;
+        // The pixel value if leaf; undefined for internal nodes
+        final int value;
+        // Children for internal node; null for leaf
+        final QuadNode nw, ne, sw, se;
+        // Optional: region metadata for debugging/pretty print (not required for correctness)
+        final int x, y, h, w;
+
+        // Constructor for a leaf node
+        QuadNode(int value, int x, int y, int h, int w) {
+            this.isLeaf = true;    // mark as leaf
+            this.value = value;    // store uniform pixel value
+            this.nw = this.ne = this.sw = this.se = null; // no children
+            this.x = x;
+            this.y = y;
+            this.h = h;
+            this.w = w; // store region meta for reference
+        }
+
+        // Constructor for an internal node with 4 children
+        QuadNode(QuadNode nw, QuadNode ne, QuadNode sw, QuadNode se, int x, int y, int h, int w) {
+            this.isLeaf = false;   // internal node
+            this.value = 0;        // value not used for internal nodes
+            this.nw = nw;
+            this.ne = ne;
+            this.sw = sw;
+            this.se = se; // attach children
+            this.x = x;
+            this.y = y;
+            this.h = h;
+            this.w = w;         // region meta
+        }
+
+        // Preorder string for light debugging/visual check
+        @Override
+        public String toString() {
+            // Use a StringBuilder to build a compact representation
+            StringBuilder sb = new StringBuilder();
+            toString(sb, 0);
+            return sb.toString();
+        }
+
+        // Helper: build indented tree string
+        private void toString(StringBuilder sb, int depth) {
+            // indent based on depth for readability
+            for (int i = 0; i < depth; i++) sb.append("  ");
+            if (isLeaf) {
+                // print leaf with value and region size
+                sb.append("Leaf(val=").append(value)
+                        .append(", x=").append(x).append(", y=").append(y)
+                        .append(", h=").append(h).append(", w=").append(w)
+                        .append(")\n");
+            } else {
+                // print internal node then recurse into children
+                sb.append("Node(x=").append(x).append(", y=").append(y)
+                        .append(", h=").append(h).append(", w=").append(w)
+                        .append(")\n");
+                if (nw != null) nw.toString(sb, depth + 1);
+                if (ne != null) ne.toString(sb, depth + 1);
+                if (sw != null) sw.toString(sb, depth + 1);
+                if (se != null) se.toString(sb, depth + 1);
+            }
+        }
     }
 }

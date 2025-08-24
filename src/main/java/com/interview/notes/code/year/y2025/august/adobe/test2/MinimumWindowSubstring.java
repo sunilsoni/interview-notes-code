@@ -60,12 +60,12 @@ public class MinimumWindowSubstring {
         testCase("ADOBECODEBANC", "ABC", "BANC", "Test Case 1");
         testCase("a", "a", "a", "Test Case 2");
         testCase("a", "aa", "", "Test Case 3");
-        
+
         // Additional test cases
         testCase("", "ABC", "", "Empty String Test");
         testCase("ABCDEF", "", "", "Empty Pattern Test");
         testCase("AAAAAA", "AA", "AA", "Repeated Characters Test");
-        
+
         // Large input test case
         StringBuilder largeSB = new StringBuilder();
         for (int i = 0; i < 100000; i++) {
@@ -77,8 +77,8 @@ public class MinimumWindowSubstring {
 
     private static void testCase(String s, String t, String expected, String testName) {
         String result = minWindow(s, t);
-        System.out.println(testName + ": " + 
-            (result.equals(expected) ? "PASS" : "FAIL") +
-            " (Expected: " + expected + ", Got: " + result + ")");
+        System.out.println(testName + ": " +
+                (result.equals(expected) ? "PASS" : "FAIL") +
+                " (Expected: " + expected + ", Got: " + result + ")");
     }
 }

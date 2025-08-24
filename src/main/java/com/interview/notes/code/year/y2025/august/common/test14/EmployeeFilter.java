@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.august.common.test14;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 // Employee class
 class Employee {
@@ -20,9 +22,11 @@ class Employee {
     public String getName() {
         return name;
     }
+
     public String getDepartment() {
         return department;
     }
+
     public double getSalary() {
         return salary;
     }

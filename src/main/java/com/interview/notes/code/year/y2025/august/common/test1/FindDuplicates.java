@@ -1,12 +1,16 @@
 package com.interview.notes.code.year.y2025.august.common.test1;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class FindDuplicates {
 
     /**
      * Method to find all duplicate numbers in the array.
+     *
      * @param nums The input integer array.
      * @return A list of duplicate numbers.
      */
@@ -30,19 +34,19 @@ public class FindDuplicates {
     public static void main(String[] args) {
         // Define test cases as arrays and expected results
         int[][] testArrays = {
-            {4,3,2,7,8,2,3,1},   // Expected: [2,3]
-            {1,1,2},             // Expected: [1]
-            {1,2,3,4,5},         // Expected: []
-            {},                  // Expected: []
-            {5,5,5,5,5},         // Expected: [5]
+                {4, 3, 2, 7, 8, 2, 3, 1},   // Expected: [2,3]
+                {1, 1, 2},             // Expected: [1]
+                {1, 2, 3, 4, 5},         // Expected: []
+                {},                  // Expected: []
+                {5, 5, 5, 5, 5},         // Expected: [5]
         };
 
         List<List<Integer>> expectedResults = Arrays.asList(
-            Arrays.asList(2,3),
-            Arrays.asList(1),
-            Arrays.asList(),
-            Arrays.asList(),
-            Arrays.asList(5)
+                Arrays.asList(2, 3),
+                Arrays.asList(1),
+                Arrays.asList(),
+                Arrays.asList(),
+                Arrays.asList(5)
         );
 
         // Large test case: 1 million elements with duplicates at the end
@@ -57,7 +61,7 @@ public class FindDuplicates {
         for (int i = 0; i < testArrays.length; i++) {
             List<Integer> result = findDuplicates(testArrays[i]);
             boolean pass = new HashSet<>(result).equals(new HashSet<>(expectedResults.get(i)));
-            System.out.println("Test Case " + (i+1) + " -> " + (pass ? "PASS" : "FAIL")
+            System.out.println("Test Case " + (i + 1) + " -> " + (pass ? "PASS" : "FAIL")
                     + " | Output: " + result + " | Expected: " + expectedResults.get(i));
         }
 

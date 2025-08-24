@@ -1,18 +1,24 @@
 package com.interview.notes.code.year.y2025.august.common.test12;
 
-import java.util.ArrayList;          // List implementation for collecting results from threads
-import java.util.Collections;        // Provides thread-safe wrappers for collections
-import java.util.List;               // List interface
-import java.util.Objects;            // Utility for null-safe equals/hash
-import java.util.Set;                // Set interface for uniqueness checks
-import java.util.concurrent.Callable; // Represents a task returning a result
-import java.util.concurrent.ExecutionException; // To handle future.get() exceptions
-import java.util.concurrent.Executors;          // Factory for thread pools
-import java.util.concurrent.Future;             // Represents pending computation result
-import java.util.concurrent.ThreadLocalRandom;  // For optional randomized work
-import java.util.concurrent.TimeUnit;          // Time units for sleeps/waits
-import java.util.stream.Collectors;            // Collectors for stream terminal ops
-import java.util.stream.IntStream;             // Stream over int ranges
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+/**
+ * Alternative idiomatic singleton using enum.
+ * Pros: simplest, serialization-safe, guard against reflection.
+ * Cons: not strictly lazy (instance is created when enum class is loaded).
+ */
+enum EnumSingleton {                                 // Enum guarantees single instance per enum constant
+    INSTANCE;                                        // The one-and-only instance
+
+    public void doSomething() {                      // Sample API method on enum singleton
+        System.out.println("Enum singleton action from " + System.identityHashCode(this));
+    }
+}
 
 /**
  * Primary, lazy, thread-safe Singleton implemented with Double-Checked Locking (DCL).
@@ -41,19 +47,6 @@ final class LazySingletonDCL {                       // 'final' prevents subclas
 
     public void doSomething() {                      // Sample API method to prove the instance works
         System.out.println("Doing something from " + System.identityHashCode(this));
-    }
-}
-
-/**
- * Alternative idiomatic singleton using enum.
- * Pros: simplest, serialization-safe, guard against reflection.
- * Cons: not strictly lazy (instance is created when enum class is loaded).
- */
-enum EnumSingleton {                                 // Enum guarantees single instance per enum constant
-    INSTANCE;                                        // The one-and-only instance
-
-    public void doSomething() {                      // Sample API method on enum singleton
-        System.out.println("Enum singleton action from " + System.identityHashCode(this));
     }
 }
 

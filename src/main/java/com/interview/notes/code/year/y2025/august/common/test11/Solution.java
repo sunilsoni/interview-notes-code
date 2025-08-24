@@ -5,33 +5,6 @@ import java.util.stream.Collectors;
 
 
 class Solution {
-    private static class PangramDetector {
-        // Constant alphabet string for reference
-        private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
-
-        /*
-         * Finds the letters of the alphabet not included in the input string
-         *
-         * @param sentence a string to examine
-         * @return a string made up of the missing letters of the alphabet in sorted order
-         */
-        public String findMissingLetters(String sentence) {
-            // Step 1: Create a Set to store letters found in the input
-            Set<Character> foundLetters = sentence
-                    .toLowerCase()                // Normalize to lowercase
-                    .chars()                       // Get IntStream of character codes
-                    .filter(c -> c >= 'a' && c <= 'z') // Keep only 'a' to 'z'
-                    .mapToObj(c -> (char) c)        // Convert int to char
-                    .collect(Collectors.toSet());  // Store unique letters in a Set
-
-            // Step 2: Stream over ALPHABET and filter letters not in foundLetters
-            return ALPHABET.chars()                   // Stream over 'a' to 'z'
-                    .mapToObj(c -> String.valueOf((char) c)) // Convert to String
-                    .filter(ch -> !foundLetters.contains(ch.charAt(0))) // Keep missing letters
-                    .collect(Collectors.joining());   // Combine into one string
-        }
-    }
-
     // Main method for testing without JUnit
     public static void main(String[] args) {
         PangramDetector pd = new PangramDetector();
@@ -57,6 +30,33 @@ class Solution {
             System.out.println("All tests passed.");
         } else {
             System.out.println("At least one test failed.");
+        }
+    }
+
+    private static class PangramDetector {
+        // Constant alphabet string for reference
+        private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+
+        /*
+         * Finds the letters of the alphabet not included in the input string
+         *
+         * @param sentence a string to examine
+         * @return a string made up of the missing letters of the alphabet in sorted order
+         */
+        public String findMissingLetters(String sentence) {
+            // Step 1: Create a Set to store letters found in the input
+            Set<Character> foundLetters = sentence
+                    .toLowerCase()                // Normalize to lowercase
+                    .chars()                       // Get IntStream of character codes
+                    .filter(c -> c >= 'a' && c <= 'z') // Keep only 'a' to 'z'
+                    .mapToObj(c -> (char) c)        // Convert int to char
+                    .collect(Collectors.toSet());  // Store unique letters in a Set
+
+            // Step 2: Stream over ALPHABET and filter letters not in foundLetters
+            return ALPHABET.chars()                   // Stream over 'a' to 'z'
+                    .mapToObj(c -> String.valueOf((char) c)) // Convert to String
+                    .filter(ch -> !foundLetters.contains(ch.charAt(0))) // Keep missing letters
+                    .collect(Collectors.joining());   // Combine into one string
         }
     }
 }

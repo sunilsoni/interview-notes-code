@@ -3,22 +3,6 @@ package com.interview.notes.code.year.y2025.august.Uber.test1;
 import java.util.Arrays;
 
 public class QuadTreeSolution {
-    // Node class representing each node in the QuadTree
-    static class Node {
-        int val; // Value stored in the node
-        boolean isLeaf; // Flag to indicate if it's a leaf node
-        Node topLeft; // Top-left child
-        Node topRight; // Top-right child
-        Node bottomLeft; // Bottom-left child
-        Node bottomRight; // Bottom-right child
-        
-        // Constructor for creating a leaf node with a specific value
-        public Node(int val, boolean isLeaf) {
-            this.val = val;
-            this.isLeaf = isLeaf;
-        }
-    }
-
     // Main function to construct QuadTree from 2D grid
     public static Node constructQuadTree(int[][] grid) {
         return buildTree(grid, 0, 0, grid.length);
@@ -33,7 +17,7 @@ public class QuadTreeSolution {
 
         // Calculate new size for subdivided quadrants
         int newSize = size / 2;
-        
+
         // Recursively build all four quadrants
         Node topLeft = buildTree(grid, x, y, newSize);
         Node topRight = buildTree(grid, x, y + newSize, newSize);
@@ -42,8 +26,8 @@ public class QuadTreeSolution {
 
         // Check if all children are leaves with same value
         if (topLeft.isLeaf && topRight.isLeaf && bottomLeft.isLeaf && bottomRight.isLeaf &&
-            topLeft.val == topRight.val && topRight.val == bottomLeft.val && 
-            bottomLeft.val == bottomRight.val) {
+                topLeft.val == topRight.val && topRight.val == bottomLeft.val &&
+                bottomLeft.val == bottomRight.val) {
             // If all values are same, merge into a single leaf node
             return new Node(topLeft.val, true);
         }
@@ -61,19 +45,19 @@ public class QuadTreeSolution {
     public static void main(String[] args) {
         // Test Case 1: Simple 4x4 grid
         int[][] grid1 = {
-            {2, 2, 3, 3},
-            {2, 2, 3, 3},
-            {4, 2, 5, 5},
-            {2, 3, 5, 5}
+                {2, 2, 3, 3},
+                {2, 2, 3, 3},
+                {4, 2, 5, 5},
+                {2, 3, 5, 5}
         };
         testQuadTree(grid1, "Test Case 1");
 
         // Test Case 2: Uniform grid
         int[][] grid2 = {
-            {1, 1, 1, 1},
-            {1, 1, 1, 1},
-            {1, 1, 1, 1},
-            {1, 1, 1, 1}
+                {1, 1, 1, 1},
+                {1, 1, 1, 1},
+                {1, 1, 1, 1},
+                {1, 1, 1, 1}
         };
         testQuadTree(grid2, "Test Case 2");
 
@@ -99,10 +83,26 @@ public class QuadTreeSolution {
             throw new RuntimeException("Invalid node: null");
         }
         if (!node.isLeaf && size > 1) {
-            verifyQuadTree(node.topLeft, size/2);
-            verifyQuadTree(node.topRight, size/2);
-            verifyQuadTree(node.bottomLeft, size/2);
-            verifyQuadTree(node.bottomRight, size/2);
+            verifyQuadTree(node.topLeft, size / 2);
+            verifyQuadTree(node.topRight, size / 2);
+            verifyQuadTree(node.bottomLeft, size / 2);
+            verifyQuadTree(node.bottomRight, size / 2);
+        }
+    }
+
+    // Node class representing each node in the QuadTree
+    static class Node {
+        int val; // Value stored in the node
+        boolean isLeaf; // Flag to indicate if it's a leaf node
+        Node topLeft; // Top-left child
+        Node topRight; // Top-right child
+        Node bottomLeft; // Bottom-left child
+        Node bottomRight; // Bottom-right child
+
+        // Constructor for creating a leaf node with a specific value
+        public Node(int val, boolean isLeaf) {
+            this.val = val;
+            this.isLeaf = isLeaf;
         }
     }
 }

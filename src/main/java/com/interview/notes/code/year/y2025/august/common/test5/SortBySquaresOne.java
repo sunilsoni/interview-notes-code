@@ -1,6 +1,6 @@
 package com.interview.notes.code.year.y2025.august.common.test5;
 
-import java.util.Arrays; // used only in main for printing
+import java.util.Arrays;
 
 public class SortBySquaresOne {
 
@@ -54,30 +54,30 @@ public class SortBySquaresOne {
     public static void main(String[] args) {
         // Given examples (first fixed to keep both 7s)
         int[][] inputs = {
-            { 1, 5, 7, 7, 8, 10 },
-            { -5, -3, -3, 2, 4, 4, 8 },
-            { -7, -3, 0, 2, 4 },
-            { -4, -3, -2, -1 },
-            { 0, 0, 1, 2 },
-            { -1, -1, 1, 1 },
+                {1, 5, 7, 7, 8, 10},
+                {-5, -3, -3, 2, 4, 4, 8},
+                {-7, -3, 0, 2, 4},
+                {-4, -3, -2, -1},
+                {0, 0, 1, 2},
+                {-1, -1, 1, 1},
         };
 
         int[][] expected = {
-            { 1, 5, 7, 7, 8, 10 },          // already correct
-            { 2, -3, -3, 4, 4, -5, 8 },     // matches problem’s second example
-            { 0, 2, -3, 4, -7 },            // by |x|: 0,2,3,4,7 (preserve order on ties)
-            { -1, -2, -3, -4 },             // by |x| asc
-            { 0, 0, 1, 2 },                  // already correct
-            { -1, 1, -1, 1 },               // stability across equal |x|
+                {1, 5, 7, 7, 8, 10},          // already correct
+                {2, -3, -3, 4, 4, -5, 8},     // matches problem’s second example
+                {0, 2, -3, 4, -7},            // by |x|: 0,2,3,4,7 (preserve order on ties)
+                {-1, -2, -3, -4},             // by |x| asc
+                {0, 0, 1, 2},                  // already correct
+                {-1, 1, -1, 1},               // stability across equal |x|
         };
 
         for (int i = 0; i < inputs.length; i++) {
             int[] got = sortBySquareStable(Arrays.copyOf(inputs[i], inputs[i].length));
             boolean pass = Arrays.equals(got, expected[i]);
             System.out.println("Case " + (i + 1) + ": " + (pass ? "PASS" : "FAIL")
-                + "  input=" + Arrays.toString(inputs[i])
-                + "  expected=" + Arrays.toString(expected[i])
-                + "  got=" + Arrays.toString(got));
+                    + "  input=" + Arrays.toString(inputs[i])
+                    + "  expected=" + Arrays.toString(expected[i])
+                    + "  got=" + Arrays.toString(got));
         }
 
         // Large data sanity (checks that |out[i]| is non-decreasing)
@@ -89,9 +89,12 @@ public class SortBySquaresOne {
         long t2 = System.currentTimeMillis();
         boolean ok = true;
         for (int i = 1; i < bigOut.length; i++) {
-            if (Math.abs(bigOut[i - 1]) > Math.abs(bigOut[i])) { ok = false; break; }
+            if (Math.abs(bigOut[i - 1]) > Math.abs(bigOut[i])) {
+                ok = false;
+                break;
+            }
         }
         System.out.println("Large n=" + bigN + ": " + (ok ? "PASS" : "FAIL")
-            + ", time=" + (t2 - t1) + " ms");
+                + ", time=" + (t2 - t1) + " ms");
     }
 }

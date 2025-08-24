@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.august.Uber.test4;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Solution1 {
     static int[] solution(int[] primary, int[] secondary, int[][] operations) {
@@ -33,7 +35,7 @@ public class Solution1 {
         int[] primary1 = {1, 2, 3};
         int[] secondary1 = {3, 4};
         int[][] operations1 = {
-            {1, 5}, {0, 0, 1}, {1, 5}
+                {1, 5}, {0, 0, 1}, {1, 5}
         };
         int[] expected1 = {2, 1};
         int[] result1 = solution(primary1, secondary1, operations1);
@@ -43,7 +45,7 @@ public class Solution1 {
         int[] primary2 = {1, 2, 2};
         int[] secondary2 = {2, 3};
         int[][] operations2 = {
-            {1, 4}, {0, 0, 3}, {1, 5}
+                {1, 4}, {0, 0, 3}, {1, 5}
         };
         int[] expected2 = {3, 4};
         int[] result2 = solution(primary2, secondary2, operations2);

@@ -1,19 +1,13 @@
 package com.interview.notes.code.year.y2025.august.common.test13;
 
-import java.util.*;                           // import core collections like List, Map, etc.
-import java.util.concurrent.ThreadLocalRandom; // import for generating large random test data quickly
-import java.util.stream.Collectors;            // import Collectors for stream terminal operations
-import java.util.stream.IntStream;             // import IntStream to help build large test inputs
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CartTrayMapperJava17 {
 
-    // record defines an immutable data carrier with auto-generated ctor, accessors, equals/hashCode, toString
-    // Using records eliminates boilerplate getters/setters.
-    public record Tray(Long id, String name) { }  // Tray has an id and name; accessors are id() and name()
-
-    public record Cart(Long id, String name, List<Tray> trays) { } // Cart has id, name, and a list of trays
-
-    /** 
+    /**
      * Converts List<Cart> -> Map<CartId, Sorted List<TrayId>>
      * - Handles null carts
      * - Handles null trays list per cart
@@ -148,4 +142,12 @@ public class CartTrayMapperJava17 {
         System.out.println("Test 4: Large dataset (N=" + N + ", M=" + M + ", ~" + (N * M) + " trays) -> "
                 + ((sizeOk && sortedOk) ? "PASS" : "FAIL") + " | Time: " + elapsedMicros + " μs");
     }
+
+    // record defines an immutable data carrier with auto-generated ctor, accessors, equals/hashCode, toString
+    // Using records eliminates boilerplate getters/setters.
+    public record Tray(Long id, String name) {
+    }  // Tray has an id and name; accessors are id() and name()
+
+    public record Cart(Long id, String name, List<Tray> trays) {
+    } // Cart has id, name, and a list of trays
 }

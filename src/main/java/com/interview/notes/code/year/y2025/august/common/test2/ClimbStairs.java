@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.august.common.test2;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class ClimbStairs {
 

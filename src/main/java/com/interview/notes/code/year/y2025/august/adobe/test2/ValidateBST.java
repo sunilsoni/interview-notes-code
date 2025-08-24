@@ -158,31 +158,6 @@ This will make your tests pass.
 
  */
 public class ValidateBST {
-    // Method to validate if a binary tree is a valid BST
-    public boolean isValidBST(TreeNode root) {
-        // Call helper method with initial bounds as Long.MIN_VALUE and Long.MAX_VALUE
-        // Using Long to handle edge cases where node values are Integer.MIN_VALUE or Integer.MAX_VALUE
-        return isValidBSTHelper(root, Long.MIN_VALUE, Long.MAX_VALUE);
-    }
-
-    // Helper method that checks if node values are within valid bounds
-    private boolean isValidBSTHelper(TreeNode node, long min, long max) {
-        // Base case: empty node is considered valid
-        if (node == null) {
-            return true;
-        }
-
-        // Check if current node's value is within the valid range
-        if (node.val <= min || node.val >= max) {
-            return false;
-        }
-
-        // Recursively check left subtree (must be less than current node)
-        // and right subtree (must be greater than current node)
-        return isValidBSTHelper(node.left, min, node.val) && 
-               isValidBSTHelper(node.right, node.val, max);
-    }
-
     // Main method with comprehensive test cases
     public static void main(String[] args) {
         ValidateBST solution = new ValidateBST();
@@ -250,5 +225,30 @@ public class ValidateBST {
         node.left = createLargeTreeHelper(start, mid - 1);
         node.right = createLargeTreeHelper(mid + 1, end);
         return node;
+    }
+
+    // Method to validate if a binary tree is a valid BST
+    public boolean isValidBST(TreeNode root) {
+        // Call helper method with initial bounds as Long.MIN_VALUE and Long.MAX_VALUE
+        // Using Long to handle edge cases where node values are Integer.MIN_VALUE or Integer.MAX_VALUE
+        return isValidBSTHelper(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    // Helper method that checks if node values are within valid bounds
+    private boolean isValidBSTHelper(TreeNode node, long min, long max) {
+        // Base case: empty node is considered valid
+        if (node == null) {
+            return true;
+        }
+
+        // Check if current node's value is within the valid range
+        if (node.val <= min || node.val >= max) {
+            return false;
+        }
+
+        // Recursively check left subtree (must be less than current node)
+        // and right subtree (must be greater than current node)
+        return isValidBSTHelper(node.left, min, node.val) &&
+                isValidBSTHelper(node.right, node.val, max);
     }
 }

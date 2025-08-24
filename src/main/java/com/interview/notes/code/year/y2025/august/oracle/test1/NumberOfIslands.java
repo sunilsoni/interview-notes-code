@@ -1,7 +1,12 @@
 package com.interview.notes.code.year.y2025.august.oracle.test1;
 
-import java.util.*;                           // Import utilities for Stack, Arrays, List, etc.
-import java.util.stream.*;                    // Import Java 8 Streams for generating and formatting test data.
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 
  */
@@ -25,9 +30,9 @@ public class NumberOfIslands {                // Define a public class to hold s
         // Directions array to move up, down, left, right from a cell (r,c).
         int[][] DIRS = new int[][]{               // 4-directional movement vectors.
                 {-1, 0},                          // Up: row-1, same column
-                { 1, 0},                          // Down: row+1, same column
-                { 0,-1},                          // Left: same row, col-1
-                { 0, 1}                           // Right: same row, col+1
+                {1, 0},                          // Down: row+1, same column
+                {0, -1},                          // Left: same row, col-1
+                {0, 1}                           // Right: same row, col+1
         };
 
         // Iterate over every cell in the grid.
@@ -130,10 +135,10 @@ public class NumberOfIslands {                // Define a public class to hold s
     public static void main(String[] args) {
         // Example 1:
         String[][] ex1 = {
-                {"1","1","1","1","0"},
-                {"1","1","0","1","0"},
-                {"1","1","0","0","0"},
-                {"0","0","0","0","0"}
+                {"1", "1", "1", "1", "0"},
+                {"1", "1", "0", "1", "0"},
+                {"1", "1", "0", "0", "0"},
+                {"0", "0", "0", "0", "0"}
         };
         char[][] g1 = toCharGrid(ex1);                        // Convert to char[][] for the solver.
         int ans1 = numIslands(copyGrid(g1));                  // Use a copy to avoid mutating g1 for reuse.
@@ -141,10 +146,10 @@ public class NumberOfIslands {                // Define a public class to hold s
 
         // Example 2:
         String[][] ex2 = {
-                {"1","1","0","0","0"},
-                {"1","1","0","0","0"},
-                {"0","0","1","0","0"},
-                {"0","0","0","1","1"}
+                {"1", "1", "0", "0", "0"},
+                {"1", "1", "0", "0", "0"},
+                {"0", "0", "1", "0", "0"},
+                {"0", "0", "0", "1", "1"}
         };
         char[][] g2 = toCharGrid(ex2);                        // Convert to char[][] for the solver.
         int ans2 = numIslands(copyGrid(g2));                  // Solve on a copy.
@@ -160,24 +165,24 @@ public class NumberOfIslands {                // Define a public class to hold s
 
         // Edge Case: All water
         char[][] g5 = new char[][]{
-                {'0','0','0'},
-                {'0','0','0'}
+                {'0', '0', '0'},
+                {'0', '0', '0'}
         };
         assertEquals("All water", 0, numIslands(copyGrid(g5)));         // Zero islands.
 
         // Edge Case: All land (single big island)
         char[][] g6 = new char[][]{
-                {'1','1','1'},
-                {'1','1','1'}
+                {'1', '1', '1'},
+                {'1', '1', '1'}
         };
         assertEquals("All land", 1, numIslands(copyGrid(g6)));          // One island.
 
         // Checkerboard (no diagonal connections -> many small islands)
         char[][] g7 = new char[][]{
-                {'1','0','1','0'},
-                {'0','1','0','1'},
-                {'1','0','1','0'},
-                {'0','1','0','1'}
+                {'1', '0', '1', '0'},
+                {'0', '1', '0', '1'},
+                {'1', '0', '1', '0'},
+                {'0', '1', '0', '1'}
         };
         assertEquals("Checkerboard 4x4", 8, numIslands(copyGrid(g7)));  // Each '1' is isolated by 4-neighbor rule.
 

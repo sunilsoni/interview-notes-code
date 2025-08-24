@@ -44,7 +44,7 @@ public class MissingNumbers {
     private static List<Integer> findMissingNumbersSparse(List<Integer> nums, int maxNum) {
         Set<Integer> numSet = new HashSet<>(nums);
         List<Integer> missing = new ArrayList<>();
-        
+
         // Track ranges of missing numbers
         int start = 0;
         int prev = -1;
@@ -63,7 +63,7 @@ public class MissingNumbers {
     public static void main(String[] args) {
         // Test with dense data
         testDenseData();
-        
+
         // Test with sparse data
         testSparseData();
     }
@@ -76,11 +76,11 @@ public class MissingNumbers {
                 denseInput.add(i);
             }
         }
-        
+
         long startTime = System.currentTimeMillis();
         List<Integer> result = findMissingNumbers(denseInput);
         long endTime = System.currentTimeMillis();
-        
+
         System.out.println("Time taken: " + (endTime - startTime) + "ms");
         System.out.println("Missing numbers: " + result);
     }
@@ -88,14 +88,14 @@ public class MissingNumbers {
     private static void testSparseData() {
         System.out.println("\nTesting sparse data:");
         List<Integer> sparseInput = Arrays.asList(0, 1000000, 2000000, 5000000);
-        
+
         long startTime = System.currentTimeMillis();
         List<Integer> result = findMissingNumbers(sparseInput);
         long endTime = System.currentTimeMillis();
-        
+
         System.out.println("Time taken: " + (endTime - startTime) + "ms");
-        System.out.println("First few missing numbers: " + 
-            result.subList(0, Math.min(10, result.size())) + "...");
+        System.out.println("First few missing numbers: " +
+                result.subList(0, Math.min(10, result.size())) + "...");
         System.out.println("Total missing numbers: " + result.size());
     }
 }

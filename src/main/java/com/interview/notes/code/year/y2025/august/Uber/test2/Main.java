@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.august.Uber.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class Main {
     public static int[] solution(int[] numbers) {
@@ -34,21 +36,21 @@ public class Main {
 
     public static void main(String[] args) {
         int[][] cases = {
-            {5, 7, 6, 9, 2},
-            {1, 2},
-            {10, 5, 8, 3, 6, 7},
-            {4, 4, 4, 4}
+                {5, 7, 6, 9, 2},
+                {1, 2},
+                {10, 5, 8, 3, 6, 7},
+                {4, 4, 4, 4}
         };
         int[][] expect = {
-            {5, 9, 2, 7, 6},
-            {1, 2},
-            {10, 8, 6, 5, 3, 7},
-            {4, 4, 4, 4}
+                {5, 9, 2, 7, 6},
+                {1, 2},
+                {10, 8, 6, 5, 3, 7},
+                {4, 4, 4, 4}
         };
         for (int i = 0; i < cases.length; i++) {
             int[] out = solution(cases[i]);
             boolean pass = Arrays.equals(out, expect[i]);
-            System.out.println("Test " + (i+1) + ": " + (pass ? "PASS" : "FAIL") + " got=" + Arrays.toString(out));
+            System.out.println("Test " + (i + 1) + ": " + (pass ? "PASS" : "FAIL") + " got=" + Arrays.toString(out));
         }
         int n = 1000;
         int[] large = IntStream.range(0, n).toArray();

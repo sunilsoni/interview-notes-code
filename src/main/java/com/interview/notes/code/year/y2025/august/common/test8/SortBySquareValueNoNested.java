@@ -56,21 +56,21 @@ public class SortBySquareValueNoNested {
 
     public static void main(String[] args) {
         // Test inputs
-        int[][] tests = new int[][] {
-            {1, 5, 7, 7, 8, 10},                    // already ascending by abs
-            {-5, -3, -3, 2, 4, 4, 8},               // mix negatives/positives
-            {},                                     // empty
-            {-2, -1, 0, 1, 2},                      // symmetric around 0
-            {-10, -5, -2, 0, 3, 6}                  // varied range
+        int[][] tests = new int[][]{
+                {1, 5, 7, 7, 8, 10},                    // already ascending by abs
+                {-5, -3, -3, 2, 4, 4, 8},               // mix negatives/positives
+                {},                                     // empty
+                {-2, -1, 0, 1, 2},                      // symmetric around 0
+                {-10, -5, -2, 0, 3, 6}                  // varied range
         };
 
         // Expected outputs (ascending by |value|, stable among equals)
-        int[][] expected = new int[][] {
-            {1, 5, 7, 7, 8, 10},
-            {2, -3, -3, 4, 4, -5, 8},
-            {},
-            {0, -1, 1, -2, 2},
-            {0, -2, 3, -5, 6, -10}
+        int[][] expected = new int[][]{
+                {1, 5, 7, 7, 8, 10},
+                {2, -3, -3, 4, 4, -5, 8},
+                {},
+                {0, -1, 1, -2, 2},
+                {0, -2, 3, -5, 6, -10}
         };
 
         // Run and report PASS/FAIL

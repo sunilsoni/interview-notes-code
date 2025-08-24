@@ -1,9 +1,10 @@
 package com.interview.notes.code.year.y2025.august.common.test15;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Comparator;
+import java.util.List;
 
-record Employee(String name, String department, double salary) {}
+record Employee(String name, String department, double salary) {
+}
 
 public class EmployeeFilter {
     public static void main(String[] args) {

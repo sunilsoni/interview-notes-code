@@ -1,19 +1,21 @@
 package com.interview.notes.code.year.y2025.august.common.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Question01 {
 
     public static void main(String[] args) {
         // Test cases
         int[][] testCases = {
-            {-2, 3, 2, -3},     // Balanced
-            {-2, 2, 2, 2},      // Balanced
-            {-5, 2, -2},        // Not Balanced
-            {},                 // Empty array -> Balanced (trivially)
-            {0, 0, 1, -1},      // Balanced (0 counts as its own negative)
-            {1, 2, -1, -3}      // Not Balanced
+                {-2, 3, 2, -3},     // Balanced
+                {-2, 2, 2, 2},      // Balanced
+                {-5, 2, -2},        // Not Balanced
+                {},                 // Empty array -> Balanced (trivially)
+                {0, 0, 1, -1},      // Balanced (0 counts as its own negative)
+                {1, 2, -1, -3}      // Not Balanced
         };
 
         for (int[] arr : testCases) {

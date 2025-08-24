@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.august.common.test4;
 
-import java.util.*;                          // Import utility classes (Arrays, List, Random, etc.)
-import java.util.stream.*;                   // Import Stream API for the baseline and tests
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Random;
 
 public class SortBySquares {                 // Define a public class to hold all methods and the main test
 
@@ -62,10 +63,10 @@ public class SortBySquares {                 // Define a public class to hold al
     public static int[] sortBySquareStream(int[] arr) {
         // Box, sort by absolute value using Comparator.comparingInt, then unbox back to int[]
         return Arrays.stream(arr)             // Create an IntStream over the array
-                     .boxed()                 // Box to Stream<Integer> to use Comparator
-                     .sorted(Comparator.comparingInt(Math::abs)) // Sort by absolute value (ascending)
-                     .mapToInt(Integer::intValue) // Unbox back to primitive int
-                     .toArray();              // Collect into new int[]
+                .boxed()                 // Box to Stream<Integer> to use Comparator
+                .sorted(Comparator.comparingInt(Math::abs)) // Sort by absolute value (ascending)
+                .mapToInt(Integer::intValue) // Unbox back to primitive int
+                .toArray();              // Collect into new int[]
     }
 
     // -----------------------------
@@ -101,30 +102,30 @@ public class SortBySquares {                 // Define a public class to hold al
     public static void main(String[] args) {
         // Define a small helper lambda to compare two int[] arrays for equality
         java.util.function.BiFunction<int[], int[], Boolean> eq =
-            (a, b) -> Arrays.equals(a, b);   // Uses Arrays.equals for concise, reliable comparison
+                (a, b) -> Arrays.equals(a, b);   // Uses Arrays.equals for concise, reliable comparison
 
         // A helper to pretty print arrays (for readable diagnostics)
         java.util.function.Function<int[], String> p =
-            arr -> Arrays.toString(arr);     // Convert int[] to string like "[1, 2, 3]"
+                arr -> Arrays.toString(arr);     // Convert int[] to string like "[1, 2, 3]"
 
         // ------------- Core sample tests (stable by |x| ordering) -------------
         int[][] inputs = {
-            { 1, 5, 7, 7, 8, 10 },          // Already in ascending |x|
-            { -5, -3, -3, 2, 4, 4, 8 },     // Mixed negatives and positives
-            { -7, -3, 0, 2, 4 },            // Includes zero in the middle
-            { -4, -3, -2, -1 },             // All negatives
-            { 0, 0, 1, 2 },                  // Zeros with positives
-            { -1, -1, 1, 1 },               // Equal absolute values, check stability
+                {1, 5, 7, 7, 8, 10},          // Already in ascending |x|
+                {-5, -3, -3, 2, 4, 4, 8},     // Mixed negatives and positives
+                {-7, -3, 0, 2, 4},            // Includes zero in the middle
+                {-4, -3, -2, -1},             // All negatives
+                {0, 0, 1, 2},                  // Zeros with positives
+                {-1, -1, 1, 1},               // Equal absolute values, check stability
         };
 
         // Expected using the two-pointer logic (or we can derive via the stream ground truth below)
         int[][] expected = {
-            { 1, 5, 7, 7, 8, 10 },          // NOTE: both 7s remain (typo fixed from prompt)
-            { 2, -3, -3, 4, 4, -5, 8 },     // Matches your second example
-            { 0, 2, -3, 4, -7 },             // |0|=0, |2|=2, |−3|=3, |4|=4, |−7|=7
-            { -1, -2, -3, -4 },             // By |x| asc: -1, -2, -3, -4
-            { 0, 0, 1, 2 },                  // Already correct
-            { -1, 1, -1, 1 },               // Stability: original order of equals preserved
+                {1, 5, 7, 7, 8, 10},          // NOTE: both 7s remain (typo fixed from prompt)
+                {2, -3, -3, 4, 4, -5, 8},     // Matches your second example
+                {0, 2, -3, 4, -7},             // |0|=0, |2|=2, |−3|=3, |4|=4, |−7|=7
+                {-1, -2, -3, -4},             // By |x| asc: -1, -2, -3, -4
+                {0, 0, 1, 2},                  // Already correct
+                {-1, 1, -1, 1},               // Stability: original order of equals preserved
         };
 
         // Test each case using our O(n) method against the expected outcome
@@ -144,8 +145,8 @@ public class SortBySquares {                 // Define a public class to hold al
         for (int t = 0; t < 5; t++) {        // Run 5 random trials
             int n = 20;                      // Size of the random array
             int[] arr = rnd.ints(n, -50, 51)// Generate ints in [-50, 50]
-                           .sorted()         // Make sure precondition "sorted array" holds
-                           .toArray();       // Materialize
+                    .sorted()         // Make sure precondition "sorted array" holds
+                    .toArray();       // Materialize
 
             int[] got = sortBySquareStableTwoPointers(arr);           // Our O(n) result
             int[] truth = sortBySquareStream(arr);                    // Baseline O(n log n)
@@ -160,7 +161,7 @@ public class SortBySquares {                 // Define a public class to hold al
         }
 
         // ------------- Optional: "sorted squares" classic test -------------
-        int[] sqIn = { -7, -3, 0, 2, 4 };    // Input for squared output
+        int[] sqIn = {-7, -3, 0, 2, 4};    // Input for squared output
         int[] sqGot = sortedSquaresTwoPointers(sqIn);                 // Squares in ascending order
         int[] sqExp = Arrays.stream(sqIn).map(x -> x * x).sorted().toArray(); // Stream ground truth
         System.out.println("Sorted squares test: " + (eq.apply(sqGot, sqExp) ? "PASS" : "FAIL")

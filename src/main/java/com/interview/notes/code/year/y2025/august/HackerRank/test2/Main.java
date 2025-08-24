@@ -2,13 +2,19 @@ package com.interview.notes.code.year.y2025.august.HackerRank.test2;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 class AdditionMagic {
+
+    private static String trimDouble(double v) {
+        return BigDecimal.valueOf(v).stripTrailingZeros().toPlainString();
+    }
 
     // double + String => String ("1.0" -> "1", "10.50" -> "10.5")
     public String add(double a, String b) {
@@ -29,18 +35,15 @@ class AdditionMagic {
     public String add(String a, String b) {
         return String.valueOf(a) + String.valueOf(b);
     }
-
-    private static String trimDouble(double v) {
-        return BigDecimal.valueOf(v).stripTrailingZeros().toPlainString();
-    }
 }
 
 public class Main {
 
     private static String assertEq(String name, String expected, Supplier<String> actual) {
         String got;
-        try { got = actual.get(); }
-        catch (Throwable t) {
+        try {
+            got = actual.get();
+        } catch (Throwable t) {
             return "FAIL: " + name + " (threw " + t.getClass().getSimpleName() + ": " + t.getMessage() + ")";
         }
         return (Objects.equals(expected, got) ? "PASS: " : "FAIL: ") +
@@ -77,7 +80,7 @@ public class Main {
 
         // ---- String + String ----
         tests.add(() -> assertEq("Concat: hello + hello", "hellohello", () -> am.add("hello", "hello")));
-        tests.add(() -> assertEq("Concat: null + a", "nulla", () -> am.add((String)null, "a")));
+        tests.add(() -> assertEq("Concat: null + a", "nulla", () -> am.add((String) null, "a")));
 
         // ---- Edge numbers ----
         tests.add(() -> assertEq("Edge: big sum", "20000000000.0", () -> am.add(1e10, 1e10)));

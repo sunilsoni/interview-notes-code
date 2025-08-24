@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.august.oracle.test5;
 
-import java.util.*; // For utility classes used in testing (Random, Arrays, etc.)
-import java.util.stream.*; // For Java 8 Stream API in tests and pretty output
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /*
 
 ---
@@ -123,18 +127,18 @@ public class RemoveKDigitsSolution {
     public static void main(String[] args) {
         // Fixed tests: [input, k, expected]
         List<TestCase> fixed = Arrays.asList(
-            new TestCase("1432219", 3, "1219"),  // given example
-            new TestCase("2222", 2, "22"),       // given example
-            new TestCase("10", 1, "0"),          // removing '1' => "0"
-            new TestCase("10200", 1, "200"),     // classic case: smallest after removing 1
-            new TestCase("9", 1, "0"),           // remove single digit -> "0"
-            new TestCase("123456", 3, "123"),    // removing 3 from increasing -> chop tail
-            new TestCase("987654", 2, "7654"),   // removing 2 from decreasing -> drop leading big digits
-            new TestCase("100200300", 1, "00200300".replaceFirst("^0+(?!$)", "")), // remove '1' -> "00200300" -> "200300"
-            new TestCase("100200300", 1, "200300"), // explicit same as above for clarity
-            new TestCase("1000", 1, "0"),        // becomes "000" -> "0"
-            new TestCase("112", 1, "11"),        // remove '2' -> "11"
-            new TestCase("1212", 2, "11")        // best is "11"
+                new TestCase("1432219", 3, "1219"),  // given example
+                new TestCase("2222", 2, "22"),       // given example
+                new TestCase("10", 1, "0"),          // removing '1' => "0"
+                new TestCase("10200", 1, "200"),     // classic case: smallest after removing 1
+                new TestCase("9", 1, "0"),           // remove single digit -> "0"
+                new TestCase("123456", 3, "123"),    // removing 3 from increasing -> chop tail
+                new TestCase("987654", 2, "7654"),   // removing 2 from decreasing -> drop leading big digits
+                new TestCase("100200300", 1, "00200300".replaceFirst("^0+(?!$)", "")), // remove '1' -> "00200300" -> "200300"
+                new TestCase("100200300", 1, "200300"), // explicit same as above for clarity
+                new TestCase("1000", 1, "0"),        // becomes "000" -> "0"
+                new TestCase("112", 1, "11"),        // remove '2' -> "11"
+                new TestCase("1212", 2, "11")        // best is "11"
         );
 
         System.out.println("=== Fixed Tests ===");
@@ -152,8 +156,8 @@ public class RemoveKDigitsSolution {
         for (int t = 0; t < randomTests; t++) {
             int n = 6 + rnd.nextInt(5); // length 6..10
             String num = rnd.ints(n, 0, 10) // random digits 0..9
-                            .mapToObj(String::valueOf)
-                            .collect(Collectors.joining());
+                    .mapToObj(String::valueOf)
+                    .collect(Collectors.joining());
             int k = rnd.nextInt(Math.max(1, n)); // 0..n-1
             String expected = removeKdigitsBruteForce(num, k); // oracle result
             String got = removeKdigits(num, k); // our result
@@ -166,11 +170,11 @@ public class RemoveKDigitsSolution {
         System.out.println("\n=== Large Data Test (Performance/Sanity) ===");
         int bigN = 200_000; // 200k digits
         String bigNum = Stream.generate(() -> "9") // start with many 9s to trigger lots of pops
-                              .limit(bigN / 2)
-                              .collect(Collectors.joining())
-                        + Stream.generate(() -> "0") // and many 0s
-                              .limit(bigN / 2)
-                              .collect(Collectors.joining());
+                .limit(bigN / 2)
+                .collect(Collectors.joining())
+                + Stream.generate(() -> "0") // and many 0s
+                .limit(bigN / 2)
+                .collect(Collectors.joining());
         int bigK = bigN / 3; // remove a third
         long start = System.currentTimeMillis(); // start timing
         String bigRes = removeKdigits(bigNum, bigK); // run solution
@@ -187,6 +191,7 @@ public class RemoveKDigitsSolution {
         String num; // input number string
         int k;      // number of digits to remove
         String expected; // expected output
+
         TestCase(String num, int k, String expected) { // constructor
             this.num = num; // assign
             this.k = k; // assign

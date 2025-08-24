@@ -1,7 +1,6 @@
 package com.interview.notes.code.year.y2025.august.adobe.test;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Random;
 
 /**
  * AnagramChecker
@@ -74,10 +73,10 @@ public class AnagramChecker {
                 .map(Character::toLowerCase)           // Lowercase each code point (Unicode-aware).
                 .filter(cp ->                         // Keep only ASCII lowercase letters and digits:
                         (cp >= 'a' && cp <= 'z') ||    // 'a'..'z'
-                        (cp >= '0' && cp <= '9'))      // '0'..'9'
+                                (cp >= '0' && cp <= '9'))      // '0'..'9'
                 .collect(StringBuilder::new,           // Collect into a StringBuilder for performance.
-                         StringBuilder::appendCodePoint, // Append each kept code point.
-                         StringBuilder::append)        // Merge builders (used in parallel; here just standard).
+                        StringBuilder::appendCodePoint, // Append each kept code point.
+                        StringBuilder::append)        // Merge builders (used in parallel; here just standard).
                 .toString();                           // Convert builder to String.
     }
 

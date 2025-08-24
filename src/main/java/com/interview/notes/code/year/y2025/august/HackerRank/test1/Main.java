@@ -2,13 +2,21 @@ package com.interview.notes.code.year.y2025.august.HackerRank.test1;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 class AdditionMagic {
+
+    // helper: “1.0” -> “1”, “10.5000” -> “10.5”
+    private static String formatDoubleTrim(double v) {
+        // BigDecimal handles proper trimming for printable form
+        return BigDecimal.valueOf(v).stripTrailingZeros().toPlainString();
+    }
 
     // 1) double + String -> String, with trimmed double representation
     public String add(double a, String b) {
@@ -26,12 +34,6 @@ class AdditionMagic {
     // 3) String + String -> String
     public String add(String a, String b) {
         return String.valueOf(a) + String.valueOf(b);
-    }
-
-    // helper: “1.0” -> “1”, “10.5000” -> “10.5”
-    private static String formatDoubleTrim(double v) {
-        // BigDecimal handles proper trimming for printable form
-        return BigDecimal.valueOf(v).stripTrailingZeros().toPlainString();
     }
 }
 
@@ -76,7 +78,7 @@ public class Main {
         // String-format trimming checks
         printers.add(() -> assertEquals("Trim: 10.0 + \"x\"", "10x", () -> am.add(10.0, "x")));
         printers.add(() -> assertEquals("Trim: 10.5000 + \"y\"", "10.5y", () -> am.add(10.5, "y")));
-        printers.add(() -> assertEquals("Concat: null + \"a\"", "nulla", () -> am.add((String)null, "a")));
+        printers.add(() -> assertEquals("Concat: null + \"a\"", "nulla", () -> am.add((String) null, "a")));
 
         // Edge numbers
         printers.add(() -> assertEquals("Edge: big double sum", "20000000000.00", () -> am.add(1e10, 1e10)));
