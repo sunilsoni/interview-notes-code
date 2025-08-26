@@ -1,6 +1,8 @@
 package com.interview.notes.code.year.y2025.august.oracle.test2;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Employee {
@@ -13,20 +15,6 @@ public class Employee {
         this.id = id;
         this.name = name;
         this.salary = salary;
-    }
-
-    // Getters
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public double getSalary() { return salary; }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", salary=" + salary +
-                '}';
     }
 
     public static void main(String[] args) {
@@ -64,5 +52,27 @@ public class Employee {
         System.out.println("Second highest salary = " + secondHighestSalary);
         System.out.println("Employees with second highest salary:");
         secondHighestEmployees.forEach(System.out::println);
+    }
+
+    // Getters
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                '}';
     }
 }

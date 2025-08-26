@@ -1,8 +1,11 @@
 package com.interview.notes.code.year.y2025.august.glider.test1;
 
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 Here’s the properly combined **final question** from the screenshots and discussion:
 
@@ -93,20 +96,20 @@ public class BrothersGame {
 
     public static void main(String[] args) {
         List<Object[]> tests = Arrays.asList(
-                new Object[]{Arrays.asList(0,1,0,0,1), 4},
-                new Object[]{Arrays.asList(1,0,0,1,0,0), 5},
-                new Object[]{Arrays.asList(1,1,1,1), 3},
-                new Object[]{Arrays.asList(0,0,0,0), 4},
-                new Object[]{Arrays.asList(1,0,1,0,1,0,1,0,1,0), 7}
+                new Object[]{Arrays.asList(0, 1, 0, 0, 1), 4},
+                new Object[]{Arrays.asList(1, 0, 0, 1, 0, 0), 5},
+                new Object[]{Arrays.asList(1, 1, 1, 1), 3},
+                new Object[]{Arrays.asList(0, 0, 0, 0), 4},
+                new Object[]{Arrays.asList(1, 0, 1, 0, 1, 0, 1, 0, 1, 0), 7}
         );
 
         for (Object[] test : tests) {
             List<Integer> input = (List<Integer>) test[0];
             int expected = (int) test[1];
             int output = solve(input);
-            System.out.println("Input: " + input + 
-                    " | Expected: " + expected + 
-                    " | Got: " + output + 
+            System.out.println("Input: " + input +
+                    " | Expected: " + expected +
+                    " | Got: " + output +
                     " | Result: " + (output == expected ? "PASS" : "FAIL"));
         }
 

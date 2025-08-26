@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.august.common.test5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 
 // Custom FilterList class

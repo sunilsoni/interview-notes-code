@@ -72,6 +72,7 @@ public class BinaryTreeSum {
             // Process left child
             printTree(root.left, space);
         }
+
         public static void main(String[] args) {
             TreeNode root = new TreeNode(10);
             root.left = new TreeNode(5);

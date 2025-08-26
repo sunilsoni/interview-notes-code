@@ -31,12 +31,12 @@ public class AnagramCheck {
     public static void main(String[] args) {
         // Test Cases
         String[][] testCases = {
-            {"listen", "silent"},      // Anagram
-            {"triangle", "integral"},  // Anagram
-            {"apple", "pale"},         // Not Anagram
-            {"Debit Card", "Bad Credit"}, // Anagram (ignore spaces)
-            {"Astronomer", "Moon starer"}, // Anagram
-            {"Hello", "World"}         // Not Anagram
+                {"listen", "silent"},      // Anagram
+                {"triangle", "integral"},  // Anagram
+                {"apple", "pale"},         // Not Anagram
+                {"Debit Card", "Bad Credit"}, // Anagram (ignore spaces)
+                {"Astronomer", "Moon starer"}, // Anagram
+                {"Hello", "World"}         // Not Anagram
         };
 
         // Run all test cases
@@ -47,7 +47,7 @@ public class AnagramCheck {
 
             // Print PASS/FAIL result
             System.out.println("Input: \"" + s1 + "\", \"" + s2 + "\" => "
-                               + (result ? "Anagram ✅" : "Not Anagram ❌"));
+                    + (result ? "Anagram ✅" : "Not Anagram ❌"));
         }
     }
 }

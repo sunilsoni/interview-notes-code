@@ -2,7 +2,8 @@ package com.interview.notes.code.year.y2025.august.glider.test1;
 
 
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.IntStream;
+
 /*
 Here’s the properly combined **final question** from the screenshots and discussion:
 

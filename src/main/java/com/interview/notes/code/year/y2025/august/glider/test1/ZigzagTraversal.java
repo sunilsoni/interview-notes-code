@@ -1,11 +1,11 @@
 package com.interview.notes.code.year.y2025.august.glider.test1;
 
 import java.util.*;
-import java.util.stream.*;
 
 class Node {
     int data;
     Node left, right;
+
     Node(int value) {
         data = value;
         left = null;
@@ -76,12 +76,12 @@ public class ZigzagTraversal {
     public static void main(String[] args) {
         List<Object[]> tests = Arrays.asList(
                 new Object[]{
-                        new int[][]{{10,20,'R'},{10,30,'L'}},
-                        new int[]{10,30,20}
+                        new int[][]{{10, 20, 'R'}, {10, 30, 'L'}},
+                        new int[]{10, 30, 20}
                 },
                 new Object[]{
-                        new int[][]{{2,4,'L'},{2,6,'R'},{4,8,'L'},{4,10,'R'}},
-                        new int[]{2,4,6,10,8}
+                        new int[][]{{2, 4, 'L'}, {2, 6, 'R'}, {4, 8, 'L'}, {4, 10, 'R'}},
+                        new int[]{2, 4, 6, 10, 8}
                 }
         );
 

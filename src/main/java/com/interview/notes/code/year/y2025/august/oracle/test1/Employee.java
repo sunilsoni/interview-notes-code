@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.august.oracle.test1;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 
 public class Employee {
     private int id;
@@ -13,20 +15,6 @@ public class Employee {
         this.id = id;
         this.name = name;
         this.salary = salary;
-    }
-
-    // Getters (needed for accessing fields in streams)
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public double getSalary() { return salary; }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", salary=" + salary +
-                '}';
     }
 
     public static void main(String[] args) {
@@ -51,5 +39,27 @@ public class Employee {
         } else {
             System.out.println("Not enough employees to find 2nd highest salary.");
         }
+    }
+
+    // Getters (needed for accessing fields in streams)
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                '}';
     }
 }
