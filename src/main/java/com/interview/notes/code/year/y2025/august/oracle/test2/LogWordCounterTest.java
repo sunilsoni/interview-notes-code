@@ -1,8 +1,11 @@
 package com.interview.notes.code.year.y2025.august.oracle.test2;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+
 /*
 
 
@@ -32,10 +35,12 @@ List<Pair<String, Integer>> topK(int k)       // top-k words by frequency, stabl
 class Pair<K, V> {
     public final K key;   // word
     public final V value; // frequency
+
     public Pair(K key, V value) {
         this.key = key;
         this.value = value;
     }
+
     @Override
     public String toString() {
         return "(" + key + "," + value + ")";
@@ -107,7 +112,7 @@ public class LogWordCounterTest {
         LogAggregator log2 = new LogAggregator();
         log2.ingest("alpha beta");
         log2.ingest("gamma beta");
-        List<Pair<String,Integer>> top2 = log2.topK(2);
+        List<Pair<String, Integer>> top2 = log2.topK(2);
         boolean test2 = top2.get(0).key.equals("beta") && top2.get(1).key.equals("alpha");
         System.out.println("Test 2 (stable tie) -> " + (test2 ? "PASS" : "FAIL") + " | " + top2);
 

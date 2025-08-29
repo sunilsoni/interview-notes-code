@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.august.HackerRank.test3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class SprintBrute {
 
@@ -41,18 +42,18 @@ public class SprintBrute {
     public static void main(String[] args) {
         // a few quick tests
         List<Test> tests = Arrays.asList(
-            new Test(10, Arrays.asList(1,5,10,3), 5),
-            new Test(5,  Arrays.asList(1,5),       1),
-            new Test(9,  Arrays.asList(9,7,3,1),   3)
+                new Test(10, Arrays.asList(1, 5, 10, 3), 5),
+                new Test(5, Arrays.asList(1, 5), 1),
+                new Test(9, Arrays.asList(9, 7, 3, 1), 3)
         );
 
         for (int i = 0; i < tests.size(); i++) {
             Test t = tests.get(i);
             int got = getMostVisitedBrute(t.n, t.sprints);
             System.out.printf("Test %d: %s (got %d, exp %d)%n",
-                              i,
-                              got == t.expected ? "PASS" : "FAIL",
-                              got, t.expected);
+                    i,
+                    got == t.expected ? "PASS" : "FAIL",
+                    got, t.expected);
         }
     }
 
@@ -60,8 +61,11 @@ public class SprintBrute {
     static class Test {
         int n, expected;
         List<Integer> sprints;
+
         Test(int n, List<Integer> s, int e) {
-            this.n = n; this.sprints = s; this.expected = e;
+            this.n = n;
+            this.sprints = s;
+            this.expected = e;
         }
     }
 }

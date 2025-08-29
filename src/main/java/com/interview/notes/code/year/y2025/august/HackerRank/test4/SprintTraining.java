@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.august.HackerRank.test4;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class SprintTraining {
 
@@ -21,7 +23,7 @@ public class SprintTraining {
             int b = sprints.get(i);
             // ensure a <= b by swapping if needed
             int start = Math.min(a, b);
-            int end   = Math.max(a, b);
+            int end = Math.max(a, b);
             diff[start] += 1;      // every marker from start..end gets +1 visit
             diff[end + 1] -= 1;    // marker end+1 undoes that visit count
         }
@@ -36,15 +38,15 @@ public class SprintTraining {
 
         // Find the maximum visit count
         long maxCount = IntStream.rangeClosed(1, n)
-                                  .mapToLong(i -> visits[i])
-                                  .max()
-                                  .orElse(0);
+                .mapToLong(i -> visits[i])
+                .max()
+                .orElse(0);
 
         // Return the smallest index whose visit count equals maxCount
         return IntStream.rangeClosed(1, n)
-                        .filter(i -> visits[i] == maxCount)
-                        .findFirst()
-                        .orElse(1);
+                .filter(i -> visits[i] == maxCount)
+                .findFirst()
+                .orElse(1);
     }
 
     /**
@@ -57,25 +59,28 @@ public class SprintTraining {
             int n;
             List<Integer> sprints;
             int expected;
+
             TestCase(int n, List<Integer> s, int e) {
-                this.n = n; this.sprints = s; this.expected = e;
+                this.n = n;
+                this.sprints = s;
+                this.expected = e;
             }
         }
 
         List<TestCase> tests = Arrays.asList(
-            // Sample Case 0
-            new TestCase(10, Arrays.asList(1, 5, 10, 3), 5),
-            // Sample Case 1
-            new TestCase(5, Arrays.asList(1, 5),             1),
-            // Sample Case 2
-            new TestCase(9, Arrays.asList(9, 7, 3, 1),       3),
-            // Edge: all sprints are back‐and‐forth between 1 and 2
-            new TestCase(100000,
-                IntStream.range(0, 100000)
-                         .map(i -> i % 2 == 0 ? 1 : 2)
-                         .boxed()
-                         .collect(Collectors.toList()),
-                1)
+                // Sample Case 0
+                new TestCase(10, Arrays.asList(1, 5, 10, 3), 5),
+                // Sample Case 1
+                new TestCase(5, Arrays.asList(1, 5), 1),
+                // Sample Case 2
+                new TestCase(9, Arrays.asList(9, 7, 3, 1), 3),
+                // Edge: all sprints are back‐and‐forth between 1 and 2
+                new TestCase(100000,
+                        IntStream.range(0, 100000)
+                                .map(i -> i % 2 == 0 ? 1 : 2)
+                                .boxed()
+                                .collect(Collectors.toList()),
+                        1)
         );
 
         // Run each test and print PASS or FAIL
@@ -84,7 +89,7 @@ public class SprintTraining {
             int result = getMostVisited(tc.n, tc.sprints);
             String status = (result == tc.expected) ? "PASS" : "FAIL";
             System.out.printf("Test %d: %s (got %d, expected %d)%n",
-                              i, status, result, tc.expected);
+                    i, status, result, tc.expected);
         }
     }
 }
