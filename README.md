@@ -6,12 +6,15 @@ A curated collection of Java coding solutions, algorithms, and reference impleme
 - Overview and Goals
 - Tech Stack
 - Project Layout
+- Quick Start
 - Build and Run
 - Testing
 - Coding Guidelines and Conventions
 - Notable Modules and Examples
+- Troubleshooting
 - How to Contribute
 - FAQ
+- License
 
 ## Overview and Goals
 This project serves as a living knowledge base of interview-oriented code:
@@ -27,6 +30,22 @@ This project serves as a living knowledge base of interview-oriented code:
 - Popular libraries used where relevant (Gson, Apache Commons, Kafka clients, Redis Jedis, WebFlux)
 
 Key dependencies are defined in pom.xml.
+
+## Quick Start
+1) Clone and enter the project directory:
+   git clone <your-fork-or-clone-url>
+   cd interview-notes-code
+2) Ensure prerequisites:
+   - Java 17 (java -version)
+   - Maven 3.8+ (mvn -version)
+3) Build and run tests:
+   mvn clean install
+4) Run a sample class (e.g., Solution.java):
+   mvn -Dexec.mainClass=com.interview.notes.code.year.y2025.september.assesment.test6.Solution \
+       -Dexec.classpathScope=runtime \
+       org.codehaus.mojo:exec-maven-plugin:3.1.0:java
+
+Tip: You can also run any class with a main method directly from your IDE.
 
 ## Project Layout
 Root-level key files/directories:
@@ -75,6 +94,7 @@ Alternatively, many solutions include a public static void main(String[] args) e
 - Handle nulls defensively; fail closed, not open.
 - Include tie-breaker rules and deterministic ordering if required by problem statements.
 - Add simple smoke tests or a lightweight test harness in classes that interact with external services.
+- Keep methods small and single-purpose; favor pure functions for algorithmic problems.
 
 ## Notable Modules and Examples (Deep Dive)
 1) API Pagination + Filtering Example: Solution.java
@@ -86,6 +106,10 @@ Alternatively, many solutions include a public static void main(String[] args) e
   - Robust comparator: duration (null treated as 0) descending, tie-break by id ascending.
   - Returns "-1" on missing matches or any network/parse errors.
   - Includes a test() method for quick checks and a main() entry point for manual runs.
+- Example run (console):
+  mvn -Dexec.mainClass=com.interview.notes.code.year.y2025.september.assesment.test6.Solution \
+      -Dexec.classpathScope=runtime \
+      org.codehaus.mojo:exec-maven-plugin:3.1.0:java
 
 2) Amazon-style Problems:
 - NumberofAirplanesSkyTest.java and Interval.java demonstrate interval merging/scanline ideas.
@@ -97,11 +121,24 @@ Alternatively, many solutions include a public static void main(String[] args) e
 - Include comments and small test cases to explain tricky parts.
 - Open a pull request with a clear description of changes and rationale.
 
+## Troubleshooting
+- Maven cannot find Java 17:
+  - Ensure JAVA_HOME points to JDK 17 and your PATH uses that JDK (java -version should show 17).
+- Tests fail due to ports in use (for any web tests):
+  - Stop other local servers or set a different server.port in application.properties.
+- SSL/network errors when running API-based examples:
+  - These examples depend on public endpoints; retry later or ensure your network allows outbound HTTPS.
+- Exec plugin error when running a main class:
+  - Ensure the exec-maven-plugin goal specified in the command matches the version declared in the README (3.1.0 in examples).
+
 ## FAQ
 - Q: Can I run a single solution without the Spring Boot app?
   A: Yes. Many classes contain a main method. Use the Exec Maven Plugin example above or run via IDE.
 - Q: Do I need internet access for some solutions?
   A: Only for problems that intentionally call public APIs (e.g., Solution.java). Others are self-contained.
+
+## License
+If a LICENSE file exists at the repository root, the project is distributed under that license. If not, treat the code as All Rights Reserved by the repository owner unless otherwise specified.
 
 ---
 Last updated: 2025-09-08
