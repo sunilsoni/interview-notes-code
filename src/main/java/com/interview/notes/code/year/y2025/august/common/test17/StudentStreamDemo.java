@@ -1,9 +1,9 @@
 package com.interview.notes.code.year.y2025.august.common.test17;
 
-import java.util.*;                           // Import core utilities (List, Map, Comparator, etc.)
-import java.util.concurrent.ThreadLocalRandom; // For generating large test data quickly without external libs
-import java.util.function.Function;            // For method references in stream collectors when needed
-import java.util.stream.*;                     // Import Java 8 Stream API features
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Demo class showing Java 8 Stream solution:
@@ -16,64 +16,30 @@ import java.util.stream.*;                     // Import Java 8 Stream API featu
 public class StudentStreamDemo {
 
     /**
-     * Simple Student POJO for Java 8 (no record).
-     */
-    static final class Student {
-        private final int rollNo;   // Unique identifier for the student
-        private final String name;  // Student name (can be null; we handle nulls-last in sorting)
-        private final int age;      // Student age
-
-        // Constructor sets all fields; immutability helps reasoning in streams
-        Student(int rollNo, String name, int age) {
-            this.rollNo = rollNo;   // Assign roll number
-            this.name = name;       // Assign name
-            this.age = age;         // Assign age
-        }
-
-        // Getter for rollNo; used if needed in debugging or future enhancements
-        public int getRollNo() { return rollNo; }
-
-        // Getter for name; used by Comparator in sorting
-        public String getName() { return name; }
-
-        // Getter for age; used by groupingBy in collection
-        public int getAge() { return age; }
-
-        // toString for readable console output during debugging and sample verification
-        @Override public String toString() {
-            return "Student{rollNo=" + rollNo + ", name='" + name + "', age=" + age + "}";
-        }
-    }
-
-    /**
      * Core pipeline:
      * - Sort by name (case-insensitive, nulls-last to avoid NPEs and keep nulls at end)
      * - Filter out age < 10
      * - Group by age into a TreeMap so keys (ages) are sorted ascending
      * - Within each age group, insertion order follows the encounter order
-     *   (because we sorted upstream by name, each group's list ends up name-ordered)
+     * (because we sorted upstream by name, each group's list ends up name-ordered)
      */
     public static Map<Integer, List<Student>> processStudents(List<Student> students) {
         // Define a null-safe, case-insensitive comparator for names
         Comparator<String> nameOrder = Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER); // keeps nulls last
 
         // Build Comparator<Student> using the null-safe string comparator
-        Comparator<Student> byName = Comparator.comparing(Student::getName, nameOrder); // compare by name safely
+        Comparator<Student> byName = Comparator.comparing(Student::name, nameOrder); // compare by name safely
 
         // Run the stream pipeline
         return students.stream()                                                               // start stream over the list
                 .sorted(byName)                                                                // 1) sort by name (case-insensitive, nulls last)
-                .filter(s -> s.getAge() >= 10)                                                 // 2) remove age < 10
+                .filter(s -> s.age() >= 10)                                                 // 2) remove age < 10
                 .collect(Collectors.groupingBy(                                                // 3) group into map
-                        Student::getAge,                                                       // group key: age
+                        Student::age,                                                       // group key: age
                         TreeMap::new,                                                          // use TreeMap so ages (keys) stay sorted
                         Collectors.toList()                                                    // group value: List<Student> preserving encounter order
                 ));
     }
-
-    // -----------------------
-    // Validation helpers
-    // -----------------------
 
     /**
      * Check that every student's age in the map is >= 10.
@@ -83,8 +49,12 @@ public class StudentStreamDemo {
         // stream over entries, ensure keys are >= 10 and all contained students match the key
         return grouped.entrySet().stream()                                      // iterate over age -> list
                 .allMatch(e -> e.getKey() >= 10 &&                              // key (age) must be >= 10
-                           e.getValue().stream().allMatch(s -> s.getAge() == e.getKey())); // each student age matches the bucket
+                        e.getValue().stream().allMatch(s -> s.age() == e.getKey())); // each student age matches the bucket
     }
+
+    // -----------------------
+    // Validation helpers
+    // -----------------------
 
     /**
      * Check that within each age group, students are in name order per our comparator.
@@ -103,8 +73,8 @@ public class StudentStreamDemo {
     private static boolean isSortedByName(List<Student> list) {
         Comparator<String> nameOrder = Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER); // nulls last, case-insensitive
         for (int i = 1; i < list.size(); i++) {                                              // iterate adjacent pairs
-            String prev = list.get(i - 1).getName();                                        // previous name
-            String curr = list.get(i).getName();                                            // current name
+            String prev = list.get(i - 1).name();                                        // previous name
+            String curr = list.get(i).name();                                            // current name
             if (nameOrder.compare(prev, curr) > 0) {                                        // if out of order, fail
                 return false;                                                               // not sorted
             }
@@ -121,7 +91,7 @@ public class StudentStreamDemo {
     private static boolean groupedMatchesFilter(List<Student> original, Map<Integer, List<Student>> grouped) {
         // Recreate filtered list as done in pipeline (only the filter step is needed for this check)
         List<Student> filtered = original.stream()
-                .filter(s -> s.getAge() >= 10)
+                .filter(s -> s.age() >= 10)
                 .collect(Collectors.toList());
 
         // Flatten grouped map back to a list and compare sizes
@@ -131,17 +101,13 @@ public class StudentStreamDemo {
         // Additionally, confirm every filtered student is present in its age bucket
         // (Here we do a simple containment check by identity; for production, consider equals/hashCode.)
         for (Student s : filtered) {
-            List<Student> bucket = grouped.get(s.getAge()); // find the list for the student's age
+            List<Student> bucket = grouped.get(s.age()); // find the list for the student's age
             if (bucket == null || !bucket.contains(s)) {    // must exist and contain that exact student
                 return false;                               // otherwise fail
             }
         }
         return true;                                        // all good
     }
-
-    // -----------------------
-    // Test data generators
-    // -----------------------
 
     /**
      * Make a small, hand-crafted dataset that includes:
@@ -161,6 +127,10 @@ public class StudentStreamDemo {
         list.add(new Student(108, "Eve", 12));                           // another age 12
         return list;                                                     // return the sample
     }
+
+    // -----------------------
+    // Test data generators
+    // -----------------------
 
     /**
      * Generate a large dataset (N students) with:
@@ -193,16 +163,16 @@ public class StudentStreamDemo {
         return sb.toString();                                            // return the final string
     }
 
-    // -----------------------
-    // PASS/FAIL test runner
-    // -----------------------
-
     /**
      * Print a single PASS/FAIL line with a descriptive label.
      */
     private static void assertPrint(String label, boolean condition) {
         System.out.println((condition ? "PASS: " : "FAIL: ") + label);   // clear, single-line status
     }
+
+    // -----------------------
+    // PASS/FAIL test runner
+    // -----------------------
 
     /**
      * Main method to run all tests (no JUnit): small cases + large data.
@@ -245,4 +215,24 @@ public class StudentStreamDemo {
         long kept = groupedBig.values().stream().mapToLong(List::size).sum(); // total kept after filter
         System.out.println("Large data summary => ages: " + groupedBig.size() + ", kept: " + kept);
     }
+
+    /**
+     * Simple Student POJO for Java 8 (no record).
+     *
+     * @param rollNo Unique identifier for the student
+     * @param name   Student name (can be null; we handle nulls-last in sorting)
+     * @param age    Student age
+     */
+        record Student(int rollNo, String name, int age) {
+        // Constructor sets all fields; immutability helps reasoning in streams
+        // Assign roll number
+        // Assign name
+        // Assign age
+
+        // toString for readable console output during debugging and sample verification
+            @Override
+            public String toString() {
+                return "Student{rollNo=" + rollNo + ", name='" + name + "', age=" + age + "}";
+            }
+        }
 }

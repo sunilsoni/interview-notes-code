@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2025.september.assesment.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class CountPrimesLessThanN {
     static int countPrimes(int n) {
@@ -23,8 +23,10 @@ public class CountPrimesLessThanN {
         int limit = (int) Math.sqrt(n - 1) + 1;
         boolean[] base = new boolean[limit + 1];
         Arrays.fill(base, true);
-        base[0] = false; base[1] = false;
-        for (int i = 2; (long) i * i <= limit; i++) if (base[i]) for (int j = i * i; j <= limit; j += i) base[j] = false;
+        base[0] = false;
+        base[1] = false;
+        for (int i = 2; (long) i * i <= limit; i++)
+            if (base[i]) for (int j = i * i; j <= limit; j += i) base[j] = false;
         int[] primes = IntStream.rangeClosed(2, limit).filter(i -> base[i]).toArray();
 
         int seg = 1 << 16;

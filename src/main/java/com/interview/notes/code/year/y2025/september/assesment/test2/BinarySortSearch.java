@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.september.assesment.test2;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class BinarySortSearch {
@@ -30,8 +31,8 @@ public class BinarySortSearch {
 
         // Sort using Java 8 Stream
         List<Integer> sortedList = numbers.stream()
-                                          .sorted()
-                                          .collect(Collectors.toList());
+                .sorted()
+                .collect(Collectors.toList());
 
         System.out.println("Sorted List: " + sortedList);
 

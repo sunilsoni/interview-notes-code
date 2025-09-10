@@ -43,9 +43,10 @@ class UnservableCuisineRequestException extends Exception {
 
 class FoodFactory {
     private static FoodFactory instance;
-    private Map<String, Cuisine> cuisineMap = new HashMap<>();
+    private final Map<String, Cuisine> cuisineMap = new HashMap<>();
 
-    private FoodFactory() {}
+    private FoodFactory() {
+    }
 
     public static FoodFactory getFactory() {
         if (instance == null) {

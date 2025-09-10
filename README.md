@@ -1,8 +1,12 @@
 # Interview Notes Code Repository
 
-A curated collection of Java coding solutions, algorithms, and reference implementations created from real interview practice. This repository is structured as a Maven project with Spring Boot support, and contains categorized solutions by year/month/assessment as well as domain-focused examples (e.g., Amazon-style problems, data structures, concurrency, web, etc.).
+A curated collection of Java coding solutions, algorithms, and reference implementations created from real interview
+practice. This repository is structured as a Maven project with Spring Boot support, and contains categorized solutions
+by year/month/assessment as well as domain-focused examples (e.g., Amazon-style problems, data structures, concurrency,
+web, etc.).
 
 ## Table of Contents
+
 - Overview and Goals
 - Tech Stack
 - Project Layout
@@ -17,13 +21,16 @@ A curated collection of Java coding solutions, algorithms, and reference impleme
 - License
 
 ## Overview and Goals
+
 This project serves as a living knowledge base of interview-oriented code:
+
 - Ready-to-run Java programs for algorithmic problems and assessments.
 - Clean, well-documented approaches that highlight edge cases, correctness, and performance.
 - Reusable utilities for HTTP, parsing, collections, and testing.
 - Spring Boot app scaffolding for web APIs and experimentation.
 
 ## Tech Stack
+
 - Java 17
 - Maven + Spring Boot (2.x line)
 - JUnit 4 and Spring Boot Test
@@ -32,23 +39,26 @@ This project serves as a living knowledge base of interview-oriented code:
 Key dependencies are defined in pom.xml.
 
 ## Quick Start
+
 1) Clone and enter the project directory:
    git clone <your-fork-or-clone-url>
    cd interview-notes-code
 2) Ensure prerequisites:
-   - Java 17 (java -version)
-   - Maven 3.8+ (mvn -version)
+    - Java 17 (java -version)
+    - Maven 3.8+ (mvn -version)
 3) Build and run tests:
    mvn clean install
 4) Run a sample class (e.g., Solution.java):
    mvn -Dexec.mainClass=com.interview.notes.code.year.y2025.september.assesment.test6.Solution \
-       -Dexec.classpathScope=runtime \
-       org.codehaus.mojo:exec-maven-plugin:3.1.0:java
+   -Dexec.classpathScope=runtime \
+   org.codehaus.mojo:exec-maven-plugin:3.1.0:java
 
 Tip: You can also run any class with a main method directly from your IDE.
 
 ## Project Layout
+
 Root-level key files/directories:
+
 - pom.xml: Maven configuration
 - src/main/java: Source code
 - src/test/java: Unit and integration tests
@@ -57,38 +67,48 @@ Root-level key files/directories:
 - HELP.md: Maven/Spring getting started references
 
 Within src/main/java the code is organized by packages indicating year/month/assessment and topic areas. Examples:
-- com.interview.notes.code.year.y2025.september.assesment.test6
-  - Solution.java: An end-to-end solution fetching and processing paginated API data, including robust filtering and tie-breaking rules, with a main method for quick manual tests.
-  - BooleanCheck.java, ConsoleOutputCheck.java: Utility checks used in assessments.
-- com.interview.notes.code.amazon
-  - NumberofAirplanesSkyTest.java, Interval.java, CustomQueue.java: Practice problems inspired by Amazon interview patterns.
 
-This convention keeps historical problems and company-specific practice exercises separated while allowing reuse of shared utilities.
+- com.interview.notes.code.year.y2025.september.assesment.test6
+    - Solution.java: An end-to-end solution fetching and processing paginated API data, including robust filtering and
+      tie-breaking rules, with a main method for quick manual tests.
+    - BooleanCheck.java, ConsoleOutputCheck.java: Utility checks used in assessments.
+- com.interview.notes.code.amazon
+    - NumberofAirplanesSkyTest.java, Interval.java, CustomQueue.java: Practice problems inspired by Amazon interview
+      patterns.
+
+This convention keeps historical problems and company-specific practice exercises separated while allowing reuse of
+shared utilities.
 
 ## Build and Run
+
 Prerequisites:
+
 - Java 17 installed and available on PATH
 - Maven 3.8+ installed
 
 Common commands (run from repository root):
+
 - Build (compile + test):
   mvn clean install
 - Run Spring Boot app (if needed):
   mvn spring-boot:run
 - Execute a specific main class directly (example):
   mvn -Dexec.mainClass=com.interview.notes.code.year.y2025.september.assesment.test6.Solution \
-      -Dexec.classpathScope=runtime \
-      org.codehaus.mojo:exec-maven-plugin:3.1.0:java
+  -Dexec.classpathScope=runtime \
+  org.codehaus.mojo:exec-maven-plugin:3.1.0:java
 
-Alternatively, many solutions include a public static void main(String[] args) entry point and can be executed from your IDE.
+Alternatively, many solutions include a public static void main(String[] args) entry point and can be executed from your
+IDE.
 
 ## Testing
+
 - To run all tests:
   mvn test
 - Surefire reports will be available in target/surefire-reports.
 - For individual tests, use your IDE’s test runner or mvn -Dtest=FullyQualifiedTestName test.
 
 ## Coding Guidelines and Conventions
+
 - Prefer clear, readable solutions with comments explaining business rules and edge cases.
 - Use immutable data where possible and avoid side effects.
 - Handle nulls defensively; fail closed, not open.
@@ -97,48 +117,57 @@ Alternatively, many solutions include a public static void main(String[] args) e
 - Keep methods small and single-purpose; favor pure functions for algorithmic problems.
 
 ## Notable Modules and Examples (Deep Dive)
+
 1) API Pagination + Filtering Example: Solution.java
+
 - Location: com.interview.notes.code.year.y2025.september.assesment.test6.Solution
 - Problem: Find the longest-duration event organized by a given organizer that matches a specific genre.
 - Highlights:
-  - Uses Java HttpClient and Gson to fetch and parse paginated JSON from https://jsonmock.hackerrank.com/api/events.
-  - Case-insensitive matching of organizer and genre.
-  - Robust comparator: duration (null treated as 0) descending, tie-break by id ascending.
-  - Returns "-1" on missing matches or any network/parse errors.
-  - Includes a test() method for quick checks and a main() entry point for manual runs.
+    - Uses Java HttpClient and Gson to fetch and parse paginated JSON from https://jsonmock.hackerrank.com/api/events.
+    - Case-insensitive matching of organizer and genre.
+    - Robust comparator: duration (null treated as 0) descending, tie-break by id ascending.
+    - Returns "-1" on missing matches or any network/parse errors.
+    - Includes a test() method for quick checks and a main() entry point for manual runs.
 - Example run (console):
   mvn -Dexec.mainClass=com.interview.notes.code.year.y2025.september.assesment.test6.Solution \
-      -Dexec.classpathScope=runtime \
-      org.codehaus.mojo:exec-maven-plugin:3.1.0:java
+  -Dexec.classpathScope=runtime \
+  org.codehaus.mojo:exec-maven-plugin:3.1.0:java
 
 2) Amazon-style Problems:
+
 - NumberofAirplanesSkyTest.java and Interval.java demonstrate interval merging/scanline ideas.
 - CustomQueue.java shows building a queue with custom constraints helpful in DS interviews.
 
 ## How to Contribute
+
 - Fork the repository and create a feature branch.
 - Follow the coding guidelines above.
 - Include comments and small test cases to explain tricky parts.
 - Open a pull request with a clear description of changes and rationale.
 
 ## Troubleshooting
+
 - Maven cannot find Java 17:
-  - Ensure JAVA_HOME points to JDK 17 and your PATH uses that JDK (java -version should show 17).
+    - Ensure JAVA_HOME points to JDK 17 and your PATH uses that JDK (java -version should show 17).
 - Tests fail due to ports in use (for any web tests):
-  - Stop other local servers or set a different server.port in application.properties.
+    - Stop other local servers or set a different server.port in application.properties.
 - SSL/network errors when running API-based examples:
-  - These examples depend on public endpoints; retry later or ensure your network allows outbound HTTPS.
+    - These examples depend on public endpoints; retry later or ensure your network allows outbound HTTPS.
 - Exec plugin error when running a main class:
-  - Ensure the exec-maven-plugin goal specified in the command matches the version declared in the README (3.1.0 in examples).
+    - Ensure the exec-maven-plugin goal specified in the command matches the version declared in the README (3.1.0 in
+      examples).
 
 ## FAQ
+
 - Q: Can I run a single solution without the Spring Boot app?
   A: Yes. Many classes contain a main method. Use the Exec Maven Plugin example above or run via IDE.
 - Q: Do I need internet access for some solutions?
   A: Only for problems that intentionally call public APIs (e.g., Solution.java). Others are self-contained.
 
 ## License
-If a LICENSE file exists at the repository root, the project is distributed under that license. If not, treat the code as All Rights Reserved by the repository owner unless otherwise specified.
+
+If a LICENSE file exists at the repository root, the project is distributed under that license. If not, treat the code
+as All Rights Reserved by the repository owner unless otherwise specified.
 
 ---
 Last updated: 2025-09-08

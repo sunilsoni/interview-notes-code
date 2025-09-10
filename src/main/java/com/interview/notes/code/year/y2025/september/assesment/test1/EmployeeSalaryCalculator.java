@@ -5,9 +5,6 @@ import java.util.stream.Collectors;
 
 public class EmployeeSalaryCalculator {
 
-    // Record class to hold employee details
-    record Employee(int id, int managerId, int salary) {}
-
     // Method to calculate total salary of a manager and their team
     public static int calculateTeamSalary(List<Employee> employees, int managerId) {
         // Step 1: Build manager -> employees mapping
@@ -58,5 +55,9 @@ public class EmployeeSalaryCalculator {
         System.out.println("Manager 3 total salary = " + calculateTeamSalary(employees, 3)); // Expected: 130
         System.out.println("Manager 4 total salary = " + calculateTeamSalary(employees, 4)); // Expected: 50
         System.out.println("Unknown manager = " + calculateTeamSalary(employees, 99));       // Expected: 0
+    }
+
+    // Record class to hold employee details
+    record Employee(int id, int managerId, int salary) {
     }
 }

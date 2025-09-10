@@ -1,60 +1,10 @@
 package com.interview.notes.code.year.y2025.september.assesment.test2;
 
-import java.util.*; // import collections framework classes used below
-import java.util.stream.*; // import streams for test data generation and processing
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LRUCacheWithTests { // main class containing LRU cache implementation and tests
-
-    // LRUCache implementation using LinkedHashMap with accessOrder = true
-    public static class LRUCache { // public static inner class for the cache
-        private final int capacity; // store capacity limit of the cache
-        private final LinkedHashMap<Integer, Integer> map; // LinkedHashMap to maintain order and store key->value
-
-        public LRUCache(int capacity) { // constructor to initialize cache with given capacity
-            this.capacity = capacity; // assign provided capacity to instance field
-            // create a LinkedHashMap with access-order enabled to track recent usage
-            this.map = new LinkedHashMap<Integer, Integer>(16, 0.75f, true) { // anonymous subclass to override removal behavior
-                private static final long serialVersionUID = 1L; // serial version id for anonymous class
-                @Override
-                protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) { // called after each put
-                    return size() > LRUCache.this.capacity; // remove eldest when size exceeds capacity
-                }
-            }; // end of LinkedHashMap initialization
-        } // end constructor
-
-        public int get(int key) { // get the value associated with key, or -1 if absent
-            Integer val = map.get(key); // LinkedHashMap.get updates access order when accessOrder=true
-            return val == null ? -1 : val; // return -1 if key missing, else return actual value
-        } // end get
-
-        public void put(int key, int value) { // put key,value into cache, updating if exists
-            map.put(key, value); // LinkedHashMap.put will update value and access order; removal handled by removeEldestEntry
-        } // end put
-
-        // helper to expose current keys order from most-recent to least-recent for testing/inspection
-        public List<Integer> keysMostRecentFirst() { // returns keys in MRU->LRU order
-            List<Integer> keys = new ArrayList<>(map.keySet()); // LinkedHashMap.keySet is in LRU->MRU order when accessOrder=true? Actually iteration returns from least-recently-accessed to most-recently-accessed.
-            Collections.reverse(keys); // reverse to MRU->LRU for intuitive tests
-            return keys; // return reversed list
-        } // end keysMostRecentFirst
-
-        public int currentSize() { // return current number of entries
-            return map.size(); // size of the underlying map
-        } // end currentSize
-    } // end LRUCache class
-
-    // simple test case container
-    static class TestCase { // holds test metadata and expected results
-        final String name; // name of test case
-        final Runnable action; // action that performs the test and asserts behavior
-        final boolean expectedPass; // expected pass/fail outcome (true => expected to pass)
-
-        TestCase(String name, Runnable action, boolean expectedPass) { // constructor
-            this.name = name; // assign name
-            this.action = action; // assign action
-            this.expectedPass = expectedPass; // assign expected pass flag
-        }
-    }
 
     // main method runs all tests and prints PASS/FAIL results
     public static void main(String[] args) { // main entry point, no JUnit, just simple runner
@@ -185,10 +135,8 @@ public class LRUCacheWithTests { // main class containing LRU cache implementati
 
         // print summary counts
         long passCount = results.stream().filter(line -> line.contains("PASS")).count(); // count passed tests
-        System.out.println(String.format("Summary: Passed %d out of %d tests", passCount, tests.size())); // print summary
+        System.out.printf("Summary: Passed %d out of %d tests%n", passCount, tests.size()); // print summary
     } // end main
-
-    // helper assertion utilities used in tests
 
     private static void assertEqual(int actual, int expected) { // compares ints and throws AssertionError on mismatch
         if (actual != expected) { // check inequality
@@ -201,4 +149,57 @@ public class LRUCacheWithTests { // main class containing LRU cache implementati
             throw new AssertionError("Expected " + expected + " but got " + actual); // throw with message
         }
     } // end assertEqual generic
+
+    // helper assertion utilities used in tests
+
+    // LRUCache implementation using LinkedHashMap with accessOrder = true
+    public static class LRUCache { // public static inner class for the cache
+        private final int capacity; // store capacity limit of the cache
+        private final LinkedHashMap<Integer, Integer> map; // LinkedHashMap to maintain order and store key->value
+
+        public LRUCache(int capacity) { // constructor to initialize cache with given capacity
+            this.capacity = capacity; // assign provided capacity to instance field
+            // create a LinkedHashMap with access-order enabled to track recent usage
+            this.map = new LinkedHashMap<Integer, Integer>(16, 0.75f, true) { // anonymous subclass to override removal behavior
+                private static final long serialVersionUID = 1L; // serial version id for anonymous class
+
+                @Override
+                protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) { // called after each put
+                    return size() > LRUCache.this.capacity; // remove eldest when size exceeds capacity
+                }
+            }; // end of LinkedHashMap initialization
+        } // end constructor
+
+        public int get(int key) { // get the value associated with key, or -1 if absent
+            Integer val = map.get(key); // LinkedHashMap.get updates access order when accessOrder=true
+            return val == null ? -1 : val; // return -1 if key missing, else return actual value
+        } // end get
+
+        public void put(int key, int value) { // put key,value into cache, updating if exists
+            map.put(key, value); // LinkedHashMap.put will update value and access order; removal handled by removeEldestEntry
+        } // end put
+
+        // helper to expose current keys order from most-recent to least-recent for testing/inspection
+        public List<Integer> keysMostRecentFirst() { // returns keys in MRU->LRU order
+            List<Integer> keys = new ArrayList<>(map.keySet()); // LinkedHashMap.keySet is in LRU->MRU order when accessOrder=true? Actually iteration returns from least-recently-accessed to most-recently-accessed.
+            Collections.reverse(keys); // reverse to MRU->LRU for intuitive tests
+            return keys; // return reversed list
+        } // end keysMostRecentFirst
+
+        public int currentSize() { // return current number of entries
+            return map.size(); // size of the underlying map
+        } // end currentSize
+    } // end LRUCache class
+
+    /**
+     * @param name         name of test case
+     * @param action       action that performs the test and asserts behavior
+     * @param expectedPass expected pass/fail outcome (true => expected to pass)
+     */ // simple test case container
+        record TestCase(String name, Runnable action, boolean expectedPass) { // holds test metadata and expected results
+        // constructor
+        // assign name
+        // assign action
+        // assign expected pass flag
+    }
 } // end class LRUCacheWithTests

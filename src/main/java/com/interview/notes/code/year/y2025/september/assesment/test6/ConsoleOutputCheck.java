@@ -1,12 +1,13 @@
 package com.interview.notes.code.year.y2025.september.assesment.test6;
 
-import java.util.*;                 // Import all utilities (List, Arrays, etc.)
-import java.util.function.Function;  // Import Function<T, R> functional interface
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
 
 /**
  * ConsoleOutputCheck demonstrates function composition using Java's Function interface.
  * It takes a list of integers, performs a pipeline of transformations, and prints the result.
- *
+ * <p>
  * Pipeline: List<Integer> -> map(*2) -> distinct -> sum -> then *10 -> then *100.
  * Shows use of Function.andThen with clear step-by-step explanation.
  */

@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.september.assesment.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class WordBreakRunner {
     static boolean wordBreak(String s, List<String> wordDict) {
@@ -23,16 +27,6 @@ public class WordBreakRunner {
         char[] a = new char[times];
         Arrays.fill(a, c);
         return new String(a);
-    }
-
-    static class TestCase {
-        final String name;
-        final String s;
-        final List<String> dict;
-        final boolean expected;
-        TestCase(String name, String s, List<String> dict, boolean expected) {
-            this.name = name; this.s = s; this.dict = dict; this.expected = expected;
-        }
     }
 
     public static void main(String[] args) {
@@ -119,5 +113,8 @@ public class WordBreakRunner {
             System.out.println(t.name + " | Expected: " + t.expected + " | Got: " + got + " | " + (ok ? "PASS" : "FAIL"));
         }
         System.out.println("Summary: " + pass + "/" + tests.size() + " PASS");
+    }
+
+    record TestCase(String name, String s, List<String> dict, boolean expected) {
     }
 }

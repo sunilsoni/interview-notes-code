@@ -1,6 +1,7 @@
 package com.interview.notes.code.year.y2025.august.common.test17;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LongestUniqueSubstring {
 
@@ -8,11 +9,11 @@ public class LongestUniqueSubstring {
     public static String longestSubstring(String s) {
         // Store characters currently in the window
         Set<Character> window = new HashSet<>();
-        
+
         int left = 0;  // left boundary of sliding window
         int maxLength = 0; // length of longest substring
         int startIndex = 0; // starting index of longest substring found
-        
+
         // Traverse the string with right pointer
         for (int right = 0; right < s.length(); right++) {
             char current = s.charAt(right);
@@ -41,27 +42,27 @@ public class LongestUniqueSubstring {
     public static void main(String[] args) {
         // Test cases
         String[] inputs = {
-            "abcabcbb",
-            "bbbbb",
-            "pwwkew",
-            "abcdefg",
-            "aab",
-            "dvdf",
-            "a",          // single char
-            "",           // empty string
-            "abcdefghijabcdefghij" // large input with repetition
+                "abcabcbb",
+                "bbbbb",
+                "pwwkew",
+                "abcdefg",
+                "aab",
+                "dvdf",
+                "a",          // single char
+                "",           // empty string
+                "abcdefghijabcdefghij" // large input with repetition
         };
 
         String[] expected = {
-            "abc",
-            "b",
-            "wke",
-            "abcdefg",
-            "ab",
-            "vdf",
-            "a",
-            "",
-            "abcdefghij"
+                "abc",
+                "b",
+                "wke",
+                "abcdefg",
+                "ab",
+                "vdf",
+                "a",
+                "",
+                "abcdefghij"
         };
 
         // Run all test cases

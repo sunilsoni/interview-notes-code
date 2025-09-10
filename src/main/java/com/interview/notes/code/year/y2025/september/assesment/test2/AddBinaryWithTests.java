@@ -1,8 +1,12 @@
 package com.interview.notes.code.year.y2025.september.assesment.test2;
 
-import java.util.*;
-import java.util.stream.*;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class AddBinaryWithTests {
 
@@ -15,23 +19,10 @@ public class AddBinaryWithTests {
             int sum = carry;
             if (i >= 0) sum += a.charAt(i--) - '0';
             if (j >= 0) sum += b.charAt(j--) - '0';
-            sb.append((char)('0' + (sum & 1)));
+            sb.append((char) ('0' + (sum & 1)));
             carry = sum >> 1;
         }
         return sb.reverse().toString();
-    }
-
-    static class TestCase {
-        final String name;
-        final String a;
-        final String b;
-        final String expected;
-        TestCase(String name, String a, String b, String expected) {
-            this.name = name;
-            this.a = a;
-            this.b = b;
-            this.expected = expected;
-        }
     }
 
     private static void assertEqual(String actual, String expected) {
@@ -79,7 +70,8 @@ public class AddBinaryWithTests {
                     }
                     if (Math.max(la, lb) <= 20000) {
                         String ea = new BigInteger(tc.a, 2).add(new BigInteger(tc.b, 2)).toString(2);
-                        if (!ea.equals(res)) return String.format("%s: FAIL (lenA=%d,lenB=%d,timeMs=%d) - mismatch with BigInteger", tc.name, la, lb, time);
+                        if (!ea.equals(res))
+                            return String.format("%s: FAIL (lenA=%d,lenB=%d,timeMs=%d) - mismatch with BigInteger", tc.name, la, lb, time);
                     }
                     return String.format("%s: PASS (lenA=%d,lenB=%d,resultLen=%d,timeMs=%d)", tc.name, la, lb, res.length(), time);
                 }
@@ -91,6 +83,9 @@ public class AddBinaryWithTests {
 
         results.forEach(System.out::println);
         long passCount = results.stream().filter(s -> s.contains("PASS")).count();
-        System.out.println(String.format("Summary: Passed %d out of %d tests", passCount, tests.size()));
+        System.out.printf("Summary: Passed %d out of %d tests%n", passCount, tests.size());
+    }
+
+    record TestCase(String name, String a, String b, String expected) {
     }
 }

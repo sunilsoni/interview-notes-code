@@ -7,27 +7,51 @@ abstract class Cuisine {
 }
 
 class Chinese extends Cuisine {
-    private String dish;
-    Chinese(String dish) { this.dish = dish; }
-    public String getDish() { return dish; }
+    private final String dish;
+
+    Chinese(String dish) {
+        this.dish = dish;
+    }
+
+    public String getDish() {
+        return dish;
+    }
 }
 
 class Italian extends Cuisine {
-    private String dish;
-    Italian(String dish) { this.dish = dish; }
-    public String getDish() { return dish; }
+    private final String dish;
+
+    Italian(String dish) {
+        this.dish = dish;
+    }
+
+    public String getDish() {
+        return dish;
+    }
 }
 
 class Japanese extends Cuisine {
-    private String dish;
-    Japanese(String dish) { this.dish = dish; }
-    public String getDish() { return dish; }
+    private final String dish;
+
+    Japanese(String dish) {
+        this.dish = dish;
+    }
+
+    public String getDish() {
+        return dish;
+    }
 }
 
 class Mexican extends Cuisine {
-    private String dish;
-    Mexican(String dish) { this.dish = dish; }
-    public String getDish() { return dish; }
+    private final String dish;
+
+    Mexican(String dish) {
+        this.dish = dish;
+    }
+
+    public String getDish() {
+        return dish;
+    }
 }
 
 class UnservableCuisineRequestException extends Exception {
@@ -38,9 +62,10 @@ class UnservableCuisineRequestException extends Exception {
 
 class FoodFactory {
     private static FoodFactory instance;
-    private Map<String, Class<? extends Cuisine>> cuisineMap = new HashMap<>();
+    private final Map<String, Class<? extends Cuisine>> cuisineMap = new HashMap<>();
 
-    private FoodFactory() {}
+    private FoodFactory() {
+    }
 
     public static FoodFactory getFactory() {
         if (instance == null) instance = new FoodFactory();
@@ -109,9 +134,9 @@ public class Solution {
         }
 
         List<String> expected = Arrays.asList(
-            "Serving Lasagne(Italian)",
-            "Serving Kamameshi(Japanese)",
-            "Unservable cuisine Polish for dish Marjoram"
+                "Serving Lasagne(Italian)",
+                "Serving Kamameshi(Japanese)",
+                "Unservable cuisine Polish for dish Marjoram"
         );
 
         for (int i = 0; i < results.size(); i++) {
@@ -124,7 +149,7 @@ public class Solution {
         for (int i = 0; i < largeN; i++) {
             try {
                 Cuisine served = FOOD_FACTORY.serveCuisine("Italian", "Dish" + i);
-                if (!("Dish" + i).equals(((Italian) served).getDish())) {
+                if (!("Dish" + i).equals(served.getDish())) {
                     largePass = false;
                     break;
                 }

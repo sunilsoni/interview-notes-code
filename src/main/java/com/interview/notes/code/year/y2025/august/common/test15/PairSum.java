@@ -12,12 +12,12 @@ public class PairSum {
 
         // Using IntStream for clean iteration
         IntStream.range(0, arr.length) // loop over first index i
-                 .forEach(i -> 
-                     IntStream.range(i + 1, arr.length) // loop over second index j
-                              .filter(j -> arr[i] + arr[j] == target) // check sum condition
-                              .forEach(j -> 
-                                  System.out.println(arr[i] + " + " + arr[j] + " = " + target)
-                              )
-                 );
+                .forEach(i ->
+                        IntStream.range(i + 1, arr.length) // loop over second index j
+                                .filter(j -> arr[i] + arr[j] == target) // check sum condition
+                                .forEach(j ->
+                                        System.out.println(arr[i] + " + " + arr[j] + " = " + target)
+                                )
+                );
     }
 }

@@ -6,8 +6,8 @@ public class CheckOddEven {
     public static boolean isEven(int num) {
         int temp = num;
 
-        while(temp != 0 && temp != 1 && temp != -1) {
-            if(temp > 0) {
+        while (temp != 0 && temp != 1 && temp != -1) {
+            if (temp > 0) {
                 temp = temp - 2;
             } else {
                 temp = temp + 2;  // For negative numbers, add 2 instead of subtracting

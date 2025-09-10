@@ -21,7 +21,7 @@ class C extends B {
 public class Test {
     public static void main(String[] args) {
         //A c1 = new C();  // Case 1
-       // A a1 = new A();  // Case 2
+        // A a1 = new A();  // Case 2
 
         B b = new B();// output?
     }

@@ -1,8 +1,9 @@
 package com.interview.notes.code.year.y2025.september.assesment.test2;
 
-import java.util.*;                   // import utility classes (List, ArrayList, Set, HashSet)
-import java.util.stream.Collectors;    // import Collectors for Java 8 stream operations
-import java.util.stream.IntStream;     // import IntStream for generating test inputs and helper ranges
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /*
 Problem: Given an input string (e.g., "abc"), produce all distinct permutations of its characters. Example: "abc" → ["abc","acb","bac","bca","cab","cba"].
 
@@ -57,15 +58,15 @@ public class StringPermutations {       // main public class for permutations an
         List<TestCase> tests = new ArrayList<>(); // container for test cases
 
         // add example testcases from the image (abc, xyz, xy)
-        tests.add(new TestCase("abc", new String[]{"abc","acb","bac","bca","cab","cba"}));
-        tests.add(new TestCase("xyz", new String[]{"xyz","xzy","yxz","yzx","zxy","zyx"}));
-        tests.add(new TestCase("xy",  new String[]{"xy","yx"}));
+        tests.add(new TestCase("abc", new String[]{"abc", "acb", "bac", "bca", "cab", "cba"}));
+        tests.add(new TestCase("xyz", new String[]{"xyz", "xzy", "yxz", "yzx", "zxy", "zyx"}));
+        tests.add(new TestCase("xy", new String[]{"xy", "yx"}));
 
         // other important testcases: empty string, single char, duplicates
         tests.add(new TestCase("", new String[]{""}));               // empty string => one permutation: empty
         tests.add(new TestCase("a", new String[]{"a"}));            // single char => single permutation
         tests.add(new TestCase("aa", new String[]{"aa"}));          // duplicates => unique permutations only
-        tests.add(new TestCase("aba", new String[]{"aab","aba","baa"})); // duplicates example; order not important
+        tests.add(new TestCase("aba", new String[]{"aab", "aba", "baa"})); // duplicates example; order not important
 
         // run each test and print PASS/FAIL
         int passed = 0; // counter for passed tests
@@ -78,8 +79,8 @@ public class StringPermutations {       // main public class for permutations an
             Set<String> gotSet = got.stream().collect(Collectors.toCollection(LinkedHashSet::new)); // got set with insertion order
 
             boolean equal = expectedSet.equals(gotSet); // compare sets (order independent)
-            System.out.println(String.format("Test %d | input: '%s' | expected size: %d | got size: %d | %s",
-                    i + 1, tc.input, expectedSet.size(), gotSet.size(), (equal ? "PASS" : "FAIL"))); // print concise result
+            System.out.printf("Test %d | input: '%s' | expected size: %d | got size: %d | %s%n",
+                    i + 1, tc.input, expectedSet.size(), gotSet.size(), (equal ? "PASS" : "FAIL")); // print concise result
 
             if (!equal) { // if test failed, print details for debugging
                 System.out.println("  Expected: " + expectedSet);
@@ -90,7 +91,7 @@ public class StringPermutations {       // main public class for permutations an
         }
 
         // print summary of small tests
-        System.out.println(String.format("Summary: Passed %d/%d small tests", passed, tests.size())); // summary line
+        System.out.printf("Summary: Passed %d/%d small tests%n", passed, tests.size()); // summary line
 
         // Large input performance check (length 8 => 40320 permutations) — demonstration of scale
         String large = generateSampleString(8); // e.g., "abcdefgh"
@@ -116,14 +117,13 @@ public class StringPermutations {       // main public class for permutations an
                 .collect(Collectors.joining()); // join into single string
     }
 
-    // Simple container class for tests to hold input and expected permutations
-    private static class TestCase {
-        final String input;     // input string for test
-        final String[] expected; // expected permutations
-
-        TestCase(String input, String[] expected) { // constructor
-            this.input = input;         // assign input
-            this.expected = expected;   // assign expected array
-        }
+    /**
+     * @param input    input string for test
+     * @param expected expected permutations
+     */ // Simple container class for tests to hold input and expected permutations
+        private record TestCase(String input, String[] expected) {
+        // constructor
+        // assign input
+        // assign expected array
     }
 }

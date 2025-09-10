@@ -1,5 +1,7 @@
 package com.interview.notes.code.year.y2025.september.assesment.test6;
 
+import com.google.gson.Gson;
+
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -7,67 +9,49 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.stream.*;
-
-import com.google.gson.Gson;
+import java.util.stream.IntStream;
 
 /**
  * Business context and requirements overview:
- *
+ * <p>
  * Goal: Given an organizer name and a music genre, find the ID of the event with the
  * longest duration organized by that organizer that includes the given genre.
- *
+ * <p>
  * Data source: https://jsonmock.hackerrank.com/api/events
  * - Query parameter organized_by is used to filter by organizer on the server side.
  * - The API is paginated (fields: page, per_page, total, total_pages) and returns an array of events in data.
  * - Each Event may contain: id, name, genres (array of strings), duration (minutes), organized_by (string).
- *
+ * <p>
  * Business rules and edge cases:
  * 1) Only events whose organized_by exactly matches the given organizer (case-insensitive) are eligible.
  * 2) The event must include the given genre (case-insensitive) within its genres array.
  * 3) Among eligible events, choose the one with the highest duration (null duration is treated as 0).
  * 4) Tie-breaker: if multiple events share the same (max) duration, choose the event with lexicographically smaller id
- *    (achieved by sorting by duration desc, then by id asc, and taking the first).
+ * (achieved by sorting by duration desc, then by id asc, and taking the first).
  * 5) If no eligible event exists, or on any error (network/JSON), return "-1".
- *
+ * <p>
  * Performance considerations:
  * - Fetch all pages for the given organizer from the endpoint using the provided total_pages value.
  * - Stream operations filter and sort in-memory; for very large datasets a streaming comparator or partial reduction could
- *   be used, but API pagination keeps it practical here. A warm-up load (500 iterations) is present in test() to exercise
- *   the method for basic performance.
- *
+ * be used, but API pagination keeps it practical here. A warm-up load (500 iterations) is present in test() to exercise
+ * the method for basic performance.
+ * <p>
  * Inputs/Outputs:
  * - Input: organizer (String), genre (String)
  * - Output: event id (String) of the best match, or "-1" if none.
- *
+ * <p>
  * Examples:
  * - organizer = "empower integrated markets", genre = "Reggae" -> returns a concrete event id if present.
  * - organizer = "no such org", genre = "Jazz" -> returns "-1".
  */
 public class Solution {
 
-    static class Event {
-        String id;
-        String name;
-        String[] genres;
-        Integer duration;
-        String organized_by;
-    }
-
-    static class Api {
-        int page;
-        int per_page;
-        int total;
-        int total_pages;
-        Event[] data;
-    }
-
     static final HttpClient HTTP = HttpClient.newHttpClient();
     static final Gson GSON = new Gson();
 
     /**
      * Find the ID of the longest-duration event meeting the criteria.
-     *
+     * <p>
      * Business contract:
      * - Returns "-1" if no event matches or if any exception occurs (network/parse/etc.).
      * - Case-insensitive comparison for organizer and genre.
@@ -112,16 +96,6 @@ public class Solution {
     }
 
     /**
-     * Lightweight test case holder for manual verification of business rules.
-     */
-    static class Test {
-        final String organizer;
-        final String genre;
-        final String expected;
-        Test(String o, String g, String ex) { this.organizer = o; this.genre = g; this.expected = ex; }
-    }
-
-    /**
      * Manual smoke tests demonstrating expected behavior:
      * - Positive match with known organizer/genre pair returning a real ID.
      * - No-match cases returning "-1".
@@ -146,5 +120,27 @@ public class Solution {
      */
     public static void main(String[] args) {
         test();
+    }
+
+    static class Event {
+        String id;
+        String name;
+        String[] genres;
+        Integer duration;
+        String organized_by;
+    }
+
+    static class Api {
+        int page;
+        int per_page;
+        int total;
+        int total_pages;
+        Event[] data;
+    }
+
+    /**
+     * Lightweight test case holder for manual verification of business rules.
+     */
+    record Test(String organizer, String genre, String expected) {
     }
 }
