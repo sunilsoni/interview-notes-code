@@ -138,6 +138,58 @@ IDE.
 - NumberofAirplanesSkyTest.java and Interval.java demonstrate interval merging/scanline ideas.
 - CustomQueue.java shows building a queue with custom constraints helpful in DS interviews.
 
+## Run Individual Examples (Common)
+
+You can run any class with a public static void main(String[] args) using the Exec Maven Plugin. Below are some handy examples from recent additions:
+
+- Payment processing demo (common/test4/Main):
+  mvn -Dexec.mainClass=com.interview.notes.code.year.y2025.september.common.test4.Main \
+  -Dexec.classpathScope=runtime \
+  org.codehaus.mojo:exec-maven-plugin:3.1.0:java
+
+- Third highest number finder (common/test4/ThirdHighestNumberFinder):
+  mvn -Dexec.mainClass=com.interview.notes.code.year.y2025.september.common.test4.ThirdHighestNumberFinder \
+  -Dexec.classpathScope=runtime \
+  org.codehaus.mojo:exec-maven-plugin:3.1.0:java
+
+- Longest unique substring tester (common/test6/LongestUniqueSubstringTester):
+  mvn -Dexec.mainClass=com.interview.notes.code.year.y2025.september.common.test6.LongestUniqueSubstringTester \
+  -Dexec.classpathScope=runtime \
+  org.codehaus.mojo:exec-maven-plugin:3.1.0:java
+
+Tip: If the package path changes over time (e.g., new month/year folders), adjust the -Dexec.mainClass accordingly, or run directly from your IDE.
+
+## Push to GitHub
+
+Follow these steps to push this project to your GitHub repository.
+
+1) Initialize Git (if not already a repo):
+   git init
+
+2) Create a new empty repository on GitHub (do not add README/License). Copy its URL, e.g.:
+   https://github.com/<your-username>/<your-repo>.git
+
+3) Add remote and set the default branch name (main):
+   git remote add origin https://github.com/<your-username>/<your-repo>.git
+   git branch -M main
+
+4) Commit and push your changes:
+   git add -A
+   git commit -m "Initial commit"
+   git push -u origin main
+
+Alternatively, use the helper script included in this repo:
+
+- First time (sets origin and pushes to main):
+  scripts/push.sh "Initial commit" https://github.com/<your-username>/<your-repo>.git main
+
+- Subsequent pushes (origin already set):
+  scripts/push.sh "Update: <what changed>"
+
+Notes:
+- Make sure you are authenticated with GitHub (HTTPS with Personal Access Token or SSH).
+- The .gitignore in this repo excludes build artifacts (target/), IDE files, OS files, and other non-source items.
+
 ## How to Contribute
 
 - Fork the repository and create a feature branch.
@@ -170,4 +222,4 @@ If a LICENSE file exists at the repository root, the project is distributed unde
 as All Rights Reserved by the repository owner unless otherwise specified.
 
 ---
-Last updated: 2025-09-08
+Last updated: 2025-09-18

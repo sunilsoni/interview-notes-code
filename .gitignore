@@ -1,33 +1,49 @@
-HELP.md
-target/
+# Java/Maven
+/target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+.mvn/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Logs
+*.log
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# IDEs
+# IntelliJ
+.idea/
 *.iml
+#.iws
+# Eclipse
+.project
+.classpath
+.settings/
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build/Packaging
+*.jar
+*.war
+*.ear
+
+# Gradle (if any submodules use it)
+.gradle/
+build/
+
+# Misc
+hs_err_pid*
+replay_pid*
+
+# Local environment overrides
+.env
+.env.local
+
+# JetBrains Project files
+interview-notes-code.iws
 *.ipr
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
+# Temporary files
+*.swp
+*.swo
+~$*
