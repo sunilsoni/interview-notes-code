@@ -107,6 +107,43 @@ IDE.
 - Surefire reports will be available in target/surefire-reports.
 - For individual tests, use your IDE’s test runner or mvn -Dtest=FullyQualifiedTestName test.
 
+## Code Formatting
+
+- This project uses Google Java Format via the fmt-maven-plugin to keep Java code consistent.
+- To format the code automatically:
+  - Using Maven directly:
+    mvn com.coveo:fmt-maven-plugin:format
+  - Or using the helper script:
+    ./scripts/format.sh
+- To fail the build if formatting is needed:
+  mvn com.coveo:fmt-maven-plugin:check
+
+## Git: Commit and Push
+
+You can commit and push your changes with the following commands. Make sure you have a GitHub repository created and that your local repo has a remote set.
+
+1) Configure Git (once per machine):
+   git config --global user.name "Your Name"
+   git config --global user.email "you@example.com"
+
+2) Initialize repo (if not already):
+   git init
+
+3) Add a remote (replace with your repository URL):
+   git remote add origin https://github.com/<your-user>/<your-repo>.git
+   # or use SSH
+   # git remote add origin git@github.com:<your-user>/<your-repo>.git
+
+4) Stage, commit, and push:
+   git add -A
+   git commit -m "chore: format code and update README"
+   git push -u origin main
+   # If your default branch is master, use master instead of main.
+
+Notes:
+- Pushing to GitHub requires that you have permission and are authenticated. For HTTPS, use a Personal Access Token (PAT) as your password if prompted. For SSH, ensure your SSH key is added to your GitHub account.
+- From this automated environment, we cannot directly push to your GitHub without your credentials. Run the above commands locally to push.
+
 ## Coding Guidelines and Conventions
 
 - Prefer clear, readable solutions with comments explaining business rules and edge cases.
@@ -140,7 +177,8 @@ IDE.
 
 ## Run Individual Examples (Common)
 
-You can run any class with a public static void main(String[] args) using the Exec Maven Plugin. Below are some handy examples from recent additions:
+You can run any class with a public static void main(String[] args) using the Exec Maven Plugin. Below are some handy
+examples from recent additions:
 
 - Payment processing demo (common/test4/Main):
   mvn -Dexec.mainClass=com.interview.notes.code.year.y2025.september.common.test4.Main \
@@ -157,7 +195,8 @@ You can run any class with a public static void main(String[] args) using the Ex
   -Dexec.classpathScope=runtime \
   org.codehaus.mojo:exec-maven-plugin:3.1.0:java
 
-Tip: If the package path changes over time (e.g., new month/year folders), adjust the -Dexec.mainClass accordingly, or run directly from your IDE.
+Tip: If the package path changes over time (e.g., new month/year folders), adjust the -Dexec.mainClass accordingly, or
+run directly from your IDE.
 
 ## Push to GitHub
 
@@ -187,6 +226,7 @@ Alternatively, use the helper script included in this repo:
   scripts/push.sh "Update: <what changed>"
 
 Notes:
+
 - Make sure you are authenticated with GitHub (HTTPS with Personal Access Token or SSH).
 - The .gitignore in this repo excludes build artifacts (target/), IDE files, OS files, and other non-source items.
 
