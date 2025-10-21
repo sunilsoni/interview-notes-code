@@ -3,21 +3,21 @@ package com.interview.notes.code.year.y2025.october.microsoft.test3;
 import java.util.HashMap;
 
 public class LRUCacheTest {
-    
+
     // Main class to test LRU Cache implementation
     public static void main(String[] args) {
         // Test Case 1: Basic Operations
         System.out.println("Test Case 1: Basic Operations");
         testBasicOperations();
-        
+
         // Test Case 2: Capacity Constraints
         System.out.println("\nTest Case 2: Capacity Constraints");
         testCapacityConstraints();
-        
+
         // Test Case 3: Large Data Input
         System.out.println("\nTest Case 3: Large Data Input");
         testLargeDataInput();
-        
+
         // Test Case 4: Edge Cases
         System.out.println("\nTest Case 4: Edge Cases");
         testEdgeCases();

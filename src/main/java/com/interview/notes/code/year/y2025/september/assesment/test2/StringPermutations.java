@@ -121,7 +121,7 @@ public class StringPermutations {       // main public class for permutations an
      * @param input    input string for test
      * @param expected expected permutations
      */ // Simple container class for tests to hold input and expected permutations
-        private record TestCase(String input, String[] expected) {
+    private record TestCase(String input, String[] expected) {
         // constructor
         // assign input
         // assign expected array

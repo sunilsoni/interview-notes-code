@@ -38,8 +38,8 @@ public class DuplicateWordsCounter { // define a public class to hold logic and 
                 .filter(e -> e.getValue() >= 2L) // keep entries where count is at least 2
                 // sort by count descending, then by word ascending for stable readable output
                 .sorted(
-                    Comparator.<Map.Entry<String, Long>>comparingLong(Map.Entry::getValue).reversed()
-                              .thenComparing(Map.Entry::getKey)
+                        Comparator.<Map.Entry<String, Long>>comparingLong(Map.Entry::getValue).reversed()
+                                .thenComparing(Map.Entry::getKey)
                 )
                 // collect back into a LinkedHashMap to keep the sorted order
                 .collect(Collectors.toMap(

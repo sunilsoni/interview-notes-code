@@ -28,7 +28,7 @@ public class CommonElementsFinder {
         int[] b2 = {7, 8, 9};
         int[] c2 = {8, 10, 7};
         List<Integer> result2 = findCommon(a2, b2, c2);
-        System.out.println("Test2: " + result2 + " -> " + (result2.equals(Arrays.asList(7,8)) ? "PASS" : "FAIL"));
+        System.out.println("Test2: " + result2 + " -> " + (result2.equals(Arrays.asList(7, 8)) ? "PASS" : "FAIL"));
 
         int[] a3 = {1, 2, 3};
         int[] b3 = {4, 5, 6};
@@ -37,8 +37,8 @@ public class CommonElementsFinder {
         System.out.println("Test3: " + result3 + " -> " + (result3.isEmpty() ? "PASS" : "FAIL"));
 
         int[] a4 = {};
-        int[] b4 = {1,2,3};
-        int[] c4 = {2,3,4};
+        int[] b4 = {1, 2, 3};
+        int[] c4 = {2, 3, 4};
         List<Integer> result4 = findCommon(a4, b4, c4);
         System.out.println("EdgeCase Empty: " + result4 + " -> " + (result4.isEmpty() ? "PASS" : "FAIL"));
 

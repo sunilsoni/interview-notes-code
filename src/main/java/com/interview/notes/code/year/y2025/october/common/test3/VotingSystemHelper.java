@@ -7,12 +7,12 @@ import java.util.stream.Collectors;
  * VotingSystemHelper class
  * ------------------------
  * Simulates a voting system that:
- *  - Loads all votes once when object is created
- *  - Automatically counts, sorts, and caches results (preprocessing)
- *  - Provides fast lookups for:
- *      1. Top winner(s)
- *      2. K-th winner(s)
- *      3. Common candidates between two persons
+ * - Loads all votes once when object is created
+ * - Automatically counts, sorts, and caches results (preprocessing)
+ * - Provides fast lookups for:
+ * 1. Top winner(s)
+ * 2. K-th winner(s)
+ * 3. Common candidates between two persons
  */
 public class VotingSystemHelper {
 
@@ -21,6 +21,7 @@ public class VotingSystemHelper {
     private Map<String, Long> voteCountCache;              // candidate → votes count
     private List<Map.Entry<String, Long>> sortedCandidatesCache; // sorted list of candidates
     private List<String> winnerCache;                      // top winner(s)
+
     // -------------------------------------------------------
     // 🏗️ Constructor — loads and preprocesses data ONCE
     // -------------------------------------------------------

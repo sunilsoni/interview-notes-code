@@ -1,7 +1,9 @@
 package com.interview.notes.code.year.y2025.september.assesment.test2;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CountPrimesWithTests {
 
@@ -25,18 +27,6 @@ public class CountPrimesWithTests {
             if (isPrime[i]) count++;
         }
         return count; // return result
-    }
-
-    static class TestCase { // simple test container
-        final String name;
-        final int n;
-        final Integer expected; // nullable expected value; if null treat as performance check
-
-        TestCase(String name, int n, Integer expected) {
-            this.name = name;
-            this.n = n;
-            this.expected = expected;
-        }
     }
 
     public static void main(String[] args) {
@@ -77,6 +67,12 @@ public class CountPrimesWithTests {
 
         results.forEach(System.out::println);
         long passCount = results.stream().filter(s -> s.contains("PASS")).count();
-        System.out.println(String.format("Summary: Passed %d out of %d tests", passCount, tests.size()));
+        System.out.printf("Summary: Passed %d out of %d tests%n", passCount, tests.size());
+    }
+
+    /**
+     * @param expected nullable expected value; if null treat as performance check
+     */
+    record TestCase(String name, int n, Integer expected) { // simple test container
     }
 }

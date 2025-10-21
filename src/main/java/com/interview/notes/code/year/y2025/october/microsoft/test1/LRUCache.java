@@ -13,6 +13,7 @@ public class LRUCache {
     private Node head;                            // head of doubly-linked list (most recently used)
     private Node tail;                            // tail of doubly-linked list (least recently used)
     private int size;                             // current number of items in cache
+
     // Constructor to create LRUCache with given capacity
     public LRUCache(int capacity) {
         this.capacity = capacity;                 // set capacity (immutable)
@@ -105,7 +106,7 @@ public class LRUCache {
             // additionally check a few known keys: put was executed for some keys; we check that get doesn't crash
             pass = pass && (cache.get(0) <= Integer.MAX_VALUE); // just ensures get runs (value or -1)
             System.out.println("Large input test (ops=" + ops + "): " + (pass ? "PASS" : "FAIL")
-                               + " finalSize=" + cache.currentSize());
+                    + " finalSize=" + cache.currentSize());
         }
 
         // Extra: show a small manual demo for visual confirmation

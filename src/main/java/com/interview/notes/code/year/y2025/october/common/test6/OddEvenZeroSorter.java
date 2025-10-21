@@ -101,8 +101,12 @@ public class OddEvenZeroSorter {
         int i = lo - 1;                               // i will move rightwards
         int j = hi + 1;                               // j will move leftwards
         while (true) {                                // Hoare's infinite loop until return
-            do { i++; } while (a[i] < pivot);         // Move i right until element >= pivot
-            do { j--; } while (a[j] > pivot);         // Move j left until element <= pivot
+            do {
+                i++;
+            } while (a[i] < pivot);         // Move i right until element >= pivot
+            do {
+                j--;
+            } while (a[j] > pivot);         // Move j left until element <= pivot
             if (i >= j) {                             // When pointers cross, return split point
                 return j;                             // j is the final boundary
             }
@@ -180,36 +184,36 @@ public class OddEvenZeroSorter {
     private static void runSmallTests() {                           // Prints PASS/FAIL for small cases
         // Each test: input -> expected; we mutate input in place and compare to expected.
         int[][] inputs = {
-            {4,9,0,2,0,7,0,0,3,8},           // Mixed with zeros and both parities
-            {},                               // Empty
-            {0,0,0},                          // All zeros
-            {1,3,5,7},                        // Only odds
-            {2,4,6,8},                        // Only evens
-            {0,1,0,2,0,3,0,4,0,5},            // Alternating zeros
-            {-3, -2, -1, 0, 2, 3, 0},        // Includes negatives
-            {5},                               // Single element
-            {0},                               // Single zero
-            {9,7,5,3,1,2,4,6,8,0,0}           // Descending odds then ascending evens with zeros
+                {4, 9, 0, 2, 0, 7, 0, 0, 3, 8},           // Mixed with zeros and both parities
+                {},                               // Empty
+                {0, 0, 0},                          // All zeros
+                {1, 3, 5, 7},                        // Only odds
+                {2, 4, 6, 8},                        // Only evens
+                {0, 1, 0, 2, 0, 3, 0, 4, 0, 5},            // Alternating zeros
+                {-3, -2, -1, 0, 2, 3, 0},        // Includes negatives
+                {5},                               // Single element
+                {0},                               // Single zero
+                {9, 7, 5, 3, 1, 2, 4, 6, 8, 0, 0}           // Descending odds then ascending evens with zeros
         };
 
         int[][] expected = {
-            {3,7,9,2,4,8,0,0,0,0},           // Given expected
-            {},                               // Empty stays empty
-            {0,0,0},                          // All zeros remain all zeros
-            {1,3,5,7},                        // Odds already sorted
-            {2,4,6,8},                        // Evens already sorted (no zeros)
-            {1,3,5,2,4,0,0,0,0,0},            // Odds asc: 1,3,5; Evens asc:2,4; zeros tail
-            {-3,-1,3,-2,2,0,0},               // Odds asc: -3,-1,3; Evens asc: -2,2; zeros tail
-            {5},                               // Single stays single
-            {0},                               // Single zero stays
-            {1,3,5,7,9,2,4,6,8,0,0}            // Sorted odds asc then evens asc, zeros tail
+                {3, 7, 9, 2, 4, 8, 0, 0, 0, 0},           // Given expected
+                {},                               // Empty stays empty
+                {0, 0, 0},                          // All zeros remain all zeros
+                {1, 3, 5, 7},                        // Odds already sorted
+                {2, 4, 6, 8},                        // Evens already sorted (no zeros)
+                {1, 3, 5, 2, 4, 0, 0, 0, 0, 0},            // Odds asc: 1,3,5; Evens asc:2,4; zeros tail
+                {-3, -1, 3, -2, 2, 0, 0},               // Odds asc: -3,-1,3; Evens asc: -2,2; zeros tail
+                {5},                               // Single stays single
+                {0},                               // Single zero stays
+                {1, 3, 5, 7, 9, 2, 4, 6, 8, 0, 0}            // Sorted odds asc then evens asc, zeros tail
         };
 
         for (int t = 0; t < inputs.length; t++) {                   // For each test case
             int[] in = inputs[t].clone();                           // Clone to avoid mutating the original example data
             arrange(in);                                            // Transform in place
             boolean ok = arraysEqual(in, expected[t])               // Compare to expected AND
-                         && validate(inputs[t], in);                // Validate structure + multiset equivalence via transform
+                    && validate(inputs[t], in);                // Validate structure + multiset equivalence via transform
             System.out.println(ok ? "PASS" : "FAIL");               // Print PASS/FAIL as requested
         }
     }
@@ -242,7 +246,7 @@ public class OddEvenZeroSorter {
 
     public static void main(String[] args) {                         // Single entry point to run all tests
         // Provided example (explicit)
-        int[] example = {4,9,0,2,0,7,0,0,3,8};                       // Input from the prompt
+        int[] example = {4, 9, 0, 2, 0, 7, 0, 0, 3, 8};                       // Input from the prompt
         arrange(example);                                            // Transform
         System.out.print("Example Output: ");                        // Label
         for (int v : example) System.out.print(v + " ");             // Print the transformed array

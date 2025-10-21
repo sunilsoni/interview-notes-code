@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.september.assesment.test1;
 
-import java.util.*; // import utility classes like List, Set, Arrays, Collections
-import java.util.stream.*; // import Stream API classes used for creating test data
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class WordBreakTest { // main class containing solution and tests
 
@@ -30,21 +31,6 @@ public class WordBreakTest { // main class containing solution and tests
             }
         }
         return dp[n]; // final answer whether full string is segmentable
-    }
-
-    // simple container class for test cases
-    static class TestCase { // holds input, dictionary, expected result and a name
-        final String name; // test name
-        final String s; // input string
-        final List<String> dict; // dictionary words
-        final boolean expected; // expected boolean result
-
-        TestCase(String name, String s, List<String> dict, boolean expected) { // constructor
-            this.name = name; // assign test name
-            this.s = s; // assign input string
-            this.dict = dict; // assign dictionary list
-            this.expected = expected; // assign expected result
-        }
     }
 
     // main method for running tests and printing PASS/FAIL results
@@ -79,7 +65,7 @@ public class WordBreakTest { // main class containing solution and tests
         tests.add(new TestCase(
                 "single-char-true",
                 "a",
-                Arrays.asList("a"),
+                List.of("a"),
                 true
         ));
 
@@ -87,7 +73,7 @@ public class WordBreakTest { // main class containing solution and tests
         tests.add(new TestCase(
                 "single-char-false",
                 "b",
-                Arrays.asList("a"),
+                List.of("a"),
                 false
         ));
 
@@ -144,6 +130,21 @@ public class WordBreakTest { // main class containing solution and tests
         long passCount = results.stream() // stream results
                 .filter(line -> line.contains("PASS")) // filter passing lines
                 .count(); // count them
-        System.out.println(String.format("Summary: Passed %d out of %d tests", passCount, tests.size())); // print summary
+        System.out.printf("Summary: Passed %d out of %d tests%n", passCount, tests.size()); // print summary
+    }
+
+    /**
+     * @param name     test name
+     * @param s        input string
+     * @param dict     dictionary words
+     * @param expected expected boolean result
+     */ // simple container class for test cases
+        record TestCase(String name, String s, List<String> dict,
+                        boolean expected) { // holds input, dictionary, expected result and a name
+        // constructor
+        // assign test name
+        // assign input string
+        // assign dictionary list
+        // assign expected result
     }
 }

@@ -22,16 +22,16 @@ public class CommonElementsNoExtraSpace {
             // If elements are equal in all arrays
             if (arr1[i] == arr2[j] && arr2[j] == arr3[k]) {
                 System.out.print(arr1[i] + " ");
-                i++; j++; k++;
+                i++;
+                j++;
+                k++;
             }
             // Move the smallest pointer ahead
             else if (arr1[i] < arr2[j]) {
                 i++;
-            }
-            else if (arr2[j] < arr3[k]) {
+            } else if (arr2[j] < arr3[k]) {
                 j++;
-            }
-            else {
+            } else {
                 k++;
             }
         }

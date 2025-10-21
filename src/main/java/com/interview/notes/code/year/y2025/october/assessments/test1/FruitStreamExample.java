@@ -14,17 +14,17 @@ public class FruitStreamExample {
 
         // Using streams to filter and display fruits with length 5
         System.out.println("Fruits with length 5:");
-        
+
         // Method 1: Using map values() and stream
         map.values()
-           .stream()
-           .filter(fruit -> fruit.length() == 5)
-           .forEach(System.out::println);
+                .stream()
+                .filter(fruit -> fruit.length() == 5)
+                .forEach(System.out::println);
 
         // Alternative Method 2: Using entrySet() and stream
         map.entrySet()
-           .stream()
-           .filter(entry -> entry.getValue().length() == 5)
-           .forEach(entry -> System.out.println(entry.getValue()));
+                .stream()
+                .filter(entry -> entry.getValue().length() == 5)
+                .forEach(entry -> System.out.println(entry.getValue()));
     }
 }

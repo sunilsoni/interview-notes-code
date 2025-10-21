@@ -9,19 +9,19 @@ public class Main1 {
 
         // Log file for Day 1
         String[] logA = {
-            "2025-01-01,Store,uuid1,100",
-            "2025-01-01,Store,uuid2,500",
-            "2025-01-01,Web,uuid4,100",
-            "2025-01-01,Web,uuid1,150"
+                "2025-01-01,Store,uuid1,100",
+                "2025-01-01,Store,uuid2,500",
+                "2025-01-01,Web,uuid4,100",
+                "2025-01-01,Web,uuid1,150"
         };
 
         // Log file for Day 2
         String[] logB = {
-            "2025-01-02,Phone,uuid1,250",
-            "2025-01-02,Store,uuid2,1100",
-            "2025-01-02,Web,uuid3,900",
-            "2025-01-02,Phone,uuid3,600",
-            "2025-01-02,Store,uuid4,200"
+                "2025-01-02,Phone,uuid1,250",
+                "2025-01-02,Store,uuid2,1100",
+                "2025-01-02,Web,uuid3,900",
+                "2025-01-02,Phone,uuid3,600",
+                "2025-01-02,Store,uuid4,200"
         };
 
         // Call our main method to find users who qualify

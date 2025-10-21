@@ -6,12 +6,19 @@ import java.util.stream.Collectors;
 
 interface InMemoryDB {
     void set(int timestamp, String key, String field, int value);
+
     boolean compareAndSet(int timestamp, String key, String field, int expectedValue, int newValue);
+
     boolean compareAndDelete(int timestamp, String key, String field, int expectedValue);
+
     Optional<Integer> get(int timestamp, String key, String field);
+
     List<String> scan(int timestamp, String key);
+
     List<String> scanByPrefix(int timestamp, String key, String prefix);
+
     void setWithTTL(int timestamp, String key, String field, int value, int ttl);
+
     boolean compareAndSetWithTTL(int timestamp, String key, String field, int expectedValue, int newValue, int ttl);
 }
 
@@ -122,7 +129,11 @@ class InMemoryDBImpl implements InMemoryDB {
     private static class ValueRecord {
         int value;
         int expireAt;
-        ValueRecord(int value, int expireAt) { this.value = value; this.expireAt = expireAt; }
+
+        ValueRecord(int value, int expireAt) {
+            this.value = value;
+            this.expireAt = expireAt;
+        }
     }
 }
 
@@ -130,7 +141,7 @@ public class InMemoryDBMain {
     public static void main(String[] args) {
         InMemoryDB db = new InMemoryDBImpl();
         db.setWithTTL(10, "foo", "bar", 150, 50);
-        System.out.println(db.get(20, "foo", "bar")); 
+        System.out.println(db.get(20, "foo", "bar"));
         System.out.println(db.get(70, "foo", "bar"));
         db.setWithTTL(40, "foo", "two", 20, 60);
         System.out.println(db.scan(60, "foo"));

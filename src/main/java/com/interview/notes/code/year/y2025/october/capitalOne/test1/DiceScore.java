@@ -17,12 +17,12 @@ public class DiceScore {
 
     public static void main(String[] args) {
         List<int[]> tests = Arrays.asList(
-            new int[]{3, 3, 3},
-            new int[]{3, 6, 3},
-            new int[]{3, 2, 5},
-            new int[]{1, 1, 2},
-            new int[]{2, 3, 4},
-            new int[]{6, 6, 6}
+                new int[]{3, 3, 3},
+                new int[]{3, 6, 3},
+                new int[]{3, 2, 5},
+                new int[]{1, 1, 2},
+                new int[]{2, 3, 4},
+                new int[]{6, 6, 6}
         );
 
         List<Integer> expected = Arrays.asList(3000, 1500, 200, 500, 200, 6000);

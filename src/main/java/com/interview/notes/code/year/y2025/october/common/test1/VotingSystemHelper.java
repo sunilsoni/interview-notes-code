@@ -10,6 +10,7 @@ public class VotingSystemHelper {
     private Map<String, Long> voteCountCache;
     private List<Map.Entry<String, Long>> sortedCandidatesCache;
     private List<String> winnerCache;
+
     public VotingSystemHelper(List<Vote> votes) {
         this.votes = votes;
     }

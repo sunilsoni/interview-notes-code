@@ -223,16 +223,16 @@ public class StudentStreamDemo {
      * @param name   Student name (can be null; we handle nulls-last in sorting)
      * @param age    Student age
      */
-        record Student(int rollNo, String name, int age) {
+    record Student(int rollNo, String name, int age) {
         // Constructor sets all fields; immutability helps reasoning in streams
         // Assign roll number
         // Assign name
         // Assign age
 
         // toString for readable console output during debugging and sample verification
-            @Override
-            public String toString() {
-                return "Student{rollNo=" + rollNo + ", name='" + name + "', age=" + age + "}";
-            }
+        @Override
+        public String toString() {
+            return "Student{rollNo=" + rollNo + ", name='" + name + "', age=" + age + "}";
         }
+    }
 }

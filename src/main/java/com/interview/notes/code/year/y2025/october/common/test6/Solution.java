@@ -10,13 +10,13 @@ public class Solution {
 
         // Sample data
         grouped.put("TypeA", Arrays.asList(
-            new RecordItem("Charlie", "TypeA"),
-            new RecordItem("Alpha", "TypeA")
+                new RecordItem("Charlie", "TypeA"),
+                new RecordItem("Alpha", "TypeA")
         ));
 
         grouped.put("TypeB", Arrays.asList(
-            new RecordItem("Delta", "TypeB"),
-            new RecordItem("Beta", "TypeB")
+                new RecordItem("Delta", "TypeB"),
+                new RecordItem("Beta", "TypeB")
         ));
 
         Solution solution = new Solution();
@@ -44,8 +44,8 @@ public class Solution {
         AtomicInteger counter = new AtomicInteger(1);
 
         grouped.values().stream()
-            .flatMap(List::stream)
-            .sorted(Comparator.comparing(RecordItem::getName))
-            .forEach(item -> item.setRecordNumber(counter.getAndIncrement()));
+                .flatMap(List::stream)
+                .sorted(Comparator.comparing(RecordItem::getName))
+                .forEach(item -> item.setRecordNumber(counter.getAndIncrement()));
     }
 }

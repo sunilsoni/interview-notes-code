@@ -6,12 +6,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class DuplicateWordCounter {
-    
+
     // Main method to process word counting and run tests
     public static void main(String[] args) {
         // Create instance of the class to access methods
         DuplicateWordCounter counter = new DuplicateWordCounter();
-        
+
         // Run all test cases
         counter.runTests();
     }
@@ -69,10 +69,10 @@ public class DuplicateWordCounter {
     private void testCase(String testName, String input, Map<String, Long> expected) {
         // Get actual result
         Map<String, Long> result = countDuplicateWords(input);
-        
+
         // Compare with expected result
         boolean passed = result.equals(expected);
-        
+
         // Print test results
         System.out.println(testName + ": " + (passed ? "PASS" : "FAIL"));
         if (!passed) {

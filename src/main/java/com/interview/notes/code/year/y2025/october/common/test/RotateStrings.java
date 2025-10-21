@@ -59,10 +59,10 @@ public class RotateStrings {                      // main class container
             TestCase tc = tests.get(i);             // fetch test case
             List<String> actual = rotateList(tc.input, tc.k); // run code under test
             if (Objects.equals(actual, tc.expected)) { // compare expected vs actual (handles null)
-                System.out.println("Test " + (i+1) + ": PASS"); // print pass
+                System.out.println("Test " + (i + 1) + ": PASS"); // print pass
                 pass++;                             // increment pass count
             } else {
-                System.out.println("Test " + (i+1) + ": FAIL"); // print fail
+                System.out.println("Test " + (i + 1) + ": FAIL"); // print fail
                 System.out.println("  Input   : " + tc.input);
                 System.out.println("  k       : " + tc.k);
                 System.out.println("  Expected: " + tc.expected);
@@ -122,7 +122,7 @@ public class RotateStrings {                      // main class container
      * @param k        rotation amount
      * @param expected expected output (may be null)
      */ // TestCase holder to keep input, k and expected output together
-        private record TestCase(List<String> input, int k, List<String> expected) {
+    private record TestCase(List<String> input, int k, List<String> expected) {
         // constructor
         // assign input
         // assign k

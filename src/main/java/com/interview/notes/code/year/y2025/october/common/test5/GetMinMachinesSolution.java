@@ -36,10 +36,10 @@ public class GetMinMachinesSolution {
     }
 
     public static void main(String[] args) {
-        run(list(2,1,5,5,8), list(5,3,8,6,12), 3);
-        run(list(2,2,2,2), list(5,5,5,5), 4);
-        run(list(1,4,7), list(2,5,8), 1);
-        run(list(1,3,5), list(5,7,9), 2);
+        run(list(2, 1, 5, 5, 8), list(5, 3, 8, 6, 12), 3);
+        run(list(2, 2, 2, 2), list(5, 5, 5, 5), 4);
+        run(list(1, 4, 7), list(2, 5, 8), 1);
+        run(list(1, 3, 5), list(5, 7, 9), 2);
         run(list(1), list(1), 1);
         run(list(1_000_000_000, 1_000_000_000), list(1_000_000_000, 1_000_000_000), 2);
 

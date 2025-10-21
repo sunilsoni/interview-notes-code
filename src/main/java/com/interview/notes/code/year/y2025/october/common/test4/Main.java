@@ -38,7 +38,10 @@ class Result {
                 int nxt = 0;
                 for (int j = Math.max(1, i - 1); j <= Math.min(n - 2, i + 1); j++) if (isExt(a, j)) nxt++;
                 bestReduce = Math.max(bestReduce, cur - nxt);
-                if (bestReduce == cur) { a[i] = old; break; }
+                if (bestReduce == cur) {
+                    a[i] = old;
+                    break;
+                }
             }
             a[i] = old;
         }

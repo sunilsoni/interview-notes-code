@@ -3,7 +3,7 @@ package com.codesignal.bankingsystem;
 import java.util.*;
 import java.util.stream.Collectors;
 
-class BankingSystemImpl  {
+class BankingSystemImpl {
 
     private final Map<String, Long> balances = new HashMap<>();
     private final Map<String, Long> outgoing = new HashMap<>();
@@ -47,7 +47,7 @@ class BankingSystemImpl  {
     }
 
     // ---------- Level 1 ----------
-   // @Override
+    // @Override
     public boolean createAccount(int timestamp, String accountId) {
         advanceTo(timestamp);
         if (accountId == null || accountId.trim().isEmpty()) return false;
@@ -57,7 +57,7 @@ class BankingSystemImpl  {
         return created;
     }
 
- //   @Override
+    //   @Override
     public Optional<Integer> deposit(int timestamp, String accountId, int amount) {
         advanceTo(timestamp);
         if (amount < 0) return Optional.empty();
@@ -68,7 +68,7 @@ class BankingSystemImpl  {
         return Optional.of((int) newBal);
     }
 
-  //  @Override
+    //  @Override
     public Optional<Integer> transfer(int timestamp, String sourceAccountId, String targetAccountId, int amount) {
         advanceTo(timestamp);
         if (amount < 0) return Optional.empty();
@@ -86,7 +86,7 @@ class BankingSystemImpl  {
     }
 
     // ---------- Level 2 ----------
-  //  @Override
+    //  @Override
     public List<String> topSpenders(int timestamp, int n) {
         advanceTo(timestamp);
         if (n <= 0) return Collections.emptyList();
@@ -100,7 +100,7 @@ class BankingSystemImpl  {
     }
 
     // ---------- Level 3 ----------
-   // @Override
+    // @Override
     public Optional<String> schedulePayment(int timestamp, String accountId, int amount, int delay) {
         advanceTo(timestamp); // process older dues first
         if (!balances.containsKey(accountId) || amount < 0 || delay < 0) return Optional.empty();
@@ -112,7 +112,7 @@ class BankingSystemImpl  {
         return Optional.of(id);
     }
 
-   // @Override
+    // @Override
     public boolean cancelPayment(int timestamp, String accountId, String paymentId) {
         advanceTo(timestamp); // payments due now must fire before we cancel anything at this ts
         Payment p = paymentsById.get(paymentId);

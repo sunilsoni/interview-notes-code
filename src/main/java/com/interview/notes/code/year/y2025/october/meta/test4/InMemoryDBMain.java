@@ -6,13 +6,21 @@ import java.util.stream.Collectors;
 
 interface InMemoryDB {
     void set(int timestamp, String key, String field, int value);
+
     boolean compareAndSet(int timestamp, String key, String field, int expectedValue, int newValue);
+
     boolean compareAndDelete(int timestamp, String key, String field, int expectedValue);
+
     Optional<Integer> get(int timestamp, String key, String field);
+
     List<String> scan(int timestamp, String key);
+
     List<String> scanByPrefix(int timestamp, String key, String prefix);
+
     void setWithTTL(int timestamp, String key, String field, int value, int ttl);
+
     boolean compareAndSetWithTTL(int timestamp, String key, String field, int expectedValue, int newValue, int ttl);
+
     Optional<Integer> getWhen(int timestamp, String key, String field, int atTimestamp);
 }
 
@@ -121,7 +129,7 @@ class InMemoryDBImpl implements InMemoryDB {
     }
 
     @Override
-        public Optional<Integer> getWhen(int timestamp, String key, String field, int atTimestamp) {
+    public Optional<Integer> getWhen(int timestamp, String key, String field, int atTimestamp) {
         if (atTimestamp == 0) return get(timestamp, key, field);
         Map<String, NavigableMap<Integer, ValueRecord>> m = store.get(key);
         if (m == null) return Optional.empty();
@@ -137,7 +145,11 @@ class InMemoryDBImpl implements InMemoryDB {
     private static class ValueRecord {
         int value;
         int expireAt;
-        ValueRecord(int value, int expireAt) { this.value = value; this.expireAt = expireAt; }
+
+        ValueRecord(int value, int expireAt) {
+            this.value = value;
+            this.expireAt = expireAt;
+        }
     }
 }
 

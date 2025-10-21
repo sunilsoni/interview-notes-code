@@ -29,7 +29,8 @@ public class Main {
         int lo = 0, hi = a.size();
         while (lo < hi) {
             int mid = (lo + hi) >>> 1;
-            if (a.get(mid).compareTo(key) < 0) lo = mid + 1; else hi = mid;
+            if (a.get(mid).compareTo(key) < 0) lo = mid + 1;
+            else hi = mid;
         }
         return lo;
     }

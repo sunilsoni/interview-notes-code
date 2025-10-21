@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2025.september.assesment.test1;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 public class MoveZerosInPlace {
     static void moveZeroes(int[] a) {

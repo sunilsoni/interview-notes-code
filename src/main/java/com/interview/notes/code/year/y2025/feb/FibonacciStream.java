@@ -8,9 +8,9 @@ public class FibonacciStream {
 
         // Generate Fibonacci series using Stream
         Stream.iterate(new long[]{0, 1},
-                      arr -> new long[]{arr[1], arr[0] + arr[1]})
-              .limit(n)
-              .map(arr -> arr[0])
-              .forEach(num -> System.out.print(num + " "));
+                        arr -> new long[]{arr[1], arr[0] + arr[1]})
+                .limit(n)
+                .map(arr -> arr[0])
+                .forEach(num -> System.out.print(num + " "));
     }
 }

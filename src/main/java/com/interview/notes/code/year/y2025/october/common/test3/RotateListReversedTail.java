@@ -9,11 +9,11 @@ public class RotateListReversedTail {
     /**
      * Rotate a list by taking the last k elements, reversing them, and placing them
      * at the front, then append the remaining (first part) unchanged.
-     *
+     * <p>
      * Example: ["a","b","c","d","e","abc"], k=3 -> ["abc","e","d","a","b","c"]
      *
      * @param input original list (may be null)
-     * @param k number of elements from tail to bring to front (can be > size or negative)
+     * @param k     number of elements from tail to bring to front (can be > size or negative)
      * @return new List with transformation applied (null if input is null)
      */
     public static List<String> rotateByReversedTail(List<String> input, int k) {
@@ -43,7 +43,7 @@ public class RotateListReversedTail {
 
         // Build the result by concatenating tail then head. Use streams to follow Java8 style.
         List<String> result = Stream.concat(tail.stream(), head.stream())
-                                    .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         // Return the new transformed list
         return result;
@@ -56,23 +56,23 @@ public class RotateListReversedTail {
 
         // Provided example (this must PASS)
         tests.add(new TC(
-                Arrays.asList("a","b","c","d","e","abc"),           // input
+                Arrays.asList("a", "b", "c", "d", "e", "abc"),           // input
                 3,                                                  // k
-                Arrays.asList("abc","e","d","a","b","c")            // expected (as you gave)
+                Arrays.asList("abc", "e", "d", "a", "b", "c")            // expected (as you gave)
         ));
 
         // k = 0 (no change) test
         tests.add(new TC(
-                Arrays.asList("x","y","z"),
+                Arrays.asList("x", "y", "z"),
                 0,
-                Arrays.asList("x","y","z")
+                Arrays.asList("x", "y", "z")
         ));
 
         // k larger than size (should normalize using modulo)
         tests.add(new TC(
-                Arrays.asList("1","2","3","4"),
+                Arrays.asList("1", "2", "3", "4"),
                 6, // 6 % 4 = 2 -> last 2 reversed moved to front: ["4","3","1","2"]
-                Arrays.asList("4","3","1","2")
+                Arrays.asList("4", "3", "1", "2")
         ));
 
         // Single element and negative k (negative handled by normalization)
@@ -122,7 +122,7 @@ public class RotateListReversedTail {
         // Generate deterministic data for large test to make correctness checks reproducible
         List<String> bigList = new ArrayList<>(LARGE_N);            // pre-size list for performance
         for (int i = 0; i < LARGE_N; i++) {                        // populate
-            bigList.add("s" + String.format("%05d", i).substring(0, Math.min(STRING_LEN - 1, 5)) + i%10);
+            bigList.add("s" + String.format("%05d", i).substring(0, Math.min(STRING_LEN - 1, 5)) + i % 10);
         }
 
         long start = System.currentTimeMillis();                    // start timing
@@ -165,6 +165,6 @@ public class RotateListReversedTail {
     }
 
     // Simple test-case holder
-        private record TC(List<String> input, int k, List<String> expected) {
+    private record TC(List<String> input, int k, List<String> expected) {
     }
 }

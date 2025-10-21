@@ -5,9 +5,9 @@ public class MatrixWordSearch {
     public static void main(String[] args) {
         // Test matrix from the problem
         char[][] matrix = {
-            {'b', 'a', 'b'},
-            {'c', 'l', 'x'},
-            {'d', 'l', 'b'}
+                {'b', 'a', 'b'},
+                {'c', 'l', 'x'},
+                {'d', 'l', 'b'}
         };
 
         // Test cases
@@ -20,8 +20,8 @@ public class MatrixWordSearch {
     // Method to run each test case
     private static void runTest(char[][] matrix, String word, String testName) {
         boolean result = findWord(matrix, word);
-        System.out.println(testName + " - Word: '" + word + "' - " + 
-                         (result ? "FOUND" : "NOT FOUND"));
+        System.out.println(testName + " - Word: '" + word + "' - " +
+                (result ? "FOUND" : "NOT FOUND"));
     }
 
     // Main method to find word in matrix
@@ -47,18 +47,18 @@ public class MatrixWordSearch {
     }
 
     // Recursive method to search word from a given position
-    private static boolean searchFromPosition(char[][] matrix, int row, int col, 
-                                           String word, int currentChar, 
-                                           boolean[][] visited) {
+    private static boolean searchFromPosition(char[][] matrix, int row, int col,
+                                              String word, int currentChar,
+                                              boolean[][] visited) {
         // If we've matched all characters, word is found
         if (currentChar == word.length()) {
             return true;
         }
 
         // Check if position is valid and character matches
-        if (!isValidPosition(matrix, row, col) || 
-            visited[row][col] || 
-            matrix[row][col] != word.charAt(currentChar)) {
+        if (!isValidPosition(matrix, row, col) ||
+                visited[row][col] ||
+                matrix[row][col] != word.charAt(currentChar)) {
             return false;
         }
 
@@ -67,19 +67,19 @@ public class MatrixWordSearch {
 
         // Check all four directions
         // Up
-        if (searchFromPosition(matrix, row-1, col, word, currentChar+1, visited)) {
+        if (searchFromPosition(matrix, row - 1, col, word, currentChar + 1, visited)) {
             return true;
         }
         // Right
-        if (searchFromPosition(matrix, row, col+1, word, currentChar+1, visited)) {
+        if (searchFromPosition(matrix, row, col + 1, word, currentChar + 1, visited)) {
             return true;
         }
         // Down
-        if (searchFromPosition(matrix, row+1, col, word, currentChar+1, visited)) {
+        if (searchFromPosition(matrix, row + 1, col, word, currentChar + 1, visited)) {
             return true;
         }
         // Left
-        if (searchFromPosition(matrix, row, col-1, word, currentChar+1, visited)) {
+        if (searchFromPosition(matrix, row, col - 1, word, currentChar + 1, visited)) {
             return true;
         }
 
@@ -90,7 +90,7 @@ public class MatrixWordSearch {
 
     // Helper method to check if position is valid
     private static boolean isValidPosition(char[][] matrix, int row, int col) {
-        return row >= 0 && row < matrix.length && 
-               col >= 0 && col < matrix[0].length;
+        return row >= 0 && row < matrix.length &&
+                col >= 0 && col < matrix[0].length;
     }
 }

@@ -67,15 +67,15 @@ class NotificationProvider {
     public static Subscriber[] GetSubscribers(String changeType) {
         // simple hard-coded examples to make tests deterministic
         if ("small-test".equals(changeType)) { // used in small deterministic tests
-            return new Subscriber[] {
-                new Subscriber("https://endpoint-a.example.com", "A"),
-                new Subscriber("https://endpoint-b.example.com", "B")
+            return new Subscriber[]{
+                    new Subscriber("https://endpoint-a.example.com", "A"),
+                    new Subscriber("https://endpoint-b.example.com", "B")
             };
         } else if ("mixed-test".equals(changeType)) { // second deterministic set
-            return new Subscriber[] {
-                new Subscriber("https://a.example.com", "A"),
-                new Subscriber("https://b.example.com", "B"),
-                new Subscriber("https://c.example.com", "C"),
+            return new Subscriber[]{
+                    new Subscriber("https://a.example.com", "A"),
+                    new Subscriber("https://b.example.com", "B"),
+                    new Subscriber("https://c.example.com", "C"),
             };
         } else {
             // for large tests, we'll generate externally; return empty
@@ -188,7 +188,9 @@ public class Main {
         // -----------------------
         config.setRollout("small-test", 100); // set changeType small-test to 100% modern
         AzureResource resource1 = new AzureResource("Microsoft.Compute/virtualMachines", "vm1", "sub-1"); // sample resource
-        client.legacyCount.set(0); client.modernCount.set(0); client.deliveryLog.clear(); // reset counters
+        client.legacyCount.set(0);
+        client.modernCount.set(0);
+        client.deliveryLog.clear(); // reset counters
         nds.deliver("small-test", resource1, null); // deliver using provider for small-test
         boolean test1 = (client.modernCount.get() == 2 && client.legacyCount.get() == 0); // expect both modern
         printResult("Test1-100pct-modern", test1); // print PASS/FAIL
@@ -197,7 +199,9 @@ public class Main {
         // Test 2: 0% modern deterministic small test
         // -----------------------
         config.setRollout("small-test", 0); // set to 0% modern -> all legacy
-        client.legacyCount.set(0); client.modernCount.set(0); client.deliveryLog.clear(); // reset counters
+        client.legacyCount.set(0);
+        client.modernCount.set(0);
+        client.deliveryLog.clear(); // reset counters
         nds.deliver("small-test", resource1, null); // same subscribers as provider
         boolean test2 = (client.legacyCount.get() == 2 && client.modernCount.get() == 0); // expect both legacy
         printResult("Test2-0pct-modern", test2); // print PASS/FAIL
@@ -206,7 +210,9 @@ public class Main {
         // Test 3: deterministic modern mapping for an explicit set
         // -----------------------
         config.setRollout("mixed-test", 50); // set to 50%
-        client.legacyCount.set(0); client.modernCount.set(0); client.deliveryLog.clear(); // reset counters
+        client.legacyCount.set(0);
+        client.modernCount.set(0);
+        client.deliveryLog.clear(); // reset counters
         AzureResource resource2 = new AzureResource("Microsoft.Storage/storageAccounts", "sto1", "sub-2"); // resource
         // Use explicit subscribers from provider (mixed-test returns 3 items)
         nds.deliver("mixed-test", resource2, null); // route deliveries
@@ -220,7 +226,9 @@ public class Main {
         final int total = 20000; // number of subscribers for load test
         final int targetPercent = 30; // configured modern rollout percent to validate
         config.setRollout("large-test", targetPercent); // set config
-        client.legacyCount.set(0); client.modernCount.set(0); client.deliveryLog.clear(); // reset counters
+        client.legacyCount.set(0);
+        client.modernCount.set(0);
+        client.deliveryLog.clear(); // reset counters
         Subscriber[] bigSet = generateSubscribers(total); // generate many subscribers deterministically
         AzureResource resource3 = new AzureResource("Microsoft.Compute/virtualMachines", "vm-large", "sub-large"); // one resource
         nds.deliver("large-test", resource3, bigSet); // deliver to all generated subscribers
@@ -236,7 +244,8 @@ public class Main {
         // Test 5: Rollback test (set percent back to 0)
         // -----------------------
         config.setRollout("large-test", 0); // rollback to 0
-        client.legacyCount.set(0); client.modernCount.set(0); // reset counters
+        client.legacyCount.set(0);
+        client.modernCount.set(0); // reset counters
         nds.deliver("large-test", resource3, bigSet); // deliver again
         boolean test5 = (client.modernCount.get() == 0 && client.legacyCount.get() == total); // all legacy expected
         printResult("Test5-rollback-to-0", test5); // PASS/FAIL

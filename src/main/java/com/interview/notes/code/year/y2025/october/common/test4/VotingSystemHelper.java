@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
  * ------------------------
  * Simulates a voting system where multiple people vote for candidates.
  * The class supports:
- *   1. Finding the top winner(s)
- *   2. Finding the k-th winner(s)
- *   3. Finding common candidates voted by two persons
- *   4. Caching results for very fast repeated queries
+ * 1. Finding the top winner(s)
+ * 2. Finding the k-th winner(s)
+ * 3. Finding common candidates voted by two persons
+ * 4. Caching results for very fast repeated queries
  */
 public class VotingSystemHelper {
 
@@ -25,6 +25,7 @@ public class VotingSystemHelper {
     private Map<String, Long> voteCountCache; // candidate → number of votes
     private List<Map.Entry<String, Long>> sortedCandidatesCache; // list sorted by vote count
     private List<String> winnerCache; // list of top winner(s)
+
     // Constructor: initialize the object with the list of votes
     public VotingSystemHelper(List<Vote> votes) {
         this.votes = votes;

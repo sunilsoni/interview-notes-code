@@ -196,7 +196,7 @@ public class LRUCacheWithTests { // main class containing LRU cache implementati
      * @param action       action that performs the test and asserts behavior
      * @param expectedPass expected pass/fail outcome (true => expected to pass)
      */ // simple test case container
-        record TestCase(String name, Runnable action, boolean expectedPass) { // holds test metadata and expected results
+    record TestCase(String name, Runnable action, boolean expectedPass) { // holds test metadata and expected results
         // constructor
         // assign name
         // assign action

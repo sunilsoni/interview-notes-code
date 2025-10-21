@@ -40,7 +40,10 @@ public class KWayMerge {
             out.flush();
         } finally {
             for (BufferedReader r : readers) {
-                if (r != null) try { r.close(); } catch (IOException ignored) {}
+                if (r != null) try {
+                    r.close();
+                } catch (IOException ignored) {
+                }
             }
         }
     }
@@ -56,7 +59,14 @@ public class KWayMerge {
     static class Item implements Comparable<Item> {
         int value;
         int streamId;
-        Item(int value, int streamId) { this.value = value; this.streamId = streamId; }
-        public int compareTo(Item o) { return Integer.compare(this.value, o.value); }
+
+        Item(int value, int streamId) {
+            this.value = value;
+            this.streamId = streamId;
+        }
+
+        public int compareTo(Item o) {
+            return Integer.compare(this.value, o.value);
+        }
     }
 }

@@ -21,11 +21,11 @@ public class TideLevels {
 
     public static void main(String[] args) {
         List<int[]> tests = Arrays.asList(
-            new int[]{130, 140, 120, 150, 110, 160},
-            new int[]{100, 160, 150, 130, 140},
-            new int[]{200, 190, 180, 170, 160},
-            new int[]{10, 20, 30, 40, 50},
-            new int[]{50, 40, 30, 20, 10}
+                new int[]{130, 140, 120, 150, 110, 160},
+                new int[]{100, 160, 150, 130, 140},
+                new int[]{200, 190, 180, 170, 160},
+                new int[]{10, 20, 30, 40, 50},
+                new int[]{50, 40, 30, 20, 10}
         );
 
         List<Integer> expected = Arrays.asList(1, 3, 5, 1, 5);

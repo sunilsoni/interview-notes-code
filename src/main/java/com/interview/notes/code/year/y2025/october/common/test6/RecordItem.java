@@ -11,7 +11,12 @@ public class RecordItem {
         this.type = type;
     }
 
-    public String getName() { return name; }
-    public void setRecordNumber(int num) { this.recordNumber = num; }
+    public String getName() {
+        return name;
+    }
+
+    public void setRecordNumber(int num) {
+        this.recordNumber = num;
+    }
 }
 

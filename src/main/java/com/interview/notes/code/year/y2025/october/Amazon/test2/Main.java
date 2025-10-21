@@ -23,8 +23,13 @@ public class Main {
         long base = 0, z = 0, o = 0;
         for (int i = 0; i < n; i++) {
             char c = s.charAt(i);
-            if (c == '0') { base += (long) y * o; z++; }
-            else if (c == '1') { base += (long) x * z; o++; }
+            if (c == '0') {
+                base += (long) y * o;
+                z++;
+            } else if (c == '1') {
+                base += (long) x * z;
+                o++;
+            }
         }
 
         long[] prefC0 = new long[n + 1], prefC1 = new long[n + 1];
@@ -68,8 +73,13 @@ public class Main {
             for (int i = 0; i < m; i++) a[qs.get(i)] = ((mask >> i) & 1) == 1 ? '1' : '0';
             long zeros = 0, ones = 0, cost = 0;
             for (char c : a) {
-                if (c == '0') { cost += (long) y * ones; zeros++; }
-                else { cost += (long) x * zeros; ones++; }
+                if (c == '0') {
+                    cost += (long) y * ones;
+                    zeros++;
+                } else {
+                    cost += (long) x * zeros;
+                    ones++;
+                }
             }
             best = Math.min(best, cost);
         }
@@ -105,7 +115,10 @@ public class Main {
             int x = 1 + r.nextInt(50), y = 1 + r.nextInt(50);
             long fast = getMinErrors(s, x, y);
             long brute = brute(s, x, y);
-            if (fast != brute) { ok = false; break; }
+            if (fast != brute) {
+                ok = false;
+                break;
+            }
         }
         System.out.println(ok ? "PASS" : "FAIL");
 

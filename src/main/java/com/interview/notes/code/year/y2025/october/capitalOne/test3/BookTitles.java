@@ -26,12 +26,12 @@ public class BookTitles {
 
     public static void main(String[] args) {
         List<String[]> tests = Arrays.asList(
-            new String[]{"wall", "wallpaper", "science", "wallet", "philosophy", "phil", "book"},
-            new String[]{"abc", "a", "a", "b", "ab", "ac"},
-            new String[]{"a", "a"},
-            new String[]{"a", "ab", "abc", "b"},
-            new String[]{"z", "y", "x"},
-            new String[]{"aa", "aa", "aa", "a", "aaa"}
+                new String[]{"wall", "wallpaper", "science", "wallet", "philosophy", "phil", "book"},
+                new String[]{"abc", "a", "a", "b", "ab", "ac"},
+                new String[]{"a", "a"},
+                new String[]{"a", "ab", "abc", "b"},
+                new String[]{"z", "y", "x"},
+                new String[]{"aa", "aa", "aa", "a", "aaa"}
         );
 
         List<Long> expected = Arrays.asList(3L, 8L, 1L, 3L, 0L, 9L);

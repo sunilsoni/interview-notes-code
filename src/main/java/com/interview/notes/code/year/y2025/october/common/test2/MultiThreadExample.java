@@ -15,19 +15,31 @@ public class MultiThreadExample {
         t5.start();
 
         try {
-            t1.join(); t2.join(); t3.join(); t4.join(); t5.join();
-        } catch (InterruptedException e) {}
+            t1.join();
+            t2.join();
+            t3.join();
+            t4.join();
+            t5.join();
+        } catch (InterruptedException e) {
+        }
 
         System.out.println("All threads finished!");
     }
 
     static class Worker extends Thread {
         private final int id;
-        Worker(int id) { this.id = id; }
+
+        Worker(int id) {
+            this.id = id;
+        }
+
         public void run() {
             for (int i = 1; i <= 3; i++) {
                 System.out.println("Thread " + id + " - iteration " + i);
-                try { Thread.sleep(500); } catch (InterruptedException e) {}
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                }
             }
         }
     }

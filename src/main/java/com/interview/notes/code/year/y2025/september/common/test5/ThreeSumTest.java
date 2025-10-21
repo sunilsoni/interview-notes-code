@@ -11,7 +11,7 @@ public class ThreeSumTest {
 
         List<List<Integer>> result = new ArrayList<>(); // will collect all valid triplets
         int n = nums.length; // store length to avoid recomputing
-        
+
         // iterate through each number as the first element of the triplet
         for (int i = 0; i < n - 2; i++) {
             // skip duplicate first elements

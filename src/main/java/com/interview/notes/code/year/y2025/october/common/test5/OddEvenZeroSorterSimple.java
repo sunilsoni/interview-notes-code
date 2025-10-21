@@ -76,19 +76,19 @@ public class OddEvenZeroSorterSimple {
     // ---------------- TESTING ----------------
     public static void main(String[] args) {
         int[][] inputs = {
-            {4,9,0,2,0,7,0,0,3,8},
-            {0,0,0},
-            {1,3,5,7},
-            {2,4,6,8},
-            {0,1,0,2,0,3,0,4,0,5}
+                {4, 9, 0, 2, 0, 7, 0, 0, 3, 8},
+                {0, 0, 0},
+                {1, 3, 5, 7},
+                {2, 4, 6, 8},
+                {0, 1, 0, 2, 0, 3, 0, 4, 0, 5}
         };
 
         int[][] expected = {
-            {3,7,9,2,4,8,0,0,0,0},
-            {0,0,0},
-            {1,3,5,7},
-            {2,4,6,8},
-            {1,3,5,2,4,0,0,0,0,0}
+                {3, 7, 9, 2, 4, 8, 0, 0, 0, 0},
+                {0, 0, 0},
+                {1, 3, 5, 7},
+                {2, 4, 6, 8},
+                {1, 3, 5, 2, 4, 0, 0, 0, 0, 0}
         };
 
         for (int i = 0; i < inputs.length; i++) {
@@ -101,7 +101,7 @@ public class OddEvenZeroSorterSimple {
         // Large test
         int[] large = new int[100000];
         for (int i = 0; i < large.length; i++)
-            large[i] = (int)(Math.random() * 1000 - 500);
+            large[i] = (int) (Math.random() * 1000 - 500);
         long start = System.currentTimeMillis();
         arrange(large);
         long end = System.currentTimeMillis();

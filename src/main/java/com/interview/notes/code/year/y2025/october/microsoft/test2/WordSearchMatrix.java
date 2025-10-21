@@ -1,14 +1,14 @@
 package com.interview.notes.code.year.y2025.october.microsoft.test2;
 
 public class WordSearchMatrix {
-    
+
     // Main method to test our word search implementation
     public static void main(String[] args) {
         // Test Case 1: Basic test with the given example
         char[][] matrix1 = {
-            {'b', 'a', 'b'},
-            {'c', 'l', 'x'},
-            {'d', 'l', 'b'}
+                {'b', 'a', 'b'},
+                {'c', 'l', 'x'},
+                {'d', 'l', 'b'}
         };
         testCase(matrix1, "ball", "Test Case 1 - Should find 'ball'");
 
@@ -49,8 +49,8 @@ public class WordSearchMatrix {
     }
 
     // Recursive method to search word from a specific cell
-    private static boolean searchFromCell(char[][] matrix, int row, int col, 
-                                        String word, int index, boolean[][] visited) {
+    private static boolean searchFromCell(char[][] matrix, int row, int col,
+                                          String word, int index, boolean[][] visited) {
         // Base case: if we've matched all characters
         if (index == word.length()) {
             return true;
@@ -58,7 +58,7 @@ public class WordSearchMatrix {
 
         // Check if current position is valid
         if (row < 0 || row >= matrix.length || col < 0 || col >= matrix[0].length ||
-            visited[row][col] || matrix[row][col] != word.charAt(index)) {
+                visited[row][col] || matrix[row][col] != word.charAt(index)) {
             return false;
         }
 
@@ -73,7 +73,7 @@ public class WordSearchMatrix {
         for (int dir = 0; dir < 4; dir++) {
             int newRow = row + dx[dir];
             int newCol = col + dy[dir];
-            
+
             if (searchFromCell(matrix, newRow, newCol, word, index + 1, visited)) {
                 return true;
             }
@@ -96,7 +96,7 @@ public class WordSearchMatrix {
         // Fill matrix with random characters
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                matrix[i][j] = (char)('a' + (Math.random() * 26));
+                matrix[i][j] = (char) ('a' + (Math.random() * 26));
             }
         }
         // Ensure the word "ball" exists in the matrix

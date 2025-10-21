@@ -8,7 +8,10 @@ public class DeadlockFixedExample {
         Thread t1 = new Thread(() -> {
             synchronized (resource1) {
                 System.out.println("Thread 1 locked Resource 1");
-                try { Thread.sleep(100); } catch (InterruptedException e) {}
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                }
                 synchronized (resource2) {
                     System.out.println("Thread 1 locked Resource 2");
                 }
@@ -18,7 +21,10 @@ public class DeadlockFixedExample {
         Thread t2 = new Thread(() -> {
             synchronized (resource1) { // same order as t1
                 System.out.println("Thread 2 locked Resource 1");
-                try { Thread.sleep(100); } catch (InterruptedException e) {}
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                }
                 synchronized (resource2) {
                     System.out.println("Thread 2 locked Resource 2");
                 }

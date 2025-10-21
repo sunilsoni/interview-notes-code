@@ -49,7 +49,7 @@ public class CustomMergeSort {
     private static void mergeSort(int[] arr, int left, int right) {
         if (left < right) {
             int mid = left + (right - left) / 2;
-            
+
             // Sort first and second halves
             mergeSort(arr, left, mid);
             mergeSort(arr, mid + 1, right);
@@ -77,7 +77,7 @@ public class CustomMergeSort {
         // Merge the temp arrays
         int i = 0, j = 0;
         int k = left;
-        
+
         while (i < n1 && j < n2) {
             if (L[i] <= R[j]) {
                 arr[k] = L[i];
@@ -107,9 +107,9 @@ public class CustomMergeSort {
     public static void main(String[] args) {
         int[] arr = {4, 9, 0, 2, 0, 7, 0, 0, 3, 8};
         System.out.println("Original array: " + Arrays.toString(arr));
-        
+
         sortArray(arr);
-        
+
         System.out.println("Sorted array: " + Arrays.toString(arr));
     }
 }

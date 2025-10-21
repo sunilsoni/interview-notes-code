@@ -1,7 +1,11 @@
 package com.interview.notes.code.year.y2025.september.assesment.test2;
 
-import java.util.*; // utilities for collections and arrays
-import java.util.stream.*; // stream API for test data generation
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MoveZeroesWithTests { // main class encapsulating solution and tests
 
@@ -15,18 +19,6 @@ public class MoveZeroesWithTests { // main class encapsulating solution and test
         }
         for (int i = lastNonZero; i < n; i++) { // fill remaining positions with zeros
             nums[i] = 0; // set zero
-        }
-    }
-
-    static class TestCase { // simple test case holder
-        final String name; // test name
-        final int[] input; // input array (will be copied for in-place test)
-        final int[] expected; // expected result array after operation
-
-        TestCase(String name, int[] input, int[] expected) { // constructor
-            this.name = name; // assign name
-            this.input = input; // assign input
-            this.expected = expected; // assign expected
         }
     }
 
@@ -74,7 +66,7 @@ public class MoveZeroesWithTests { // main class encapsulating solution and test
 
         results.forEach(System.out::println); // print each result
         long passCount = results.stream().filter(s -> s.contains("PASS")).count(); // count passes
-        System.out.println(String.format("Summary: Passed %d out of %d tests", passCount, tests.size())); // print summary
+        System.out.printf("Summary: Passed %d out of %d tests%n", passCount, tests.size()); // print summary
     }
 
     private static int[] computeExpectedMoveZeroes(int[] input) { // helper to compute expected array without modifying original
@@ -87,5 +79,17 @@ public class MoveZeroesWithTests { // main class encapsulating solution and test
             }
         }
         return expected; // return expected result (rest are zeros by default)
+    }
+
+    /**
+     * @param name     test name
+     * @param input    input array (will be copied for in-place test)
+     * @param expected expected result array after operation
+     */
+    record TestCase(String name, int[] input, int[] expected) { // simple test case holder
+        // constructor
+        // assign name
+        // assign input
+        // assign expected
     }
 }

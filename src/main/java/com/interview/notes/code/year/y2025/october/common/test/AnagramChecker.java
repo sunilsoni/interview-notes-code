@@ -195,7 +195,7 @@ public class AnagramChecker {
      * @param b        second input string
      * @param expected expected outcome
      */ // Helper class to hold a test case: two inputs and the expected boolean.
-        private record TestCase(String a, String b, boolean expected) {
+    private record TestCase(String a, String b, boolean expected) {
         // assign first string
         // assign second string
         // assign expected result

@@ -44,8 +44,14 @@ public class Solution {
         }
 
         // Add remaining tails
-        while (i >= 0 && i < n) { sumA += A.get(i); i += step; }
-        while (j >= 0 && j < m) { sumB += B.get(j); j += step; }
+        while (i >= 0 && i < n) {
+            sumA += A.get(i);
+            i += step;
+        }
+        while (j >= 0 && j < m) {
+            sumB += B.get(j);
+            j += step;
+        }
 
         result += Math.max(sumA, sumB);
 

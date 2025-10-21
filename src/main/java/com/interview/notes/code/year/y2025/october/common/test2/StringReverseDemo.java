@@ -26,7 +26,7 @@ public class StringReverseDemo {
     public static String reverseString(String s) {
         // Convert string to char array as strings are immutable in Java
         char[] charArray = s.toCharArray();
-        
+
         // Initialize two pointers
         int left = 0;                    // Points to start of string
         int right = charArray.length - 1; // Points to end of string
@@ -52,7 +52,7 @@ public class StringReverseDemo {
         String reversed = reverseString(input);
         System.out.println("Original: '" + input + "'");
         System.out.println("Reversed: '" + reversed + "'");
-        
+
         // Verify by manually reversing to check
         StringBuilder sb = new StringBuilder(input);
         String expected = sb.reverse().toString();

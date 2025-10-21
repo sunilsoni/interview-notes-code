@@ -30,31 +30,31 @@ public class VotingSystemHelper {
         List<String> expected1 = List.of("Candidate2");
         List<String> result1 = helper.findWinner();
         System.out.println("Test 1 - findWinner => " +
-            (result1.equals(expected1) ? "PASS" : "FAIL | Expected: " + expected1 + ", Got: " + result1));
+                (result1.equals(expected1) ? "PASS" : "FAIL | Expected: " + expected1 + ", Got: " + result1));
 
         // Test 2: findKthWinner(1)
         List<String> expected2 = List.of("Candidate2");
         List<String> result2 = helper.findKthWinner(1);
         System.out.println("Test 2 - findKthWinner(1) => " +
-            (result2.equals(expected2) ? "PASS" : "FAIL | Expected: " + expected2 + ", Got: " + result2));
+                (result2.equals(expected2) ? "PASS" : "FAIL | Expected: " + expected2 + ", Got: " + result2));
 
         // Test 3: findKthWinner(2)
         List<String> expected3 = List.of("Candidate1");
         List<String> result3 = helper.findKthWinner(2);
         System.out.println("Test 3 - findKthWinner(2) => " +
-            (result3.equals(expected3) ? "PASS" : "FAIL | Expected: " + expected3 + ", Got: " + result3));
+                (result3.equals(expected3) ? "PASS" : "FAIL | Expected: " + expected3 + ", Got: " + result3));
 
         // Test 4: findKthWinner(3)
         List<String> expected4 = List.of("Candidate3");
         List<String> result4 = helper.findKthWinner(3);
         System.out.println("Test 4 - findKthWinner(3) => " +
-            (result4.equals(expected4) ? "PASS" : "FAIL | Expected: " + expected4 + ", Got: " + result4));
+                (result4.equals(expected4) ? "PASS" : "FAIL | Expected: " + expected4 + ", Got: " + result4));
 
         // Test 5: findCommonVotesBetweenPersons
         List<String> expected5 = List.of("Candidate1");
         List<String> result5 = helper.findCommonVotesBetweenPersons("Person1", "Person2");
         System.out.println("Test 5 - findCommonVotesBetweenPersons => " +
-            (result5.equals(expected5) ? "PASS" : "FAIL | Expected: " + expected5 + ", Got: " + result5));
+                (result5.equals(expected5) ? "PASS" : "FAIL | Expected: " + expected5 + ", Got: " + result5));
 
         // Large Data Performance Test
         List<Vote> largeVotes = new ArrayList<>();

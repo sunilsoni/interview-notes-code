@@ -6,8 +6,11 @@ import java.util.stream.IntStream;
 
 interface InMemoryDB {
     void set(int timestamp, String key, String field, int value);
+
     boolean compareAndSet(int timestamp, String key, String field, int expectedValue, int newValue);
+
     boolean compareAndDelete(int timestamp, String key, String field, int expectedValue);
+
     Optional<Integer> get(int timestamp, String key, String field);
 }
 
@@ -72,8 +75,13 @@ public class InMemoryDBMain {
     private static int failed = 0;
 
     private static void assertTrue(String name, boolean cond) {
-        if (cond) { passed++; System.out.println("PASS: " + name); }
-        else { failed++; System.out.println("FAIL: " + name); }
+        if (cond) {
+            passed++;
+            System.out.println("PASS: " + name);
+        } else {
+            failed++;
+            System.out.println("FAIL: " + name);
+        }
     }
 
     private static void assertEquals(String name, Optional<Integer> expected, Optional<Integer> actual) {
