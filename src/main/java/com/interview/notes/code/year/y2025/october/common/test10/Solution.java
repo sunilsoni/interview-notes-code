@@ -10,11 +10,11 @@ public class Solution {
     // main method runs test cases and prints PASS/FAIL, plus large-data tests and timings
     public static void main(String[] args) {         // program entry point
         // Example tests from the problem statement (expected results provided)
-        Integer[] ex1 = new Integer[] {3, 4, 5};     // test 1 input array
-        Integer[] ex2 = new Integer[] {5, 1, 3, 2, 4}; // test 2 input array
-        Integer[] ex3 = new Integer[] {3, 4, 6};     // test 3 input array
-        Integer[] ex4 = new Integer[] {5, 3, 7, 5, 6, 11}; // test 4 input array
-        Integer[] ex5 = new Integer[] {1, 6, 10, 9, 7, 8}; // test 5 input array
+        Integer[] ex1 = new Integer[]{3, 4, 5};     // test 1 input array
+        Integer[] ex2 = new Integer[]{5, 1, 3, 2, 4}; // test 2 input array
+        Integer[] ex3 = new Integer[]{3, 4, 6};     // test 3 input array
+        Integer[] ex4 = new Integer[]{5, 3, 7, 5, 6, 11}; // test 4 input array
+        Integer[] ex5 = new Integer[]{1, 6, 10, 9, 7, 8}; // test 5 input array
 
         // run each test and print PASS/FAIL
         runTest(Arrays.asList(ex1), true, "Example 1 [3,4,5]");   // expected true
@@ -26,12 +26,12 @@ public class Solution {
         // additional edge case tests
         runTest(Collections.emptyList(), false, "Edge: empty");   // empty -> false
         runTest(List.of(3), false, "Edge: single element"); // single -> false
-        runTest(Arrays.asList(3,4), false, "Edge: two elements"); // two -> false
+        runTest(Arrays.asList(3, 4), false, "Edge: two elements"); // two -> false
         runTest(Arrays.asList(0, 3, 4, 5), true, "Edge: contains zero (ignored) & triple present"); // zero ignored, triple present
         runTest(Arrays.asList(null, 3, 4, 5), true, "Edge: null in collection (ignored)");
 
         // test with duplicate values where dedup should not break correctness
-        runTest(Arrays.asList(3,3,4,4,5,5), true, "Duplicates: [3,3,4,4,5,5]");
+        runTest(Arrays.asList(3, 3, 4, 4, 5, 5), true, "Duplicates: [3,3,4,4,5,5]");
 
         // Large-data test 1: create 2000 random numbers WITHOUT a guaranteed triple (we'll try to avoid common triples)
         Random rnd = new Random(42);                 // deterministic random for reproducible test

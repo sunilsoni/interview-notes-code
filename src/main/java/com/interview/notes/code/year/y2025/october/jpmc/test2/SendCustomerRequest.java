@@ -23,9 +23,9 @@ public class SendCustomerRequest {
 
     // 🔐 External API endpoints (should ideally come from environment or config)
     private static final Map<String, String> API_SERVERS = Map.of(
-        "LOCAL", "http://127.0.0.1",
-        "DEV", "http://cust-api-dev.internal.mycorp.com",
-        "PROD", "http://cust-api.internal.mycorp.com"
+            "LOCAL", "http://127.0.0.1",
+            "DEV", "http://cust-api-dev.internal.mycorp.com",
+            "PROD", "http://cust-api.internal.mycorp.com"
     );
 
     // ✅ Thread-safe list (replaces LinkedList for concurrent access)
@@ -36,7 +36,7 @@ public class SendCustomerRequest {
 
     private static final String apiUser = System.getenv().getOrDefault("API_USR", "CX00001");
     private static final String apiPass = System.getenv().getOrDefault("API_PAS", "secret123");
-    private static final String apiEnv  = System.getenv().getOrDefault("API_ENV", "LOCAL");
+    private static final String apiEnv = System.getenv().getOrDefault("API_ENV", "LOCAL");
 
     // --- Instance fields ---
     private final String productKey;
@@ -163,7 +163,7 @@ public class SendCustomerRequest {
             System.out.println("Validating request: " + requestKey);
 
             ApiResponse customerResp = callUrl("/api/customer/check?code=" + customerKey);
-            ApiResponse productResp  = callUrl("/api/product/lookup?code=" + productKey);
+            ApiResponse productResp = callUrl("/api/product/lookup?code=" + productKey);
 
             // Treat any 2xx as success; 4xx/5xx as failure
             return isSuccess(customerResp.statusCode) && isSuccess(productResp.statusCode);
@@ -178,8 +178,8 @@ public class SendCustomerRequest {
     }
 
     // =======================
-        // ✅ Simple Response Object
-        // =======================
-        private record ApiResponse(int statusCode, Document body) {
+    // ✅ Simple Response Object
+    // =======================
+    private record ApiResponse(int statusCode, Document body) {
     }
 }

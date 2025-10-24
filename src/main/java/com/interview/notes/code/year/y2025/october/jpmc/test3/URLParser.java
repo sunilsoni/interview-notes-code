@@ -24,18 +24,18 @@ public class URLParser {
 
     public static void main(String[] args) {
         List<String> inputs = Arrays.asList(
-            "https://example.com/path?query=123",
-            "ftp://ftp.example.org/files",
-            "http://google.com",
-            "https://openai.com/docs?lang=en&v=5",
-            "invalidurl"
+                "https://example.com/path?query=123",
+                "ftp://ftp.example.org/files",
+                "http://google.com",
+                "https://openai.com/docs?lang=en&v=5",
+                "invalidurl"
         );
         List<String> expected = Arrays.asList(
-            "https,example.com,query=123",
-            "ftp,ftp.example.org,",
-            "http,google.com,",
-            "https,openai.com,lang=en&v=5",
-            ",invalidurl,"
+                "https,example.com,query=123",
+                "ftp,ftp.example.org,",
+                "http,google.com,",
+                "https,openai.com,lang=en&v=5",
+                ",invalidurl,"
         );
         IntStream.range(0, inputs.size()).forEach(i -> {
             String result = parseURL(inputs.get(i));

@@ -139,8 +139,8 @@ public class WordBreakTest { // main class containing solution and tests
      * @param dict     dictionary words
      * @param expected expected boolean result
      */ // simple container class for test cases
-        record TestCase(String name, String s, List<String> dict,
-                        boolean expected) { // holds input, dictionary, expected result and a name
+    record TestCase(String name, String s, List<String> dict,
+                    boolean expected) { // holds input, dictionary, expected result and a name
         // constructor
         // assign test name
         // assign input string

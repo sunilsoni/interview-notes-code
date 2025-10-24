@@ -19,7 +19,7 @@ public class Main {
                     } else {
                         // first char upper, rest lower
                         return word.substring(0, 1).toUpperCase() +
-                               word.substring(1).toLowerCase();
+                                word.substring(1).toLowerCase();
                     }
                 })
                 .collect(Collectors.joining("")); // combine into one string
@@ -30,11 +30,11 @@ public class Main {
         // ------------------- TESTING SECTION -------------------
 
         List<TestCase> tests = Arrays.asList(
-            new TestCase(Arrays.asList("Camel", "Case", "LOOKS", "like", "ThIs"), "camelCaseLooksLikeThis"),
-            new TestCase(Arrays.asList("HELLO", "world"), "helloWorld"),
-            new TestCase(Arrays.asList("java", "STREAMS", "Api"), "javaStreamsApi"),
-            new TestCase(List.of("One"), "one"),
-            new TestCase(Arrays.asList("a", "b", "C"), "aBC")
+                new TestCase(Arrays.asList("Camel", "Case", "LOOKS", "like", "ThIs"), "camelCaseLooksLikeThis"),
+                new TestCase(Arrays.asList("HELLO", "world"), "helloWorld"),
+                new TestCase(Arrays.asList("java", "STREAMS", "Api"), "javaStreamsApi"),
+                new TestCase(List.of("One"), "one"),
+                new TestCase(Arrays.asList("a", "b", "C"), "aBC")
         );
 
         tests.forEach(t -> {
@@ -61,6 +61,7 @@ public class Main {
     static class TestCase {
         List<String> input;
         String expected;
+
         TestCase(List<String> input, String expected) {
             this.input = input;
             this.expected = expected;

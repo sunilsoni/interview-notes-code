@@ -24,7 +24,7 @@ public class UniqueCharSubstringSum {
 
                 // When we see a character for first time, increase unique count
                 if (freq[c] == 0) uniqueCount++;
-                // When we see it for second time, decrease unique count
+                    // When we see it for second time, decrease unique count
                 else if (freq[c] == 1) uniqueCount--;
 
                 freq[c]++; // update frequency

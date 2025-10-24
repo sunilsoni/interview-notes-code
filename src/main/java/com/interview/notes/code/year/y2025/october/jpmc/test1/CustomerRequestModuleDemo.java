@@ -89,7 +89,7 @@ final class SendCustomerRequestService {
 
         // Compute validity by querying backend via the gateway
         final boolean customerOk = api.isCustomerValid(customerKey);    // Ask API if customer is valid
-        final boolean productOk  = api.findProductPrice(productKey).isPresent(); // Product is valid if it has a price
+        final boolean productOk = api.findProductPrice(productKey).isPresent(); // Product is valid if it has a price
         final boolean valid = customerOk && productOk;                  // Valid only if both checks pass
 
         // Build immutable DTO

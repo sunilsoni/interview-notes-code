@@ -14,9 +14,9 @@ public class Main {
         Set<Integer> seen = new HashSet<>();
         // Stream through array and find first element already seen
         return Arrays.stream(arr)
-                     .filter(n -> !seen.add(n)) // add() returns false if already present
-                     .findFirst()
-                     .orElse(-1); // Return -1 if no duplicate found
+                .filter(n -> !seen.add(n)) // add() returns false if already present
+                .findFirst()
+                .orElse(-1); // Return -1 if no duplicate found
     }
 
     public static void main(String[] args) {
@@ -24,11 +24,11 @@ public class Main {
         // ------------------- TESTING SECTION -------------------
         // Each test case in form of "input", expectedOutput
         List<TestCase> tests = Arrays.asList(
-            new TestCase("5;0,1,2,3,2", 2),
-            new TestCase("6;0,1,2,4,3,4", 4),
-            new TestCase("4;0,1,1,2", 1),
-            new TestCase("3;0,2,2", 2),
-            new TestCase("2;0,0", 0)
+                new TestCase("5;0,1,2,3,2", 2),
+                new TestCase("6;0,1,2,4,3,4", 4),
+                new TestCase("4;0,1,1,2", 1),
+                new TestCase("3;0,2,2", 2),
+                new TestCase("2;0,0", 0)
         );
 
         // Run all test cases
@@ -58,8 +58,8 @@ public class Main {
         String[] parts = input.split(";");
         // Parse numbers
         int[] arr = Arrays.stream(parts[1].split(","))
-                          .mapToInt(Integer::parseInt)
-                          .toArray();
+                .mapToInt(Integer::parseInt)
+                .toArray();
         // Find duplicate using helper
         return findDuplicate(arr);
     }
@@ -68,6 +68,7 @@ public class Main {
     static class TestCase {
         String input;
         int expected;
+
         TestCase(String input, int expected) {
             this.input = input;
             this.expected = expected;
