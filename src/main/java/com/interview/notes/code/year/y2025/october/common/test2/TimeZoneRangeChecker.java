@@ -14,22 +14,22 @@ public class TimeZoneRangeChecker {
             // Parse input CST datetime
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             LocalDateTime localDallasTime = LocalDateTime.parse(inputDateTimeStr, formatter);
-            
+
             // Convert Dallas time to ZonedDateTime
             ZonedDateTime dallasTime = ZonedDateTime.of(localDallasTime, DALLAS_ZONE);
-            
+
             // Convert to Sydney time
             ZonedDateTime sydneyTime = dallasTime.withZoneSameInstant(SYDNEY_ZONE);
 
             // Define Sydney time range (23:30 previous day to 01:00 next day)
             LocalDateTime now = LocalDateTime.now(SYDNEY_ZONE);
             ZonedDateTime startRange = ZonedDateTime.of(
-                now.minusDays(1).withHour(23).withMinute(30).withSecond(0),
-                SYDNEY_ZONE
+                    now.minusDays(1).withHour(23).withMinute(30).withSecond(0),
+                    SYDNEY_ZONE
             );
             ZonedDateTime endRange = ZonedDateTime.of(
-                now.plusDays(1).withHour(1).withMinute(0).withSecond(0),
-                SYDNEY_ZONE
+                    now.plusDays(1).withHour(1).withMinute(0).withSecond(0),
+                    SYDNEY_ZONE
             );
 
             // Check if Sydney time falls within range
@@ -44,17 +44,17 @@ public class TimeZoneRangeChecker {
     }
 
     // Overloaded method for specific date range
-    public static String checkSpecificDateTimeRange(String inputDateTimeStr, 
-                                                  LocalDateTime startSydneyDate, 
-                                                  LocalDateTime endSydneyDate) {
+    public static String checkSpecificDateTimeRange(String inputDateTimeStr,
+                                                    LocalDateTime startSydneyDate,
+                                                    LocalDateTime endSydneyDate) {
         try {
             // Parse input CST datetime
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             LocalDateTime localDallasTime = LocalDateTime.parse(inputDateTimeStr, formatter);
-            
+
             // Convert Dallas time to ZonedDateTime
             ZonedDateTime dallasTime = ZonedDateTime.of(localDallasTime, DALLAS_ZONE);
-            
+
             // Convert to Sydney time
             ZonedDateTime sydneyTime = dallasTime.withZoneSameInstant(SYDNEY_ZONE);
 
@@ -87,13 +87,13 @@ public class TimeZoneRangeChecker {
         LocalDateTime endSydney = LocalDateTime.of(2024, 1, 25, 1, 0);
 
         System.out.println("\nTesting with specific date range:");
-        System.out.println("Dallas time " + dallasTime1 + " (CST): " + 
-            checkSpecificDateTimeRange(dallasTime1, startSydney, endSydney));
+        System.out.println("Dallas time " + dallasTime1 + " (CST): " +
+                checkSpecificDateTimeRange(dallasTime1, startSydney, endSydney));
 
         // Print time conversion example
         ZonedDateTime dallasZdt = ZonedDateTime.of(
-            LocalDateTime.parse(dallasTime1, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
-            DALLAS_ZONE
+                LocalDateTime.parse(dallasTime1, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                DALLAS_ZONE
         );
         ZonedDateTime sydneyZdt = dallasZdt.withZoneSameInstant(SYDNEY_ZONE);
 

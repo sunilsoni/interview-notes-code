@@ -111,16 +111,17 @@ IDE.
 
 - This project uses Google Java Format via the fmt-maven-plugin to keep Java code consistent.
 - To format the code automatically:
-  - Using Maven directly:
-    mvn com.coveo:fmt-maven-plugin:format
-  - Or using the helper script:
-    ./scripts/format.sh
+    - Using Maven directly:
+      mvn com.coveo:fmt-maven-plugin:format
+    - Or using the helper script:
+      ./scripts/format.sh
 - To fail the build if formatting is needed:
   mvn com.coveo:fmt-maven-plugin:check
 
 ## Git: Commit and Push
 
-You can commit and push your changes with the following commands. Make sure you have a GitHub repository created and that your local repo has a remote set.
+You can commit and push your changes with the following commands. Make sure you have a GitHub repository created and
+that your local repo has a remote set.
 
 1) Configure Git (once per machine):
    git config --global user.name "Your Name"
@@ -141,8 +142,11 @@ You can commit and push your changes with the following commands. Make sure you 
    # If your default branch is master, use master instead of main.
 
 Notes:
-- Pushing to GitHub requires that you have permission and are authenticated. For HTTPS, use a Personal Access Token (PAT) as your password if prompted. For SSH, ensure your SSH key is added to your GitHub account.
-- From this automated environment, we cannot directly push to your GitHub without your credentials. Run the above commands locally to push.
+
+- Pushing to GitHub requires that you have permission and are authenticated. For HTTPS, use a Personal Access Token (
+  PAT) as your password if prompted. For SSH, ensure your SSH key is added to your GitHub account.
+- From this automated environment, we cannot directly push to your GitHub without your credentials. Run the above
+  commands locally to push.
 
 ## Coding Guidelines and Conventions
 

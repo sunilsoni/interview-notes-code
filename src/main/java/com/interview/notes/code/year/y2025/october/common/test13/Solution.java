@@ -30,13 +30,13 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(runCase(new int[]{0,4,-1,0,3}, new int[]{0,-2,5,0,3}, 2));
-        System.out.println(runCase(new int[]{2,-2,-3,3}, new int[]{0,0,4,-4}, 1));
-        System.out.println(runCase(new int[]{4,-1,0,3}, new int[]{-2,6,0,4}, 0));
-        System.out.println(runCase(new int[]{3,2,6}, new int[]{4,1,6}, 0));
-        System.out.println(runCase(new int[]{1,4,2,-2,5}, new int[]{7,-2,-2,2,5}, 2));
-        System.out.println(runCase(new int[]{-1,1}, new int[]{-1,1}, 1));
-        System.out.println(runCase(new int[]{1,2}, new int[]{1,2}, 0));
+        System.out.println(runCase(new int[]{0, 4, -1, 0, 3}, new int[]{0, -2, 5, 0, 3}, 2));
+        System.out.println(runCase(new int[]{2, -2, -3, 3}, new int[]{0, 0, 4, -4}, 1));
+        System.out.println(runCase(new int[]{4, -1, 0, 3}, new int[]{-2, 6, 0, 4}, 0));
+        System.out.println(runCase(new int[]{3, 2, 6}, new int[]{4, 1, 6}, 0));
+        System.out.println(runCase(new int[]{1, 4, 2, -2, 5}, new int[]{7, -2, -2, 2, 5}, 2));
+        System.out.println(runCase(new int[]{-1, 1}, new int[]{-1, 1}, 1));
+        System.out.println(runCase(new int[]{1, 2}, new int[]{1, 2}, 0));
 
         Random rnd = new Random(7);
         for (int t = 0; t < 50; t++) {
@@ -53,7 +53,10 @@ public class Solution {
             B[0] += (int) (sa - sb) + shift;
             A[0] += shift;
             sa = Arrays.stream(A).asLongStream().sum();
-            if ((sa & 1L) == 1L) { A[0]++; B[0]++; }
+            if ((sa & 1L) == 1L) {
+                A[0]++;
+                B[0]++;
+            }
             int out1 = new Solution().solution(A, B);
             int out2 = reference(A, B);
             System.out.println("RandomTest Result=" + (out1 == out2 ? "PASS" : "FAIL") + " | Ans=" + out1);
@@ -71,7 +74,10 @@ public class Solution {
         long sb = Arrays.stream(B).asLongStream().sum();
         B[0] += (int) (sa - sb);
         sa = Arrays.stream(A).asLongStream().sum();
-        if ((sa & 1L) == 1L) { A[0]++; B[0]++; }
+        if ((sa & 1L) == 1L) {
+            A[0]++;
+            B[0]++;
+        }
         long t1 = System.nanoTime();
         int outFast = new Solution().solution(A, B);
         long t2 = System.nanoTime();

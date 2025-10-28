@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 public class UserRateLimiter {
     // Store user requests with timestamps using ConcurrentHashMap for thread safety
     private final Map<String, Queue<Long>> userRequestTimestamps;
-    
+
     // Maximum allowed requests per window
     private final int maxRequests;
-    
+
     // Time window in seconds
     private final int timeWindowSeconds;
 
@@ -47,7 +47,7 @@ public class UserRateLimiter {
             System.out.println("Waiting for 61 seconds...");
             Thread.sleep(61000); // Wait for window to expire
             System.out.println("After wait, User1 Request: " +
-                limiter.isAllowed(userId)); // Should be true
+                    limiter.isAllowed(userId)); // Should be true
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -67,7 +67,7 @@ public class UserRateLimiter {
         }
         System.out.println("1000 requests test passed: " + allPassed);
         System.out.println("1001st request (should be false): " +
-            largeLimiter.isAllowed(bulkUser));
+                largeLimiter.isAllowed(bulkUser));
     }
 
     // Method to check if request is allowed for a user
@@ -76,12 +76,12 @@ public class UserRateLimiter {
 
         // Get or create queue for user
         Queue<Long> timestamps = userRequestTimestamps.computeIfAbsent(userId,
-            k -> new LinkedList<>());
+                k -> new LinkedList<>());
 
         // Remove timestamps outside the window using Java 8 streams
         timestamps = timestamps.stream()
-            .filter(timestamp -> timestamp > currentTime - timeWindowSeconds)
-            .collect(Collectors.toCollection(LinkedList::new));
+                .filter(timestamp -> timestamp > currentTime - timeWindowSeconds)
+                .collect(Collectors.toCollection(LinkedList::new));
 
         // Update the queue
         userRequestTimestamps.put(userId, timestamps);

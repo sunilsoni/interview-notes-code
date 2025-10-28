@@ -15,18 +15,18 @@ import java.util.stream.IntStream;
 
 public class DateRangeChecker {
     static final ZoneId ZONE = ZoneId.of("Asia/Kolkata");
-    static final DateTimeFormatter[] FMT = new DateTimeFormatter[] {
-        DateTimeFormatter.ISO_OFFSET_DATE_TIME,
-        DateTimeFormatter.ISO_ZONED_DATE_TIME,
-        DateTimeFormatter.ISO_LOCAL_DATE_TIME,
-        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"),
-        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"),
-        DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"),
-        DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"),
-        DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"),
-        DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"),
-        DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"),
-        DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
+    static final DateTimeFormatter[] FMT = new DateTimeFormatter[]{
+            DateTimeFormatter.ISO_OFFSET_DATE_TIME,
+            DateTimeFormatter.ISO_ZONED_DATE_TIME,
+            DateTimeFormatter.ISO_LOCAL_DATE_TIME,
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"),
+            DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"),
+            DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"),
+            DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"),
+            DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"),
+            DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"),
+            DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
     };
 
     static ZonedDateTime parse(String s) {
@@ -77,11 +77,11 @@ public class DateRangeChecker {
         String end = "2025-10-25 01:00:00";
 
         List<TestCase> tests = Arrays.asList(
-            new TestCase("Normal-WithinRange", "2025-10-24 00:30:00", start, end, true),
-            new TestCase("Normal-OutsideRange", "2025-10-22 23:45:00", start, end, false),
-            new TestCase("Normal-ExactlyEnd", "2025-10-25 01:00:00", start, end, true),
-            new TestCase("Edge-ExclusiveStartShouldReject", "2025-10-23 23:30:00", start, end, false, false),
-            new TestCase("Large-Load-SameInputRepeated", "2025-10-24 00:00:00", start, end, true)
+                new TestCase("Normal-WithinRange", "2025-10-24 00:30:00", start, end, true),
+                new TestCase("Normal-OutsideRange", "2025-10-22 23:45:00", start, end, false),
+                new TestCase("Normal-ExactlyEnd", "2025-10-25 01:00:00", start, end, true),
+                new TestCase("Edge-ExclusiveStartShouldReject", "2025-10-23 23:30:00", start, end, false, false),
+                new TestCase("Large-Load-SameInputRepeated", "2025-10-24 00:00:00", start, end, true)
         );
 
         int passed = 0;
@@ -110,9 +110,9 @@ public class DateRangeChecker {
     }
 
     record TestCase(String name, String input, String start, String end, boolean expected, boolean inclusive) {
-            TestCase(String name, String input, String start, String end, boolean expected) {
-                this(name, input, start, end, expected, true);
-            }
+        TestCase(String name, String input, String start, String end, boolean expected) {
+            this(name, input, start, end, expected, true);
+        }
 
     }
 }

@@ -27,7 +27,7 @@ public class Solution {
             }
         }
         return dp[K] == INF ? -1 : dp[K];
-        }
+    }
 
     public static void main(String[] args) {
         List<String> lines = new ArrayList<>();
@@ -57,14 +57,17 @@ public class Solution {
         long t2 = System.nanoTime();
         System.out.println("Large data test | N=" + N + " K=" + K + " | Output=" + out + " | TimeMs=" + ((t2 - t1) / 1_000_000));
     }
-    
+
     public int solution(int N, int K) {
         long sum = (long) N * (N + 1) / 2;
         if (K > sum) return -1;
         int cnt = 0;
         int i = (int) Math.min(N, (long) K);
         while (K > 0 && i > 0) {
-            if (i <= K) { K -= i; cnt++; }
+            if (i <= K) {
+                K -= i;
+                cnt++;
+            }
             i--;
         }
         return K == 0 ? cnt : -1;

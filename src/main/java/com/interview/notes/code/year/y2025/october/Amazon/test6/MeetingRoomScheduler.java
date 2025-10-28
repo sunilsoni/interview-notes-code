@@ -111,26 +111,26 @@ public class MeetingRoomScheduler {
     public static int findMinRooms1(int[][] meetings) {
         // If no meetings, return 0 rooms needed
         if (meetings == null || meetings.length == 0) return 0;
-        
+
         // Create separate arrays for start and end times to sort independently
         int[] startTimes = new int[meetings.length];
         int[] endTimes = new int[meetings.length];
-        
+
         // Populate start and end time arrays
         for (int i = 0; i < meetings.length; i++) {
             startTimes[i] = meetings[i][0];
             endTimes[i] = meetings[i][1];
         }
-        
+
         // Sort start and end times separately for efficient processing
         Arrays.sort(startTimes);
         Arrays.sort(endTimes);
-        
+
         int rooms = 0;      // Current number of rooms in use
         int maxRooms = 0;   // Maximum rooms needed at any point
         int startPtr = 0;   // Pointer for start times
         int endPtr = 0;     // Pointer for end times
-        
+
         // Process all meetings using two-pointer technique
         while (startPtr < meetings.length) {
             // If next event is a meeting start
@@ -146,37 +146,37 @@ public class MeetingRoomScheduler {
             // Keep track of maximum rooms needed
             maxRooms = Math.max(maxRooms, rooms);
         }
-        
+
         return maxRooms;
     }
-    
+
     // Main method for testing
     public static void main(String[] args) {
         // Test Case 1: Basic overlapping meetings
         int[][] test1 = {{1, 4}, {2, 5}, {3, 6}};
         int expected1 = 3;
         testCase(test1, expected1, "Test 1: Basic overlapping");
-        
+
         // Test Case 2: No overlapping meetings
         int[][] test2 = {{1, 2}, {3, 4}, {5, 6}};
         int expected2 = 1;
         testCase(test2, expected2, "Test 2: No overlapping");
-        
+
         // Test Case 3: Partial overlapping
         int[][] test3 = {{1, 4}, {4, 5}, {2, 3}, {3, 6}};
         int expected3 = 2;
         testCase(test3, expected3, "Test 3: Partial overlapping");
-        
+
         // Test Case 4: Empty input
         int[][] test4 = {};
         int expected4 = 0;
         testCase(test4, expected4, "Test 4: Empty input");
-        
+
         // Test Case 5: Large dataset
         int[][] test5 = generateLargeTestCase(1000);
         testCase(test5, -1, "Test 5: Large dataset (1000 meetings)");
     }
-    
+
     // Helper method to test cases
     private static void testCase(int[][] meetings, int expected, String testName) {
         int result = findMinRooms(meetings);
@@ -186,7 +186,7 @@ public class MeetingRoomScheduler {
             System.out.println(testName + " - FAIL (Expected: " + expected + ", Got: " + result + ")");
         }
     }
-    
+
     // Helper method to generate large test case
     private static int[][] generateLargeTestCase(int size) {
         int[][] meetings = new int[size][2];
