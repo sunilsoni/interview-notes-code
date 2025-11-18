@@ -39,11 +39,13 @@ public class SubSudokuValidator {
         }
         
         // Create the expected set of numbers (1 to N)
+        // This single set is reused for every row/column comparison to avoid rebuilding it repeatedly.
         Set<Integer> expectedNumbers = IntStream.rangeClosed(1, n) // Generate numbers from 1 to N
             .boxed() // Convert int stream to Integer stream
             .collect(Collectors.toSet()); // Collect into a Set for comparison
         
         // Validate all rows
+        // The IntStream drives the iteration and short-circuits on the first failure.
         boolean rowsValid = IntStream.range(0, n) // Iterate through row indices 0 to N-1
             .allMatch(i -> validateRowOrColumn(grid[i], expectedNumbers)); // Check each row
         
@@ -52,6 +54,7 @@ public class SubSudokuValidator {
         }
         
         // Validate all columns
+        // We rebuild each column as a temporary array so the same validation helper can be reused.
         boolean columnsValid = IntStream.range(0, n) // Iterate through column indices 0 to N-1
             .allMatch(j -> {
                 // Extract column j as an array
@@ -70,6 +73,7 @@ public class SubSudokuValidator {
     private static boolean validateRowOrColumn(String[] array, Set<Integer> expectedNumbers) {
         try {
             // Convert String array to Set of Integers
+            // Collectors.toSet removes duplicates automatically, so a mismatch indicates either duplicates or missing numbers.
             Set<Integer> actualNumbers = Arrays.stream(array) // Stream the array elements
                 .map(Integer::parseInt) // Parse each string to integer
                 .collect(Collectors.toSet()); // Collect unique values into a set
@@ -87,6 +91,8 @@ public class SubSudokuValidator {
      */
     public static void main(String[] args) {
         System.out.println("=== Sub-Sudoku Validator Test Suite ===\n");
+        // The block below functions as a lightweight manual test runner so the validator can be
+        // executed directly without relying on an external unit-testing framework.
         
         int totalTests = 0; // Counter for total test cases
         int passedTests = 0; // Counter for passed test cases
@@ -293,7 +299,7 @@ public class SubSudokuValidator {
         // Fill with valid pattern
         for (int i = 0; i < 100; i++) { // Iterate through rows
             for (int j = 0; j < 100; j++) { // Iterate through columns
-                // Use modular arithmetic to create valid pattern
+                // Use modular arithmetic so each row is a rotated version of 1..100, guaranteeing valid rows/columns.
                 largeGrid[i][j] = String.valueOf(((i + j) % 100) + 1); // Shift pattern
             }
         }
@@ -314,6 +320,7 @@ public class SubSudokuValidator {
         // Fill with all 1s (invalid pattern)
         for (int i = 0; i < 50; i++) { // Iterate through rows
             for (int j = 0; j < 50; j++) { // Iterate through columns
+                // Deliberately make every number identical to ensure the validator catches duplicates quickly.
                 invalidLargeGrid[i][j] = "1"; // All cells contain 1 (invalid)
             }
         }
