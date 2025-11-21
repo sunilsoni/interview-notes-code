@@ -228,15 +228,8 @@ public class FiveWordDistinctLettersSimple {
     }
 
     /**
-     * Helper class: a 5-letter word plus its Set<Character>.
-     */
-    private static class WordLetters {
-        final String word;
-        final Set<Character> letters;
-
-        WordLetters(String w, Set<Character> letters) {
-            this.word = w;
-            this.letters = letters;
-        }
+         * Helper class: a 5-letter word plus its Set<Character>.
+         */
+        private record WordLetters(String word, Set<Character> letters) {
     }
 }

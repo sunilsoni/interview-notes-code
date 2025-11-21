@@ -154,17 +154,8 @@ public class RisingSequence {
     }
 
     /**
-     * ---------- Simple test harness ----------
-     */
-    private static class Case {
-        final int B;
-        final List<Integer> ar;
-        final int expected;
-
-        Case(int B, List<Integer> ar, int expected) {
-            this.B = B;
-            this.ar = ar;
-            this.expected = expected;
-        }
+         * ---------- Simple test harness ----------
+         */
+        private record Case(int B, List<Integer> ar, int expected) {
     }
 }

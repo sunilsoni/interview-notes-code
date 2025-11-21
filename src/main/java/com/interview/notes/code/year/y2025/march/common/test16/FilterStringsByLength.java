@@ -20,13 +20,13 @@ public class FilterStringsByLength {
         test(new String[]{"test", "bar", "brown"}, 4, Arrays.asList("bar", "brown"));
 
         // Edge case: Empty input array
-        test(new String[]{}, 3, Arrays.asList());
+        test(new String[]{}, 3, List.of());
 
         // Edge case: No matching length
         test(new String[]{"apple", "orange", "banana"}, 2, Arrays.asList("apple", "orange", "banana"));
 
         // Edge case: All elements removed
-        test(new String[]{"one", "two", "six"}, 3, Arrays.asList());
+        test(new String[]{"one", "two", "six"}, 3, List.of());
 
         // Large data input
         String[] largeInput = IntStream.range(0, 100000)

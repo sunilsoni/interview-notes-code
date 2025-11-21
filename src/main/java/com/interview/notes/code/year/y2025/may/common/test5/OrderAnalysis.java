@@ -70,8 +70,8 @@ public class OrderAnalysis {
 }
 
 class Order {
-    private Long customerId;
-    private List<OrderItem> items;
+    private final Long customerId;
+    private final List<OrderItem> items;
 
     public Order(Long customerId) {
         this.customerId = customerId;
@@ -92,8 +92,8 @@ class Order {
 }
 
 class OrderItem {
-    private String productCategory;
-    private Double amount;
+    private final String productCategory;
+    private final Double amount;
 
     public OrderItem(String productCategory, Double amount) {
         this.productCategory = productCategory;

@@ -198,7 +198,7 @@ public class ServerDataTransferFinal {
         // Edge Case: Single server
         {
             int total = 100;
-            List<Integer> s = Arrays.asList(50);
+            List<Integer> s = List.of(50);
             // Only one server, no travel needed, result=0
             int result = getMinTime(total, s);
             System.out.println("Test Single Server: " + (result == 0 ? "PASS" : "FAIL") + " (Expected 0, Got " + result + ")");

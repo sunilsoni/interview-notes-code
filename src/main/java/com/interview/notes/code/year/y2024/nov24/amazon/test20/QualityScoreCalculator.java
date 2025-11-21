@@ -89,7 +89,7 @@ public class QualityScoreCalculator {
         // Maximum subarray sum after Adjust: -1
         testCases.add(new TestCase(
                 3,
-                Arrays.asList(-4),
+                List.of(-4),
                 -1
         ));
 
@@ -131,7 +131,7 @@ public class QualityScoreCalculator {
         // Maximum is 50
         testCases.add(new TestCase(
                 5,
-                Arrays.asList(10),
+                List.of(10),
                 50
         ));
 

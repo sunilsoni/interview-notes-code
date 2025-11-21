@@ -15,9 +15,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class BagManager {
 
-    private Map<Integer, Locker> storage;
-    private LockerManager lockerManager;
-    private AtomicInteger idGenerator;
+    private final Map<Integer, Locker> storage;
+    private final LockerManager lockerManager;
+    private final AtomicInteger idGenerator;
 
     //This is the constructor of the
     public BagManager(LockerManager lockerManager) {

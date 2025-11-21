@@ -50,9 +50,7 @@ public class Practical {
 
         //Convert array to list.
         List<String> list = new ArrayList<>();
-        for (String s : namesArray) {
-            list.add(s);
-        }
+        Collections.addAll(list, namesArray);
         list.forEach(System.out::print);
         System.out.println();
 

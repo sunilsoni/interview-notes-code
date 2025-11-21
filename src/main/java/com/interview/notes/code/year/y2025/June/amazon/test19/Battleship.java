@@ -88,8 +88,8 @@ class Coordinate {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;                              // same object
-        if (!(o instanceof Coordinate)) return false;            // wrong type
-        Coordinate c = (Coordinate) o;                           // cast to Coordinate
+        if (!(o instanceof Coordinate c)) return false;            // wrong type
+        // cast to Coordinate
         return row == c.row && col == c.col;                     // equal if row & col match
     }
 

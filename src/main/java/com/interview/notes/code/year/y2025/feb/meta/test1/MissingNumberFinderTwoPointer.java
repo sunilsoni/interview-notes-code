@@ -66,12 +66,12 @@ public class MissingNumberFinderTwoPointer {
     private static void testCase(int[] arr, int k, int expected, String testName) {
         int result = findKthMissing(arr, k);
         boolean passed = result == expected;
-        System.out.println(String.format("%s: %s",
+        System.out.printf("%s: %s%n",
                 testName,
-                passed ? "PASS" : "FAIL"));
+                passed ? "PASS" : "FAIL");
         if (!passed) {
-            System.out.println(String.format("  Expected: %d, Got: %d",
-                    expected, result));
+            System.out.printf("  Expected: %d, Got: %d%n",
+                    expected, result);
         }
     }
 }

@@ -31,19 +31,14 @@ public class MultiThreadedConsumer {
         consumer.close();
     }
 
-    private static class MessageProcessor implements Runnable {
-        private final ConsumerRecord<String, String> record;
-
-        public MessageProcessor(ConsumerRecord<String, String> record) {
-            this.record = record;
-        }
+    private record MessageProcessor(ConsumerRecord<String, String> record) implements Runnable {
 
         @Override
-        public void run() {
-            // Process the message asynchronously
-            String message = record.value();
-            // Perform message processing logic here
-            System.out.println("Processed message: " + message);
+            public void run() {
+                // Process the message asynchronously
+                String message = record.value();
+                // Perform message processing logic here
+                System.out.println("Processed message: " + message);
+            }
         }
-    }
 }

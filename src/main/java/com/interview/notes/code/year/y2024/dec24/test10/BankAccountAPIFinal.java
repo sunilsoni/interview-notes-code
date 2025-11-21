@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class BankAccountAPIFinal {
-    private Map<Long, TreeMap<Long, Double>> accounts = new HashMap<>();
+    private final Map<Long, TreeMap<Long, Double>> accounts = new HashMap<>();
 
     public static void main(String[] args) {
         BankAccountAPIFinal bank = new BankAccountAPIFinal();

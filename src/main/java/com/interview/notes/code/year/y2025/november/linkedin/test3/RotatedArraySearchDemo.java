@@ -114,7 +114,7 @@ public class RotatedArraySearchDemo {
         System.out.println("Running RotatedArraySearchDemo tests...");
 
         // Define a first small rotated array example, similar to the one mentioned in the problem statement
-        float[] arr1 = new float[] {6f, 7f, 1f, 2f, 3f, 4f, 5f};
+        float[] arr1 = new float[]{6f, 7f, 1f, 2f, 3f, 4f, 5f};
 
         // Test case #0: search for 1 in arr1, which should exist and return true
         runSingleTest(1f, arr1, true, 0);
@@ -126,7 +126,7 @@ public class RotatedArraySearchDemo {
         runSingleTest(8f, arr1, false, 2);
 
         // Define a second rotated array with a different pivot, to check behavior in other positions
-        float[] arr2 = new float[] {3f, 4f, 5f, 6f, 7f, 1f, 2f};
+        float[] arr2 = new float[]{3f, 4f, 5f, 6f, 7f, 1f, 2f};
 
         // Test case #3: search for 6 in arr2 which lies in the sorted left half of the first step
         runSingleTest(6f, arr2, true, 3);
@@ -135,7 +135,7 @@ public class RotatedArraySearchDemo {
         runSingleTest(2f, arr2, true, 4);
 
         // Define a simple non-rotated sorted array to confirm the algorithm still works as normal binary search
-        float[] arr3 = new float[] {1f, 2f, 3f, 4f, 5f, 6f};
+        float[] arr3 = new float[]{1f, 2f, 3f, 4f, 5f, 6f};
 
         // Test case #5: target at beginning, should return true
         runSingleTest(1f, arr3, true, 5);
@@ -147,7 +147,7 @@ public class RotatedArraySearchDemo {
         runSingleTest(9f, arr3, false, 7);
 
         // Define an array with a single element to test the smallest non-empty case
-        float[] arr4 = new float[] {42f};
+        float[] arr4 = new float[]{42f};
 
         // Test case #8: searching for the only element, should return true
         runSingleTest(42f, arr4, true, 8);
@@ -156,7 +156,7 @@ public class RotatedArraySearchDemo {
         runSingleTest(41f, arr4, false, 9);
 
         // Define an empty array to confirm the function handles it correctly
-        float[] emptyArr = new float[] {};
+        float[] emptyArr = new float[]{};
 
         // Test case #10: searching inside an empty array should always be false
         runSingleTest(5f, emptyArr, false, 10);

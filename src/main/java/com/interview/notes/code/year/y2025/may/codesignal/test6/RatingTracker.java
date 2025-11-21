@@ -34,9 +34,9 @@ public class RatingTracker {
 
     public static void main(String[] args) {
         class Test {
-            String name;
-            int[] diffs;
-            int[] expected;
+            final String name;
+            final int[] diffs;
+            final int[] expected;
 
             Test(String name, int[] diffs, int[] expected) {
                 this.name = name;

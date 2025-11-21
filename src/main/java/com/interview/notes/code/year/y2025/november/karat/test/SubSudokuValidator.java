@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class SubSudokuValidator {
-    
+
     /**
      * Validates if a given matrix is a valid Sub-Sudoku grid
      * Each row and column must contain exactly numbers 1 to N
@@ -16,18 +16,18 @@ public class SubSudokuValidator {
         if (grid == null || grid.length == 0) {
             return false; // Empty or null grid is invalid
         }
-        
+
         // Get the size of the grid (N for NxN matrix)
         int n = grid.length; // Number of rows determines the size
-        
+
         // Check if it's a square matrix - all rows must have N columns
         boolean isSquare = Arrays.stream(grid) // Stream through all rows
-            .allMatch(row -> row != null && row.length == n); // Each row must be non-null and have N columns
-        
+                .allMatch(row -> row != null && row.length == n); // Each row must be non-null and have N columns
+
         if (!isSquare) {
             return false; // Not a square matrix, invalid sudoku
         }
-        
+
         // Special case: 1x1 grid with value "1" is valid
         if (n == 1) {
             try {
@@ -37,36 +37,36 @@ public class SubSudokuValidator {
                 return false; // Non-numeric value is invalid
             }
         }
-        
+
         // Create the expected set of numbers (1 to N)
         // This single set is reused for every row/column comparison to avoid rebuilding it repeatedly.
         Set<Integer> expectedNumbers = IntStream.rangeClosed(1, n) // Generate numbers from 1 to N
-            .boxed() // Convert int stream to Integer stream
-            .collect(Collectors.toSet()); // Collect into a Set for comparison
-        
+                .boxed() // Convert int stream to Integer stream
+                .collect(Collectors.toSet()); // Collect into a Set for comparison
+
         // Validate all rows
         // The IntStream drives the iteration and short-circuits on the first failure.
         boolean rowsValid = IntStream.range(0, n) // Iterate through row indices 0 to N-1
-            .allMatch(i -> validateRowOrColumn(grid[i], expectedNumbers)); // Check each row
-        
+                .allMatch(i -> validateRowOrColumn(grid[i], expectedNumbers)); // Check each row
+
         if (!rowsValid) {
             return false; // If any row is invalid, grid is invalid
         }
-        
+
         // Validate all columns
         // We rebuild each column as a temporary array so the same validation helper can be reused.
         boolean columnsValid = IntStream.range(0, n) // Iterate through column indices 0 to N-1
-            .allMatch(j -> {
-                // Extract column j as an array
-                String[] column = IntStream.range(0, n) // For each row index
-                    .mapToObj(i -> grid[i][j]) // Get element at row i, column j
-                    .toArray(String[]::new); // Collect into String array
-                return validateRowOrColumn(column, expectedNumbers); // Validate the column
-            });
-        
+                .allMatch(j -> {
+                    // Extract column j as an array
+                    String[] column = IntStream.range(0, n) // For each row index
+                            .mapToObj(i -> grid[i][j]) // Get element at row i, column j
+                            .toArray(String[]::new); // Collect into String array
+                    return validateRowOrColumn(column, expectedNumbers); // Validate the column
+                });
+
         return columnsValid; // Return true only if all columns are valid
     }
-    
+
     /**
      * Helper method to validate a single row or column
      */
@@ -75,9 +75,9 @@ public class SubSudokuValidator {
             // Convert String array to Set of Integers
             // Collectors.toSet removes duplicates automatically, so a mismatch indicates either duplicates or missing numbers.
             Set<Integer> actualNumbers = Arrays.stream(array) // Stream the array elements
-                .map(Integer::parseInt) // Parse each string to integer
-                .collect(Collectors.toSet()); // Collect unique values into a set
-            
+                    .map(Integer::parseInt) // Parse each string to integer
+                    .collect(Collectors.toSet()); // Collect unique values into a set
+
             // Check if the set matches expected numbers exactly
             return actualNumbers.equals(expectedNumbers); // Sets must be identical
         } catch (NumberFormatException e) {
@@ -85,7 +85,7 @@ public class SubSudokuValidator {
             return false; // Non-numeric values make it invalid
         }
     }
-    
+
     /**
      * Main method for testing all cases
      */
@@ -93,16 +93,16 @@ public class SubSudokuValidator {
         System.out.println("=== Sub-Sudoku Validator Test Suite ===\n");
         // The block below functions as a lightweight manual test runner so the validator can be
         // executed directly without relying on an external unit-testing framework.
-        
+
         int totalTests = 0; // Counter for total test cases
         int passedTests = 0; // Counter for passed test cases
-        
+
         // Test Case 1: Valid 3x3 grid
         totalTests++; // Increment test counter
         String[][] grid1 = {
-            {"2", "3", "1"},
-            {"1", "2", "3"},
-            {"3", "1", "2"}
+                {"2", "3", "1"},
+                {"1", "2", "3"},
+                {"3", "1", "2"}
         };
         boolean result1 = validateSudoku(grid1); // Run validation
         boolean expected1 = true; // Expected result
@@ -112,13 +112,13 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 1 FAIL: Valid 3x3 grid");
         }
-        
+
         // Test Case 2: Invalid - missing value 2 in first column
         totalTests++; // Increment test counter
         String[][] grid2 = {
-            {"1", "2", "3"},
-            {"3", "2", "1"},
-            {"3", "1", "2"}
+                {"1", "2", "3"},
+                {"3", "2", "1"},
+                {"3", "1", "2"}
         };
         boolean result2 = validateSudoku(grid2); // Run validation
         boolean expected2 = false; // Expected result
@@ -128,13 +128,13 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 2 FAIL: Invalid grid (column issue)");
         }
-        
+
         // Test Case 3: Invalid - missing value 1 in first row
         totalTests++; // Increment test counter
         String[][] grid3 = {
-            {"2", "2", "3"},
-            {"3", "1", "2"},
-            {"2", "3", "1"}
+                {"2", "2", "3"},
+                {"3", "1", "2"},
+                {"2", "3", "1"}
         };
         boolean result3 = validateSudoku(grid3); // Run validation
         boolean expected3 = false; // Expected result
@@ -144,7 +144,7 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 3 FAIL: Invalid grid (row issue)");
         }
-        
+
         // Test Case 4: Valid 1x1 grid
         totalTests++; // Increment test counter
         String[][] grid4 = {{"1"}}; // Single cell grid
@@ -156,13 +156,13 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 4 FAIL: Valid 1x1 grid");
         }
-        
+
         // Test Case 5: Invalid - negative numbers
         totalTests++; // Increment test counter
         String[][] grid5 = {
-            {"-1", "-2", "-3"},
-            {"-2", "-3", "-1"},
-            {"-3", "-1", "-2"}
+                {"-1", "-2", "-3"},
+                {"-2", "-3", "-1"},
+                {"-3", "-1", "-2"}
         };
         boolean result5 = validateSudoku(grid5); // Run validation
         boolean expected5 = false; // Expected result
@@ -172,13 +172,13 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 5 FAIL: Invalid grid (negative numbers)");
         }
-        
+
         // Test Case 6: Invalid - duplicate in row
         totalTests++; // Increment test counter
         String[][] grid6 = {
-            {"1", "3", "3"},
-            {"3", "1", "2"},
-            {"2", "3", "1"}
+                {"1", "3", "3"},
+                {"3", "1", "2"},
+                {"2", "3", "1"}
         };
         boolean result6 = validateSudoku(grid6); // Run validation
         boolean expected6 = false; // Expected result
@@ -188,14 +188,14 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 6 FAIL: Invalid grid (duplicate in row)");
         }
-        
+
         // Test Case 7: Invalid 4x4 grid
         totalTests++; // Increment test counter
         String[][] grid7 = {
-            {"1", "2", "3", "4"},
-            {"4", "3", "2", "1"},
-            {"1", "3", "2", "4"},
-            {"4", "2", "3", "1"}
+                {"1", "2", "3", "4"},
+                {"4", "3", "2", "1"},
+                {"1", "3", "2", "4"},
+                {"4", "2", "3", "1"}
         };
         boolean result7 = validateSudoku(grid7); // Run validation
         boolean expected7 = false; // Expected result (column 1 has two 1s)
@@ -205,12 +205,12 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 7 FAIL: Invalid 4x4 grid");
         }
-        
+
         // Test Case 8: Invalid 2x2 - contains 0 and 3
         totalTests++; // Increment test counter
         String[][] grid8 = {
-            {"0", "3"},
-            {"3", "0"}
+                {"0", "3"},
+                {"3", "0"}
         };
         boolean result8 = validateSudoku(grid8); // Run validation
         boolean expected8 = false; // Expected result
@@ -220,12 +220,12 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 8 FAIL: Invalid 2x2 (wrong numbers)");
         }
-        
+
         // Test Case 9: Invalid - same as grid8, different values
         totalTests++; // Increment test counter
         String[][] grid9 = {
-            {"0", "1"},
-            {"1", "0"}
+                {"0", "1"},
+                {"1", "0"}
         };
         boolean result9 = validateSudoku(grid9); // Run validation
         boolean expected9 = false; // Expected result (contains 0, not 2)
@@ -235,13 +235,13 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 9 FAIL: Invalid 2x2 (contains 0)");
         }
-        
+
         // Test Case 10: Invalid - not square matrix
         totalTests++; // Increment test counter
         String[][] grid10 = {
-            {"1", "1", "6"},
-            {"1", "6", "1"},
-            {"6", "1", "1"}
+                {"1", "1", "6"},
+                {"1", "6", "1"},
+                {"6", "1", "1"}
         };
         boolean result10 = validateSudoku(grid10); // Run validation
         boolean expected10 = false; // Expected result
@@ -251,14 +251,14 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 10 FAIL: Invalid 3x3 (wrong values)");
         }
-        
+
         // Test Case 11: Invalid 4x4 grid
         totalTests++; // Increment test counter
         String[][] grid11 = {
-            {"1", "2", "3", "4"},
-            {"2", "3", "1", "4"},
-            {"3", "1", "2", "4"},
-            {"4", "2", "3", "1"}
+                {"1", "2", "3", "4"},
+                {"2", "3", "1", "4"},
+                {"3", "1", "2", "4"},
+                {"4", "2", "3", "1"}
         };
         boolean result11 = validateSudoku(grid11); // Run validation
         boolean expected11 = false; // Expected result (column issues)
@@ -268,20 +268,20 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 11 FAIL: Invalid 4x4 grid");
         }
-        
+
         // Test Case 18: Valid 10x10 grid (large data test)
         totalTests++; // Increment test counter
         String[][] grid18 = {
-            {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
-            {"2", "3", "4", "5", "6", "7", "8", "9", "10", "1"},
-            {"3", "4", "5", "6", "7", "8", "9", "10", "1", "2"},
-            {"4", "5", "6", "7", "8", "9", "10", "1", "2", "3"},
-            {"5", "6", "7", "8", "9", "10", "1", "2", "3", "4"},
-            {"6", "7", "8", "9", "10", "1", "2", "3", "4", "5"},
-            {"7", "8", "9", "10", "1", "2", "3", "4", "5", "6"},
-            {"8", "9", "10", "1", "2", "3", "4", "5", "6", "7"},
-            {"9", "10", "1", "2", "3", "4", "5", "6", "7", "8"},
-            {"10", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
+                {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
+                {"2", "3", "4", "5", "6", "7", "8", "9", "10", "1"},
+                {"3", "4", "5", "6", "7", "8", "9", "10", "1", "2"},
+                {"4", "5", "6", "7", "8", "9", "10", "1", "2", "3"},
+                {"5", "6", "7", "8", "9", "10", "1", "2", "3", "4"},
+                {"6", "7", "8", "9", "10", "1", "2", "3", "4", "5"},
+                {"7", "8", "9", "10", "1", "2", "3", "4", "5", "6"},
+                {"8", "9", "10", "1", "2", "3", "4", "5", "6", "7"},
+                {"9", "10", "1", "2", "3", "4", "5", "6", "7", "8"},
+                {"10", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
         };
         boolean result18 = validateSudoku(grid18); // Run validation
         boolean expected18 = true; // Expected result
@@ -291,7 +291,7 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test 18 FAIL: Valid 10x10 grid");
         }
-        
+
         // Large Data Test: 100x100 grid
         totalTests++; // Increment test counter
         System.out.print("Testing large 100x100 grid... ");
@@ -312,7 +312,7 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ FAIL");
         }
-        
+
         // Performance test with invalid large grid
         totalTests++; // Increment test counter
         System.out.print("Testing invalid large 50x50 grid... ");
@@ -333,7 +333,7 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ FAIL");
         }
-        
+
         // Edge case: Empty grid
         totalTests++; // Increment test counter
         String[][] emptyGrid = {}; // Empty array
@@ -344,7 +344,7 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test Empty Grid FAIL");
         }
-        
+
         // Edge case: Null grid
         totalTests++; // Increment test counter
         boolean nullResult = validateSudoku(null); // Run validation with null
@@ -354,12 +354,12 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test Null Grid FAIL");
         }
-        
+
         // Edge case: Non-numeric values
         totalTests++; // Increment test counter
         String[][] nonNumericGrid = {
-            {"a", "b"},
-            {"c", "d"}
+                {"a", "b"},
+                {"c", "d"}
         };
         boolean nonNumericResult = validateSudoku(nonNumericGrid); // Run validation
         if (!nonNumericResult) {
@@ -368,7 +368,7 @@ public class SubSudokuValidator {
         } else {
             System.out.println("✗ Test Non-Numeric Grid FAIL");
         }
-        
+
         // Print summary
         System.out.println("\n========================================");
         System.out.println("Test Summary: " + passedTests + "/" + totalTests + " tests passed");

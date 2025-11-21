@@ -8,7 +8,7 @@ public class IteratorWrapper {
 
     private final Iterator<Integer> iterator;
     private final int n;
-    private List<Integer> nextValues;
+    private final List<Integer> nextValues;
 
     public IteratorWrapper(Iterator<Integer> iterator, int n) {
         this.iterator = iterator;

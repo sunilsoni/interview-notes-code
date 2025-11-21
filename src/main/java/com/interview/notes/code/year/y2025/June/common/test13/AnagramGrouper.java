@@ -30,7 +30,7 @@ public class AnagramGrouper {
         // Test Case 1: Basic test
         String[] test1 = {"act", "pots", "tops", "cat", "stop", "hat"};
         testAndPrint("Test 1 - Basic test", test1,
-                Arrays.asList("hat"),
+                List.of("hat"),
                 Arrays.asList("act", "cat"),
                 Arrays.asList("stop", "pots", "tops"));
 
@@ -41,7 +41,7 @@ public class AnagramGrouper {
         // Test Case 3: Single word
         String[] test3 = {"hello"};
         testAndPrint("Test 3 - Single word", test3,
-                Arrays.asList("hello"));
+                List.of("hello"));
 
         // Test Case 4: Large input
         String[] test4 = generateLargeInput();

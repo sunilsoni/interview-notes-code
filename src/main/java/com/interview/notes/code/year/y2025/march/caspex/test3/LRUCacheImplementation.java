@@ -189,7 +189,7 @@ public class LRUCacheImplementation {
      * operation moves the accessed entry to the end (most recently used).
      */
     static class LRUCache extends LinkedHashMap<Integer, Integer> {
-        private int capacity;  // Maximum number of elements allowed in the cache
+        private final int capacity;  // Maximum number of elements allowed in the cache
 
         /**
          * Constructor initializes the cache with a specific capacity.

@@ -12,8 +12,8 @@ public class CourseSharingSystem {
 
         // Populate the studentCourses map
         for (Pair<String, String> enrollment : enrollments) {
-            String studentId = enrollment.getKey();
-            String course = enrollment.getValue();
+            String studentId = enrollment.key();
+            String course = enrollment.value();
 
             studentCourses.computeIfAbsent(studentId, k -> new HashSet<>()).add(course);
         }

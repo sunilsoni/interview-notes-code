@@ -21,7 +21,7 @@ public class AsyncCache<K, V> {
 
     public CompletableFuture<V> get(K key) {
         return cache.computeIfAbsent(key, k ->
-            CompletableFuture.supplyAsync(() -> fetchFromDb(k), executor)
+                CompletableFuture.supplyAsync(() -> fetchFromDb(k), executor)
         );
     }
 }

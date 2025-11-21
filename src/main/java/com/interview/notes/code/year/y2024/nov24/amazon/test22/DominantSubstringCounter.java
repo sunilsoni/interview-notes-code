@@ -35,7 +35,7 @@ public class DominantSubstringCounter {
                 total += map.getOrDefault(transformed, 0);
                 map.put(transformed, map.getOrDefault(transformed, 0) + 1);
             }
-            perCharCounts.put(c, Long.valueOf(map.get(0l))); // Not necessary, but kept for clarity
+            perCharCounts.put(c, Long.valueOf(map.get(0L))); // Not necessary, but kept for clarity
         }
 
         // Compute per-pair counts
@@ -52,7 +52,7 @@ public class DominantSubstringCounter {
                 Map<Long, Integer> map = new HashMap<>();
                 // Unique encoding for pair (trans_c1, trans_c2)
                 // Key = trans_c1 * 1_000_000 + trans_c2
-                map.put(0L * 1_000_000 + 0L, 1);
+                map.put(0L, 1);
                 long count_c1 = 0;
                 long count_c2 = 0;
                 long count_c1c2 = 0;

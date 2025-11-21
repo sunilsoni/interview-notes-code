@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class StringPermutations {
 
     // Main list to store all permutations
-    private static List<String> result = new ArrayList<>();
+    private static final List<String> result = new ArrayList<>();
 
     public static List<String> findPermutations(String str) {
         // Clear previous results if any
@@ -72,13 +72,13 @@ public class StringPermutations {
         test("XY", Arrays.asList("XY", "YX"));
 
         // Test case 3: Duplicate characters
-        test("AAA", Arrays.asList("AAA"));
+        test("AAA", List.of("AAA"));
 
         // Test case 4: Empty string
-        test("", Arrays.asList(""));
+        test("", List.of(""));
 
         // Test case 5: Single character
-        test("A", Arrays.asList("A"));
+        test("A", List.of("A"));
 
         // Test case 6: Larger input
         test("ABCD", Arrays.asList("ABCD", "ABDC", "ACBD", "ACDB", "ADBC", "ADCB",

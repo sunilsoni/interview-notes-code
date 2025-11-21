@@ -77,6 +77,6 @@ public class SecondHighestFinder {
     /**
      * A compact immutable Account class with id, number and amount.
      */
-    public static record Account(int id, String number, double amount) {
+    public record Account(int id, String number, double amount) {
     }
 }

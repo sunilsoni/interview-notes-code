@@ -4,10 +4,10 @@ package com.interview.notes.code.misc;
 //https://www.geeksforgeeks.org/move-ve-elements-end-order-extra-space-allowed/
 class RearrangeArrayElements {
 
-    static void rearrange(int arr[], int n) {
+    static void rearrange(int[] arr, int n) {
 
         // Create an empty array to store result
-        int temp[] = new int[n];
+        int[] temp = new int[n];
 
         // Traversal array and store +ve element in temp array
         int j = 0; // index of temp
@@ -26,13 +26,12 @@ class RearrangeArrayElements {
                 temp[j++] = arr[i];
 
         // Copy contents of temp[] to arr[]
-        for (int i = 0; i < n; i++)
-            arr[i] = temp[i];
+        System.arraycopy(temp, 0, arr, 0, n);
     }
 
 
     public static void main(String[] args) {
-        int arr[] = {1, -1, -3, -2, 7, 5, 11, 6};
+        int[] arr = {1, -1, -3, -2, 7, 5, 11, 6};
         int n = arr.length;
 
         rearrange(arr, n);

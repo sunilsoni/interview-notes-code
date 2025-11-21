@@ -95,20 +95,11 @@ public class ComputeTester {
         System.out.println("All " + N + " random tests passed.");
     }
 
-    private static class TestCase {
-        final int a, b, c;
-        final String want;
-
-        TestCase(int a, int b, int c, String want) {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-            this.want = want;
-        }
+    private record TestCase(int a, int b, int c, String want) {
 
         @Override
-        public String toString() {
-            return String.format("(%d + %d → %d)", a, b, c);
+            public String toString() {
+                return String.format("(%d + %d → %d)", a, b, c);
+            }
         }
-    }
 }

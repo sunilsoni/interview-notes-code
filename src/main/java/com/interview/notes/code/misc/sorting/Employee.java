@@ -34,10 +34,10 @@ public class Employee implements Comparable<Employee> {
             return e1.getName().compareTo(e2.getName());
         }
     };
-    private int id;
-    private String name;
-    private int age;
-    private long salary;
+    private final int id;
+    private final String name;
+    private final int age;
+    private final long salary;
 
     public Employee(int id, String name, int age, int salary) {
         this.id = id;

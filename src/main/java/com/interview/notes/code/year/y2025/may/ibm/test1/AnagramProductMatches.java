@@ -62,7 +62,7 @@ public class AnagramProductMatches {
                 Arrays.asList("tac", "study", "peahc"),
                 Arrays.asList(
                         Arrays.asList("act", "cat"),
-                        Arrays.asList("dusty"),
+                        List.of("dusty"),
                         Arrays.asList("cheap", "peach")
                 )
         );
@@ -72,7 +72,7 @@ public class AnagramProductMatches {
                 Arrays.asList("duel", "speed", "dule", "cars"),
                 Arrays.asList("spede", "deul"),
                 Arrays.asList(
-                        Arrays.asList("speed"),
+                        List.of("speed"),
                         Arrays.asList("duel", "dule")
                 )
         );

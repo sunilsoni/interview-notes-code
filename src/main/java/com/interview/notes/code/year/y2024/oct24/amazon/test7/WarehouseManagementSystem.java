@@ -5,9 +5,9 @@ import java.util.*;
 public class WarehouseManagementSystem {
 
     // Data structures
-    private Map<String, Region> regions;
-    private Map<String, Warehouse> warehouses;
-    private Map<String, Item> items;
+    private final Map<String, Region> regions;
+    private final Map<String, Warehouse> warehouses;
+    private final Map<String, Item> items;
 
     // Constructor
     public WarehouseManagementSystem() {
@@ -150,8 +150,8 @@ public class WarehouseManagementSystem {
 
     // Inner classes for data structures
     private class Region {
-        private String name;
-        private List<Warehouse> warehouses;
+        private final String name;
+        private final List<Warehouse> warehouses;
 
         public Region(String name) {
             this.name = name;
@@ -168,8 +168,8 @@ public class WarehouseManagementSystem {
     }
 
     private class Warehouse {
-        private String name;
-        private Map<String, Integer> inventory;
+        private final String name;
+        private final Map<String, Integer> inventory;
 
         public Warehouse(String name) {
             this.name = name;
@@ -196,8 +196,8 @@ public class WarehouseManagementSystem {
     }
 
     private class Item {
-        private String name;
-        private int quantity;
+        private final String name;
+        private final int quantity;
 
         public Item(String name, int quantity) {
             this.name = name;

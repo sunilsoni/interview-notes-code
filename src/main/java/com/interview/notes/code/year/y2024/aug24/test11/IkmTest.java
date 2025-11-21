@@ -1,14 +1,14 @@
 package com.interview.notes.code.year.y2024.aug24.test11;
 
 public class IkmTest {
-    private static int count;
+    private static final int count;
 
     static {
         System.out.println("In block 1");
         count = 10;
     }
 
-    private int[] data;
+    private final int[] data;
 
     {
         System.out.println("In block 2");

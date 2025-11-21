@@ -117,9 +117,9 @@ class JobSchedulingFinalWorking {
             long total_jobs = mid;
 
             // Sum of arithmetic progression on the left side of `k`
-            total_jobs += (left >= mid) ? (long) (mid - 1) * mid / 2 : (long) left * (2 * mid - left - 1) / 2;
+            total_jobs += (left >= mid) ? (long) (mid - 1) * mid / 2 : (long) left * (2L * mid - left - 1) / 2;
             // Sum of arithmetic progression on the right side of `k`
-            total_jobs += (right >= mid) ? (long) (mid - 1) * mid / 2 : (long) right * (2 * mid - right - 1) / 2;
+            total_jobs += (right >= mid) ? (long) (mid - 1) * mid / 2 : (long) right * (2L * mid - right - 1) / 2;
 
             if (total_jobs <= m) {
                 low = mid + 1;

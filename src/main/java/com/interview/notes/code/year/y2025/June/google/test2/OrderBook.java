@@ -44,7 +44,7 @@ This function returns the unique identifier of the seller currently offering ABC
 public class OrderBook {
     // TreeMap to store orders sorted by price (primary key)
     // For each price, we have a TreeMap of timestamp to seller_id (secondary sorting)
-    private TreeMap<Double, TreeMap<Long, String>> orderBook;
+    private final TreeMap<Double, TreeMap<Long, String>> orderBook;
 
     public OrderBook() {
         // Initialize empty order book

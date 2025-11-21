@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class PrimeCount {
 
     private static final int MAX = 5_000_000;
-    private static int[] primeCount = new int[MAX + 1];
+    private static final int[] primeCount = new int[MAX + 1];
 
     static {
         boolean[] isPrime = new boolean[MAX + 1];

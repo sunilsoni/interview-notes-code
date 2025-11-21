@@ -9,7 +9,7 @@ public class PiConvergenceImprovement {
         MathContext mc = new MathContext(100);
         BigDecimal a = BigDecimal.ONE;
         BigDecimal b = BigDecimal.ONE.divide(new BigDecimal(Math.sqrt(2)), mc);
-        BigDecimal t = new BigDecimal(0.25);
+        BigDecimal t = new BigDecimal("0.25");
         BigDecimal x = BigDecimal.ONE;
         BigDecimal pi;
 

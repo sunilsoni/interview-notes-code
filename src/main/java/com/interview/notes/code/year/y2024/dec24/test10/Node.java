@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2024.dec24.test10;
 
 public class Node {
-    private Integer value;
+    private final Integer value;
     private Node nextNode;
 
     public Node(Integer value, Node nextNode) {
@@ -72,25 +72,25 @@ class Solution {
         Node list1 = new Node(1, new Node(2, new Node(3, null)));
         Node list2 = new Node(4, new Node(5, null));
         System.out.println("Test 1 (No overlap): " +
-                (overlap(list1, list2) == false ? "PASS" : "FAIL"));
+                (!overlap(list1, list2) ? "PASS" : "FAIL"));
 
         // Test Case 2: Lists with overlap
         Node commonNode = new Node(6, null);
         Node head1 = new Node(1, new Node(2, new Node(3, commonNode)));
         Node head2 = new Node(4, new Node(5, commonNode));
         System.out.println("Test 2 (With overlap): " +
-                (overlap(head1, head2) == true ? "PASS" : "FAIL"));
+                (overlap(head1, head2) ? "PASS" : "FAIL"));
 
         // Test Case 3: Cyclic list
         Node cycleNode = new Node(7, null);
         cycleNode.setNext(new Node(8, new Node(9, cycleNode)));
         Node head3 = new Node(10, cycleNode);
         System.out.println("Test 3 (Cyclic list): " +
-                (overlap(cycleNode, head3) == true ? "PASS" : "FAIL"));
+                (overlap(cycleNode, head3) ? "PASS" : "FAIL"));
 
         // Test Case 4: Null inputs
         System.out.println("Test 4 (Null inputs): " +
-                (overlap(null, null) == false ? "PASS" : "FAIL"));
+                (!overlap(null, null) ? "PASS" : "FAIL"));
 
         // Test Case 5: Large lists
         Node largeList1 = createLargeList(1000);
@@ -98,7 +98,7 @@ class Solution {
         Node commonLargeNode = largeList1.getNext().getNext();
         attachToEnd(largeList2, commonLargeNode);
         System.out.println("Test 5 (Large lists): " +
-                (overlap(largeList1, largeList2) == true ? "PASS" : "FAIL"));
+                (overlap(largeList1, largeList2) ? "PASS" : "FAIL"));
     }
 
     private static Node createLargeList(int size) {

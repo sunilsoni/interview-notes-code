@@ -60,8 +60,7 @@ public class ArraySplitter {
         for (Object obj : input) {
             if (obj instanceof Integer) {
                 integers.add((Integer) obj);
-            } else if (obj instanceof String) {
-                String str = (String) obj;
+            } else if (obj instanceof String str) {
                 try {
                     integers.add(Integer.parseInt(str));
                 } catch (NumberFormatException e) {

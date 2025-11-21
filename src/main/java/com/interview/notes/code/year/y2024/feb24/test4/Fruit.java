@@ -3,8 +3,8 @@ package com.interview.notes.code.year.y2024.feb24.test4;
 import java.util.Optional;
 
 public class Fruit {
-    private String name;
-    private String key;
+    private final String name;
+    private final String key;
 
     public Fruit(String name, String key) {
         this.name = name;

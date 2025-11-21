@@ -186,16 +186,16 @@ public class AnagramDifferenceTester {
 
         // Edge Case 1: Both strings empty
         testCases.add(new TestCase(
-                Arrays.asList(""),
-                Arrays.asList(""),
-                Arrays.asList(0)
+                List.of(""),
+                List.of(""),
+                List.of(0)
         ));
 
         // Edge Case 2: One string empty, one non-empty
         testCases.add(new TestCase(
-                Arrays.asList(""),
-                Arrays.asList("a"),
-                Arrays.asList(-1)
+                List.of(""),
+                List.of("a"),
+                List.of(-1)
         ));
 
         // Edge Case 3: Strings with all identical characters
@@ -216,18 +216,18 @@ public class AnagramDifferenceTester {
         String largeA = generateString('a', 10000);
         String largeB = generateString('a', 10000);
         testCases.add(new TestCase(
-                Arrays.asList(largeA),
-                Arrays.asList(largeB),
-                Arrays.asList(0)
+                List.of(largeA),
+                List.of(largeB),
+                List.of(0)
         ));
 
         // Large Input Case with modifications
         String largeC = generateString('a', 9999) + "b";
         String largeD = generateString('a', 10000);
         testCases.add(new TestCase(
-                Arrays.asList(largeC),
-                Arrays.asList(largeD),
-                Arrays.asList(1)
+                List.of(largeC),
+                List.of(largeD),
+                List.of(1)
         ));
 
         // Additional Test Cases

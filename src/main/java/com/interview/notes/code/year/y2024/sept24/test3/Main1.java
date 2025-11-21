@@ -11,22 +11,22 @@ public class Main1 {
 
         // Test case 1
         int[] nums1 = {2, 1, 3};
-        int result1 = solution.numOfWays(nums1);
+        int result1 = numOfWays(nums1);
         System.out.println("Test case 1: " + (result1 == 1 ? "PASS" : "FAIL") + " (Expected: 1, Got: " + result1 + ")");
 
         // Test case 2
         int[] nums2 = {3, 4, 5, 1, 2};
-        int result2 = solution.numOfWays(nums2);
+        int result2 = numOfWays(nums2);
         System.out.println("Test case 2: " + (result2 == 5 ? "PASS" : "FAIL") + " (Expected: 5, Got: " + result2 + ")");
 
         // Test case 3
         int[] nums3 = {1, 2, 3};
-        int result3 = solution.numOfWays(nums3);
+        int result3 = numOfWays(nums3);
         System.out.println("Test case 3: " + (result3 == 0 ? "PASS" : "FAIL") + " (Expected: 0, Got: " + result3 + ")");
 
         // Additional test case
         int[] nums4 = {4, 2, 1, 3, 5};
-        int result4 = solution.numOfWays(nums4);
+        int result4 = numOfWays(nums4);
         System.out.println("Test case 4: " + (result4 == 4 ? "PASS" : "FAIL") + " (Expected: 4, Got: " + result4 + ")");
     }
 

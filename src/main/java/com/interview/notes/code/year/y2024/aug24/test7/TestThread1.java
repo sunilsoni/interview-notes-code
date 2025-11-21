@@ -11,7 +11,7 @@ class TestThread1 {
 
 class threadDemo implements Runnable {
     private Thread t;
-    private String tName;
+    private final String tName;
 
     threadDemo(String name) {
         tName = name;

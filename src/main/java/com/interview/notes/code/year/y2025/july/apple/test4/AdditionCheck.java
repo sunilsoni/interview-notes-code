@@ -26,8 +26,10 @@ public class AdditionCheck {
     // Simple test runner without JUnit, prints pass/fail
     public static void main(String[] args) {
         class TestCase {
-            int a, b, c;
-            String expected;
+            final int a;
+            final int b;
+            final int c;
+            final String expected;
 
             TestCase(int a, int b, int c, String expected) {
                 this.a = a;

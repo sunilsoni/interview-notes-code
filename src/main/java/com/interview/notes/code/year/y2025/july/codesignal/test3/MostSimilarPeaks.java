@@ -49,9 +49,9 @@ public class MostSimilarPeaks {
     // Simple main for PASS/FAIL testing (no JUnit)
     public static void main(String[] args) {
         class Test {
-            int[] heights;
-            int gap;
-            int expected;
+            final int[] heights;
+            final int gap;
+            final int expected;
 
             Test(int[] h, int g, int e) {
                 heights = h;

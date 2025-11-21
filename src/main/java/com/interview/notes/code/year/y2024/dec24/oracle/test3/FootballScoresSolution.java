@@ -223,7 +223,7 @@ public class FootballScoresSolution {
         System.out.println(testName + ": " + (pass ? "PASS" : "FAIL"));
         if (!pass) {
             System.out.println("  Expected: " + Arrays.toString(expected));
-            System.out.println("  Actual:   " + actual.toString());
+            System.out.println("  Actual:   " + actual);
         }
     }
 }

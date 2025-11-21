@@ -28,7 +28,7 @@ CA', rate=$100, eventType: Wedding
 public class PhotographerApp {
 
     // In-memory data store
-    private static List<PhotographerProfile> profiles = new ArrayList<>();
+    private static final List<PhotographerProfile> profiles = new ArrayList<>();
 
     // Save photographer profile
     public static void saveProfile(PhotographerProfile profile) {

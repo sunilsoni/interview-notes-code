@@ -3,10 +3,10 @@ package com.interview.notes.code.year.y2023.Oct23.test3;
 import redis.clients.jedis.Jedis;
 
 public class Throttler1 {
-    private Jedis jedis;
-    private int capacity;
-    private int refillRate;
-    private String key;
+    private final Jedis jedis;
+    private final int capacity;
+    private final int refillRate;
+    private final String key;
 
     public Throttler1(String redisHost, int redisPort, int capacity, int refillRate, String key) {
         this.jedis = new Jedis(redisHost, redisPort);

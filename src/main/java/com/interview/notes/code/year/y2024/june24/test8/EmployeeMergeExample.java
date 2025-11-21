@@ -24,10 +24,10 @@ public class EmployeeMergeExample {
     }
 
     static class Employee {
-        private int id;
-        private String name;
-        private String designation;
-        private double salary;
+        private final int id;
+        private final String name;
+        private final String designation;
+        private final double salary;
 
         public Employee(int id, String name, String designation, double salary) {
             this.id = id;

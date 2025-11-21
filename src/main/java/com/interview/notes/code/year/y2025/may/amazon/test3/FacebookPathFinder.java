@@ -25,7 +25,7 @@ public class FacebookPathFinder {
         Set<Profile> visited = new HashSet<>();
 
         // Start the queue with the initial profile
-        queue.add(Arrays.asList(start));
+        queue.add(Collections.singletonList(start));
 
         while (!queue.isEmpty()) {
             List<Profile> path = queue.poll(); // Get the next path to evaluate

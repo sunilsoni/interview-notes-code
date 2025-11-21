@@ -15,7 +15,7 @@ import java.util.Queue;
 public class LatencyAverager1 {
 
     private final int k;
-    private Queue<Integer> latencies;
+    private final Queue<Integer> latencies;
     private double currentSum;
 
     public LatencyAverager1(int k) {

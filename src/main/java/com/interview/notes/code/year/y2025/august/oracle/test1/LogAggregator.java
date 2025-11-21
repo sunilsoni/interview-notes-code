@@ -45,9 +45,9 @@ public class LogAggregator {
         LogAggregator tieLogger = new LogAggregator();
         tieLogger.ingest("a b c a b a");
         List<Pair<String, Integer>> topResults = tieLogger.topK(3);
-        assert topResults.get(0).getKey().equals("a") : "Failed: First word should be 'a'";
-        assert topResults.get(1).getKey().equals("b") : "Failed: Second word should be 'b'";
-        assert topResults.get(2).getKey().equals("c") : "Failed: Third word should be 'c'";
+        assert topResults.get(0).key().equals("a") : "Failed: First word should be 'a'";
+        assert topResults.get(1).key().equals("b") : "Failed: Second word should be 'b'";
+        assert topResults.get(2).key().equals("c") : "Failed: Third word should be 'c'";
         System.out.println("PASS");
 
         // Test Case 5: Large input
@@ -113,9 +113,9 @@ public class LogAggregator {
 
         // Sort by count (descending) and first appearance (ascending)
         result.sort((a, b) -> {
-            int countCompare = b.getValue().compareTo(a.getValue());
+            int countCompare = b.value().compareTo(a.value());
             if (countCompare != 0) return countCompare;
-            return firstAppearance.get(a.getKey()).compareTo(firstAppearance.get(b.getKey()));
+            return firstAppearance.get(a.key()).compareTo(firstAppearance.get(b.key()));
         });
 
         // Return top K results
@@ -123,26 +123,11 @@ public class LogAggregator {
     }
 
     // Simple Pair class for word-count pairs
-    static class Pair<K, V> {
-        private final K key;
-        private final V value;
-
-        public Pair(K key, V value) {
-            this.key = key;
-            this.value = value;
-        }
-
-        public K getKey() {
-            return key;
-        }
-
-        public V getValue() {
-            return value;
-        }
+        record Pair<K, V>(K key, V value) {
 
         @Override
-        public String toString() {
-            return "(" + key + ", " + value + ")";
+            public String toString() {
+                return "(" + key + ", " + value + ")";
+            }
         }
-    }
 }

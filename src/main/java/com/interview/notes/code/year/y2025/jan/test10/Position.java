@@ -2,9 +2,9 @@ package com.interview.notes.code.year.y2025.jan.test10;
 
 // Position class
 class Position {
-    private String accountId;
-    private String symbol;
-    private long numShares;
+    private final String accountId;
+    private final String symbol;
+    private final long numShares;
 
     public Position(String positionStr) {
         String[] tokens = positionStr.split(",");

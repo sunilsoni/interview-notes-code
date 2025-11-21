@@ -20,7 +20,7 @@ public class MergePalindromes {
         }
 
         String reverseLeft = new StringBuilder(left).reverse().toString();
-        return left.toString() + middle + reverseLeft;
+        return left + middle + reverseLeft;
     }
 
     public static String mergePalindromes(String s1, String s2) {
@@ -49,7 +49,7 @@ public class MergePalindromes {
         }
 
         String reverseLeft = new StringBuilder(left).reverse().toString();
-        return left.toString() + middle + reverseLeft;
+        return left + middle + reverseLeft;
     }
 
     public static void main(String[] args) {

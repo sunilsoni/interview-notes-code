@@ -10,11 +10,11 @@ public class ReverseWords {
     public static String reverseWords(String s) {
         // Step 1: Trim the input string to remove leading/trailing spaces
         s = s.trim(); // ensures no extra space at start/end
-        
+
         // Step 2: Split string by one or more spaces using regex "\\s+"
         // This handles multiple spaces between words
         String[] words = s.split("\\s+");
-        
+
         // Step 3: Reverse the array using Stream API
         // IntStream.range lets us access indexes in reverse order
         return IntStream.range(0, words.length)
@@ -26,12 +26,12 @@ public class ReverseWords {
     public static void main(String[] args) {
         // Define test cases with expected outputs
         String[][] testCases = {
-            {"the sky is blue", "blue is sky the"},
-            {"  hello world  ", "world hello"},
-            {"a good   example", "example good a"},
-            {"   singleWord   ", "singleWord"},
-            {"", ""}, // edge case: empty string
-            {"     ", ""} // edge case: only spaces
+                {"the sky is blue", "blue is sky the"},
+                {"  hello world  ", "world hello"},
+                {"a good   example", "example good a"},
+                {"   singleWord   ", "singleWord"},
+                {"", ""}, // edge case: empty string
+                {"     ", ""} // edge case: only spaces
         };
 
         // Process each test case and print PASS/FAIL
@@ -57,7 +57,7 @@ public class ReverseWords {
         // Large data input test to ensure performance and stability
         String largeInput = String.join(" ", Collections.nCopies(100000, "word"));
         String output = reverseWords(largeInput);
-        System.out.println("Large input test passed: " + 
-            (output.startsWith("word") && output.endsWith("word")));
+        System.out.println("Large input test passed: " +
+                (output.startsWith("word") && output.endsWith("word")));
     }
 }

@@ -13,7 +13,7 @@ class SharedCounter {
 }
 
 class OddNumberThread extends Thread {
-    private SharedCounter counter;
+    private final SharedCounter counter;
 
     public OddNumberThread(SharedCounter counter) {
         this.counter = counter;
@@ -29,7 +29,7 @@ class OddNumberThread extends Thread {
 }
 
 class EvenNumberThread extends Thread {
-    private SharedCounter counter;
+    private final SharedCounter counter;
 
     public EvenNumberThread(SharedCounter counter) {
         this.counter = counter;

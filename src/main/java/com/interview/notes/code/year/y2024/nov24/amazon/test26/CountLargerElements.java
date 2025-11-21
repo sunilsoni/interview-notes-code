@@ -30,9 +30,7 @@ public class CountLargerElements {
         int[] rightIndices = new int[end - mid];
 
         // Copy indices to temp arrays
-        for (int i = 0; i < leftIndices.length; i++) {
-            leftIndices[i] = indices[start + i];
-        }
+        System.arraycopy(indices, start + 0, leftIndices, 0, leftIndices.length);
         for (int i = 0; i < rightIndices.length; i++) {
             rightIndices[i] = indices[mid + 1 + i];
         }

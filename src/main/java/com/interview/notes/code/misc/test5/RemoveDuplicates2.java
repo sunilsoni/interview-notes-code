@@ -3,7 +3,7 @@ package com.interview.notes.code.misc.test5;
 public class RemoveDuplicates2 {
     // Function to remove duplicate elements This function
     // returns new size of modified array.
-    static int removeDuplicates(int arr[], int n) {
+    static int removeDuplicates(int[] arr, int n) {
         // Return, if array is empty or contains a single
         // element
         if (n == 0 || n == 1) {
@@ -27,14 +27,13 @@ public class RemoveDuplicates2 {
         temp[j++] = arr[n - 1];
 
         // Modify original array
-        for (int i = 0; i < j; i++)
-            arr[i] = temp[i];
+        if (j >= 0) System.arraycopy(temp, 0, arr, 0, j);
 
         return j;
     }
 
     public static void main(String[] args) {
-        int arr[] = {1, 2, 2, 3, 4, 4, 4, 5, 5};
+        int[] arr = {1, 2, 2, 3, 4, 4, 4, 5, 5};
         int n = arr.length;
 
         n = removeDuplicates(arr, n);

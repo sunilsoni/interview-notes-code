@@ -4,8 +4,8 @@ package com.interview.notes.code.year.y2025.april.common.test13;
  * Represents a traffic intersection with multiple traffic lights
  */
 public class Intersection {
-    private TrafficLight northSouth;
-    private TrafficLight eastWest;
+    private final TrafficLight northSouth;
+    private final TrafficLight eastWest;
 
     /**
      * Creates a new intersection with default traffic lights

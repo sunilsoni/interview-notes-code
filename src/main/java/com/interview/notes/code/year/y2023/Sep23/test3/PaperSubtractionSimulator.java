@@ -36,9 +36,7 @@ public class PaperSubtractionSimulator {
 
             // Write the difference on a new piece of paper.
             int[] newHat = new int[maxNumber - 1];
-            for (int j = 0; j < newHat.length; j++) {
-                newHat[j] = hat[j];
-            }
+            System.arraycopy(hat, 0, newHat, 0, newHat.length);
             newHat[newHat.length - 1] = difference;
 
             // Discard the original two pieces of paper.

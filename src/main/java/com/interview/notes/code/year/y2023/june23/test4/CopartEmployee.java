@@ -7,8 +7,8 @@ import java.util.function.Function;
 
 public class CopartEmployee {
 
-    private List<Integer> items;
-    private Function<String, List<Integer>> itemParser = null;// s -> Arrays.stream(s.split(" ")).map(Integer::parseInt).collect(Collectors.toList());
+    private final List<Integer> items;
+    private final Function<String, List<Integer>> itemParser = null;// s -> Arrays.stream(s.split(" ")).map(Integer::parseInt).collect(Collectors.toList());
 
     public CopartEmployee() {
         this.items = new ArrayList<>();

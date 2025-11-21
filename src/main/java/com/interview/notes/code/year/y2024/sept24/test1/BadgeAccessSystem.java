@@ -95,7 +95,7 @@ public class BadgeAccessSystem {
         System.out.println("\nTest Case 3:");
         System.out.println("Expected: [Paul], [Paul]");
         System.out.println("Actual: " + result3);
-        System.out.println("Pass: " + (result3.get(0).equals(Arrays.asList("Paul")) && result3.get(1).equals(Arrays.asList("Paul"))));
+        System.out.println("Pass: " + (result3.get(0).equals(List.of("Paul")) && result3.get(1).equals(List.of("Paul"))));
 
         // Test case 4
         List<List<String>> records4 = Arrays.asList(
@@ -111,6 +111,6 @@ public class BadgeAccessSystem {
         System.out.println("\nTest Case 4:");
         System.out.println("Expected: [Raj, Paul], [Paul]");
         System.out.println("Actual: " + result4);
-        System.out.println("Pass: " + (result4.get(0).containsAll(Arrays.asList("Raj", "Paul")) && result4.get(1).equals(Arrays.asList("Paul"))));
+        System.out.println("Pass: " + (result4.get(0).containsAll(Arrays.asList("Raj", "Paul")) && result4.get(1).equals(List.of("Paul"))));
     }
 }

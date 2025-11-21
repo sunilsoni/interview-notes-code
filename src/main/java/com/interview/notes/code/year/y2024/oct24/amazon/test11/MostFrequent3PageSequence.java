@@ -193,8 +193,8 @@ public class MostFrequent3PageSequence {
      * Represents a log entry with time and page visited.
      */
     static class LogEntry {
-        private String time;
-        private String page;
+        private final String time;
+        private final String page;
 
         public LogEntry(String time, String page) {
             this.time = time;

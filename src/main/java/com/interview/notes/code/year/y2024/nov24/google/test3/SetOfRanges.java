@@ -13,7 +13,7 @@ query(number): Check if a number exists within any of the stored ranges.
 Handle large datasets and ensure efficient performance.
  */
 public class SetOfRanges {
-    private List<Range> ranges;
+    private final List<Range> ranges;
 
     public SetOfRanges() {
         ranges = new ArrayList<>();
@@ -34,10 +34,10 @@ public class SetOfRanges {
         set.addRange(1, 4);
 
         // Test cases
-        boolean test1 = set.query(3) == true;
-        boolean test2 = set.query(5) == false;
-        boolean test3 = set.query(1) == true;
-        boolean test4 = set.query(4) == true;
+        boolean test1 = set.query(3);
+        boolean test2 = !set.query(5);
+        boolean test3 = set.query(1);
+        boolean test4 = set.query(4);
 
         System.out.println("Test 1 (query 3): " + (test1 ? "PASS" : "FAIL"));
         System.out.println("Test 2 (query 5): " + (test2 ? "PASS" : "FAIL"));
@@ -52,9 +52,9 @@ public class SetOfRanges {
         set.addRange(Integer.MIN_VALUE, 0);
         set.addRange(0, Integer.MAX_VALUE);
 
-        boolean test1 = set.query(Integer.MIN_VALUE) == true;
-        boolean test2 = set.query(Integer.MAX_VALUE) == true;
-        boolean test3 = set.query(0) == true;
+        boolean test1 = set.query(Integer.MIN_VALUE);
+        boolean test2 = set.query(Integer.MAX_VALUE);
+        boolean test3 = set.query(0);
 
         System.out.println("Edge Test 1 (MIN_VALUE): " + (test1 ? "PASS" : "FAIL"));
         System.out.println("Edge Test 2 (MAX_VALUE): " + (test2 ? "PASS" : "FAIL"));
@@ -71,7 +71,7 @@ public class SetOfRanges {
         }
 
         long startTime = System.currentTimeMillis();
-        boolean test1 = set.query(15000) == false;
+        boolean test1 = !set.query(15000);
         long endTime = System.currentTimeMillis();
 
         System.out.println("Large Dataset Test: " + (test1 ? "PASS" : "FAIL"));
@@ -86,9 +86,9 @@ public class SetOfRanges {
         set.addRange(3, 7);
         set.addRange(6, 10);
 
-        boolean test1 = set.query(4) == true;
-        boolean test2 = set.query(6) == true;
-        boolean test3 = set.query(11) == false;
+        boolean test1 = set.query(4);
+        boolean test2 = set.query(6);
+        boolean test3 = !set.query(11);
 
         System.out.println("Overlap Test 1 (query 4): " + (test1 ? "PASS" : "FAIL"));
         System.out.println("Overlap Test 2 (query 6): " + (test2 ? "PASS" : "FAIL"));

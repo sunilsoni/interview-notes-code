@@ -39,9 +39,7 @@ public class CountLargerElementsRight {
         Pair[] rightArr = new Pair[n2];
 
         // Copy data to temporary arrays
-        for (int i = 0; i < n1; i++) {
-            leftArr[i] = pairs[left + i];
-        }
+        System.arraycopy(pairs, left + 0, leftArr, 0, n1);
         for (int j = 0; j < n2; j++) {
             rightArr[j] = pairs[mid + 1 + j];
         }

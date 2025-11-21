@@ -8,7 +8,7 @@ public class ArraySequence2 {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 0) {
                 if (sequence.length() > 0) {
-                    System.out.println(sequence.toString().substring(0, sequence.length() - 1)); // remove the last comma
+                    System.out.println(sequence.substring(0, sequence.length() - 1)); // remove the last comma
                     sequence = new StringBuilder();
                 }
             } else {
@@ -17,7 +17,7 @@ public class ArraySequence2 {
         }
 
         if (sequence.length() > 0) {
-            System.out.println(sequence.toString().substring(0, sequence.length() - 1)); // for the last sequence if no zero at the end
+            System.out.println(sequence.substring(0, sequence.length() - 1)); // for the last sequence if no zero at the end
         }
     }
 }

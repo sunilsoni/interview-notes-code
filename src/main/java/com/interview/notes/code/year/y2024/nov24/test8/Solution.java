@@ -609,10 +609,9 @@ class Solution {
 
         @Override
         public boolean equals(Object obj) {
-            if (!(obj instanceof Datapoint)) {
+            if (!(obj instanceof Datapoint other)) {
                 return false;
             }
-            Datapoint other = (Datapoint) obj;
             return this.groupId.equals(other.groupId) &&
                     this.numEmployees.equals(other.numEmployees) &&
                     this.totalDaysOverdue.equals(other.totalDaysOverdue);
@@ -636,10 +635,9 @@ class Solution {
 
         @Override
         public boolean equals(Object obj) {
-            if (!(obj instanceof Status)) {
+            if (!(obj instanceof Status other)) {
                 return false;
             }
-            Status other = (Status) obj;
             return this.name.equals(other.name) && this.daysOverdue.equals(other.daysOverdue);
         }
     }

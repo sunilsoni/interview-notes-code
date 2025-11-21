@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public interface Test {
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         //Set
         System.out.println("Stream without terminal operation");
         Arrays.stream(new int[]{1, 2, 3}).map(i -> {

@@ -102,7 +102,7 @@ public class LastTwoDigits {
         runTest(test2, expected2, 2);
 
         // Test case 3: Single element test
-        List<Integer> test3 = Arrays.asList(1);
+        List<Integer> test3 = List.of(1);
         String expected3 = "01";
         runTest(test3, expected3, 3);
 

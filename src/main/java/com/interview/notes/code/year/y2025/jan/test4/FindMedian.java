@@ -5,9 +5,9 @@ import java.util.PriorityQueue;
 
 public class FindMedian {
     // Max-heap for the lower half of the numbers
-    private static PriorityQueue<Integer> lowerHalf = new PriorityQueue<>(Collections.reverseOrder());
+    private static final PriorityQueue<Integer> lowerHalf = new PriorityQueue<>(Collections.reverseOrder());
     // Min-heap for the upper half of the numbers
-    private static PriorityQueue<Integer> upperHalf = new PriorityQueue<>();
+    private static final PriorityQueue<Integer> upperHalf = new PriorityQueue<>();
 
     /**
      * Adds a number to our data structure.

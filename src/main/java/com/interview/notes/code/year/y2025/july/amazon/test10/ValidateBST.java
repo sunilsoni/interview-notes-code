@@ -50,12 +50,9 @@ public class ValidateBST {
         }
 
         // Recursively validate left subtree with updated upper bound
-        if (!isValidBSTHelper(node.left, lower, val)) {
-            return false;
-        }
+        return isValidBSTHelper(node.left, lower, val);
 
         // If all checks pass, this subtree is valid
-        return true;
     }
 
     // Utility method to create a balanced BST from sorted list

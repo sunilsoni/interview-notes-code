@@ -6,10 +6,10 @@ import java.util.Set;
 import java.util.TreeSet;
 
 class User implements Comparable<User> {
-    private Integer id;
-    private String name;
-    private Set<User> followers;
-    private Set<User> following;
+    private final Integer id;
+    private final String name;
+    private final Set<User> followers;
+    private final Set<User> following;
 
     public User(Integer id, String name) {
         this.id = id;
@@ -64,7 +64,7 @@ class User implements Comparable<User> {
 }
 
 class Platform {
-    private Map<Integer, User> users;
+    private final Map<Integer, User> users;
 
     public Platform() {
         this.users = new HashMap<>();

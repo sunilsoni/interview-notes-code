@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 
 public class FileFinder {
 
-    private static List<String> fileExtensions = List.of(".xml", ".json"); // List of file extensions to search for
+    private static final List<String> fileExtensions = List.of(".xml", ".json"); // List of file extensions to search for
 
     public static void main(String[] args) {
         String testDirectory = "/path/to/test/directory";

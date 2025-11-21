@@ -64,7 +64,7 @@ public class DistributionCenters {
     }
 
     public static void main(String[] args) {
-        List<Test> tests = Arrays.asList(
+        List<Test> tests = List.of(
                 new Test(
                         new int[]{1, 2, 1, 2, 1},
                         new String[]{

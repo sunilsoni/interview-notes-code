@@ -17,7 +17,7 @@ public class SongChaining {
         List<String> longestChain = new ArrayList<>();
         longestChain.add(startSong);
 
-        findChain(songs, startSong, used, new ArrayList<>(Arrays.asList(startSong)), longestChain);
+        findChain(songs, startSong, used, new ArrayList<>(List.of(startSong)), longestChain);
 
         return longestChain;
     }

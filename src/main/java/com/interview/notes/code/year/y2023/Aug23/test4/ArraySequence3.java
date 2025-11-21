@@ -30,7 +30,7 @@ public class ArraySequence3 {
         }
 
         if (maxSequence.length() > 0) {
-            System.out.println(maxSequence.toString().substring(0, maxSequence.length() - 1));  // remove the last comma
+            System.out.println(maxSequence.substring(0, maxSequence.length() - 1));  // remove the last comma
         } else {
             System.out.println("No sequence found!");
         }

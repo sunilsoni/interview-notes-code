@@ -220,33 +220,25 @@ public class BalancedTriangleBrackets {
         long t6 = System.nanoTime();
 
         // Print timings in milliseconds (approx)
-        System.out.println(String.format("Worst1 length=%d -> minAdditions=%d | time=%.3f ms",
-                worst1.length(), adds1, (t2 - t1) / 1_000_000.0));
-        System.out.println(String.format("Worst2 length=%d -> isValid=%s   | time=%.3f ms",
-                worst2.length(), valid2, (t4 - t3) / 1_000_000.0));
-        System.out.println(String.format("Random length=%d -> minAdditions=%d | time=%.3f ms",
-                rnd.length(), addsRnd, (t6 - t5) / 1_000_000.0));
+        System.out.printf("Worst1 length=%d -> minAdditions=%d | time=%.3f ms%n",
+                worst1.length(), adds1, (t2 - t1) / 1_000_000.0);
+        System.out.printf("Worst2 length=%d -> isValid=%s   | time=%.3f ms%n",
+                worst2.length(), valid2, (t4 - t3) / 1_000_000.0);
+        System.out.printf("Random length=%d -> minAdditions=%d | time=%.3f ms%n",
+                rnd.length(), addsRnd, (t6 - t5) / 1_000_000.0);
     }
 
-    // Utility: A tiny record to hold a test case for Part A (validity)
-    static class ValidCase {
-        final String s;        // input string
-        final boolean expect;  // expected validity
-
-        ValidCase(String s, boolean expect) {
-            this.s = s;
-            this.expect = expect;
-        }
+    /**
+     * @param s      input string
+     * @param expect expected validity
+     */ // Utility: A tiny record to hold a test case for Part A (validity)
+        record ValidCase(String s, boolean expect) {
     }
 
-    // Utility: A tiny record to hold a test case for Part B (min additions)
-    static class AddCase {
-        final String s;      // input string
-        final int expect;    // expected minimal insertions
-
-        AddCase(String s, int expect) {
-            this.s = s;
-            this.expect = expect;
-        }
+    /**
+     * @param s      input string
+     * @param expect expected minimal insertions
+     */ // Utility: A tiny record to hold a test case for Part B (min additions)
+        record AddCase(String s, int expect) {
     }
 }

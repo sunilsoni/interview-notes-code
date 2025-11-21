@@ -1,9 +1,6 @@
 package com.interview.notes.code.year.y2024.aug24.test20;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class User {
     int id;
@@ -19,7 +16,7 @@ class User {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         User user = (User) obj;
-        return id == user.id && (info != null ? info.equals(user.info) : user.info == null);
+        return id == user.id && (Objects.equals(info, user.info));
     }
 
     @Override

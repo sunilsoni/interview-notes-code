@@ -48,9 +48,9 @@ public class MinimizeSystemCost {
 
     public static void main(String[] args) {
         class Test {
-            int k;
-            List<Integer> m;
-            long exp;
+            final int k;
+            final List<Integer> m;
+            final long exp;
 
             Test(int k, List<Integer> m, long e) {
                 this.k = k;

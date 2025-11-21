@@ -125,7 +125,7 @@ public class GrandNumberGame {
 
         // Additional test cases:
         // 1. Minimal input
-        testCases.add(new TestCase(1, Arrays.asList(10, 20), 1 * gcd(10, 20)));
+        testCases.add(new TestCase(1, Arrays.asList(10, 20), gcd(10, 20)));
         // 2. Larger input but within constraints (N=4, 8 numbers)
         // For this test, we are printing the computed result for further inspection.
         testCases.add(new TestCase(4, Arrays.asList(12, 15, 18, 21, 24, 30, 35, 40), 0));

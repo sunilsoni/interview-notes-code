@@ -33,7 +33,7 @@ public class PlayToWin {
             if (m < 2) continue;
             int minY;
             int p0 = pos.get(0);
-            minY = 0 - prefixK[p0];
+            minY = -prefixK[p0];
             maxDelta = Math.max(maxDelta, (1 - prefixK[p0 + 1]) - minY);
             for (int t = 1; t < m; t++) {
                 int p = pos.get(t);

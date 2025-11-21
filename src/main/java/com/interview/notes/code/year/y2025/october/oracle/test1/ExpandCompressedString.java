@@ -22,7 +22,7 @@ public class ExpandCompressedString {
 
             // Read the current character and advance the index by one
             char ch = input.charAt(i++);
-            
+
             // If the current symbol is a stray '-' or a digit (i.e., not preceded by a “character” token), skip the whole number block
             // This satisfies the rule: ignore unexpected/non-pattern characters
             if (ch == '-' || Character.isDigit(ch)) {
@@ -88,38 +88,38 @@ public class ExpandCompressedString {
     public static void main(String[] args) {
         // Build a list of hand-written tests covering base, edge, and tricky scenarios
         List<Case> basic = Arrays.asList(
-            new Case("Ex1",       "a3b10",         "aaa" + "b".repeat(10)),         // Positive multi-digit counts
-            new Case("Ex2",       "b2a",           "bb"),                           // Char without number is omitted
-            new Case("Zero",      "z0",            ""),                             // Zero count -> omit
-            new Case("Negative",  "x-5",           ""),                             // Negative count -> omit
-            new Case("MixABC",    "A1B2C3",        "A" + "BB" + "CCC"),             // Multiple pairs
-            new Case("LeadingNum","1a2",           "aa"),                           // Stray number then a valid pair
-            new Case("Leading0s", "a0002b0003",    "aa" + "bbb"),                   // Leading zeros should work
-            new Case("OnlyChars", "abc",           ""),                             // No numbers after chars -> omit all
-            new Case("DashNoise", "a5-3",          "aaaaa"),                        // Stop digits at first non-digit; '-' and '3' are ignored as noise
-            new Case("UpperBound","q2147483647",   "q"),                            // Capped behavior check (will not actually expand full; just ensures it doesn't crash)
-            new Case("Empty",     "",              "")                              // Empty input -> empty output
+                new Case("Ex1", "a3b10", "aaa" + "b".repeat(10)),         // Positive multi-digit counts
+                new Case("Ex2", "b2a", "bb"),                           // Char without number is omitted
+                new Case("Zero", "z0", ""),                             // Zero count -> omit
+                new Case("Negative", "x-5", ""),                             // Negative count -> omit
+                new Case("MixABC", "A1B2C3", "A" + "BB" + "CCC"),             // Multiple pairs
+                new Case("LeadingNum", "1a2", "aa"),                           // Stray number then a valid pair
+                new Case("Leading0s", "a0002b0003", "aa" + "bbb"),                   // Leading zeros should work
+                new Case("OnlyChars", "abc", ""),                             // No numbers after chars -> omit all
+                new Case("DashNoise", "a5-3", "aaaaa"),                        // Stop digits at first non-digit; '-' and '3' are ignored as noise
+                new Case("UpperBound", "q2147483647", "q"),                            // Capped behavior check (will not actually expand full; just ensures it doesn't crash)
+                new Case("Empty", "", "")                              // Empty input -> empty output
         );
 
         // Large-data test: produce "x100000" to check performance and memory in a reasonable bound
         String bigIn = "x100000";                                                   // Input with a large repeat count
         String bigExpected = IntStream.range(0, 100000)                             // Use IntStream to generate 100000 'x'
-                                       .mapToObj(i -> "x")
-                                       .collect(Collectors.joining());
+                .mapToObj(i -> "x")
+                .collect(Collectors.joining());
         Case large1 = new Case("LargeCount", bigIn, bigExpected);                   // Hold the large case
 
         // Streaming input generator: create 100k pairs "y1" and expect 100k 'y' output
         String manyPairsIn = IntStream.range(0, 100000)                             // 100k tokens
-                                      .mapToObj(i -> "y1")                          // Each token says one 'y'
-                                      .collect(Collectors.joining());
+                .mapToObj(i -> "y1")                          // Each token says one 'y'
+                .collect(Collectors.joining());
         String manyPairsExpected = IntStream.range(0, 100000)                       // Build expected 100k 'y'
-                                            .mapToObj(i -> "y")
-                                            .collect(Collectors.joining());
+                .mapToObj(i -> "y")
+                .collect(Collectors.joining());
         Case large2 = new Case("ManyPairs100k", manyPairsIn, manyPairsExpected);    // Another large test
 
         // Combine all tests (basic + large) into a single list for execution
         List<Case> all = Stream.concat(basic.stream(), Stream.of(large1, large2))   // Merge two streams
-                               .collect(Collectors.toList());                       // Materialize into list
+                .collect(Collectors.toList());                       // Materialize into list
 
         // Execute tests: for each case, call expandCompressedString and print PASS/FAIL with details
         all.forEach(tc -> {
@@ -132,8 +132,8 @@ public class ExpandCompressedString {
 
         // Quick aggregate summary: count failures using Stream API
         long failures = all.stream()                                                 // Stream over all results again
-                           .filter(tc -> !Objects.equals(expandCompressedString(tc.in), tc.expected))
-                           .count();                                                 // Count how many failed
+                .filter(tc -> !Objects.equals(expandCompressedString(tc.in), tc.expected))
+                .count();                                                 // Count how many failed
         System.out.println("Total Failures: " + failures);                           // Print overall failure count
     }
 
@@ -142,7 +142,7 @@ public class ExpandCompressedString {
      * @param expected Expected expansion result
      * @param name     Optional label for clarity in output
      */ // Small immutable holder for a single test case
-        private record Case(String name, String in, String expected) {
+    private record Case(String name, String in, String expected) {
         // Constructor to set all properties
     }
 }

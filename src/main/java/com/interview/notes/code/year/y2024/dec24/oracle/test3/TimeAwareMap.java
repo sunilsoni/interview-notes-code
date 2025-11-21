@@ -155,18 +155,11 @@ public class TimeAwareMap {
         return entry != null ? entry.getValue().value : null;
     }
 
-    private static class TimestampedValue {
-        private final String value;
-        private final long timestamp;
-
-        TimestampedValue(String value, long timestamp) {
-            this.value = value;
-            this.timestamp = timestamp;
-        }
+    private record TimestampedValue(String value, long timestamp) {
 
         @Override
-        public String toString() {
-            return "TimestampedValue{value='" + value + "', timestamp=" + timestamp + "}";
+            public String toString() {
+                return "TimestampedValue{value='" + value + "', timestamp=" + timestamp + "}";
+            }
         }
-    }
 }

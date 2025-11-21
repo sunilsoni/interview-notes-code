@@ -33,8 +33,8 @@ public class LongestSubstring {
     public static void main(String[] args) {
         // Test case class to organize inputs and expected outputs
         class TestCase {
-            String input;
-            int expected;
+            final String input;
+            final int expected;
 
             TestCase(String input, int expected) {
                 this.input = input;

@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2025.july.hackerank.test2;
 import java.util.*;
 
 enum TransactionType {
-    P2M, P2P, Self;
+    P2M, P2P, Self
 }
 
 class TransactionSummary {
@@ -24,15 +24,15 @@ class TransactionSummary {
 class Payment {
     private static final int TOP_K = 100;
     // Track transaction counts per user/type
-    private Map<Integer, Map<TransactionType, Integer>> txnCounts = new HashMap<>();
+    private final Map<Integer, Map<TransactionType, Integer>> txnCounts = new HashMap<>();
     // Track total P2M amount per user
-    private Map<Integer, Long> userP2mSum = new HashMap<>();
+    private final Map<Integer, Long> userP2mSum = new HashMap<>();
     // Min-heap of size 100 for top P2M senders (amount, senderId)
-    private PriorityQueue<long[]> top100 = new PriorityQueue<>((a, b) -> {
+    private final PriorityQueue<long[]> top100 = new PriorityQueue<>((a, b) -> {
         if (a[0] == b[0]) return Long.compare(a[1], b[1]);
         return Long.compare(a[0], b[0]);
     });
-    private Set<Integer> top100Ids = new HashSet<>();
+    private final Set<Integer> top100Ids = new HashSet<>();
 
     // Rebuilds the heap if a user's P2M amount increases
     private void updateTop100(int senderId, long newTotal) {

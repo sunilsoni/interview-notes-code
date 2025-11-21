@@ -71,7 +71,7 @@ public class ZigzagLevelOrder {
         root1.right.right = new TreeNode(7);                      // create right child of node 20 with value 7
         List<List<Integer>> result1 = zigzagLevelOrder(root1);     // call zigzag function on sample tree
         List<List<Integer>> expected1 = Arrays.asList(             // define expected zigzag output
-                Arrays.asList(3),                                     // level 1: [3]
+                List.of(3),                                     // level 1: [3]
                 Arrays.asList(20, 9),                                 // level 2 zigzag: [20, 9]
                 Arrays.asList(15, 7)                                  // level 3: [15, 7]
         );
@@ -90,8 +90,8 @@ public class ZigzagLevelOrder {
         // Test 3: single node tree
         TreeNode root3 = new TreeNode(1);                         // create a tree with only one node
         List<List<Integer>> result3 = zigzagLevelOrder(root3);     // call zigzag function on single-node tree
-        List<List<Integer>> expected3 = Arrays.asList(             // expected result for single node
-                Arrays.asList(1)                                      // level 1: [1]
+        List<List<Integer>> expected3 = List.of(             // expected result for single node
+                List.of(1)                                      // level 1: [1]
         );
         System.out.println(result3.equals(expected3)               // compare result with expected
                 ? "Test 3 PASS"                                     // print PASS if match

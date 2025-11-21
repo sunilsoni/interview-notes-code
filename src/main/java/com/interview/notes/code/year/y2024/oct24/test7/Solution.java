@@ -25,7 +25,7 @@ public class Solution {
 
                 if (count > 1) {
                     hasConsecutiveEquals = true;
-                    newResult.append(String.valueOf(Character.getNumericValue(currentChar) * count));
+                    newResult.append(Character.getNumericValue(currentChar) * count);
                 } else {
                     newResult.append(currentChar);
                 }

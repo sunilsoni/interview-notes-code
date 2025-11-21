@@ -16,7 +16,7 @@ public class LambdaTest {
 
     static Predicate<Integer> isPalindrome = num -> {
         String str = String.valueOf(Math.abs(num));
-        return str.equals(new StringBuilder(str).reverse().toString());
+        return str.contentEquals(new StringBuilder(str).reverse());
     };
 
     // Test method

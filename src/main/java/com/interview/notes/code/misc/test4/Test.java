@@ -9,7 +9,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 class Test {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         int x = 2;
         System.out.println(x);//2
         update(x);
@@ -26,7 +26,7 @@ class Test {
 
 @Service
 class Test1 {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         String word = "SreejaSrinivas";
         Map<String, Long> charCount = word.codePoints().mapToObj(Character::toString)

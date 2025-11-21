@@ -325,8 +325,7 @@ public class LibraryApp {
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
-            if (!(o instanceof Book)) return false;
-            Book b = (Book) o;
+            if (!(o instanceof Book b)) return false;
             return id == b.id; // id uniquely identifies a book
         }
 

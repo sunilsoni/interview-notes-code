@@ -33,7 +33,7 @@ public class OptimizedArrayCompressor {
         test(Arrays.asList(1, 2, 1, 3, 6, 1), 6);  // Expected: 2
         test(Arrays.asList(2, 3, 3, 7, 3, 5), 20); // Expected: 3
         test(Arrays.asList(10, 20, 30), 5);        // Expected: 3
-        test(Arrays.asList(5), 10);                // Expected: 1
+        test(List.of(5), 10);                // Expected: 1
     }
 
     private static void test(List<Integer> arr, int k) {

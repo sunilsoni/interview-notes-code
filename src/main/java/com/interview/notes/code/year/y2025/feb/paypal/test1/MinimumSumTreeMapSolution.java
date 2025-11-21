@@ -153,7 +153,7 @@ public class MinimumSumTreeMapSolution {
         int testCaseNumber = 1;
 
         // Test Case 1: Single element.
-        List<Integer> nums1 = Arrays.asList(2);
+        List<Integer> nums1 = List.of(2);
         int k1 = 1;
         int expected1 = 1;
         runTest(testCaseNumber++, nums1, k1, expected1, "TreeMap");

@@ -13,8 +13,8 @@ public class MessageRateLimiter {
 
         // Process each message in the input list
         for (Pair<Integer, String> message : messages) {
-            int currentTime = message.getFirst();
-            String content = message.getSecond();
+            int currentTime = message.first();
+            String content = message.second();
 
             // Check if this is first occurrence or enough time has passed since last delivery
             if (!lastDeliveryTime.containsKey(content) ||
@@ -75,21 +75,6 @@ public class MessageRateLimiter {
     }
 
     // Simple pair class to hold timestamp and message content
-    static class Pair<T, U> {
-        private final T first;
-        private final U second;
-
-        public Pair(T first, U second) {
-            this.first = first;
-            this.second = second;
-        }
-
-        public T getFirst() {
-            return first;
-        }
-
-        public U getSecond() {
-            return second;
-        }
+        record Pair<T, U>(T first, U second) {
     }
 }

@@ -113,7 +113,7 @@ public class MinimumSumCalculator {
         List<TestCase> testCases = new ArrayList<>();
 
         // Sample Test Case 0
-        testCases.add(new TestCase(Arrays.asList(2), 1, 1));
+        testCases.add(new TestCase(List.of(2), 1, 1));
 
         // Example Test Case from problem description
         // testCases.add(new TestCase(Arrays.asList(10, 20, 7), 4, 14));
@@ -124,7 +124,7 @@ public class MinimumSumCalculator {
         testCases.add(new TestCase(Arrays.asList(1, 1, 1), 5, 3)); // Expected sum is 3
 
         // Edge Case 2: Large value and large k
-        testCases.add(new TestCase(Arrays.asList(10000), 2000000, 1)); // Expected sum is 1
+        testCases.add(new TestCase(List.of(10000), 2000000, 1)); // Expected sum is 1
 
         // Edge Case 3: No operations
         testCases.add(new TestCase(Arrays.asList(5, 5, 5, 5, 5), 0, 25)); // Expected sum is 25

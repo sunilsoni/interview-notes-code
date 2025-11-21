@@ -99,7 +99,7 @@ public class UnitTestScheduler {
                 timeline.append("R");
             }
 
-            System.out.println(timeline.toString());
+            System.out.println(timeline);
 
             // Update timings
             if (vm1Time <= vm2Time) {
@@ -164,7 +164,7 @@ public class UnitTestScheduler {
         System.out.println("\n\nTest Case 4 (Edge Cases):");
         System.out.println("Empty list: " + scheduleTests(new ArrayList<>()).order);
         System.out.println("Single test: " +
-                scheduleTests(Arrays.asList(new Test(1, 1, 1))).order);
+                scheduleTests(List.of(new Test(1, 1, 1))).order);
     }
 
     // Class to represent a test case with its properties

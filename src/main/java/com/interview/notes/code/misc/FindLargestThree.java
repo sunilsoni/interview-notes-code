@@ -2,7 +2,7 @@ package com.interview.notes.code.misc;
 
 public class FindLargestThree {
     //method to find the largest three numbers from an array
-    public static void findLargestThree(int arr[]) {
+    public static void findLargestThree(int[] arr) {
 
         if (arr.length < 3) {
             System.out.println("Invalid input, Array size is less than 3");

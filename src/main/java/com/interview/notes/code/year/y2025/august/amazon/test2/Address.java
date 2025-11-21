@@ -2,26 +2,15 @@ package com.interview.notes.code.year.y2025.august.amazon.test2;
 
 import java.util.*;
 
-// Immutable class for Address - must be final to prevent inheritance
-final class Address {
-    // Private final fields to ensure immutability
-    private final String street;
-    private final String city;
-
+/**
+ * @param street Private final fields to ensure immutability
+ */ // Immutable class for Address - must be final to prevent inheritance
+record Address(String street, String city) {
     // Constructor with validation
-    public Address(String street, String city) {
+    Address(String street, String city) {
         // Validate inputs to prevent null values
         this.street = Objects.requireNonNull(street, "Street cannot be null");
         this.city = Objects.requireNonNull(city, "City cannot be null");
-    }
-
-    // Getters only - no setters to maintain immutability
-    public String getStreet() {
-        return street;
-    }
-
-    public String getCity() {
-        return city;
     }
 
     // Override toString for better object representation
@@ -31,18 +20,14 @@ final class Address {
     }
 }
 
-// Main immutable employee class - marked final to prevent inheritance
-final class ImmutableEmployee {
-    // All fields are private and final to ensure immutability
-    private final String employeeId;
-    private final String name;
-    private final Address address;
-    private final Date joiningDate;
-    private final Map<String, String> attributes;
-
+/**
+ * @param employeeId All fields are private and final to ensure immutability
+ */ // Main immutable employee class - marked final to prevent inheritance
+record ImmutableEmployee(String employeeId, String name, Address address, Date joiningDate,
+                         Map<String, String> attributes) {
     // Constructor with validation
-    public ImmutableEmployee(String employeeId, String name, Address address,
-                             Date joiningDate, Map<String, String> attributes) {
+    ImmutableEmployee(String employeeId, String name, Address address,
+                      Date joiningDate, Map<String, String> attributes) {
         // Validate all inputs
         this.employeeId = Objects.requireNonNull(employeeId, "Employee ID cannot be null");
         this.name = Objects.requireNonNull(name, "Name cannot be null");
@@ -77,7 +62,7 @@ final class ImmutableEmployee {
 
             // Try to modify the returned map (should throw exception)
             try {
-                emp.getAttributes().put("new", "value");
+                emp.attributes().put("new", "value");
                 System.out.println("Test 2 - Immutability: FAIL");
             } catch (UnsupportedOperationException e) {
                 System.out.println("Test 2 - Immutability: PASS");
@@ -110,25 +95,9 @@ final class ImmutableEmployee {
         }
     }
 
-    // Getters with defensive copies where needed
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public Date getJoiningDate() {
+    @Override
+    public Date joiningDate() {
         return new Date(joiningDate.getTime());
-    }
-
-    public Map<String, String> getAttributes() {
-        return attributes;
     }
 
     // Override toString for better object representation

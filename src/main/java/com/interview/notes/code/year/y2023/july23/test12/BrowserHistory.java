@@ -4,9 +4,9 @@ import java.util.Stack;
 
 class BrowserHistory {
 
-    private String homepage;
-    private Stack<String> history;
-    private Stack<String> forward;
+    private final String homepage;
+    private final Stack<String> history;
+    private final Stack<String> forward;
 
     public BrowserHistory(String homepage) {
         this.homepage = homepage;

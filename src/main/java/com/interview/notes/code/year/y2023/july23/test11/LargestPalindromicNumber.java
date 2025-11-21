@@ -64,9 +64,9 @@ class LargestPalindromicNumber {
         // If middle character exists, add it.
         String result;
         if (middle != '\0') {
-            result = leftHalf.toString() + middle + rightHalf.toString();
+            result = leftHalf.toString() + middle + rightHalf;
         } else {
-            result = leftHalf.toString() + rightHalf.toString();
+            result = leftHalf.toString() + rightHalf;
         }
 
         // Check if palindrome is of length 1 and if so, return only the middle digit.

@@ -23,7 +23,7 @@ public class SuitableLocations3 {
 
             // Calculate the total travel distance to potentialWarehouseLocation for all centers
             for (Integer c : center) {
-                totalDistance += 2 * Math.abs(c - potentialWarehouseLocation);
+                totalDistance += 2L * Math.abs(c - potentialWarehouseLocation);
             }
 
             if (totalDistance <= d) {

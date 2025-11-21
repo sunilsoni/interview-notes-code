@@ -6,15 +6,16 @@ import java.util.stream.IntStream;
 
 /**
  * Immutable representation of an employee.
+ *
+ * @param employeeId  unique ID, immutable once set
+ * @param name        employee name, immutable
+ * @param address     immutable Address instance
+ * @param joiningDate defensive-copied Date
+ * @param attributes  unmodifiable Map
  */
 
-public final class ImmutableEmployee {
-    private final String employeeId;                 // unique ID, immutable once set
-    private final String name;                       // employee name, immutable
-    private final Address address;                   // immutable Address instance
-    private final Date joiningDate;                  // defensive-copied Date
-    private final Map<String, String> attributes;    // unmodifiable Map
-
+public record ImmutableEmployee(String employeeId, String name, Address address, Date joiningDate,
+                                Map<String, String> attributes) {
     /**
      * Constructs an ImmutableEmployee with all required fields.
      *
@@ -71,8 +72,8 @@ public final class ImmutableEmployee {
             d.setTime(0);
             m.put("role", "ops");
             // check immutability
-            boolean pass1 = e.getJoiningDate().getTime() != 0
-                    && "dev".equals(e.getAttributes().get("role"));
+            boolean pass1 = e.joiningDate().getTime() != 0
+                    && "dev".equals(e.attributes().get("role"));
             System.out.println("Test 1 (immutability): " + (pass1 ? "PASS" : "FAIL"));
         } catch (Exception ex) {
             System.out.println("Test 1 (immutability): FAIL with exception " + ex);
@@ -106,7 +107,7 @@ public final class ImmutableEmployee {
                     new Date(),
                     largeMap
             );
-            boolean pass3 = eLarge.getAttributes().size() == 100_000;
+            boolean pass3 = eLarge.attributes().size() == 100_000;
             System.out.println("Test 3 (large data): " + (pass3 ? "PASS" : "FAIL"));
         } catch (Exception ex) {
             System.out.println("Test 3 (large data): FAIL with exception " + ex);
@@ -116,28 +117,32 @@ public final class ImmutableEmployee {
     /**
      * @return employeeId
      */
-    public String getEmployeeId() {
+    @Override
+    public String employeeId() {
         return employeeId;
     }
 
     /**
      * @return name
      */
-    public String getName() {
+    @Override
+    public String name() {
         return name;
     }
 
     /**
      * @return Address (immutable)
      */
-    public Address getAddress() {
+    @Override
+    public Address address() {
         return address;
     }
 
     /**
      * @return defensive copy of joiningDate
      */
-    public Date getJoiningDate() {
+    @Override
+    public Date joiningDate() {
         return new Date(joiningDate.getTime());  // copy to protect internal state
     }
 
@@ -146,25 +151,20 @@ public final class ImmutableEmployee {
     /**
      * @return unmodifiable Map of attributes
      */
-    public Map<String, String> getAttributes() {
+    @Override
+    public Map<String, String> attributes() {
         return attributes;                      // already unmodifiable
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;                           // same object
-        if (!(o instanceof ImmutableEmployee)) return false;   // correct type
-        ImmutableEmployee that = (ImmutableEmployee) o;
+        if (!(o instanceof ImmutableEmployee that)) return false;   // correct type
         return employeeId.equals(that.employeeId)
                 && name.equals(that.name)
                 && address.equals(that.address)
                 && joiningDate.equals(that.joiningDate)
                 && attributes.equals(that.attributes);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(employeeId, name, address, joiningDate, attributes);
     }
 
     @Override
@@ -180,11 +180,11 @@ public final class ImmutableEmployee {
 
     /**
      * Immutable Address sub-class.
+     *
+     * @param street street part
+     * @param city   city part
      */
-    public static final class Address {
-        private final String street;                // street part
-        private final String city;                  // city part
-
+    public record Address(String street, String city) {
         /**
          * @param street non-null, non-blank
          * @param city   non-null, non-blank
@@ -196,25 +196,11 @@ public final class ImmutableEmployee {
             if (city.trim().isEmpty()) throw new IllegalArgumentException("city blank");
         }
 
-        public String getStreet() {
-            return street;
-        }
-
-        public String getCity() {
-            return city;
-        }
-
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
-            if (!(o instanceof Address)) return false;
-            Address that = (Address) o;
+            if (!(o instanceof Address that)) return false;
             return street.equals(that.street) && city.equals(that.city);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(street, city);
         }
 
         @Override

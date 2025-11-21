@@ -9,7 +9,7 @@ public class DependencyOrderer {
         test1.put("A", new HashSet<>(Arrays.asList("B", "C")));
         test1.put("B", new HashSet<>(Arrays.asList("C", "D")));
         test1.put("C", new HashSet<>(Arrays.asList("B", "D")));
-        test1.put("D", new HashSet<>(Arrays.asList("E")));
+        test1.put("D", new HashSet<>(List.of("E")));
         test1.put("E", new HashSet<>());
 
         DependencyOrderer orderer = new DependencyOrderer();

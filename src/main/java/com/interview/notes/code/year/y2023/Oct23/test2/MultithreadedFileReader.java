@@ -49,8 +49,8 @@ public class MultithreadedFileReader {
 }
 
 class FileReaderTask implements Callable<List<String>> {
-    private BufferedReader reader;
-    private long chunkSize;
+    private final BufferedReader reader;
+    private final long chunkSize;
 
     FileReaderTask(BufferedReader reader, long chunkSize) {
         this.reader = reader;

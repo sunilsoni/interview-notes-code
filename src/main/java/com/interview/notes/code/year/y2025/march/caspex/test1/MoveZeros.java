@@ -105,7 +105,7 @@ public class MoveZeros {
     public static void main(String[] args) {
         // Test cases
         testCase(Arrays.asList(0, 1, 0, 3, 12), Arrays.asList(1, 3, 12, 0, 0), "Example 1");
-        testCase(Arrays.asList(0), Arrays.asList(0), "Example 2");
+        testCase(List.of(0), List.of(0), "Example 2");
 
         // Additional test cases
         testCase(Arrays.asList(1, 2, 3, 4, 5), Arrays.asList(1, 2, 3, 4, 5), "All non-zeros");

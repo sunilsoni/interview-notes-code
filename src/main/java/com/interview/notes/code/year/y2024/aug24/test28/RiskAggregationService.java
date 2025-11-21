@@ -33,8 +33,8 @@ public class RiskAggregationService {
     }
 
     public static class RiskData {
-        private String riskType;
-        private double value;
+        private final String riskType;
+        private final double value;
 
         public RiskData(String riskType, double value) {
             this.riskType = riskType;

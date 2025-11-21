@@ -4,10 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 class Employee {
-    private int id;
-    private String name;
-    private double salary;
-    private String department;
+    private final int id;
+    private final String name;
+    private final double salary;
+    private final String department;
 
     public Employee(int id, String name, double salary, String department) {
         this.id = id;
@@ -84,7 +84,7 @@ public class SecondHighestSalaryFinder {
         System.out.println("Large Input Test Completed.");
 
         // Fewer than 2 employees in a department
-        List<Employee> edgeCase = Arrays.asList(
+        List<Employee> edgeCase = List.of(
                 new Employee(10, "John", 70000, "Legal")
         );
 

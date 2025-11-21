@@ -51,7 +51,7 @@ public class CardShuffler {
         System.out.println("Shuffled deck: " + shuffle(deck1));
 
         // Test case 2: Single card
-        List<String> deck2 = Arrays.asList("King of Hearts");
+        List<String> deck2 = List.of("King of Hearts");
         System.out.println("\nInitial deck: " + deck2);
         System.out.println("Shuffled deck: " + shuffle(deck2));
 

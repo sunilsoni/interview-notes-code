@@ -5,7 +5,7 @@ import java.util.*;
 public class FlightScheduler {
 
     // Graph representation: each airport maps to a list of directly connected airports.
-    private Map<String, List<String>> flightGraph = new HashMap<>();
+    private final Map<String, List<String>> flightGraph = new HashMap<>();
 
     /**
      * Main method for running tests.
@@ -54,7 +54,7 @@ public class FlightScheduler {
 
         // Test 3: Same start and destination
         List<String> path3 = scheduler.findPath("Houston", "Houston");
-        tester.check("Test 3 (Houston -> Houston)", Arrays.asList("Houston"), path3);
+        tester.check("Test 3 (Houston -> Houston)", List.of("Houston"), path3);
 
         // Test 4: No available route
         // For this test, we add an isolated airport "Miami" with no flights connecting it.

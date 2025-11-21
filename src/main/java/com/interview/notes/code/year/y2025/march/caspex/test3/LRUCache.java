@@ -9,11 +9,12 @@ public class LRUCache {
     // Main class to handle the LRU cache implementation
 
     // HashMap for O(1) access to nodes by key
-    private HashMap<Integer, Node> cache;
+    private final HashMap<Integer, Node> cache;
     // Capacity of the cache
-    private int capacity;
+    private final int capacity;
     // Head and tail of doubly linked list for tracking usage order
-    private Node head, tail;
+    private final Node head;
+    private final Node tail;
 
     /**
      * Initialize the LRU cache with given capacity

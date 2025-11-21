@@ -58,7 +58,7 @@ public class OccurrenceCounter {
         // --- Run tests and report PASS/FAIL ---
         for (int i = 0; i < tests.length; i++) {
             @SuppressWarnings("unchecked")
-            Map<Object, Long> result = countOccurrences((Object[]) tests[i]); // count
+            Map<Object, Long> result = countOccurrences(tests[i]); // count
             boolean pass = result.equals(expected.get(i));                   // compare
             System.out.printf(
                     "Test %d: %s%nExpected: %s%nGot:      %s%n%n",

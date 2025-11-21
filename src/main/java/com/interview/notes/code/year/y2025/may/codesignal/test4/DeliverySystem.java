@@ -9,10 +9,10 @@ import java.util.Map;
 
 public class DeliverySystem {
     // Store driver rates
-    private Map<Integer, Double> driverRates = new HashMap<>();
+    private final Map<Integer, Double> driverRates = new HashMap<>();
 
     // Store all deliveries (brute force approach)
-    private List<Delivery> deliveries = new ArrayList<>();
+    private final List<Delivery> deliveries = new ArrayList<>();
 
     public static void main(String[] args) {
         // Your specific test case

@@ -44,8 +44,8 @@ public class NumbersStartingWithOne {
 
         // Test Case 5: Large data input to test performance
         List<Integer> largeList = IntStream.rangeClosed(1, 1_000_000)
-                                           .boxed()
-                                           .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
         // Only numbers between 1 and 199999 start with 1 in this range
         List<Integer> largeResult = findNumbersStartingWithOne(largeList);
         boolean largePass = largeResult.size() == 199999; // 1 to 199999

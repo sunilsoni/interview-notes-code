@@ -85,18 +85,14 @@ public class FileSearchUtility {
         if (criteria.getModifiedAfter() != null && new Date(file.lastModified()).before(criteria.getModifiedAfter())) {
             return false;
         }
-        if (criteria.getModifiedBefore() != null && new Date(file.lastModified()).after(criteria.getModifiedBefore())) {
-            return false;
-        }
-
-        return true;
+        return criteria.getModifiedBefore() == null || !new Date(file.lastModified()).after(criteria.getModifiedBefore());
     }
 
     /**
      * Encapsulates search criteria for file searching.
      */
     public static class FileSearchCriteria {
-        private String fileName;
+        private final String fileName;
         private Long minSize; // in bytes
         private Long maxSize; // in bytes
         private Date modifiedAfter;

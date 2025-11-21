@@ -3,7 +3,7 @@ package com.interview.notes.code.datastructure.Set;
 public class CustomHashset<T> {
 
     private static final int SIZE = 100;
-    private Entry<T>[] buckets;
+    private final Entry<T>[] buckets;
     private int size;
 
     public CustomHashset() {

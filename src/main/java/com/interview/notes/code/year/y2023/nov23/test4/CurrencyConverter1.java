@@ -18,7 +18,7 @@ import java.util.Map;
  * f("USD", "AUD") should return 1.333
  */
 public class CurrencyConverter1 {
-    private Map<String, Double> conversionRatesMap = new HashMap<>();
+    private final Map<String, Double> conversionRatesMap = new HashMap<>();
 
     public CurrencyConverter1(String input) {
         parseAndStoreRates(input);

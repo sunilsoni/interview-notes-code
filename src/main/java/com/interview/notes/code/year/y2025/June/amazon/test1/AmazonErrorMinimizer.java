@@ -47,8 +47,10 @@ public class AmazonErrorMinimizer {
 
     public static void main(String[] args) {
         class Test {
-            String s;
-            int x, y, exp;
+            final String s;
+            final int x;
+            final int y;
+            final int exp;
 
             Test(String s, int x, int y, int exp) {
                 this.s = s;

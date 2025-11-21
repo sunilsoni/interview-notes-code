@@ -14,7 +14,7 @@ public class OrganizedShuffle {
                 new TestCase(Arrays.asList(20, 33, 44, 1), 11, -1),
                 new TestCase(Arrays.asList(1, 2, 3, 4, 5, 6), 4, 3),
                 new TestCase(Arrays.asList(5, 6, 7, 1, 2, 3, 4), 3, 5),
-                new TestCase(Arrays.asList(10), 10, 0) // Single element
+                new TestCase(List.of(10), 10, 0) // Single element
         );
 
         // Run all test cases

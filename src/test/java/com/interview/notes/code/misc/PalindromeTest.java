@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PalindromeTest {
 
-    private String[] words = {
+    private final String[] words = {
             "Anna",
             "Civic",
             "Kayak",
@@ -14,7 +14,7 @@ class PalindromeTest {
             "Madam",
     };
 
-    private String[] sentences = {
+    private final String[] sentences = {
             "Sore was I ere I saw Eros",
             "Euston saw I was not Sue",
             "Too hot to hoot",
@@ -22,7 +22,7 @@ class PalindromeTest {
             "Stella won no wallets"
     };
 
-    private Palindrome palindrome = new Palindrome();
+    private final Palindrome palindrome = new Palindrome();
 
     @Test
     public void whenWord_shouldBePalindrome() {

@@ -63,7 +63,7 @@ public class RiskAwarePartition {
                 new TestCase(Arrays.asList(1, 2, 3, 4, 5, 6), 3, 9),
                 new TestCase(Arrays.asList(2, 3, 4), 2, 5),
                 new TestCase(Arrays.asList(2, 3, 4), 1, 9),
-                new TestCase(Arrays.asList(5), 1, 5),
+                new TestCase(List.of(5), 1, 5),
                 new TestCase(Arrays.asList(5, 5, 5, 5), 2, 10),
                 // Additional edge case: k >= n
                 new TestCase(Arrays.asList(1, 2, 3, 4), 4, 4),

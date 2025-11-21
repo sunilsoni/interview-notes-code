@@ -3,8 +3,8 @@ package com.interview.notes.code.year.y2024.march24.test21;
 import java.util.UUID;
 
 public class UserSession {
-    private User user;
-    private String sessionId;
+    private final User user;
+    private final String sessionId;
 
     public UserSession(User user) {
         this.user = user;

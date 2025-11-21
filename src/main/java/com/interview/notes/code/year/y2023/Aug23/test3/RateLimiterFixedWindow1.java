@@ -13,9 +13,9 @@ import java.util.Map;
  * period, impLement an aLgorithm that determines if more caLLs can or cannot be be made within the current time period
  */
 public class RateLimiterFixedWindow1 {
-    private Map<String, Integer> counter = new HashMap<>();
-    private Map<String, Long> timeStamp = new HashMap<>();
-    private int timeWindowInSeconds;
+    private final Map<String, Integer> counter = new HashMap<>();
+    private final Map<String, Long> timeStamp = new HashMap<>();
+    private final int timeWindowInSeconds;
 
     public RateLimiterFixedWindow1(int timeWindowInSeconds) {
         this.timeWindowInSeconds = timeWindowInSeconds;

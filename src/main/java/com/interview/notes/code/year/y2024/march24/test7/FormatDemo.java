@@ -16,7 +16,7 @@ public class FormatDemo {
             messageFormat.setFormats(formatArray);
             Object[] testArgs = {null, "3", null};
             for (int i = 0; i < 4; ++i) {
-                testArgs[0] = new Integer(i);
+                testArgs[0] = Integer.valueOf(i);
                 testArgs[2] = testArgs[0];
                 System.out.println(messageFormat.format(testArgs));
             }

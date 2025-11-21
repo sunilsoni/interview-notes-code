@@ -43,7 +43,7 @@ public class WordBreakSolution {
         test("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat"), false);
 
         // Test case 4: Empty string
-        test("", Arrays.asList(""), true);
+        test("", List.of(""), true);
 
         // Test case 5: Large input
         StringBuilder sb = new StringBuilder();

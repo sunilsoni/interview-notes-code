@@ -161,8 +161,8 @@ public class PathSumII {
         Integer[] arr5 = {7};                                     // single node 7
         TreeNode root5 = buildTreeLevelOrder(arr5);               // build
         int target5 = 7;                                          // equals node
-        List<List<Integer>> expected5 = Arrays.asList(            // expect one path [7]
-                Arrays.asList(7)
+        List<List<Integer>> expected5 = List.of(            // expect one path [7]
+                List.of(7)
         );
         List<List<Integer>> actual5 = pathSum(root5, target5);    // compute
         boolean pass5 = assertPathsEqual(expected5, actual5);     // verify
@@ -174,7 +174,7 @@ public class PathSumII {
         TreeNode root6 = buildTreeLevelOrder(arr6);               // build tree
         int target6 = -1;                                         // target includes negative
         // One valid path: 1 + (-2) + 1 + (-1) = -1
-        List<List<Integer>> expected6 = Arrays.asList(
+        List<List<Integer>> expected6 = List.of(
                 Arrays.asList(1, -2, 1, -1)
         );
         List<List<Integer>> actual6 = pathSum(root6, target6);    // compute

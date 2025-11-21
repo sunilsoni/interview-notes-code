@@ -79,7 +79,7 @@ class Solution {
 
     public static void main(String[] args) {
 
-        int a[] = {1, 2, 2, 1};
+        int[] a = {1, 2, 2, 1};
 
         System.out.println(solution2(a));
         System.out.println(solution(1, 2));

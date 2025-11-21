@@ -10,7 +10,7 @@ public class StringBuilderDemo {
                 str.append(arg + " ");
             }
         }
-        System.out.println(str.toString());
+        System.out.println(str);
         Scanner sc = new Scanner(str.toString());
 
         while (sc.hasNext()) {

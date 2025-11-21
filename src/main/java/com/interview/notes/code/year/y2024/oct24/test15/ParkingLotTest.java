@@ -26,8 +26,8 @@ public class ParkingLotTest {
         parkingLot.parkVehicle(VehicleType.VAN);
         assert parkingLot.getRemainingSpots() == 5 : "Parking van test failed";
 
-        assert parkingLot.isParkingLotFull() == false : "Parking lot full test failed";
-        assert parkingLot.isParkingLotEmpty() == false : "Parking lot empty test failed";
+        assert !parkingLot.isParkingLotFull() : "Parking lot full test failed";
+        assert !parkingLot.isParkingLotEmpty() : "Parking lot empty test failed";
 
         System.out.println("Basic functionality tests passed");
     }

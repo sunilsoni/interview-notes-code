@@ -40,7 +40,7 @@ public class NonDuplicateSorter {
                 new TestCase(new int[]{1, 3, 4, 2, 4, 8}, Arrays.asList(1, 2, 3, 8)),
                 new TestCase(new int[]{}, Collections.emptyList()),
                 new TestCase(new int[]{5, 5, 5, 5}, Collections.emptyList()),
-                new TestCase(new int[]{10}, Arrays.asList(10)),
+                new TestCase(new int[]{10}, List.of(10)),
                 new TestCase(new int[]{2, 1, 3, 3, 2, 4, 5}, Arrays.asList(1, 4, 5)),
                 // Large data input
                 new TestCase(generateLargeInput(1000000), generateExpectedLargeOutput(1000000))

@@ -4,7 +4,7 @@ package com.interview.notes.code.year.y2025.april.common.test13;
  * Simulates the operation of a traffic light
  */
 public class TrafficLightSimulator {
-    private TrafficLight trafficLight;
+    private final TrafficLight trafficLight;
     private boolean running;
 
     /**
@@ -38,7 +38,7 @@ public class TrafficLightSimulator {
                             " for " + duration + " seconds");
 
                     // Sleep for the duration of the current state
-                    Thread.sleep(duration * 1000);
+                    Thread.sleep(duration * 1000L);
 
                     // Transition to the next state
                     trafficLight.transition();

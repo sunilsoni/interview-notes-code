@@ -12,8 +12,8 @@ public class BatchCompletableFuture {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         List<String> documents = IntStream.rangeClosed(1, 10)
-                                          .mapToObj(i -> "Document_" + i)
-                                          .collect(Collectors.toList());
+                .mapToObj(i -> "Document_" + i)
+                .collect(Collectors.toList());
 
         int batchSize = 5;
         ExecutorService executor = Executors.newFixedThreadPool(5);
@@ -25,11 +25,11 @@ public class BatchCompletableFuture {
             System.out.println("Processing batch: " + batch);
 
             List<CompletableFuture<Void>> futures = batch.stream()
-                .map(doc -> CompletableFuture.runAsync(() -> {
-                    process(doc);
-                    delete(doc);
-                }, executor))
-                .collect(Collectors.toList());
+                    .map(doc -> CompletableFuture.runAsync(() -> {
+                        process(doc);
+                        delete(doc);
+                    }, executor))
+                    .collect(Collectors.toList());
 
             // Wait for all in batch to complete
             CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
@@ -50,6 +50,9 @@ public class BatchCompletableFuture {
     }
 
     private static void sleep(long ms) {
-        try { Thread.sleep(ms); } catch (InterruptedException ignored) {}
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException ignored) {
+        }
     }
 }

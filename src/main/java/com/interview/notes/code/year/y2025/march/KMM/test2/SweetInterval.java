@@ -104,8 +104,8 @@ public class SweetInterval {
         List<TestCase> tests = Arrays.asList(
                 new TestCase(Arrays.asList(1, 3, 7, 5), 10, Arrays.asList(2, 3)),
                 new TestCase(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8), 21, Arrays.asList(1, 6)),
-                new TestCase(Arrays.asList(1, 2, 3, 4), 15, Arrays.asList(-1)),
-                new TestCase(Arrays.asList(5), 5, Arrays.asList(1, 1)),
+                new TestCase(Arrays.asList(1, 2, 3, 4), 15, List.of(-1)),
+                new TestCase(List.of(5), 5, Arrays.asList(1, 1)),
                 new TestCase(Arrays.asList(1, 2, 3, 4, 5), 9, Arrays.asList(2, 4)),
                 // Large data case
                 new TestCase(generateLargeList(100, 2), 200, Arrays.asList(1, 100))

@@ -3,8 +3,8 @@ package com.interview.notes.code.year.y2024.may24.test10;
 import java.util.Objects;
 
 public class Product {
-    private String productId;
-    private String name;
+    private final String productId;
+    private final String name;
     private double price;
     private int quantity;
 

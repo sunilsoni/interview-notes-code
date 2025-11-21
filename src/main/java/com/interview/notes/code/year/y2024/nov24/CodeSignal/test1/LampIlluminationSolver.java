@@ -38,9 +38,9 @@ public class LampIlluminationSolver {
     public static void main(String[] args) {
         // Test case class
         class TestCase {
-            int[][] lamps;
-            int expected;
-            String description;
+            final int[][] lamps;
+            final int expected;
+            final String description;
 
             TestCase(int[][] lamps, int expected, String description) {
                 this.lamps = lamps;

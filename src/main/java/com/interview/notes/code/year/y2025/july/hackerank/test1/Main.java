@@ -146,7 +146,7 @@ class Product implements IProduct {
 }
 
 class Company implements ICompany {
-    private List<ICategory> categories = new ArrayList<>();
+    private final List<ICategory> categories = new ArrayList<>();
 
     public void addCategory(ICategory category) {
         this.categories.add(category);

@@ -10,7 +10,7 @@ public class EquilateralTriangle extends Triangle {
 
     @Override
     public double getArea() {
-        return (double) (sides[0] * sides[0]) * ((Math.sqrt(3)) / 4);
+        return sides[0] * sides[0] * ((Math.sqrt(3)) / 4);
     }
 
     @Override

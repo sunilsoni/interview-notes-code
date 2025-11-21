@@ -10,7 +10,7 @@ public class Wenddyandbobissue {
     static boolean turn = false;
 
     public static int findAdjacentIndexwhichCanBeRemoved(String a, char gameChangerName) {
-        char array[] = a.toCharArray();
+        char[] array = a.toCharArray();
         int sameCount = 0;
         for (int i = 0; i < array.length - 1; i++) {
 

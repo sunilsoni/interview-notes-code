@@ -12,7 +12,7 @@ public class FileFinder1 {
     private static final long SIZE_THRESHOLD = 5 * 1024 * 1024; // 5 MB in bytes
     private static final long EXACT_SIZE = 10 * 1024 * 1024; // 10 MB in bytes
     private static final long DAYS_THRESHOLD = 10; // Files created within the last 10 days
-    private static List<String> fileExtensions = List.of(".xml", ".json"); // List of file extensions to search for
+    private static final List<String> fileExtensions = List.of(".xml", ".json"); // List of file extensions to search for
 
     public static void main(String[] args) {
         String testDirectory = "/path/to/test/directory";

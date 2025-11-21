@@ -4,10 +4,10 @@ import java.util.*;
 
 public class IntuitPartyDJ {
 
-    private IntuitMusicBackend intuitMusic;
-    private Set<Person> currentParty;
-    private Map<String, Integer> songCounts;
-    private Set<String> topSongs;
+    private final IntuitMusicBackend intuitMusic;
+    private final Set<Person> currentParty;
+    private final Map<String, Integer> songCounts;
+    private final Set<String> topSongs;
     private int maxCount;
 
     /**
@@ -198,7 +198,7 @@ public class IntuitPartyDJ {
  * Mock class representing a person.
  */
 class Person {
-    private String name;
+    private final String name;
 
     public Person(String name) {
         this.name = name;
@@ -226,7 +226,7 @@ class Person {
  */
 class IntuitMusicBackend {
 
-    private Map<Person, List<String>> userTopSongs;
+    private final Map<Person, List<String>> userTopSongs;
 
     public IntuitMusicBackend() {
         userTopSongs = new HashMap<>();

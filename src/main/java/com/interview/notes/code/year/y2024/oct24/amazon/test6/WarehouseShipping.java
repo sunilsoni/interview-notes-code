@@ -41,7 +41,7 @@ public class WarehouseShipping {
         }
 
         if (preferredWarehouse != null && maxItems == items.size()) {
-            return Arrays.asList(preferredWarehouse); // All items available in one warehouse
+            return List.of(preferredWarehouse); // All items available in one warehouse
         }
 
         // Partial fulfillment
@@ -76,7 +76,7 @@ public class WarehouseShipping {
         System.out.println("Test Case 1: " + (getOrderWarehouses("North", Arrays.asList("ItemA", "ItemD")).equals(Collections.singletonList("AB1")) ? "PASS" : "FAIL"));
         System.out.println("Test Case 2: " + (getOrderWarehouses("South", Arrays.asList("ItemB", "ItemC")).contains("Items not available: ItemC") ? "PASS" : "FAIL"));
         System.out.println("Test Case 3: " + (getOrderWarehouses("West", Arrays.asList("ItemA", "ItemC", "ItemD")).equals(Collections.singletonList("XY3")) ? "PASS" : "FAIL"));
-        System.out.println("Test Case 4: " + (getOrderWarehouses("North", Arrays.asList("ItemX")).contains("Items not available: ItemX") ? "PASS" : "FAIL"));
+        System.out.println("Test Case 4: " + (getOrderWarehouses("North", List.of("ItemX")).contains("Items not available: ItemX") ? "PASS" : "FAIL"));
     }
 
     public static void main(String[] args) {

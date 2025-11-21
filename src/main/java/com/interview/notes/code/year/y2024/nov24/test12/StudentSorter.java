@@ -28,7 +28,7 @@ class Student {
 public class StudentSorter {
     public static void main(String[] args) {
         List<Student> students = null;
-        ;// Initialize your list of students here
+        // Initialize your list of students here
 
       /*  List<Student> sortedStudents = students.stream()
                 .sorted(Comparator.comparingInt(Student::getSub1)

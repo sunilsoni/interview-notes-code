@@ -1,12 +1,12 @@
 package com.interview.notes.code.year.y2024.oct24.test15;
 
 class ParkingLot {
-    private int levels;
-    private int motorcycleSpots;
-    private int carSpots;
-    private int largeSpots;
+    private final int levels;
+    private final int motorcycleSpots;
+    private final int carSpots;
+    private final int largeSpots;
     private int currentLevel;
-    private int[][] spots;
+    private final int[][] spots;
 
     public ParkingLot(int levels, int motorcycleSpots, int carSpots, int largeSpots) {
         this.levels = levels;

@@ -146,7 +146,7 @@ public class StringSegmentation {
 
         // Test Case 4: Single character
         test("a",
-                Arrays.asList("a"),
+                List.of("a"),
                 "true");
 
         // Test Case 5: Large repeated words

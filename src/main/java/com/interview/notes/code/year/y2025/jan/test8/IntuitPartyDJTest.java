@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 class Person {
-    private String id;
+    private final String id;
     private List<String> favoriteSongs;
 
     public Person(String id) {
@@ -32,9 +32,9 @@ class IntuitMusicBackend {
 }
 
 class IntuitPartyDJ {
-    private IntuitMusicBackend intuitMusic;
-    private Map<String, Person> partyGoers;
-    private Map<String, Integer> songPopularity;
+    private final IntuitMusicBackend intuitMusic;
+    private final Map<String, Person> partyGoers;
+    private final Map<String, Integer> songPopularity;
     private String currentSong;
 
     public IntuitPartyDJ(IntuitMusicBackend intuitMusic) {

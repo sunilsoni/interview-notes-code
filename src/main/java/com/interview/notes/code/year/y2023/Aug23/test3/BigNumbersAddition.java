@@ -33,12 +33,12 @@ public class BigNumbersAddition {
             sum = sum % 10;  // Get the last digit of sum
 
             // Append sum to the left of the result string
-            result.insert(0, Integer.toString(sum));
+            result.insert(0, sum);
         }
 
         // If there's any remaining carry, prepend it to the result
         if (carry > 0) {
-            result.insert(0, Integer.toString(carry));
+            result.insert(0, carry);
         }
 
         return result.toString();

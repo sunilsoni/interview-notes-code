@@ -14,11 +14,9 @@ public class Test {
         //set.add();
         set.forEach(System.out::println);
 
-        StringBuilder b = new StringBuilder("abc");
-
         String s = "ABC";
 
-        s = s.concat(b + "");
+        s = s.concat("abc" + "");
         System.out.println(s);
     }
 

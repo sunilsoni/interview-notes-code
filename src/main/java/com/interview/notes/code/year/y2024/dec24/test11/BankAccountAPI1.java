@@ -152,10 +152,10 @@ public class BankAccountAPI1 {
      * Class representing a bank account with transaction support.
      */
     static class BankAccount {
-        private int accountId;
+        private final int accountId;
         private long currentBalance;
         // Using TreeMap to store transactions sorted by timestamp for efficient range queries
-        private TreeMap<Long, Long> transactions; // key: timestamp, value: net change at that timestamp
+        private final TreeMap<Long, Long> transactions; // key: timestamp, value: net change at that timestamp
 
         public BankAccount(int accountId) {
             this.accountId = accountId;
@@ -208,7 +208,7 @@ public class BankAccountAPI1 {
      * Class to handle multiple bank accounts.
      */
     static class Bank {
-        private Map<Integer, BankAccount> accounts;
+        private final Map<Integer, BankAccount> accounts;
 
         public Bank() {
             accounts = new HashMap<>();

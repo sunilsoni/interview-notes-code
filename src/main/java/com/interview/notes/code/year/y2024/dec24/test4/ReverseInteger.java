@@ -42,7 +42,7 @@ public class ReverseInteger {
         for (int i = 0; i < testInputs.length; i++) {
             int input = testInputs[i];
             int expected = expectedOutputs[i];
-            int result = ri.reverse(input);
+            int result = com.interview.notes.code.misc.test4.ReverseInteger.reverse(input);
 
             if (result == expected) {
                 System.out.println("Test case " + (i + 1) + " passed.");
@@ -56,7 +56,7 @@ public class ReverseInteger {
         // Additional large data input test
         int largeInput = 1463847412; // Reversal within 32-bit integer range
         int largeExpected = 2147483641;
-        int largeResult = ri.reverse(largeInput);
+        int largeResult = com.interview.notes.code.misc.test4.ReverseInteger.reverse(largeInput);
 
         if (largeResult == largeExpected) {
             System.out.println("Large input test passed.");

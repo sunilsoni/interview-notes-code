@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ProductSale {
-    private int id;
-    private LocalDateTime dateTime;
-    private int quantity;
+    private final int id;
+    private final LocalDateTime dateTime;
+    private final int quantity;
 
     public ProductSale(int id, String dateTimeStr, int quantity) {
         this.id = id;

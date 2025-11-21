@@ -13,8 +13,8 @@ class AnagramOfFirstAsSubstringTest {
 
     @Test
     void isSubString() {
-        char str1[] = "aaabccde".toCharArray();
-        char str2[] = "tbcdaacaaecbd".toCharArray();
+        char[] str1 = "aaabccde".toCharArray();
+        char[] str2 = "tbcdaacaaecbd".toCharArray();
 
         System.out.println(ana.isSubString(str1, str2));
     }

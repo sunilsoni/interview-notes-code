@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 // Employee class
 class Employee {
-    private String name;
-    private String department;
-    private double salary;
+    private final String name;
+    private final String department;
+    private final double salary;
 
     // Constructor
     public Employee(String name, String department, double salary) {

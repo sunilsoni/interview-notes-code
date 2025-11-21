@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 class Car {
-    private String model;
-    private int drivenKilometers;
+    private final String model;
+    private final int drivenKilometers;
 
     public Car(String model, int drivenKilometers) {
         this.model = model;

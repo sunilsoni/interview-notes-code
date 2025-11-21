@@ -143,8 +143,8 @@ public class Solution {
 }
 
 class Account {
-    private String accountId;
-    private String userName;
+    private final String accountId;
+    private final String userName;
     private String userAccessToken;
     private int accountBalance;
 
@@ -195,7 +195,7 @@ class Account {
 }
 
 class Bank {
-    private Map<String, Account> accounts;
+    private final Map<String, Account> accounts;
 
     public Bank() {
         accounts = new HashMap<>();
@@ -256,7 +256,7 @@ class Bank {
 }
 
 class TransactionException extends Exception {
-    private String errorCode;
+    private final String errorCode;
 
     public TransactionException(String message, String errorCode) {
         super(message);

@@ -4,8 +4,8 @@ import java.util.LinkedList;
 
 public class CustomHashMap<K, V> {
     private static final int DEFAULT_CAPACITY = 16;
-    private LinkedList<Entry<K, V>>[] buckets;
-    private int capacity;
+    private final LinkedList<Entry<K, V>>[] buckets;
+    private final int capacity;
     private int size;
 
     public CustomHashMap() {

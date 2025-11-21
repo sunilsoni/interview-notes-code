@@ -8,19 +8,19 @@ public class CourseValidation {
         // Test Case 1: Valid Catalog
         Map<String, List<String>> validCatalog = new HashMap<>();
         validCatalog.put("Databases", Arrays.asList("Security", "Logging"));
-        validCatalog.put("Security", Arrays.asList("Logging"));
+        validCatalog.put("Security", List.of("Logging"));
         validCatalog.put("Logging", Collections.emptyList());
         System.out.println("Valid Catalog Test: " + validateCourseCatalog(validCatalog));
 
         // Test Case 2: Circular Dependency
         Map<String, List<String>> circularCatalog = new HashMap<>();
-        circularCatalog.put("Databases", Arrays.asList("Security"));
-        circularCatalog.put("Security", Arrays.asList("Databases"));
+        circularCatalog.put("Databases", List.of("Security"));
+        circularCatalog.put("Security", List.of("Databases"));
         System.out.println("Circular Dependency Test: " + validateCourseCatalog(circularCatalog));
 
         // Test Case 3: Non-Existent Dependency
         Map<String, List<String>> invalidDependencyCatalog = new HashMap<>();
-        invalidDependencyCatalog.put("Databases", Arrays.asList("NonExistentCourse"));
+        invalidDependencyCatalog.put("Databases", List.of("NonExistentCourse"));
         System.out.println("Non-Existent Dependency Test: " + validateCourseCatalog(invalidDependencyCatalog));
 
         // Large Input Test

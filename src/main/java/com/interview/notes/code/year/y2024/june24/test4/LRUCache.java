@@ -3,10 +3,10 @@ package com.interview.notes.code.year.y2024.june24.test4;
 import java.util.HashMap;
 
 class LRUCache {
-    private int capacity;
-    private HashMap<Integer, Node> map;
-    private Node head;
-    private Node tail;
+    private final int capacity;
+    private final HashMap<Integer, Node> map;
+    private final Node head;
+    private final Node tail;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;

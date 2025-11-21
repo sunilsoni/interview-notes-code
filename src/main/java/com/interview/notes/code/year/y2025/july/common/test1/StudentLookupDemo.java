@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 
 // Student class to represent student information
 class Student {
-    private int id;          // Unique identifier for student
-    private String name;     // Student's name
-    private String className; // Class/Grade of student
-    private int marks;       // Academic marks
-    private String stream;   // Academic stream (Science, Commerce, etc.)
+    private final int id;          // Unique identifier for student
+    private final String name;     // Student's name
+    private final String className; // Class/Grade of student
+    private final int marks;       // Academic marks
+    private final String stream;   // Academic stream (Science, Commerce, etc.)
 
     // Constructor to initialize student object
     public Student(int id, String name, String className, int marks, String stream) {

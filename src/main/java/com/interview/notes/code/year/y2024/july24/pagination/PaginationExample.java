@@ -78,9 +78,9 @@ public class PaginationExample {
     }
 
     private static class Member {
-        private int id;
-        private String name;
-        private boolean deactivated;
+        private final int id;
+        private final String name;
+        private final boolean deactivated;
 
         public Member(int id, String name, boolean deactivated) {
             this.id = id;

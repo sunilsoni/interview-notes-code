@@ -11,27 +11,27 @@ public class Solutions2 {
 
         // Test cases for Solution 1
         System.out.println("Testing Solution 1...");
-        System.out.println("Expected: CORRECT, Actual: " + solutions.solution1(8, 9));
+        System.out.println("Expected: CORRECT, Actual: " + solution1(8, 9));
 
         // Test cases for Solution 2
         System.out.println("Testing Solution 2...");
-        System.out.println("Expected: CORRECT, Actual: " + solutions.solution2(8, 9));
+        System.out.println("Expected: CORRECT, Actual: " + solution2(8, 9));
 
         // Test cases for Solution 3
         System.out.println("Testing Solution 3...");
-        System.out.println("Expected: 4, Actual: " + solutions.solution3(2, 14));
+        System.out.println("Expected: 4, Actual: " + solution3(2, 14));
 
         // Test cases for Solution 4 
         System.out.println("Testing Solution 4...");
-        System.out.println("Expected: 3, Actual: " + solutions.solution4(9, 5));
+        System.out.println("Expected: 3, Actual: " + solution4(9, 5));
 
         // Test cases for Solution 5
         System.out.println("Testing Solution 5...");
-        System.out.println("Expected: 4, Actual: " + solutions.solution5(10, 6));
+        System.out.println("Expected: 4, Actual: " + solution5(10, 6));
 
         // Test cases for Solution 6
         System.out.println("Testing Solution 6...");
-        System.out.println("Expected: 3, Actual: " + solutions.solution6(10, 3));
+        System.out.println("Expected: 3, Actual: " + solution6(10, 3));
     }
 
     public static void answerSolution0() {

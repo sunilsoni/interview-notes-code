@@ -219,8 +219,7 @@ public class ConfigurableQueryChecker {
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
-            if (!(o instanceof SynonymPair)) return false;
-            SynonymPair pair = (SynonymPair) o;
+            if (!(o instanceof SynonymPair pair)) return false;
             return word1.equals(pair.word1) && word2.equals(pair.word2);
         }
 

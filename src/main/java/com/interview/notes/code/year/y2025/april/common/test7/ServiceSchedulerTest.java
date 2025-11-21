@@ -2,26 +2,12 @@ package com.interview.notes.code.year.y2025.april.common.test7;
 
 import java.util.*;
 
-// Class representing a customer
-class Customer {
-    private final int serviceNumber;  // Unique sequential service number assigned upon check-in
-    private final boolean isVIP;      // Flag to indicate if customer is VIP
-
+/**
+ * @param serviceNumber Unique sequential service number assigned upon check-in
+ * @param isVIP         Flag to indicate if customer is VIP
+ */ // Class representing a customer
+record Customer(int serviceNumber, boolean isVIP) {
     // Constructor to initialize customer with service number and VIP status.
-    public Customer(int serviceNumber, boolean isVIP) {
-        this.serviceNumber = serviceNumber;
-        this.isVIP = isVIP;
-    }
-
-    // Getter for service number.
-    public int getServiceNumber() {
-        return serviceNumber;
-    }
-
-    // Getter to check if customer is VIP.
-    public boolean isVIP() {
-        return isVIP;
-    }
 
     // Overriding toString for easier readability of Customer object.
     @Override
@@ -40,8 +26,8 @@ class Customer {
 // 2. A 2:1 processing ratio of VIP to Regular customers (Part 3)
 class ServiceScheduler {
     // Queues for storing VIP and Regular customers.
-    private Queue<Customer> vipQueue = new LinkedList<>();
-    private Queue<Customer> regularQueue = new LinkedList<>();
+    private final Queue<Customer> vipQueue = new LinkedList<>();
+    private final Queue<Customer> regularQueue = new LinkedList<>();
 
     // Counter to generate unique service numbers
     private int nextServiceNumber = 1;
@@ -51,7 +37,7 @@ class ServiceScheduler {
     private int cycleCount = 0;
 
     // Mode flag - if true use 2:1 ratio scheduling else use strict VIP-first scheduling.
-    private boolean useRatioScheduling;
+    private final boolean useRatioScheduling;
 
     // Constructor to set the scheduling mode.
     public ServiceScheduler(boolean useRatioScheduling) {
@@ -146,7 +132,7 @@ public class ServiceSchedulerTest {
 
         Customer next;
         while ((next = scheduler.getNextCustomer()) != null) {
-            actualOrder.add(next.getServiceNumber());
+            actualOrder.add(next.serviceNumber());
         }
         printResult("Strict VIP-First Test", expectedOrder.equals(actualOrder));
     }
@@ -180,7 +166,7 @@ public class ServiceSchedulerTest {
 
         Customer next;
         while ((next = scheduler.getNextCustomer()) != null) {
-            actualOrder.add(next.getServiceNumber());
+            actualOrder.add(next.serviceNumber());
         }
         printResult("2:1 Ratio Scheduling Test", expectedOrder.equals(actualOrder));
     }
@@ -196,7 +182,7 @@ public class ServiceSchedulerTest {
         List<Integer> actualOrder = new ArrayList<>();
         Customer next;
         while ((next = scheduler.getNextCustomer()) != null) {
-            actualOrder.add(next.getServiceNumber());
+            actualOrder.add(next.serviceNumber());
         }
         printResult("Only Regulars Test", expectedOrder.equals(actualOrder));
     }

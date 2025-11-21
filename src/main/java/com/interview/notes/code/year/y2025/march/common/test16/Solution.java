@@ -94,7 +94,7 @@ public class Solution {
         // If we found a repeating sequence
         if (remainder != 0) {
             int repeatStart = remainderPositions.get(remainder);
-            result.append(fractionBuilder.substring(0, repeatStart));
+            result.append(fractionBuilder, 0, repeatStart);
             result.append("(");
             result.append(fractionBuilder.substring(repeatStart));
             result.append(")");

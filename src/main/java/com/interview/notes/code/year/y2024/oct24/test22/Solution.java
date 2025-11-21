@@ -13,11 +13,8 @@ public class Solution {
             char c_i_prev = (i > 0) ? chars[i - 1] : '\0';
             char c_i_next = (i < n - 1) ? chars[i + 1] : '\0';
 
-            boolean alone = true;
+            boolean alone = i <= 0 || c_i != c_i_prev;
 
-            if (i > 0 && c_i == c_i_prev) {
-                alone = false;
-            }
             if (i < n - 1 && c_i == c_i_next) {
                 alone = false;
             }

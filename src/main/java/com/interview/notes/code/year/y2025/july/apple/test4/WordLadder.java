@@ -48,7 +48,7 @@ public class WordLadder {
 
         // Keep track of the shortest path to each word
         Map<String, List<List<String>>> paths = new HashMap<>();
-        paths.put(beginWord, new ArrayList<>(Arrays.asList(Arrays.asList(beginWord))));
+        paths.put(beginWord, new ArrayList<>(List.of(Collections.singletonList(beginWord))));
 
         // Keep track of words at current level
         Set<String> currentLevel = new HashSet<>();

@@ -39,7 +39,7 @@ public class Main {
 
 // Assuming UserStats class is defined like this:
 class UserStats {
-    private Optional<Long> visitCount;
+    private final Optional<Long> visitCount;
 
     public UserStats(Optional<Long> visitCount) {
         this.visitCount = visitCount;

@@ -50,10 +50,10 @@ public class SignInSignOutMultiSession {
                                 .computeIfAbsent(userId, k -> new ArrayList<>())
                                 .add(session);
                         System.out.println("⬅️  " + userId + " signed out at " + signOut +
-                                           " | Session " + session);
+                                " | Session " + session);
                     } else {
                         System.out.println("⚠️  Ignored invalid session for " + userId +
-                                           ": sign-out before sign-in");
+                                ": sign-out before sign-in");
                     }
 
                     // End this session
@@ -92,7 +92,7 @@ public class SignInSignOutMultiSession {
         java.util.function.BiConsumer<List<String>, List<String>> test = (actual, expected) -> {
             boolean pass = actual.equals(expected);
             System.out.println("Expected: " + expected + " | Actual: " + actual +
-                               " | Result: " + (pass ? "PASS ✅" : "FAIL ❌"));
+                    " | Result: " + (pass ? "PASS ✅" : "FAIL ❌"));
         };
 
         // -------------------------------------------------------------
@@ -139,18 +139,25 @@ public class SignInSignOutMultiSession {
         }
         List<String> actualLarge = processLogs(largeLogs, 10);
         System.out.println("Large Data Test → Users Found: " + actualLarge.size() +
-                           " | PASS ✅ if efficient");
+                " | PASS ✅ if efficient");
     }
 
     // Represents one session for a user
     static class Session {
         int signIn;
         int signOut;
+
         Session(int signIn, int signOut) {
             this.signIn = signIn;
             this.signOut = signOut;
         }
-        int getDuration() { return signOut - signIn; }
-        public String toString() { return "[" + signIn + "→" + signOut + "]"; }
+
+        int getDuration() {
+            return signOut - signIn;
+        }
+
+        public String toString() {
+            return "[" + signIn + "→" + signOut + "]";
+        }
     }
 }

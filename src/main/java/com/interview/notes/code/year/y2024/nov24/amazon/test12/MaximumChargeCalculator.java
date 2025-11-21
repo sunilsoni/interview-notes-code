@@ -54,7 +54,7 @@ public class MaximumChargeCalculator {
         runTest(3, Arrays.asList(-3, 1, 4, -1, 5, -9), 9);
 
         // Edge cases
-        runTest(4, Arrays.asList(1), 1);
+        runTest(4, List.of(1), 1);
         runTest(5, Arrays.asList(-1, -1), -1);
 
         // Large input test

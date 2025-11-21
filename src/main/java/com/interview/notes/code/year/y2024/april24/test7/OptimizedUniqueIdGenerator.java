@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class OptimizedUniqueIdGenerator {
     private static final int CACHE_SIZE = 100;
-    private static Queue<Integer> idCache = new LinkedList<>();
+    private static final Queue<Integer> idCache = new LinkedList<>();
 
     /**
      * Method to populate the cache with unique IDs in bulk.

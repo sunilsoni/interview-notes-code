@@ -35,8 +35,8 @@ public class BrothersGame {
                 new Test(Arrays.asList(1, 0, 0, 1, 0, 0), 5),
                 new Test(Arrays.asList(1, 1, 1, 1), 3), // if you must flip
                 new Test(Arrays.asList(0, 0, 0, 0), 4), // flip all
-                new Test(Arrays.asList(1), 0),
-                new Test(Arrays.asList(0), 1)
+                new Test(List.of(1), 0),
+                new Test(List.of(0), 1)
         );
 
         boolean allPass = true;
@@ -69,15 +69,8 @@ public class BrothersGame {
     }
 
     /**
-     * simple holder for test cases
-     */
-    private static class Test {
-        final List<Integer> input;
-        final int expected;
-
-        Test(List<Integer> in, int exp) {
-            input = in;
-            expected = exp;
-        }
+         * simple holder for test cases
+         */
+        private record Test(List<Integer> input, int expected) {
     }
 }

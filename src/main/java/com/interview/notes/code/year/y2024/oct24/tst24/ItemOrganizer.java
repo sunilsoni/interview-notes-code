@@ -74,7 +74,7 @@ public class ItemOrganizer {
         runTest(Arrays.asList(4, 10, 10, 6, 2), 2);
 
         // Test case 4: Single element array
-        runTest(Arrays.asList(5), 0);
+        runTest(List.of(5), 0);
 
         // Test case 5: Two elements needing organization
         runTest(Arrays.asList(3, 3), 1);

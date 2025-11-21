@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Cart {
-    private List<Product> products = new ArrayList<>();
-    private Shipping shipping;
+    private final List<Product> products = new ArrayList<>();
+    private final Shipping shipping;
 
     public Cart(boolean isInternational) {
         this.shipping = isInternational ? new InternationalShipping() : new LocalShipping();

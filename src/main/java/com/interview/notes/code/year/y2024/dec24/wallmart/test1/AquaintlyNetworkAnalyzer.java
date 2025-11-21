@@ -82,7 +82,7 @@ public class AquaintlyNetworkAnalyzer {
     }
 
     private static class NetworkGraph {
-        private Map<String, Set<String>> connections = new HashMap<>();
+        private final Map<String, Set<String>> connections = new HashMap<>();
 
         public void connect(String user1, String user2) {
             connections.computeIfAbsent(user1, k -> new HashSet<>()).add(user2);

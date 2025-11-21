@@ -64,7 +64,7 @@ public class WordBreakSentences {
 
         // Sample Test 1
         runTest("stockgodown", Arrays.asList("stock", "go", "down", "money"),
-                Arrays.asList("stock go down"));
+                List.of("stock go down"));
 
         // Sample Test 2
         runTest("pineapplepenapple",

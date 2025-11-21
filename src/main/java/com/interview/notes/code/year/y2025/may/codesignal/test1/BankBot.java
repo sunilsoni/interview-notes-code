@@ -53,9 +53,9 @@ public class BankBot {
 
     public static void main(String[] args) {
         class Test {
-            int[] balances;
-            String[] reqs;
-            int[] expected;
+            final int[] balances;
+            final String[] reqs;
+            final int[] expected;
 
             Test(int[] b, String[] r, int[] e) {
                 balances = b;

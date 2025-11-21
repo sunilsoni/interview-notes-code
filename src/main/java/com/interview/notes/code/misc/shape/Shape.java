@@ -1,11 +1,11 @@
 package com.interview.notes.code.misc.shape;
 
 public interface Shape {
-    public Enum<ShapeTypes> getShapeType();
+    Enum<ShapeTypes> getShapeType();
 
-    public double getArea();
+    double getArea();
 
-    public double getCircumference();
+    double getCircumference();
 
 
 }

@@ -39,8 +39,8 @@ public class VersionSorter {
         testCase(input2, expected2, "Test Case 2 (Empty List)");
 
         // Test case 3: Single element
-        List<String> input3 = Arrays.asList("1.0.0");
-        List<String> expected3 = Arrays.asList("1.0.0");
+        List<String> input3 = List.of("1.0.0");
+        List<String> expected3 = List.of("1.0.0");
         testCase(input3, expected3, "Test Case 3 (Single Element)");
 
         // Test case 4: Large input

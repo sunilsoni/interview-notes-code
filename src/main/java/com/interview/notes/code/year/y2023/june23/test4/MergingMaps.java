@@ -23,7 +23,7 @@ public class MergingMaps {
         Map<String, Integer> sortedMap = Stream.concat(map1.entrySet().stream(), map2.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1 + e2))
                 .entrySet().stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue())
+                .sorted(Map.Entry.comparingByValue())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 
         System.out.println(sortedMap);

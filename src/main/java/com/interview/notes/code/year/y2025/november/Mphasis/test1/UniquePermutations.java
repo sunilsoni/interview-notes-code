@@ -23,7 +23,9 @@ public class UniquePermutations {
 
     // Swap helper method to exchange two elements in the array
     public static void swap(int[] arr, int i, int j) {
-        int temp = arr[i]; arr[i] = arr[j]; arr[j] = temp;
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
     // Main method to test with [0, 1, 2]

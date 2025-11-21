@@ -219,7 +219,7 @@ public class MaximizeGroupsSolution {
 
         // 2) Single large product => can only form 1 batch
         //   (batch 2 requires 2 distinct types, but we only have 1 type)
-        test(Arrays.asList(10_000_000), 1, "One large type");
+        test(List.of(10_000_000), 1, "One large type");
 
         // 3) Mixed small
         //   [0,1,1,1,1] => at most 2 batches

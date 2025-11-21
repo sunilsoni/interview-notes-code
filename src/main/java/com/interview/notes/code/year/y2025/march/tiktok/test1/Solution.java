@@ -6,7 +6,7 @@ public class Solution {
     //    But in this example, we use a smaller precomputation for clarity. If you need
     //    more than 5000 + 5000, you might adapt memory usage or logic for partial results.
     private static final int MAX = 10000;
-    private static long[][] binomial = new long[MAX + 1][MAX + 1];
+    private static final long[][] binomial = new long[MAX + 1][MAX + 1];
 
     static {
         // 2) Precompute all binomial coefficients up to (MAX, MAX).

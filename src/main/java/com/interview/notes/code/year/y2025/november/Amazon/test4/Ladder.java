@@ -8,7 +8,7 @@ public class Ladder extends Jump {
             throw new IllegalArgumentException("Ladder must go up: start must be < end");
         }
     }
-    
+
     @Override
     public String getJumpType() {
         return "LADDER";

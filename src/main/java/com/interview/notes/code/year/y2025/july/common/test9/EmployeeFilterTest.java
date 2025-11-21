@@ -70,9 +70,9 @@ public class EmployeeFilterTest {
 
     // Define the Employee class with name, age, and salary
     static class Employee {
-        private String name;    // employee's name
-        private int age;        // employee's age
-        private double salary;  // employee's salary
+        private final String name;    // employee's name
+        private final int age;        // employee's age
+        private final double salary;  // employee's salary
 
         // Constructor to set all fields when creating an Employee
         public Employee(String name, int age, double salary) {

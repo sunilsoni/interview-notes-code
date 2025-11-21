@@ -100,12 +100,12 @@ public class PizzaPriceCalculator {
      */
     public static void runTests() {
         List<TestCase> testCases = Arrays.asList(
-                new TestCase("Regular", "Small", Arrays.asList("Pepperoni"), 6.50),
+                new TestCase("Regular", "Small", List.of("Pepperoni"), 6.50),
                 new TestCase("Gluten Free", "Large", Arrays.asList("jalapenos", "pineapple"), 10.70),
                 new TestCase("Regular", "Extra Large", Arrays.asList("Pepperoni", "jalapenos", "pineapple"), 15.20),
-                new TestCase("InvalidBread", "Small", Arrays.asList("Pepperoni"), -1),
-                new TestCase("Regular", "InvalidSize", Arrays.asList("Pepperoni"), -1),
-                new TestCase("Regular", "Small", Arrays.asList("InvalidTopping"), -1)
+                new TestCase("InvalidBread", "Small", List.of("Pepperoni"), -1),
+                new TestCase("Regular", "InvalidSize", List.of("Pepperoni"), -1),
+                new TestCase("Regular", "Small", List.of("InvalidTopping"), -1)
         );
 
         int passCount = 0;

@@ -54,11 +54,11 @@ public class MedianOfTwoSortedArrayOfDifferentLength {
         MedianOfTwoSortedArrayOfDifferentLength mm = new MedianOfTwoSortedArrayOfDifferentLength();
         double res = mm.findMedianSortedArrays(x, y);
         System.out.println(res);//11.0
-        double res2 = mm.findMedianSortedArraysBruteForceApproach(x, y);
+        double res2 = findMedianSortedArraysBruteForceApproach(x, y);
         System.out.println(res);//11.0
     }
 
-    public double findMedianSortedArrays(int input1[], int input2[]) {
+    public double findMedianSortedArrays(int[] input1, int[] input2) {
         //if input1 length is greater than switch them so that input1 is smaller than input2.
         if (input1.length > input2.length) {
             return findMedianSortedArrays(input2, input1);
@@ -87,7 +87,7 @@ public class MedianOfTwoSortedArrayOfDifferentLength {
                 if ((x + y) % 2 == 0) {
                     return ((double) Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;
                 } else {
-                    return (double) Math.max(maxLeftX, maxLeftY);
+                    return Math.max(maxLeftX, maxLeftY);
                 }
             } else if (maxLeftX > minRightY) { //we are too far on right side for partitionX. Go on left side.
                 high = partitionX - 1;

@@ -3,10 +3,10 @@ package com.interview.notes.code.year.y2024.june24.test3;
 import java.util.Optional;
 
 class lester {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         Integer width = null;
-        Integer height = new Integer(8);
+        Integer height = Integer.valueOf(8);
 
         Optional<Integer> rWidth = Optional.of(width);
         Optional<Integer> rHeight = Optional.ofNullable(height);
@@ -15,7 +15,7 @@ class lester {
         System.out.println("Height of the rectangle is: " + rHeight.isPresent());
 
         try {
-            int c[] = {1};
+            int[] c = {1};
             System.out.println(c.length);
             c[1] = 142;
             System.out.println("c = " + c[1]);

@@ -282,8 +282,7 @@ class TrainingComplianceTest {
         // Override equals method to compare Status objects
         @Override
         public boolean equals(Object obj) {
-            if (!(obj instanceof Status)) return false;
-            Status other = (Status) obj;
+            if (!(obj instanceof Status other)) return false;
             return this.name.equals(other.name) &&
                     this.daysOverdue.equals(other.daysOverdue);
         }

@@ -2,16 +2,7 @@ package com.interview.notes.code.year.y2023.july23.test2;
 
 import java.util.Objects;
 
-public class PendingTransaction {
-    private final Long id;
-
-    public PendingTransaction(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
+public record PendingTransaction(Long id) {
 
     @Override
     public boolean equals(Object o) {
@@ -21,8 +12,4 @@ public class PendingTransaction {
         return Objects.equals(id, that.id);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

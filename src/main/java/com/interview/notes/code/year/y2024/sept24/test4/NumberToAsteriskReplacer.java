@@ -38,7 +38,7 @@ public class NumberToAsteriskReplacer {
             int end = matcher.end();
 
             // Append characters before the number
-            result.append(input.substring(lastEnd, start));
+            result.append(input, lastEnd, start);
 
             // Replace number with asterisks
             int numAsterisks = Integer.parseInt(matcher.group());

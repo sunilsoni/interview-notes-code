@@ -22,7 +22,7 @@ public class RubbleRoverCollector {
 
             if (left == 1 && right == 1) count += 2;
             else if ((left == 1 && right == 0 && P + d >= n) ||
-                     (right == 1 && left == 0 && P - d < 0)) count += 1;
+                    (right == 1 && left == 0 && P - d < 0)) count += 1;
         }
         return count;
     }

@@ -26,9 +26,7 @@ public class DuplicateTest {
 
         // Create a new array to hold the unique elements
         int[] newArray = new int[noOfUniqueElements];
-        for (int i = 0; i < noOfUniqueElements; i++) {
-            newArray[i] = arr[i];
-        }
+        System.arraycopy(arr, 0, newArray, 0, noOfUniqueElements);
 
         return newArray;
     }

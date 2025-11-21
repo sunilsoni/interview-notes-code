@@ -8,7 +8,7 @@ import java.util.Map;
 
 class Table {
     LocationRegistry locationRegistry = new LocationRegistry();
-    private Map<Integer, List<Record>> recordsById = new HashMap<>();
+    private final Map<Integer, List<Record>> recordsById = new HashMap<>();
 
     public void insert(int id, float salary, String location) {
         int locationId = locationRegistry.getIdForLocation(location);

@@ -62,51 +62,19 @@ interface SearchFilter {
 }
 
 // Data Models
-class Comment {
-    private final String text;
-    private final String language;
-    private final List<Comment> replies;
-
-    public Comment(String text, String language, List<Comment> replies) {
+record Comment(String text, String language, List<Comment> replies) {
+    Comment(String text, String language, List<Comment> replies) {
         this.text = text;
         this.language = language;
         this.replies = replies != null ? replies : new ArrayList<>();
     }
-
-    public String getText() {
-        return text;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public List<Comment> getReplies() {
-        return replies;
-    }
 }
 
-class Review {
-    private final String text;
-    private final String language;
-    private final List<Comment> comments;
-
-    public Review(String text, String language, List<Comment> comments) {
+record Review(String text, String language, List<Comment> comments) {
+    Review(String text, String language, List<Comment> comments) {
         this.text = text;
         this.language = language;
         this.comments = comments != null ? comments : new ArrayList<>();
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
     }
 }
 
@@ -120,12 +88,12 @@ class TextSearchFilter implements SearchFilter {
 
     @Override
     public boolean matchesReview(Review review) {
-        return review.getText().contains(searchText);
+        return review.text().contains(searchText);
     }
 
     @Override
     public boolean matchesComment(Comment comment) {
-        return comment.getText().contains(searchText);
+        return comment.text().contains(searchText);
     }
 }
 
@@ -138,12 +106,12 @@ class LanguageFilter implements SearchFilter {
 
     @Override
     public boolean matchesReview(Review review) {
-        return review.getLanguage().equalsIgnoreCase(targetLanguage);
+        return review.language().equalsIgnoreCase(targetLanguage);
     }
 
     @Override
     public boolean matchesComment(Comment comment) {
-        return comment.getLanguage().equalsIgnoreCase(targetLanguage);
+        return comment.language().equalsIgnoreCase(targetLanguage);
     }
 }
 
@@ -183,7 +151,7 @@ class ReviewSearchService {
         for (Review r : reviews) {
             boolean reviewMatches = filter.matchesReview(r);
             // Check comments recursively
-            boolean commentMatches = checkComments(r.getComments(), filter);
+            boolean commentMatches = checkComments(r.comments(), filter);
             if (reviewMatches || commentMatches) {
                 result.add(r);
             }
@@ -193,7 +161,7 @@ class ReviewSearchService {
 
     private boolean checkComments(List<Comment> comments, SearchFilter filter) {
         for (Comment c : comments) {
-            if (filter.matchesComment(c) || checkComments(c.getReplies(), filter)) {
+            if (filter.matchesComment(c) || checkComments(c.replies(), filter)) {
                 return true;
             }
         }
@@ -206,10 +174,10 @@ public class Solution {
     public static void main(String[] args) {
         // Prepare test data
         Comment nestedComment = new Comment("Nested reply in English", "en", null);
-        Comment comment1 = new Comment("This is a comment in English", "en", Arrays.asList(nestedComment));
+        Comment comment1 = new Comment("This is a comment in English", "en", List.of(nestedComment));
         Comment comment2 = new Comment("Este es un comentario en Español", "es", null);
-        Review review1 = new Review("Great product, I love it!", "en", Arrays.asList(comment1));
-        Review review2 = new Review("Buen producto, bastante útil", "es", Arrays.asList(comment2));
+        Review review1 = new Review("Great product, I love it!", "en", List.of(comment1));
+        Review review2 = new Review("Buen producto, bastante útil", "es", List.of(comment2));
         List<Review> allReviews = Arrays.asList(review1, review2);
 
         // Test 1: Text Search

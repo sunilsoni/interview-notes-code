@@ -3,9 +3,9 @@ package com.interview.notes.code.year.y2025.july.oracle.test4;
 import java.util.Stack;
 
 class BrowserPage {
-    private String url;
-    private String title;
-    private long timestamp;
+    private final String url;
+    private final String title;
+    private final long timestamp;
 
     public BrowserPage(String url, String title) {
         this.url = url;
@@ -20,8 +20,8 @@ class BrowserPage {
 }
 
 class BrowserHistory {
-    private Stack<BrowserPage> backStack;
-    private Stack<BrowserPage> forwardStack;
+    private final Stack<BrowserPage> backStack;
+    private final Stack<BrowserPage> forwardStack;
     private BrowserPage currentPage;
 
     public BrowserHistory() {

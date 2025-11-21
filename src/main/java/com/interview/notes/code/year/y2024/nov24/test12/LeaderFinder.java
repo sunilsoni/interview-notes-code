@@ -44,10 +44,10 @@ public class LeaderFinder {
         // Test cases
         runTest(new int[]{14, 9, 11, 7, 8, 5, 3}, Arrays.asList(14, 11, 8, 5, 3));
         runTest(new int[]{16, 17, 4, 3, 5, 2}, Arrays.asList(17, 5, 2));
-        runTest(new int[]{1, 2, 3, 4, 5}, Arrays.asList(5));
+        runTest(new int[]{1, 2, 3, 4, 5}, List.of(5));
         runTest(new int[]{5, 4, 3, 2, 1}, Arrays.asList(5, 4, 3, 2, 1));
-        runTest(new int[]{7}, Arrays.asList(7));
-        runTest(new int[]{}, Arrays.asList());
+        runTest(new int[]{7}, List.of(7));
+        runTest(new int[]{}, List.of());
 
         // Large data input test
         int[] largeArray = new int[100000];

@@ -68,10 +68,10 @@ public class BrothersGame {
         testCases.add(new TestCase(Arrays.asList(0, 0, 0, 0), 4));
 
         // Case: single element 0.
-        testCases.add(new TestCase(Arrays.asList(0), 1));
+        testCases.add(new TestCase(List.of(0), 1));
 
         // Case: single element 1.
-        testCases.add(new TestCase(Arrays.asList(1), 0));
+        testCases.add(new TestCase(List.of(1), 0));
 
         // Additional mixed case:
         // Array: [0, 1, 1, 0, 1, 0, 0, 1, 1, 0]

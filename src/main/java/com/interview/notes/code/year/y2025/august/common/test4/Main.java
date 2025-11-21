@@ -5,7 +5,7 @@ import java.util.List;
 
 // Custom FilterList class (no Stream API)
 class FilterList {
-    private List<Integer> data;   // store original numbers
+    private final List<Integer> data;   // store original numbers
 
     // Constructor
     public FilterList(List<Integer> data) {

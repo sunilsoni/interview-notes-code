@@ -1,10 +1,10 @@
 package com.interview.notes.code.year.y2024.sept24.test14;
 
 public class Employee {
-    private String firstName;
-    private String lastName;
-    private int id;
-    private int age;
+    private final String firstName;
+    private final String lastName;
+    private final int id;
+    private final int age;
 
     // Constructor
     public Employee(String firstName, String lastName, int id, int age) {

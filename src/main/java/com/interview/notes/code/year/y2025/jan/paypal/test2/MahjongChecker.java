@@ -100,14 +100,12 @@ public class MahjongChecker {
             boolean pass = (result == expected);
 
             // Print out a PASS/FAIL message
-            System.out.println(
-                    String.format(
-                            "Test: %-40s | Expected: %5s | Got: %5s | %s",
-                            "\"" + tiles + "\"",
-                            expected,
-                            result,
-                            pass ? "PASS" : "FAIL"
-                    )
+            System.out.printf(
+                    "Test: %-40s | Expected: %5s | Got: %5s | %s%n",
+                    "\"" + tiles + "\"",
+                    expected,
+                    result,
+                    pass ? "PASS" : "FAIL"
             );
             if (pass) {
                 passCount++;

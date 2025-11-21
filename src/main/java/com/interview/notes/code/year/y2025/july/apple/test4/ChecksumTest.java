@@ -43,8 +43,8 @@ public class ChecksumTest {
      */
     public static void main(String[] args) {
         class TestCase {
-            List<Integer> input;
-            List<Integer> expected;
+            final List<Integer> input;
+            final List<Integer> expected;
 
             TestCase(List<Integer> in, List<Integer> exp) {
                 input = in;
@@ -62,8 +62,8 @@ public class ChecksumTest {
 
         // single zero-sized chunk
         tests.add(new TestCase(
-                Arrays.asList(0),
-                Arrays.asList(0)
+                List.of(0),
+                List.of(0)
         ));
 
         // mix of zero and non-zero chunks: [0] then [3,1,2,3]

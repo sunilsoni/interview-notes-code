@@ -38,7 +38,7 @@ public class VerticalOrderTraversal {
                 "Sample"));
 
         // Edge-case: single node
-        tests.add(new TestCase(new Node(42), Arrays.asList(42), "Single node"));
+        tests.add(new TestCase(new Node(42), List.of(42), "Single node"));
 
         // Edge-case: empty tree
         tests.add(new TestCase(null, Collections.emptyList(), "Empty tree"));

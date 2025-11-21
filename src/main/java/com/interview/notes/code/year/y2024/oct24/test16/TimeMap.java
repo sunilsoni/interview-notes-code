@@ -34,7 +34,7 @@ timeMap.get ("foo", 0); // returns ""
 public class TimeMap {
 
     // HashMap to store the key to list of TimeValuePairs mapping
-    private Map<String, List<TimeValuePair>> map;
+    private final Map<String, List<TimeValuePair>> map;
 
     /**
      * Initialize the TimeMap data structure

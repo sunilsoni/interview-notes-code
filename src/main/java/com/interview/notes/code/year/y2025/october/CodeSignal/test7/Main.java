@@ -33,7 +33,9 @@ public class Main {
             } else {
                 char[] mid = s.substring(1, n - 1).toCharArray();
                 for (int i = 0, j = mid.length - 1; i < j; i++, j--) {
-                    char t = mid[i]; mid[i] = mid[j]; mid[j] = t;
+                    char t = mid[i];
+                    mid[i] = mid[j];
+                    mid[j] = t;
                 }
                 res[k] = s.charAt(0) + new String(mid) + s.charAt(n - 1);
             }
@@ -47,7 +49,9 @@ public class Main {
         System.out.println(name + ": " + (ok ? "PASS" : "FAIL") + " -> " + Arrays.toString(out));
     }
 
-    static String[] arr(String... a) { return a; }
+    static String[] arr(String... a) {
+        return a;
+    }
 
     static String randWord(Random r) {
         int len = 1 + r.nextInt(50);

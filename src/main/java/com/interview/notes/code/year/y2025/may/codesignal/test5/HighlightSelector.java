@@ -63,16 +63,10 @@ public class HighlightSelector {
        -------------------------------------------------------------------- */
     public static void main(String[] args) {
 
-        class TestCase {
-            final String name;
-            final int[] input;
-            final int[] expected;              // may be null for “large” test
-
-            TestCase(String name, int[] input, int[] expected) {
-                this.name = name;
-                this.input = input;
-                this.expected = expected;
-            }
+        /**
+         * @param expected may be null for “large” test
+         */
+        record TestCase(String name, int[] input, int[] expected) {
         }
 
         List<TestCase> tests = Arrays.asList(

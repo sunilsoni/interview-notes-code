@@ -11,7 +11,7 @@ public class Main {
                 Arrays.asList(10, 10, 10),  // Example #2
                 Arrays.asList(1, 2, 3),
                 Arrays.asList(5, 5, 5, 5),
-                Arrays.asList()
+                List.of()
         );
 
         for (int i = 0; i < testCases.size(); i++) {

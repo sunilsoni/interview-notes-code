@@ -128,12 +128,12 @@ public class PackageImportanceOptimizer {
         runTestCase("Test Case 1", Arrays.asList(1, 2), -1);
         runTestCase("Test Case 2", Arrays.asList(1, 2, -6, 3), 3);
         runTestCase("Test Case 3", Arrays.asList(2, 1, -4), 2);
-        runTestCase("Test Case 4", Arrays.asList(-1), 0);
+        runTestCase("Test Case 4", List.of(-1), 0);
         runTestCase("Test Case 5", Arrays.asList(1, -1), 1);
 
         // Edge cases
         runTestCase("Empty List", new ArrayList<>(), -1);
-        runTestCase("Single Positive", Arrays.asList(5), -1);
+        runTestCase("Single Positive", List.of(5), -1);
         runTestCase("All Negative", Arrays.asList(-1, -2, -3), 0);
         runTestCase("Mixed Values", Arrays.asList(-5, 4, 2, -1, 3), 3);
 

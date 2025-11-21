@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
  * Employee1 class to represent Employee1 data
  */
 class Employee1 {
-    private String name;
-    private String department;
-    private double salary;
+    private final String name;
+    private final String department;
+    private final double salary;
 
     // Constructor to initialize Employee1 object
     public Employee1(String name, String department, double salary) {

@@ -8,9 +8,10 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class TweetAnalyzer {
-    
+
     /**
      * Analyzes a tweet and returns various statistics about word frequency
+     *
      * @param tweet The input tweet string to analyze
      * @return TweetAnalysisResult containing all analysis results
      */
@@ -18,47 +19,48 @@ public class TweetAnalyzer {
         // Convert tweet to lowercase and split into words, removing punctuation
         // This line normalizes the input by making it case-insensitive
         String cleanTweet = tweet.toLowerCase().replaceAll("[^a-zA-Z0-9\\s]", "");
-        
+
         // Split the cleaned tweet into individual words using whitespace as delimiter
         // Filter out empty strings that might result from multiple spaces
         List<String> words = Arrays.stream(cleanTweet.split("\\s+"))
                 .filter(word -> !word.isEmpty()) // Remove empty strings from splitting
                 .collect(Collectors.toList()); // Collect into a list for further processing
-        
+
         // Count unique words by converting to a Set which automatically removes duplicates
         // This gives us the total number of distinct words in the tweet
         long uniqueWordCount = words.stream()
                 .distinct() // Remove duplicate words
                 .count(); // Count the remaining unique words
-        
+
         // Create frequency map using Stream API groupingBy collector
         // This groups words by their value and counts occurrences of each word
         Map<String, Long> wordFrequency = words.stream()
                 .collect(Collectors.groupingBy(
-                    Function.identity(), // Group by the word itself
-                    Collectors.counting() // Count occurrences of each word
+                        Function.identity(), // Group by the word itself
+                        Collectors.counting() // Count occurrences of each word
                 ));
-        
+
         // Find the most frequent word by getting the entry with maximum count value
         // This uses Optional to handle cases where the map might be empty
         Optional<Map.Entry<String, Long>> mostFrequentEntry = wordFrequency.entrySet()
                 .stream()
                 .max(Map.Entry.comparingByValue()); // Compare entries by their frequency count
-        
+
         // Extract the most frequent word from the Optional, default to empty string if not found
         String mostFrequentWord = mostFrequentEntry.map(Map.Entry::getKey).orElse("");
-        
+
         // Get the frequency count of the most frequent word, default to 0 if not found
         long mostFrequentCount = mostFrequentEntry.map(Map.Entry::getValue).orElse(0L);
-        
+
         // Create and return the analysis result object with all computed values
         return new TweetAnalysisResult(uniqueWordCount, wordFrequency, mostFrequentWord, mostFrequentCount);
     }
-    
+
     /**
      * Gets the top N most frequent words from the tweet analysis
+     *
      * @param wordFrequency Map containing word frequencies
-     * @param n Number of top words to retrieve
+     * @param n             Number of top words to retrieve
      * @return List of top N most frequent words with their counts
      */
     public static List<Map.Entry<String, Long>> getTopNWords(Map<String, Long> wordFrequency, int n) {
@@ -70,7 +72,7 @@ public class TweetAnalyzer {
                 .limit(n) // Take only the top N entries
                 .collect(Collectors.toList()); // Collect to list for return
     }
-    
+
     /**
      * Main method for testing the tweet analyzer with various test cases
      * This method runs all test cases and reports pass/fail status
@@ -259,8 +261,8 @@ public class TweetAnalyzer {
      * @param mostFrequentWord  The word that appears most often
      * @param mostFrequentCount How many times the most frequent word appears
      */
-        record TweetAnalysisResult(long uniqueWordCount, Map<String, Long> wordFrequency, String mostFrequentWord,
-                                   long mostFrequentCount) {
+    record TweetAnalysisResult(long uniqueWordCount, Map<String, Long> wordFrequency, String mostFrequentWord,
+                               long mostFrequentCount) {
         // Constructor to initialize all fields with analysis results
         // Set the unique word count
         // Set the frequency map

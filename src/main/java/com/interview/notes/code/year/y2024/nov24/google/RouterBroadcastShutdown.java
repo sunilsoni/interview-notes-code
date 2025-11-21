@@ -84,7 +84,7 @@ public class RouterBroadcastShutdown {
         System.out.println("Test case 5: " + (!canMessageReach(routers3, "A", "B", 10) ? "PASS" : "FAIL"));
 
         // Test case 6: Edge case - single router
-        List<Router> routers4 = Arrays.asList(new Router("A", 0, 0));
+        List<Router> routers4 = List.of(new Router("A", 0, 0));
         System.out.println("Test case 6: " + (canMessageReach(routers4, "A", "A", 10) ? "PASS" : "FAIL"));
     }
 

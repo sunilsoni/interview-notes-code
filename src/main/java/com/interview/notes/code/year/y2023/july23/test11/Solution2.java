@@ -39,9 +39,9 @@ class Solution2 {
 
         // If middle character exists, add it.
         if (middle != '\0') {
-            return leftHalf.toString() + middle + rightHalf.toString();
+            return leftHalf.toString() + middle + rightHalf;
         } else {
-            return leftHalf.toString() + rightHalf.toString();
+            return leftHalf.toString() + rightHalf;
         }
     }
 }

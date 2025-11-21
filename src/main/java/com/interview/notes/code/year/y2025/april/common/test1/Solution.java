@@ -43,9 +43,10 @@ public class Solution {
 
     public static void main(String[] args) {
         class Test {
-            List<Integer> p, v;
-            int e;
-            String d;
+            final List<Integer> p;
+            final List<Integer> v;
+            final int e;
+            final String d;
 
             Test(List<Integer> p, List<Integer> v, int e, String d) {
                 this.p = p;

@@ -14,7 +14,7 @@ public class OddEvenThreadType12 {
 }
 
 class Runnable12 implements Runnable {
-    private boolean isOdd;
+    private final boolean isOdd;
 
     Runnable12(boolean isOdd) {
         this.isOdd = isOdd;

@@ -14,7 +14,7 @@ public class AnagramGrouper {
         List<List<String>> result1 = solution.groupAnagrams(test1);
         System.out.println("Test 1: " + (validateResult(result1,
                 Arrays.asList(
-                        Arrays.asList("bat"),
+                        List.of("bat"),
                         Arrays.asList("nat", "tan"),
                         Arrays.asList("ate", "eat", "tea")
                 )) ? "PASS" : "FAIL"));
@@ -23,13 +23,13 @@ public class AnagramGrouper {
         String[] test2 = {""};
         List<List<String>> result2 = solution.groupAnagrams(test2);
         System.out.println("Test 2: " + (validateResult(result2,
-                Arrays.asList(Arrays.asList(""))) ? "PASS" : "FAIL"));
+                List.of(List.of(""))) ? "PASS" : "FAIL"));
 
         // Test Case 3: Single character
         String[] test3 = {"a"};
         List<List<String>> result3 = solution.groupAnagrams(test3);
         System.out.println("Test 3: " + (validateResult(result3,
-                Arrays.asList(Arrays.asList("a"))) ? "PASS" : "FAIL"));
+                List.of(List.of("a"))) ? "PASS" : "FAIL"));
 
         // Test Case 4: Large input test
         String[] test4 = generateLargeInput(1000);

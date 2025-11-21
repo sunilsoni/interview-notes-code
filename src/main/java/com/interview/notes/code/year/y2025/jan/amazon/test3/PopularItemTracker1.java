@@ -18,8 +18,8 @@ sends you a {customerID, itemID, timestamp} message whenever a customer purchase
  */
 public class PopularItemTracker1 {
     private static final int TIME_WINDOW_MINUTES = 60; // 1 hour window
-    private Map<String, Integer> itemCounts = new HashMap<>();
-    private Map<String, List<Purchase>> timeWindowPurchases = new HashMap<>();
+    private final Map<String, Integer> itemCounts = new HashMap<>();
+    private final Map<String, List<Purchase>> timeWindowPurchases = new HashMap<>();
 
     // Simple test method
     public static void main(String[] args) {

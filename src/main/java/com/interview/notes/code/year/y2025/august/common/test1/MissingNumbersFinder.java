@@ -38,12 +38,12 @@ public class MissingNumbersFinder {
         };
 
         List<List<Integer>> expectedResults = Arrays.asList(
-                Arrays.asList(1),
-                Arrays.asList(),
+                List.of(1),
+                List.of(),
                 Arrays.asList(0, 1, 3, 4),
-                Arrays.asList(),
-                Arrays.asList(),
-                Arrays.asList(2),
+                List.of(),
+                List.of(),
+                List.of(2),
                 IntStream.range(0, 10000).boxed().collect(Collectors.toList())
         );
 

@@ -43,7 +43,7 @@ public class Solution {
         tests.add(new TestCase(Arrays.asList(2, 2, 3, 2, 1, 2, 2), 7)); // [1,2,2,2,2,3,2] → 7
 
         /* Extra edge-case checks */
-        tests.add(new TestCase(Arrays.asList(6), 1));                       // single item
+        tests.add(new TestCase(List.of(6), 1));                       // single item
         tests.add(new TestCase(Arrays.asList(1, 3, 5, 7), 1));              // no neighbours
         tests.add(new TestCase(Arrays.asList(5, 5, 5, 5), 4));              // one value only
         tests.add(new TestCase(Arrays.asList(1, 2, 1, 2, 1, 2), 6));        // perfect mix
@@ -66,13 +66,6 @@ public class Solution {
     }
 
     /* ---------- simple test harness ---------- */
-    private static class TestCase {
-        final List<Integer> data;
-        final int expected;
-
-        TestCase(List<Integer> data, int expected) {
-            this.data = data;
-            this.expected = expected;
-        }
+        private record TestCase(List<Integer> data, int expected) {
     }
 }

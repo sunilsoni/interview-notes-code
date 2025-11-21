@@ -57,10 +57,7 @@ public class AmazonLockerRecommendation {
         List<int[]> result = findTopKLockers(lockers, customerLocation, k);
 
         // Output test result (for simplicity, we'll assume any valid output is a pass)
-        if (result.size() == k || result.size() == lockers.length) {
-            return true; // pass
-        } else {
-            return false; // fail
-        }
+        // fail
+        return result.size() == k || result.size() == lockers.length; // pass
     }
 }

@@ -131,13 +131,13 @@ public class LogExceptionCounter {
      * main
      * ----
      * Usage:
-     *   1) java LogExceptionCounter <path-to-log>
-     *   2) cat app.log | java LogExceptionCounter
-     *   3) java LogExceptionCounter            (runs built-in tests and demo)
-     *
+     * 1) java LogExceptionCounter <path-to-log>
+     * 2) cat app.log | java LogExceptionCounter
+     * 3) java LogExceptionCounter            (runs built-in tests and demo)
+     * <p>
      * Behavior:
-     *   - If a file path arg is provided: parse that file and print the report.
-     *   - If no args: run a set of PASS/FAIL tests, then show a small demo.
+     * - If a file path arg is provided: parse that file and print the report.
+     * - If no args: run a set of PASS/FAIL tests, then show a small demo.
      */
     public static void main(String[] args) throws Exception {
         // If a file path is provided, parse and print report for that file
@@ -163,9 +163,9 @@ public class LogExceptionCounter {
      * runSelfTests
      * ------------
      * A simple PASS/FAIL harness:
-     *  - Builds small in-memory logs with known expected counts
-     *  - Compares function output to expected map
-     *  - Prints PASS or FAIL lines
+     * - Builds small in-memory logs with known expected counts
+     * - Compares function output to expected map
+     * - Prints PASS or FAIL lines
      */
     private static void runSelfTests() throws IOException {
         System.out.println("=== Self Tests (no JUnit) ===");
@@ -173,8 +173,8 @@ public class LogExceptionCounter {
         // Test 1: Basic exceptions, fully qualified + simple names + Caused by
         String log1 =
                 "2025-11-07 ERROR java.io.IOException: disk full\n" +
-                "Caused by: org.acme.storage.StorageException: write failed\n" +
-                "WARN Retrying after TimeoutException\n";
+                        "Caused by: org.acme.storage.StorageException: write failed\n" +
+                        "WARN Retrying after TimeoutException\n";
         LinkedHashMap<String, Long> out1 = parseAndCountExceptions(new StringReader(log1));
 
         Map<String, Long> expected1 = new HashMap<>();
@@ -204,7 +204,7 @@ public class LogExceptionCounter {
         // Test 4: Long qualified names + underscores/digits after first char
         String log4 =
                 "Caused by: com.example.deeply.nested_name.Funky123Exception: boom\n" +
-                "ERROR com.example.deeply.nested_name.Funky123Exception: again\n";
+                        "ERROR com.example.deeply.nested_name.Funky123Exception: again\n";
         LinkedHashMap<String, Long> out4 = parseAndCountExceptions(new StringReader(log4));
 
         Map<String, Long> expected4 = new HashMap<>();
@@ -290,9 +290,9 @@ public class LogExceptionCounter {
         System.out.println("=== Demo Report ===");
         String demo =
                 "2025-11-07 10:00:00 ERROR java.io.IOException: disk full\n" +
-                "Caused by: org.acme.storage.StorageException: write failed\n" +
-                "WARN Retrying after TimeoutException\n" +
-                "WARN Another TimeoutException observed\n";
+                        "Caused by: org.acme.storage.StorageException: write failed\n" +
+                        "WARN Retrying after TimeoutException\n" +
+                        "WARN Another TimeoutException observed\n";
         LinkedHashMap<String, Long> result = parseAndCountExceptions(new StringReader(demo));
         printReport(result);
         System.out.println("=== End Demo ===");

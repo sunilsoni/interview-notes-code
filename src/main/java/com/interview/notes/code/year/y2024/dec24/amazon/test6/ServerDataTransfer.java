@@ -64,7 +64,7 @@ public class ServerDataTransfer {
         runTest(3, 8, Arrays.asList(2, 6, 8), 4);
 
         // Edge cases
-        runTest(4, 3, Arrays.asList(1), 0);
+        runTest(4, 3, List.of(1), 0);
         runTest(5, 4, Arrays.asList(1, 2), 1);
         runTest(6, 1000000000, Arrays.asList(1, 999999999), 1);
 

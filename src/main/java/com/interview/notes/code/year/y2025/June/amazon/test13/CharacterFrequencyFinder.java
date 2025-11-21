@@ -54,7 +54,7 @@ public class CharacterFrequencyFinder {
         testCase(largeInput, 3, 'x', "Large input");
 
         // Test Case 5: Edge case - single character
-        testCase(Arrays.asList('a'), 1, 'a', "Single character");
+        testCase(List.of('a'), 1, 'a', "Single character");
     }
 
     // Helper method to run test cases

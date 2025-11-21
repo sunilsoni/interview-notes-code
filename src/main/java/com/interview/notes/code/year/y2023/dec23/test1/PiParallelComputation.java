@@ -5,8 +5,8 @@ import java.util.concurrent.RecursiveTask;
 
 public class PiParallelComputation extends RecursiveTask<Double> {
     private static final int THRESHOLD = 1000;
-    private int start;
-    private int end;
+    private final int start;
+    private final int end;
 
     public PiParallelComputation(int start, int end) {
         this.start = start;

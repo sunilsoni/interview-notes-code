@@ -3,9 +3,9 @@ package com.interview.notes.code.year.y2024.nov24.amazon.test25;
 import java.util.List;
 
 public class Package {
-    private String name;
-    private String version;
-    private List<String> dependencies;
+    private final String name;
+    private final String version;
+    private final List<String> dependencies;
 
     public Package(String name, String version, List<String> dependencies) {
         this.name = name;

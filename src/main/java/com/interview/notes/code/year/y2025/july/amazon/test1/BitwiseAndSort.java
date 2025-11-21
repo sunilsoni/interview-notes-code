@@ -88,7 +88,7 @@ public class BitwiseAndSort {
         test(Arrays.asList(1, 0), 0, "Two Elements, Reversed");
 
         // Edge case: max n = 1
-        test(Arrays.asList(0), 0, "Single Element");
+        test(List.of(0), 0, "Single Element");
 
         // Large random permutation, answer should be 0 (all bits different)
         int n = 100000;

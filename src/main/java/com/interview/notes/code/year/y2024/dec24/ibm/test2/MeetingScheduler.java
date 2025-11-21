@@ -49,9 +49,9 @@ public class MeetingScheduler {
         runTestCase(3, Arrays.asList(-3, 0, -2), 0);
 
         // Edge cases
-        runTestCase(4, Arrays.asList(1), 1);
-        runTestCase(5, Arrays.asList(-1), 0);
-        runTestCase(6, Arrays.asList(0), 1);
+        runTestCase(4, List.of(1), 1);
+        runTestCase(5, List.of(-1), 0);
+        runTestCase(6, List.of(0), 1);
 
         // Large numbers
         runTestCase(7, Arrays.asList(1000000000, -999999999), 2);

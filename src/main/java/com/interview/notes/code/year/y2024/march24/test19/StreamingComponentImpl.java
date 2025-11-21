@@ -6,8 +6,8 @@ import java.util.TreeMap;
 
 public class StreamingComponentImpl implements StreamingComponent {
     private static final long FIVE_MINUTES_MS = 5 * 60 * 1000;
-    private Queue<DataPoint> dataPoints = new LinkedList<>();
-    private TreeMap<Double, Integer> numberFrequency = new TreeMap<>();
+    private final Queue<DataPoint> dataPoints = new LinkedList<>();
+    private final TreeMap<Double, Integer> numberFrequency = new TreeMap<>();
     private double totalSum = 0;
 
     @Override

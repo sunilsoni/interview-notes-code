@@ -37,7 +37,7 @@ class Solution {
         Comparator<Integer> comp = (a, b) -> {
             int freqCompare = frequencyMap.get(b) - frequencyMap.get(a);
             if (freqCompare == 0) {
-                return Integer.compare(Arrays.asList(reqArray).indexOf(a), Arrays.asList(reqArray).indexOf(b));
+                return Integer.compare(List.of(reqArray).indexOf(a), List.of(reqArray).indexOf(b));
             }
             return freqCompare;
         };

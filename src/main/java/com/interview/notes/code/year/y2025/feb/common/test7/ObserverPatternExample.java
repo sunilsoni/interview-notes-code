@@ -10,7 +10,7 @@ interface Observer {
 
 // Subject (Observable)
 class Subject {
-    private List<Observer> observers = new ArrayList<>();
+    private final List<Observer> observers = new ArrayList<>();
     private String state;
 
     public void addObserver(Observer observer) {

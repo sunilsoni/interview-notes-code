@@ -41,12 +41,12 @@ public class SuitableLocations {
 
         // Sum distances for all centers <= x
         if (idx > 0) {
-            totalDist += 2L * (1L * x * idx - prefixSums[idx - 1]);
+            totalDist += 2L * ((long) x * idx - prefixSums[idx - 1]);
         }
 
         // Sum distances for all centers > x
         if (idx < n) {
-            totalDist += 2L * (prefixSums[n - 1] - (idx > 0 ? prefixSums[idx - 1] : 0) - 1L * x * (n - idx));
+            totalDist += 2L * (prefixSums[n - 1] - (idx > 0 ? prefixSums[idx - 1] : 0) - (long) x * (n - idx));
         }
 
         return totalDist <= d;

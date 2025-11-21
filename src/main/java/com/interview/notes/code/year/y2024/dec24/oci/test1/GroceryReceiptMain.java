@@ -148,8 +148,8 @@ import java.util.stream.Collectors;
  * Normally, an Orange costs 5 per unit. A 10% discount applies, so for 3 units of Orange, the gross price is \( 15 - 10\% = 13.5 \).
  */
 abstract class GroceryReceiptBase {
-    private Map<String, Double> prices;
-    private Map<String, Integer> discounts;
+    private final Map<String, Double> prices;
+    private final Map<String, Integer> discounts;
 
     public GroceryReceiptBase(Map<String, Double> prices, Map<String, Integer> discounts) {
         this.prices = prices;
@@ -189,8 +189,7 @@ class Grocery {
     // For testing equality in test cases (within a margin due to double comparisons)
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Grocery)) return false;
-        Grocery other = (Grocery) o;
+        if (!(o instanceof Grocery other)) return false;
         return this.fruit.equals(other.fruit)
                 && Math.abs(this.price - other.price) < 0.0001
                 && Math.abs(this.total - other.total) < 0.0001;
@@ -290,7 +289,7 @@ public class GroceryReceiptMain {
             GroceryReceipt receipt = new GroceryReceipt(prices, discounts);
             List<Grocery> result = receipt.Calculate(shoppingList);
 
-            List<Grocery> expected = Arrays.asList(
+            List<Grocery> expected = List.of(
                     new Grocery("Apple", 34.0, 238.0)
             );
 
@@ -383,7 +382,7 @@ public class GroceryReceiptMain {
             GroceryReceipt receipt = new GroceryReceipt(prices, discounts);
             List<Grocery> result = receipt.Calculate(shoppingList);
 
-            List<Grocery> expected = Arrays.asList(
+            List<Grocery> expected = List.of(
                     new Grocery("Orange", 4.0, 3800.0)
             );
 
@@ -406,7 +405,7 @@ public class GroceryReceiptMain {
             List<Grocery> result = receipt.Calculate(shoppingList);
 
             // zero quantity means it's still included as we processed it, total=0
-            List<Grocery> expected = Arrays.asList(
+            List<Grocery> expected = List.of(
                     new Grocery("Banana", 10.0, 0.0)
             );
 

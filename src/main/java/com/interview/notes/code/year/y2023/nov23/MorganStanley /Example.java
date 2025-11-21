@@ -3,7 +3,7 @@ package com.interview.notes.code.months.nov23.MorganStanley;
 import java.util.HashSet;
 
 class Employee1 {
-    private int id;
+    private final int id;
 
     public Employee1(int id) {
         this.id = id;

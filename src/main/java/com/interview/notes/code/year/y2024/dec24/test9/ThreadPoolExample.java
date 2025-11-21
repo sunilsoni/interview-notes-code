@@ -27,7 +27,7 @@ public class ThreadPoolExample {
         // 2. Create multiple tasks
         for (int i = 1; i <= 5; i++) {
             Runnable task = new WorkerTask("Task " + i);
-            System.out.println("Created: " + task.toString());
+            System.out.println("Created: " + task);
 
             // 3. Submit tasks to thread pool
             executor.execute(task);
@@ -49,7 +49,7 @@ public class ThreadPoolExample {
 
 // Worker Task Class
 class WorkerTask implements Runnable {
-    private String name;
+    private final String name;
 
     public WorkerTask(String name) {
         this.name = name;

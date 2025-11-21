@@ -32,7 +32,7 @@ public class Main {
                 new Object[]{Arrays.asList(9, 1, 1, 9), 9},
                 new Object[]{Arrays.asList(2, 2, 2, 2), 8},
                 new Object[]{Arrays.asList(0, 0, 0), 0},
-                new Object[]{Arrays.asList(5), 5}
+                new Object[]{List.of(5), 5}
         };
         for (Object[] t : tests) {
             @SuppressWarnings("unchecked")

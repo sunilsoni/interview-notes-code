@@ -12,6 +12,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,20 +54,16 @@ public class FinestOutletFinder {
     /* small helper – GET one API page and parse with json-simple */
     private static JSONObject fetchPage(String city, int pageNo) {
         String urlStr = null;
-        try {
-            urlStr = String.format(
-                    "https://jsonmock.hackerrank.com/api/food_outlets?city=%s&page=%d",
-                    URLEncoder.encode(city, "UTF-8"), pageNo);
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        }
+        urlStr = String.format(
+                "https://jsonmock.hackerrank.com/api/food_outlets?city=%s&page=%d",
+                URLEncoder.encode(city, StandardCharsets.UTF_8), pageNo);
 
         try {
             HttpURLConnection con = (HttpURLConnection) new URL(urlStr).openConnection();
             con.setRequestMethod("GET");
 
             try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(con.getInputStream(), "UTF-8"))) {
+                    new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
 
                 String response = br.lines().collect(Collectors.joining());
                 return (JSONObject) new JSONParser().parse(response);
@@ -92,15 +89,6 @@ public class FinestOutletFinder {
     }
 
     /* ------------ tiny PASS/FAIL harness (no JUnit) ------------ */
-    private static final class Case {
-        final String city;
-        final int votes;
-        final String expect;
-
-        Case(String c, int v, String e) {
-            city = c;
-            votes = v;
-            expect = e;
-        }
+        private record Case(String city, int votes, String expect) {
     }
 }

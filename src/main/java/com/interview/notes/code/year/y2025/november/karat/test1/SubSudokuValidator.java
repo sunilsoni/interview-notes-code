@@ -4,32 +4,32 @@ import java.util.Arrays;
 
 /**
  * SubSudokuValidator
- *
+ * <p>
  * Problem Analysis (plain words)
  * - We have an N x N matrix.
  * - Every row must contain each number 1..N exactly once.
  * - Every column must contain each number 1..N exactly once.
  * - Values outside 1..N (like 0, -1, 12 for N=4) make the grid invalid.
  * - Input might come as String[][]; we should parse and validate.
- *
+ * <p>
  * Solution Design
  * - First, check the shape: matrix must be square and non-empty.
  * - Convert String[][] to int[][] when needed, failing fast on bad numbers.
  * - For each index i in 0..N-1:
- *     * Check row i and column i in a single pass using two boolean arrays:
- *       seenRow[1..N], seenCol[1..N].
- *     * If we see a value twice or see a value outside 1..N, return false.
+ * * Check row i and column i in a single pass using two boolean arrays:
+ * seenRow[1..N], seenCol[1..N].
+ * * If we see a value twice or see a value outside 1..N, return false.
  * - If all rows and columns pass, return true.
- *
+ * <p>
  * Why this approach?
  * - It is O(N^2) time and O(N) extra space, which is optimal for this problem.
  * - It is easy to reason about and simple to maintain.
  * - We also use Java 8 streams for clean loops and small helpers.
- *
+ * <p>
  * Complexity
  * - Time: O(N^2) because we touch each cell a constant number of times.
  * - Space: O(N) for the two boolean “seen” arrays reused per row/column.
- *
+ * <p>
  * Edge cases covered
  * - Null or empty grids.
  * - Non-square arrays or ragged rows.
@@ -41,8 +41,8 @@ public class SubSudokuValidator {
 
     // ---------------------------- Public API (int[][]) ----------------------------
 
-    /** 
-     * Validate a sub-Sudoku grid given as int[][]. 
+    /**
+     * Validate a sub-Sudoku grid given as int[][].
      * Returns true only if every row and column is exactly the set {1..N}.
      */
     public static boolean validateSubSudoku(int[][] grid) {
@@ -56,7 +56,7 @@ public class SubSudokuValidator {
         // Check each row has length N (no ragged arrays)
         // Use streams to keep Java 8 style while still being clear.
         boolean allRowsLengthN = Arrays.stream(grid)                 // look at every row
-                                       .allMatch(r -> r != null && r.length == n); // each row must exist and be length N
+                .allMatch(r -> r != null && r.length == n); // each row must exist and be length N
         if (!allRowsLengthN) return false;                           // if any row is wrong size, invalid
 
         // Validate rows and columns together in O(N^2)
@@ -100,8 +100,8 @@ public class SubSudokuValidator {
 
     // ---------------------------- Helpers ----------------------------
 
-    /** 
-     * Convert String[][] to int[][]. 
+    /**
+     * Convert String[][] to int[][].
      * Returns null if the array is null, ragged, contains nulls, or bad numbers.
      */
     private static int[][] parseToIntMatrix(String[][] raw) {
@@ -133,7 +133,9 @@ public class SubSudokuValidator {
 
     // ---------------------------- Test Utilities ----------------------------
 
-    /** Pretty print a single test result as PASS/FAIL. */
+    /**
+     * Pretty print a single test result as PASS/FAIL.
+     */
     private static void printResult(String name, boolean got, boolean expected) {
         // Build a simple status string.
         String status = (got == expected) ? "PASS" : "FAIL";
@@ -141,7 +143,9 @@ public class SubSudokuValidator {
         System.out.println(name + " => " + got + " (expected " + expected + ") - " + status);
     }
 
-    /** Generate a valid N x N Latin square where cell(i,j) = (i + j) % N + 1. */
+    /**
+     * Generate a valid N x N Latin square where cell(i,j) = (i + j) % N + 1.
+     */
     private static int[][] makeLatinSquare(int n) {
         // Allocate matrix
         int[][] m = new int[n][n];
@@ -154,11 +158,13 @@ public class SubSudokuValidator {
         return m;                                                     // return a valid grid
     }
 
-    /** Create a deep copy so we can mutate safely in tests. */
+    /**
+     * Create a deep copy so we can mutate safely in tests.
+     */
     private static int[][] copy(int[][] a) {
         return Arrays.stream(a)                                       // stream rows
-                     .map(r -> Arrays.copyOf(r, r.length))           // copy each row
-                     .toArray(int[][]::new);                          // collect into new matrix
+                .map(r -> Arrays.copyOf(r, r.length))           // copy each row
+                .toArray(int[][]::new);                          // collect into new matrix
     }
 
     // ---------------------------- Demo / Main ----------------------------
@@ -191,14 +197,14 @@ public class SubSudokuValidator {
         printResult("grid3 (column duplicate)", validateSubSudoku(grid3), false);
 
         // --- Valid 1x1: only 1
-        int[][] grid4 = { {1} };
+        int[][] grid4 = {{1}};
         printResult("grid4 (1x1 valid)", validateSubSudoku(grid4), true);
 
         // --- Invalid 3x3: negatives and zeros are not allowed
         int[][] grid5 = {
-                {-1,  2,  3},
-                { 2, -3,  1},
-                { 3,  1,  0}
+                {-1, 2, 3},
+                {2, -3, 1},
+                {3, 1, 0}
         };
         printResult("grid5 (negatives/zero)", validateSubSudoku(grid5), false);
 
@@ -217,7 +223,7 @@ public class SubSudokuValidator {
         printResult("grid7 (column duplicate 2x2)", validateSubSudoku(grid7), false);
 
         // --- Non-square (ragged) should be invalid
-        int[][] grid8 = new int[][] {
+        int[][] grid8 = new int[][]{
                 {1, 2, 3},
                 {2, 3},              // short row
                 {3, 1, 2}
@@ -226,19 +232,19 @@ public class SubSudokuValidator {
 
         // --- String[][] valid 4x4
         String[][] grid9s = {
-                {"1","2","3","4"},
-                {"2","3","4","1"},
-                {"3","4","1","2"},
-                {"4","1","2","3"}
+                {"1", "2", "3", "4"},
+                {"2", "3", "4", "1"},
+                {"3", "4", "1", "2"},
+                {"4", "1", "2", "3"}
         };
         printResult("grid9s (String[][] valid 4x4)", validateSubSudoku(grid9s), true);
 
         // --- String[][] invalid: non-numeric value "X"
         String[][] grid10s = {
-                {"1","2","3","4"},
-                {"2","3","4","1"},
-                {"3","4","X","2"},
-                {"4","1","2","3"}
+                {"1", "2", "3", "4"},
+                {"2", "3", "4", "1"},
+                {"3", "4", "X", "2"},
+                {"4", "1", "2", "3"}
         };
         printResult("grid10s (String has X)", validateSubSudoku(grid10s), false);
 

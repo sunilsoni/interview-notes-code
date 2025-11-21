@@ -27,7 +27,7 @@ class Solution {
         testCase(Arrays.asList(99, 99), 1, "Large numbers");
         testCase(Arrays.asList(1, 1, 1, 1, 1), 1, "Multiple ones");
         testCase(Arrays.asList(10, 10, 10), 0, "Multiple tens");
-        testCase(Arrays.asList(100), 0, "Single hundred");
+        testCase(List.of(100), 0, "Single hundred");
     }
 
     private static void testCase(List<Integer> input, int expected, String testName) {

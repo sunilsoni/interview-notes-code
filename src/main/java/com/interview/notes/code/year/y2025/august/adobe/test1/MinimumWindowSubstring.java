@@ -204,19 +204,17 @@ public class MinimumWindowSubstring {
         return true; // all good
     }
 
-    // Simple container to hold a test case: s, t, expected answer, and a name/label.
-    static class TestCase {
-        final String name;   // label to identify the test
-        final String s;      // input string s
-        final String t;      // input string t
-        final String expect; // expected result
-
+    /**
+     * @param name   label to identify the test
+     * @param s      input string s
+     * @param t      input string t
+     * @param expect expected result
+     */ // Simple container to hold a test case: s, t, expected answer, and a name/label.
+        record TestCase(String name, String s, String t, String expect) {
         // Constructor to initialize all fields.
-        TestCase(String name, String s, String t, String expect) {
-            this.name = name;   // assign label
-            this.s = s;         // assign s
-            this.t = t;         // assign t
-            this.expect = expect; // assign expected answer
-        }
+        // assign label
+        // assign s
+        // assign t
+        // assign expected answer
     }
 }

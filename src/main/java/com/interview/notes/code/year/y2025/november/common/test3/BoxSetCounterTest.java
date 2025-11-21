@@ -15,9 +15,9 @@ class Outcome {
         }
 
         List<Integer> sortedDistinctBoxes = a.stream()
-                                             .distinct()
-                                             .sorted()
-                                             .collect(Collectors.toList());
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
 
         if (sortedDistinctBoxes.isEmpty()) {
             return 0;
@@ -57,7 +57,7 @@ public class BoxSetCounterTest {
         List<Integer> largeDataSet = new ArrayList<>();
         IntStream.range(0, 50000).forEach(i -> {
             largeDataSet.add(i);
-            largeDataSet.add(i + 100000); 
+            largeDataSet.add(i + 100000);
         });
         testCases.add(new TestCase(largeDataSet, 2, "Large Data: Two distinct large sets"));
 

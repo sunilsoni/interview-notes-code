@@ -37,7 +37,7 @@ public class StringPermutations {
                                              StringBuilder currentPerm) {
         // Base case: if current permutation length equals input length
         if (currentPerm.length() == chars.length) {
-            System.out.println(currentPerm.toString());
+            System.out.println(currentPerm);
             return;
         }
 

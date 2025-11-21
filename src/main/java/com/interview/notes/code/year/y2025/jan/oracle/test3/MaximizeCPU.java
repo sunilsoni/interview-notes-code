@@ -100,7 +100,7 @@ public class MaximizeCPU {
                         0
                 ),
                 new TestCase(
-                        Arrays.asList(1),
+                        List.of(1),
                         1,
                         1
                 ),

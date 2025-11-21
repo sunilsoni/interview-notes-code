@@ -202,10 +202,10 @@ public class MaxMeetingsScheduler {
         testCases.add(new TestCase(7, largeMixed, 100000));
 
         // Edge Case: Single meeting positive
-        testCases.add(new TestCase(8, Arrays.asList(10), 1));
+        testCases.add(new TestCase(8, List.of(10), 1));
 
         // Edge Case: Single meeting negative
-        testCases.add(new TestCase(9, Arrays.asList(-10), 0));
+        testCases.add(new TestCase(9, List.of(-10), 0));
 
         // Edge Case: Effectiveness index becomes zero
         testCases.add(new TestCase(10, Arrays.asList(1, -1, 1), 3)); // Updated Expected Output to 3

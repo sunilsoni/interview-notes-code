@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class CurrencyConverter {
 
     // Adjacency list to represent the currency conversion graph
-    private Map<String, List<ConversionRate>> graph;
+    private final Map<String, List<ConversionRate>> graph;
 
     /**
      * Initializes the CurrencyConverter with an empty conversion graph.

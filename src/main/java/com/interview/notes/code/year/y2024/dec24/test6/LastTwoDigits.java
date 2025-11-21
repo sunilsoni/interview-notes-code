@@ -31,14 +31,14 @@ public class LastTwoDigits {
         runTest(Arrays.asList(2, 4, 5), 40, "Basic test 2");
 
         // Additional edge cases
-        runTest(Arrays.asList(0), 0, "Zero input");
+        runTest(List.of(0), 0, "Zero input");
         runTest(Arrays.asList(1, 0, 5), 0, "Zero in middle");
-        runTest(Arrays.asList(100), 0, "Single 100");
+        runTest(List.of(100), 0, "Single 100");
         runTest(Arrays.asList(99, 99), 1, "Two 99s");
         runTest(Arrays.asList(7, 7, 7, 7), 41, "Multiple same numbers");
 
         // Boundary cases
-        runTest(Arrays.asList(1), 1, "Single 1");
+        runTest(List.of(1), 1, "Single 1");
         runTest(Arrays.asList(100, 100, 100), 0, "Multiple 100s");
 
         // Large numbers that might cause overflow

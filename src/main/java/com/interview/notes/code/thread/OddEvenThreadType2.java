@@ -17,12 +17,12 @@ public class OddEvenThreadType2 {
 }
 
 class Printer {
-    private Object lock = new Object();
+    private final Object lock = new Object();
     private volatile boolean isOdd = false;
 
     public void printEven(int number) throws InterruptedException {
         synchronized (lock) {
-            while (isOdd == false) {
+            while (!isOdd) {
                 lock.wait();
             }
             System.out.println("even : " + number);
@@ -33,7 +33,7 @@ class Printer {
 
     public void printOdd(int number) throws InterruptedException {
         synchronized (lock) {
-            while (isOdd == true) {
+            while (isOdd) {
                 lock.wait();
             }
             System.out.println("odd : " + number);
@@ -45,8 +45,8 @@ class Printer {
 
 class MyRunnable implements Runnable {
 
+    private final boolean isOdd;
     Printer printer;
-    private boolean isOdd;
 
     MyRunnable(boolean isOdd, Printer printer) {
         this.isOdd = isOdd;
@@ -54,7 +54,7 @@ class MyRunnable implements Runnable {
     }
 
     public void run() {
-        int number = isOdd == true ? 1 : 2;
+        int number = isOdd ? 1 : 2;
         while (number <= 10) {
             if (isOdd) {
                 try {

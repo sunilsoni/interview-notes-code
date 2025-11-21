@@ -74,7 +74,7 @@ public class Main {
         // 2) Stream the entries, sort by count descending, skip the top one, take the next key
         return frequencyMap.entrySet().stream()
                 .sorted(
-                        Map.Entry.<String, Long>comparingByValue(Comparator.reverseOrder())
+                        Map.Entry.comparingByValue(Comparator.reverseOrder())
                 )                                          // highest count first
                 .skip(1)                                   // drop the single most frequent
                 .map(Map.Entry::getKey)                    // extract the word

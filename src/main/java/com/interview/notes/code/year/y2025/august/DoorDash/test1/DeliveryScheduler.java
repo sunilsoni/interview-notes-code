@@ -181,15 +181,10 @@ public class DeliveryScheduler {
                 N, got, ms);
     }
 
-    // Inner class representing one delivery job
-    private static final class Job {
-        final int s, e, p; // start time, end time, pay
-
+    /**
+     * @param p start time, end time, pay
+     */ // Inner class representing one delivery job
+        private record Job(int s, int e, int p) {
         // Constructor: store values for this job
-        Job(int s, int e, int p) {
-            this.s = s;
-            this.e = e;
-            this.p = p;
-        }
     }
 }

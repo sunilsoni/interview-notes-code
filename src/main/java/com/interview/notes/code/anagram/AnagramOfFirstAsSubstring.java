@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class AnagramOfFirstAsSubstring {
 
-    public boolean isSubString(char str1[], char str2[]) {
+    public boolean isSubString(char[] str1, char[] str2) {
         int index = 0;
         int curLen = 0;
         Map<Character, Integer> count = new HashMap<Character, Integer>();

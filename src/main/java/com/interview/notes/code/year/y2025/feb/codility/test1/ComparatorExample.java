@@ -6,9 +6,9 @@ import java.util.List;
 
 // Sample Person class with multiple attributes
 class Person {
-    private String name;
-    private int age;
-    private double salary;
+    private final String name;
+    private final int age;
+    private final double salary;
 
     public Person(String name, int age, double salary) {
         this.name = name;

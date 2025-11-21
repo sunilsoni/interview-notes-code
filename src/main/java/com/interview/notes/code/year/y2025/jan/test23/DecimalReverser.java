@@ -28,7 +28,7 @@ public class DecimalReverser {
         }
 
         // Combine both parts with decimal point
-        return wholeReversed.toString() + "." + decimalReversed.toString();
+        return wholeReversed + "." + decimalReversed;
     }
 
     public static void runTest(String input, String expected) {

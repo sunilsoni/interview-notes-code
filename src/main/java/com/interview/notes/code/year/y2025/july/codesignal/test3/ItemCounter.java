@@ -99,13 +99,6 @@ public class ItemCounter {
     }
 
     // Helper to bundle test data
-    private static class TestCase {
-        final List<String> input;
-        final Map<String, Long> expected;
-
-        TestCase(List<String> input, Map<String, Long> expected) {
-            this.input = input;
-            this.expected = expected;
-        }
+        private record TestCase(List<String> input, Map<String, Long> expected) {
     }
 }

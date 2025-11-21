@@ -287,15 +287,6 @@ public class Main {
         return String.join("\n", lines);
     }
 
-    static class TestCase {
-        final String name;
-        final String input;
-        final List<String> mustContain;
-
-        TestCase(String name, String input, List<String> mustContain) {
-            this.name = name;
-            this.input = input;
-            this.mustContain = mustContain;
-        }
+    record TestCase(String name, String input, List<String> mustContain) {
     }
 }

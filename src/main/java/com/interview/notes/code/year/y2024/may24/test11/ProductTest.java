@@ -4,15 +4,15 @@ package com.interview.notes.code.year.y2024.may24.test11;
 enum Product {
     MYPRODUCT("MYPRODUCT", 123);
 
-    private String productName;
-    private Integer productId;
+    private final String productName;
+    private final Integer productId;
 
-    private Product(String productName, Integer productId) {
+    Product(String productName, Integer productId) {
         this.productName = productName;
         this.productId = productId;
     }
 
-    protected String getMatchValue(Account account) {
+    private String getMatchValue(Account account) {
         if (account == null || account.getProduct() == null || account.getProduct().getProductId() == null) {
             return "";
         }
@@ -63,7 +63,7 @@ public class ProductTest {
 }
 
 class Account {
-    private Product product;
+    private final Product product;
 
     public Account(Product product) {
         this.product = product;

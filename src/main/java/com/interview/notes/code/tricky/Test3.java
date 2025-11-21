@@ -126,10 +126,7 @@ public class Test3 {
                 if (i < len1 && solution2(firstnum.substring(0, i - 1) + firstnum.substring(i), secondnum, thirdnum.substring(k + 1))) {
                     return true;
                 }
-                if (j < len2 && solution2(firstnum.substring(0, i), secondnum.substring(0, j - 1) + secondnum.substring(j), thirdnum.substring(k + 1))) {
-                    return true;
-                }
-                return false;
+                return j < len2 && solution2(firstnum.substring(0, i), secondnum.substring(0, j - 1) + secondnum.substring(j), thirdnum.substring(k + 1));
             }
             k++;
         }
@@ -241,9 +238,7 @@ public class Test3 {
         if (!first.equals("0") && first.charAt(0) != '0') {
             int a = Integer.parseInt(first);
             int b = Integer.parseInt(second);
-            if (a + b == target) {
-                return true;
-            }
+            return a + b == target;
         }
         return false;
     }

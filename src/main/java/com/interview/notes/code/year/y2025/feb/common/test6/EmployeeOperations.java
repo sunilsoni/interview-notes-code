@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 class Employee {
-    private int id;
-    private String name;
+    private final int id;
+    private final String name;
     private double salary;
-    private String department;
+    private final String department;
 
     public Employee(int id, String name, double salary, String department) {
         this.id = id;

@@ -123,7 +123,7 @@ public class BucketFillSolution {
 
         // Test Case 5: Single cell
         System.out.println("Test Case 5 (Single Cell):");
-        List<String> picture5 = Arrays.asList("a");
+        List<String> picture5 = List.of("a");
         int expected5 = 1;
         int result5 = strokesRequired(picture5);
         System.out.println("Input: " + picture5);

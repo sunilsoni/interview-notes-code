@@ -11,11 +11,9 @@ public class LeapYearChecker {
             return false;
 
         // If year is divisible by 4, it's a leap year
-        if (year % 4 == 0)
-            return true;
+        return year % 4 == 0;
 
         // If none of the above conditions are met, it's not a leap year
-        return false;
     }
 
     public static void main(String[] args) {

@@ -4,8 +4,8 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class MedianFinder {
-    private PriorityQueue<Integer> smallNums; // max heap
-    private PriorityQueue<Integer> largeNums; // min heap
+    private final PriorityQueue<Integer> smallNums; // max heap
+    private final PriorityQueue<Integer> largeNums; // min heap
 
     public MedianFinder() {
         smallNums = new PriorityQueue<>(Collections.reverseOrder());

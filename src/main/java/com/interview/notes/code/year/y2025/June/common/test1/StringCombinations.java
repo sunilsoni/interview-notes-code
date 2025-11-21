@@ -39,7 +39,7 @@ public class StringCombinations {
                                              StringBuilder output, int length, int startPosition) {
         // If we've reached desired length, print the combination
         if (output.length() == length) {
-            System.out.println(output.toString());
+            System.out.println(output);
             return;
         }
 

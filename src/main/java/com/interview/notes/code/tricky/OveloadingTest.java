@@ -3,7 +3,7 @@ package com.interview.notes.code.tricky;
 public class OveloadingTest {
     public static void main(String[] args) {
         todo("test");
-        todo(new String("Test"));
+        todo("Test");
     }
 
     public static void todo(String s) {

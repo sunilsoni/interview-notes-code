@@ -64,8 +64,8 @@ public class FileSystemStreamer {
 
         // --- Test 2: Empty map ---
         runTest("Empty FS Test",
-                Collections.<String, Object>emptyMap(),
-                Collections.<String>emptyList());
+                Collections.emptyMap(),
+                Collections.emptyList());
 
         // --- Test 3: Single file at root ---
         Map<String, Object> single = Map.of("foo.txt", null);

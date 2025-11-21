@@ -79,9 +79,9 @@ public class CartTrayMapperJava17 {
         // Build carts with various edge cases
         Cart c1 = new Cart(101L, "CartA", Arrays.asList(t1, t2, t3, tNullId)); // mixed + null id to ignore
         Cart c2 = new Cart(102L, "CartB", null);                                // null trays => empty list in map
-        Cart c3 = new Cart(103L, "CartC", Arrays.asList(new Tray(5L, "T5")));   // single tray
+        Cart c3 = new Cart(103L, "CartC", List.of(new Tray(5L, "T5")));   // single tray
         Cart c4 = null;                                                         // null cart in list (ignored)
-        Cart c5 = new Cart(101L, "CartA-duplicateId", Arrays.asList(new Tray(4L, "T4"))); // duplicate ID => merge
+        Cart c5 = new Cart(101L, "CartA-duplicateId", List.of(new Tray(4L, "T4"))); // duplicate ID => merge
 
         // Input list containing all cases
         List<Cart> input = Arrays.asList(c1, c2, c3, c4, c5); // includes null cart and duplicate ID

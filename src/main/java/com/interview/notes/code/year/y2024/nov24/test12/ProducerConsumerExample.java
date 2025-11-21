@@ -19,7 +19,7 @@ public class ProducerConsumerExample {
 }
 
 class Producer implements Runnable {
-    private BlockingQueue<Integer> queue;
+    private final BlockingQueue<Integer> queue;
 
     public Producer(BlockingQueue<Integer> queue) {
         this.queue = queue;
@@ -40,7 +40,7 @@ class Producer implements Runnable {
 }
 
 class Consumer implements Runnable {
-    private BlockingQueue<Integer> queue;
+    private final BlockingQueue<Integer> queue;
 
     public Consumer(BlockingQueue<Integer> queue) {
         this.queue = queue;

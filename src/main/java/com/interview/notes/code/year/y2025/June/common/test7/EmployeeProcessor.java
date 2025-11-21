@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 class Employee {
-    private String name;
-    private double salary;
-    private int age;
+    private final String name;
+    private final double salary;
+    private final int age;
 
     // Constructor
     public Employee(String name, double salary, int age) {

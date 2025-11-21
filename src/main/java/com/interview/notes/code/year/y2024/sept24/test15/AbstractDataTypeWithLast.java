@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2024.sept24.test15;
 import java.util.LinkedHashMap;
 
 public class AbstractDataTypeWithLast<K, V> {
-    private LinkedHashMap<K, V> map;  // LinkedHashMap to store key-value pairs and track access order
+    private final LinkedHashMap<K, V> map;  // LinkedHashMap to store key-value pairs and track access order
     private K lastKey;  // Track the most recent key
 
     public AbstractDataTypeWithLast() {

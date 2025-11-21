@@ -65,7 +65,7 @@ public class SpiralMatrixTraversal {
         };
 
         testSpiral(matrix1, Arrays.asList(1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7));
-        testSpiral(matrix2, Arrays.asList(1));
+        testSpiral(matrix2, List.of(1));
         testSpiral(matrix3, Arrays.asList(1, 2, 4, 6, 5, 3));
     }
 

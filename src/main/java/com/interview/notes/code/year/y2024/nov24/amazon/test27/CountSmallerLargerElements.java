@@ -43,9 +43,7 @@ public class CountSmallerLargerElements {
         Element[] rightArr = new Element[n2];
 
         // Copy data to temporary arrays
-        for (int i = 0; i < n1; i++) {
-            leftArr[i] = elements[left + i];
-        }
+        System.arraycopy(elements, left + 0, leftArr, 0, n1);
         for (int i = 0; i < n2; i++) {
             rightArr[i] = elements[mid + 1 + i];
         }

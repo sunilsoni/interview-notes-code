@@ -56,7 +56,7 @@ public class PermutationGenerator {
 
         // --------- Test 2: empty string ---------
         String test2 = "";                                                    // empty input
-        List<String> expected2 = Arrays.asList("");                           // only one perm: the empty string
+        List<String> expected2 = List.of("");                           // only one perm: the empty string
         List<String> result2 = getPermutations(test2);                        // generate perms
         if (new HashSet<>(result2).equals(new HashSet<>(expected2))) {
             System.out.println("Test2 PASS");                                 // should pass
@@ -66,7 +66,7 @@ public class PermutationGenerator {
 
         // --------- Test 3: single character ---------
         String test3 = "X";                                                   // one-char input
-        List<String> expected3 = Arrays.asList("X");                          // only one perm
+        List<String> expected3 = List.of("X");                          // only one perm
         List<String> result3 = getPermutations(test3);                        // generate perms
         if (new HashSet<>(result3).equals(new HashSet<>(expected3))) {
             System.out.println("Test3 PASS");                                 // should pass

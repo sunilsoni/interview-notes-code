@@ -28,7 +28,7 @@ public class LongestCommonPrefix {
                 new TestCase(Arrays.asList("flower", "flow", "flight"), "fl"),
                 new TestCase(Arrays.asList("dog", "racecar", "car"), ""),
                 new TestCase(Arrays.asList("interview", "internet", "internal"), "inte"),
-                new TestCase(Arrays.asList("single"), "single"),
+                new TestCase(List.of("single"), "single"),
                 new TestCase(Collections.emptyList(), ""),
                 new TestCase(Arrays.asList("", "prefix"), ""),
                 new TestCase(Arrays.asList("same", "same", "same"), "same")

@@ -119,10 +119,10 @@ public class Solution {
 
         // Inner class to store a test case
         class TestCase {
-            int[] input;
-            int expectedMean;
-            int expectedMode;
-            String description;
+            final int[] input;
+            final int expectedMean;
+            final int expectedMode;
+            final String description;
 
             TestCase(int[] input, int expectedMean, int expectedMode, String description) {
                 this.input = input;
@@ -186,7 +186,7 @@ public class Solution {
         } else {
             Scanner in = new Scanner(System.in);
             int inputArr_size = in.nextInt();
-            int inputArr[] = new int[inputArr_size];
+            int[] inputArr = new int[inputArr_size];
 
             for (int idx = 0; idx < inputArr_size; idx++) {
                 inputArr[idx] = in.nextInt();

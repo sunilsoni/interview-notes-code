@@ -8,8 +8,8 @@ MinPeek: Returns the smallest element currently in the stack, without removing i
 
  */
 class MinStack {
-    private Stack<Integer> stack;
-    private Stack<Integer> minStack;
+    private final Stack<Integer> stack;
+    private final Stack<Integer> minStack;
 
     public MinStack() {
         stack = new Stack<>();

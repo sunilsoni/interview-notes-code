@@ -6,7 +6,7 @@ import java.util.TreeMap;
 
 public class BankAccountAPI1 {
     // Store account transactions in a TreeMap for efficient range queries
-    private Map<Long, Map<Long, Transaction>> accounts = new HashMap<>();
+    private final Map<Long, Map<Long, Transaction>> accounts = new HashMap<>();
 
     public static void main(String[] args) {
         BankAccountAPI1 bank = new BankAccountAPI1();

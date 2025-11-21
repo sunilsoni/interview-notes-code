@@ -9,6 +9,7 @@ import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -144,7 +145,7 @@ public class FoodOutletFinder {
         int maxVotes = -1;
 
         try {
-            String encodedCity = URLEncoder.encode(city, "UTF-8");
+            String encodedCity = URLEncoder.encode(city, StandardCharsets.UTF_8);
             int currentPage = 1;
             int totalPages = 1;
 

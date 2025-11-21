@@ -22,10 +22,10 @@ public class InventoryHandler {
 }
 
 class Car {
-    private String name;
-    private int year;
-    private int miles;
-    private List<String> features;
+    private final String name;
+    private final int year;
+    private final int miles;
+    private final List<String> features;
 
     // Constructor
     public Car(String name, int year, int miles, String... features) {

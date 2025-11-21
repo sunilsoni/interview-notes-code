@@ -29,7 +29,7 @@ operations = [
  */
 // Account class representing each individual bank account
 class Account {
-    private String accountId;
+    private final String accountId;
     private double balance;
 
     public Account(String accountId) {
@@ -52,7 +52,7 @@ class Account {
 
 // BankingSystem class managing all accounts and operations
 class BankingSystem1 {
-    private Map<String, Account> accounts;
+    private final Map<String, Account> accounts;
 
     public BankingSystem1() {
         this.accounts = new HashMap<>();

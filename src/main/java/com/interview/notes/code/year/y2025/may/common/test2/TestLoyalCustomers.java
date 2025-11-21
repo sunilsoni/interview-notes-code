@@ -12,15 +12,15 @@ public class TestLoyalCustomers {
                 new PageView(1000L, 1, 1),
                 new PageView(1001L, 2, 1)
         );
-        List<PageView> day2 = Arrays.asList(
+        List<PageView> day2 = List.of(
                 new PageView(2000L, 3, 1)
         );
-        testCase("Basic loyal customer", day1, day2, Arrays.asList(1));
+        testCase("Basic loyal customer", day1, day2, List.of(1));
 
         // Test Case 2: Not enough unique pages
-        day1 = Arrays.asList(new PageView(1000L, 1, 2));
-        day2 = Arrays.asList(new PageView(2000L, 1, 2));
-        testCase("Not enough unique pages", day1, day2, Arrays.asList());
+        day1 = List.of(new PageView(1000L, 1, 2));
+        day2 = List.of(new PageView(2000L, 1, 2));
+        testCase("Not enough unique pages", day1, day2, List.of());
 
         // Test Case 3: Multiple loyal customers
         day1 = Arrays.asList(

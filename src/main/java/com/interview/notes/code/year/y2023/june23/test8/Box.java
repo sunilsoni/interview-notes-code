@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 class Box {
-    private int[] dimensions;
+    private final int[] dimensions;
 
     public Box(int length, int width, int height) {
         this.dimensions = new int[]{length, width, height};
@@ -23,7 +23,7 @@ class Box {
 }
 
 class BoxManager {
-    private List<Box> boxes;
+    private final List<Box> boxes;
 
     public BoxManager() {
         this.boxes = new ArrayList<>();
@@ -39,7 +39,7 @@ class BoxManager {
 }
 
 class FitChecker {
-    private BoxManager boxManager;
+    private final BoxManager boxManager;
 
     public FitChecker(BoxManager boxManager) {
         this.boxManager = boxManager;

@@ -158,9 +158,9 @@ public class MovieRecommender {
         };
 
         // Test cases
-        testRecommendations("Charlie", ratings, Arrays.asList("Mad Max"));
+        testRecommendations("Charlie", ratings, List.of("Mad Max"));
         testRecommendations("Bob", ratings, Arrays.asList("Inception", "Topsy-Turvy"));
-        testRecommendations("Dennis", ratings, Arrays.asList("Lost In Translation"));
+        testRecommendations("Dennis", ratings, List.of("Lost In Translation"));
         testRecommendations("Alice", ratings, Collections.emptyList());
         testRecommendations("Franz", ratings, Arrays.asList("All About Eve", "Inception", "Topsy-Turvy"));
 

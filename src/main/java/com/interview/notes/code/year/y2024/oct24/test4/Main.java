@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 class Customer {
-    private String name;
-    private List<Account> accounts;
+    private final String name;
+    private final List<Account> accounts;
 
     public Customer(String name, List<Account> accounts) {
         this.name = name;
@@ -24,7 +24,7 @@ class Customer {
 }
 
 class Account {
-    private String accountNumber;
+    private final String accountNumber;
 
     public Account(String accountNumber) {
         this.accountNumber = accountNumber;
@@ -51,14 +51,14 @@ public class Main {
         // Test case 1: Customer "Raj" with 2 accounts
         List<Account> rajAccounts = Arrays.asList(new Account("12345"), new Account("67890"));
         Customer raj = new Customer("Raj", rajAccounts);
-        Customer john = new Customer("John", Arrays.asList(new Account("54321")));
+        Customer john = new Customer("John", List.of(new Account("54321")));
         List<Customer> customers1 = Arrays.asList(raj, john);
 
         List<String> result1 = getAccountNumbersOfRaj(customers1);
         assert result1.equals(Arrays.asList("12345", "67890")) : "Test Case 1 Failed";
 
         // Test case 2: No customer named "Raj"
-        Customer alice = new Customer("Alice", Arrays.asList(new Account("11223")));
+        Customer alice = new Customer("Alice", List.of(new Account("11223")));
         List<Customer> customers2 = Arrays.asList(alice, john);
 
         List<String> result2 = getAccountNumbersOfRaj(customers2);
@@ -72,7 +72,7 @@ public class Main {
         assert result3.isEmpty() : "Test Case 3 Failed";
 
         // Test case 4: Multiple customers named "Raj"
-        Customer raj2 = new Customer("Raj", Arrays.asList(new Account("98765")));
+        Customer raj2 = new Customer("Raj", List.of(new Account("98765")));
         List<Customer> customers4 = Arrays.asList(raj, raj2, john);
 
         List<String> result4 = getAccountNumbersOfRaj(customers4);

@@ -76,8 +76,8 @@ abstract class Question {
 }
 
 class Person implements Answerer {
-    private String name;
-    private Map<Question, Boolean> answers;
+    private final String name;
+    private final Map<Question, Boolean> answers;
 
     public Person(String name, Map<Question, Boolean> answers) {
         this.name = name;
@@ -96,8 +96,8 @@ class Person implements Answerer {
 }
 
 class PersonGuesser {
-    private List<Person> persons;
-    private List<Question> questions;
+    private final List<Person> persons;
+    private final List<Question> questions;
 
     public PersonGuesser(List<Person> persons, List<Question> questions) {
         this.persons = new ArrayList<>(persons);

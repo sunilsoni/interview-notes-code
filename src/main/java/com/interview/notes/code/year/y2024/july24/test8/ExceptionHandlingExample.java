@@ -25,9 +25,6 @@ public class ExceptionHandlingExample {
             System.err.println("An error occurred while reading the file.");
             // Log the stack trace for debugging
             e.printStackTrace();
-        } finally {
-            // No need for explicit cleanup with try-with-resources
-            // Resources are automatically closed
         }
     }
 }

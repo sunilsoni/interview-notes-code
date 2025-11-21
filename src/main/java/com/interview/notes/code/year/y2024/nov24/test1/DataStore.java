@@ -65,8 +65,8 @@ get("user2") # None or Null
  */
 public class DataStore {
 
-    private Map<String, String> globalStore;
-    private Stack<Map<String, String>> transactionStack;
+    private final Map<String, String> globalStore;
+    private final Stack<Map<String, String>> transactionStack;
 
     public DataStore() {
         globalStore = new HashMap<>();

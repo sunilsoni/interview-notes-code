@@ -131,8 +131,8 @@ public class AnagramChecker {
     private static void runTest(String name, boolean expected, boolean actual) {
         // Compose a human-readable one-line result for each test.
         String result = (expected == actual) ? "PASS" : "FAIL";       // Decide test outcome.
-        System.out.println(String.format("[%s] %s | expected=%s, actual=%s",
-                result, name, expected, actual));                     // Print concise summary.
+        System.out.printf("[%s] %s | expected=%s, actual=%s%n",
+                result, name, expected, actual);                     // Print concise summary.
     }
 
     /**

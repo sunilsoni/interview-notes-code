@@ -1,9 +1,9 @@
 package com.interview.notes.code.year.y2024.aug24.test32;
 
 class Car {
-    private String name;
-    private int year;
-    private int miles;
+    private final String name;
+    private final int year;
+    private final int miles;
 
     // Constructor
     public Car(String name, int year, int miles) {

@@ -43,6 +43,7 @@ public class IncreasingTriplet {
                 for (int k = j + 1; k < array.length && !result; k++) {
                     if (array[i] < array[j] && array[j] < array[k]) {
                         result = true; // Set result to true if a triplet is found
+                        break;
                     }
                 }
             }
@@ -68,6 +69,7 @@ public class IncreasingTriplet {
                 for (int k = j + 1; k < n && !found; k++) {
                     if (array[i] < array[j] && array[j] < array[k]) {
                         found = true;
+                        break;
                     }
                 }
             }

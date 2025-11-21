@@ -5,7 +5,7 @@ public class OperatorsDemo {
         boolean b = false;
         int n = 5;
         System.out.println(b || n == 5);
-        System.out.println(b = true && n == 5);
+        System.out.println(b = n == 5);
         System.out.println(b);
     }
 }

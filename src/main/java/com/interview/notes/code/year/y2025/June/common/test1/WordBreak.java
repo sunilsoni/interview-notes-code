@@ -47,10 +47,10 @@ public class WordBreak {
         test("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat"), false);
 
         // Test Case 4: Empty string
-        test("", Arrays.asList(""), true);
+        test("", List.of(""), true);
 
         // Test Case 5: Single character
-        test("a", Arrays.asList("a"), true);
+        test("a", List.of("a"), true);
 
         // Test Case 6: Large input
         StringBuilder sb = new StringBuilder();

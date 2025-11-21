@@ -51,9 +51,9 @@ public class AmazonBox1 {
 
 class Boxx {
 
-    private int length;
-    private int width;
-    private int height;
+    private final int length;
+    private final int width;
+    private final int height;
 
     public Boxx(int length, int width, int height) {
         this.length = length;

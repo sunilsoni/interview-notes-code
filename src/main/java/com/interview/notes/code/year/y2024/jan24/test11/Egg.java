@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2024.jan24.test11;
 
 public class Egg extends Food {
-    private String type = "non-vegetarian";
+    private final String type = "non-vegetarian";
 
     public Egg(double proteins, double fats, double carbs) {
         super(proteins, fats, carbs);

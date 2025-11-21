@@ -35,9 +35,9 @@ public class LeastStressfulPathSolution {
 
     static void testCase2() {
         System.out.println("\nTest Case 2: No path exists");
-        List<Integer> graphFrom = Arrays.asList(1);
-        List<Integer> graphTo = Arrays.asList(2);
-        List<Integer> weights = Arrays.asList(10);
+        List<Integer> graphFrom = List.of(1);
+        List<Integer> graphTo = List.of(2);
+        List<Integer> weights = List.of(10);
         int result = getMinimumStress(3, graphFrom, graphTo, weights, 1, 3);
         boolean passed = result == -1;
         printResult("No path exists", passed, -1, result);
@@ -77,21 +77,21 @@ public class LeastStressfulPathSolution {
         printResult("Single node", result1 == -1, -1, result1);
 
         // Two nodes with direct edge
-        List<Integer> graphFrom = Arrays.asList(1);
-        List<Integer> graphTo = Arrays.asList(2);
-        List<Integer> weights = Arrays.asList(5);
+        List<Integer> graphFrom = List.of(1);
+        List<Integer> graphTo = List.of(2);
+        List<Integer> weights = List.of(5);
         int result2 = getMinimumStress(2, graphFrom, graphTo, weights, 1, 2);
         printResult("Two nodes with direct edge", result2 == 5, 5, result2);
 
         // Maximum weight test
-        List<Integer> maxWeights = Arrays.asList(1000000000);
+        List<Integer> maxWeights = List.of(1000000000);
         int result3 = getMinimumStress(2, graphFrom, graphTo, maxWeights, 1, 2);
         printResult("Maximum weight", result3 == 1000000000, 1000000000, result3);
     }
 
     static void printResult(String testName, boolean passed, Object expected, Object actual) {
-        System.out.println(String.format("%-30s: %s", testName,
-                passed ? "PASSED" : "FAILED"));
+        System.out.printf("%-30s: %s%n", testName,
+                passed ? "PASSED" : "FAILED");
         if (!passed) {
             System.out.println("Expected: " + expected + ", Actual: " + actual);
         }

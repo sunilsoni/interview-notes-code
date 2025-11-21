@@ -189,8 +189,8 @@ public class CountAnagramSentences {
         }
 
         // Additional test: no anagrams found
-        List<String> wordSet2 = Arrays.asList("abc");
-        List<String> sentences2 = Arrays.asList("xyz");
+        List<String> wordSet2 = List.of("abc");
+        List<String> sentences2 = List.of("xyz");
         List<Long> output2 = countSentences(wordSet2, sentences2);
         // Expect 0 because xyz doesn't match any word or anagram
         if (output2.get(0) == 0L) {
@@ -203,7 +203,7 @@ public class CountAnagramSentences {
 
         // Additional test: multiple identical words
         List<String> wordSet3 = Arrays.asList("act", "cat");
-        List<String> sentences3 = Arrays.asList("act act");
+        List<String> sentences3 = List.of("act act");
         List<Long> output3 = countSentences(wordSet3, sentences3);
         // Each "act" can be "act" or "cat" → 2 * 2 = 4
         if (output3.get(0) == 4L) {

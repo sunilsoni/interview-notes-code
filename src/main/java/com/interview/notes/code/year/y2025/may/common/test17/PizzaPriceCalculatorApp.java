@@ -75,27 +75,16 @@ interface Offer {
 // --- Core Price Calculator ---
 
 // Immutable Pizza order
-class Pizza {
-    private final PizzaSize size;
-    private final CrustType crust;
-    private final List<Topping> toppings;
-
-    public Pizza(PizzaSize size, CrustType crust, List<Topping> toppings) {
+record Pizza(PizzaSize size, CrustType crust, List<Topping> toppings) {
+    Pizza(PizzaSize size, CrustType crust, List<Topping> toppings) {
         this.size = size;
         this.crust = crust;
         // defensive copy to preserve immutability
         this.toppings = new ArrayList<>(toppings);
     }
 
-    public PizzaSize getSize() {
-        return size;
-    }
-
-    public CrustType getCrust() {
-        return crust;
-    }
-
-    public List<Topping> getToppings() {
+    @Override
+    public List<Topping> toppings() {
         return Collections.unmodifiableList(toppings);
     }
 }
@@ -105,11 +94,11 @@ class Pizza {
 class PriceCalculator {
     public static double calculate(Pizza pizza) {
         // base size cost
-        double sizePrice = pizza.getSize().getPrice();
+        double sizePrice = pizza.size().getPrice();
         // crust cost
-        double crustPrice = pizza.getCrust().getPrice();
+        double crustPrice = pizza.crust().getPrice();
         // sum of topping costs
-        double toppingsPrice = pizza.getToppings().stream()
+        double toppingsPrice = pizza.toppings().stream()
                 .mapToDouble(Topping::getPrice)
                 .sum();
         // total pizza price
@@ -168,11 +157,11 @@ public class PizzaPriceCalculatorApp {
                 new Pizza(PizzaSize.MEDIUM, CrustType.THICK,
                         Arrays.asList(Topping.PEPPERONI, Topping.MUSHROOM)),
                 new Pizza(PizzaSize.LARGE, CrustType.THIN,
-                        Arrays.asList(Topping.BACON))
+                        List.of(Topping.BACON))
         );
 
         // Active offers: e.g., buy-one-get-one-free
-        List<Offer> activeOffers = Arrays.asList(
+        List<Offer> activeOffers = List.of(
                 new BogoOffer()
                 // you can add more offers here
         );
@@ -183,8 +172,8 @@ public class PizzaPriceCalculatorApp {
         // Print breakdown
         System.out.println("Order summary:");
         order.forEach(p -> System.out.println("  - " +
-                p.getSize() + "/" + p.getCrust() +
-                " w/ " + p.getToppings()));
+                p.size() + "/" + p.crust() +
+                " w/ " + p.toppings()));
         System.out.printf("Final total (after offers): $%.2f%n", totalCost);
     }
 }

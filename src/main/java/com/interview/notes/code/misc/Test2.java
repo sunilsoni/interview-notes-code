@@ -30,8 +30,8 @@ public class Test2 {
         //Object n Emp param
 
 
-        byte c1[] = {10, 20, 30, 40, 50};
-        byte c2[] = {10, 20, 30, 40, 50};
+        byte[] c1 = {10, 20, 30, 40, 50};
+        byte[] c2 = {10, 20, 30, 40, 50};
 
 //        ByteArrayOutputStream b1=new ByteArrayOutputStream();
 //        ByteArrayOutputStream b2=new ByteArrayOutputStream(10);
@@ -46,7 +46,7 @@ public class Test2 {
         System.out.println("Out 1 : " + b2.size());
         b2.write(c1, 0, c2.length);
         System.out.println("Out 2 : " + b2.size());
-        byte b[] = b2.toByteArray();
+        byte[] b = b2.toByteArray();
         System.out.println("Out 3 : " + b.length);
         b2.flush();
         System.out.println("Out 4 : " + b2.size());

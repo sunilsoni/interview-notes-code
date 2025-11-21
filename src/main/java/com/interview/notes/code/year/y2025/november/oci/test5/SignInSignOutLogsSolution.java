@@ -11,8 +11,8 @@ public class SignInSignOutLogsSolution {
      *
      * @param logs    List of raw log strings: "userId timestamp action"
      * @param maxSpan Maximum allowed session length in seconds
-     * @return        List of user IDs that satisfy the condition,
-     *                sorted by numeric value as strings
+     * @return List of user IDs that satisfy the condition,
+     * sorted by numeric value as strings
      */
     public static List<String> processLogs(List<String> logs, int maxSpan) {
 
@@ -201,7 +201,7 @@ public class SignInSignOutLogsSolution {
                 && actualLarge.get(0).equals(expectedLarge.get(0));
         boolean lastMatches = !actualLarge.isEmpty()
                 && actualLarge.get(actualLarge.size() - 1)
-                   .equals(expectedLarge.get(expectedLarge.size() - 1));
+                .equals(expectedLarge.get(expectedLarge.size() - 1));
 
         // We treat the large test as PASS only if all quick checks are true.
         boolean largePass = sizeMatches && firstMatches && lastMatches;

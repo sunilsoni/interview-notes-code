@@ -77,17 +77,17 @@ public class VerticalOrderTraversal {         // main class container
         tests.add(new TestCase(
                 root1,
                 Arrays.asList(
-                        Arrays.asList(9),                        // column -1
+                        List.of(9),                        // column -1
                         Arrays.asList(3, 15),                    // column  0
-                        Arrays.asList(20),                       // column +1
-                        Arrays.asList(7)                         // column +2
+                        List.of(20),                       // column +1
+                        List.of(7)                         // column +2
                 )
         ));
 
         // Test 2: single node tree
         tests.add(new TestCase(
                 new TreeNode(1),                           // just one node=1
-                Arrays.asList(Arrays.asList(1))            // expected [[1]]
+                List.of(List.of(1))            // expected [[1]]
         ));
 
         // Test 3: empty tree
@@ -107,11 +107,11 @@ public class VerticalOrderTraversal {         // main class container
         tests.add(new TestCase(
                 root4,
                 Arrays.asList(
-                        Arrays.asList(4),                        // col -2
-                        Arrays.asList(2),                        // col -1
+                        List.of(4),                        // col -2
+                        List.of(2),                        // col -1
                         Arrays.asList(1, 5, 6),                  // col  0 (5 and 6 sorted by value)
-                        Arrays.asList(3),                        // col +1
-                        Arrays.asList(7)                         // col +2
+                        List.of(3),                        // col +1
+                        List.of(7)                         // col +2
                 )
         ));
 

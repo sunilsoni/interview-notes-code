@@ -3,9 +3,9 @@ package com.interview.notes.code.year.y2023.june23.test1;
 import java.util.Objects;
 
 public class Student {
-    private String firstName;
-    private String lastName;
-    private int id;
+    private final String firstName;
+    private final String lastName;
+    private final int id;
 
     public Student(String firstName, String lastName, int id) {
         this.firstName = firstName;

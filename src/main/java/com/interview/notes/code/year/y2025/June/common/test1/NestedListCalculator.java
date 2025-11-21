@@ -57,11 +57,11 @@ public class NestedListCalculator {
                 // Provided example
                 {Arrays.asList(1, 2, 3, Arrays.asList(1, 2), 3, Arrays.asList(1, Arrays.asList(2, 4)), 3, 4), 4536},
                 // Single integer
-                {Arrays.asList(5), 5},
+                {List.of(5), 5},
                 // Single nested list
-                {Arrays.asList(Arrays.asList(1, 2, 3)), 6},
+                {List.of(Arrays.asList(1, 2, 3)), 6},
                 // Mixed nesting
-                {Arrays.asList(2, Arrays.asList(3, Arrays.asList(4)), 5), 70},
+                {Arrays.asList(2, Arrays.asList(3, List.of(4)), 5), 70},
                 // Empty outer list → product = 1 by convention
                 {Collections.emptyList(), 1}
         };

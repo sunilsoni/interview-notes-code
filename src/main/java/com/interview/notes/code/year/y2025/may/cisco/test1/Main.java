@@ -42,8 +42,9 @@ public class Main {
     public static void main(String[] args) {
 
         class TC {
-            int[] x, y;
-            int expect;
+            final int[] x;
+            final int[] y;
+            final int expect;
 
             TC(int[] x, int[] y, int expect) {
                 this.x = x;

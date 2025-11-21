@@ -129,7 +129,7 @@ public class LogAnalyzer {
                 "2021-10-23T10:07:17Z transmit error",
                 "2021-10-23T12:03:13Z transmit error"
         );
-        List<String> expected3 = Arrays.asList("transmit error");
+        List<String> expected3 = List.of("transmit error");
         testCases.add(new TestCase("All Errors Same Type", logs3, 1, expected3));
 
         // Test Case 4: T Greater Than Number of Error Types

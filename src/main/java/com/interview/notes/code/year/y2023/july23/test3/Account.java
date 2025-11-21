@@ -21,9 +21,9 @@ package com.interview.notes.code.year.y2023.july23.test3;
  * 4. String toStringf) which returns => "Owner is [ownerName] and monthly cost is [monthlyCost] USD."
  */
 public class Account implements OnlineAccount, Comparable<Account> {
-    private int noOfRegularMovies;
-    private int noOfExclusiveMovies;
-    private String ownerName;
+    private final int noOfRegularMovies;
+    private final int noOfExclusiveMovies;
+    private final String ownerName;
 
     // Parameterized constructor
     public Account(String ownerName, int noOfRegularMovies, int noOfExclusiveMovies) {

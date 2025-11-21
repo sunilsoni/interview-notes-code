@@ -43,8 +43,8 @@ public class EmployeeBatchProcessor {
     }
 
     public static class BatchDetails {
-        private String batchName;
-        private List<String> processedEmployees;
+        private final String batchName;
+        private final List<String> processedEmployees;
 
         public BatchDetails(String batchName, List<String> processedEmployees) {
             this.batchName = batchName;

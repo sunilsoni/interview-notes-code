@@ -19,7 +19,7 @@ public class Solution {
 
     public static void main(String[] args) {
         test(Arrays.asList(0, 1, 0, 3, 12), Arrays.asList(1, 3, 12, 0, 0));
-        test(Arrays.asList(0), Arrays.asList(0));
+        test(List.of(0), List.of(0));
         test(Arrays.asList(1, 2, 3, 0, 4), Arrays.asList(1, 2, 3, 4, 0));
         test(largeInputTest(), largeOutputTest());
     }

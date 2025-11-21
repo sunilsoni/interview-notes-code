@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private String username;
-    private List<Tweet> tweets;
+    private final String username;
+    private final List<Tweet> tweets;
 
     public User(String username) {
         this.username = username;

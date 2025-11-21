@@ -63,7 +63,7 @@ public class SweetIntervalSolution {
         printTestResult("Test Case 3", result3, expected3);
 
         // Test case 4 (single element match)
-        List<Integer> ar4 = Arrays.asList(5);
+        List<Integer> ar4 = List.of(5);
         int S4 = 5;
         List<Integer> result4 = solve(ar4, S4);
         List<Integer> expected4 = Arrays.asList(1, 1);

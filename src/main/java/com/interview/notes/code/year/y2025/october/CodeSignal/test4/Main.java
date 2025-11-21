@@ -17,20 +17,28 @@ public class Main {
         for (String op : dailyLog) {
             if (op.startsWith("CLOSURE")) {
                 int idx = Integer.parseInt(op.split("\\s+")[1]);
-                if (!closed[idx]) { closed[idx] = true; remain[idx] = 0; }
+                if (!closed[idx]) {
+                    closed[idx] = true;
+                    remain[idx] = 0;
+                }
             } else {
                 while (true) {
                     int k = -1;
                     for (int j = 0; j < n; j++) {
                         int idx = (cur + j) % n;
-                        if (!closed[idx] && remain[idx] > 0) { k = idx; break; }
+                        if (!closed[idx] && remain[idx] > 0) {
+                            k = idx;
+                            break;
+                        }
                     }
                     if (k == -1) {
                         for (int i = 0; i < n; i++) if (!closed[i]) remain[i] = centerCapacities[i];
                         cur = 0;
                         continue;
                     }
-                    done[k]++; remain[k]--; cur = k;
+                    done[k]++;
+                    remain[k]--;
+                    cur = k;
                     if (remain[k] == 0) cur = (k + 1) % n;
                     break;
                 }
@@ -53,18 +61,23 @@ public class Main {
         for (String op : dailyLog) {
             if (op.startsWith("CLOSURE")) {
                 int idx = Integer.parseInt(op.split("\\s+")[1]);
-                closed[idx] = true; remain[idx] = 0;
+                closed[idx] = true;
+                remain[idx] = 0;
             } else {
                 int tries = 0;
                 while (tries++ < 2) {
                     int walked = 0;
-                    while (walked < n && (closed[cur] || remain[cur] == 0)) { cur = (cur + 1) % n; walked++; }
+                    while (walked < n && (closed[cur] || remain[cur] == 0)) {
+                        cur = (cur + 1) % n;
+                        walked++;
+                    }
                     if (walked == n) {
                         for (int i = 0; i < n; i++) if (!closed[i]) remain[i] = centerCapacities[i];
                         cur = 0;
                         continue;
                     }
-                    done[cur]++; remain[cur]--;
+                    done[cur]++;
+                    remain[cur]--;
                     if (remain[cur] == 0) cur = (cur + 1) % n;
                     break;
                 }
@@ -89,14 +102,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        run("Ex", new int[]{1,2,1,2,1}, new String[]{"PACKAGE","PACKAGE","CLOSURE 2","PACKAGE","CLOSURE 3","PACKAGE","PACKAGE"}, 1);
+        run("Ex", new int[]{1, 2, 1, 2, 1}, new String[]{"PACKAGE", "PACKAGE", "CLOSURE 2", "PACKAGE", "CLOSURE 3", "PACKAGE", "PACKAGE"}, 1);
 
-        runEq("Basic1", new int[]{2,1}, new String[]{"PACKAGE","PACKAGE","PACKAGE"});
-        runEq("Basic2", new int[]{3}, new String[]{"PACKAGE","PACKAGE","PACKAGE","PACKAGE","PACKAGE"});
-        runEq("WithClosure", new int[]{2,2,2}, new String[]{"PACKAGE","CLOSURE 0","PACKAGE","PACKAGE","PACKAGE","PACKAGE","PACKAGE"});
-        runEq("ResetLoop", new int[]{1,1,1}, new String[]{"PACKAGE","PACKAGE","PACKAGE","PACKAGE","PACKAGE","PACKAGE"});
-        runEq("SkipClosed", new int[]{1,3,2,2}, new String[]{"CLOSURE 1","PACKAGE","PACKAGE","PACKAGE","PACKAGE","PACKAGE"});
-        runEq("CloseCurrent", new int[]{3,3,3}, new String[]{"PACKAGE","PACKAGE","CLOSURE 0","PACKAGE","PACKAGE","PACKAGE","PACKAGE","PACKAGE"});
+        runEq("Basic1", new int[]{2, 1}, new String[]{"PACKAGE", "PACKAGE", "PACKAGE"});
+        runEq("Basic2", new int[]{3}, new String[]{"PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE"});
+        runEq("WithClosure", new int[]{2, 2, 2}, new String[]{"PACKAGE", "CLOSURE 0", "PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE"});
+        runEq("ResetLoop", new int[]{1, 1, 1}, new String[]{"PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE"});
+        runEq("SkipClosed", new int[]{1, 3, 2, 2}, new String[]{"CLOSURE 1", "PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE"});
+        runEq("CloseCurrent", new int[]{3, 3, 3}, new String[]{"PACKAGE", "PACKAGE", "CLOSURE 0", "PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE", "PACKAGE"});
 
         Random rnd = new Random(123);
         for (int t = 1; t <= 20; t++) {
@@ -107,7 +120,7 @@ public class Main {
                 if (rnd.nextInt(7) == 0) ops.add("CLOSURE " + rnd.nextInt(n));
                 else ops.add("PACKAGE");
             }
-            runEq("Random"+t, caps, ops.toArray(new String[0]));
+            runEq("Random" + t, caps, ops.toArray(new String[0]));
         }
 
         int n = 100;

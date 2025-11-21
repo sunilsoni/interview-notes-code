@@ -86,8 +86,8 @@ public class DataStoreTest {
     }
 
     static class DataStore {
-        private Map<String, String> store;
-        private Stack<Map<String, String>> transactions;
+        private final Map<String, String> store;
+        private final Stack<Map<String, String>> transactions;
 
         public DataStore() {
             store = new HashMap<>();

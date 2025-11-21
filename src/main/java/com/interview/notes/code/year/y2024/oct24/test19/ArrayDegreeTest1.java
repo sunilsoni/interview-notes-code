@@ -24,12 +24,12 @@ public class ArrayDegreeTest1 {
 
         // Test case 4 - All same elements
         List<Integer> test4 = Arrays.asList(1, 1, 1, 1, 1);
-        List<Integer> expected4 = Arrays.asList(1);
+        List<Integer> expected4 = List.of(1);
         runTest("All Same Elements", test4, expected4);
 
         // Test case 5 - Single element
-        List<Integer> test5 = Arrays.asList(1);
-        List<Integer> expected5 = Arrays.asList(1);
+        List<Integer> test5 = List.of(1);
+        List<Integer> expected5 = List.of(1);
         runTest("Single Element", test5, expected5);
     }
 
@@ -54,7 +54,7 @@ public class ArrayDegreeTest1 {
 
         // If all elements are same, return just one element
         if (freqMap.size() == 1) {
-            return Arrays.asList(a.get(0));
+            return Collections.singletonList(a.get(0));
         }
 
         // Find all elements with max frequency

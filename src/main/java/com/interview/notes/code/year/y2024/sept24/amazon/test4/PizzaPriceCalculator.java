@@ -23,11 +23,11 @@ public class PizzaPriceCalculator {
     }
 
     public static void main(String[] args) {
-        List<String> toppings1 = Arrays.asList("cheese");
+        List<String> toppings1 = List.of("cheese");
         double price1 = calculatePizzaPrice(Base.THIN, Size.SMALL, toppings1);
         System.out.println("Test Case 1: " + (price1 == 7.50 ? "Pass" : "Fail"));
 
-        List<String> toppings2 = Arrays.asList("cheese");
+        List<String> toppings2 = List.of("cheese");
         double price2 = calculatePizzaPrice(Base.THIN, Size.MEDIUM, toppings2);
         System.out.println("Test Case 2: " + (price2 == 10.00 ? "Pass" : "Fail"));
 

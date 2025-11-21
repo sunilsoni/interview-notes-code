@@ -2,12 +2,7 @@ package com.interview.notes.code.year.y2024.nov24.test4;
 
 import java.util.*;
 
-public final class ImmutablePerson {
-    private final String name;
-    private final int age;
-    private final List<String> hobbies;
-    private final Map<String, String> nameDepartmentMap;
-
+public record ImmutablePerson(String name, int age, List<String> hobbies, Map<String, String> nameDepartmentMap) {
     public ImmutablePerson(String name, int age, List<String> hobbies, Map<String, String> nameDepartmentMap) {
         this.name = name;
         this.age = age;
@@ -16,20 +11,14 @@ public final class ImmutablePerson {
         this.nameDepartmentMap = new HashMap<>(nameDepartmentMap);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public List<String> getHobbies() {
+    @Override
+    public List<String> hobbies() {
         // Return an unmodifiable view of the list
         return Collections.unmodifiableList(hobbies);
     }
 
-    public Map<String, String> getNameDepartmentMap() {
+    @Override
+    public Map<String, String> nameDepartmentMap() {
         // Return an unmodifiable view of the map
         return Collections.unmodifiableMap(nameDepartmentMap);
     }

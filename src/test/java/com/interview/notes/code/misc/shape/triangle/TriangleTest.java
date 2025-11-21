@@ -108,7 +108,7 @@ class TriangleTest {
 
     @Test
     public void testValidTriangle() {
-        Shape shape = (Triangle) shapeFactory.getShape(3, 4, 5);
+        Shape shape = shapeFactory.getShape(3, 4, 5);
         assertEquals(shape.getShapeType(), ShapeTypes.TRIANGLE);
     }
 

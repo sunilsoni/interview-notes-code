@@ -25,8 +25,8 @@ Depending on the hardware, the response may need to be spoken, or displayed on a
 
  */
 class Battery {
-    private int level;
-    private boolean isCharging;
+    private final int level;
+    private final boolean isCharging;
 
     public Battery(int level, boolean isCharging) {
         this.level = level;
@@ -53,8 +53,8 @@ class DisplayOutput implements OutputChannel {
 }
 
 class Device {
-    private Battery battery;
-    private List<OutputChannel> outputs;
+    private final Battery battery;
+    private final List<OutputChannel> outputs;
 
     public Device(Battery battery, List<OutputChannel> outputs) {
         this.battery = battery;
@@ -91,13 +91,13 @@ public class AlexaDeviceTest {
     }
 
     private static void testCase2() {
-        Device echoDot = new Device(null, Arrays.asList(new SpeakerOutput()));
+        Device echoDot = new Device(null, List.of(new SpeakerOutput()));
         String expected = "Say \"Device is plugged in.\" through the speaker.";
         checkTestResult(2, expected, captureOutput(echoDot::reportStatus));
     }
 
     private static void testCase3() {
-        Device microwave = new Device(null, Arrays.asList(new DisplayOutput()));
+        Device microwave = new Device(null, List.of(new DisplayOutput()));
         String expected = "Display \"Device is plugged in.\" on the screen.";
         checkTestResult(3, expected, captureOutput(microwave::reportStatus));
     }

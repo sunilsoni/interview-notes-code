@@ -84,7 +84,7 @@ public class ConcatenatedSubstringFinder {
         testCases.add(new TestCase(
                 "wordgoodgoodgoodbestword",
                 new String[]{"word", "good", "best", "word"},
-                Arrays.asList()
+                List.of()
         ));
 
         // Example 3
@@ -100,21 +100,21 @@ public class ConcatenatedSubstringFinder {
         testCases.add(new TestCase(
                 "",
                 new String[]{"foo", "bar"},
-                Arrays.asList()
+                List.of()
         ));
 
         // Test Case 5: Empty words array
         testCases.add(new TestCase(
                 "barfoothefoobarman",
                 new String[]{},
-                Arrays.asList()
+                List.of()
         ));
 
         // Test Case 6: Words with duplicates
         testCases.add(new TestCase(
                 "wordgoodgoodgoodbestword",
                 new String[]{"word", "good", "best", "good"},
-                Arrays.asList(8)
+                List.of(8)
         ));
 
         // Test Case 7: Overlapping substrings
@@ -134,7 +134,7 @@ public class ConcatenatedSubstringFinder {
         testCases.add(new TestCase(
                 largeSBuilder.toString(),
                 largeWords,
-                Arrays.asList(0)
+                List.of(0)
         ));
 
         // Execute test cases

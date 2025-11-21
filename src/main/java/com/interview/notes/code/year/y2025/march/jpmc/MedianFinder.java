@@ -6,10 +6,10 @@ import java.util.PriorityQueue;
 public class MedianFinder {
 
     // Max-heap for lower half
-    private PriorityQueue<Integer> left = new PriorityQueue<>(Collections.reverseOrder());
+    private final PriorityQueue<Integer> left = new PriorityQueue<>(Collections.reverseOrder());
 
     // Min-heap for upper half
-    private PriorityQueue<Integer> right = new PriorityQueue<>();
+    private final PriorityQueue<Integer> right = new PriorityQueue<>();
 
     // Main Method to test cases
     public static void main(String[] args) {

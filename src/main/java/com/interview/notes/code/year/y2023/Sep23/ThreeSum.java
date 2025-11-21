@@ -13,7 +13,7 @@ public class ThreeSum {
             if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {  // Skip same results
                 int low = i + 1;
                 int high = nums.length - 1;
-                int sum = 0 - nums[i];
+                int sum = -nums[i];
 
                 while (low < high) {
                     if (nums[low] + nums[high] == sum) {

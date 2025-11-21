@@ -17,7 +17,7 @@ public class FamilyHierarchyJT {                  // Main class holding solution
         for (List<String> triplet : relationships) {         // Each triplet = [father, mother, child]
             String father = triplet.get(0);                  // Read father name at index 0
             String mother = triplet.get(1);                  // Read mother name at index 1
-            String child  = triplet.get(2);                  // Read child  name at index 2
+            String child = triplet.get(2);                  // Read child  name at index 2
             fatherOf.put(child, father);                     // Record father for that child
             motherOf.put(child, mother);                     // Record mother for that child
         }
@@ -74,22 +74,22 @@ public class FamilyHierarchyJT {                  // Main class holding solution
 
         // -------- Test 1: Provided Sample --------
         List<List<String>> rel1 = Arrays.asList(          // Relationships for sample input
-                T.apply(new String[]{"Ronald","Paula","Jason"}),
-                T.apply(new String[]{"Travis","Judy","Mary"}),
-                T.apply(new String[]{"Jason","Mary","Benjamin"}),
-                T.apply(new String[]{"Homer","Marge","Bart"}),
-                T.apply(new String[]{"Ervin","Marie","Paula"}),
-                T.apply(new String[]{"Clancy","Jacky","Marge"})
+                T.apply(new String[]{"Ronald", "Paula", "Jason"}),
+                T.apply(new String[]{"Travis", "Judy", "Mary"}),
+                T.apply(new String[]{"Jason", "Mary", "Benjamin"}),
+                T.apply(new String[]{"Homer", "Marge", "Bart"}),
+                T.apply(new String[]{"Ervin", "Marie", "Paula"}),
+                T.apply(new String[]{"Clancy", "Jacky", "Marge"})
         );
 
         // Expected output for person "Benjamin" based on the problem statement
-        List<String> exp1 = Arrays.asList("Ronald","Ervin","Marie","Paula","Jason","Travis","Judy","Mary");
+        List<String> exp1 = Arrays.asList("Ronald", "Ervin", "Marie", "Paula", "Jason", "Travis", "Judy", "Mary");
 
         // Run and check
         runTest("Sample Benjamin", rel1, "Benjamin", exp1);
 
         // -------- Test 2: Another person from the same data (Bart) --------
-        List<String> exp2 = Arrays.asList("Homer","Clancy","Jacky","Marge"); // Father's branch then mother’s
+        List<String> exp2 = Arrays.asList("Homer", "Clancy", "Jacky", "Marge"); // Father's branch then mother’s
         runTest("Bart simple", rel1, "Bart", exp2);
 
         // -------- Test 3: Person with no parents listed (root) --------
@@ -99,8 +99,8 @@ public class FamilyHierarchyJT {                  // Main class holding solution
         // -------- Test 4: Duplicate name safety / cycle guard --------
         // Create a tiny, intentionally cyclic graph: A's father is B; B's father is A
         List<List<String>> relCycle = Arrays.asList(
-                T.apply(new String[]{"B","M1","A"}),      // A <- (B,M1)
-                T.apply(new String[]{"A","M2","B"})       // B <- (A,M2)  (cycle via father)
+                T.apply(new String[]{"B", "M1", "A"}),      // A <- (B,M1)
+                T.apply(new String[]{"A", "M2", "B"})       // B <- (A,M2)  (cycle via father)
         );
         // With visited guard we should terminate and list each parent once, order father first then mother
         List<String> gotCycle = findAncestors(2, relCycle, "A");      // Execute
@@ -111,28 +111,28 @@ public class FamilyHierarchyJT {                  // Main class holding solution
         int FAMILIES = 100_000;                                       // 100k triples
         List<List<String>> bigFlat = IntStream.range(0, FAMILIES)     // Use Stream API to generate data
                 .mapToObj(i -> T.apply(new String[]{
-                        "F"+i, "M"+i, "C"+i                              // Each child Ci has parents Fi and Mi
+                        "F" + i, "M" + i, "C" + i                              // Each child Ci has parents Fi and Mi
                 }))
                 .collect(Collectors.toList());                        // Collect to List<List<String>>
         long t1 = System.nanoTime();                                  // Start timer
         List<String> gotFlat = findAncestors(bigFlat.size(), bigFlat, "C54321"); // Query one child
         long t2 = System.nanoTime();                                  // End timer
         System.out.println("Large(flat) ancestors count=" + gotFlat.size()
-                + " timeMs=" + ((t2 - t1)/1_000_000));                // Expect 2 names, very fast
+                + " timeMs=" + ((t2 - t1) / 1_000_000));                // Expect 2 names, very fast
 
         // -------- Test 6: Large balanced tree (many ancestors, safe depth) --------
         // We synthesize a 2-ary "upward" tree: for i in [1..L], child=Ci, father=C(2i), mother=C(2i+1)
         int L = 65_000;                                               // ~65k relationships; depth ~16
         List<List<String>> bigTree = IntStream.rangeClosed(1, L)
                 .mapToObj(i -> T.apply(new String[]{
-                        "C"+(2*i), "C"+(2*i+1), "C"+i                     // Define parents for Ci
+                        "C" + (2 * i), "C" + (2 * i + 1), "C" + i                     // Define parents for Ci
                 }))
                 .collect(Collectors.toList());                        // Build the big tree list
         long t3 = System.nanoTime();                                  // Start timer
         List<String> gotTree = findAncestors(bigTree.size(), bigTree, "C1"); // Query root child C1
         long t4 = System.nanoTime();                                  // End timer
         System.out.println("Large(tree) ancestors count=" + gotTree.size()
-                + " timeMs=" + ((t4 - t3)/1_000_000));                // Many names, still fast
+                + " timeMs=" + ((t4 - t3) / 1_000_000));                // Many names, still fast
 
         // Final line so it’s easy to spot that the test run is complete
         System.out.println("All tests executed.");

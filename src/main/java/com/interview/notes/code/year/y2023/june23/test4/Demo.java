@@ -13,7 +13,7 @@ public class Demo {
         //  System.out.println("x1 "+x);
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         System.out.println(x);
 

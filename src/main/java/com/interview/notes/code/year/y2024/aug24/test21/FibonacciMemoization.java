@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FibonacciMemoization {
-    private static Map<Integer, Integer> memo = new HashMap<>();
+    private static final Map<Integer, Integer> memo = new HashMap<>();
 
     public static void main(String[] args) {
         int n = 10;

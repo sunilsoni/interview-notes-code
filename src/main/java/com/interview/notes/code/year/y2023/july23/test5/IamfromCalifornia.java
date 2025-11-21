@@ -17,7 +17,7 @@ public class IamfromCalifornia {
         for (String word : words) {
             int index1 = strWithoutSpaces.indexOf(word);
             int index2 = word.length() + index1;
-            sb.append(reversedStr.substring(index1, index2));
+            sb.append(reversedStr, index1, index2);
             sb.append(" ");
         }
 
@@ -61,7 +61,7 @@ public class IamfromCalifornia {
 
             System.out.println("word: " + word + " index1: " + index1 + " : index2: " + index2);
 
-            sb.append(reversedStr.substring(index1, index2));
+            sb.append(reversedStr, index1, index2);
             sb.append(" ");
 
         }

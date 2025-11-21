@@ -128,7 +128,7 @@ public class LargestRectangle {
         // Additional test cases
 
         // Single bar test
-        runTestCase("Test Case 3 (Single Bar)", Arrays.asList(5), 5);
+        runTestCase("Test Case 3 (Single Bar)", List.of(5), 5);
 
         // Uniform bars test
         runTestCase("Test Case 4 (Uniform Bars)", Arrays.asList(2, 2, 2, 2, 2), 10);

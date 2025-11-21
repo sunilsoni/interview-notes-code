@@ -123,15 +123,19 @@ public class TweetAnalyzer {
 
         // Expected results for the sample (computed by hand following rules)
         List<String> expectedUnique = Arrays.asList(                        // Unique words in first-seen order
-                "this","is","a","sample","pretty","easy","sometimes","not"
+                "this", "is", "a", "sample", "pretty", "easy", "sometimes", "not"
         );
         LinkedHashMap<String, Long> expectedFreq = new LinkedHashMap<>();  // Expected frequency map
-        expectedFreq.put("this",1L); expectedFreq.put("is",3L);            // Fill expected counts
-        expectedFreq.put("a",1L); expectedFreq.put("sample",2L);
-        expectedFreq.put("pretty",2L); expectedFreq.put("easy",2L);
-        expectedFreq.put("sometimes",1L); expectedFreq.put("not",1L);
+        expectedFreq.put("this", 1L);
+        expectedFreq.put("is", 3L);            // Fill expected counts
+        expectedFreq.put("a", 1L);
+        expectedFreq.put("sample", 2L);
+        expectedFreq.put("pretty", 2L);
+        expectedFreq.put("easy", 2L);
+        expectedFreq.put("sometimes", 1L);
+        expectedFreq.put("not", 1L);
         String expectedMost = "is";                                        // "is" has the highest frequency (3)
-        List<String> expectedTop2 = Arrays.asList("is","sample");          // Tie at 2 goes to earliest first-appearance
+        List<String> expectedTop2 = Arrays.asList("is", "sample");          // Tie at 2 goes to earliest first-appearance
 
         // Assertions for the sample
         assertListEquals("Unique(sample)", uniques, expectedUnique);       // Check unique words
@@ -153,9 +157,9 @@ public class TweetAnalyzer {
         String punct = "Hello, HELLO!! HeLlo? world... WORLD";             // Mixed case and punctuation
         List<String> tPunct = tokenize(punct);                             // Tokenize with regex
         assertListEquals("Tokens(punct)", tPunct,                          // Expected normalized tokens
-                Arrays.asList("hello","hello","hello","world","world"));
+                Arrays.asList("hello", "hello", "hello", "world", "world"));
         assertListEquals("Unique(punct)", uniqueWords(tPunct),             // Unique order should be hello, world
-                Arrays.asList("hello","world"));
+                Arrays.asList("hello", "world"));
         assertStringEquals("Most(punct)",                                  // Most frequent is "hello" (3 vs 2)
                 mostFrequentWord(tPunct).orElse(""), "hello");
         assertListEquals("Top1(punct)", topNFrequentWords(tPunct, 1),      // Top1 should be just "hello"
@@ -165,7 +169,7 @@ public class TweetAnalyzer {
         String shortTxt = "one two two";                                   // Small input
         List<String> tShort = tokenize(shortTxt);                          // Tokens: [one, two, two]
         assertListEquals("Top5(short)", topNFrequentWords(tShort, 5),      // Ask for more than exists
-                Arrays.asList("two","one"));                               // Should return only existing words
+                Arrays.asList("two", "one"));                               // Should return only existing words
 
         // --- Edge: N <= 0 ---
         assertListEquals("Top0(short)", topNFrequentWords(tShort, 0),      // N=0 should be empty
@@ -185,7 +189,7 @@ public class TweetAnalyzer {
         List<String> tBig = tokenize(big);                                 // Tokenize big text
         List<String> top3Big = topNFrequentWords(tBig, 3);                 // Ask for top 3
         assertListEquals("Top3(large)", top3Big,                           // We expect w1, w2, w0 (tie rule irrelevant here)
-                Arrays.asList("w1","w2","w0"));                            // w1=80k, w2=70k, w0=50k
+                Arrays.asList("w1", "w2", "w0"));                            // w1=80k, w2=70k, w0=50k
 
         // --- Human-friendly demo print for the sample ---
         System.out.println("\n--- Demo Output (Sample) ---");              // Section header

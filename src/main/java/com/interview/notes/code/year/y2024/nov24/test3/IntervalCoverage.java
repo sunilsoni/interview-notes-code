@@ -12,7 +12,7 @@ interface myInterface {
 }
 
 public class IntervalCoverage implements myInterface {
-    private List<Interval> intervals;
+    private final List<Interval> intervals;
 
     // Constructor
     public IntervalCoverage() {

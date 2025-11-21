@@ -55,7 +55,7 @@ public class ParkingGarage {
         testResults.add(ticket5 == null && garage.getAvailableSmall() == 0 ? "PASS" : "FAIL");
 
         // Test Case 6: Retrieve a car with a valid ticket
-        boolean retrieve1 = garage.retrieveCar(ticket1.getId());
+        boolean retrieve1 = garage.retrieveCar(ticket1.id());
         testResults.add(retrieve1 && garage.getAvailableSmall() == 1 ? "PASS" : "FAIL");
 
         // Test Case 7: Attempt to retrieve a car with an invalid ticket
@@ -63,7 +63,7 @@ public class ParkingGarage {
         testResults.add(!retrieve2 ? "PASS" : "FAIL");
 
         // Test Case 8: Attempt to retrieve the same car again
-        boolean retrieve3 = garage.retrieveCar(ticket1.getId());
+        boolean retrieve3 = garage.retrieveCar(ticket1.id());
         testResults.add(!retrieve3 ? "PASS" : "FAIL");
 
         // Test Case 9: Park a large car when one bay is available
@@ -93,7 +93,7 @@ public class ParkingGarage {
         }
         // Retrieve all parked cars
         for (Ticket t : largeTickets) {
-            if (!largeGarage.retrieveCar(t.getId())) {
+            if (!largeGarage.retrieveCar(t.id())) {
                 largeTestPass = false;
                 break;
             }
@@ -116,35 +116,15 @@ public class ParkingGarage {
     }
 
     // Ticket class to store ticket information
-    static class Ticket {
-        private final int id;
-        private final Size size;
-
-        public Ticket(int id, Size size) {
-            this.id = id;
-            this.size = size;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public Size getSize() {
-            return size;
-        }
+        record Ticket(int id, Size size) {
 
         @Override
-        public boolean equals(Object obj) {
-            if (this == obj) return true;
-            if (!(obj instanceof Ticket)) return false;
-            Ticket other = (Ticket) obj;
-            return this.id == other.id && this.size == other.size;
-        }
+            public boolean equals(Object obj) {
+                if (this == obj) return true;
+                if (!(obj instanceof Ticket other)) return false;
+                return this.id == other.id && this.size == other.size;
+            }
 
-        @Override
-        public int hashCode() {
-            return Objects.hash(id, size);
-        }
     }
 
     // ParkingGarage class to manage parking operations
@@ -176,7 +156,7 @@ public class ParkingGarage {
                     if (availableSmall > 0) {
                         availableSmall--;
                         Ticket ticket = new Ticket(ticketCounter.getAndIncrement(), size);
-                        activeTickets.put(ticket.getId(), ticket);
+                        activeTickets.put(ticket.id(), ticket);
                         return ticket;
                     }
                     break;
@@ -184,7 +164,7 @@ public class ParkingGarage {
                     if (availableMedium > 0) {
                         availableMedium--;
                         Ticket ticket = new Ticket(ticketCounter.getAndIncrement(), size);
-                        activeTickets.put(ticket.getId(), ticket);
+                        activeTickets.put(ticket.id(), ticket);
                         return ticket;
                     }
                     break;
@@ -192,7 +172,7 @@ public class ParkingGarage {
                     if (availableLarge > 0) {
                         availableLarge--;
                         Ticket ticket = new Ticket(ticketCounter.getAndIncrement(), size);
-                        activeTickets.put(ticket.getId(), ticket);
+                        activeTickets.put(ticket.id(), ticket);
                         return ticket;
                     }
                     break;
@@ -206,7 +186,7 @@ public class ParkingGarage {
             if (ticket == null) {
                 return false; // Invalid ticket
             }
-            switch (ticket.getSize()) {
+            switch (ticket.size()) {
                 case SMALL:
                     availableSmall++;
                     break;

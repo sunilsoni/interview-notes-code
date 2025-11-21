@@ -3,6 +3,7 @@ package com.interview.notes.code.year.y2025.august.common.test9;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class ReverseWords {                  // main class
@@ -46,9 +47,7 @@ public class ReverseWords {                  // main class
             String input = tests[i][0];          // test input
             String expected = tests[i][1];          // expected output
             String actual = reverseWords(input);  // run method
-            boolean pass = (expected == null)
-                    ? actual == null
-                    : expected.equals(actual);
+            boolean pass = Objects.equals(expected, actual);
             // print result
             System.out.printf(
                     "Test %d: %s | expected='%s' actual='%s'%n",

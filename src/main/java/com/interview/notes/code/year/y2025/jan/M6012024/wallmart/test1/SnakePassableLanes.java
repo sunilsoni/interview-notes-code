@@ -73,7 +73,7 @@ public class SnakePassableLanes {
                 {'0', '0', '+', '0', '0', '0'}
         };
         Map<String, List<Integer>> expected1 = new HashMap<>();
-        expected1.put("Rows", Arrays.asList(4));
+        expected1.put("Rows", List.of(4));
         expected1.put("Columns", Arrays.asList(5, 6)); // Adjusted indices
         testCases.add(new TestCase("board1", board1, expected1));
 
@@ -85,8 +85,8 @@ public class SnakePassableLanes {
                 {'0', '0', '0', '0', '0', '0'}
         };
         Map<String, List<Integer>> expected2 = new HashMap<>();
-        expected2.put("Rows", Arrays.asList(1));
-        expected2.put("Columns", Arrays.asList(4)); // Adjusted index
+        expected2.put("Rows", List.of(1));
+        expected2.put("Columns", List.of(4)); // Adjusted index
         testCases.add(new TestCase("board2", board2, expected2));
 
         // Test Case 3
@@ -105,7 +105,7 @@ public class SnakePassableLanes {
                 {'+'}
         };
         Map<String, List<Integer>> expected4 = new HashMap<>();
-        expected4.put("Rows", Arrays.asList(0)); // Row index 0
+        expected4.put("Rows", List.of(0)); // Row index 0
         expected4.put("Columns", Collections.emptyList());
         testCases.add(new TestCase("board4", board4, expected4));
 
@@ -114,8 +114,8 @@ public class SnakePassableLanes {
                 {'0'}
         };
         Map<String, List<Integer>> expected5 = new HashMap<>();
-        expected5.put("Rows", Arrays.asList(0));
-        expected5.put("Columns", Arrays.asList(0));
+        expected5.put("Rows", List.of(0));
+        expected5.put("Columns", List.of(0));
         testCases.add(new TestCase("board5", board5, expected5));
 
         // Test Case 6

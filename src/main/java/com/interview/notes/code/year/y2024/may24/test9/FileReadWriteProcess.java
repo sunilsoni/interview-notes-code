@@ -27,7 +27,7 @@ public class FileReadWriteProcess {
                 stringBuilder.append(line);
             }
             bufferedReader.close();
-            System.out.println("Data read from file: " + stringBuilder.toString());
+            System.out.println("Data read from file: " + stringBuilder);
 
             // Step 3: Process data and reverse words
             String[] words = stringBuilder.toString().split("\\s+");
@@ -36,7 +36,7 @@ public class FileReadWriteProcess {
                 StringBuilder reversedWord = new StringBuilder(word);
                 reversedData.append(reversedWord.reverse()).append(" ");
             }
-            System.out.println("Reversed words: " + reversedData.toString());
+            System.out.println("Reversed words: " + reversedData);
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
         }

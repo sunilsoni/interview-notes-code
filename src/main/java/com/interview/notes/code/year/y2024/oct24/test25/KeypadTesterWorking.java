@@ -151,7 +151,7 @@ class KeypadTesterWorking {
         testCase(test2, 'e', "Test Case 2");
 
         // Edge Case: Single Key Press
-        List<List<Integer>> test3 = Arrays.asList(
+        List<List<Integer>> test3 = List.of(
                 Arrays.asList(0, 5)
         );
         testCase(test3, 'a', "Edge Case - Single Key");

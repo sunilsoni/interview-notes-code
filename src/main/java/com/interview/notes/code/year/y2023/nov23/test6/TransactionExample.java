@@ -30,8 +30,8 @@ public class TransactionExample {
 }
 
 class Transaction {
-    private String category;
-    private int amount;
+    private final String category;
+    private final int amount;
 
     public Transaction(String category, int amount) {
         this.category = category;

@@ -6,7 +6,6 @@ import java.util.Arrays;
 public class FindConsecutiveMissingNumbers {
     public static void main(String[] args) {
         arrayNumber();
-        ;
 
         int[] numbers = {3, 2, 7, 1, 4, 8};
         int[] missingNumbers = findConsecutiveMissingNumbers(numbers);

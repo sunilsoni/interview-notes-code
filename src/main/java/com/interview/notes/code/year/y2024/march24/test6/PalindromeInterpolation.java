@@ -22,7 +22,7 @@ public class PalindromeInterpolation {
         }
 
         // Check if the resulting string is a palindrome
-        if (new String(chars).equals(new StringBuilder(new String(chars)).reverse().toString())) {
+        if (new String(chars).contentEquals(new StringBuilder(new String(chars)).reverse())) {
             return new String(chars);
         } else {
             return "-1";

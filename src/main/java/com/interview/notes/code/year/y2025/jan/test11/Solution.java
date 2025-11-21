@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.util.*;
 
 class Employee {
-    private int id;
-    private String name;
-    private BigDecimal salary;
+    private final int id;
+    private final String name;
+    private final BigDecimal salary;
 
     // Constructor
     public Employee(int id, String name, BigDecimal salary) {

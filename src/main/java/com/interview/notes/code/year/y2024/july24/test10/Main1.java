@@ -20,8 +20,8 @@ public class Main1 {
     }
 
     public static class Student {
-        private String name;
-        private double grade;
+        private final String name;
+        private final double grade;
 
         public Student(String name, double grade) {
             this.name = name;

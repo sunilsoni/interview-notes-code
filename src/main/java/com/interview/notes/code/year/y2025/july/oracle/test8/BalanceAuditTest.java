@@ -71,7 +71,7 @@ public class BalanceAuditTest {
                         Arrays.asList("Casey", "Alex", "4"),
                         Arrays.asList("Casey", "Alex", "2")
                 ),
-                Arrays.asList("Casey")
+                List.of("Casey")
         ));
 
         // Test 3: no negative balances at all

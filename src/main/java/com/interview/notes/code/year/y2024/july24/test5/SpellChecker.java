@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SpellChecker {
-    private Set<String> dictionary;
+    private final Set<String> dictionary;
 
     public SpellChecker(Set<String> dictionary) {
         this.dictionary = dictionary;

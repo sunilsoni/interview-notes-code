@@ -13,7 +13,7 @@ class FindLargestThreeTest {
 
     @Test
     void findLargestThree() {
-        int arr[] = {19, 5, 78, 1, 33, 11, 20};
-        findLargestThree.findLargestThree(arr);
+        int[] arr = {19, 5, 78, 1, 33, 11, 20};
+        FindLargestThree.findLargestThree(arr);
     }
 }

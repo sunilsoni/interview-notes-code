@@ -22,14 +22,7 @@ public class LastTwoDigits {
      * Simple test harness: runs each case and prints PASS/FAIL
      */
     public static void main(String[] args) {
-        class Test {
-            final List<Integer> input;
-            final String expected;
-
-            Test(List<Integer> i, String e) {
-                input = i;
-                expected = e;
-            }
+        record Test(List<Integer> input, String expected) {
         }
 
         List<Test> tests = Arrays.asList(

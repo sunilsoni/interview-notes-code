@@ -155,27 +155,27 @@ class Solutions3 {
 
         System.out.println("\nSolution 1 Test:");
         answerSolution1();
-        System.out.println(sol.solution1(8, 9));
+        System.out.println(solution1(8, 9));
 
         System.out.println("\nSolution 2 Test:");
         answerSolution2();
-        System.out.println(sol.solution2(8, 9));
+        System.out.println(solution2(8, 9));
 
         System.out.println("\nSolution 3 Test:");
         answerSolution3();
-        System.out.println(sol.solution3(1, 5));
+        System.out.println(solution3(1, 5));
 
         System.out.println("\nSolution 4 Test:");
         answerSolution4();
-        System.out.println(sol.solution4(8, 9));
+        System.out.println(solution4(8, 9));
 
         System.out.println("\nSolution 5 Test:");
         answerSolution5();
-        System.out.println(sol.solution5(1, 5));
+        System.out.println(solution5(1, 5));
 
         System.out.println("\nSolution 6 Test:");
         answerSolution6();
-        System.out.println(sol.solution6(1, 5));
+        System.out.println(solution6(1, 5));
     }
 
     // Solution 0

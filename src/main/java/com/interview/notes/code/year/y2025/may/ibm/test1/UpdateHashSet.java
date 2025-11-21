@@ -19,8 +19,7 @@ class Student {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Student) {
-            Student s = (Student) o;
+        if (o instanceof Student s) {
             return s.id == this.id;
         }
         return false;

@@ -42,8 +42,8 @@ public class LastTwoDigitsSolution {
         // Minimal reproducible examples and edge cases
         testCases.add(new TestCase("Example #1: [25, 10]", Arrays.asList(25, 10), "50")); // 25*10=250 last two digits=50
         testCases.add(new TestCase("Example #2: [2, 4, 5]", Arrays.asList(2, 4, 5), "40")); // 2*4*5=40 last two=40
-        testCases.add(new TestCase("Single digit product: [1]", Arrays.asList(1), "01")); // product=1 last two=01
-        testCases.add(new TestCase("[100]", Arrays.asList(100), "00")); // product=100 last two=00
+        testCases.add(new TestCase("Single digit product: [1]", List.of(1), "01")); // product=1 last two=01
+        testCases.add(new TestCase("[100]", List.of(100), "00")); // product=100 last two=00
         testCases.add(new TestCase("[0, 10, 50]", Arrays.asList(0, 10, 50), "00")); // product=0 last two=00
         testCases.add(new TestCase("[99, 99, 99, 99, 99]", Arrays.asList(99, 99, 99, 99, 99), null));
         // We'll compute the expected for the large product test below:

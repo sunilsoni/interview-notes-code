@@ -6,7 +6,7 @@ import java.util.TreeMap;
 
 public class BankAccountAPI {
     // Store cumulative balances instead of individual transactions
-    private Map<Long, TreeMap<Long, Double>> accounts = new HashMap<>();
+    private final Map<Long, TreeMap<Long, Double>> accounts = new HashMap<>();
 
     public static void main(String[] args) {
         BankAccountAPI bank = new BankAccountAPI();

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class JobMarketplace {
 
-    private List<Job> jobs;
+    private final List<Job> jobs;
 
     public JobMarketplace() {
         this.jobs = new ArrayList<>();

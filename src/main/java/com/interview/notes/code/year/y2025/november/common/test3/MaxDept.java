@@ -22,17 +22,17 @@ class Employee {
 public class MaxDept {
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
-            new Employee("Alice", "IT"),
-            new Employee("Alice", "Fin"),
-            new Employee("Bob", "IT")
+                new Employee("Alice", "IT"),
+                new Employee("Alice", "Fin"),
+                new Employee("Bob", "IT")
         );
 
         String maxDept = employees.stream()
-            .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()))
-            .entrySet().stream()
-            .max(Map.Entry.comparingByValue())
-            .map(Map.Entry::getKey)
-            .orElse("No department");
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse("No department");
 
         System.out.println("Department with max employees: " + maxDept);
     }

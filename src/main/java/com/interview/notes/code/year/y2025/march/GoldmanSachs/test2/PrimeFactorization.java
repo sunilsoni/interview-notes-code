@@ -29,7 +29,7 @@ public class PrimeFactorization {
     public static void runTests() {
         Map<Integer, List<Integer>> tests = new HashMap<>() {{
             put(6, Arrays.asList(2, 3));
-            put(5, Arrays.asList(5));
+            put(5, List.of(5));
             put(12, Arrays.asList(2, 2, 3));
             put(1_000_000, Arrays.asList(2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5));
             put(1, Collections.emptyList());

@@ -25,9 +25,9 @@ public class Solution2 {
     public static void main(String[] args) {
         Solution2 solution = new Solution2();
         // Example test cases
-        System.out.println("Example test: (10, 21) | Expected output: 7 | Actual output: " + solution.solution(10, 21));
-        System.out.println("Example test: (13, 11) | Expected output: 5 | Actual output: " + solution.solution(13, 11));
-        System.out.println("Example test: (2, 1) | Expected output: 0 | Actual output: " + solution.solution(2, 1));
-        System.out.println("Example test: (1, 8) | Expected output: 2 | Actual output: " + solution.solution(1, 8));
+        System.out.println("Example test: (10, 21) | Expected output: 7 | Actual output: " + solution(10, 21));
+        System.out.println("Example test: (13, 11) | Expected output: 5 | Actual output: " + solution(13, 11));
+        System.out.println("Example test: (2, 1) | Expected output: 0 | Actual output: " + solution(2, 1));
+        System.out.println("Example test: (1, 8) | Expected output: 2 | Actual output: " + solution(1, 8));
     }
 }

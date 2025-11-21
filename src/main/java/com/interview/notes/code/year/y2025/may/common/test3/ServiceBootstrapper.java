@@ -53,24 +53,24 @@ public class ServiceBootstrapper {
     public static void main(String[] args) {
         // Test Case 1: Simple linear dependency
         Map<String, Service> test1 = new HashMap<>();
-        test1.put("A", new Service("A", 1, Arrays.asList()));
-        test1.put("B", new Service("B", 2, Arrays.asList("A")));
-        test1.put("C", new Service("C", 3, Arrays.asList("B")));
+        test1.put("A", new Service("A", 1, List.of()));
+        test1.put("B", new Service("B", 2, List.of("A")));
+        test1.put("C", new Service("C", 3, List.of("B")));
 
         // Test Case 2: Multiple dependencies
         Map<String, Service> test2 = new HashMap<>();
-        test2.put("A", new Service("A", 1, Arrays.asList()));
-        test2.put("B", new Service("B", 2, Arrays.asList("A")));
-        test2.put("C", new Service("C", 3, Arrays.asList("A")));
+        test2.put("A", new Service("A", 1, List.of()));
+        test2.put("B", new Service("B", 2, List.of("A")));
+        test2.put("C", new Service("C", 3, List.of("A")));
         test2.put("D", new Service("D", 1, Arrays.asList("B", "C")));
 
         // Additional Test Case 3: Complex dependencies
         Map<String, Service> test3 = new HashMap<>();
-        test3.put("A", new Service("A", 2, Arrays.asList()));
-        test3.put("B", new Service("B", 3, Arrays.asList("A")));
-        test3.put("C", new Service("C", 1, Arrays.asList("A")));
+        test3.put("A", new Service("A", 2, List.of()));
+        test3.put("B", new Service("B", 3, List.of("A")));
+        test3.put("C", new Service("C", 1, List.of("A")));
         test3.put("D", new Service("D", 4, Arrays.asList("B", "C")));
-        test3.put("E", new Service("E", 2, Arrays.asList("D")));
+        test3.put("E", new Service("E", 2, List.of("D")));
 
         // Run tests
         runTest("Test 1 - Linear Dependency", test1, 6);

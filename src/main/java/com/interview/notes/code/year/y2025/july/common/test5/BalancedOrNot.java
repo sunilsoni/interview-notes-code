@@ -45,17 +45,17 @@ public class BalancedOrNot {
         List<List<String>> inputs = Arrays.asList(
                 Arrays.asList("<>>", "<>>>>"),
                 Arrays.asList("<>", "<>><"),
-                Arrays.asList("<<<><>>")
+                List.of("<<<><>>")
         );
         List<List<Integer>> maxRs = Arrays.asList(
                 Arrays.asList(2, 2),
                 Arrays.asList(1, 0),
-                Arrays.asList(2)
+                List.of(2)
         );
         List<List<Integer>> expect = Arrays.asList(
                 Arrays.asList(1, 0),
                 Arrays.asList(1, 0),
-                Arrays.asList(0)
+                List.of(0)
         );
 
         for (int i = 0; i < inputs.size(); i++) {

@@ -80,9 +80,10 @@ So, the final array will be [75, 50].
 
  */
 class LRUCache {
-    private int capacity;
-    private HashMap<Integer, Node> cache;
-    private Node head, tail;
+    private final int capacity;
+    private final HashMap<Integer, Node> cache;
+    private final Node head;
+    private final Node tail;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;

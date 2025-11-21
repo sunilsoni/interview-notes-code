@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Inventory {
-    private Map<String, Product> inventory;
+    private final Map<String, Product> inventory;
 
     public Inventory() {
         inventory = new ConcurrentHashMap<>();

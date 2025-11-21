@@ -46,7 +46,7 @@ public class DiscountedPriceFetcher3 {
                 int discount = extractValue(data, "discount");
 
                 int discountedPrice = price - (discount * price / 100);
-                return (int) Math.round(discountedPrice);
+                return Math.round(discountedPrice);
             } else {
                 return -1;
             }

@@ -22,8 +22,8 @@ a. The first hour is free
 b. Ever hour after that is $1.50
  */
 class ParkingLot {
-    private List<ParkingLevel> levels;
-    private Map<String, Ticket> occupiedSpots;
+    private final List<ParkingLevel> levels;
+    private final Map<String, Ticket> occupiedSpots;
 
     public ParkingLot(int numLevels, int spotsPerLevel) {
         levels = new ArrayList<>();
@@ -56,8 +56,8 @@ class ParkingLot {
 }
 
 class ParkingLevel {
-    private int levelNumber;
-    private List<ParkingSpot> spots;
+    private final int levelNumber;
+    private final List<ParkingSpot> spots;
 
     public ParkingLevel(int levelNumber, int numSpots) {
         this.levelNumber = levelNumber;
@@ -79,7 +79,7 @@ class ParkingLevel {
 }
 
 class ParkingSpot {
-    private String id;
+    private final String id;
     private boolean available;
 
     public ParkingSpot(String id) {
@@ -101,8 +101,8 @@ class ParkingSpot {
 }
 
 class Ticket {
-    private ParkingSpot spot;
-    private LocalDateTime entryTime;
+    private final ParkingSpot spot;
+    private final LocalDateTime entryTime;
 
     public Ticket(ParkingSpot spot) {
         this.spot = spot;

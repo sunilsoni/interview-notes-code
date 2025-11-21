@@ -15,9 +15,9 @@ package com.interview.notes.code.year.y2023.Oct23.test11;
  * reaches the ‘End’. The first player to reach the ‘End’ square wins!
  */
 class Game {
-    private Player[] players = new Player[2];
-    private Dice dice = new Dice();
-    private Board board = new Board();
+    private final Player[] players = new Player[2];
+    private final Dice dice = new Dice();
+    private final Board board = new Board();
     private int currentPlayerIndex = 0;
 
     public Game() {

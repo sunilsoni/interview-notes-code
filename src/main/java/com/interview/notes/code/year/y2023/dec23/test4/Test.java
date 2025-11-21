@@ -18,7 +18,7 @@ public class Test {
 
     public static void main(String[] args) {
         Derived e = new Derived();
-        e.display();//Static or class method from Base
+        Derived.display();//Static or class method from Base
         e.print();//Non-static or Instance method from Derived
 
         // e.print();

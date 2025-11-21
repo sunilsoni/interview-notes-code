@@ -22,7 +22,7 @@ class Solution {
 
             while (!minHeap.isEmpty() && currentSum > totalSum / 2) {
                 int smallest = minHeap.poll();
-                currentSum -= 2 * smallest;
+                currentSum -= 2L * smallest;
                 negativeCount++;
             }
 

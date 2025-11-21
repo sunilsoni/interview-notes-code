@@ -88,10 +88,10 @@ public class BusinessObjectDuplicateRemover {
     }
 
     static class Person {
-        private String firstName;
-        private String lastName;
-        private int age;
-        private String email;
+        private final String firstName;
+        private final String lastName;
+        private final int age;
+        private final String email;
 
         public Person(String firstName, String lastName, int age, String email) {
             this.firstName = firstName;
@@ -122,10 +122,10 @@ public class BusinessObjectDuplicateRemover {
     }
 
     static class Product {
-        private String model;
-        private String version;
-        private double price;
-        private String description;
+        private final String model;
+        private final String version;
+        private final double price;
+        private final String description;
 
         public Product(String model, String version, double price, String description) {
             this.model = model;

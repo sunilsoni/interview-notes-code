@@ -102,13 +102,13 @@ public class PasswordSimilarityChecker {
 
     private static void testEdgeCases() {
         // Test empty strings
-        List<String> newPasswords = Arrays.asList("");
-        List<String> oldPasswords = Arrays.asList("");
-        testCase(3, newPasswords, oldPasswords, Arrays.asList("YES"));
+        List<String> newPasswords = List.of("");
+        List<String> oldPasswords = List.of("");
+        testCase(3, newPasswords, oldPasswords, List.of("YES"));
 
         // Test single character
-        newPasswords = Arrays.asList("a");
-        oldPasswords = Arrays.asList("b");
-        testCase(4, newPasswords, oldPasswords, Arrays.asList("YES"));
+        newPasswords = List.of("a");
+        oldPasswords = List.of("b");
+        testCase(4, newPasswords, oldPasswords, List.of("YES"));
     }
 }

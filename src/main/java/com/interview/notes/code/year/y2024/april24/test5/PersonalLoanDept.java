@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2024.april24.test5;
 
 public class PersonalLoanDept implements Bank {
-    private int[] loanAmounts;
+    private final int[] loanAmounts;
     private double averageLoan = 0;
     private int maxLoan = Integer.MIN_VALUE;
     private int minLoan = Integer.MAX_VALUE;

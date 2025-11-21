@@ -170,24 +170,24 @@ public class FootballScores {
         // Test case 2: Edge case - Empty teams
         runTest(
                 new ArrayList<>(),
-                Arrays.asList(1),
-                Arrays.asList(0),
+                List.of(1),
+                List.of(0),
                 "Empty Team A Test"
         );
 
         // Test case 3: Large numbers
         runTest(
                 Arrays.asList(1000000000, 999999999),
-                Arrays.asList(1000000000),
-                Arrays.asList(2),
+                List.of(1000000000),
+                List.of(2),
                 "Large Numbers Test"
         );
 
         // Test case 4: Equal numbers
         runTest(
                 Arrays.asList(2, 2, 2, 2),
-                Arrays.asList(2),
-                Arrays.asList(4),
+                List.of(2),
+                List.of(4),
                 "Equal Numbers Test"
         );
 

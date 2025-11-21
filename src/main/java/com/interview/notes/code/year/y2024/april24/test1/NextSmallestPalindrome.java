@@ -23,7 +23,7 @@ class NextSmallestPalindrome {
         String middle = len % 2 == 1 ? numStr.substring(len / 2, len / 2 + 1) : "";
 
         // Create a palindrome by mirroring the left half and middle (if exists)
-        String palindrome = leftHalf + middle + new StringBuilder(leftHalf).reverse().toString();
+        String palindrome = leftHalf + middle + new StringBuilder(leftHalf).reverse();
 
         // If the palindrome is not greater than the original number, increment and construct a new palindrome
         if (Long.parseLong(palindrome) <= n) {
@@ -32,17 +32,17 @@ class NextSmallestPalindrome {
                 int middleNum = Integer.parseInt(middle) + 1;
                 // If the middle digit is less than 10 after increment, construct the new palindrome
                 if (middleNum < 10) {
-                    palindrome = leftHalf + middleNum + new StringBuilder(leftHalf).reverse().toString();
+                    palindrome = leftHalf + middleNum + new StringBuilder(leftHalf).reverse();
                 } else {
                     // If the middle digit becomes 10 after increment, increment the left half and reset middle to 0
                     long leftNum = Long.parseLong(leftHalf) + 1;
                     leftHalf = Long.toString(leftNum);
-                    palindrome = leftHalf + "0" + new StringBuilder(leftHalf).reverse().toString();
+                    palindrome = leftHalf + "0" + new StringBuilder(leftHalf).reverse();
                 }
             } else {
                 long leftNum = Long.parseLong(leftHalf) + 1;
                 leftHalf = Long.toString(leftNum);
-                palindrome = leftHalf + new StringBuilder(leftHalf).reverse().toString();
+                palindrome = leftHalf + new StringBuilder(leftHalf).reverse();
             }
         }
 

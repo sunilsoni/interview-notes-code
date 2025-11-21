@@ -55,8 +55,7 @@ public class SortAnArray {
         int rSize = end - mid;
         int[] left = new int[lSize];
         int[] right = new int[rSize];
-        for (int i = 0; i < lSize; i++)
-            left[i] = arr[start + i];
+        System.arraycopy(arr, start + 0, left, 0, lSize);
         for (int i = 0; i < rSize; i++)
             right[i] = arr[mid + 1 + i];
         int k = start;

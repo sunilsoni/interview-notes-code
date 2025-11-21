@@ -134,7 +134,7 @@ public class FindDuplicateFiles1 {
                         new FileData("a.txt", "/path2/a.txt", 100),
                         new FileData("b.txt", "/path/b.txt", 200)
                 ),
-                Arrays.asList(
+                List.of(
                         Arrays.asList(
                                 new FileData("a.txt", "/path1/a.txt", 100),
                                 new FileData("a.txt", "/path2/a.txt", 100)
@@ -268,8 +268,7 @@ public class FindDuplicateFiles1 {
         @Override
         public boolean equals(Object obj) {
             if (this == obj) return true;
-            if (!(obj instanceof FileKey)) return false;
-            FileKey other = (FileKey) obj;
+            if (!(obj instanceof FileKey other)) return false;
             return this.size == other.size && Objects.equals(this.filename, other.filename);
         }
 

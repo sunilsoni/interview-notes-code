@@ -84,7 +84,7 @@ public class CustomStackExample {
 // --------------------------
 class CustomStack<T> {
     // Internal storage for the stack elements
-    private java.util.ArrayList<T> elements;
+    private final java.util.ArrayList<T> elements;
 
     // Constructor: Initializes the internal storage
     public CustomStack() {

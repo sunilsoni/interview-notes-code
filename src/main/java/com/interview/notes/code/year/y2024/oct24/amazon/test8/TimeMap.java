@@ -32,7 +32,7 @@ timeMap.get ("foo", 0); // returns ""
 public class TimeMap {
 
     // HashMap to store the key to TreeMap of timestamp-value mappings
-    private Map<String, TreeMap<Integer, String>> map;
+    private final Map<String, TreeMap<Integer, String>> map;
 
     /**
      * Initialize the TimeMap data structure

@@ -116,7 +116,7 @@ public class ReachTargetNumberLine {
         // Use Java 8 IntStream to iterate over indices of the test arrays.
         // This satisfies the "use Java 8 Stream API" requirement.
         IntStream.range(0, targets.length)
-                 .forEach(i -> runSingleTest(targets[i], expected[i]));
+                .forEach(i -> runSingleTest(targets[i], expected[i]));
 
         // Optional extra: a quick performance demonstration for a very large range.
         // Here we only count how many times reachTarget can be called fast.
@@ -126,8 +126,8 @@ public class ReachTargetNumberLine {
 
         // Use IntStream again to call reachTarget for many values.
         long count = IntStream.rangeClosed(1, maxSample)
-                              .map(ReachTargetNumberLine::reachTarget) // call method for each target
-                              .count();  // force the stream to execute; result itself is not important
+                .map(ReachTargetNumberLine::reachTarget) // call method for each target
+                .count();  // force the stream to execute; result itself is not important
 
         long endTime = System.currentTimeMillis();  // capture time after loop
 

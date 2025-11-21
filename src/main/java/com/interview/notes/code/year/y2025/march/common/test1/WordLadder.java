@@ -22,7 +22,7 @@ public class WordLadder {
                 " (Expected: 0, Got: " + result2 + ")");
 
         // Test case 3: one step
-        Set<String> dict3 = new HashSet<>(Arrays.asList("dog"));
+        Set<String> dict3 = new HashSet<>(List.of("dog"));
         int result3 = solution.ladderLength("dog", "dog", dict3);
         System.out.println("Test 3: " + (result3 == 0 ? "PASS" : "FAIL") +
                 " (Expected: 0, Got: " + result3 + ")");

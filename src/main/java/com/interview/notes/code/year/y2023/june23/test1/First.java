@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 class Employee {
 
-    private String name;
+    private final String name;
 
     public Employee(String name) { // constructor
         this.name = name;

@@ -192,10 +192,9 @@ class Solution1 {
 
         @Override
         public boolean equals(Object obj) {
-            if (!(obj instanceof Status)) {
+            if (!(obj instanceof Status other)) {
                 return false;
             }
-            Status other = (Status) obj;
             return this.name.equals(other.name) && this.daysOverdue.equals(other.daysOverdue);
         }
     }

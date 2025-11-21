@@ -36,26 +36,13 @@ class MapSqlParameterSource {
 /**
  * Simple DTO holding account ID and frozen status.
  */
-class FrozenAccountStatus {
-    final String accountId;
-    final boolean isFrozen;
-
-    public FrozenAccountStatus(String accountId, boolean isFrozen) {
-        this.accountId = accountId;
-        this.isFrozen = isFrozen;
-    }
+record FrozenAccountStatus(String accountId, boolean isFrozen) {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof FrozenAccountStatus)) return false;
-        FrozenAccountStatus other = (FrozenAccountStatus) o;
+        if (!(o instanceof FrozenAccountStatus other)) return false;
         return this.accountId.equals(other.accountId)
                 && this.isFrozen == other.isFrozen;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(accountId, isFrozen);
     }
 
     @Override
@@ -161,7 +148,7 @@ public class FrozenAccountsTest {
         List<FrozenAccountStatus> actual2 = svc2.checkFrozenAccounts(testIds2);
 
         // Validate count of frozen statuses
-        long countFrozen = actual2.stream().filter(s -> s.isFrozen).count();
+        long countFrozen = actual2.stream().filter(s -> s.isFrozen()).count();
         System.out.println("Test 2: " + (countFrozen == frozenInDb2.size() ? "PASS" : "FAIL"));
     }
 }

@@ -137,8 +137,8 @@ public class Solution {
         testCases.add(new TestCase(
                 "All Items Picked Once",
                 Arrays.asList(5, 1, 3, 2, 4),
-                Arrays.asList(0),
-                Arrays.asList(4),
+                List.of(0),
+                List.of(4),
                 Arrays.asList(3, 5),
                 Arrays.asList(2L, 4L)
         ));

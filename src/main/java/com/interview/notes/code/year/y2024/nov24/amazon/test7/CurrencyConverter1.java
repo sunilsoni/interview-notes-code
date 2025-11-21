@@ -8,7 +8,7 @@ import java.util.*;
 public class CurrencyConverter1 {
 
     // Graph representation: currency -> (adjacent currency -> rate)
-    private Map<String, Map<String, Double>> conversionGraph;
+    private final Map<String, Map<String, Double>> conversionGraph;
 
     public CurrencyConverter1() {
         this.conversionGraph = new HashMap<>();
@@ -208,8 +208,8 @@ public class CurrencyConverter1 {
      * @param <V> Type of the second element.
      */
     private class Pair<K, V> {
-        private K key;
-        private V value;
+        private final K key;
+        private final V value;
 
         public Pair(K key, V value) {
             this.key = key;

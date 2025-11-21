@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class HackerEarth {
-    public static void main(String a[]) {
+    public static void main(String[] a) {
         Map<String, String> hacker = new HashMap<>();
 
         hacker.put("Key 1", "Value 1");

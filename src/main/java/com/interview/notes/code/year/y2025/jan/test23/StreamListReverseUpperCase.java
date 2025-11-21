@@ -55,8 +55,8 @@ public class StreamListReverseUpperCase {
 
         // Test Case 4: Single item
         testCase("Single Item",
-                Arrays.asList("test"),
-                Arrays.asList("Test"));
+                List.of("test"),
+                List.of("Test"));
 
         // Test Case 5: Large data
         List<String> largeList = IntStream.range(0, 10000)

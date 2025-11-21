@@ -19,7 +19,7 @@ class Record1 {
 // The Table class manages the records.
 public class Table1 {
     // Maps an ID to a list of records associated with that ID.
-    private Map<Integer, List<Record1>> records;
+    private final Map<Integer, List<Record1>> records;
 
     public Table1() {
         this.records = new HashMap<>();

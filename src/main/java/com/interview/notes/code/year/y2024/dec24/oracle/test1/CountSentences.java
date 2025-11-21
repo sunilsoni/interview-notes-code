@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class CountSentences {
     public static void main(String[] args) {
         List<String> wordSet = Arrays.asList("listen", "silent", "it", "is");
-        List<String> sentences = Arrays.asList("listen it is silent");
+        List<String> sentences = List.of("listen it is silent");
 
         System.out.println(countSentences(wordSet, sentences));
     }

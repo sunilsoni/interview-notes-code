@@ -63,22 +63,19 @@ public class FactorialStartsWithEven {
     }
 
     /* ---------- Simple test-driver (no JUnit) ---------- */
-    private static class TestCase {
-        final int m, n;
-        final String expected;
+        private record TestCase(int m, int n, String expected) {
+            private TestCase(int m, int n, String expected) {
+                this.m = m;
+                this.n = n;
+                this.expected = expected.trim();
+            }
 
-        TestCase(int m, int n, String expected) {
-            this.m = m;
-            this.n = n;
-            this.expected = expected.trim();
+            boolean run() {
+                String out = formatOutput(solve(m, n));
+                boolean ok = out.equals(expected);
+                System.out.printf("Input (%d,%d) → %s | expected %s | %s%n",
+                        m, n, out, expected, ok ? "PASS" : "FAIL");
+                return ok;
+            }
         }
-
-        boolean run() {
-            String out = formatOutput(solve(m, n));
-            boolean ok = out.equals(expected);
-            System.out.printf("Input (%d,%d) → %s | expected %s | %s%n",
-                    m, n, out, expected, ok ? "PASS" : "FAIL");
-            return ok;
-        }
-    }
 }

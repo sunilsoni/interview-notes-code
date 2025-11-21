@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class QuoteSvc {
-    private List<Quote> previousCloseQuotes;
+    private final List<Quote> previousCloseQuotes;
 
     public QuoteSvc() {
         this.previousCloseQuotes = new ArrayList<>();

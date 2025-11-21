@@ -34,11 +34,11 @@ public class TravelPhotosReconstructor {
         for (int[] p : travelPhotos) {
             if (endpoints.contains(p[0])) {
                 start = p[0];
-                break outer;
+                break;
             }
             if (endpoints.contains(p[1])) {
                 start = p[1];
-                break outer;
+                break;
             }
         }
 

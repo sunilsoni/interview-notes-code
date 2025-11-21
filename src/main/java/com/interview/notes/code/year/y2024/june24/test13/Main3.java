@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main3 {
-    private List<Integer> nums;
+    private final List<Integer> nums;
 
     public Main3() {
         nums = new ArrayList<>();
@@ -26,7 +26,7 @@ public class Main3 {
 
     public void numQuest() {
         int k = 0;
-        Integer zero = new Integer(0);
+        Integer zero = Integer.valueOf(0);
         while (k < nums.size()) {
             if (nums.get(k).equals(zero)) {
                 nums.remove(k);

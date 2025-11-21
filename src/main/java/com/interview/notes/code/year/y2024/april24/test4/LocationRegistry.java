@@ -5,8 +5,8 @@ import java.util.Map;
 
 // Manages location strings and their corresponding unique integer IDs.
 class LocationRegistry {
-    private Map<String, Integer> locationToId = new HashMap<>();
-    private Map<Integer, String> idToLocation = new HashMap<>();
+    private final Map<String, Integer> locationToId = new HashMap<>();
+    private final Map<Integer, String> idToLocation = new HashMap<>();
     private int nextId = 1; // Starting IDs from 1 for clarity
 
     // Assigns a unique integer ID to a location string.

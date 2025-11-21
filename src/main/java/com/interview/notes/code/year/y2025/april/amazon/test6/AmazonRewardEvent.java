@@ -25,7 +25,7 @@ public class AmazonRewardEvent {
                 Arrays.asList(8, 10, 9), // Expected: 2
                 Arrays.asList(5, 7, 9, 11), // Expected: 1
                 // Edge cases:
-                Arrays.asList(1), // Single customer (Expected: 1)
+                List.of(1), // Single customer (Expected: 1)
                 Arrays.asList(10, 10, 10), // All equal (Expected: 3)
                 Arrays.asList(1, 100000, 99999), // Large values (Expected: 2)
                 // Large input test case:

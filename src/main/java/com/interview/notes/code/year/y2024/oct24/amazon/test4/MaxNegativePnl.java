@@ -154,7 +154,7 @@ public class MaxNegativePnl {
 
         // Additional Test Cases
         testCases.add(new TestCase(Arrays.asList(5, 3, 1, 2), 2));
-        testCases.add(new TestCase(Arrays.asList(1), 0));
+        testCases.add(new TestCase(List.of(1), 0));
         testCases.add(new TestCase(Arrays.asList(10, 1, 1, 1, 1), 4)); // Updated Expected Output
         testCases.add(new TestCase(Arrays.asList(2, 2, 2, 2, 2), 2));
         testCases.add(new TestCase(Arrays.asList(1000000000, 1000000000, 1000000000), 1));

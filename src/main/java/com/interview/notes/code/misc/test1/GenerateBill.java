@@ -2,7 +2,7 @@ package com.interview.notes.code.misc.test1;
 
 public class GenerateBill {
 
-    public static void main(String agrs[]) {
+    public static void main(String[] agrs) {
 
         //1
         // static float x=0.0;

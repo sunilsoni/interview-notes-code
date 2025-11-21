@@ -35,9 +35,7 @@ public class Solution {
 
     public boolean canExecuteWithHeap(int[][] jobs, int maxCpus) {
         List<int[]> jobList = new ArrayList<>();
-        for (int[] job : jobs) {
-            jobList.add(job);
-        }
+        Collections.addAll(jobList, jobs);
         Collections.sort(jobList, (a, b) -> a[0] - b[0]);
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);
         int availableCpus = maxCpus;

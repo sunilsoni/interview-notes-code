@@ -49,9 +49,7 @@ public class CustomBinarySearchTreeValidator {
 
         // Recursively validate left and right subtrees
         if (!validate(node.left, val, upper)) return false;
-        if (!validate(node.right, lower, val)) return false;
-
-        return true;
+        return validate(node.right, lower, val);
     }
 
     // Method to process and validate multiple test cases
@@ -74,7 +72,7 @@ public class CustomBinarySearchTreeValidator {
                 Arrays.asList(5, 7, 2, 8, 6, 4, 4),
                 Arrays.asList(5, 7, 2, 8, 6, 4, 2),
                 Arrays.asList(10, 14, 3),
-                Arrays.asList(10),
+                List.of(10),
                 Arrays.asList(5, 2, 7, 2, 4, 6, 8)
         );
 

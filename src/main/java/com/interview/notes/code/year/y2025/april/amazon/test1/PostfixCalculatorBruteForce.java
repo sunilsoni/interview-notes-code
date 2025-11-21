@@ -69,17 +69,14 @@ public class PostfixCalculatorBruteForce {
         String[] newArray = new String[original.length - 2];
 
         // Copy elements before the operation
-        for (int i = 0; i < operatorIndex - 2; i++) {
-            newArray[i] = original[i];
-        }
+        if (operatorIndex - 2 >= 0) System.arraycopy(original, 0, newArray, 0, operatorIndex - 2);
 
         // Add the result
         newArray[operatorIndex - 2] = String.valueOf(result);
 
         // Copy remaining elements
-        for (int i = operatorIndex + 1; i < original.length; i++) {
-            newArray[i - 2] = original[i];
-        }
+        if (original.length - (operatorIndex + 1) >= 0)
+            System.arraycopy(original, operatorIndex + 1, newArray, operatorIndex + 1 - 2, original.length - (operatorIndex + 1));
 
         return newArray;
     }

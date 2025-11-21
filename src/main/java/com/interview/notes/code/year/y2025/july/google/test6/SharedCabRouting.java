@@ -108,7 +108,7 @@ public class SharedCabRouting {
 
         // Print detailed path explanation
         System.out.printf("Best meeting point: %c\n", bestMeetingPoint);
-        System.out.printf("Distance breakdown:\n");
+        System.out.print("Distance breakdown:\n");
         System.out.printf("- %c to meeting point %c: %d\n",
                 sourceA, bestMeetingPoint, dist(sourceA, bestMeetingPoint));
         System.out.printf("- %c to meeting point %c: %d\n",
@@ -120,7 +120,7 @@ public class SharedCabRouting {
     /**
      * Main method to run test cases
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         // Initialize the graph
         buildGraph();
 

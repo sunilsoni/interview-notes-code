@@ -134,7 +134,7 @@ public class StringSegmentation {
         // Test case 4: Empty string
         testCases.add(new TestCase(
                 "",
-                Arrays.asList("test"),
+                List.of("test"),
                 "false"
         ));
 

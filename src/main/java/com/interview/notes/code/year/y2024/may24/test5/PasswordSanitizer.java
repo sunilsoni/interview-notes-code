@@ -36,10 +36,8 @@ class PasswordSanitizer {
         if (password.matches("^[0-9]+$")) {
             return false; // Check if the password contains only numbers
         }
-        if (password.matches("^[a-zA-Z]+$")) {
-            return false; // Check if the password contains only letters
-        }
-        return true; // If none of the above, it's valid
+        return !password.matches("^[a-zA-Z]+$"); // Check if the password contains only letters
+// If none of the above, it's valid
     }
 
     // Helper method to join strings with a delimiter

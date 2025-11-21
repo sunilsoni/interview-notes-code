@@ -23,11 +23,11 @@ public class DuplicateFinderStream {
         // 5) toList(): collect results into an immutable List (Java 16+)
         List<String> duplicates =
                 strs.stream()
-                    .filter(Objects::nonNull) // avoid null pointer in frequency()
-                    .filter(s -> Collections.frequency(strs, s) > 1)
-                    .distinct()
-                    .sorted(Comparator.reverseOrder()) // descending alphabetical
-                    .toList();
+                        .filter(Objects::nonNull) // avoid null pointer in frequency()
+                        .filter(s -> Collections.frequency(strs, s) > 1)
+                        .distinct()
+                        .sorted(Comparator.reverseOrder()) // descending alphabetical
+                        .toList();
 
         System.out.println("Duplicates: " + duplicates);
     }

@@ -55,29 +55,12 @@ class PaymentProcessor {
     }
 }
 
-// Simple data holder for a payment request
-class PaymentRequest {
-    private final PaymentMethod method;   // which strategy to use
-    private final double amount;          // how much to pay
-    private final String description;     // details for logging
-
-    public PaymentRequest(PaymentMethod method, double amount, String description) {
-        this.method = method;
-        this.amount = amount;
-        this.description = description;
-    }
-
-    public PaymentMethod getMethod() {
-        return method;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public String getDescription() {
-        return description;
-    }
+/**
+ * @param method      which strategy to use
+ * @param amount      how much to pay
+ * @param description details for logging
+ */ // Simple data holder for a payment request
+record PaymentRequest(PaymentMethod method, double amount, String description) {
 }
 
 // Harness to run test cases and large-data throughput test
@@ -87,9 +70,10 @@ public class StrategyPatternDemo {
 
         // --- Fixed test cases for correctness ---
         class TestCase {
-            PaymentMethod method;
-            double amt;
-            String desc, expected;
+            final PaymentMethod method;
+            final double amt;
+            final String desc;
+            final String expected;
 
             TestCase(PaymentMethod m, double a, String d, String e) {
                 method = m;
@@ -134,7 +118,7 @@ public class StrategyPatternDemo {
         // Process each via stream.peek and then count to force evaluation
         long count = bulk.stream()
                 .peek(req ->
-                        processor.processPayment(req.getMethod(), req.getAmount(), req.getDescription())
+                        processor.processPayment(req.method(), req.amount(), req.description())
                 )
                 .count();
         long elapsed = System.currentTimeMillis() - start;

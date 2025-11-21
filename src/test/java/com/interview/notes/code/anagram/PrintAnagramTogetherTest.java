@@ -14,7 +14,7 @@ class PrintAnagramTogetherTest {
 
     @Test
     void print() {
-        String str[] = {"cat", "dog", "tac", "god", "act"};
+        String[] str = {"cat", "dog", "tac", "god", "act"};
         printAnagramTogether.print(str);
     }
 }

@@ -18,7 +18,7 @@ class AdditionMagic {
 
     // double + String => String ("1.0" -> "1", "10.50" -> "10.5")
     public String add(double a, String b) {
-        return trimDouble(a) + String.valueOf(b);
+        return trimDouble(a) + b;
     }
 
     // double + double => String
@@ -33,7 +33,7 @@ class AdditionMagic {
 
     // String + String => String
     public String add(String a, String b) {
-        return String.valueOf(a) + String.valueOf(b);
+        return a + b;
     }
 }
 
@@ -80,7 +80,7 @@ public class Main {
 
         // ---- String + String ----
         tests.add(() -> assertEq("Concat: hello + hello", "hellohello", () -> am.add("hello", "hello")));
-        tests.add(() -> assertEq("Concat: null + a", "nulla", () -> am.add((String) null, "a")));
+        tests.add(() -> assertEq("Concat: null + a", "nulla", () -> am.add(null, "a")));
 
         // ---- Edge numbers ----
         tests.add(() -> assertEq("Edge: big sum", "20000000000.0", () -> am.add(1e10, 1e10)));

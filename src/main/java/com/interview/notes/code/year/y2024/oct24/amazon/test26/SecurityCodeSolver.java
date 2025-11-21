@@ -148,7 +148,7 @@ public class SecurityCodeSolver {
 
         for (int i = 0; i < n; i++) {
             if (chars[i] == '1') {
-                long moves = Math.min(k, (long) (i - pos));
+                long moves = Math.min(k, i - pos);
                 int newPos = (int) (i - moves);
                 result[newPos] = '1';
                 k -= moves;
@@ -281,7 +281,7 @@ public class SecurityCodeSolver {
         System.out.println("   Number of '1's moved to front: " + movedOnes);
         System.out.println("   Total '1's in string: " + (test12Code.length() / 2));
         System.out.println("   Remaining '1's: " + (test12Code.length() / 2 - movedOnes));
-        System.out.println("   Remaining k: " + (test12K - movedOnes * (500000 - movedOnes)));
+        System.out.println("   Remaining k: " + (test12K - (long) movedOnes * (500000 - movedOnes)));
         System.out.println("   (Exact positions require manual verification)");
 
         System.out.println("\nPassed " + passed + " out of " + testCases.size() + " test cases.");

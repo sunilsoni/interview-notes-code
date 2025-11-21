@@ -48,7 +48,7 @@ import java.util.List;
  * Now, the information of all the students is printed in the order in which they are registered.
  */
 public class School {
-    private List<Student> students;
+    private final List<Student> students;
 
     public School() {
         students = new ArrayList<>();

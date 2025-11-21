@@ -38,7 +38,7 @@ public class PasswordSimilarityChecker {
 
         // Edge cases
         runTestCase(Arrays.asList("a", "z"), Arrays.asList("a", "a"), Arrays.asList("YES", "YES"), "Edge Case: Single Character");
-        runTestCase(Arrays.asList("abcdefghijklmnopqrstuvwxyz"), Arrays.asList("zyxwvutsrqponmlkjihgfedcba"), Arrays.asList("YES"), "Edge Case: Full Alphabet");
+        runTestCase(List.of("abcdefghijklmnopqrstuvwxyz"), List.of("zyxwvutsrqponmlkjihgfedcba"), List.of("YES"), "Edge Case: Full Alphabet");
 
         // Large data case
         List<String> largeNewPasswords = new ArrayList<>();

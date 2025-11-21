@@ -6,12 +6,12 @@ import java.util.List;
 
 //employee class id name salary increase all salary in IT department by 20% using java 8
 class Employee {
-    private int id;
+    private final int id;
+    private final String name;
+    private final String department;
     private int age;
-    private String name;
     private String city;
     private double salary;
-    private String department;
 
     public Employee(int id, String name, double salary, String department) {
         this.id = id;

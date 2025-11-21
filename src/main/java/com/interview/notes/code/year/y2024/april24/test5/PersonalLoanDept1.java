@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2024.april24.test5;
 
 public class PersonalLoanDept1 implements Bank1 {
-    private int[] loanAmounts;
+    private final int[] loanAmounts;
 
     public PersonalLoanDept1(int clients) {
         loanAmounts = new int[clients];

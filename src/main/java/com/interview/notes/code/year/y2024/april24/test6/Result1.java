@@ -9,7 +9,7 @@ class Result1 {
         long sum = 0;
         for (int i = 1; i < power.size(); i++) {
             if (power.get(i) < power.get(i - 1)) {
-                sum += (long) (power.get(i - 1) - power.get(i));
+                sum += power.get(i - 1) - power.get(i);
                 power.set(i, power.get(i - 1));
             }
         }

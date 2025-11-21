@@ -58,7 +58,7 @@ public class BeautifulString {
         long start = System.nanoTime();
         boolean largeResult = solution(largeInput);
         long durationMs = (System.nanoTime() - start) / 1_000_000;
-        String largeStatus = largeResult == true ? "PASS" : "FAIL";
+        String largeStatus = largeResult ? "PASS" : "FAIL";
         System.out.printf("Large input (100k chars of 'a'): result=%-5s time=%dms%n",
                 largeStatus, durationMs);
     }

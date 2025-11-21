@@ -8,7 +8,7 @@ public class IkmTest {
 
     public static void main(String[] args) {
         List<MathOperation> myList = Arrays.asList(null, null);
-        myList.forEach(m -> System.out.print(m.calculate(args[index++], 1, 2) + " "));
+        myList.forEach(m -> System.out.print(MathOperation.calculate(args[index++], 1, 2) + " "));
     }
 }
 

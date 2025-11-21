@@ -29,8 +29,8 @@ public class Main {
     //----------------------------------------------------------------
     public static void main(String[] args) {
         class Test {
-            int[] in;
-            int want;
+            final int[] in;
+            final int want;
 
             Test(int[] i, int w) {
                 in = i;

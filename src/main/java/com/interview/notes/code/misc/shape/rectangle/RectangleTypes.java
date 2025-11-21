@@ -14,5 +14,5 @@ public enum RectangleTypes {
     RHOMBUS,
 
     //A quadrilateral is called trapezium if a pair of its opposite sides are parallel.
-    TRAPEZIUM;
+    TRAPEZIUM
 }

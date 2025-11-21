@@ -93,14 +93,14 @@ public class FriendPathFinder {
 
         // --- Test 2: No path exists ---
         Map<String, List<String>> graph2 = new HashMap<>();
-        graph2.put("A", Arrays.asList("B")); // A–B
-        graph2.put("C", Arrays.asList("D")); // C–D
+        graph2.put("A", List.of("B")); // A–B
+        graph2.put("C", List.of("D")); // C–D
         List<String> result2 = findFriendPath(graph2, "A", "D");
         System.out.println("Test 2 (no path): " + (result2.isEmpty() ? "PASS" : "FAIL"));
 
         // --- Test 3: Start equals end ---
         Map<String, List<String>> graph3 = new HashMap<>();
-        graph3.put("X", Arrays.asList("Y"));
+        graph3.put("X", List.of("Y"));
         List<String> result3 = findFriendPath(graph3, "X", "X");
         System.out.println("Test 3 (same node): " + (result3.equals(Collections.singletonList("X")) ? "PASS" : "FAIL"));
 

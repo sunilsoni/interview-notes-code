@@ -24,8 +24,8 @@ public class AgeCalculator {
 }
 
 class Person {
-    private String name;
-    private LocalDate dob;
+    private final String name;
+    private final LocalDate dob;
 
     public Person(String name, LocalDate dob) {
         this.name = name;

@@ -9,8 +9,8 @@ public class DistinctWords {
         String[] cities = {"Hotel", "Houston", "Texas", "Chicago", "Episodes", "New York", "Texas"};
 
         List<String> distinctCities = Arrays.stream(cities)
-                                            .distinct()
-                                            .collect(Collectors.toList());
+                .distinct()
+                .collect(Collectors.toList());
 
         System.out.println(distinctCities);
     }

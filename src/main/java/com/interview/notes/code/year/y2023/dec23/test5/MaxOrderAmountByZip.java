@@ -53,9 +53,9 @@ public class MaxOrderAmountByZip {
 }
 
 class Order {
-    private String customerName;
-    private String zipCode;
-    private int orderAmount;
+    private final String customerName;
+    private final String zipCode;
+    private final int orderAmount;
 
     public Order(String customerName, String zipCode, int orderAmount) {
         this.customerName = customerName;

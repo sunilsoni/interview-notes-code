@@ -163,7 +163,7 @@ public class CommonElementsFinder1 {
 
         // Test Case 5: Single collection
         testCases.add(new TestCase(
-                Arrays.asList(
+                List.of(
                         Arrays.asList("single", "collection", "test")
                 ),
                 Arrays.asList("single", "collection", "test")
@@ -172,9 +172,9 @@ public class CommonElementsFinder1 {
         // Test Case 6: Empty collections
         testCases.add(new TestCase(
                 Arrays.asList(
-                        Arrays.asList(),
+                        List.of(),
                         Arrays.asList("a", "b"),
-                        Arrays.asList("a")
+                        List.of("a")
                 ),
                 Collections.emptyList()
         ));

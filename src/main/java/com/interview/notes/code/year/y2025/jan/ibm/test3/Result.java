@@ -126,14 +126,14 @@ class Result {
 
         // Additional Test Case 9: Single Element (I/O-bound)
         testCases.add(new TestCase(
-                Arrays.asList(2),
-                Arrays.asList(2)
+                List.of(2),
+                List.of(2)
         ));
 
         // Additional Test Case 10: Single Element (CPU-bound)
         testCases.add(new TestCase(
-                Arrays.asList(5),
-                Arrays.asList(5)
+                List.of(5),
+                List.of(5)
         ));
 
         // Additional Test Case 11: Large Input

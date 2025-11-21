@@ -283,7 +283,7 @@ class Product implements IProduct {
 }
 
 class Company implements ICompany {
-    private List<ICategory> categories = new ArrayList<>();
+    private final List<ICategory> categories = new ArrayList<>();
 
     public Company(int id, String name) {
         // id and name not used here

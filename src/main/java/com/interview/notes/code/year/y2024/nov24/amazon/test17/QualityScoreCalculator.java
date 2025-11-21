@@ -69,7 +69,7 @@ public class QualityScoreCalculator {
         testCases.add(new TestCase(1, Arrays.asList(-2, -3, -3, -1), 3L));
 
         // Sample Input 2
-        testCases.add(new TestCase(3, Arrays.asList(-4), -1L));
+        testCases.add(new TestCase(3, List.of(-4), -1L));
 
         // Example from problem description
         testCases.add(new TestCase(3, Arrays.asList(5, -3, -3, 2, 4), 20L));

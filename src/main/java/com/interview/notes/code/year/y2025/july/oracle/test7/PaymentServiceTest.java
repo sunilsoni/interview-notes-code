@@ -169,10 +169,10 @@ class Utils {
 
 // Credit‐card payment, with reward‐points redemption
 class CreditCardPaymentMethod implements PaymentMethod {
-    private String cardNumber;                                                   // card number (not used in logic)
-    private String cvv;                                                          // CVV code
-    private String expiryDate;                                                   // expiry date
-    private String cardHolderName;                                               // name on card
+    private final String cardNumber;                                                   // card number (not used in logic)
+    private final String cvv;                                                          // CVV code
+    private final String expiryDate;                                                   // expiry date
+    private final String cardHolderName;                                               // name on card
 
     // Constructor: store credentials
     public CreditCardPaymentMethod(String cardNumber, String cvv, String expiryDate, String cardHolderName) {
@@ -202,8 +202,8 @@ class CreditCardPaymentMethod implements PaymentMethod {
 
 // PayPal payment, with two‐installment plan and 5% interest on second
 class PayPalPaymentMethod implements PaymentMethod {
-    private String email;                                                        // PayPal email
-    private String password;                                                     // PayPal password
+    private final String email;                                                        // PayPal email
+    private final String password;                                                     // PayPal password
 
     // Constructor: store credentials
     public PayPalPaymentMethod(String email, String password) {

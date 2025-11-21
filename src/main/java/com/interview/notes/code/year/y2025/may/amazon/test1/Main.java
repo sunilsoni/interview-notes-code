@@ -20,7 +20,7 @@ class Movie {
 }
 
 class SimpleMovieFinder {
-    private List<Movie> movies;
+    private final List<Movie> movies;
 
     SimpleMovieFinder() {
         this.movies = new ArrayList<>();

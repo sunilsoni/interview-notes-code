@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 class Car {
-    private String brand;
-    private String model;
-    private int distanceDriven; // in kilometers
+    private final String brand;
+    private final String model;
+    private final int distanceDriven; // in kilometers
 
     public Car(String brand, String model, int distanceDriven) {
         this.brand = brand;

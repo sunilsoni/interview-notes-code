@@ -48,7 +48,7 @@ public class BookVolumesPurchaseTest {
             }
 
             if (todaysPurchase.isEmpty()) {
-                result.add(Arrays.asList(-1));
+                result.add(List.of(-1));
             } else {
                 Collections.sort(todaysPurchase);
                 result.add(todaysPurchase);
@@ -73,20 +73,20 @@ public class BookVolumesPurchaseTest {
         // Test Case 1 - Sample case from problem
         List<Integer> volumes1 = Arrays.asList(1, 4, 3, 2, 5);
         List<List<Integer>> expected1 = Arrays.asList(
-                Arrays.asList(1),
-                Arrays.asList(-1),
-                Arrays.asList(-1),
+                List.of(1),
+                List.of(-1),
+                List.of(-1),
                 Arrays.asList(2, 3, 4),
-                Arrays.asList(5)
+                List.of(5)
         );
         runTest(volumes1, expected1);
 
         // Test Case 2 - Sequential volumes
         List<Integer> volumes2 = Arrays.asList(1, 2, 3);
         List<List<Integer>> expected2 = Arrays.asList(
-                Arrays.asList(1),
-                Arrays.asList(2),
-                Arrays.asList(3)
+                List.of(1),
+                List.of(2),
+                List.of(3)
         );
         runTest(volumes2, expected2);
 
@@ -95,15 +95,15 @@ public class BookVolumesPurchaseTest {
         List<List<Integer>> expected3 = new ArrayList<>();
         for (int i = 1; i <= 1000; i++) {
             volumes3.add(i);
-            expected3.add(Arrays.asList(i));
+            expected3.add(List.of(i));
         }
         runTest(volumes3, expected3);
 
         // Test Case 4 - Reverse order
         List<Integer> volumes4 = Arrays.asList(3, 2, 1);
         List<List<Integer>> expected4 = Arrays.asList(
-                Arrays.asList(-1),
-                Arrays.asList(-1),
+                List.of(-1),
+                List.of(-1),
                 Arrays.asList(1, 2, 3)
         );
         runTest(volumes4, expected4);

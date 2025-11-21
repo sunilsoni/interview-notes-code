@@ -11,6 +11,7 @@ import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 
 /* ─── solution ────────────────────────────────────────── */
 public class FinestOutletFinder {
@@ -32,7 +33,7 @@ public class FinestOutletFinder {
                 /* build URL (need to encode city) */
                 String url = String.format(
                         "https://jsonmock.hackerrank.com/api/food_outlets?city=%s&page=%d",
-                        URLEncoder.encode(city, "UTF-8"), page);
+                        URLEncoder.encode(city, StandardCharsets.UTF_8), page);
 
                 /* one-line GET request */
                 String body = client.send(

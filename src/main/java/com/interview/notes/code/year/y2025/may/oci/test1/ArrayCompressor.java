@@ -49,7 +49,7 @@ public class ArrayCompressor {
         test(Arrays.asList(1, 3, 2, 5, 4), 6, 3);
 
         // Test Case 4: Edge case - single element
-        test(Arrays.asList(5), 10, 1);
+        test(List.of(5), 10, 1);
 
         // Test Case 5: No merging possible
         test(Arrays.asList(10, 20, 30), 5, 3);

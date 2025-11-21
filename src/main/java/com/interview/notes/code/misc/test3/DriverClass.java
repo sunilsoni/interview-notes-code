@@ -26,7 +26,7 @@ class Y extends ABC {
 public class DriverClass {
     public static void main(String[] args) {
         Y y = new Y();
-        System.out.println(y.j);    //L5 3
+        System.out.println(ABC.j);    //L5 3
 
     }
 }

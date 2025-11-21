@@ -8,9 +8,7 @@ public class SortBySquareValue {
         int[] result = new int[n];
 
         // Copy array to result
-        for (int i = 0; i < n; i++) {
-            result[i] = arr[i];
-        }
+        System.arraycopy(arr, 0, result, 0, n);
 
         // Bubble sort by absolute value (stable)
         for (int i = 0; i < n - 1; i++) {

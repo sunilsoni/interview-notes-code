@@ -6,7 +6,7 @@ public interface SquareRoot {
 
     }
 
-    abstract double findSquareRoot(int n);
+    double findSquareRoot(int n);
 
     default void findSquareRoot2(int n) {
 

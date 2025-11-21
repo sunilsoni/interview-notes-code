@@ -139,7 +139,8 @@ public class NumberOfIslands {
      */
     public static void main(String[] args) {
         // List of test cases covering various scenarios
-        List<TestCase> tests = Arrays.asList(/* test cases */);
+        /* test cases */
+        List<TestCase> tests = List.of();
 
         // Stream through test cases and run each one
         IntStream.range(0, tests.size()).forEach(i -> {

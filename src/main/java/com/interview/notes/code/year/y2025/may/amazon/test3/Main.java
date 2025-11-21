@@ -6,8 +6,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 class AccountDetails {
-    private String accountNo;
-    private double balance;
+    private final String accountNo;
+    private final double balance;
 
     public AccountDetails(String accountNo, double balance) {
         this.accountNo = accountNo;

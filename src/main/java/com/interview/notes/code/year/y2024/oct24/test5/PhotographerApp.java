@@ -29,13 +29,13 @@ CA', rate=$100, eventType: Wedding
  */
 public class PhotographerApp {
     // Data structure to store photographer profiles
-    private static List<PhotographerProfile> profiles = new ArrayList<>();
+    private static final List<PhotographerProfile> profiles = new ArrayList<>();
 
     public static void main(String[] args) {
         // Sample data population
         saveProfile("Dream Weddings", "San Jose, CA", 150, Arrays.asList("Wedding", "Rehearsal Dinner", "Bridal Shower"));
         saveProfile("Memorable Moments", "San Jose, CA", 180, Arrays.asList("Wedding", "Reception"));
-        saveProfile("Beautiful Weddings", "San Jose, CA", 100, Arrays.asList("Wedding"));
+        saveProfile("Beautiful Weddings", "San Jose, CA", 100, List.of("Wedding"));
 
         // Test cases
         testSearch("Wedding", "San Jose, CA");
@@ -70,10 +70,10 @@ public class PhotographerApp {
 
     // PhotographerProfile class
     static class PhotographerProfile {
-        private String name;
-        private String location;
-        private int rate;
-        private List<String> eventTypes;
+        private final String name;
+        private final String location;
+        private final int rate;
+        private final List<String> eventTypes;
 
         public PhotographerProfile(String name, String location, int rate, List<String> eventTypes) {
             this.name = name;

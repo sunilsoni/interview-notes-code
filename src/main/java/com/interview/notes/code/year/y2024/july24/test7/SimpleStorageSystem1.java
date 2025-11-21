@@ -17,7 +17,7 @@ Returns "false" if the file doesn't exist.
 
  */
 public class SimpleStorageSystem1 {
-    private Set<String> files;
+    private final Set<String> files;
 
     public SimpleStorageSystem1() {
         files = new HashSet<>();

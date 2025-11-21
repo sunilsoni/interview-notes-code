@@ -53,8 +53,7 @@ class BooksInfo {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof BooksInfo)) return false;
-        BooksInfo b = (BooksInfo) o;
+        if (!(o instanceof BooksInfo b)) return false;
         return quantity == b.quantity && price == b.price && Objects.equals(title, b.title);
     }
 
@@ -83,8 +82,7 @@ class CategoryAuthorWithCount {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CategoryAuthorWithCount)) return false;
-        CategoryAuthorWithCount c = (CategoryAuthorWithCount) o;
+        if (!(o instanceof CategoryAuthorWithCount c)) return false;
         return count == c.count
                 && Objects.equals(category, c.category)
                 && Objects.equals(author, c.author);
@@ -158,7 +156,7 @@ class Book implements IBook {
 }
 
 class LibrarySystem implements ILibrarySystem {
-    private Map<IBook, Integer> books = new HashMap<>();
+    private final Map<IBook, Integer> books = new HashMap<>();
 
     public void addBook(IBook book, int quantity) {
         books.put(book, books.getOrDefault(book, 0) + quantity);

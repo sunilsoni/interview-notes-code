@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 class SharedResource {
     private int count;
-    private Lock lock;
+    private final Lock lock;
 
     public SharedResource() {
         count = 0;
@@ -27,7 +27,7 @@ class SharedResource {
 }
 
 class WorkerThread extends Thread {
-    private SharedResource sharedResource;
+    private final SharedResource sharedResource;
 
     public WorkerThread(SharedResource sharedResource) {
         this.sharedResource = sharedResource;

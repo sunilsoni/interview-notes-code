@@ -63,8 +63,8 @@ public class WordLadder {
         if (!dictionary.contains(endWord)) return result;
 
         Map<String, List<List<String>>> paths = new HashMap<>();
-        paths.put(beginWord, Arrays.asList(Arrays.asList(beginWord)));
-        Set<String> currentLevel = new HashSet<>(Arrays.asList(beginWord));
+        paths.put(beginWord, List.of(Collections.singletonList(beginWord)));
+        Set<String> currentLevel = new HashSet<>(Collections.singletonList(beginWord));
 
         while (!currentLevel.isEmpty() && !currentLevel.contains(endWord)) {
             Set<String> nextLevel = new HashSet<>();

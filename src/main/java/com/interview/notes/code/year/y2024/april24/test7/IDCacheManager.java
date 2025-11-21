@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class IDCacheManager {
     private static final int CACHE_SIZE = 100;  // Optimal size based on performance testing
-    private static Queue<Integer> cache = new LinkedList<>();
+    private static final Queue<Integer> cache = new LinkedList<>();
 
     /**
      * Refills the cache by fetching IDs in bulk from the external library.

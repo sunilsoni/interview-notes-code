@@ -51,7 +51,7 @@ public class ResultWorking {
         test(Arrays.asList(9, 4, 8, 6, 3), Arrays.asList(4, 8, 6, 9, 3), "Test 2");
 
         // Test Case 3: Edge case - single element
-        test(Arrays.asList(5), Arrays.asList(5), "Test 3");
+        test(List.of(5), List.of(5), "Test 3");
 
         // Test Case 4: Edge case - already optimal
         test(Arrays.asList(2, 3, 4, 5), Arrays.asList(2, 3, 4, 5), "Test 4");

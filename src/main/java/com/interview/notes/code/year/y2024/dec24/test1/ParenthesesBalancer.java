@@ -38,8 +38,8 @@ public class ParenthesesBalancer {
      */
     public static void runTests() {
         class TestCase {
-            String input;
-            int expected;
+            final String input;
+            final int expected;
 
             TestCase(String input, int expected) {
                 this.input = input;

@@ -19,7 +19,7 @@ public class FoodOutletFinder {
         int maxVotes = -1;
 
         try {
-            String encodedCity = URLEncoder.encode(city, StandardCharsets.UTF_8.toString());
+            String encodedCity = URLEncoder.encode(city, StandardCharsets.UTF_8);
             int currentPage = 1;
             int totalPages = 1;
 

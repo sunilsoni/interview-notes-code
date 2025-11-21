@@ -6,9 +6,9 @@ import java.util.Queue;
 // Customer class representing a service center visitor
 class Customer {
     private static int idCounter = 0;  // Static counter for generating unique IDs
-    private int id;                    // Unique identifier for each customer
-    private boolean isVip;             // VIP status flag
-    private long arrivalTime;          // Timestamp when customer checked in
+    private final int id;                    // Unique identifier for each customer
+    private final boolean isVip;             // VIP status flag
+    private final long arrivalTime;          // Timestamp when customer checked in
 
     public Customer(boolean isVip) {
         this.id = ++idCounter;
@@ -32,8 +32,8 @@ class Customer {
 
 // ServiceScheduler class managing customer queue and processing
 class ServiceScheduler {
-    private Queue<Customer> regularQueue;     // Queue for regular customers
-    private Queue<Customer> vipQueue;         // Queue for VIP customers
+    private final Queue<Customer> regularQueue;     // Queue for regular customers
+    private final Queue<Customer> vipQueue;         // Queue for VIP customers
     private int processedVipCount;            // Counter for processed VIP customers
     private int processedRegularCount;        // Counter for processed regular customers
 

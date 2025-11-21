@@ -27,7 +27,7 @@ public class MoveZeros {
     public static void main(String[] args) {
         // Provided test cases
         test(Arrays.asList(0, 1, 0, 3, 12), Arrays.asList(1, 3, 12, 0, 0));
-        test(Arrays.asList(0), Arrays.asList(0));
+        test(List.of(0), List.of(0));
 
         // Edge case: all zeros
         test(Arrays.asList(0, 0, 0, 0), Arrays.asList(0, 0, 0, 0));

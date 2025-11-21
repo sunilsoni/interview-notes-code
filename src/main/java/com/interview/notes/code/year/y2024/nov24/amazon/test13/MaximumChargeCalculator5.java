@@ -23,7 +23,7 @@ public class MaximumChargeCalculator5 {
 
         // Find the maximum individual charge.
         for (int c : charge) {
-            max_initial = Math.max(max_initial, (long) c);
+            max_initial = Math.max(max_initial, c);
         }
 
         // Find the maximum sum of any two non-adjacent charges.
@@ -76,7 +76,7 @@ public class MaximumChargeCalculator5 {
 
         // Single Element
         testCases.add(new TestCase(
-                Arrays.asList(10),
+                List.of(10),
                 10 // Expected Output: 10
         ));
 

@@ -26,7 +26,10 @@ class Task implements Runnable {
         // Always acquire locks in the same order to prevent deadlock
         synchronized (firstLock) {
             System.out.println(Thread.currentThread().getName() + " acquired first lock");
-            try { Thread.sleep(100); } catch (InterruptedException e) {}
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+            }
 
             synchronized (secondLock) {
                 System.out.println(Thread.currentThread().getName() + " acquired second lock");

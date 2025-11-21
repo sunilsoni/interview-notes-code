@@ -31,11 +31,11 @@ public class SecondHighestOptimized {
     public static void main(String[] args) {
         test(null, "0-0");
         test(new int[]{}, "0-0");
-        test(new int[]{8,9,8,5,4,8,3,8}, "8-4");
-        test(new int[]{10,10,10}, "0-0");
-        test(new int[]{5,4,3,2}, "4-1");
-        test(new int[]{1,1,1,2,2}, "1-3");
-        test(new int[]{-1,-5,-1,-7,-5}, "-5-2");
+        test(new int[]{8, 9, 8, 5, 4, 8, 3, 8}, "8-4");
+        test(new int[]{10, 10, 10}, "0-0");
+        test(new int[]{5, 4, 3, 2}, "4-1");
+        test(new int[]{1, 1, 1, 2, 2}, "1-3");
+        test(new int[]{-1, -5, -1, -7, -5}, "-5-2");
 
         int[] large = IntStream.range(0, 1_000_000).map(i -> i % 50).toArray();
         System.out.println(findSecondHighestWithFrequency(large));

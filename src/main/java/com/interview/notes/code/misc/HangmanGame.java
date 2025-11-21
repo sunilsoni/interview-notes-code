@@ -8,7 +8,7 @@ public class HangmanGame {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
-        String guesses[] = {
+        String[] guesses = {
                 "reddit", "facebook", "java", "assignment",
                 "game", "hello", "islam", "religion", "internet", "face"};
 
@@ -16,9 +16,9 @@ public class HangmanGame {
         while (weArePlaying) {
             System.out.println("Lets Start Playing Hangman ver 0.1");
             int randomNumber = random.nextInt(guesses.length); //random.nextInt(10);
-            char randomWordToGuess[] = guesses[randomNumber].toCharArray(); // java -> j,a,v,a
+            char[] randomWordToGuess = guesses[randomNumber].toCharArray(); // java -> j,a,v,a
             int ammountOfGuesses = randomWordToGuess.length; //total tries to guess a word.
-            char playerGuess[] = new char[ammountOfGuesses]; // "_ _ _ _ _ _ _ _"
+            char[] playerGuess = new char[ammountOfGuesses]; // "_ _ _ _ _ _ _ _"
 
             for (int i = 0; i < playerGuess.length; i++) { // Assign empty dashes at start "_ _ _ _ _ _ _ _"
                 playerGuess[i] = '_';
@@ -66,7 +66,7 @@ public class HangmanGame {
         System.out.println("Game Over!");
     }
 
-    public static void print(char array[]) {
+    public static void print(char[] array) {
         for (int i = 0; i < array.length; i++) { // Assign empty dashes at start "_ _ _ _ _ _ _ _"
             System.out.print(array[i] + " ");
         }
@@ -78,6 +78,7 @@ public class HangmanGame {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == '_') {
                 condition = false;
+                break;
             }
         }
         return condition;

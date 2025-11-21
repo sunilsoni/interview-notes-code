@@ -34,7 +34,7 @@ class Solution6 {
         }
 
         // Combine the first half, middle character if any, and the reverse of the first half
-        String result = firstHalf.toString() + mid.toString() + firstHalf.reverse().toString();
+        String result = firstHalf.toString() + mid + firstHalf.reverse();
 
         // If no valid palindrome is constructed (only zero found and added), simply return "0"
         if (result.matches("0+")) {

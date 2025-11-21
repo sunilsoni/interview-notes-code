@@ -61,11 +61,11 @@ class Payment {
 }
 
 class User {
-    private String username;
+    private final String username;
     private double balance;
-    private List<String> creditCards;
-    private Set<String> friends;
-    private List<Payment> payments;
+    private final List<String> creditCards;
+    private final Set<String> friends;
+    private final List<Payment> payments;
 
     public User(String username) throws UsernameException {
         if (validateUsername(username)) {
@@ -158,15 +158,15 @@ class User {
 }
 
 class MiniVenmo {
-    private Map<String, User> users;
-    private List<Payment> allPayments;
+    private final Map<String, User> users;
+    private final List<Payment> allPayments;
 
     public MiniVenmo() {
         this.users = new HashMap<>();
         this.allPayments = new ArrayList<>();
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         MiniVenmo venmo = new MiniVenmo();
         try {
             User bobby = venmo.createUser("Bobby", 5.00, "4111111111111111");

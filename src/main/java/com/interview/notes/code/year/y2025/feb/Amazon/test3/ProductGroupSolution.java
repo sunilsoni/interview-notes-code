@@ -58,13 +58,13 @@ public class ProductGroupSolution {
 
         // Edge cases
         testCases.add(new TestCase(
-                Arrays.asList(0),
+                List.of(0),
                 0,
                 "Single zero"
         ));
 
         testCases.add(new TestCase(
-                Arrays.asList(1),
+                List.of(1),
                 1,
                 "Single product"
         ));

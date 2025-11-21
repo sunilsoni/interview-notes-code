@@ -11,9 +11,9 @@ public class UniqueIDGenerator {
     // Set the desired length of the unique IDs.
     private static final int ID_LENGTH = 6;
     // Use a HashSet to store already generated IDs to ensure uniqueness.
-    private static HashSet<String> generatedIDs = new HashSet<>();
+    private static final HashSet<String> generatedIDs = new HashSet<>();
     // Random object to help with generating random indexes for selecting characters.
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
     /**
      * Generates a unique ID consisting of 6 characters.

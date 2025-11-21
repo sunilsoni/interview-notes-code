@@ -60,7 +60,7 @@ public class SubstringConcatenationFinder {
 
         runTest("Test 2", "wordgoodgoodgoodbestword",
                 new String[]{"word", "good", "best", "word"},
-                Arrays.asList());
+                List.of());
 
         runTest("Test 3", "barfoofoobarthefoobarman",
                 new String[]{"bar", "foo", "the"},
@@ -69,11 +69,11 @@ public class SubstringConcatenationFinder {
         // Edge cases
         runTest("Empty String", "",
                 new String[]{"foo", "bar"},
-                Arrays.asList());
+                List.of());
 
         runTest("Single Character", "a",
                 new String[]{"a"},
-                Arrays.asList(0));
+                List.of(0));
 
         // Large input test
         StringBuilder largeString = new StringBuilder();

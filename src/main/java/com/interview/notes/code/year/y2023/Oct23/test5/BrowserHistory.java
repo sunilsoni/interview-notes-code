@@ -91,8 +91,8 @@ import java.util.ListIterator;
  * obi.visit(url):
  */
 class BrowserHistory {
-    private LinkedList<String> historyList;
-    private ListIterator<String> iter;
+    private final LinkedList<String> historyList;
+    private final ListIterator<String> iter;
 
     public BrowserHistory(String homepage) {
         historyList = new LinkedList<>();

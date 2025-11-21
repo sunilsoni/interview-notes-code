@@ -84,14 +84,7 @@ public class TimestampedMapExample {
     }
 
     // Inner class to hold value and timestamp
-    private static class Entry<V> {
-        private final V value;
-        private final long timestamp;
-
-        Entry(V value, long timestamp) {
-            this.value = value;
-            this.timestamp = timestamp;
-        }
+        private record Entry<V>(V value, long timestamp) {
     }
 
     public static class TimestampedMap<K, V> {

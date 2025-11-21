@@ -1,8 +1,8 @@
 package com.interview.notes.code.year.y2025.jan.glider.test2;
 
 public class Test {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Test() {
         this(10);

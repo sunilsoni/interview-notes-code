@@ -10,7 +10,7 @@ class Result1 {
         String rightHalf = numStr.substring(len / 2 + len % 2);
 
         // Convert leftHalf to a number and mirror it to form a palindrome.
-        String palindrome = leftHalf + middle + new StringBuilder(leftHalf).reverse().toString();
+        String palindrome = leftHalf + middle + new StringBuilder(leftHalf).reverse();
 
         if (Long.parseLong(palindrome) > n) {
             return Integer.parseInt(palindrome);
@@ -20,17 +20,17 @@ class Result1 {
         if (len % 2 == 1) {
             int middleNum = Integer.parseInt(middle) + 1;
             if (middleNum <= 9) {
-                palindrome = leftHalf + middleNum + new StringBuilder(leftHalf).reverse().toString();
+                palindrome = leftHalf + middleNum + new StringBuilder(leftHalf).reverse();
             } else {
                 // Middle has overflowed, need to increment the left half
                 long leftNum = Long.parseLong(leftHalf + "0") + 1;
                 String newLeftHalf = Long.toString(leftNum).substring(0, leftHalf.length());
-                palindrome = newLeftHalf + "0" + new StringBuilder(newLeftHalf).reverse().toString();
+                palindrome = newLeftHalf + "0" + new StringBuilder(newLeftHalf).reverse();
             }
         } else {
             long leftNum = Long.parseLong(leftHalf) + 1;
             String newLeftHalf = Long.toString(leftNum);
-            palindrome = newLeftHalf + new StringBuilder(newLeftHalf).reverse().toString();
+            palindrome = newLeftHalf + new StringBuilder(newLeftHalf).reverse();
         }
 
         return Integer.parseInt(palindrome);

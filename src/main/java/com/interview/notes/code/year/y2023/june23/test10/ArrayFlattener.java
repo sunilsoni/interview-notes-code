@@ -19,8 +19,7 @@ public class ArrayFlattener {
     }
 
     private static Stream<Object> flatten(Object element) {
-        if (element instanceof Object[]) {
-            Object[] subArray = (Object[]) element;
+        if (element instanceof Object[] subArray) {
             return Stream.of(subArray)
                     .flatMap(ArrayFlattener::flatten);
         } else {

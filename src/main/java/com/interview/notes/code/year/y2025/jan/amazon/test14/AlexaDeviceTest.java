@@ -21,8 +21,8 @@ interface Display {
 
 // Classes for different power sources
 class BatteryPower implements PowerSource {
-    private int batteryLevel;
-    private boolean isCharging;
+    private final int batteryLevel;
+    private final boolean isCharging;
 
     public BatteryPower(int level, boolean charging) {
         this.batteryLevel = level;
@@ -43,7 +43,7 @@ class PluggedPower implements PowerSource {
 
 // Concrete device implementations
 class EchoDot implements AlexaDevice, Speaker {
-    private PowerSource power;
+    private final PowerSource power;
 
     public EchoDot() {
         this.power = new PluggedPower();
@@ -59,7 +59,7 @@ class EchoDot implements AlexaDevice, Speaker {
 }
 
 class Tablet implements AlexaDevice, Speaker, Display {
-    private PowerSource power;
+    private final PowerSource power;
 
     public Tablet(int batteryLevel, boolean charging) {
         this.power = new BatteryPower(batteryLevel, charging);

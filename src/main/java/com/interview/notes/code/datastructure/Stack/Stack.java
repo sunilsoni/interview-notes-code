@@ -65,7 +65,7 @@ public class Stack<T> {
     }
 
     private static class StackNode<T> {
-        private T value;
+        private final T value;
         private StackNode<T> next;
 
         StackNode(T val) {

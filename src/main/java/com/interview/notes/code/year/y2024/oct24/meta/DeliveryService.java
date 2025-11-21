@@ -7,8 +7,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 class DeliveryService {
-    private ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-    private List<Driver> drivers = new ArrayList<>();
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private final List<Driver> drivers = new ArrayList<>();
 
     public DeliveryService() {
         // Populate some drivers for simulation purposes

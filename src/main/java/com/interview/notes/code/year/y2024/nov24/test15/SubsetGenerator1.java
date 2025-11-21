@@ -73,7 +73,7 @@ public class SubsetGenerator1 {
         testSubsetGeneration(Collections.emptyList(), "Empty List");
 
         // Test Case 2: Single Element
-        testSubsetGeneration(Arrays.asList(1), "Single Element");
+        testSubsetGeneration(List.of(1), "Single Element");
 
         // Test Case 3: Multiple Elements
         testSubsetGeneration(Arrays.asList(1, 2, 3), "Multiple Elements");

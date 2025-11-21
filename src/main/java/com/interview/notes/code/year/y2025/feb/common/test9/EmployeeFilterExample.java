@@ -34,10 +34,10 @@ public class EmployeeFilterExample {
 
 // Sample Employee class
 class Employee {
-    private int id;
+    private final int id;
     private String firstName;
-    private String lastName;
-    private String designation;
+    private final String lastName;
+    private final String designation;
 
     public Employee(int id, String firstName, String lastName, String designation) {
         this.id = id;

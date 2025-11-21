@@ -133,16 +133,7 @@ public class SortingFactorK {
 
     public static void main(String[] args) {
         // name, input array, expected k
-        class Test {
-            final String name;
-            final List<Integer> arr;
-            final int expected;
-
-            Test(String name, List<Integer> arr, int expected) {
-                this.name = name;
-                this.arr = arr;
-                this.expected = expected;
-            }
+        record Test(String name, List<Integer> arr, int expected) {
         }
 
         List<Test> tests = Arrays.asList(

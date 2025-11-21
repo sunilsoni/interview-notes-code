@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
-    private String accountId;
-    private Double balance;
-    private List<Account> childAccounts;
+    private final String accountId;
+    private final Double balance;
+    private final List<Account> childAccounts;
 
     // Constructor for the Account class
     public Account(String accountId) {

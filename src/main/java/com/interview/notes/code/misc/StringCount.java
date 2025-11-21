@@ -12,7 +12,7 @@ public class StringCount {
 
         //count for more than  1 occurence
         Map<String, Long> nameCountMap = names.stream()
-                .collect(Collectors.toMap(Function.identity(), v -> 1l, Long::sum))
+                .collect(Collectors.toMap(Function.identity(), v -> 1L, Long::sum))
                 .entrySet()
                 .stream()
                 .filter(v -> v.getValue() > 1)

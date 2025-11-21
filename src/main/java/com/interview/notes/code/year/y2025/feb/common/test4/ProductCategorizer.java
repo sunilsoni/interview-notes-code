@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 class Product {
-    private int id;
-    private String name;
-    private String category;
+    private final int id;
+    private final String name;
+    private final String category;
 
     public Product(int id, String name, String category) {
         this.id = id;

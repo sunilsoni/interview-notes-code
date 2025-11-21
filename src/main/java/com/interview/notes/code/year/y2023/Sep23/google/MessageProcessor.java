@@ -46,7 +46,7 @@ public class MessageProcessor {
         // Create a mock StatusReceiver
         StatusReceiver mockReceiver = new StatusReceiver() {
             private int index = 0;
-            private Status[] statuses = {
+            private final Status[] statuses = {
                     new Status(10, "solar panel activated"),
                     new Status(11, "low battery warning"),
                     new Status(12, "tire one: low air pressure"),
@@ -75,7 +75,7 @@ public class MessageProcessor {
         for (int i = 0; i < 7; i++) {  // Assuming we have 7 messages
             Status readableMessage = processor.getNextReadableMessage();
             if (readableMessage != null) {
-                System.out.println(readableMessage.toString());
+                System.out.println(readableMessage);
             }
         }
     }

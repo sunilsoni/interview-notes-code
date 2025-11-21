@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2025.June.amazon.test20;
 import java.util.*;
 
 // represent the result of firing at a square
-enum ShotResult {MISS, HIT, SUNK;}  // three possible outcomes
+enum ShotResult {MISS, HIT, SUNK}  // three possible outcomes
 
 // simple (row,col) holder with proper equals/hashCode
 class Coordinate {
@@ -18,8 +18,7 @@ class Coordinate {
     @Override
     public boolean equals(Object o) { // equality by row+col
         if (this == o) return true;
-        if (!(o instanceof Coordinate)) return false;
-        Coordinate c = (Coordinate) o;
+        if (!(o instanceof Coordinate c)) return false;
         return row == c.row && col == c.col;
     }
 

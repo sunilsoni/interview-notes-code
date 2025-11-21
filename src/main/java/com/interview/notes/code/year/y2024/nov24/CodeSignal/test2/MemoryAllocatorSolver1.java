@@ -60,10 +60,10 @@ public class MemoryAllocatorSolver1 {
     public static void main(String[] args) {
         // Test case class
         class TestCase {
-            int[] memory;
-            int[][] queries;
-            int[] expected;
-            String description;
+            final int[] memory;
+            final int[][] queries;
+            final int[] expected;
+            final String description;
 
             TestCase(int[] memory, int[][] queries, int[] expected, String description) {
                 this.memory = memory.clone();

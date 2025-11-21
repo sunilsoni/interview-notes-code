@@ -116,8 +116,9 @@ public class ZigzagTraversal {
     public static void main(String[] args) {
         // small holder types for tests
         class Edge {
-            int p, c;
-            char d;
+            final int p;
+            final int c;
+            final char d;
 
             Edge(int p, int c, char d) {
                 this.p = p;
@@ -126,8 +127,8 @@ public class ZigzagTraversal {
             }
         }
         class Test {
-            List<Edge> edges;
-            int[] expect;
+            final List<Edge> edges;
+            final int[] expect;
 
             Test(List<Edge> e, int[] x) {
                 edges = e;

@@ -27,7 +27,7 @@ public class LastTwoDigits {
         runTest(Arrays.asList(2, 4, 5), 40, "Basic test case 2");
 
         // Edge cases
-        runTest(Arrays.asList(1), 1, "Single element");
+        runTest(List.of(1), 1, "Single element");
         runTest(Arrays.asList(100, 100), 0, "Large numbers");
         runTest(Arrays.asList(99, 99), 1, "Numbers causing overflow");
 

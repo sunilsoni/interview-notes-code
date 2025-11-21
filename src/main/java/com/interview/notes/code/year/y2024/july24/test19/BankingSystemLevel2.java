@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class BankingSystemLevel2 {
-    private Map<String, Double> accounts;
+    private final Map<String, Double> accounts;
 
     public BankingSystemLevel2() {
         this.accounts = new HashMap<>();

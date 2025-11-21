@@ -114,7 +114,7 @@ public class MoveZeroes {
         runTest(Arrays.asList(0, 1, 0, 3, 12), Arrays.asList(1, 3, 12, 0, 0), "Basic test");
 
         // Test case 2: Single element
-        runTest(Arrays.asList(0), Arrays.asList(0), "Single zero");
+        runTest(List.of(0), List.of(0), "Single zero");
 
         // Test case 3: No zeroes
         runTest(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3), "No zeroes");

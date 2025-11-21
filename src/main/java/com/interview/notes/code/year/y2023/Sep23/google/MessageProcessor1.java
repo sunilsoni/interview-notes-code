@@ -7,7 +7,7 @@ import java.util.List;
 public class MessageProcessor1 {
 
     // HashMap to store the last seen timestamp for each message
-    private HashMap<String, Integer> lastSeen = new HashMap<>();
+    private final HashMap<String, Integer> lastSeen = new HashMap<>();
 
     public static void main(String[] args) {
         MessageProcessor1 processor = new MessageProcessor1();

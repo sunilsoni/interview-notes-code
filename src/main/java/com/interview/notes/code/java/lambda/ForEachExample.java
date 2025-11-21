@@ -73,7 +73,7 @@ public class ForEachExample {
     private static void scanUsingIterator(List<String> names) {
         //using iterator approach
         for (Iterator<String> iterator = names.iterator(); iterator.hasNext(); ) {
-            String string = (String) iterator.next();
+            String string = iterator.next();
             System.out.println(" Iterator value " + string);
         }
     }

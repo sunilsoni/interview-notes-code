@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class AmazonProductSearch {
 
-    private TrieNode root; // Root of our Trie
+    private final TrieNode root; // Root of our Trie
 
     public AmazonProductSearch() {
         root = new TrieNode(); // Initialize the Trie with an empty root

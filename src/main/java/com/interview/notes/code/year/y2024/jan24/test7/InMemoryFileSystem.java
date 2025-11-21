@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2024.jan24.test7;
 
 public class InMemoryFileSystem {
-    private Directory root;
+    private final Directory root;
 
     public InMemoryFileSystem() {
         root = new Directory("/");

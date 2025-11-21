@@ -12,7 +12,7 @@ public class CombinedQuestions {
 
     public static void testQuestion30() {
         Base obj1 = new Derived();
-        obj1.display(); // Static or class method from Base
+        Base.display(); // Static or class method from Base
         obj1.print();   // Non-static or Instance method from Derived
     }
 
@@ -93,7 +93,7 @@ public class CombinedQuestions {
 
     // Question 29 and 27
     interface MyInterface1 {
-        static int num = 100;
+        int num = 100;
 
         default void display() {
             System.out.println("display method of MyInterface1");
@@ -101,7 +101,7 @@ public class CombinedQuestions {
     }
 
     interface MyInterface2 {
-        static int num = 1000;
+        int num = 1000;
 
         default void display() {
             System.out.println("display method of MyInterface2");

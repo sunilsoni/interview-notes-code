@@ -3,9 +3,9 @@ package com.interview.notes.code.year.y2025.april.amazon.test3;
 import java.util.*;
 
 public class PackageInstaller {
-    private Map<String, Package> packages = new HashMap<>();
+    private final Map<String, Package> packages = new HashMap<>();
     // Key: package name, Value: set of packages that depend on this package (parents)
-    private Map<String, Set<String>> parentMap = new HashMap<>();
+    private final Map<String, Set<String>> parentMap = new HashMap<>();
 
     // When adding a package, update the parent map
     public void addPackage(String name, List<String> dependencies) {

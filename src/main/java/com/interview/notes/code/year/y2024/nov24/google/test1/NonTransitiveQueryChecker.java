@@ -21,7 +21,7 @@ Expected Output: [True, False, False]
  */
 public class NonTransitiveQueryChecker {
     // Store direct synonym pairs only
-    private Set<Pair> directSynonyms;
+    private final Set<Pair> directSynonyms;
 
     public NonTransitiveQueryChecker(List<List<String>> synonymPairs) {
         directSynonyms = new HashSet<>();
@@ -145,8 +145,7 @@ public class NonTransitiveQueryChecker {
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
-            if (!(o instanceof Pair)) return false;
-            Pair pair = (Pair) o;
+            if (!(o instanceof Pair pair)) return false;
             return word1.equals(pair.word1) && word2.equals(pair.word2);
         }
 

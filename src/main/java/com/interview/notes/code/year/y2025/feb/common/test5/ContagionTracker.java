@@ -65,7 +65,7 @@ public class ContagionTracker {
         System.out.println("Test Case 2 (Empty party):");
         System.out.println("Expected: [0]");
         System.out.println("Actual: " + result);
-        System.out.println("Status: " + (result.equals(Arrays.asList(0)) ? "PASS" : "FAIL"));
+        System.out.println("Status: " + (result.equals(List.of(0)) ? "PASS" : "FAIL"));
         System.out.println();
     }
 
@@ -79,7 +79,7 @@ public class ContagionTracker {
         System.out.println("Test Case 3 (No interactions):");
         System.out.println("Expected: [1]");
         System.out.println("Actual: " + result);
-        System.out.println("Status: " + (result.equals(Arrays.asList(1)) ? "PASS" : "FAIL"));
+        System.out.println("Status: " + (result.equals(List.of(1)) ? "PASS" : "FAIL"));
         System.out.println();
     }
 

@@ -79,9 +79,9 @@ public class CinemaEntries {
         if (result2 != expected2) allPassed = false;
 
         // Edge Case: Single Show
-        List<Integer> start3 = Arrays.asList(5);
-        List<Integer> duration3 = Arrays.asList(10);
-        List<Integer> volume3 = Arrays.asList(100);
+        List<Integer> start3 = List.of(5);
+        List<Integer> duration3 = List.of(10);
+        List<Integer> volume3 = List.of(100);
         int expected3 = 100;
         int result3 = cinemaEntries(start3, duration3, volume3);
         System.out.println("Single Show Test: " + (result3 == expected3 ? "PASS" : "FAIL"));

@@ -64,10 +64,8 @@ public class FileSearchUtility {
                     attrs.lastModifiedTime().toInstant(), ZoneId.systemDefault());
             if (criteria.modifiedAfter != null &&
                     modifiedTime.isBefore(criteria.modifiedAfter)) return false;
-            if (criteria.modifiedBefore != null &&
-                    modifiedTime.isAfter(criteria.modifiedBefore)) return false;
-
-            return true;
+            return criteria.modifiedBefore == null ||
+                    !modifiedTime.isAfter(criteria.modifiedBefore);
         } catch (IOException e) {
             return false;
         }

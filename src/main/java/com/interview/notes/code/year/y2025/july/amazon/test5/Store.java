@@ -38,7 +38,7 @@ public class Store {
 
     // Queue implementation using LinkedList for O(1) add/remove operations
     // Maintains FIFO order of customers based on entry time
-    private Queue<Customer> customersInStore;
+    private final Queue<Customer> customersInStore;
 
     // Tracks current system time in milliseconds
     // Used for calculating customer entry/exit times and wait durations
@@ -119,7 +119,7 @@ public class Store {
             // Check if customer's planned shopping time has elapsed
             // 60000 = milliseconds in a minute
             if (currentTime >= customer.entryTime +
-                    (customer.plannedDuration * 60000)) {
+                    (customer.plannedDuration * 60000L)) {
                 customersInStore.poll(); // Remove finished customer
             } else {
                 break; // Remaining customers still shopping
@@ -137,7 +137,7 @@ public class Store {
         if (minutes < 0) {
             throw new IllegalArgumentException("Cannot advance time backwards");
         }
-        currentTime += minutes * 60000; // Convert minutes to milliseconds
+        currentTime += minutes * 60000L; // Convert minutes to milliseconds
     }
 
     /**

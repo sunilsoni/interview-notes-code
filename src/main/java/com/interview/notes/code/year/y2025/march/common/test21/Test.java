@@ -3,8 +3,8 @@ package com.interview.notes.code.year.y2025.march.common.test21;
 import java.util.HashMap;
 
 class Person {
-    private String name;
-    private int age;
+    private final String name;
+    private final int age;
 
     public Person(String name, int age) {
         this.name = name;

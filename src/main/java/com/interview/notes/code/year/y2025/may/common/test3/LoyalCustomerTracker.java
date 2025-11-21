@@ -75,7 +75,7 @@ public class LoyalCustomerTracker {
                         new PageView(1000L, 1, 1),
                         new PageView(1001L, 2, 1)
                 ),
-                Arrays.asList(
+                List.of(
                         new PageView(2000L, 3, 1)
                 ),
                 Set.of(1)
@@ -84,10 +84,10 @@ public class LoyalCustomerTracker {
         // Test Case 2: Customer with insufficient unique pages
         testLoyalCustomers(
                 "Insufficient unique pages test",
-                Arrays.asList(
+                List.of(
                         new PageView(1000L, 1, 2)
                 ),
-                Arrays.asList(
+                List.of(
                         new PageView(2000L, 1, 2)
                 ),
                 Set.of()
@@ -112,8 +112,8 @@ public class LoyalCustomerTracker {
         // Test Case 4: Empty input
         testLoyalCustomers(
                 "Empty input test",
-                Arrays.asList(),
-                Arrays.asList(),
+                List.of(),
+                List.of(),
                 Set.of()
         );
 

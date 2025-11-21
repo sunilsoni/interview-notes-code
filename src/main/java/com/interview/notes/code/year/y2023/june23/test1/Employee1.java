@@ -6,7 +6,7 @@ public class Employee1 extends Person {
         System.out.println("Employee class constructor called");
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Employee1 e = new Employee1();
     }
 }  

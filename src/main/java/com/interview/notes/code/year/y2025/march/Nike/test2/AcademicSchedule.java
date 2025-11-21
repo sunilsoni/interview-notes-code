@@ -68,7 +68,7 @@ public class AcademicSchedule {
                         Arrays.asList(3, 1, 2)
                 ), Arrays.asList(0, 1, 2, 3)),
                 // Edge case: single course, no prerequisites
-                new TestCase(1, new ArrayList<>(), Arrays.asList(0)),
+                new TestCase(1, new ArrayList<>(), List.of(0)),
                 // Additional test: multiple valid orders, smallest index order required
                 new TestCase(6, Arrays.asList(
                         Arrays.asList(1, 0),

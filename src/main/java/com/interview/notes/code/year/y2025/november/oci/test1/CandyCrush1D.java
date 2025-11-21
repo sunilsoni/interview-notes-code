@@ -44,15 +44,15 @@ public class CandyCrush1D {
     // Main method to test all cases
     public static void main(String[] args) {
         List<TestCase> tests = Arrays.asList(
-            new TestCase("aaabbbacd", "acd"),
-            new TestCase("aabbbacd", "aacd"), // ✅ fixed
-            new TestCase("aaabbbccc", ""),
-            new TestCase("abcdddcba", "abccba"),
-            new TestCase("a", "a"),
-            new TestCase("aaa", ""),
-            new TestCase("aabbaaa", "aabb"),
-            new TestCase("aabbaaacccddd", "aabb"),
-            new TestCase(generateLargeInput(), "") // large input test
+                new TestCase("aaabbbacd", "acd"),
+                new TestCase("aabbbacd", "aacd"), // ✅ fixed
+                new TestCase("aaabbbccc", ""),
+                new TestCase("abcdddcba", "abccba"),
+                new TestCase("a", "a"),
+                new TestCase("aaa", ""),
+                new TestCase("aabbaaa", "aabb"),
+                new TestCase("aabbaaacccddd", "aabb"),
+                new TestCase(generateLargeInput(), "") // large input test
         );
 
         IntStream.range(0, tests.size()).forEach(i -> {
@@ -79,6 +79,7 @@ public class CandyCrush1D {
     static class TestCase {
         String input;
         String expected;
+
         TestCase(String input, String expected) {
             this.input = input;
             this.expected = expected;

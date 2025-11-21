@@ -142,27 +142,24 @@ public class PizzaPriceCalculator1 {
         List<TestCase> testCases = new ArrayList<>();
 
         // Define test cases
-        testCases.add(new TestCase("Regular", "Small", Arrays.asList(), 8.0));
-        testCases.add(new TestCase("Gluten Free", "Medium", Arrays.asList("Pepperoni"), 10.0 + 2.0 + 1.5));
+        testCases.add(new TestCase("Regular", "Small", List.of(), 8.0));
+        testCases.add(new TestCase("Gluten Free", "Medium", List.of("Pepperoni"), 10.0 + 2.0 + 1.5));
         testCases.add(new TestCase("Regular", "Large", Arrays.asList("Jalapenos", "Pineapple"), 12.0 + 0.0 + 1.0 + 1.2));
         testCases.add(new TestCase("Gluten Free", "Extra Large", Arrays.asList("Pepperoni", "Jalapenos", "Pineapple"), 14.0 + 2.0 + 1.5 + 1.0 + 1.2));
         testCases.add(new TestCase("Regular", "Medium", Arrays.asList("Pepperoni", "Pepperoni", "Pineapple"), 10.0 + 0.0 + 1.5 + 1.5 + 1.2));
-        testCases.add(new TestCase("Gluten Free", "Small", Arrays.asList("Jalapenos"), 8.0 + 2.0 + 1.0));
+        testCases.add(new TestCase("Gluten Free", "Small", List.of("Jalapenos"), 8.0 + 2.0 + 1.0));
         testCases.add(new TestCase("Regular", "Extra Large", Arrays.asList("Pineapple", "Pineapple", "Pineapple"), 14.0 + 0.0 + 1.2 + 1.2 + 1.2));
-        testCases.add(new TestCase("Regular", "InvalidSize", Arrays.asList("Pepperoni"), -1.0)); // Invalid size
-        testCases.add(new TestCase("InvalidBread", "Medium", Arrays.asList("Pepperoni"), -1.0)); // Invalid bread
-        testCases.add(new TestCase("Regular", "Large", Arrays.asList("InvalidTopping"), -1.0)); // Invalid topping
+        testCases.add(new TestCase("Regular", "InvalidSize", List.of("Pepperoni"), -1.0)); // Invalid size
+        testCases.add(new TestCase("InvalidBread", "Medium", List.of("Pepperoni"), -1.0)); // Invalid bread
+        testCases.add(new TestCase("Regular", "Large", List.of("InvalidTopping"), -1.0)); // Invalid topping
 
         // Execute test cases
         int passed = 0;
         for (int i = 0; i < testCases.size(); i++) {
             TestCase tc = testCases.get(i);
             double calculatedPrice = -1.0;
-            boolean isValid = true;
+            boolean isValid = breadPrices.containsKey(tc.bread);
 
-            if (!breadPrices.containsKey(tc.bread)) {
-                isValid = false;
-            }
             if (!sizePrices.containsKey(tc.size)) {
                 isValid = false;
             }

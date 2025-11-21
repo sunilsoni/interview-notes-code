@@ -58,8 +58,9 @@ public class PlayToWin {
 
     public static void main(String[] args) {
         class Test {
-            List<Integer> arr;
-            int k, expected;
+            final List<Integer> arr;
+            final int k;
+            final int expected;
 
             Test(Integer[] a, int k, int e) {
                 this.arr = Arrays.asList(a);

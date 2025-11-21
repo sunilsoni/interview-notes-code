@@ -107,7 +107,7 @@ class MostActiveAuthors {
         return usernames;
     }
 
-    private static String sendGetRequest(int pageNumber) throws MalformedURLException, IOException {
+    private static String sendGetRequest(int pageNumber) throws IOException {
         String url = "https://jsonmock.hackerrank.com/api/article_users?page=" + pageNumber;
 
         HttpURLConnection httpClient = (HttpURLConnection) new URL(url).openConnection();

@@ -56,9 +56,9 @@ public class SprintTraining {
     public static void main(String[] args) {
         // Define our test cases: each is (n, sprints, expectedResult).
         class TestCase {
-            int n;
-            List<Integer> sprints;
-            int expected;
+            final int n;
+            final List<Integer> sprints;
+            final int expected;
 
             TestCase(int n, List<Integer> s, int e) {
                 this.n = n;

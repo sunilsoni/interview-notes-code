@@ -25,7 +25,7 @@ class Person {
  * A simple implementation of IntuitMusicBackend for testing.
  */
 class SimpleIntuitMusicBackend implements IntuitMusicBackend {
-    private Map<String, List<String>> userFavorites;
+    private final Map<String, List<String>> userFavorites;
 
     public SimpleIntuitMusicBackend() {
         userFavorites = new HashMap<>();
@@ -42,8 +42,8 @@ class SimpleIntuitMusicBackend implements IntuitMusicBackend {
 }
 
 class IntuitPartyDJ {
-    private IntuitMusicBackend intuitMusic;
-    private Set<Person> currentParty;
+    private final IntuitMusicBackend intuitMusic;
+    private final Set<Person> currentParty;
 
     public IntuitPartyDJ(IntuitMusicBackend backend) {
         this.intuitMusic = backend;

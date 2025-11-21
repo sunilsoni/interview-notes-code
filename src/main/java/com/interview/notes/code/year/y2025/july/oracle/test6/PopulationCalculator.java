@@ -21,7 +21,7 @@ public class PopulationCalculator {
         //   → aggregates all those long values into a single sum
         return states
                 .parallelStream()          // 1) start a parallel stream over the list
-                .mapToLong(State::getPopulation)  // 2) extract each state's population
+                .mapToLong(State::population)  // 2) extract each state's population
                 .sum();                    // 3) sum them all into one long result
     }
 
@@ -96,46 +96,44 @@ public class PopulationCalculator {
     // Main method to run example tests and print PASS/FAIL
     // ──────────────────────────────────────────────────────────────────────────────
 
-    // ──────────────────────────────────────────────────────────────────────────────
-    // Nested class representing a US State and its population
-    // ──────────────────────────────────────────────────────────────────────────────
-    public static class State {
-        // The name of the state (e.g. "California")
-        private final String name;
-        // The population of the state as a long integer
-        private final long population;
-
+    /**
+     * @param name       The name of the state (e.g. "California")
+     * @param population The population of the state as a long integer
+     */ // ──────────────────────────────────────────────────────────────────────────────
+        // Nested class representing a US State and its population
+        // ──────────────────────────────────────────────────────────────────────────────
+        public record State(String name, long population) {
         /**
          * Constructor for State.
          *
          * @param name       the name of the state
          * @param population the population count for the state
          */
-        public State(String name, long population) {
+        public State {
             // Assign the provided name to this.name
-            this.name = name;
             // Assign the provided population to this.population
-            this.population = population;
         }
 
-        /**
-         * Getter for population.
-         *
-         * @return the population of this state
-         */
-        public long getPopulation() {
-            // Return the stored population value
-            return population;
-        }
+            /**
+             * Getter for population.
+             *
+             * @return the population of this state
+             */
+            @Override
+            public long population() {
+                // Return the stored population value
+                return population;
+            }
 
-        /**
-         * Getter for name.
-         *
-         * @return the name of this state
-         */
-        public String getName() {
-            // Return the stored name value
-            return name;
+            /**
+             * Getter for name.
+             *
+             * @return the name of this state
+             */
+            @Override
+            public String name() {
+                // Return the stored name value
+                return name;
+            }
         }
-    }
 }

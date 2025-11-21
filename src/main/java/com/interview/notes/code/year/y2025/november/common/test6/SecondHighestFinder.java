@@ -14,8 +14,8 @@ public class SecondHighestFinder {
 
         // Extract distinct numbers, sort descending, and pick the second element
         List<Integer> sorted = list.stream().distinct()
-                                   .sorted(Comparator.reverseOrder())
-                                   .toList();
+                .sorted(Comparator.reverseOrder())
+                .toList();
 
         // If we do not have at least 2 unique values, return empty result
         if (sorted.size() < 2) return "";
@@ -34,25 +34,25 @@ public class SecondHighestFinder {
     public static void main(String[] args) {
 
         // Test case 1
-        test(new int[]{8,9,8,5,4,8,3,8}, "8-4");
+        test(new int[]{8, 9, 8, 5, 4, 8, 3, 8}, "8-4");
 
         // Test case 2: simple
-        test(new int[]{5,4,3,2}, "4-1");
+        test(new int[]{5, 4, 3, 2}, "4-1");
 
         // Test case 3: duplicates
-        test(new int[]{1,1,1,2,2}, "1-3");
+        test(new int[]{1, 1, 1, 2, 2}, "1-3");
 
         // Test case 4: large data test
         int[] large = IntStream.range(0, 1_000_00)
-                               .map(i -> i % 50)
-                               .toArray();
+                .map(i -> i % 50)
+                .toArray();
         test(large, getSecondHighest(large)); // Just checks no crash
 
         // Test case 5: not enough unique numbers
-        test(new int[]{10,10,10}, "");
+        test(new int[]{10, 10, 10}, "");
 
         // Test case 6: negative numbers
-        test(new int[]{-1,-5,-1,-7,-5}, "-5-2");
+        test(new int[]{-1, -5, -1, -7, -5}, "-5-2");
     }
 
     // Helper method prints PASS/FAIL

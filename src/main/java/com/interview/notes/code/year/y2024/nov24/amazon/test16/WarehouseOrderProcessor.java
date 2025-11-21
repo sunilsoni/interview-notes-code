@@ -59,8 +59,8 @@ public class WarehouseOrderProcessor {
         // Test Case 2 - Empty Query
         testCaseCount++;
         List<Integer> items2 = Arrays.asList(1, 2, 3);
-        List<Integer> start2 = Arrays.asList(0);
-        List<Integer> end2 = Arrays.asList(2);
+        List<Integer> start2 = List.of(0);
+        List<Integer> end2 = List.of(2);
         List<Integer> query2 = new ArrayList<>();
         List<Long> expected2 = new ArrayList<>();
 
@@ -99,11 +99,11 @@ public class WarehouseOrderProcessor {
 
         // Test Case 4 - Edge Case with Single Item
         testCaseCount++;
-        List<Integer> items4 = Arrays.asList(5);
-        List<Integer> start4 = Arrays.asList(0);
-        List<Integer> end4 = Arrays.asList(0);
-        List<Integer> query4 = Arrays.asList(6);
-        List<Long> expected4 = Arrays.asList(1L);
+        List<Integer> items4 = List.of(5);
+        List<Integer> start4 = List.of(0);
+        List<Integer> end4 = List.of(0);
+        List<Integer> query4 = List.of(6);
+        List<Long> expected4 = List.of(1L);
 
         List<Long> result4 = getSmallerItems(items4, start4, end4, query4);
         if (result4.equals(expected4)) {

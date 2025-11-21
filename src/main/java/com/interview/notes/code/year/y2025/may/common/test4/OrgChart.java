@@ -90,16 +90,9 @@ public class OrgChart {
         System.out.println("\nLarge test finished in " + ((t1 - t0) / 1_000_000) + " ms");
     }
 
-    // ---------- simple POJO ----------
-    static class Emp {
-        final int id;
-        final String name;
-        final Integer mid;        // may be null
-
-        Emp(int id, String name, Integer mid) {
-            this.id = id;
-            this.name = name;
-            this.mid = mid;
-        }
+    /**
+     * @param mid may be null
+     */ // ---------- simple POJO ----------
+        record Emp(int id, String name, Integer mid) {
     }
 }

@@ -31,12 +31,12 @@ public class GraphFixer {
         // But let's adapt to exactly reflect the bullet points with uppercase-lowercase consistency:
 
         Map<String, List<String>> adjacency = new HashMap<>();
-        adjacency.put("A", Arrays.asList("B"));
-        adjacency.put("B", Arrays.asList("C"));      // We'll assume "C" was meant uppercase
-        adjacency.put("C", Arrays.asList("D"));      // "C" -> "D"
+        adjacency.put("A", List.of("B"));
+        adjacency.put("B", List.of("C"));      // We'll assume "C" was meant uppercase
+        adjacency.put("C", List.of("D"));      // "C" -> "D"
         adjacency.put("D", Arrays.asList("B", "b")); // "D" -> "B" (cycle) and "D" -> "b"
-        adjacency.put("b", Arrays.asList("F"));      // "b" -> "F"
-        adjacency.put("F", Arrays.asList("C"));      // "F" -> "C"
+        adjacency.put("b", List.of("F"));      // "b" -> "F"
+        adjacency.put("F", List.of("C"));      // "F" -> "C"
 
         // Create the GraphFixer object
         GraphFixer fixer = new GraphFixer(adjacency);

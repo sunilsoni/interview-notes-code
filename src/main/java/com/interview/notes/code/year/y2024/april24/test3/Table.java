@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Table {
-    private Map<Integer, List<Record>> recordsById = new HashMap<>();
-    private LocationRegistry locationRegistry = new LocationRegistry();
+    private final Map<Integer, List<Record>> recordsById = new HashMap<>();
+    private final LocationRegistry locationRegistry = new LocationRegistry();
 
     public static void main(String[] args) {
         // Create the table instance.

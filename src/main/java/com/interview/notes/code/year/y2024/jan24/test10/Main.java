@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 class Employee {
-    private String name;
-    private String department;
-    private double salary;
+    private final String name;
+    private final String department;
+    private final double salary;
 
     public Employee(String name, String department, double salary) {
         this.name = name;

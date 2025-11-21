@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ATM {
-    private static ATM instance = new ATM();
-    private List<ATMObserver> observers = new ArrayList<>();
+    private static final ATM instance = new ATM();
+    private final List<ATMObserver> observers = new ArrayList<>();
     private BankService bankService;
     private Account currentAccount;
-    private Scanner scanner;
+    private final Scanner scanner;
 
     private ATM() {
         AccountFactory accountFactory = new AccountFactory();

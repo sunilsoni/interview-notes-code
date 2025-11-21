@@ -3,8 +3,8 @@ package com.interview.notes.code.year.y2025.feb.randstad.test1;
 import java.util.*;
 
 class LRUCache {
-    private int capacity;
-    private LinkedHashMap<Integer, Integer> cache;
+    private final int capacity;
+    private final LinkedHashMap<Integer, Integer> cache;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;

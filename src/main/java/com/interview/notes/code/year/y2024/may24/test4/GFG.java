@@ -5,7 +5,7 @@ class GFG {
 
     // Function to return the minimum
 // number of halls required
-    static int minHalls(int lectures[][], int n) {
+    static int minHalls(int[][] lectures, int n) {
 
         // Array to store the number of
         // lectures ongoing at time t
@@ -31,7 +31,7 @@ class GFG {
 
     // Driver code
     public static void main(String[] args) {
-        int lectures[][] = {{0, 5},
+        int[][] lectures = {{0, 5},
                 {1, 2},
                 {1, 10}};
         int n = lectures.length;

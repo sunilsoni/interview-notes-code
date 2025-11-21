@@ -124,8 +124,8 @@ class Solution {
     }
 
     static class Transaction {
-        private Account account;
-        private List<String> transactions;
+        private final Account account;
+        private final List<String> transactions;
 
         public Transaction(Account account) {
             this.account = account;

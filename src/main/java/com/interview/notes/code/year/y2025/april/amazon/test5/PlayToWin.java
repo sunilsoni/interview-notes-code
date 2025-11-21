@@ -34,7 +34,7 @@ public class PlayToWin {
             // process t=0
             {
                 int p = pos.get(0);
-                int Y = 0 - prefixK[p];
+                int Y = -prefixK[p];
                 int X = 1 - prefixK[p + 1];
                 minY = Y;
                 maxDelta = Math.max(maxDelta, X - Y);

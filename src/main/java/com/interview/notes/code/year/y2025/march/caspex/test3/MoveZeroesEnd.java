@@ -56,9 +56,9 @@ public class MoveZeroesEnd {
         // Input: 0
         // Expected output: 0
         {
-            List<Integer> nums = new ArrayList<>(Arrays.asList(0));
+            List<Integer> nums = new ArrayList<>(List.of(0));
             List<Integer> result = solve(nums);
-            List<Integer> expected = Arrays.asList(0);
+            List<Integer> expected = List.of(0);
             testResults.put("Test Case 2", result.equals(expected));
         }
 

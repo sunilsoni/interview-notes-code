@@ -189,8 +189,8 @@ public class WarehouseDispatchOptimizer {
                 new TestCase(Arrays.asList(3, 7, 17, 21, 12, 19), 4, 3, 2, 4),
                 new TestCase(Arrays.asList(1, 101), 1, 100, 2, 1),
                 // Edge cases
-                new TestCase(Arrays.asList(5), 10, 5, 0, 1),    // you empty immediately
-                new TestCase(Arrays.asList(6), 4, 4, 1, 1),    // skip to get credit
+                new TestCase(List.of(5), 10, 5, 0, 1),    // you empty immediately
+                new TestCase(List.of(6), 4, 4, 1, 1),    // skip to get credit
                 new TestCase(Arrays.asList(9, 9, 9), 3, 6, 3, 3), // all need exactly 2 skips each; only one credit
                 // Large-data test: 100k warehouses, small values
                 new TestCase(IntStream.range(0, 100_000)
@@ -201,7 +201,7 @@ public class WarehouseDispatchOptimizer {
         int idx = 1;
         for (TestCase tc : tests) {
             int result = getMaximumCredits(tc.inventory, tc.dispatch1, tc.dispatch2, tc.skips);
-            boolean pass = (tc.expected >= 0 ? result == tc.expected : true);
+            boolean pass = (tc.expected < 0 || result == tc.expected);
             String label = (tc.expected >= 0) ? (pass ? "PASS" : "FAIL")
                     : "RESULT";
             System.out.printf("Test %d: %s (expected=%d, actual=%d)%n",

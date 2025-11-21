@@ -12,10 +12,10 @@ import java.util.List;
 
 // Base Pizza class with common attributes
 class Pizza {
-    private String crust;
-    private String size;
-    private List<String> toppings;
-    private double basePrice;
+    private final String crust;
+    private final String size;
+    private final List<String> toppings;
+    private final double basePrice;
 
     // Constructor with basic pizza attributes
     public Pizza(String crust, String size) {
@@ -44,7 +44,7 @@ class Pizza {
         }
 
         // Additional price for crust type
-        if (crust.toLowerCase().equals("thick")) {
+        if (crust.equalsIgnoreCase("thick")) {
             price += 2.0;
         }
         return price;

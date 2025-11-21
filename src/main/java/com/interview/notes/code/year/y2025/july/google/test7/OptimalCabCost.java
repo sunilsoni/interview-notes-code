@@ -103,7 +103,7 @@ public class OptimalCabCost {
                         new int[]{0, 5}, new int[]{0, 2}, new int[]{2, 4}, new int[]{4, 3},
                         new int[]{2, 1}, new int[]{1, 6}, new int[]{6, 7}, new int[]{7, 3}
                 ), 0, 1, 3, 4),                                           // expected 4 for the example
-                new TestCase("TwoNodesSameStart", 2, Arrays.asList(
+                new TestCase("TwoNodesSameStart", 2, List.of(
                         new int[]{0, 1}
                 ), 0, 0, 1, 1),                                          // expected 1 when both start together
                 new TestCase("SeparatePaths", 3, Arrays.asList(

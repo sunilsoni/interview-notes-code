@@ -56,7 +56,7 @@ public class GroupAnagrams {
                 Arrays.asList(
                         Arrays.asList("eat", "tea", "ate"),
                         Arrays.asList("tan", "nat"),
-                        Arrays.asList("bat")
+                        List.of("bat")
                 )
         ));
 
@@ -69,15 +69,15 @@ public class GroupAnagrams {
         // 3. Array with one string only → that string forms one group
         testCases.add(new TestCase(
                 new String[]{"hello"},
-                Arrays.asList(
-                        Arrays.asList("hello")
+                List.of(
+                        List.of("hello")
                 )
         ));
 
         // 4. All strings are identical → all go into one group
         testCases.add(new TestCase(
                 new String[]{"abc", "abc", "abc"},
-                Arrays.asList(
+                List.of(
                         Arrays.asList("abc", "abc", "abc")
                 )
         ));
@@ -96,7 +96,7 @@ public class GroupAnagrams {
         // 6. Strings with empty string edge case
         testCases.add(new TestCase(
                 new String[]{"", ""},
-                Arrays.asList(
+                List.of(
                         Arrays.asList("", "")
                 )
         ));
@@ -105,7 +105,7 @@ public class GroupAnagrams {
         testCases.add(new TestCase(
                 new String[]{"bAt", "tab", "TAb"},
                 Arrays.asList(
-                        Arrays.asList("bAt"),           // "bAt" sorts to "Abt"
+                        List.of("bAt"),           // "bAt" sorts to "Abt"
                         Arrays.asList("tab", "TAb")     // "tab" sorts to "abt", "TAb" sorts to "ATb"
                         // Note: because case matters, "bAt" != "tab" in sorted form
                 )

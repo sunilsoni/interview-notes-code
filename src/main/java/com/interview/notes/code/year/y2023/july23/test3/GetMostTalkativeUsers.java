@@ -48,8 +48,8 @@ public class GetMostTalkativeUsers {
     }
 
     public static class Pair {
-        private String username;
-        private int wordCount;
+        private final String username;
+        private final int wordCount;
 
         public Pair(String username, int wordCount) {
             this.username = username;

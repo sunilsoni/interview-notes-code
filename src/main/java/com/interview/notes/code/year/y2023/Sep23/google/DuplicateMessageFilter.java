@@ -7,7 +7,7 @@ public class DuplicateMessageFilter {
 
     private static final long WINDOW_SIZE_MILLIS = 10000; // 10 seconds
 
-    private Map<String, Long> messageSeenTimes = new HashMap<>();
+    private final Map<String, Long> messageSeenTimes = new HashMap<>();
 
     public static void main(String[] args) {
         DuplicateMessageFilter filter = new DuplicateMessageFilter();

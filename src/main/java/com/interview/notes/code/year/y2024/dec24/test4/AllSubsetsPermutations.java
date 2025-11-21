@@ -141,7 +141,7 @@ public class AllSubsetsPermutations {
                 singleActual.add(listToString(p));
             }
         }
-        System.out.println("Test {1}: " + (singleActual.equals(Arrays.asList("1")) ? "PASS" : "FAIL"));
+        System.out.println("Test {1}: " + (singleActual.equals(List.of("1")) ? "PASS" : "FAIL"));
 
         // Large data test (simple check):
         int[] largeInput = {1, 2, 3, 4};

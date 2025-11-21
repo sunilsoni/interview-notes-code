@@ -30,10 +30,10 @@ public class Solution {
         System.out.println("Test 2 " + (r2 ? "PASSED" : "FAILED"));
 
         // --- Test 3: single interval returns itself ---
-        List<Interval> in3 = Arrays.asList(
+        List<Interval> in3 = List.of(
                 new Interval(5, 10, 100)                     // just one vendor
         );
-        List<Interval> exp3 = Arrays.asList(
+        List<Interval> exp3 = List.of(
                 new Interval(5, 10, 100)                     // same interval
         );
         boolean r3 = sol.getLowestPrices(in3).equals(exp3);
@@ -44,7 +44,7 @@ public class Solution {
                 new Interval(1, 3, 50),                      // piece 1
                 new Interval(3, 5, 50)                       // piece 2 right after, same price
         );
-        List<Interval> exp4 = Arrays.asList(
+        List<Interval> exp4 = List.of(
                 new Interval(1, 5, 50)                       // merged into one [1,5)@50
         );
         boolean r4 = sol.getLowestPrices(in4).equals(exp4);
@@ -55,7 +55,7 @@ public class Solution {
         List<Interval> bigIn = IntStream.range(0, n)     // stream 0..n-1
                 .mapToObj(i -> new Interval(1, 1000, 100))   // each is [1,1000)@100
                 .collect(Collectors.toList());
-        List<Interval> bigExp = Arrays.asList(
+        List<Interval> bigExp = List.of(
                 new Interval(1, 1000, 100)                   // should collapse to exactly one
         );
         long t0 = System.currentTimeMillis();             // note start time

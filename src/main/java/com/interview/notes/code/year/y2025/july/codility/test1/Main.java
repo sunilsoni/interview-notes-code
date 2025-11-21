@@ -119,25 +119,25 @@ public class Main {
         // Test Case 1: Given example
         runTest(new Integer[]{3, 9, 20, null, null, 15, 7},
                 Arrays.asList(
-                        Arrays.asList(9),
+                        List.of(9),
                         Arrays.asList(3, 15),
-                        Arrays.asList(20),
-                        Arrays.asList(7)
+                        List.of(20),
+                        List.of(7)
                 ));
 
         // Test Case 2: Single node
         runTest(new Integer[]{1},
-                Arrays.asList(Arrays.asList(1)));
+                List.of(List.of(1)));
 
         // Test Case 3: Large tree
         runTest(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
                 Arrays.asList(
-                        Arrays.asList(8),
-                        Arrays.asList(4),
+                        List.of(8),
+                        List.of(4),
                         Arrays.asList(2, 9, 10),
                         Arrays.asList(1, 5, 6),
                         Arrays.asList(3, 11, 12),
-                        Arrays.asList(7),
+                        List.of(7),
                         Arrays.asList(13, 14, 15)
                 ));
     }

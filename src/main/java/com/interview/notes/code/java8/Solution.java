@@ -18,11 +18,11 @@ import java.util.stream.Collectors;
  **/
 class VehicleLine {
 
-    private String vin;
-    private String make;
-    private String model;
-    private String trim;
-    private String year;
+    private final String vin;
+    private final String make;
+    private final String model;
+    private final String trim;
+    private final String year;
 
     VehicleLine(String vin, String make, String model, String trim, String year) {
 

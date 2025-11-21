@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class CustomIterator<T> {
-    private Iterator<T> iterator;
+    private final Iterator<T> iterator;
     private T nextElement;
     private boolean hasNext;
 

@@ -125,11 +125,7 @@ public class ConsecutiveElements1 {
         }
 
         // Check if three consecutive elements are decreasing
-        if (ar.get(index - 2) > ar.get(index - 1) && ar.get(index - 1) > ar.get(index)) {
-            return true;
-        }
-
-        return false;
+        return ar.get(index - 2) > ar.get(index - 1) && ar.get(index - 1) > ar.get(index);
     }
 
     public static void main(String[] args) {

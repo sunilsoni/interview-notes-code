@@ -49,14 +49,14 @@ class DerivedClass extends BaseClass {
 public class Test {
     public static void main(String[] args) {
         new BaseClass().demo();
-        System.out.println("");
+        System.out.println();
 
         new BaseClass().demo();
-        System.out.println("");
+        System.out.println();
 
         BaseClass b1 = new DerivedClass();
         b1.anotherDemo();
-        System.out.println("");
+        System.out.println();
 
         DerivedClass d1 = new DerivedClass();
         System.out.println(d1.sum(10, 20));

@@ -130,8 +130,8 @@ public class TikTokVideoIDGenerator {
 
         // Edge case where videoIds contains empty string
         idStream = "12345";
-        videoIds = Arrays.asList("");
-        expected = Arrays.asList(0);
+        videoIds = List.of("");
+        expected = List.of(0);
         result = countMinimumCharactersForVideoIDs(idStream, videoIds);
         System.out.println("Test Case with empty target video ID");
         System.out.println("Expected: " + expected);
@@ -140,8 +140,8 @@ public class TikTokVideoIDGenerator {
 
         // Edge case where idStream does not contain any digits from target
         idStream = "11111";
-        videoIds = Arrays.asList("2");
-        expected = Arrays.asList(-1);
+        videoIds = List.of("2");
+        expected = List.of(-1);
         result = countMinimumCharactersForVideoIDs(idStream, videoIds);
         System.out.println("Test Case with idStream not containing target digits");
         System.out.println("Expected: " + expected);

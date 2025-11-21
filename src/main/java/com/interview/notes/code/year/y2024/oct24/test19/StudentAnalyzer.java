@@ -93,9 +93,9 @@ public class StudentAnalyzer {
     }
 
     static class Student {
-        private String name;
-        private int id;
-        private int score;
+        private final String name;
+        private final int id;
+        private final int score;
 
         public Student(String name, int id, int score) {
             this.name = name;

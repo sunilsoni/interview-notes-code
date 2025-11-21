@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2024.march24.test21;
 
 public class AuthServiceImpl implements AuthService {
-    private IUserRepository userRepository;
+    private final IUserRepository userRepository;
 
 
     public AuthServiceImpl(IUserRepository userRepository) {

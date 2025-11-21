@@ -47,7 +47,7 @@ public class ParenthesisMatcherDemo {
     // Main method used as a simple manual test harness instead of JUnit
     public static void main(String[] args) {
         // Define an array of test input strings to verify various scenarios
-        String[] inputs = new String[] {
+        String[] inputs = new String[]{
                 "()()()()",        // multiple simple matched pairs
                 "((45+)*a3)",      // matches with non-parenthesis characters mixed in
                 "((((()))",        // extra '(' left open at the end
@@ -62,7 +62,7 @@ public class ParenthesisMatcherDemo {
         };
 
         // Define the expected boolean results for each test case in the same order as the inputs
-        Boolean[] expected = new Boolean[] {
+        Boolean[] expected = new Boolean[]{
                 true,   // "()()()()"        → balanced
                 true,   // "((45+)*a3)"      → balanced
                 false,  // "((((()))"        → unbalanced (two extra '(')

@@ -9,14 +9,14 @@ public class DuplicateFinder {
     public static List<Integer> findDuplicates(List<Integer> input) {
         // Group elements by value and count occurrences
         return input.stream()
-            .collect(Collectors.groupingBy(
-                num -> num, // key: the number itself
-                Collectors.counting() // value: how many times it appears
-            ))
-            .entrySet().stream() // convert map to stream of entries
-            .filter(entry -> entry.getValue() > 1) // keep only duplicates
-            .map(Map.Entry::getKey) // extract the duplicate number
-            .collect(Collectors.toList()); // collect into a list
+                .collect(Collectors.groupingBy(
+                        num -> num, // key: the number itself
+                        Collectors.counting() // value: how many times it appears
+                ))
+                .entrySet().stream() // convert map to stream of entries
+                .filter(entry -> entry.getValue() > 1) // keep only duplicates
+                .map(Map.Entry::getKey) // extract the duplicate number
+                .collect(Collectors.toList()); // collect into a list
     }
 
     // Main method to run test cases

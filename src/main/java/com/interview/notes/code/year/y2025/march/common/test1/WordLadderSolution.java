@@ -7,7 +7,7 @@ public class WordLadderSolution {
 
     // Simulated dictionary for demonstration.
     // In a real-world scenario, this would be replaced with an actual dictionary lookup.
-    private static Set<String> dictionary = new HashSet<>(Arrays.asList(
+    private static final Set<String> dictionary = new HashSet<>(Arrays.asList(
             "hit", "hot", "dot", "dog", "cog", "lot", "log"
     ));
 
@@ -32,7 +32,7 @@ public class WordLadderSolution {
         // Queue for BFS where each element is a path (list of words).
         Queue<List<String>> queue = new LinkedList<>();
         // Start by adding the initial word in a list.
-        queue.offer(Arrays.asList(beginWord));
+        queue.offer(List.of(beginWord));
 
         // Set to track visited words to prevent cycles.
         Set<String> visited = new HashSet<>();
@@ -100,7 +100,7 @@ public class WordLadderSolution {
                 // Another valid transformation example.
                 new TestCase("hit", "log", Arrays.asList("hit", "hot", "lot", "log")),
                 // Edge case: start and end are the same.
-                new TestCase("hit", "hit", Arrays.asList("hit")),
+                new TestCase("hit", "hit", List.of("hit")),
                 // Fail case: no possible transformation.
                 new TestCase("hit", "xyz", Collections.emptyList())
         );

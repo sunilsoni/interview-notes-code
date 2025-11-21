@@ -11,10 +11,10 @@ public class DependencyInstaller {
         List<Package> packages = Arrays.asList(
                 new Package("A", "1.0", Arrays.asList("B", "C")),
                 new Package("B", "1.0", Arrays.asList("D", "E", "F")),
-                new Package("C", "1.0", Arrays.asList("F")),
+                new Package("C", "1.0", List.of("F")),
                 new Package("D", "1.0", Collections.emptyList()),
                 new Package("E", "1.0", Collections.emptyList()),
-                new Package("F", "1.0", Arrays.asList("G")),
+                new Package("F", "1.0", List.of("G")),
                 new Package("G", "1.0", Collections.emptyList())
         );
 
@@ -41,9 +41,9 @@ public class DependencyInstaller {
 
         // Test Case 3: Install Package with Cycle
         List<Package> packagesWithCycle = Arrays.asList(
-                new Package("A", "1.0", Arrays.asList("B")),
-                new Package("B", "1.0", Arrays.asList("C")),
-                new Package("C", "1.0", Arrays.asList("A"))
+                new Package("A", "1.0", List.of("B")),
+                new Package("B", "1.0", List.of("C")),
+                new Package("C", "1.0", List.of("A"))
         );
         resolver = new DependencyResolver(packagesWithCycle);
         boolean result3 = resolver.resolveDependencies("A");
@@ -55,8 +55,8 @@ public class DependencyInstaller {
 
         // Test Case 4: Install Package with Missing Dependency
         List<Package> packagesWithMissing = Arrays.asList(
-                new Package("A", "1.0", Arrays.asList("B")),
-                new Package("B", "1.0", Arrays.asList("C"))
+                new Package("A", "1.0", List.of("B")),
+                new Package("B", "1.0", List.of("C"))
                 // Package C is missing
         );
         resolver = new DependencyResolver(packagesWithMissing);
@@ -72,7 +72,7 @@ public class DependencyInstaller {
         int numPackages = 10000;
         for (int i = 1; i <= numPackages; i++) {
             String pkgName = "Pkg" + i;
-            List<String> deps = (i < numPackages) ? Arrays.asList("Pkg" + (i + 1)) : Collections.emptyList();
+            List<String> deps = (i < numPackages) ? List.of("Pkg" + (i + 1)) : Collections.emptyList();
             largePackageList.add(new Package(pkgName, "1.0", deps));
         }
         resolver = new DependencyResolver(largePackageList);

@@ -16,6 +16,6 @@ public class Test {
 
     public static void main(String[] args) {
         Base obj1 = new Derived();
-        obj1.display(); // Calls Base's static method
+        Base.display(); // Calls Base's static method
     }
 }

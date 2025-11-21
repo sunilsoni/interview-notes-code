@@ -6,7 +6,7 @@ public class CustomHashMap<K, V> {
 
     private Entry<K, V>[] buckets;
     private int size;
-    private float loadFactor;
+    private final float loadFactor;
 
     public CustomHashMap() {
         this(DEFAULT_CAPACITY, DEFAULT_LOAD_FACTOR);

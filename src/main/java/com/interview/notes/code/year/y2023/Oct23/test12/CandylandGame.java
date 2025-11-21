@@ -5,7 +5,7 @@ public class CandylandGame {
 
     private static final int BOARD_SIZE = 24;
 
-    private Player[] players;
+    private final Player[] players;
     private int currentPlayerIndex;
 
     public CandylandGame() {

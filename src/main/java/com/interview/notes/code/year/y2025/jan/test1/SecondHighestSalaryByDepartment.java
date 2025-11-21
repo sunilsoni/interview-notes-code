@@ -5,10 +5,10 @@ import java.util.stream.Collectors;
 
 // Employee class
 class Employee {
-    private int id;
-    private String name;
-    private String department;
-    private double salary;
+    private final int id;
+    private final String name;
+    private final String department;
+    private final double salary;
 
     public Employee(int id, String name, String department, double salary) {
         this.id = id;
@@ -141,22 +141,7 @@ public class SecondHighestSalaryByDepartment {
 }
 
 // Utility class for handling cases with duplicate salaries
-class SalaryRank {
-    private final Employee employee;
-    private final long rank;
-
-    public SalaryRank(Employee employee, long rank) {
-        this.employee = employee;
-        this.rank = rank;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public long getRank() {
-        return rank;
-    }
+record SalaryRank(Employee employee, long rank) {
 }
 
 // Additional solution for handling duplicate salaries

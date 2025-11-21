@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 class CurrencyConverter {
-    private List<CurrencyNode> currencyNodes;
+    private final List<CurrencyNode> currencyNodes;
 
     public CurrencyConverter() {
         currencyNodes = new ArrayList<>();

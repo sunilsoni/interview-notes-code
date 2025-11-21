@@ -95,7 +95,7 @@ public class GroceryDepartmentVisitSaver {
         for (String item : shoppingList) {
             String dept = lookupDept(catalog, item);  // Map item to dept, fallback if unknown.
             // If this is the first item OR its dept differs from previous dept, we are starting a new visit.
-            if (prevDept == null || !dept.equals(prevDept)) {
+            if (!dept.equals(prevDept)) {
                 visits++;
                 prevDept = dept; // Update current dept context.
             }
@@ -317,18 +317,12 @@ public class GroceryDepartmentVisitSaver {
 
     /**
      * Simple container to hold a named test case.
+     *
+     * @param name          Human-friendly label printed in results.
+     * @param catalog       Master product->dept data.
+     * @param shoppingList  Ordered shopping list.
+     * @param expectedSaved Expected time saved; null means auto-calc via reference.
      */
-    private static class TestCase {
-        final String name;                 // Human-friendly label printed in results.
-        final String[][] catalog;          // Master product->dept data.
-        final List<String> shoppingList;   // Ordered shopping list.
-        final Integer expectedSaved;       // Expected time saved; null means auto-calc via reference.
-
-        TestCase(String name, String[][] catalog, List<String> shoppingList, Integer expectedSaved) {
-            this.name = name;
-            this.catalog = catalog;
-            this.shoppingList = shoppingList;
-            this.expectedSaved = expectedSaved;
-        }
+        private record TestCase(String name, String[][] catalog, List<String> shoppingList, Integer expectedSaved) {
     }
 }

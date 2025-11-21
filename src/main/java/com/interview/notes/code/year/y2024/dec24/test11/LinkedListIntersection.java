@@ -58,7 +58,7 @@ public class LinkedListIntersection {
         list2.next = new Node(5);
 
         System.out.println("Test 1 (No intersection): " +
-                (hasCommonNode(list1, list2) == false ? "PASS" : "FAIL"));
+                (!hasCommonNode(list1, list2) ? "PASS" : "FAIL"));
 
         // Test Case 2: With intersection
         Node common = new Node(6);
@@ -66,7 +66,7 @@ public class LinkedListIntersection {
         list2.next.next = common;
 
         System.out.println("Test 2 (With intersection): " +
-                (hasCommonNode(list1, list2) == true ? "PASS" : "FAIL"));
+                (hasCommonNode(list1, list2) ? "PASS" : "FAIL"));
 
         // Test Case 3: Cyclic list
         Node cyclic = new Node(7);
@@ -77,11 +77,11 @@ public class LinkedListIntersection {
         list3.next = cyclic;
 
         System.out.println("Test 3 (Cyclic list): " +
-                (hasCommonNode(cyclic, list3) == true ? "PASS" : "FAIL"));
+                (hasCommonNode(cyclic, list3) ? "PASS" : "FAIL"));
 
         // Test Case 4: Null inputs
         System.out.println("Test 4 (Null inputs): " +
-                (hasCommonNode(null, null) == false ? "PASS" : "FAIL"));
+                (!hasCommonNode(null, null) ? "PASS" : "FAIL"));
 
         // Test Case 5: Large lists
         Node largeList1 = createLargeList(1000);
@@ -89,7 +89,7 @@ public class LinkedListIntersection {
         largeList2.next.next = largeList1.next.next; // Create intersection
 
         System.out.println("Test 5 (Large lists): " +
-                (hasCommonNode(largeList1, largeList2) == true ? "PASS" : "FAIL"));
+                (hasCommonNode(largeList1, largeList2) ? "PASS" : "FAIL"));
     }
 
     private static Node createLargeList(int size) {

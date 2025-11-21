@@ -40,7 +40,7 @@ public class SuitableLocations5 {
 
         // Calculate the distance for all centers to point x
         for (int i = 0; i < n; i++) {
-            totalDistance += 2 * Math.abs(x - centers.get(i));
+            totalDistance += 2L * Math.abs(x - centers.get(i));
         }
 
         return totalDistance;

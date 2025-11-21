@@ -115,9 +115,9 @@ public class Main {
     // Simple test harness — no JUnit, just main and PASS/FAIL output
     public static void main(String[] args) {
         class Test {
-            String s;
-            List<String> dict;
-            String expected;
+            final String s;
+            final List<String> dict;
+            final String expected;
 
             Test(String s, List<String> dict, String expected) {
                 this.s = s;
@@ -130,7 +130,7 @@ public class Main {
                 new Test("applepenapple", Arrays.asList("apple", "pen"), "true"),
                 new Test("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat"), "false"),
                 new Test("", Collections.emptyList(), "true"),  // empty string
-                new Test("a", Arrays.asList("b"), "false")
+                new Test("a", List.of("b"), "false")
                 // you can add more edge / large cases here
         );
 

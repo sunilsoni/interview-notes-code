@@ -6,8 +6,8 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 
 public class AbstractDataTypeWithLast<K, V> {
-    private LinkedHashMap<K, V> map;
-    private Deque<K> accessStack;  // Stack to track access order
+    private final LinkedHashMap<K, V> map;
+    private final Deque<K> accessStack;  // Stack to track access order
     private K lastKey;
 
     public AbstractDataTypeWithLast() {

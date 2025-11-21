@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class EnhancedSpellChecker {
 
-    private Map<Integer, List<String>> dictionaryByLength;
+    private final Map<Integer, List<String>> dictionaryByLength;
 
     public EnhancedSpellChecker(List<String> dictionary) {
         this.dictionaryByLength = new HashMap<>();

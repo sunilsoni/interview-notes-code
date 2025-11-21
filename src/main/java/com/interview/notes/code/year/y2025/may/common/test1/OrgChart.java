@@ -75,7 +75,7 @@ public class OrgChart {
 
         // Edge case - Single employee
         System.out.println("\nTest Case 3 - Single Employee:");
-        printOrganization(Arrays.asList(new Employee(1, "Solo", null)));
+        printOrganization(List.of(new Employee(1, "Solo", null)));
 
         // Large organization test (generating 1000 employees)
         List<Employee> largeOrg = new ArrayList<>();

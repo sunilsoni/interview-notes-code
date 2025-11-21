@@ -31,8 +31,8 @@ public class ZigzagTraversal {
         // that takes a set of edges and the expected array,
         // builds the tree, and tests getLevelSpiral().
         class TestCase {
-            List<String> inputEdges;
-            int[] expected;
+            final List<String> inputEdges;
+            final int[] expected;
 
             TestCase(List<String> inputEdges, int[] expected) {
                 this.inputEdges = inputEdges;

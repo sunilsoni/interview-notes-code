@@ -68,7 +68,7 @@ public class TemperatureRegulator1 {
         testCases.add(new TestCase(Arrays.asList(1, 2, 3, 4, 5), 5L + (1 + 1 + 1 + 1))); // z=0, operations_via1_and2=5 +4=9
 
         // Edge Case: All negative
-        testCases.add(new TestCase(Arrays.asList(-1, -2, -3, -4, -5), 5L + (5 + 0 + 0 + 0 + 0))); // z=5, operations_via1_and2=5
+        testCases.add(new TestCase(Arrays.asList(-1, -2, -3, -4, -5), 5L + (5))); // z=5, operations_via1_and2=5
 
         // Mixed Case
         testCases.add(new TestCase(Arrays.asList(3, -1, 2, -2, 4), 7L));

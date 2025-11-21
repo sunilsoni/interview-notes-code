@@ -91,7 +91,7 @@ public class CustomMergeStream {
                 largeArray2.append(",");
             }
         }
-        String test5 = largeArray1.toString() + ";" + largeArray2.toString();
+        String test5 = largeArray1 + ";" + largeArray2;
         long startTime = System.currentTimeMillis();
         String result5 = merge(test5);
         long endTime = System.currentTimeMillis();

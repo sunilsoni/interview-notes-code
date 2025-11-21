@@ -3,8 +3,8 @@ package com.interview.notes.code.year.y2023.Sep23.google;
 import java.util.HashMap;
 
 class MessageProcessor2 implements Runnable {
-    private StatusReceiver receiver;
-    private HashMap<String, Integer> lastSeen;
+    private final StatusReceiver receiver;
+    private final HashMap<String, Integer> lastSeen;
 
     public MessageProcessor2(StatusReceiver receiver) {
         this.receiver = receiver;
@@ -15,7 +15,7 @@ class MessageProcessor2 implements Runnable {
         // Example implementation of the StatusReceiver for demonstration
         StatusReceiver receiver = new StatusReceiver() {
             private int counter = 0;
-            private String[] testMessages = {
+            private final String[] testMessages = {
                     "solar panel activated",
                     "low battery warning",
                     "tire one: low air pressure",
@@ -24,7 +24,7 @@ class MessageProcessor2 implements Runnable {
                     "solar panel activated",
                     "solar panel activated"
             };
-            private int[] testTimestamps = {10, 11, 12, 13, 14, 21, 35};
+            private final int[] testTimestamps = {10, 11, 12, 13, 14, 21, 35};
 
             @Override
             public Status getRawMessage() {

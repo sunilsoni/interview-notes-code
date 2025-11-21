@@ -30,7 +30,7 @@ public class LabAllocationTest {
         }
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String str1 = "30,40,20,25";
         System.out.println(labAllocation(str1));
         String str2 = "30,25,30,25";

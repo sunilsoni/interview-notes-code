@@ -126,9 +126,9 @@ public class LittleBrothersFactorialChallenge {
         // Example Test 1
         runTest(1, 10, Arrays.asList(2, 3, 4, 8), "Example Test 1");
         // Example Test 2
-        runTest(5, 7, Arrays.asList(0), "Example Test 2");
+        runTest(5, 7, List.of(0), "Example Test 2");
         // Edge Case Test
-        runTest(1, 1, Arrays.asList(0), "Edge Test 1");
+        runTest(1, 1, List.of(0), "Edge Test 1");
         // Large Data Test (m = 1, n = 100)
         List<Integer> largeDataResult = solve(1, 100);
         System.out.println("Large Data Test (m=1, n=100): " + largeDataResult);

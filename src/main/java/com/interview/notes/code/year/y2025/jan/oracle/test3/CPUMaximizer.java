@@ -55,7 +55,7 @@ public class CPUMaximizer {
                 " (Expected: 11, Got: " + result2 + ")");
 
         // Edge Case: Single element
-        List<Integer> req3 = Arrays.asList(5);
+        List<Integer> req3 = List.of(5);
         int cap3 = 10;
         int result3 = maximizeCPU(req3, cap3);
         System.out.println("Edge Case 1: " + (result3 == 5 ? "PASS" : "FAIL") +

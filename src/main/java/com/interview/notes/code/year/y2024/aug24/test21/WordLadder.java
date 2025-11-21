@@ -34,7 +34,7 @@ public class WordLadder {
         Map<String, Integer> distances = new HashMap<>();
 
         bfs(beginWord, endWord, wordSet, graph, distances);
-        dfs(beginWord, endWord, graph, distances, new ArrayList<>(Arrays.asList(beginWord)), res);
+        dfs(beginWord, endWord, graph, distances, new ArrayList<>(List.of(beginWord)), res);
 
         return res;
     }

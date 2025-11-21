@@ -103,12 +103,9 @@ public class MatrixYShape {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                boolean isYPart = false;
+                boolean isYPart = i <= center && i == j;
 
                 // Check if cell is on left diagonal (upper half)
-                if (i <= center && i == j) {
-                    isYPart = true;
-                }
 
                 // Check if cell is on right diagonal (upper half)
                 if (i <= center && i + j == n - 1) {

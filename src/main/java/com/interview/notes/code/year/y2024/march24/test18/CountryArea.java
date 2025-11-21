@@ -9,6 +9,6 @@ public class CountryArea implements GeographicalArea {
 
     @Override
     public boolean containsAddress(Address address) {
-        return this.country.equals(address.getCountry());
+        return this.country.equals(address.country());
     }
 }

@@ -28,32 +28,32 @@ public class CatalogValidator {
         // Test Case 1: Example from the problem statement (Valid)
         Map<String, List<String>> catalog1 = new HashMap<>();
         catalog1.put("Databases", Arrays.asList("Security", "Logging"));
-        catalog1.put("Security", Arrays.asList("Logging"));
-        catalog1.put("Logging", Arrays.asList());
+        catalog1.put("Security", List.of("Logging"));
+        catalog1.put("Logging", List.of());
         System.out.println("Test Case 1: " + (validator.isValidCatalog(catalog1) ? "PASS" : "FAIL"));
 
         // Test Case 2: Simple cycle (Invalid)
         Map<String, List<String>> catalog2 = new HashMap<>();
-        catalog2.put("A", Arrays.asList("B"));
-        catalog2.put("B", Arrays.asList("A"));
+        catalog2.put("A", List.of("B"));
+        catalog2.put("B", List.of("A"));
         System.out.println("Test Case 2: " + (!validator.isValidCatalog(catalog2) ? "PASS" : "FAIL"));
 
         // Test Case 3: Self-dependency (Invalid)
         Map<String, List<String>> catalog3 = new HashMap<>();
-        catalog3.put("A", Arrays.asList("A"));
+        catalog3.put("A", List.of("A"));
         System.out.println("Test Case 3: " + (!validator.isValidCatalog(catalog3) ? "PASS" : "FAIL"));
 
         // Test Case 4: Non-existent dependency (Invalid)
         Map<String, List<String>> catalog4 = new HashMap<>();
-        catalog4.put("A", Arrays.asList("B"));
+        catalog4.put("A", List.of("B"));
         System.out.println("Test Case 4: " + (!validator.isValidCatalog(catalog4) ? "PASS" : "FAIL"));
 
         // Test Case 5: Multiple independent chains (Valid)
         Map<String, List<String>> catalog5 = new HashMap<>();
-        catalog5.put("A", Arrays.asList("B"));
-        catalog5.put("B", Arrays.asList());
-        catalog5.put("C", Arrays.asList("D"));
-        catalog5.put("D", Arrays.asList());
+        catalog5.put("A", List.of("B"));
+        catalog5.put("B", List.of());
+        catalog5.put("C", List.of("D"));
+        catalog5.put("D", List.of());
         System.out.println("Test Case 5: " + (validator.isValidCatalog(catalog5) ? "PASS" : "FAIL"));
 
         // Test Case 6: Large catalog without cycles (Valid)

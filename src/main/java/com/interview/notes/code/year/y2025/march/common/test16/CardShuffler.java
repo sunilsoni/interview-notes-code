@@ -54,12 +54,12 @@ public class CardShuffler {
         System.out.println("  Actual: " + result1);
 
         // Test case 2: Edge case - empty deck
-        List<String> testDeck2 = Arrays.asList();
+        List<String> testDeck2 = List.of();
         List<String> result2 = simulateShuffle(testDeck2);
         System.out.println("Test 2 (Empty deck): " + (result2.isEmpty() ? "PASS" : "FAIL"));
 
         // Test case 3: Edge case - single card
-        List<String> testDeck3 = Arrays.asList("Ace of Spades");
+        List<String> testDeck3 = List.of("Ace of Spades");
         List<String> result3 = simulateShuffle(testDeck3);
         System.out.println("Test 3 (Single card): " +
                 (result3.size() == 1 && result3.get(0).equals("Ace of Spades") ? "PASS" : "FAIL"));

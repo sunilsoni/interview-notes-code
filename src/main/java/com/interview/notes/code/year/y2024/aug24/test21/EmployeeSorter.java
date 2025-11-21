@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 class Employee {
-    private String name;
-    private int id;
-    private double salary;
+    private final String name;
+    private final int id;
+    private final double salary;
 
     public Employee(String name, int id, double salary) {
         this.name = name;

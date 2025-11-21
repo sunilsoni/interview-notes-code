@@ -94,8 +94,8 @@ public class CustomerAnalytics {
                 (result.containsAll(Arrays.asList(1, 2)) && result.size() == 2 ? "PASS" : "FAIL"));
 
         // Test Case 2: Empty files
-        result = getLoyalCustomers(new ArrayList<PageView>().iterator(),
-                new ArrayList<PageView>().iterator());
+        result = getLoyalCustomers(Collections.emptyIterator(),
+                Collections.emptyIterator());
         System.out.println("Test Case 2: " + (result.isEmpty() ? "PASS" : "FAIL"));
 
         // Test Case 3: Large data test

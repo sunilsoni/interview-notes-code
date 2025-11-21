@@ -22,5 +22,5 @@ public enum TriangleTypes {
     ISOSCELES,
 
     //A triangle having all the three line-segments or sides unequal is called a scalene triangle.
-    SCALENE;
+    SCALENE
 }

@@ -2,6 +2,7 @@ package com.interview.notes.code.year.y2024.oct24.amazon.test11;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /*
 Given an array with n objects colored red, white or blue,
@@ -44,7 +45,7 @@ public class ColorSorter {
         // Test cases
         ArrayList<Integer> test1 = new ArrayList<>(Arrays.asList(2, 0, 2, 1, 1, 0));
         ArrayList<Integer> test2 = new ArrayList<>(Arrays.asList(2, 0, 1));
-        ArrayList<Integer> test3 = new ArrayList<>(Arrays.asList(0));
+        ArrayList<Integer> test3 = new ArrayList<>(List.of(0));
         ArrayList<Integer> test4 = new ArrayList<>(Arrays.asList(1, 2, 0, 1, 2, 0, 0, 2, 1, 1));
 
         // Large input test

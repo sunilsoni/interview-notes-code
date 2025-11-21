@@ -130,8 +130,8 @@ public class MonsoonUmbrellas {
 
         // Edge cases
         runTest(1000, Arrays.asList(2, 5, 10), 100, "Large Input Test");
-        runTest(1, Arrays.asList(2), -1, "Small Impossible Test");
-        runTest(10, Arrays.asList(1), 10, "Single Size Test");
+        runTest(1, List.of(2), -1, "Small Impossible Test");
+        runTest(10, List.of(1), 10, "Single Size Test");
     }
 
     private static void runTest(int requirement, List<Integer> sizes,

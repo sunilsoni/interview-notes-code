@@ -11,31 +11,31 @@ public class CanRunAllJobs {
         int n1 = 2;
         int[][] prerequisites1 = {{1, 0}};
         boolean result1 = canRunAllJobs(n1, prerequisites1);
-        System.out.println("Test Case 1: " + (result1 == true ? "PASS" : "FAIL"));
+        System.out.println("Test Case 1: " + (result1 ? "PASS" : "FAIL"));
 
         // Test Case 2
         int n2 = 2;
         int[][] prerequisites2 = {{1, 0}, {0, 1}};
         boolean result2 = canRunAllJobs(n2, prerequisites2);
-        System.out.println("Test Case 2: " + (result2 == false ? "PASS" : "FAIL"));
+        System.out.println("Test Case 2: " + (!result2 ? "PASS" : "FAIL"));
 
         // Test Case 3
         int n3 = 4;
         int[][] prerequisites3 = {{1, 0}, {2, 0}, {3, 1}, {3, 2}};
         boolean result3 = canRunAllJobs(n3, prerequisites3);
-        System.out.println("Test Case 3: " + (result3 == true ? "PASS" : "FAIL"));
+        System.out.println("Test Case 3: " + (result3 ? "PASS" : "FAIL"));
 
         // Additional Test Case: Empty prerequisites
         int n4 = 3;
         int[][] prerequisites4 = {};
         boolean result4 = canRunAllJobs(n4, prerequisites4);
-        System.out.println("Test Case 4 (Empty prerequisites): " + (result4 == true ? "PASS" : "FAIL"));
+        System.out.println("Test Case 4 (Empty prerequisites): " + (result4 ? "PASS" : "FAIL"));
 
         // Additional Test Case: Single job
         int n5 = 1;
         int[][] prerequisites5 = {};
         boolean result5 = canRunAllJobs(n5, prerequisites5);
-        System.out.println("Test Case 5 (Single job): " + (result5 == true ? "PASS" : "FAIL"));
+        System.out.println("Test Case 5 (Single job): " + (result5 ? "PASS" : "FAIL"));
     }
 
     public static boolean canRunAllJobs(int n, int[][] prerequisites) {

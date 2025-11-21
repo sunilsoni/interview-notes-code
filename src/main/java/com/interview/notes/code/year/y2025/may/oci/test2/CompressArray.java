@@ -84,7 +84,7 @@ public class CompressArray {
 
         // 2) Additional edge cases
         TestCase singleElement = new TestCase(
-                Arrays.asList(42),
+                List.of(42),
                 10,
                 1
         ); // No merges possible, result = 1
@@ -187,23 +187,14 @@ public class CompressArray {
     }
 
     /**
-     * A simple container for test cases.
-     */
-    private static class TestCase {
-        final List<Integer> inputArray;
-        final int k;
-        final int expected;
-
-        TestCase(List<Integer> inputArray, int k, int expected) {
-            this.inputArray = inputArray;
-            this.k = k;
-            this.expected = expected;
-        }
+         * A simple container for test cases.
+         */
+        private record TestCase(List<Integer> inputArray, int k, int expected) {
 
         // Runs this test case, returns true if output matches expected.
-        boolean run() {
-            int result = getMinLength(inputArray, k);
-            return result == expected;
+            boolean run() {
+                int result = getMinLength(inputArray, k);
+                return result == expected;
+            }
         }
-    }
 }

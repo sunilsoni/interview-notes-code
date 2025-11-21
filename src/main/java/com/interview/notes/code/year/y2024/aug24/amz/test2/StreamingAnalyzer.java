@@ -152,19 +152,19 @@ public class StreamingAnalyzer {
 
         // Test case 1
         List<Integer> history1 = Arrays.asList(1, 2, 2, 2, 5, 2);
-        System.out.println("Test 1: " + analyzer.findMinimumWatchScore(history1, 1, 5));
+        System.out.println("Test 1: " + findMinimumWatchScore(history1, 1, 5));
 
         // Test case 2
         List<Integer> history2 = Arrays.asList(1, 2, 3, 5, 1);
-        System.out.println("Test 2: " + analyzer.findMinimumWatchScore(history2, 5, 5));
+        System.out.println("Test 2: " + findMinimumWatchScore(history2, 5, 5));
 
         // Test case 3
         List<Integer> history3 = Arrays.asList(1, 3, 2, 1, 4);
-        System.out.println("Test 3: " + analyzer.findMinimumWatchScore(history3, 1, 2));
+        System.out.println("Test 3: " + findMinimumWatchScore(history3, 1, 2));
 
         // Additional test case
         List<Integer> history4 = Arrays.asList(1, 2, 3, 4, 5, 1, 2);
-        System.out.println("Test 4: " + analyzer.findMinimumWatchScore(history4, 1, 5));
+        System.out.println("Test 4: " + findMinimumWatchScore(history4, 1, 5));
     }
 
     // Method to find the minimum watch score

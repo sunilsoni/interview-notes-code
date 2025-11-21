@@ -100,7 +100,7 @@ public class SolutionGroupAnagrams {             // Define a public class that h
         String[] in1 = {"eat", "tea", "tan", "ate", "nat", "bat"};    // Input array for example 1
         List<List<String>> out1 = sol.groupAnagrams(in1);        // Call the solution
         List<List<String>> exp1 = Arrays.asList(                  // Expected groups (order-insensitive)
-                Arrays.asList("bat"),
+                List.of("bat"),
                 Arrays.asList("nat", "tan"),
                 Arrays.asList("ate", "eat", "tea")
         );
@@ -110,8 +110,8 @@ public class SolutionGroupAnagrams {             // Define a public class that h
         // Example 2
         String[] in2 = {""};                                     // Single empty string
         List<List<String>> out2 = sol.groupAnagrams(in2);        // Run solution
-        List<List<String>> exp2 = Arrays.asList(                  // Expected: one group with empty string
-                Arrays.asList("")
+        List<List<String>> exp2 = List.of(                  // Expected: one group with empty string
+                List.of("")
         );
         System.out.print("Example 2: ");                         // Label
         assertEqualsIgnoreOrder.accept(exp2, out2);              // Compare
@@ -119,8 +119,8 @@ public class SolutionGroupAnagrams {             // Define a public class that h
         // Example 3
         String[] in3 = {"a"};                                    // Single-character input
         List<List<String>> out3 = sol.groupAnagrams(in3);        // Run solution
-        List<List<String>> exp3 = Arrays.asList(                  // Expected: one group with "a"
-                Arrays.asList("a")
+        List<List<String>> exp3 = List.of(                  // Expected: one group with "a"
+                List.of("a")
         );
         System.out.print("Example 3: ");                         // Label
         assertEqualsIgnoreOrder.accept(exp3, out3);              // Compare
@@ -131,8 +131,8 @@ public class SolutionGroupAnagrams {             // Define a public class that h
         List<List<String>> out4 = sol.groupAnagrams(in4);        // Run solution
         List<List<String>> exp4 = Arrays.asList(                  // Expected buckets
                 Arrays.asList("", ""),                                // two empties together
-                Arrays.asList("a"),                                   // singleton
-                Arrays.asList("b"),                                   // singleton
+                List.of("a"),                                   // singleton
+                List.of("b"),                                   // singleton
                 Arrays.asList("ab", "ba"),                             // anagram pair
                 Arrays.asList("abc", "cab", "bca")                      // anagram triple
         );
@@ -143,9 +143,9 @@ public class SolutionGroupAnagrams {             // Define a public class that h
         String[] in5 = {"ab", "cd", "ef"};                         // No two are anagrams
         List<List<String>> out5 = sol.groupAnagrams(in5);        // Run solution
         List<List<String>> exp5 = Arrays.asList(                  // Each stands alone
-                Arrays.asList("ab"),
-                Arrays.asList("cd"),
-                Arrays.asList("ef")
+                List.of("ab"),
+                List.of("cd"),
+                List.of("ef")
         );
         System.out.print("Edge Case (all unique): ");            // Label
         assertEqualsIgnoreOrder.accept(exp5, out5);              // Compare

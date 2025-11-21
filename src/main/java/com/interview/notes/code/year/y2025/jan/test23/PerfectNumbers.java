@@ -21,7 +21,7 @@ public class PerfectNumbers {
     public static void main(String[] args) {
         // Test cases with expected results
         Object[][] testCases = {
-                {6L, Arrays.asList(6L)},
+                {6L, List.of(6L)},
                 {28L, Arrays.asList(6L, 28L)},
                 {100L, Arrays.asList(6L, 28L)},
                 {496L, Arrays.asList(6L, 28L, 496L)},
@@ -32,7 +32,7 @@ public class PerfectNumbers {
                 {2305843008139952128L, Arrays.asList(6L, 28L, 496L, 8128L, 33550336L, 8589869056L, 137438691328L, 2305843008139952128L)},
                 {1L, Collections.emptyList()},
                 {0L, Collections.emptyList()},
-                {7L, Arrays.asList(6L)},
+                {7L, List.of(6L)},
                 {5000L, Arrays.asList(6L, 28L, 496L, 8128L)}
         };
 

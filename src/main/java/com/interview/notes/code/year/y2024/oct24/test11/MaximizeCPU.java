@@ -120,7 +120,7 @@ public class MaximizeCPU {
         test(requirements3, processingCapacity3, expected3, 3);
 
         // Edge Case: Single element equal to capacity
-        List<Integer> requirements4 = Arrays.asList(10);
+        List<Integer> requirements4 = List.of(10);
         int processingCapacity4 = 10;
         int expected4 = 10;
         test(requirements4, processingCapacity4, expected4, 4);

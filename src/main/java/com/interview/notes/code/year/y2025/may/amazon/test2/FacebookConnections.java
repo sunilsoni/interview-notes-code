@@ -4,7 +4,7 @@ import java.util.*;
 
 public class FacebookConnections {
     // Represents the social network using adjacency list
-    private Map<String, List<String>> network;
+    private final Map<String, List<String>> network;
 
     public FacebookConnections() {
         // Initialize network map to store connections

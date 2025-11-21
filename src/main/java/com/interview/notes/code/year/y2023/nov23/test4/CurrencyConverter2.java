@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CurrencyConverter2 {
-    private Map<String, Double> conversionRatesMap = new HashMap<>();
+    private final Map<String, Double> conversionRatesMap = new HashMap<>();
 
     public CurrencyConverter2(String input) {
         parseAndStoreRates(input);

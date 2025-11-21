@@ -3,7 +3,7 @@ package com.interview.notes.code.misc;
 import java.util.Arrays;
 
 public class RemoveDuplicateInArrayExample3 {
-    public static int removeDuplicateElements(int arr[], int n) {
+    public static int removeDuplicateElements(int[] arr, int n) {
         if (n == 0 || n == 1) {
             return n;
         }
@@ -16,14 +16,12 @@ public class RemoveDuplicateInArrayExample3 {
         }
         temp[j++] = arr[n - 1];
         // Changing original array  
-        for (int i = 0; i < j; i++) {
-            arr[i] = temp[i];
-        }
+        if (j >= 0) System.arraycopy(temp, 0, arr, 0, j);
         return j;
     }
 
     public static void main(String[] args) {
-        int arr[] = {10, 70, 30, 90, 20, 20, 30, 40, 70, 50};//unsorted array
+        int[] arr = {10, 70, 30, 90, 20, 20, 30, 40, 70, 50};//unsorted array
         Arrays.sort(arr);//sorting array  
         int length = arr.length;
         length = removeDuplicateElements(arr, length);

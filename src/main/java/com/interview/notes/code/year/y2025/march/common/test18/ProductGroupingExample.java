@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 
 // Product class
 class Product {
-    private String name;
-    private String category;
-    private double price;
+    private final String name;
+    private final String category;
+    private final double price;
 
     // Constructor
     public Product(String name, String category, double price) {

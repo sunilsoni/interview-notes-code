@@ -36,7 +36,9 @@ FindNearby(Player/Animal/Character, distance) and returns a list of all Players,
 
  */
 class Location {
-    private int x, y, z;
+    private final int x;
+    private final int y;
+    private final int z;
 
     public Location(int x, int y, int z) {
         this.x = x;
@@ -62,7 +64,7 @@ class Location {
 }
 
 abstract class Entity {
-    private String name;
+    private final String name;
     private Location location;
     private int health;
 
@@ -104,7 +106,7 @@ class Player extends Entity {
 }
 
 class Animal extends Entity implements IFriendly {
-    private AnimalType animalType;
+    private final AnimalType animalType;
     private boolean friendly;
 
     public Animal(String name, AnimalType animalType, Location location, int health, boolean friendly) {
@@ -152,9 +154,9 @@ class Animal extends Entity implements IFriendly {
 }
 
 class Character extends Entity implements IFriendly {
-    private String characterType;
+    private final String characterType;
     private boolean friendly;
-    private String greetingPhrase;
+    private final String greetingPhrase;
 
     public Character(String name, String characterType, Location location, int health, boolean friendly, String greetingPhrase) {
         super(name, location, health);
@@ -181,7 +183,7 @@ class Character extends Entity implements IFriendly {
 }
 
 class World {
-    private List<Entity> entities;
+    private final List<Entity> entities;
 
     public World() {
         entities = new ArrayList<>();

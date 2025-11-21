@@ -70,7 +70,7 @@ public class AnagramFinder {
                         "No Anagrams Test Case"
                 ),
                 new TestCase(
-                        Arrays.asList("a"),
+                        List.of("a"),
                         Collections.emptyList(),
                         "Single Word Test Case"
                 ),

@@ -9,7 +9,7 @@ interface Friendly {
 }
 
 abstract class Entity {
-    private String name;
+    private final String name;
     private Location location;
     private int health;
 
@@ -41,7 +41,9 @@ abstract class Entity {
 }
 
 class Location {
-    private int x, y, z;
+    private final int x;
+    private final int y;
+    private final int z;
 
     public Location(int x, int y, int z) {
         this.x = x;
@@ -73,8 +75,8 @@ class Player extends Entity {
 }
 
 class Animal extends Entity implements Friendly {
-    private String animalType;
-    private boolean friendly;
+    private final String animalType;
+    private final boolean friendly;
 
     public Animal(String name, String animalType, Location location, int health, boolean friendly) {
         super(name, location, health);
@@ -97,9 +99,9 @@ class Animal extends Entity implements Friendly {
 }
 
 class Character extends Entity implements Friendly {
-    private String characterType;
-    private boolean friendly;
-    private String greetingPhrase;
+    private final String characterType;
+    private final boolean friendly;
+    private final String greetingPhrase;
 
     public Character(String name, String characterType, Location location, int health, boolean friendly, String greetingPhrase) {
         super(name, location, health);
@@ -123,7 +125,7 @@ class Character extends Entity implements Friendly {
 }
 
 class World {
-    private List<Entity> entities;
+    private final List<Entity> entities;
 
     public World() {
         entities = new ArrayList<>();

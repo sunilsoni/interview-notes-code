@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2023.july23.test10;
 
 public class Locker {
-    private Size size;
+    private final Size size;
     private Bag storedBag;
 
     public Locker(Size size) {

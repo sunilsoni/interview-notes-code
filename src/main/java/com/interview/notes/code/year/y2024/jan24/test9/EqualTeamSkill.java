@@ -18,7 +18,7 @@ public class EqualTeamSkill {
 
         // Calculate the number of players to add to the smaller team to make the sums equal
         long playersToAdd = addPlayersToA ? zerosA : zerosB;
-        if (playersToAdd * 1 < diff) {
+        if (playersToAdd < diff) {
             // Not enough zeros to balance the teams by adding minimum skill level (1)
             return -1;
         }

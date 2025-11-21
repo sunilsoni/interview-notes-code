@@ -17,12 +17,12 @@ package com.interview.notes.code.year.y2023.Oct23.test4;
  */
 class TestApp {
 
-    String args[] = {
+    String[] args = {
             "1",
             "2"
     };
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         if (args.length > 0)
             System.out.println(args.length);
     }

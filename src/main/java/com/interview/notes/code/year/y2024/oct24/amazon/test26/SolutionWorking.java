@@ -202,11 +202,11 @@ public class SolutionWorking {
         testCases.add(new TestCase(
                 Arrays.asList(1, 4, 3, 2, 5),
                 Arrays.asList(
-                        Arrays.asList(1),
-                        Arrays.asList(-1),
-                        Arrays.asList(-1),
+                        List.of(1),
+                        List.of(-1),
+                        List.of(-1),
                         Arrays.asList(2, 3, 4),
-                        Arrays.asList(5)
+                        List.of(5)
                 )
         ));
 
@@ -214,9 +214,9 @@ public class SolutionWorking {
         testCases.add(new TestCase(
                 Arrays.asList(1, 2, 3),
                 Arrays.asList(
-                        Arrays.asList(1),
-                        Arrays.asList(2),
-                        Arrays.asList(3)
+                        List.of(1),
+                        List.of(2),
+                        List.of(3)
                 )
         ));
 
@@ -224,11 +224,11 @@ public class SolutionWorking {
         testCases.add(new TestCase(
                 Arrays.asList(1, 2, 3, 4, 5),
                 Arrays.asList(
-                        Arrays.asList(1),
-                        Arrays.asList(2),
-                        Arrays.asList(3),
-                        Arrays.asList(4),
-                        Arrays.asList(5)
+                        List.of(1),
+                        List.of(2),
+                        List.of(3),
+                        List.of(4),
+                        List.of(5)
                 )
         ));
 
@@ -236,19 +236,19 @@ public class SolutionWorking {
         testCases.add(new TestCase(
                 Arrays.asList(5, 4, 3, 2, 1),
                 Arrays.asList(
-                        Arrays.asList(-1),
-                        Arrays.asList(-1),
-                        Arrays.asList(-1),
-                        Arrays.asList(-1),
+                        List.of(-1),
+                        List.of(-1),
+                        List.of(-1),
+                        List.of(-1),
                         Arrays.asList(1, 2, 3, 4, 5)
                 )
         ));
 
         // Test Case 5: Single volume
         testCases.add(new TestCase(
-                Arrays.asList(1),
-                Arrays.asList(
-                        Arrays.asList(1)
+                List.of(1),
+                List.of(
+                        List.of(1)
                 )
         ));
 
@@ -256,10 +256,10 @@ public class SolutionWorking {
         testCases.add(new TestCase(
                 Arrays.asList(2, 1, 4, 5, 3),
                 Arrays.asList(
-                        Arrays.asList(-1),
+                        List.of(-1),
                         Arrays.asList(1, 2),
-                        Arrays.asList(-1),
-                        Arrays.asList(-1),
+                        List.of(-1),
+                        List.of(-1),
                         Arrays.asList(3, 4, 5)
                 )
         ));

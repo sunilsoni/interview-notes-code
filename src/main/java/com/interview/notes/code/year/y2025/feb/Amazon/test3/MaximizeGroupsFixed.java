@@ -127,7 +127,7 @@ public class MaximizeGroupsFixed {
 
         // A few extras:
         test(Arrays.asList(0, 0, 0), 0, "All zero => expected 0");
-        test(Arrays.asList(10_000_000), 1, "Single large type => expected 1");
+        test(List.of(10_000_000), 1, "Single large type => expected 1");
         test(Arrays.asList(5, 5, 5), 3, "Three product types => expected 3");
         test(Arrays.asList(0, 1, 1, 1, 1), 2, "One zero, four ones => expected 2");
     }

@@ -149,7 +149,7 @@ public class GenomeMutationSolver {
         while (time < 15) { // Limit to prevent excessive output
             time++;
             boolean removed = processOneTimeUnit(current, mutation);
-            System.out.printf("     Time %d: %s%n", time, current.toString());
+            System.out.printf("     Time %d: %s%n", time, current);
 
             if (!removed) {
                 System.out.printf("     No removal at time %d - Final result%n", time);

@@ -98,7 +98,7 @@ public class Solution {
         String password3 = "aaa";
         String reference3 = "aaa";
         List<Integer> cost3 = new ArrayList<>(Collections.nCopies(26, 0));
-        cost3.set('a' - 'a', 5); // All 'a's have cost 5
+        cost3.set(0, 5); // All 'a's have cost 5
         long result3 = calculateMinCost(password3, reference3, cost3);
         System.out.println("Edge Case 2: " + (result3 == 5 ? "Pass" : "Fail") + " (Expected 5, Got " + result3 + ")");
     }

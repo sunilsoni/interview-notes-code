@@ -11,7 +11,7 @@ public class Test {
         update(b1);
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         new Test();
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 public class EmployeeService {
 
     // Sample list of employees
-    private List<Employee> employees = new ArrayList<>();
+    private final List<Employee> employees = new ArrayList<>();
 
     // Constructor to initialize employees (you can load data from a database or other source)
     public EmployeeService() {

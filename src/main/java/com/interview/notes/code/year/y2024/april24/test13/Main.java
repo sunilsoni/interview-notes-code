@@ -22,7 +22,7 @@ public class Main {
     }
 
     static class Employee {
-        private double salary;
+        private final double salary;
 
         public Employee(double salary) {
             this.salary = salary;

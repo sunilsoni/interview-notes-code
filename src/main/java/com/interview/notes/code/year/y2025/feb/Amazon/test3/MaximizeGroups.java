@@ -52,7 +52,7 @@ public class MaximizeGroups {
         System.out.println("Test Case 2: " + (result2 == 0 ? "PASS" : "FAIL"));
 
         // Test Case 3: Single large value
-        List<Integer> products3 = new ArrayList<>(Arrays.asList(1000000000));
+        List<Integer> products3 = new ArrayList<>(List.of(1000000000));
         int result3 = maximizeGroups(products3);
         System.out.println("Test Case 3: " + (result3 == 1 ? "PASS" : "FAIL"));
 

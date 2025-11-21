@@ -33,16 +33,7 @@ public class GenomeMutation {
     }
 
     public static void main(String[] args) {
-        class Test {
-            final String genome;
-            final char mut;
-            final int expected;
-
-            Test(String g, char m, int e) {
-                genome = g;
-                mut = m;
-                expected = e;
-            }
+        record Test(String genome, char mut, int expected) {
         }
 
         List<Test> tests = new ArrayList<>(Arrays.asList(

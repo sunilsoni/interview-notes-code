@@ -12,7 +12,7 @@ public class ZipcodeRange implements GeographicalArea {
 
     @Override
     public boolean containsAddress(Address address) {
-        int addressZip = address.getZipcode();
+        int addressZip = address.zipcode();
         return addressZip >= startZipcode && addressZip <= endZipcode;
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class Employee {
-    private int salary;
+    private final int salary;
 
     public Employee(int salary) {
         this.salary = salary;

@@ -18,7 +18,7 @@ public class Main {
         service2.put("1", new UserStats(2L));
         service2.put("3", new UserStats(4L));
 
-        Map<Long, Long> result1 = counter.count(new Map[]{service1, service2});
+        Map<Long, Long> result1 = counter.count(service1, service2);
         System.out.println("Test case 1 result: " + result1);
         // Expected: {1=7, 2=3, 3=4}
 
@@ -28,12 +28,12 @@ public class Main {
         service3.put("4", new UserStats(null));  // Assuming null is allowed for no visits
         service3.put("5", null);
 
-        Map<Long, Long> result2 = counter.count(new Map[]{service1, service2, service3});
+        Map<Long, Long> result2 = counter.count(service1, service2, service3);
         System.out.println("Test case 2 result: " + result2);
         // Expected: {1=7, 2=3, 3=4, 4=0}
 
         // Test case 3: Empty and null inputs
-        Map<Long, Long> result3 = counter.count(new Map[]{new HashMap<>(), null});
+        Map<Long, Long> result3 = counter.count(new HashMap<>(), null);
         System.out.println("Test case 3 result: " + result3);
         // Expected: {}
 

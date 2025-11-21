@@ -40,7 +40,7 @@ public class SubsetGenerator {
 
         // Test Case 1: Empty list
         List<Integer> input1 = new ArrayList<>();
-        List<List<Integer>> expected1 = Arrays.asList(new ArrayList<>());
+        List<List<Integer>> expected1 = List.of(new ArrayList<>());
         if (generateSubsets(input1).equals(expected1)) {
             System.out.println("Test Case 1 Passed");
             passed++;
@@ -50,10 +50,10 @@ public class SubsetGenerator {
         }
 
         // Test Case 2: Single element
-        List<String> input2 = Arrays.asList("a");
+        List<String> input2 = List.of("a");
         List<List<String>> expected2 = Arrays.asList(
                 new ArrayList<>(),
-                Arrays.asList("a")
+                List.of("a")
         );
         if (generateSubsets(input2).equals(expected2)) {
             System.out.println("Test Case 2 Passed");
@@ -67,10 +67,10 @@ public class SubsetGenerator {
         List<Integer> input3 = Arrays.asList(1, 2, 3);
         List<List<Integer>> expected3 = Arrays.asList(
                 new ArrayList<>(),
-                Arrays.asList(1),
-                Arrays.asList(2),
+                List.of(1),
+                List.of(2),
                 Arrays.asList(1, 2),
-                Arrays.asList(3),
+                List.of(3),
                 Arrays.asList(1, 3),
                 Arrays.asList(2, 3),
                 Arrays.asList(1, 2, 3)

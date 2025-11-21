@@ -286,7 +286,7 @@ public class WordConjugatesAnalysis {
         // Append remaining characters if any
         int remaining = totalLength - sb.length();
         if (remaining > 0) {
-            sb.append(pattern.substring(0, remaining));
+            sb.append(pattern, 0, remaining);
         }
         return sb.toString();
     }

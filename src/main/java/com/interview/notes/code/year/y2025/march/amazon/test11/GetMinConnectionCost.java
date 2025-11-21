@@ -50,7 +50,7 @@ public class GetMinConnectionCost {
         List<Integer> warehouses1 = Arrays.asList(3, 6, 10, 15, 20);
         List<List<Integer>> queries1 = new ArrayList<>();
         queries1.add(Arrays.asList(2, 4));
-        List<Long> expected1 = Arrays.asList(8L);
+        List<Long> expected1 = List.of(8L);
         List<Long> result1 = getMinConnectionCost(warehouses1, queries1);
         System.out.println("Test Case 1: " + (expected1.equals(result1) ? "PASS" : "FAIL"));
         System.out.println("Expected: " + expected1);
@@ -60,7 +60,7 @@ public class GetMinConnectionCost {
         List<Integer> warehouses2 = Arrays.asList(2, 6, 8, 14);
         List<List<Integer>> queries2 = new ArrayList<>();
         queries2.add(Arrays.asList(1, 2));
-        List<Long> expected2 = Arrays.asList(6L);
+        List<Long> expected2 = List.of(6L);
         List<Long> result2 = getMinConnectionCost(warehouses2, queries2);
         System.out.println("Test Case 2: " + (expected2.equals(result2) ? "PASS" : "FAIL"));
         System.out.println("Expected: " + expected2);

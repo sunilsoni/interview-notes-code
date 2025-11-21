@@ -8,17 +8,17 @@ import java.util.stream.Collectors;
 /**
  * validateNonogram: checks if a given nonogram solution matches
  * the provided row and column run-length instructions.
- *
+ * <p>
  * Each instruction (row or column) lists contiguous runs of 'B' cells.
  * Example: [2,1] means "two blacks, then at least one white, then one black".
- *
+ * <p>
  * Input:
- *  - matrix: 2D array of chars ('B' or 'W')
- *  - rowInstr: List<List<Integer>> describing black-run lengths per row
- *  - colInstr: List<List<Integer>> describing black-run lengths per column
- *
+ * - matrix: 2D array of chars ('B' or 'W')
+ * - rowInstr: List<List<Integer>> describing black-run lengths per row
+ * - colInstr: List<List<Integer>> describing black-run lengths per column
+ * <p>
  * Output:
- *  - true if all row and column clues match, false otherwise
+ * - true if all row and column clues match, false otherwise
  */
 public class NonogramValidator {
 
@@ -56,7 +56,10 @@ public class NonogramValidator {
         int count = 0;
         for (char c : line) {
             if (c == 'B') count++;
-            else if (count > 0) { runs.add(count); count = 0; } // end of a run
+            else if (count > 0) {
+                runs.add(count);
+                count = 0;
+            } // end of a run
         }
         if (count > 0) runs.add(count); // add last run if ends with 'B'
         return runs;
@@ -74,16 +77,16 @@ public class NonogramValidator {
 
         // Example 1 (from screenshot)
         char[][] matrix1 = {
-                {'W','W','W','W'},
-                {'B','W','W','B'},
-                {'B','W','B','W'},
-                {'B','B','W','W'}
+                {'W', 'W', 'W', 'W'},
+                {'B', 'W', 'W', 'B'},
+                {'B', 'W', 'B', 'W'},
+                {'B', 'B', 'W', 'W'}
         };
         List<List<Integer>> rows1_1 = Arrays.asList(
-                li(), li(1,1), li(1), li(2)
+                li(), li(1, 1), li(1), li(2)
         );
         List<List<Integer>> cols1_1 = Arrays.asList(
-                li(2,1), li(1), li(2), li(1)
+                li(2, 1), li(1), li(2), li(1)
         );
         System.out.println("validateNonogram(matrix1, rows1_1, cols1_1) => "
                 + validateNonogram(matrix1, rows1_1, cols1_1));  // True

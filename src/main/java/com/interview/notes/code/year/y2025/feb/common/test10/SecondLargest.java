@@ -22,7 +22,7 @@ public class SecondLargest {
             System.out.println("List does not contain a second largest element.");
         }
 
-        List<Integer> singleElementList = Arrays.asList(1);
+        List<Integer> singleElementList = List.of(1);
         Optional<Integer> secondLargest2 = singleElementList.stream().distinct().sorted(Comparator.reverseOrder()).skip(1).findFirst();
 
         if (secondLargest2.isPresent()) {
@@ -31,7 +31,7 @@ public class SecondLargest {
             System.out.println("List does not contain a second largest element.");
         }
 
-        List<Integer> emptyList = Arrays.asList();
+        List<Integer> emptyList = List.of();
         Optional<Integer> secondLargest3 = emptyList.stream().distinct().sorted(Comparator.reverseOrder()).skip(1).findFirst();
 
         if (secondLargest3.isPresent()) {

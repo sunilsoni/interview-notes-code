@@ -17,7 +17,7 @@ Returns "false" if the file doesn't exist.
 
  */
 public class SimpleStorageSystem {
-    private Map<String, String> fileStorage;
+    private final Map<String, String> fileStorage;
 
     public SimpleStorageSystem() {
         fileStorage = new HashMap<>();

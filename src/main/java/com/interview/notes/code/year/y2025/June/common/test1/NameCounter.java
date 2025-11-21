@@ -16,7 +16,7 @@ public class NameCounter {
         countAndPrintNames(names2);
 
         // Test case 3: Single name
-        List<String> names3 = Arrays.asList("John");
+        List<String> names3 = List.of("John");
         System.out.println("\nTest Case 3 - Single name:");
         countAndPrintNames(names3);
 

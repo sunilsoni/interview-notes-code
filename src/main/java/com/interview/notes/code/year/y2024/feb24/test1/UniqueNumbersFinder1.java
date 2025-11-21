@@ -25,9 +25,7 @@ public class UniqueNumbersFinder1 {
 
         // Copy unique numbers to the final array
         int[] uniqueNumbers = new int[uniqueCount];
-        for (int i = 0; i < uniqueCount; i++) {
-            uniqueNumbers[i] = tempUnique[i];
-        }
+        System.arraycopy(tempUnique, 0, uniqueNumbers, 0, uniqueCount);
 
         return uniqueNumbers;
     }

@@ -22,8 +22,8 @@ Input - $1, Item 3
  */
 class VendingMachine {
 
-    private Map<String, Double> items;
-    private List<Double> coins;
+    private final Map<String, Double> items;
+    private final List<Double> coins;
 
     public VendingMachine() {
         items = new HashMap<>();

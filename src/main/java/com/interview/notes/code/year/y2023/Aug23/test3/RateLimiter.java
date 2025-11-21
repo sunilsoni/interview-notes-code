@@ -10,8 +10,8 @@ import java.util.Map;
  * period, impLement an aLgorithm that determines if more caLLs can or cannot be be made within the current time period
  */
 public class RateLimiter {
-    private Map<String, Integer> counter = new HashMap<>();  // Counter for each key
-    private Map<String, Long> timeStamp = new HashMap<>();   // Start timestamp of window for each key
+    private final Map<String, Integer> counter = new HashMap<>();  // Counter for each key
+    private final Map<String, Long> timeStamp = new HashMap<>();   // Start timestamp of window for each key
 
     public static void main(String[] args) {
         RateLimiter rateLimiter = new RateLimiter();

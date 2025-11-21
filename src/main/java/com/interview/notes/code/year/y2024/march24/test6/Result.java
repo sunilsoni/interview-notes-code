@@ -53,7 +53,7 @@ class Result {
         // Reverse the first half and append to form the palindrome
         StringBuilder result = new StringBuilder(sb.toString());
         result.reverse();
-        result.insert(0, sb.toString());
+        result.insert(0, sb);
 
         return result.toString();
     }

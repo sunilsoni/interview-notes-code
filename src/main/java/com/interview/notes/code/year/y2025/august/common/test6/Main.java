@@ -1,24 +1,8 @@
 package com.interview.notes.code.year.y2025.august.common.test6;
 
 // Immutable class
-final class Person {
-    private final String name;
-    private final int age;
-
+record Person(String name, int age) {
     // Constructor initializes values once
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    // Only getters (no setters)
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
 
     // toString for printing
     @Override
@@ -38,7 +22,7 @@ public class Main {
         // p1.setName("Other"); ❌ (no setter)
 
         // The object remains unchanged
-        System.out.println("Name: " + p1.getName());
-        System.out.println("Age: " + p1.getAge());
+        System.out.println("Name: " + p1.name());
+        System.out.println("Age: " + p1.age());
     }
 }

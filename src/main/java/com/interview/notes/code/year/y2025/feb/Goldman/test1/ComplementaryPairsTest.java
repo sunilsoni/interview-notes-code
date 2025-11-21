@@ -56,7 +56,7 @@ public class ComplementaryPairsTest {
 
         // Edge Cases
         testCase(new ArrayList<>(), 0, "Empty List");
-        testCase(Arrays.asList("a"), 0, "Single Element");
+        testCase(List.of("a"), 0, "Single Element");
 
         // Test Case with identical strings
         testCase(Arrays.asList("aa", "aa", "aa"), 3, "Identical Strings");

@@ -4,10 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 class Employee {
-    private int id;
-    private String name;
-    private String department;
-    private double salary;
+    private final int id;
+    private final String name;
+    private final String department;
+    private final double salary;
 
     public Employee(int id, String name, String department, double salary) {
         this.id = id;

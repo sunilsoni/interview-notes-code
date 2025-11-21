@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 
 // Employee class
 class Employee {
-    private int id;
-    private String name;
-    private String address;
-    private int age;
+    private final int id;
+    private final String name;
+    private final String address;
+    private final int age;
 
     // Constructor
     public Employee(int id, String name, String address, int age) {

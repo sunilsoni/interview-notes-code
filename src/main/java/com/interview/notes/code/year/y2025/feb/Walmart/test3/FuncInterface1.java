@@ -14,7 +14,7 @@ interface FuncInterface2 extends FuncInterface1 {
 }
 
 class Test {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         FuncInterface2 f2 = ar -> ar;
         ArrayList<String> s = new ArrayList<>();
         IntStream.range(0, 5).forEach(i -> s.add(String.valueOf(i++)));

@@ -5,13 +5,13 @@ package com.interview.notes.code.LeetCode;
  */
 public class SubarrayWithGivenSum {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         SubarrayWithGivenSum sgs = new SubarrayWithGivenSum();
-        int input[] = {6, 3, 9, 11, 1, 3, 5};
+        int[] input = {6, 3, 9, 11, 1, 3, 5};
         System.out.println(sgs.findSubArray(input, 15));
     }
 
-    public Pair findSubArray(int input[], int sum) {
+    public Pair findSubArray(int[] input, int sum) {
         int currentSum = 0;
         Pair p = new Pair();
         p.start = 0;

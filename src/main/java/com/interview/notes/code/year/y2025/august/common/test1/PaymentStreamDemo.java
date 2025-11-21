@@ -4,9 +4,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 class Address {
-    private String name;
-    private String mobile;
-    private String type;
+    private final String name;
+    private final String mobile;
+    private final String type;
 
     public Address(String name, String mobile, String type) {
         this.name = name;
@@ -28,11 +28,11 @@ class Address {
 }
 
 class Payment {
-    private String fromAccount;
-    private String toAccount;
-    private String amount;
-    private String paymentDate;
-    private List<Address> addresses;
+    private final String fromAccount;
+    private final String toAccount;
+    private final String amount;
+    private final String paymentDate;
+    private final List<Address> addresses;
 
     public Payment(String fromAccount, String toAccount, String amount,
                    String paymentDate, List<Address> addresses) {
@@ -76,7 +76,7 @@ public class PaymentStreamDemo {
                         Arrays.asList(new Address("Vijay", "123456", "P"),
                                 new Address("Ajay", "999999", "S"))),
                 new Payment("1111", "2222", "20", "2025-08-21",
-                        Arrays.asList(new Address("Sunil", "888888", "P")))
+                        List.of(new Address("Sunil", "888888", "P")))
         );
         Map<String, String> expected1 = new HashMap<>();
         expected1.put("Vijay", "123456");
@@ -84,18 +84,18 @@ public class PaymentStreamDemo {
         System.out.println("Test Case 1: " + (getPrimaryAddressMap(testPayments1).equals(expected1) ? "PASS" : "FAIL"));
 
         // Test Case 2
-        List<Payment> testPayments2 = Arrays.asList(
+        List<Payment> testPayments2 = List.of(
                 new Payment("3333", "4444", "30", "2025-08-22",
-                        Arrays.asList(new Address("Ram", "777777", "S")))
+                        List.of(new Address("Ram", "777777", "S")))
         );
         System.out.println("Test Case 2: " + (getPrimaryAddressMap(testPayments2).isEmpty() ? "PASS" : "FAIL"));
 
         // Test Case 3: Duplicate name
         List<Payment> testPayments3 = Arrays.asList(
                 new Payment("5555", "6666", "40", "2025-08-23",
-                        Arrays.asList(new Address("Vijay", "123456", "P"))),
+                        List.of(new Address("Vijay", "123456", "P"))),
                 new Payment("7777", "8888", "50", "2025-08-24",
-                        Arrays.asList(new Address("Vijay", "654321", "P")))
+                        List.of(new Address("Vijay", "654321", "P")))
         );
         Map<String, String> expected3 = new HashMap<>();
         expected3.put("Vijay", "123456"); // keeps first one

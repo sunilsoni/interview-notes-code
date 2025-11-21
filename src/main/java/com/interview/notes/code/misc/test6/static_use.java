@@ -2,7 +2,7 @@ package com.interview.notes.code.misc.test6;
 
 public class static_use {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
 
         static_out obj1 = new static_out();
@@ -10,7 +10,7 @@ public class static_use {
         int a = 2;
         obj1.add(a, a + 1);
         obj2.add(5, a);
-        System.out.println(obj1.x + " " + obj2.y);
+        System.out.println(static_out.x + " " + static_out.y);
 
     }
 }

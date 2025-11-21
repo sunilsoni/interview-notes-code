@@ -8,10 +8,10 @@ import java.util.HashMap;
  */
 class LRUCache {
     // Main data structures
-    private HashMap<Integer, Node> cache; // Stores key->node mapping
-    private Node head;  // Most recently used
-    private Node tail;  // Least recently used
-    private int capacity; // Maximum size of cache
+    private final HashMap<Integer, Node> cache; // Stores key->node mapping
+    private final Node head;  // Most recently used
+    private final Node tail;  // Least recently used
+    private final int capacity; // Maximum size of cache
     private int size;  // Current size of cache
 
     public LRUCache(int capacity) {

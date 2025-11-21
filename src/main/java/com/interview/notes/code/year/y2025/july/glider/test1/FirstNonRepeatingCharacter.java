@@ -65,9 +65,9 @@ public class FirstNonRepeatingCharacter {
     public static void main(String[] args) {
         // Test case class to hold input and expected output
         class TestCase {
-            String input;
-            Character expected;
-            String description;
+            final String input;
+            final Character expected;
+            final String description;
 
             TestCase(String input, Character expected, String description) {
                 this.input = input;

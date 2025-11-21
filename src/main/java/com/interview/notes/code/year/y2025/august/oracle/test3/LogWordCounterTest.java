@@ -7,7 +7,10 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-/*
+/**
+ * @param key   word
+ * @param value frequency
+ */ /*
 Here’s the **final combined question** from your screenshot:
 
 ---
@@ -37,14 +40,7 @@ List<Pair<String, Integer>> topK(int k)       // top-k words by frequency, stabl
 
  */
 // Simple Pair class to hold word and frequency
-class Pair<K, V> {
-    public final K key;   // word
-    public final V value; // frequency
-
-    public Pair(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
+record Pair<K, V>(K key, V value) {
 
     @Override
     public String toString() {
@@ -124,7 +120,7 @@ public class LogWordCounterTest {
         boolean test1 = log1.count("disk") == 3
                 && log1.count("error") == 2
                 && log1.count("io") == 1
-                && top3.get(0).key.equals("disk");
+                && top3.get(0).key().equals("disk");
         System.out.println("Test 1 (I/O handling) -> " + (test1 ? "PASS" : "FAIL") + " | " + top3);
 
         // ===== Test Case 2: Stable Tie =====
@@ -132,7 +128,7 @@ public class LogWordCounterTest {
         log2.ingest("alpha beta");
         log2.ingest("gamma beta");
         List<Pair<String, Integer>> top2 = log2.topK(2);
-        boolean test2 = top2.get(0).key.equals("beta") && top2.get(1).key.equals("alpha");
+        boolean test2 = top2.get(0).key().equals("beta") && top2.get(1).key().equals("alpha");
         System.out.println("Test 2 (stable tie) -> " + (test2 ? "PASS" : "FAIL") + " | " + top2);
 
         // ===== Test Case 3: Empty Input =====
@@ -147,7 +143,7 @@ public class LogWordCounterTest {
             log4.ingest("server log error disk cpu memory");
         }
         boolean test4 = log4.count("server") == 100_000
-                && log4.topK(1).get(0).key.equals("server");
+                && log4.topK(1).get(0).key().equals("server");
         System.out.println("Test 4 (large input) -> " + (test4 ? "PASS" : "FAIL"));
 
         // ===== Test Case 5: Case Insensitivity =====

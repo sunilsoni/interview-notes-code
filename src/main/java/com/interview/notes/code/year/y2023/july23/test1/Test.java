@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 public class Test {
     public static void main(String[] args) {
-        Long a = new Long(100);
-        Long b = new Long(100);
+        Long a = Long.valueOf(100);
+        Long b = Long.valueOf(100);
 
         System.out.println(a == b);//false
         System.out.println(a.equals(b));//true

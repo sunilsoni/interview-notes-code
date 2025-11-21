@@ -177,7 +177,7 @@ public class GrandNumberGame {
 
         // Test Case 3: N=1
         List<Integer> arr3 = Arrays.asList(7, 5);
-        int expected3 = 1 * gcd(7, 5); // gcd(7,5) = 1
+        int expected3 = gcd(7, 5); // gcd(7,5) = 1
         int result3 = solve(arr3);
         if (result3 == expected3) {
             System.out.println("Test Case 3: PASS");
@@ -188,7 +188,7 @@ public class GrandNumberGame {
 
         // Test Case 4: All elements same
         List<Integer> arr4 = Arrays.asList(6, 6, 6, 6);
-        int expected4 = 1 * 6 + 2 * 6; // Total score = 6 + 12 = 18
+        int expected4 = 6 + 2 * 6; // Total score = 6 + 12 = 18
         int result4 = solve(arr4);
         if (result4 == expected4) {
             System.out.println("Test Case 4: PASS");
@@ -210,7 +210,7 @@ public class GrandNumberGame {
 
         // Test Case 6: N=2, array with prime numbers
         List<Integer> arr6 = Arrays.asList(17, 13, 19, 23);
-        int expected6 = 1 * 1 + 2 * 1; // GCD of any pair is 1
+        int expected6 = 1 + 2; // GCD of any pair is 1
         int result6 = solve(arr6);
         int expected6Total = expected6;
         if (result6 == expected6Total) {

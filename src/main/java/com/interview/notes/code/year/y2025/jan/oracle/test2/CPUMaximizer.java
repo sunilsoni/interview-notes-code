@@ -88,7 +88,7 @@ public class CPUMaximizer {
 
         // Edge cases
         runTest("Empty List", new ArrayList<>(), 10, 0);
-        runTest("Single Element", Arrays.asList(5), 10, 5);
+        runTest("Single Element", List.of(5), 10, 5);
         runTest("Zero Capacity", Arrays.asList(3, 4, 5), 0, 0);
 
         // Large numbers

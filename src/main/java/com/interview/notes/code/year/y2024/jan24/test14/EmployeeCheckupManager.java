@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class EmployeeCheckupManager {
-    private Map<Integer, List<Integer>> batchToEmployeesMap = new HashMap<>();
-    private List<Integer> completedBatches = new ArrayList<>();
+    private final Map<Integer, List<Integer>> batchToEmployeesMap = new HashMap<>();
+    private final List<Integer> completedBatches = new ArrayList<>();
 
     public static void main(String[] args) {
         EmployeeCheckupManager manager = new EmployeeCheckupManager();

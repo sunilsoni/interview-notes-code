@@ -66,10 +66,10 @@ public class InventoryOptimizer {
  * Item class representing an item with dimensions and value.
  */
 class Item {
-    private String name;
-    private int width;
-    private int height;
-    private int value;
+    private final String name;
+    private final int width;
+    private final int height;
+    private final int value;
 
     public Item(String name, int width, int height, int value) {
         this.name = name;
@@ -100,8 +100,8 @@ class Item {
  * Inventory class representing the inventory grid.
  */
 class Inventory {
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
     private long gridState; // Each bit represents a cell: 1 = occupied, 0 = empty
 
     public Inventory(int width, int height) {
@@ -190,9 +190,9 @@ class Inventory {
  * Placement class representing the placement of an item at a position.
  */
 class Placement {
-    private Item item;
-    private int x;
-    private int y;
+    private final Item item;
+    private final int x;
+    private final int y;
 
     public Placement(Item item, int x, int y) {
         this.item = item;
@@ -218,8 +218,8 @@ class Placement {
  * Result class to store the maximum total value and corresponding placements.
  */
 class Result {
-    private int totalValue;
-    private List<Placement> placements;
+    private final int totalValue;
+    private final List<Placement> placements;
 
     public Result(int totalValue, List<Placement> placements) {
         this.totalValue = totalValue;
@@ -240,8 +240,8 @@ class Result {
  * Optimizer class containing the optimization logic.
  */
 class Optimizer {
-    private List<Item> items;
-    private Map<Long, Result> memo;
+    private final List<Item> items;
+    private final Map<Long, Result> memo;
 
     public Optimizer(List<Item> items) {
         this.items = items;

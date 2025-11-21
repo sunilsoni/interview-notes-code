@@ -4,7 +4,7 @@ package com.interview.notes.code.misc.test5;
 // non-repeating character
 class GFG {
     static final int NO_OF_CHARS = 256;
-    static char count[] = new char[NO_OF_CHARS];
+    static char[] count = new char[NO_OF_CHARS];
 
     /* calculate count of characters
        in the passed string */

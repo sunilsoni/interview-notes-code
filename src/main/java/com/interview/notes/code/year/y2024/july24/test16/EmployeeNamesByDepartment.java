@@ -6,11 +6,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 class Employee {
-    private int id;
-    private String name;
-    private String department;
-    private String gender;
-    private int age;
+    private final int id;
+    private final String name;
+    private final String department;
+    private final String gender;
+    private final int age;
 
     public Employee(int id, String name, String department, String gender, int age) {
         this.id = id;

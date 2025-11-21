@@ -26,7 +26,7 @@ public class PopulationCalculatorThreads {
         for (State s : states) {
             // Thread will run the lambda, adding this state's population to 'total'
             Thread t = new Thread(() -> {
-                total.addAndGet(s.getPopulation());  // atomically add population
+                total.addAndGet(s.population());  // atomically add population
             });
             threads.add(t);   // remember the thread
             t.start();        // start the thread immediately
@@ -103,40 +103,42 @@ public class PopulationCalculatorThreads {
         }
     }
 
-    // ──────────────────────────────────────────────────────────────────────────────
-    // Simple POJO representing a US state and its population
-    // ──────────────────────────────────────────────────────────────────────────────
-    public static class State {
-        private final String name;         // the state's name (e.g. "California")
-        private final long population;     // the state's population
-
+    /**
+     * @param name       the state's name (e.g. "California")
+     * @param population the state's population
+     */ // ──────────────────────────────────────────────────────────────────────────────
+        // Simple POJO representing a US state and its population
+        // ──────────────────────────────────────────────────────────────────────────────
+        public record State(String name, long population) {
         /**
          * Constructor to initialize the state.
          *
          * @param name       the name of the state
          * @param population the population of the state
          */
-        public State(String name, long population) {
-            this.name = name;              // store the provided name
-            this.population = population;  // store the provided population
+        public State {
+            // store the provided name
+            // store the provided population
         }
 
-        /**
-         * Getter for the state's population.
-         *
-         * @return the population value
-         */
-        public long getPopulation() {
-            return population;             // return the stored population
-        }
+            /**
+             * Getter for the state's population.
+             *
+             * @return the population value
+             */
+            @Override
+            public long population() {
+                return population;             // return the stored population
+            }
 
-        /**
-         * Getter for the state's name.
-         *
-         * @return the name value
-         */
-        public String getName() {
-            return name;                   // return the stored name
+            /**
+             * Getter for the state's name.
+             *
+             * @return the name value
+             */
+            @Override
+            public String name() {
+                return name;                   // return the stored name
+            }
         }
-    }
 }

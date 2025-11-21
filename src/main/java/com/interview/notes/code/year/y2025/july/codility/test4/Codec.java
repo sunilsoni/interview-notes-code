@@ -42,6 +42,6 @@ public class Codec {
     /**
      * Definition for a binary tree node, using Java 17 record.
      */
-    public static record TreeNode(int val, TreeNode left, TreeNode right) {
+    public record TreeNode(int val, TreeNode left, TreeNode right) {
     }
 }

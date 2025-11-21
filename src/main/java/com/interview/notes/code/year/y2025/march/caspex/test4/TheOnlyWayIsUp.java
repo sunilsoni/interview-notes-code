@@ -149,7 +149,7 @@ public class TheOnlyWayIsUp {
 
         // Test Case 4: Edge case with a single element.
         // With one element, the sequence is trivially rising.
-        testCases.add(new TestCase(10, Arrays.asList(100), 0));
+        testCases.add(new TestCase(10, List.of(100), 0));
 
         // Test Case 5: Large data test case for performance testing.
         // Create a sequence of 2000 elements, all starting with value 1.

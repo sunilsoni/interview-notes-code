@@ -98,7 +98,7 @@ public class AllPairsSumX {                              // Main public class to
                 Collections.emptyList());                                          // No numbers sum to 3
 
         t.run("Test 3: single pair", new int[]{0, 3, 5, 7}, 7,
-                Arrays.asList(new Pair(0, 7)));                                     // Only (0,7)
+                List.of(new Pair(0, 7)));                                     // Only (0,7)
 
         t.run("Test 4: many pairs", new int[]{1, 3, 5, 7, 9, 11}, 12,
                 Arrays.asList(new Pair(1, 11), new Pair(3, 9), new Pair(5, 7)));      // Multiple pairs present
@@ -107,7 +107,7 @@ public class AllPairsSumX {                              // Main public class to
                 Arrays.asList(new Pair(0, 9), new Pair(1, 8)));                      // Check zero handling
 
         t.run("Test 6: small X", new int[]{1, 2, 4, 8}, 3,
-                Arrays.asList(new Pair(1, 2)));                                     // Small target
+                List.of(new Pair(1, 2)));                                     // Small target
 
         // ---------- Edge cases ----------
         t.run("Edge 1: empty array", new int[]{}, 10,
@@ -117,7 +117,7 @@ public class AllPairsSumX {                              // Main public class to
                 Collections.emptyList());                                          // Single element -> no pairs
 
         t.run("Edge 3: two elements sum", new int[]{2, 8}, 10,
-                Arrays.asList(new Pair(2, 8)));                                     // Exactly one pair
+                List.of(new Pair(2, 8)));                                     // Exactly one pair
 
         t.run("Edge 4: two elements no sum", new int[]{2, 9}, 10,
                 Collections.emptyList());                                          // Exactly no pair
@@ -162,32 +162,17 @@ public class AllPairsSumX {                              // Main public class to
         }
     }
 
-    // Simple immutable pair to hold results cleanly and print nicely
-    static final class Pair {                            // Define a small helper class representing a pair (a, b)
-        final int a;                                     // Store first value of the pair
-        final int b;                                     // Store second value of the pair
-
-        Pair(int a, int b) {
-            this.a = a;
-            this.b = b;
-        }   // Constructor to set both fields
+    /**
+     * @param a Store first value of the pair
+     * @param b Store second value of the pair
+     */ // Simple immutable pair to hold results cleanly and print nicely
+        record Pair(int a, int b) {                            // Define a small helper class representing a pair (a, b)
+        // Constructor to set both fields
 
         @Override
-        public String toString() {             // Override toString for readable output
-            return "(" + a + "," + b + ")";              // Format pair as (a,b)
-        }
+            public String toString() {             // Override toString for readable output
+                return "(" + a + "," + b + ")";              // Format pair as (a,b)
+            }
 
-        @Override
-        public boolean equals(Object o) {      // Override equals for use in collections if needed
-            if (this == o) return true;                  // Quick check for same reference
-            if (o == null || getClass() != o.getClass()) return false; // Type check
-            Pair pair = (Pair) o;                        // Cast to Pair
-            return a == pair.a && b == pair.b;           // Equal if both fields match
-        }
-
-        @Override
-        public int hashCode() {                // Override hashCode consistent with equals
-            return 31 * a + b;                           // Simple hash combination
-        }
     }
 }

@@ -146,8 +146,8 @@ class LRUCacheSolution {
 
         // Empty cache test
         verify(
-                Arrays.asList(-1),
-                solve(1, Arrays.asList("GET,10")),
+                List.of(-1),
+                solve(1, List.of("GET,10")),
                 "Empty Cache Test"
         );
 

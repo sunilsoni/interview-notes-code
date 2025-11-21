@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2023.Oct23.test11;
 
 class Player {
-    private String name;
+    private final String name;
     private int position;
 
     public Player(String name) {

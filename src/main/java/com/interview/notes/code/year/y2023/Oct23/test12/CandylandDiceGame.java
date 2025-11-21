@@ -3,10 +3,10 @@ package com.interview.notes.code.year.y2023.Oct23.test12;
 import java.util.Random;
 
 public class CandylandDiceGame {
-    private int[] board = {1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6};
-    private int[] playerPositions = {0, 0};
+    private final int[] board = {1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6};
+    private final int[] playerPositions = {0, 0};
     private int currentPlayer = 0;
-    private Random random = new Random();
+    private final Random random = new Random();
 
     public static void main(String[] args) {
         CandylandDiceGame game = new CandylandDiceGame();

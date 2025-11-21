@@ -7,7 +7,7 @@ public class CarrierRouteOptimizer {
     public static Result findOptimalRoute(List<List<Integer>> carrierRoutes, int origin, int destination) {
         // Edge case: origin equals destination
         if (origin == destination) {
-            return new Result(0, Arrays.asList(origin));
+            return new Result(0, List.of(origin));
         }
 
         // Map station -> list of route indices

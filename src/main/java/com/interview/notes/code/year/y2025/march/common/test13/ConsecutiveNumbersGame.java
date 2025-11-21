@@ -130,7 +130,7 @@ public class ConsecutiveNumbersGame {
                 // Edge case: already multiples of 3
                 new TestCase(Arrays.asList(3, 6, 9), 0),
                 // Edge case: minimal input
-                new TestCase(Arrays.asList(2), 0),
+                new TestCase(List.of(2), 0),
                 // Edge case: Large numbers
                 new TestCase(Arrays.asList(999999, 999999, 999999), 0),
                 // Edge case: None divisible initially

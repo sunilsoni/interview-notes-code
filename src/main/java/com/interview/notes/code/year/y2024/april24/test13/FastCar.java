@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 class FastCar {
-    private int speed;
+    private final int speed;
 
     public FastCar(int speed) {
         this.speed = speed;

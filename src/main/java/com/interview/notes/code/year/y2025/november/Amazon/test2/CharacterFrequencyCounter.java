@@ -14,17 +14,17 @@ public class CharacterFrequencyCounter {
         // Step 2: Remove spaces if needed
         // Step 3: Convert to character stream and count frequencies
         Map<Character, Long> frequencyMap = sentence.toLowerCase()
-            .chars() // convert to IntStream of character codes
-            .mapToObj(c -> (char) c) // convert each int to char
-            .filter(c -> Character.isLetter(c)) // optional: count only letters
-            .collect(Collectors.groupingBy(
-                Function.identity(), // group by character itself
-                Collectors.counting() // count occurrences
-            ));
+                .chars() // convert to IntStream of character codes
+                .mapToObj(c -> (char) c) // convert each int to char
+                .filter(c -> Character.isLetter(c)) // optional: count only letters
+                .collect(Collectors.groupingBy(
+                        Function.identity(), // group by character itself
+                        Collectors.counting() // count occurrences
+                ));
 
         // Print result
         frequencyMap.forEach((ch, count) ->
-            System.out.println("'" + ch + "' appears " + count + " times")
+                System.out.println("'" + ch + "' appears " + count + " times")
         );
     }
 }

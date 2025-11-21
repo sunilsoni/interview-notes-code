@@ -100,18 +100,7 @@ public class JewelryStoreTest {
     }
 
     public static void main(String[] args) {
-        class TC {
-            final int N;
-            final List<Integer> K;
-            final int expected;
-            final String name;
-
-            TC(int N, List<Integer> K, int expected, String name) {
-                this.N = N;
-                this.K = K;
-                this.expected = expected;
-                this.name = name;
-            }
+        record TC(int N, List<Integer> K, int expected, String name) {
         }
 
         List<TC> fixedTests = Arrays.asList(

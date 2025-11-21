@@ -19,8 +19,7 @@ class Point {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Point)) return false;
-        Point p = (Point) o;
+        if (!(o instanceof Point p)) return false;
         return this.x == p.x && this.y == p.y;
     }
 }

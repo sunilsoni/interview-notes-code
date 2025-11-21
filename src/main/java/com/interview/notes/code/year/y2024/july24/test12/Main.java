@@ -1,7 +1,8 @@
 package com.interview.notes.code.year.y2024.july24.test12;
 
 class Node {
-    private Node leftChild, rightChild;
+    private final Node leftChild;
+    private final Node rightChild;
 
     public Node(Node leftChild, Node rightChild) {
         this.leftChild = leftChild;

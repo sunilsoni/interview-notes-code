@@ -11,12 +11,12 @@ public class Test {
         try {
             System.out.println(Integer.compareUnsigned(x, 3) == 0 || Integer.compareUnsigned(y, 0) == 0);
         } catch (Exception ex) {
-            System.out.println(ex.getClass().toString());
+            System.out.println(ex.getClass());
         }
         try {
-            System.out.println(y.compareTo(null) == 0 || true);
+            System.out.println(true);
         } catch (Exception ex) {
-            System.out.println(ex.getClass().toString());
+            System.out.println(ex.getClass());
         }
         System.out.println(Stream.of("green", "yellow", "blue")
                 .max((s1, s2) -> s1.compareTo(s2))

@@ -1,8 +1,8 @@
 package com.interview.notes.code.year.y2023.dec23.test6;
 
 public class Student {
-    private String name;
-    private int rollNumber;
+    private final String name;
+    private final int rollNumber;
 
     public Student(String name, int rollNumber) {
         this.name = name;

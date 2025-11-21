@@ -51,12 +51,12 @@ public class FamilyHierarchy {
         // Test Case 1 (Given Sample)
         int n = 6;
         List<List<String>> relationships = Arrays.asList(
-            Arrays.asList("Ronald", "Paula", "Jason"),
-            Arrays.asList("Travis", "Judy", "Mary"),
-            Arrays.asList("Jason", "Mary", "Benjamin"),
-            Arrays.asList("Homer", "Marge", "Bart"),
-            Arrays.asList("Ervin", "Marie", "Paula"),
-            Arrays.asList("Clancy", "Jacky", "Marge")
+                Arrays.asList("Ronald", "Paula", "Jason"),
+                Arrays.asList("Travis", "Judy", "Mary"),
+                Arrays.asList("Jason", "Mary", "Benjamin"),
+                Arrays.asList("Homer", "Marge", "Bart"),
+                Arrays.asList("Ervin", "Marie", "Paula"),
+                Arrays.asList("Clancy", "Jacky", "Marge")
         );
 
         String person = "Benjamin";

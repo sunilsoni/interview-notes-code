@@ -56,10 +56,10 @@ public class MinConnectionCost {
     public static void main(String[] args) {
         // Define test cases as a list of objects where each test case is a map of input and expected output.
         class TestCase {
-            List<Integer> warehouseCapacity;
-            List<List<Integer>> additionalHubs;
-            List<Long> expected;
-            String name;
+            final List<Integer> warehouseCapacity;
+            final List<List<Integer>> additionalHubs;
+            final List<Long> expected;
+            final String name;
 
             TestCase(String name, List<Integer> warehouseCapacity, List<List<Integer>> additionalHubs, List<Long> expected) {
                 this.name = name;
@@ -74,23 +74,23 @@ public class MinConnectionCost {
         // Provided example test cases
         testCases.add(new TestCase("Example 1",
                 Arrays.asList(3, 6, 10, 15, 20),
-                Arrays.asList(Arrays.asList(2, 4)),
-                Arrays.asList(8L)));
+                List.of(Arrays.asList(2, 4)),
+                List.of(8L)));
 
         testCases.add(new TestCase("Sample Case 1",
                 Arrays.asList(2, 6, 8, 14),
-                Arrays.asList(Arrays.asList(1, 2)),
-                Arrays.asList(6L)));
+                List.of(Arrays.asList(1, 2)),
+                List.of(6L)));
 
         testCases.add(new TestCase("Sample Case 2 - Query 1",
                 Arrays.asList(0, 2, 5, 9, 12, 18),
-                Arrays.asList(Arrays.asList(2, 5)),
-                Arrays.asList(12L)));
+                List.of(Arrays.asList(2, 5)),
+                List.of(12L)));
 
         testCases.add(new TestCase("Sample Case 2 - Query 2",
                 Arrays.asList(0, 2, 5, 9, 12, 18),
-                Arrays.asList(Arrays.asList(1, 3)),
-                Arrays.asList(18L)));
+                List.of(Arrays.asList(1, 3)),
+                List.of(18L)));
 
         // Combined multi-query test case for Sample Case 2
         testCases.add(new TestCase("Sample Case 2 - Combined",
@@ -101,8 +101,8 @@ public class MinConnectionCost {
         // Edge test: All warehouses are hubs (first two are hubs, and last is always hub)
         testCases.add(new TestCase("Edge: All Warehouses Hubs",
                 Arrays.asList(5, 5, 5, 5, 5),
-                Arrays.asList(Arrays.asList(1, 3)),
-                Arrays.asList(0L)));
+                List.of(Arrays.asList(1, 3)),
+                List.of(0L)));
 
         // Large input test
         int n = 250000;
@@ -111,7 +111,7 @@ public class MinConnectionCost {
             largeWarehouse.add(i); // non-decreasing capacities from 0 to n-1
         }
         // Choose hubs: one near the beginning and one in the middle
-        List<List<Integer>> largeQuery = Arrays.asList(Arrays.asList(2, n / 2));
+        List<List<Integer>> largeQuery = List.of(Arrays.asList(2, n / 2));
         // To calculate expected cost for large test:
         // Hubs: at positions 2, n/2, n.
         // Segment1: [1, 1] cost = (1)*warehouseCapacity[1] - warehouseCapacity[0] = 1*1 - 0 = 1.

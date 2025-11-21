@@ -38,11 +38,11 @@ public class FrequentWordsFinder {
 
         // Test Case 2: Empty array
         String[] test2 = {};
-        testCase(test2, 2, Arrays.asList(), "Test 2: Empty array");
+        testCase(test2, 2, List.of(), "Test 2: Empty array");
 
         // Test Case 3: Single element
         String[] test3 = {"java"};
-        testCase(test3, 1, Arrays.asList("java"), "Test 3: Single element");
+        testCase(test3, 1, List.of("java"), "Test 3: Single element");
 
         // Test Case 4: Large input (simulated)
         String[] test4 = generateLargeInput(10000);

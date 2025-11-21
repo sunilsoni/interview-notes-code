@@ -223,7 +223,7 @@ public class DominantSubstringCounter {
                 // But since Java's HashMap can handle negative keys, it's not necessary
                 // Key = trans_c1 * 1_000_000 + trans_c2
                 // Initialize with (0,0)
-                long keyInitial = 0L * 1_000_000L + 0L;
+                long keyInitial = 0L;
                 map.put(keyInitial, 1);
                 long count_c1 = 0;
                 long count_c2 = 0;

@@ -33,7 +33,7 @@ public class Solution2 {
         if (middle != 0) {
             palindrome.append(middle);
         }
-        palindrome.append(half.reverse().toString());
+        palindrome.append(half.reverse());
 
         return palindrome.toString();
     }
@@ -65,7 +65,7 @@ public class Solution2 {
         if (middle != 0) {
             result.append(middle);
         }
-        result.append(half.reverse().toString());
+        result.append(half.reverse());
 
         return result.toString();
     }

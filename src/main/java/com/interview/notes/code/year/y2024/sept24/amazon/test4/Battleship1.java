@@ -34,8 +34,8 @@ public class Battleship1 {
     private static final char SHIP = 'S';
     private static final char HIT = 'H';
 
-    private char[][] grid;
-    private List<Ship> ships;
+    private final char[][] grid;
+    private final List<Ship> ships;
 
     public Battleship1() {
         grid = new char[GRID_SIZE][GRID_SIZE];

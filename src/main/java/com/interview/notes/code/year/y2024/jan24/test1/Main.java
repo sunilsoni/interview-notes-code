@@ -40,10 +40,10 @@ public class Main {
 }
 
 class Employee {
-    private int id;
-    private String name;
-    private int salary;
-    private int deptId;
+    private final int id;
+    private final String name;
+    private final int salary;
+    private final int deptId;
 
     public Employee(int id, String name, int salary, int deptId) {
         this.id = id;

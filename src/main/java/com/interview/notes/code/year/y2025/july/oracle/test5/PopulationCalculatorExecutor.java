@@ -31,7 +31,7 @@ public class PopulationCalculatorExecutor {
                         executor.submit(() -> {
                             // This runs in another thread:
                             // simply return the state's population
-                            return s.getPopulation();
+                            return s.population();
                         })
                 );
             }
@@ -106,24 +106,14 @@ public class PopulationCalculatorExecutor {
         }
     }
 
-    // ──────────────────────────────────────────────────────────────────────────────
-    // Simple POJO for a State
-    // ──────────────────────────────────────────────────────────────────────────────
-    public static class State {
-        private final String name;             // state name
-        private final long population;         // state population
-
-        public State(String name, long population) {
-            this.name = name;                 // store the name
-            this.population = population;     // store the population
-        }
-
-        public long getPopulation() {
-            return population;                // expose population
-        }
-
-        public String getName() {
-            return name;                      // expose name
-        }
+    /**
+     * @param name       state name
+     * @param population state population
+     */ // ──────────────────────────────────────────────────────────────────────────────
+        // Simple POJO for a State
+        // ──────────────────────────────────────────────────────────────────────────────
+        public record State(String name, long population) {
+        // store the name
+        // store the population
     }
 }

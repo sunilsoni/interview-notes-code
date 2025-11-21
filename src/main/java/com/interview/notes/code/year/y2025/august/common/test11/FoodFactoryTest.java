@@ -121,23 +121,10 @@ class MexicanCuisine extends Cuisine {
 }
 
 // Simple structs for our tests
-class Order {
-    final String key, dish;
-
-    Order(String key, String dish) {
-        this.key = key;
-        this.dish = dish;
-    }
+record Order(String key, String dish) {
 }
 
-class TestCase {
-    final List<Order> orders;
-    final List<String> expected;
-
-    TestCase(List<Order> orders, List<String> expected) {
-        this.orders = orders;
-        this.expected = expected;
-    }
+record TestCase(List<Order> orders, List<String> expected) {
 }
 
 public class FoodFactoryTest {
@@ -156,7 +143,7 @@ public class FoodFactoryTest {
 
         return orders.stream().map(o -> {
             try {
-                Cuisine served = factory.serveCuisine(o.key, o.dish);
+                Cuisine served = factory.serveCuisine(o.key(), o.dish());
                 return served.toString();
             } catch (UnservableCuisineRequestException e) {
                 return e.getMessage();
@@ -165,7 +152,7 @@ public class FoodFactoryTest {
     }
 
     public static void main(String[] args) {
-        List<TestCase> tests = Arrays.asList(
+        List<TestCase> tests = List.of(
                 // --- Sample from prompt ---
                 new TestCase(
                         Arrays.asList(
@@ -185,11 +172,11 @@ public class FoodFactoryTest {
         // Run each named test
         for (int i = 0; i < tests.size(); i++) {
             TestCase tc = tests.get(i);
-            List<String> actual = processOrders(tc.orders);
-            boolean pass = actual.equals(tc.expected);
+            List<String> actual = processOrders(tc.orders());
+            boolean pass = actual.equals(tc.expected());
             System.out.println("Test Case " + (i + 1) + ": " + (pass ? "PASS" : "FAIL"));
             if (!pass) {
-                System.out.println("  Expected: " + tc.expected);
+                System.out.println("  Expected: " + tc.expected());
                 System.out.println("  Actual:   " + actual);
             }
         }

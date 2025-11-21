@@ -54,10 +54,8 @@ public class CustomFileSearchUtility {
         long lastModified = file.lastModified();
         if (criteria.modifiedAfter != null &&
                 lastModified < criteria.modifiedAfter) return false;
-        if (criteria.modifiedBefore != null &&
-                lastModified > criteria.modifiedBefore) return false;
-
-        return true;
+        return criteria.modifiedBefore == null ||
+                lastModified <= criteria.modifiedBefore;
     }
 
     // Test implementation

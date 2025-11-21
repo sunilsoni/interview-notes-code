@@ -57,7 +57,7 @@ public class FastestJavaURLFinder {
         testURLs(testUrls1);
 
         // Test Case 2: Empty list
-        List<String> testUrls2 = Arrays.asList();
+        List<String> testUrls2 = List.of();
         System.out.println("\nTest Case 2: Empty list");
         testURLs(testUrls2);
 

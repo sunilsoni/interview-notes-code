@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Forest {
-    private List<Tree> trees;
+    private final List<Tree> trees;
 
     public Forest() {
         this.trees = new ArrayList<>();

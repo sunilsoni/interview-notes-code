@@ -9,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,16 +123,12 @@ public class FinestFoodOutletFinder {
 
     // Helper method to encode URL parameters
     private static String encodeURIComponent(String component) {
-        try {
-            return URLEncoder.encode(component, "UTF-8").replaceAll("\\+", "%20")
-                    .replaceAll("\\%21", "!")
-                    .replaceAll("\\%27", "'")
-                    .replaceAll("\\%28", "(")
-                    .replaceAll("\\%29", ")")
-                    .replaceAll("\\%7E", "~");
-        } catch (UnsupportedEncodingException e) {
-            return component;
-        }
+        return URLEncoder.encode(component, StandardCharsets.UTF_8).replaceAll("\\+", "%20")
+                .replaceAll("\\%21", "!")
+                .replaceAll("\\%27", "'")
+                .replaceAll("\\%28", "(")
+                .replaceAll("\\%29", ")")
+                .replaceAll("\\%7E", "~");
     }
 
     // Method to run a single test case

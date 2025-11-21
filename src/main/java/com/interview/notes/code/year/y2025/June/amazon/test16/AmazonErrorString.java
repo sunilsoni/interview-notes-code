@@ -97,8 +97,10 @@ public class AmazonErrorString {
     /* ---------------------- simple main for quick tests ---------------------- */
     public static void main(String[] args) {
         class TC {
-            String s;
-            int x, y, exp;
+            final String s;
+            final int x;
+            final int y;
+            final int exp;
 
             TC(String s, int x, int y, int e) {
                 this.s = s;

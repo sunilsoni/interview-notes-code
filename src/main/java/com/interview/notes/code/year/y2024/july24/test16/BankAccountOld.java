@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BankAccountOld {
-    private static Map<String, AccountDetails> accounts = new HashMap<>();
+    private static final Map<String, AccountDetails> accounts = new HashMap<>();
 
     // Constructor
     public BankAccountOld(String accountNumber, double initialBalance) {

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class BankingSystem {
-    private Map<String, Double> accounts;
+    private final Map<String, Double> accounts;
 
     public BankingSystem() {
         this.accounts = new HashMap<>();

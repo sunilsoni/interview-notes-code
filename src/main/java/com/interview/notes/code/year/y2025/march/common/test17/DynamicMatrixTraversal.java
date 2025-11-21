@@ -70,7 +70,7 @@ public class DynamicMatrixTraversal {
             result.append(matrix[rows / 2][cols / 2]);
         }
 
-        System.out.println(result.toString());
+        System.out.println(result);
     }
 
     public static void main(String[] args) {

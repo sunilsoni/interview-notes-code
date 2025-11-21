@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class DeliverySystem {
-    private Map<Integer, Double> driverRates = new HashMap<>();
-    private List<Delivery> deliveries = new ArrayList<>();
+    private final Map<Integer, Double> driverRates = new HashMap<>();
+    private final List<Delivery> deliveries = new ArrayList<>();
 
     public static void main(String[] args) {
         DeliverySystem billingSystem = new DeliverySystem();

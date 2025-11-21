@@ -114,7 +114,7 @@ public class SnakeExitFinder {
         }
         sb.append(", Got: ").append(format(actual)).append(")");
 
-        System.out.println(testName + " => " + (pass ? "PASS " : "FAIL ") + sb.toString());
+        System.out.println(testName + " => " + (pass ? "PASS " : "FAIL ") + sb);
     }
 
     /**

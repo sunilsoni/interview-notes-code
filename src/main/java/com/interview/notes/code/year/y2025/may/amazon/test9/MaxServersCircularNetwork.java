@@ -113,7 +113,7 @@ public class MaxServersCircularNetwork {
 
         // Edge cases
         testCases.add(new TestCase(
-                Arrays.asList(5),
+                List.of(5),
                 1,
                 "Single server"
         ));
@@ -246,15 +246,6 @@ public class MaxServersCircularNetwork {
         System.out.println("\nResult: " + getMaxServers(debugCase));
     }
 
-    static class TestCase {
-        final List<Integer> powers;
-        final int expected;
-        final String name;
-
-        TestCase(List<Integer> powers, int expected, String name) {
-            this.powers = powers;
-            this.expected = expected;
-            this.name = name;
-        }
+    record TestCase(List<Integer> powers, int expected, String name) {
     }
 }

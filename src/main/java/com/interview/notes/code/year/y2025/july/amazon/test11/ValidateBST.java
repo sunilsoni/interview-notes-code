@@ -45,10 +45,7 @@ public class ValidateBST {
             return false;
         }
         // Recurse on left: new upper bound is current value
-        if (!isValidBSTHelper(node.left, lower, val)) {
-            return false;
-        }
-        return true;                                 // All checks passed
+        return isValidBSTHelper(node.left, lower, val);// All checks passed
     }
 
     // Build a balanced BST from a sorted List<Integer>

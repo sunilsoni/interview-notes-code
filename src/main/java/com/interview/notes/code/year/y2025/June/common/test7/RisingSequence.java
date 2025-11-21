@@ -41,16 +41,7 @@ public class RisingSequence {
      * Simple test harness in main—no JUnit, just prints PASS or FAIL.
      */
     public static void main(String[] args) {
-        class Test {
-            final int B;
-            final List<Integer> ar;
-            final int expected;
-
-            Test(int B, List<Integer> ar, int expected) {
-                this.B = B;
-                this.ar = ar;
-                this.expected = expected;
-            }
+        record Test(int B, List<Integer> ar, int expected) {
         }
 
         List<Test> tests = Arrays.asList(

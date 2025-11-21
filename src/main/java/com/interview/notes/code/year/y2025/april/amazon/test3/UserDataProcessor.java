@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class UserDataProcessor {
     // Simulated database of users
-    private static List<User> userDatabase = new ArrayList<>();
+    private static final List<User> userDatabase = new ArrayList<>();
 
     // Main method to demonstrate and test the solution
     public static void main(String[] args) {
@@ -68,9 +68,9 @@ public class UserDataProcessor {
 
 // Simple User class to represent user data
 class User {
-    private String name;
-    private int age;
-    private boolean active;
+    private final String name;
+    private final int age;
+    private final boolean active;
 
     public User(String name, int age, boolean active) {
         this.name = name;

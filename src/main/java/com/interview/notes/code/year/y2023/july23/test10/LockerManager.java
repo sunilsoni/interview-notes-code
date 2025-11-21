@@ -15,7 +15,7 @@ import java.util.Map;
  * (i.e., has no bag stored in it). If there are no available lockers of the required size, it returns null.
  */
 public class LockerManager {
-    private Map<Size, List<Locker>> lockers;
+    private final Map<Size, List<Locker>> lockers;
 
     /**
      * This is the constructor of the LockerManager class. It initializes a new LockerManager with an empty map of lockers.

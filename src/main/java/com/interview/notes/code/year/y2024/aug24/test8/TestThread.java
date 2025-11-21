@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2024.aug24.test8;
 
 class TestThread {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         threadDemo T1 = new threadDemo("T 1");
         T1.start();
         threadDemo T2 = new threadDemo("T 2");
@@ -11,7 +11,7 @@ class TestThread {
 
 class threadDemo implements Runnable {
     private Thread t;
-    private String tName;
+    private final String tName;
 
     threadDemo(String name) {
         tName = name;

@@ -66,8 +66,8 @@ public class StreamWordReverser {
 
         // Test Case 4: Single item
         testCase("Single Item",
-                Arrays.asList("test"),
-                Arrays.asList("Tset"));
+                List.of("test"),
+                List.of("Tset"));
 
         // Test Case 5: Palindrome
         testCase("Palindrome",

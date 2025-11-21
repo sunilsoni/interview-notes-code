@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 class Book {
-    private String title;
-    private String category;
+    private final String title;
+    private final String category;
 
     public Book(String title, String category) {
         this.title = title;

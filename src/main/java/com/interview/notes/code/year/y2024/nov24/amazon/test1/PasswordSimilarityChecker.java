@@ -244,23 +244,23 @@ public class PasswordSimilarityChecker {
 
         // Additional Test Case 1: Identical passwords
         testCases.add(new TestCase(
-                Arrays.asList("password"),
-                Arrays.asList("password"),
-                Arrays.asList("YES")
+                List.of("password"),
+                List.of("password"),
+                List.of("YES")
         ));
 
         // Additional Test Case 2: Empty old password
         testCases.add(new TestCase(
-                Arrays.asList("anynewpassword"),
-                Arrays.asList(""),
-                Arrays.asList("YES")
+                List.of("anynewpassword"),
+                List.of(""),
+                List.of("YES")
         ));
 
         // Additional Test Case 3: All characters need to be incremented
         testCases.add(new TestCase(
-                Arrays.asList("abc"),
-                Arrays.asList("bcd"),
-                Arrays.asList("YES")
+                List.of("abc"),
+                List.of("bcd"),
+                List.of("YES")
         ));
 
         // Additional Test Case 4: Large Input
@@ -271,9 +271,9 @@ public class PasswordSimilarityChecker {
             largeOld.append('a');
         }
         testCases.add(new TestCase(
-                Arrays.asList(largeNew.toString()),
-                Arrays.asList(largeOld.toString()),
-                Arrays.asList("YES")
+                List.of(largeNew.toString()),
+                List.of(largeOld.toString()),
+                List.of("YES")
         ));
 
         // Run all test cases

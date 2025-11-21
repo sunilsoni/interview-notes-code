@@ -65,10 +65,10 @@ interface Dictionary {
 
 class BoggleSearch {
 
-    private char[][] board;
-    private int numRows;
-    private int numCols;
-    private Dictionary dictionary;
+    private final char[][] board;
+    private final int numRows;
+    private final int numCols;
+    private final Dictionary dictionary;
 
     public BoggleSearch(char[][] board, int numRows, int numCols, Dictionary dictionary) {
         this.board = board;
@@ -137,7 +137,7 @@ class BoggleSearch {
 }
 
 class SimpleDictionary implements Dictionary {
-    private Set<String> words = new HashSet<>();
+    private final Set<String> words = new HashSet<>();
 
     public SimpleDictionary() {
         words.add("pot");

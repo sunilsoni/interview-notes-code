@@ -50,24 +50,24 @@ public class CharacterCompressor {
     public static void main(String[] args) {
         // Define test cases
         String[] testCases = {
-            "aaabbcc",        // Expected: a3b2c2
-            "a",              // Expected: a1
-            "abc",            // Expected: a1b1c1
-            "aaaaaaa",        // Expected: a7
-            "",               // Expected: (empty)
-            "aabbaa",         // Expected: a2b2a2
-            generateLargeInput('x', 1000000) // Large input test
+                "aaabbcc",        // Expected: a3b2c2
+                "a",              // Expected: a1
+                "abc",            // Expected: a1b1c1
+                "aaaaaaa",        // Expected: a7
+                "",               // Expected: (empty)
+                "aabbaa",         // Expected: a2b2a2
+                generateLargeInput('x', 1000000) // Large input test
         };
 
         // Expected outputs for comparison
         String[] expectedOutputs = {
-            "a3b2c2",
-            "a1",
-            "a1b1c1",
-            "a7",
-            "",
-            "a2b2a2",
-            "x1000000"
+                "a3b2c2",
+                "a1",
+                "a1b1c1",
+                "a7",
+                "",
+                "a2b2a2",
+                "x1000000"
         };
 
         // Run each test case and print PASS/FAIL
@@ -91,7 +91,7 @@ public class CharacterCompressor {
     /**
      * Utility method to generate large input strings for testing.
      *
-     * @param ch Character to repeat
+     * @param ch    Character to repeat
      * @param count Number of times to repeat
      * @return Generated string
      */

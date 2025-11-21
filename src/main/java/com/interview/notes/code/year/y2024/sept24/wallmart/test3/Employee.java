@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2024.sept24.wallmart.test3;
 
 class Employee {
-    private String name;
+    private final String name;
     private int badgeBalance; // Positive: inside, Zero: outside
     private boolean badgedInWithoutExit;
     private boolean badgedOutWithoutEnter;

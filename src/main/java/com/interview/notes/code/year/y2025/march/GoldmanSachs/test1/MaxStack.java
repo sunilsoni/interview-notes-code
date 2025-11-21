@@ -32,10 +32,10 @@ import java.util.Stack;
 // mystack.pop() // returns 2
 class MaxStack {
     // Main stack to store all elements
-    private Stack<Integer> mainStack;
+    private final Stack<Integer> mainStack;
 
     // Auxiliary stack to track maximum values
-    private Stack<Integer> maxStack;
+    private final Stack<Integer> maxStack;
 
     public MaxStack() {
         // Initialize both stacks

@@ -100,7 +100,7 @@ public class FulfillmentCenterSystem {
         // Create shelves with items
         shelves.add(new Shelf("S1", 1, 2, Arrays.asList(new Item("Book"), new Item("Pen"))));
         shelves.add(new Shelf("S2", 3, 4, Arrays.asList(new Item("Laptop"), new Item("Book"))));
-        shelves.add(new Shelf("S3", 5, 6, Arrays.asList(new Item("Tablet"))));
+        shelves.add(new Shelf("S3", 5, 6, List.of(new Item("Tablet"))));
 
         // Create robots with positions
         robots.add(new Robot("R1", 0, 0));
@@ -145,7 +145,7 @@ public class FulfillmentCenterSystem {
         System.out.println("\nTest Case 4: Stress test with large data input");
         // Add a large number of shelves and robots
         for (int i = 0; i < 10000; i++) {
-            shelves.add(new Shelf("S_large_" + i, i % 100, i % 100, Arrays.asList(new Item("Item" + (i % 10)))));
+            shelves.add(new Shelf("S_large_" + i, i % 100, i % 100, List.of(new Item("Item" + (i % 10)))));
             robots.add(new Robot("R_large_" + i, i % 50, i % 50));
         }
         long startTime = System.currentTimeMillis();

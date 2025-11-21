@@ -4,28 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-class Emp {
-    private final int id;
-    private final String name;
-    private final Integer mid; // null means top-level
-
-    public Emp(int id, String name, Integer mid) {
-        this.id = id;
-        this.name = name;
-        this.mid = mid;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getMid() {
-        return mid;
-    }
+/**
+ * @param mid null means top-level
+ */
+record Emp(int id, String name, Integer mid) {
 }
 
 public class OrgChart {
@@ -34,7 +16,7 @@ public class OrgChart {
 
     public OrgChart(List<Emp> emps) {
         this.byManager = emps.stream()
-                .collect(Collectors.groupingBy(Emp::getMid));
+                .collect(Collectors.groupingBy(Emp::mid));
     }
 
     // Simple main-method tests
@@ -84,16 +66,16 @@ public class OrgChart {
         List<Emp> subs = byManager.get(managerId);
         if (subs == null) return;
         for (Emp e : subs) {
-            if (!seen.add(e.getId())) {
+            if (!seen.add(e.id())) {
                 out.append("    ".repeat(level))
                         .append("[cycle with ")
-                        .append(e.getName())
+                        .append(e.name())
                         .append("]\n");
                 continue;
             }
             String indent = level == 0 ? "" : "    ".repeat(level - 1) + "|__ ";
-            out.append(indent).append(e.getName()).append("\n");
-            build(e.getId(), level + 1, out, seen);
+            out.append(indent).append(e.name()).append("\n");
+            build(e.id(), level + 1, out, seen);
         }
     }
 

@@ -14,7 +14,7 @@ public class Test {
         System.out.println("Constructor"); // Corrected sysout to System.out.println
     }
 
-    public static void main(String arg[]) {
+    public static void main(String[] arg) {
         System.out.println("Hello world"); // Corrected sysout to System.out.println
         new Test().method10();
     }

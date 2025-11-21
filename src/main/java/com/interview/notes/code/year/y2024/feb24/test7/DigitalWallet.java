@@ -1,8 +1,8 @@
 package com.interview.notes.code.year.y2024.feb24.test7;
 
 class DigitalWallet {
-    private String walletId;
-    private String userName;
+    private final String walletId;
+    private final String userName;
     private String userAccessCode;
     private int balance;
 

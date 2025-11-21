@@ -23,10 +23,10 @@ class Utils {
 }
 
 class CreditCardPaymentMethod implements PaymentMethod {
-    private String cardNumber;
-    private String cvv;
-    private String expiryDate;
-    private String cardHolderName;
+    private final String cardNumber;
+    private final String cvv;
+    private final String expiryDate;
+    private final String cardHolderName;
 
     public CreditCardPaymentMethod(String cardNumber, String cvv, String expiryDate, String cardHolderName) {
         this.cardNumber = cardNumber;
@@ -76,8 +76,8 @@ class CreditCardPaymentMethod implements PaymentMethod {
 }
 
 class PayPalPaymentMethod implements PaymentMethod {
-    private String email;
-    private String password;
+    private final String email;
+    private final String password;
 
     public PayPalPaymentMethod(String email, String password) {
         this.email = email;

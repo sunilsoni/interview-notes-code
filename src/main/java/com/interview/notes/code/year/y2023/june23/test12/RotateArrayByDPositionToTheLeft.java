@@ -18,7 +18,7 @@ package com.interview.notes.code.year.y2023.june23.test12;
 public class RotateArrayByDPositionToTheLeft {
 
     // Function to reverse array from start to end
-    public static void reverseArray(int arr[], int start, int end) {
+    public static void reverseArray(int[] arr, int start, int end) {
         int temp;
         while (start < end) {
             temp = arr[start];
@@ -30,7 +30,7 @@ public class RotateArrayByDPositionToTheLeft {
     }
 
     // Function to left rotate array of size n by d
-    public static void leftRotate(int arr[], int d, int n) {
+    public static void leftRotate(int[] arr, int d, int n) {
         if (d == 0)
             return;
         d = d % n; // In case the rotating factor is greater than array length
@@ -40,7 +40,7 @@ public class RotateArrayByDPositionToTheLeft {
     }
 
     // Function to print array
-    public static void printArray(int arr[]) {
+    public static void printArray(int[] arr) {
         for (int i = 0; i < arr.length; i++)
             System.out.print(arr[i] + " ");
         System.out.println();
@@ -48,7 +48,7 @@ public class RotateArrayByDPositionToTheLeft {
 
     // Main function
     public static void main(String[] args) {
-        int arr[] = {1, 2, 3, 4, 5, 6, 7};
+        int[] arr = {1, 2, 3, 4, 5, 6, 7};
         int d = 2;
         leftRotate(arr, d, arr.length);
         printArray(arr);

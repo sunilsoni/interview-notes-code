@@ -135,8 +135,7 @@ public class FindDuplicateFiles {
         @Override
         public boolean equals(Object obj) {
             if (this == obj) return true;
-            if (!(obj instanceof FileKey)) return false;
-            FileKey other = (FileKey) obj;
+            if (!(obj instanceof FileKey other)) return false;
             return this.size == other.size && Objects.equals(this.filename, other.filename);
         }
 

@@ -94,9 +94,9 @@ public class PackageInstallerSolution {
      */
     public static class Package {
         // Name of the package.
-        private String name;
+        private final String name;
         // List of dependent packages.
-        private List<Package> dependencies;
+        private final List<Package> dependencies;
 
         /**
          * Constructor initializes the package with a name and an empty list for dependencies.
@@ -136,7 +136,7 @@ public class PackageInstallerSolution {
      */
     public static class PackageInstaller {
         // List to record installation order (useful for testing the correct sequence).
-        private List<String> installationOrder = new ArrayList<>();
+        private final List<String> installationOrder = new ArrayList<>();
 
         /**
          * Public method to install a package.

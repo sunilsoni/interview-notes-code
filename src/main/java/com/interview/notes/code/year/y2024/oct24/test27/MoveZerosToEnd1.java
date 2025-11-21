@@ -69,8 +69,8 @@ public class MoveZerosToEnd1 {
 
         // Example Test Case 2
         testCases.add(new TestCase(
-                Arrays.asList(0),
-                Arrays.asList(0),
+                List.of(0),
+                List.of(0),
                 "Example Test Case 2"
         ));
 
@@ -97,8 +97,8 @@ public class MoveZerosToEnd1 {
 
         // Additional Test Case 6: Single non-zero
         testCases.add(new TestCase(
-                Arrays.asList(5),
-                Arrays.asList(5),
+                List.of(5),
+                List.of(5),
                 "Single Non-Zero"
         ));
 

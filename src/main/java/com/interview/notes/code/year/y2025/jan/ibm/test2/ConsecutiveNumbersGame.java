@@ -12,7 +12,7 @@ public class ConsecutiveNumbersGame {
 
         // New Examples
         List<Integer> test3 = Arrays.asList(3, 9, 27, 81, 243);   // All divisible by 3, Output: 0
-        List<Integer> test4 = Arrays.asList(5);                   // Single element, Output: 0
+        List<Integer> test4 = List.of(5);                   // Single element, Output: 0
         List<Integer> test5 = Arrays.asList(2, 4, 6, 8, 10);      // None divisible by 3, Output: Multiple Rounds
         List<Integer> test6 = Arrays.asList(9, 12, 15, 18);       // Mixed divisible, Output: Few Rounds
         List<Integer> test7 = Arrays.asList(3, 6, 2, 1, 9);       // Mixed divisible and non-divisible, Output: Multiple Rounds

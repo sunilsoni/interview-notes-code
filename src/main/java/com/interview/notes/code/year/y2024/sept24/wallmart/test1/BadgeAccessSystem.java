@@ -70,8 +70,8 @@ public class BadgeAccessSystem {
         // Run test cases
         runTestCase(records1, "Test Case 1", Arrays.asList(Arrays.asList("Steve", "Curtis", "Paul", "Joe"), Arrays.asList("Martha", "Pauline", "Curtis", "Joe")));
         runTestCase(records2, "Test Case 2", Arrays.asList(new ArrayList<>(), new ArrayList<>()));
-        runTestCase(records3, "Test Case 3", Arrays.asList(Arrays.asList("Paul"), Arrays.asList("Paul")));
-        runTestCase(records4, "Test Case 4", Arrays.asList(Arrays.asList("Raj", "Paul"), Arrays.asList("Paul")));
+        runTestCase(records3, "Test Case 3", Arrays.asList(List.of("Paul"), List.of("Paul")));
+        runTestCase(records4, "Test Case 4", Arrays.asList(Arrays.asList("Raj", "Paul"), List.of("Paul")));
     }
 
     private static void runTestCase(String[][] records, String testName, List<List<String>> expectedOutput) {

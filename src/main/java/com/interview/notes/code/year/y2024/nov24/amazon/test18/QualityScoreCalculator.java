@@ -74,7 +74,7 @@ public class QualityScoreCalculator {
         // Test Case 2
         testCases.add(new TestCase(
                 3,
-                Arrays.asList(-4),
+                List.of(-4),
                 -1
         ));
 
@@ -102,7 +102,7 @@ public class QualityScoreCalculator {
         // Additional Test Case 6: Single element
         testCases.add(new TestCase(
                 5,
-                Arrays.asList(10),
+                List.of(10),
                 50 // Amplify: 10 *5 =50
         ));
 

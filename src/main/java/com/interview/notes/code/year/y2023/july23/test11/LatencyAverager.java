@@ -16,8 +16,8 @@ public class LatencyAverager {
     private final int k;
     private final int i;
     private double currentSum;
-    private PriorityQueue<Integer> allLatencies;
-    private PriorityQueue<Integer> topLatencies;  // for storing top 'i' values
+    private final PriorityQueue<Integer> allLatencies;
+    private final PriorityQueue<Integer> topLatencies;  // for storing top 'i' values
 
     public LatencyAverager(int k) {
         this.k = k;

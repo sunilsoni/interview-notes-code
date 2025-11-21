@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Nishan {
-    private String name;
-    private int id;
+    private final String name;
+    private final int id;
 
     public Nishan(String name, int id) {
         this.name = name;

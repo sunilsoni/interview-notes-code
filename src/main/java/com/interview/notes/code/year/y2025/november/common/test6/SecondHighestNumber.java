@@ -10,7 +10,7 @@ public class SecondHighestNumber {
     // Input: array of integers
     // Output: String format "number-frequency"
     public static String findSecondHighestWithFrequency(int[] arr) {
-        
+
         // Step 1: Convert array to stream and find unique numbers sorted in descending order
         // stream() converts primitive array to IntStream
         // boxed() converts int to Integer (needed for Stream operations)
@@ -22,16 +22,16 @@ public class SecondHighestNumber {
                 .sorted(Collections.reverseOrder())
                 .skip(1)  // Skip the highest number, take second one
                 .findFirst();  // Get first element (which is second highest)
-        
+
         // Step 2: If second highest doesn't exist, return error message
         // This handles edge cases like array with only 1 unique number
         if (!secondHighest.isPresent()) {
             return "ERROR";  // No second highest found
         }
-        
+
         // Step 3: Get the second highest number value
         int secondHighestNum = secondHighest.get();
-        
+
         // Step 4: Count how many times second highest appears in array
         // stream() converts array to stream
         // filter() keeps only numbers equal to secondHighestNum
@@ -39,7 +39,7 @@ public class SecondHighestNumber {
         long frequency = Arrays.stream(arr)
                 .filter(num -> num == secondHighestNum)
                 .count();
-        
+
         // Step 5: Return formatted string "number-frequency"
         // String concatenation with hyphen separator
         return secondHighestNum + "-" + frequency;
@@ -47,19 +47,19 @@ public class SecondHighestNumber {
 
     // Main method to test all test cases with PASS/FAIL output
     public static void main(String[] args) {
-        
+
         // Initialize counters to track test results
         // passCount tracks successful tests
         // failCount tracks failed tests
         int passCount = 0;
         int failCount = 0;
-        
+
         System.out.println("╔════════════════════════════════════════════════════════════╗");
         System.out.println("║          SECOND HIGHEST NUMBER - TEST SUITE                ║");
         System.out.println("╚════════════════════════════════════════════════════════════╝\n");
-        
+
         // ============ BASIC TEST CASES ============
-        
+
         // Test 1: Problem example
         // Array: {8,9,8,5,4,8,3,8}
         // Unique sorted desc: [9, 8, 5, 4, 3]
@@ -73,7 +73,7 @@ public class SecondHighestNumber {
         System.out.println("  Expected: 8-4 | Got: " + result1 + "\n");
         passCount += pass1 ? 1 : 0;
         failCount += pass1 ? 0 : 1;
-        
+
         // Test 2: Simple array with clear second highest
         // Array: {1, 2, 3}
         // Unique sorted desc: [3, 2, 1]
@@ -87,7 +87,7 @@ public class SecondHighestNumber {
         System.out.println("  Expected: 2-1 | Got: " + result2 + "\n");
         passCount += pass2 ? 1 : 0;
         failCount += pass2 ? 0 : 1;
-        
+
         // Test 3: Second highest appears multiple times
         // Array: {5, 5, 5, 10, 10}
         // Unique sorted desc: [10, 5]
@@ -101,7 +101,7 @@ public class SecondHighestNumber {
         System.out.println("  Expected: 5-3 | Got: " + result3 + "\n");
         passCount += pass3 ? 1 : 0;
         failCount += pass3 ? 0 : 1;
-        
+
         // Test 4: Negative numbers
         // Array: {-5, -1, -10, 0}
         // Unique sorted desc: [0, -1, -5, -10]
@@ -115,9 +115,9 @@ public class SecondHighestNumber {
         System.out.println("  Expected: -1-1 | Got: " + result4 + "\n");
         passCount += pass4 ? 1 : 0;
         failCount += pass4 ? 0 : 1;
-        
+
         // ============ EDGE CASES ============
-        
+
         // Test 5: Only one unique number (no second highest)
         // Array: {5, 5, 5, 5}
         // Unique: [5]
@@ -131,7 +131,7 @@ public class SecondHighestNumber {
         System.out.println("  Expected: ERROR | Got: " + result5 + "\n");
         passCount += pass5 ? 1 : 0;
         failCount += pass5 ? 0 : 1;
-        
+
         // Test 6: Exactly two unique numbers
         // Array: {7, 7, 7, 9}
         // Unique sorted desc: [9, 7]
@@ -145,7 +145,7 @@ public class SecondHighestNumber {
         System.out.println("  Expected: 7-3 | Got: " + result6 + "\n");
         passCount += pass6 ? 1 : 0;
         failCount += pass6 ? 0 : 1;
-        
+
         // Test 7: Zero in array
         // Array: {0, 0, 1, 2}
         // Unique sorted desc: [2, 1, 0]
@@ -159,9 +159,9 @@ public class SecondHighestNumber {
         System.out.println("  Expected: 1-1 | Got: " + result7 + "\n");
         passCount += pass7 ? 1 : 0;
         failCount += pass7 ? 0 : 1;
-        
+
         // ============ LARGE DATA TEST CASES ============
-        
+
         // Test 8: Large array with 10,000 elements
         // Generate: majority 1000, second 500, rest small numbers
         // This tests performance and correctness with large data
@@ -182,7 +182,7 @@ public class SecondHighestNumber {
         System.out.println("  Expected: 500-3000 | Got: " + result8 + "\n");
         passCount += pass8 ? 1 : 0;
         failCount += pass8 ? 0 : 1;
-        
+
         // Test 9: Very large array with 100,000 elements
         // Generate: diverse numbers repeated many times
         // Tests memory efficiency and algorithm speed
@@ -203,7 +203,7 @@ public class SecondHighestNumber {
         System.out.println("  Expected: 888-30000 | Got: " + result9 + "\n");
         passCount += pass9 ? 1 : 0;
         failCount += pass9 ? 0 : 1;
-        
+
         // Test 10: Large array with all same elements
         // Array: 50,000 elements all = 42
         // Should return ERROR (no second highest)
@@ -218,7 +218,7 @@ public class SecondHighestNumber {
         System.out.println("  Expected: ERROR | Got: " + result10 + "\n");
         passCount += pass10 ? 1 : 0;
         failCount += pass10 ? 0 : 1;
-        
+
         // Test 11: Large array with wide range of numbers
         // Array: 10,000 elements with numbers 1 to 100 repeated randomly
         int[] test11 = new int[10000];
@@ -233,9 +233,9 @@ public class SecondHighestNumber {
         System.out.println("  Expected: 99-100 | Got: " + result11 + "\n");
         passCount += pass11 ? 1 : 0;
         failCount += pass11 ? 0 : 1;
-        
+
         // ============ COMPLEX PATTERNS ============
-        
+
         // Test 12: Alternating high and low numbers
         // Array: alternates between 100 and 1
         // Unique sorted desc: [100, 1]
@@ -251,7 +251,7 @@ public class SecondHighestNumber {
         System.out.println("  Expected: 1-50 | Got: " + result12 + "\n");
         passCount += pass12 ? 1 : 0;
         failCount += pass12 ? 0 : 1;
-        
+
         // Test 13: Reverse sorted array
         // Array: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
         // Unique sorted desc: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
@@ -264,18 +264,18 @@ public class SecondHighestNumber {
         System.out.println("  Expected: 9-1 | Got: " + result13 + "\n");
         passCount += pass13 ? 1 : 0;
         failCount += pass13 ? 0 : 1;
-        
+
         // ============ FINAL SUMMARY REPORT ============
-        
+
         System.out.println("╔════════════════════════════════════════════════════════════╗");
         System.out.println("║                     TEST SUMMARY REPORT                    ║");
         System.out.println("╚════════════════════════════════════════════════════════════╝");
         System.out.println("\nTotal Tests Run:  " + (passCount + failCount));
         System.out.println("Tests Passed:     " + passCount);
         System.out.println("Tests Failed:     " + failCount);
-        System.out.println("Success Rate:     " + 
-                          String.format("%.1f%%", (passCount * 100.0 / (passCount + failCount))));
-        
+        System.out.println("Success Rate:     " +
+                String.format("%.1f%%", (passCount * 100.0 / (passCount + failCount))));
+
         System.out.println("\n" + "═".repeat(60));
         if (failCount == 0) {
             System.out.println("✓ ALL TESTS PASSED - SOLUTION IS CORRECT");

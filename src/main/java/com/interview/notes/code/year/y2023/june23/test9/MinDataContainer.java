@@ -3,8 +3,8 @@ package com.interview.notes.code.year.y2023.june23.test9;
 import java.util.Stack;
 
 public class MinDataContainer<T extends Comparable<T>> {
-    private Stack<T> stack;
-    private Stack<T> minStack;
+    private final Stack<T> stack;
+    private final Stack<T> minStack;
 
     public MinDataContainer() {
         stack = new Stack<>();

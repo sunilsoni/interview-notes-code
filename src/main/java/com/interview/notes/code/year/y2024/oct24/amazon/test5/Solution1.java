@@ -20,7 +20,7 @@ public class Solution1 {
         int flipCount = 0;
         for (int pnl : PnL) {
             // If we flip this pnl, the new cumulative sum will be reduced by 2 * pnl
-            long newCumulativeSum = cumulativeSum - 2 * pnl;
+            long newCumulativeSum = cumulativeSum - 2L * pnl;
 
             // If the new cumulative sum remains positive, we flip this pnl
             if (newCumulativeSum > 0) {

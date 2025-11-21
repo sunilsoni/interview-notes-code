@@ -18,36 +18,36 @@ public class FirstNonRepeatingChar {
         // count occurrences, and collect into a LinkedHashMap so the order of keys
         // is the same as the order they first appeared in the string.
         Map<Character, Long> frequencyMap = s.chars()                                     // create an IntStream of UTF-16 code units
-            .mapToObj(c -> (char) c)                                                      // convert each int to Character
-            .collect(Collectors.groupingBy(                                              // group identical characters together
-                Function.identity(),                                                     // grouping key is the character itself
-                LinkedHashMap::new,                                                       // use LinkedHashMap to preserve insertion order
-                Collectors.counting()                                                    // count occurrences of each character
-            ));
+                .mapToObj(c -> (char) c)                                                      // convert each int to Character
+                .collect(Collectors.groupingBy(                                              // group identical characters together
+                        Function.identity(),                                                     // grouping key is the character itself
+                        LinkedHashMap::new,                                                       // use LinkedHashMap to preserve insertion order
+                        Collectors.counting()                                                    // count occurrences of each character
+                ));
 
         // Stream the entries of the map (in insertion order) and find the first entry whose count == 1.
         return frequencyMap.entrySet().stream()                                          // stream map entries in insertion order
-            .filter(e -> e.getValue() == 1L)                                             // keep only characters that appear exactly once
-            .map(Map.Entry::getKey)                                                      // convert entry to its character key
-            .findFirst();                                                                // take first such character (if any)
+                .filter(e -> e.getValue() == 1L)                                             // keep only characters that appear exactly once
+                .map(Map.Entry::getKey)                                                      // convert entry to its character key
+                .findFirst();                                                                // take first such character (if any)
     }
 
     // Simple test runner in main (no JUnit). Prints PASS/FAIL for each test case.
     public static void main(String[] args) {
         // Define test inputs. Each test has a corresponding expected Character (null == no result).
-        String[] inputs = new String[] {
-            "leetcode",             // expected 'l' (first non-repeating)
-            "loveleetcode",         // expected 'v'
-            "aabb",                 // expected null (no non-repeating)
-            "",                     // expected null (empty input)
-            "swiss",                // expected 'w'
-            "stress",               // expected 't'
-            null                    // expected null (null input)
+        String[] inputs = new String[]{
+                "leetcode",             // expected 'l' (first non-repeating)
+                "loveleetcode",         // expected 'v'
+                "aabb",                 // expected null (no non-repeating)
+                "",                     // expected null (empty input)
+                "swiss",                // expected 'w'
+                "stress",               // expected 't'
+                null                    // expected null (null input)
         };
 
         // Expected results aligned with inputs above. Use Character objects or null.
-        Character[] expected = new Character[] {
-            'l', 'v', null, null, 'w', 't', null
+        Character[] expected = new Character[]{
+                'l', 'v', null, null, 'w', 't', null
         };
 
         // Run the normal test cases above.
@@ -59,15 +59,15 @@ public class FirstNonRepeatingChar {
 
             // Determine PASS/FAIL
             boolean pass = (got.isPresent() && exp != null && got.get().equals(exp))
-                        || (!got.isPresent() && exp == null);
+                    || (!got.isPresent() && exp == null);
 
             // Print a simple PASS/FAIL line with details
             System.out.printf("Test %d: %s | Input: %s | Expected: %s | Got: %s%n",
-                i + 1,
-                pass ? "PASS" : "FAIL",
-                input == null ? "null" : "\"" + input + "\"",                  // show null explicitly
-                exp == null ? "null" : "'" + exp + "'",                         // expected as char or null
-                got.isPresent() ? ("'" + got.get() + "'") : "null"             // got as char or null
+                    i + 1,
+                    pass ? "PASS" : "FAIL",
+                    input == null ? "null" : "\"" + input + "\"",                  // show null explicitly
+                    exp == null ? "null" : "'" + exp + "'",                         // expected as char or null
+                    got.isPresent() ? ("'" + got.get() + "'") : "null"             // got as char or null
             );
         }
 
@@ -89,9 +89,9 @@ public class FirstNonRepeatingChar {
 
         // Print result summary for the large test case (PASS/FAIL and time taken).
         System.out.printf("Large test: %s | Expected: 'c' | Got: %s | Time: %d ms%n",
-            largePass ? "PASS" : "FAIL",
-            largeResult.isPresent() ? ("'" + largeResult.get() + "'") : "null",
-            duration
+                largePass ? "PASS" : "FAIL",
+                largeResult.isPresent() ? ("'" + largeResult.get() + "'") : "null",
+                duration
         );
 
         // Additional edge-case checks demonstration (optional)

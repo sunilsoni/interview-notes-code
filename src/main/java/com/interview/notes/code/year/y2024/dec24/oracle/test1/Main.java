@@ -10,7 +10,7 @@ public class Main {
                 "it",
                 "is"
         );
-        List<String> sentences = Arrays.asList(
+        List<String> sentences = List.of(
                 "listen it is silent"
         );
 

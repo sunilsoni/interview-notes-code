@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Set;
 
 class Customer {
-    private int id;
-    private String name;
-    private String city;
-    private int year;
+    private final int id;
+    private final String name;
+    private final String city;
+    private final int year;
 
     public Customer(int id, String name, String city, int year) {
         this.id = id;

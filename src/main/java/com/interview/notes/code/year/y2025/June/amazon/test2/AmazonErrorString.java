@@ -99,17 +99,7 @@ public class AmazonErrorString {
     public static void main(String[] args) {
 
         /* helper record (exp == null → just print result) */
-        class TC {
-            final String s;
-            final int x, y;
-            final Long exp;
-
-            TC(String s, int x, int y, Long exp) {
-                this.s = s;
-                this.x = x;
-                this.y = y;
-                this.exp = exp;
-            }
+        record TC(String s, int x, int y, Long exp) {
         }
 
         List<TC> tests = new ArrayList<>(Arrays.asList(

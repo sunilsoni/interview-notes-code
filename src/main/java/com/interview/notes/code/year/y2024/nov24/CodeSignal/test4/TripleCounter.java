@@ -28,13 +28,13 @@ public class TripleCounter {
             if (operation == '+') {
                 // Calculate contributions when adding x
                 // 1. As the First Element (x)
-                long contribFirst = getOrDefault(freqMap, x - diff) * getOrDefault(freqMap, x - 2 * diff);
+                long contribFirst = (long) getOrDefault(freqMap, x - diff) * getOrDefault(freqMap, x - 2L * diff);
 
                 // 2. As the Middle Element (x)
-                long contribMiddle = getOrDefault(freqMap, x + diff) * getOrDefault(freqMap, x - diff);
+                long contribMiddle = (long) getOrDefault(freqMap, x + diff) * getOrDefault(freqMap, x - diff);
 
                 // 3. As the Last Element (x)
-                long contribLast = getOrDefault(freqMap, x + 2 * diff) * getOrDefault(freqMap, x + diff);
+                long contribLast = (long) getOrDefault(freqMap, x + 2L * diff) * getOrDefault(freqMap, x + diff);
 
                 // Update totalTriples
                 totalTriples += contribFirst + contribMiddle + contribLast;
@@ -52,13 +52,13 @@ public class TripleCounter {
 
                 // Calculate contributions to remove when removing x
                 // 1. As the First Element (x)
-                long removeFirst = (long) getOrDefault(freqMap, x - diff) * getOrDefault(freqMap, x - 2 * diff) * k;
+                long removeFirst = (long) getOrDefault(freqMap, x - diff) * getOrDefault(freqMap, x - 2L * diff) * k;
 
                 // 2. As the Middle Element (x)
                 long removeMiddle = (long) getOrDefault(freqMap, x + diff) * getOrDefault(freqMap, x - diff) * k;
 
                 // 3. As the Last Element (x)
-                long removeLast = (long) getOrDefault(freqMap, x + 2 * diff) * getOrDefault(freqMap, x + diff) * k;
+                long removeLast = (long) getOrDefault(freqMap, x + 2L * diff) * getOrDefault(freqMap, x + diff) * k;
 
                 // Update totalTriples
                 totalTriples -= (removeFirst + removeMiddle + removeLast);

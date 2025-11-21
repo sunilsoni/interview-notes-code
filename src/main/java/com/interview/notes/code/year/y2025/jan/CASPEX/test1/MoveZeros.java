@@ -123,8 +123,8 @@ public class MoveZeros {
     public static void main(String[] args) {
         // Test cases
         runTest(Arrays.asList(0, 1, 0, 3, 12), "Test 1: Basic case");
-        runTest(Arrays.asList(0), "Test 2: Single zero");
-        runTest(Arrays.asList(1), "Test 3: Single non-zero");
+        runTest(List.of(0), "Test 2: Single zero");
+        runTest(List.of(1), "Test 3: Single non-zero");
         runTest(Arrays.asList(0, 0, 0), "Test 4: All zeros");
         runTest(Arrays.asList(1, 2, 3), "Test 5: No zeros");
         runTest(Arrays.asList(0, 0, 1, 0, 2), "Test 6: Multiple zeros");

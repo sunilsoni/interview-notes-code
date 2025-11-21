@@ -197,9 +197,9 @@ public class PasswordSimilarityChecker {
         for (int i = 0; i < 50000; i++) sbOld.append('a');
         String largeOld = sbOld.toString();
         testCases.add(new TestCase(
-                Arrays.asList(largeNew),
-                Arrays.asList(largeOld),
-                Arrays.asList("YES")
+                List.of(largeNew),
+                List.of(largeOld),
+                List.of("YES")
         ));
 
         // Additional Test Case 6: Large Input with cycling
@@ -216,9 +216,9 @@ public class PasswordSimilarityChecker {
         }
         largeOld = sbOld.toString();
         testCases.add(new TestCase(
-                Arrays.asList(largeNew),
-                Arrays.asList(largeOld),
-                Arrays.asList("YES")
+                List.of(largeNew),
+                List.of(largeOld),
+                List.of("YES")
         ));
 
         // Execute Test Cases

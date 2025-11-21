@@ -26,7 +26,7 @@ public class PrimeFactorization {
         // Expected factors
         List<List<Integer>> expected = Arrays.asList(
                 Arrays.asList(2, 3),   // Factors of 6
-                Arrays.asList(5),      // Factors of 5
+                List.of(5),      // Factors of 5
                 Arrays.asList(2, 2, 3) // Factors of 12
         );
 

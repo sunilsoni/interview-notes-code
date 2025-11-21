@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 // ATM class with Singleton pattern
 class ATM {
-    private static ATM instance = new ATM();
-    private BankService bankService;
+    private static final ATM instance = new ATM();
+    private final BankService bankService;
     private Account currentAccount;
-    private Scanner scanner;
+    private final Scanner scanner;
 
     private ATM() {
         AccountFactory accountFactory = new AccountFactory();

@@ -44,9 +44,9 @@ public class ArraySubtractionSolver {
     public static void main(String[] args) {
         // Test case class
         class TestCase {
-            int[] numbers;
-            int expected;
-            String description;
+            final int[] numbers;
+            final int expected;
+            final String description;
 
             TestCase(int[] numbers, int expected, String description) {
                 this.numbers = numbers;

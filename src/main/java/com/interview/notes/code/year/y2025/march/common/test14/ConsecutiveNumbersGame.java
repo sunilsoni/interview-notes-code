@@ -50,7 +50,7 @@ public class ConsecutiveNumbersGame {
         // Additional test: Already satisfies condition for first n-1 elements
         testCases.add(new TestCase(Arrays.asList(3, 6, 9, 5), 0));
         // Additional test: Single element list (no rounds needed)
-        testCases.add(new TestCase(Arrays.asList(5), 0));
+        testCases.add(new TestCase(List.of(5), 0));
         // Additional test: Large input where all elements are already multiples of 3
         testCases.add(new TestCase(new ArrayList<>(Collections.nCopies(10000, 3)), 0));
 

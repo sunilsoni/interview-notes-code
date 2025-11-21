@@ -158,10 +158,10 @@ public class ReviewSearchTest {
     public static void main(String[] args) {
         // Prepare test data
         Comment nestedComment = new Comment("Nested reply in English", "en", null);
-        Comment comment1 = new Comment("This is a comment in English", "en", Arrays.asList(nestedComment));
+        Comment comment1 = new Comment("This is a comment in English", "en", List.of(nestedComment));
         Comment comment2 = new Comment("Este es un comentario en Español", "es", null);
-        Review review1 = new Review("Great product, I love it!", "en", Arrays.asList(comment1));
-        Review review2 = new Review("Buen producto, bastante útil", "es", Arrays.asList(comment2));
+        Review review1 = new Review("Great product, I love it!", "en", List.of(comment1));
+        Review review2 = new Review("Buen producto, bastante útil", "es", List.of(comment2));
         List<Review> allReviews = Arrays.asList(review1, review2);
 
         // Test 1: Text Search

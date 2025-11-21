@@ -6,7 +6,7 @@ public interface Tester<A, B, C> {
         System.out.println("I'm Base Tester");
     }
 
-    public C apply(A a, B b);  // Abstract method
+    C apply(A a, B b);  // Abstract method
 
     default void print() {     // Default method
         System.out.println("I'm Tester");

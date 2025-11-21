@@ -143,7 +143,7 @@ public class DiskSpaceAnalyzer {
         testCase(2, Arrays.asList(8, 2, 4, 6), 4, "Another example from problem");
 
         // Edge case - single element
-        testCase(1, Arrays.asList(5), 5, "Single element");
+        testCase(1, List.of(5), 5, "Single element");
 
         // Edge case - segment size equals array size
         testCase(3, Arrays.asList(1, 2, 3), 1, "Segment equals array size");

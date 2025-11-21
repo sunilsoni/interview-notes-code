@@ -4,7 +4,7 @@ import java.util.*;
 
 
 public class CurrencyConverter2 {
-    private Map<String, Map<String, Double>> conversionGraph;
+    private final Map<String, Map<String, Double>> conversionGraph;
 
     public CurrencyConverter2() {
         this.conversionGraph = new HashMap<>();

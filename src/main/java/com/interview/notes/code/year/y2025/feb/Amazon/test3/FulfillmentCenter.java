@@ -3,9 +3,9 @@ package com.interview.notes.code.year.y2025.feb.Amazon.test3;
 import java.util.*;
 
 class FulfillmentCenter {
-    private List<Robot> robots;
-    private List<Shelf> shelves;
-    private Position pickStation;
+    private final List<Robot> robots;
+    private final List<Shelf> shelves;
+    private final Position pickStation;
 
     public FulfillmentCenter() {
         robots = new ArrayList<>();

@@ -3,9 +3,9 @@ package com.interview.notes.code.year.y2024.nov24.amazon.test25;
 import java.util.*;
 
 public class DependencyResolver {
-    private Map<String, Package> packageMap;
-    private Set<String> installed;
-    private List<String> installationOrder;
+    private final Map<String, Package> packageMap;
+    private final Set<String> installed;
+    private final List<String> installationOrder;
 
     public DependencyResolver(List<Package> packages) {
         packageMap = new HashMap<>();

@@ -74,9 +74,6 @@ public class BestAverageGrade {
         } catch (Exception e) {
             // Generic catch block for any other unhandled exceptions
             System.out.println("Exception caught: " + e.getMessage());
-        } finally {
-            // Optional: Code that executes regardless of whether an exception occurred or not
-            // Example: Closing resources like database connections, file handles, etc.
         }
 
     }

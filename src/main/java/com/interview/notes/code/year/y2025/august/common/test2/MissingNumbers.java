@@ -34,14 +34,14 @@ public class MissingNumbers {
         // Test Case 1: Basic case with one missing number
         testCase(
                 Arrays.asList(0, 2),
-                Arrays.asList(1),
+                List.of(1),
                 "Test 1: Basic case"
         );
 
         // Test Case 2: No missing numbers
         testCase(
                 Arrays.asList(2, 1, 0),
-                Arrays.asList(),
+                List.of(),
                 "Test 2: No missing numbers"
         );
 
@@ -55,7 +55,7 @@ public class MissingNumbers {
         // Test Case 4: Empty list
         testCase(
                 new ArrayList<>(),
-                Arrays.asList(),
+                List.of(),
                 "Test 4: Empty list"
         );
 
@@ -70,15 +70,15 @@ public class MissingNumbers {
 
         // Test Case 6: Single element
         testCase(
-                Arrays.asList(1),
-                Arrays.asList(0),
+                List.of(1),
+                List.of(0),
                 "Test 6: Single element"
         );
 
         // Test Case 7: Null input
         testCase(
                 null,
-                Arrays.asList(),
+                List.of(),
                 "Test 7: Null input"
         );
     }

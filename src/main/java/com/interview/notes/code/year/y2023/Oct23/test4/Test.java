@@ -9,7 +9,7 @@ public class Test {
                 4,
                 5
         };
-        table[1] = (table[2 * 1] == 2 - args.length) ? table[3] : 99;
+        table[1] = (table[2] == 2 - args.length) ? table[3] : 99;
         System.out.println(table[1]);
     }
 }

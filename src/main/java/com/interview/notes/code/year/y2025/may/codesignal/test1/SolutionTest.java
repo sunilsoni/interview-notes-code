@@ -58,8 +58,9 @@ public class SolutionTest {
 
     public static int[] solution(int[] balances, String[] requests) {
         class Cashback {
-            long time;
-            int idx, amount;
+            final long time;
+            final int idx;
+            final int amount;
 
             Cashback(long time, int idx, int amount) {
                 this.time = time;

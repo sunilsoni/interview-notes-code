@@ -43,11 +43,13 @@ public class ContiguousHousesLongestSegment {
             final Map<Integer, Integer> parent = new HashMap<>();
             final Map<Integer, Integer> size = new HashMap<>();
             int max = 0;
+
             int find(int x) {
                 int p = parent.get(x);
                 if (p != x) parent.put(x, p = find(p));
                 return p;
             }
+
             void add(int x) {
                 if (parent.containsKey(x)) return;
                 parent.put(x, x);
@@ -56,10 +58,15 @@ public class ContiguousHousesLongestSegment {
                 if (parent.containsKey(x - 1)) unite(x, x - 1);
                 if (parent.containsKey(x + 1)) unite(x, x + 1);
             }
+
             void unite(int a, int b) {
                 int ra = find(a), rb = find(b);
                 if (ra == rb) return;
-                if (size.get(ra) < size.get(rb)) { int t = ra; ra = rb; rb = t; }
+                if (size.get(ra) < size.get(rb)) {
+                    int t = ra;
+                    ra = rb;
+                    rb = t;
+                }
                 parent.put(rb, ra);
                 size.put(ra, size.get(ra) + size.get(rb));
                 max = Math.max(max, size.get(ra));

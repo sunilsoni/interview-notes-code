@@ -2,7 +2,7 @@ package com.interview.notes.code.year.y2024.jan24.bank3;
 
 // Represents a single bucket for a denomination
 class Bucket {
-    private int denomination;
+    private final int denomination;
     private int noteCount;
 
     public Bucket(int denomination, int noteCount) {

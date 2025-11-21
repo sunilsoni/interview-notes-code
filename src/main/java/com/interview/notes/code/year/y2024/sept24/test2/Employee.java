@@ -3,10 +3,10 @@ package com.interview.notes.code.year.y2024.sept24.test2;
 import java.time.LocalDate;
 
 class Employee {
-    private int id;
-    private String name;
-    private double salary;
-    private LocalDate joiningDate;
+    private final int id;
+    private final String name;
+    private final double salary;
+    private final LocalDate joiningDate;
 
     // Constructor, getters, and setters
     // ...

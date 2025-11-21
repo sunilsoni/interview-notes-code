@@ -17,7 +17,7 @@ public class TestException1 {
         }
     }
 
-    public static void go() throws IOException, JAXBException, FileNotFoundException {
+    public static void go() throws IOException, JAXBException {
         // Implementation that might throw IOException, JAXBException, or FileNotFoundException
     }
 }

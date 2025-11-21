@@ -5,9 +5,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 class Sale {
-    private int id;
-    private LocalDateTime dateTime;
-    private int quantitySold;
+    private final int id;
+    private final LocalDateTime dateTime;
+    private final int quantitySold;
 
     public Sale(int id, String dateTimeStr, int quantitySold) {
         this.id = id;

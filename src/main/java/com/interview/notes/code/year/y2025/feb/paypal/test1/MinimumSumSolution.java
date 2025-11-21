@@ -139,7 +139,7 @@ public class MinimumSumSolution {
         int testCaseNumber = 1;
 
         // Test Case 1: Single element reduction.
-        List<Integer> nums1 = Arrays.asList(2);
+        List<Integer> nums1 = List.of(2);
         int k1 = 1;
         int expected1 = 1; // 2 becomes 1 after one operation.
         runTest(testCaseNumber++, nums1, k1, expected1);

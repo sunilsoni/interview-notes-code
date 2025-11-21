@@ -128,8 +128,8 @@ public class OrderProcessor {
 
     // Order class representing each order with an amount and region.
     static class Order {
-        private double amount;
-        private String region;
+        private final double amount;
+        private final String region;
 
         public Order(double amount, String region) {
             this.amount = amount;

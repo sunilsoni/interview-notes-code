@@ -123,8 +123,8 @@ class BankTxnFInal {
     }
 
     static class Account {
-        private AtomicInteger balance = new AtomicInteger(0);
-        private ReentrantLock lock = new ReentrantLock();
+        private final AtomicInteger balance = new AtomicInteger(0);
+        private final ReentrantLock lock = new ReentrantLock();
 
         public String deposit(int money) {
             lock.lock();
@@ -156,8 +156,8 @@ class BankTxnFInal {
     }
 
     static class Transaction {
-        private Account account;
-        private List<String> transactions;
+        private final Account account;
+        private final List<String> transactions;
 
         public Transaction(Account account) {
             this.account = account;

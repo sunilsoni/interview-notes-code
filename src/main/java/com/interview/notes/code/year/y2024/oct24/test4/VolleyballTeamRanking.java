@@ -93,8 +93,8 @@ class Pair implements Comparable<Pair> {
 }
 
 class VolleyballGameTracker implements GameTracker {
-    private Map<String, Integer> teamScores;
-    private PriorityQueue<Pair> maxHeap;
+    private final Map<String, Integer> teamScores;
+    private final PriorityQueue<Pair> maxHeap;
 
     public VolleyballGameTracker(int numTeams, String[] teamNames) {
         teamScores = new HashMap<>();

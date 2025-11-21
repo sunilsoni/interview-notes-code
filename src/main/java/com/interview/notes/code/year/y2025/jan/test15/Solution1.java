@@ -7,8 +7,7 @@ public class Solution1 {
      * your own text. This text is the same (or very similar) to that shown
      * in the screenshot.
      */
-    private static final String DOCUMENT = ""
-            + "In publishing and graphic design, lorem ipsum is a "
+    private static final String DOCUMENT = "In publishing and graphic design, lorem ipsum is a "
             + "filler text commonly used to demonstrate the graphic elements of a "
             + "document or visual presentation. Replacing meaningful content that "
             + "could be distracting with placeholder text may allow viewers to focus "

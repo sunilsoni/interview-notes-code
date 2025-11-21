@@ -45,9 +45,7 @@ public class CustomBinarySearchTree {
             if (tree[rightChildIndex] > tree[index]) {
                 return false;
             }
-            if (!isValidCustomBSTHelper(tree, rightChildIndex)) {
-                return false;
-            }
+            return isValidCustomBSTHelper(tree, rightChildIndex);
         }
 
         return true;

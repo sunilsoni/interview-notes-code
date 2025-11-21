@@ -5,7 +5,7 @@ import java.util.*;
 public class QueryEquivalenceChecker {
 
     // Map to store synonym relationships
-    private static Map<String, Set<String>> synonymMap = new HashMap<>();
+    private static final Map<String, Set<String>> synonymMap = new HashMap<>();
 
     public static void main(String[] args) {
         // Test cases

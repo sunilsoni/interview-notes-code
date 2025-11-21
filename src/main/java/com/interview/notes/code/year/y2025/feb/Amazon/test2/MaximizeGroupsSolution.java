@@ -83,7 +83,7 @@ public class MaximizeGroupsSolution {
         test(Arrays.asList(0, 0, 0), 0, "All zero products");
 
         // 2) One large count
-        test(Arrays.asList(10_000), 4, "One large type (10000 items)");
+        test(List.of(10_000), 4, "One large type (10000 items)");
         // Explanation: sum=10000 => x(x+1)/2 <=10000 => x=~141 
         // but we have only 1 type => you can only form 1 batch for each distinct type needed
         // Actually the first batch needs 1 type => ok
@@ -93,7 +93,7 @@ public class MaximizeGroupsSolution {
         // We'll fix that test. (The user examples require distinct types in each batch.)
         // The correct expected is 1.
         // We'll correct that test line below:
-        test(Arrays.asList(10_000), 1, "Single product type => only 1 batch possible");
+        test(List.of(10_000), 1, "Single product type => only 1 batch possible");
 
         // 3) Mixed scenario
         test(Arrays.asList(0, 1, 1, 1, 1), 4, "One zero and four ones => can form up to 4? Actually let's see:");

@@ -213,7 +213,7 @@ public class BalancedParenthesesChecker {
      * @param expected Field to store the expected boolean result for this test case.
      * @param name     Field to store a human-readable name/label for this test case.
      */ // Static inner class to represent a single test case with input, expected result, and name.
-        private record TestCase(String input, boolean expected, String name) {
+    private record TestCase(String input, boolean expected, String name) {
         // Constructor to create a TestCase object with given input, expected, and name.
         // Assigning the constructor parameter "input" to the field "input".
         // Assigning the constructor parameter "expected" to the field "expected".

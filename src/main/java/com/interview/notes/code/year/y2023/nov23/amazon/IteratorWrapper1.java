@@ -12,9 +12,9 @@ import java.util.Queue;
  * @param <T>
  */
 public class IteratorWrapper1<T> {
-    private Iterator<T> iterator;
-    private Queue<T> queue;
-    private int n;
+    private final Iterator<T> iterator;
+    private final Queue<T> queue;
+    private final int n;
 
     public IteratorWrapper1(Iterator<T> iterator, int n) {
         this.iterator = iterator;

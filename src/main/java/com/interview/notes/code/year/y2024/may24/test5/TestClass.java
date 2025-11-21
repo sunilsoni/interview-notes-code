@@ -8,7 +8,7 @@ public class TestClass {
         test_b = b;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         TestClass test = new TestClass(10, 20);
         // TestClass test = new TestClass();
         System.out.println(test.test_a + " " + test.test_b);

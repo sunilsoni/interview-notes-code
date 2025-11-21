@@ -109,7 +109,7 @@ public class TheOnlyWayIsUp {
 
         // Edge case: Single element
         int B4 = 5;
-        List<Integer> ar4 = Arrays.asList(10);
+        List<Integer> ar4 = List.of(10);
         int expected4 = 0;
         int result4 = solve(B4, new ArrayList<>(ar4));
         System.out.println("Edge case (Single element): " + (result4 == expected4 ? "PASS" : "FAIL"));

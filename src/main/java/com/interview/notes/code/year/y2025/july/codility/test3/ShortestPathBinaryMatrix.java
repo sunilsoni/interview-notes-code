@@ -131,13 +131,6 @@ public class ShortestPathBinaryMatrix {
                 okL ? "PASS" : "FAIL", expectedLarge, gotLarge, took);
     }
 
-    private static class TestCase {
-        final int[][] grid;
-        final int expected;
-
-        TestCase(int[][] grid, int expected) {
-            this.grid = grid;
-            this.expected = expected;
-        }
+    private record TestCase(int[][] grid, int expected) {
     }
 }

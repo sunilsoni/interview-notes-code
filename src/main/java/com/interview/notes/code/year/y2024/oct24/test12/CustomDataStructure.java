@@ -12,9 +12,9 @@ import java.util.Map;
 public class CustomDataStructure {
 
     // Map to store element and its index in the list
-    private Map<String, Integer> elementIndexMap;
+    private final Map<String, Integer> elementIndexMap;
     // List to store elements
-    private List<String> elements;
+    private final List<String> elements;
 
     /**
      * Constructor initializes the data structures.
@@ -45,13 +45,13 @@ public class CustomDataStructure {
         System.out.println("Elements after insertion: " + ds.getElements());
 
         // Test search operation
-        assert ds.search("a") == true : "Test search 'a' failed";
-        assert ds.search("abc") == true : "Test search 'abc' failed";
-        assert ds.search("c") == false : "Test search 'c' failed";
+        assert ds.search("a") : "Test search 'a' failed";
+        assert ds.search("abc") : "Test search 'abc' failed";
+        assert !ds.search("c") : "Test search 'c' failed";
 
         // Test delete operation
         ds.delete("a");
-        assert ds.search("a") == false : "Test delete 'a' failed";
+        assert !ds.search("a") : "Test delete 'a' failed";
         ds.delete("d"); // Deleting non-existent element should do nothing
 
         // Expected elements after deletion: ["b", "abc"]

@@ -7,7 +7,7 @@ import java.util.Arrays;
  * The space complexity is O(1) since we only use a constant amount of extra space. Is there anything else you would like to know? 😊
  */
 public class AmazonBox {
-    private static int[][] boxTypes = {{24, 20, 16}, {20, 16, 12}, {50, 40, 2}, {40, 30, 2}, {60, 3, 3}, {15, 3, 3}};
+    private static final int[][] boxTypes = {{24, 20, 16}, {20, 16, 12}, {50, 40, 2}, {40, 30, 2}, {60, 3, 3}, {15, 3, 3}};
 
     public static boolean canBeHidden(int[] item) {
         for (int[] boxType : boxTypes) {

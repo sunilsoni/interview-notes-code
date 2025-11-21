@@ -95,7 +95,7 @@ public class QualityScoreCalculator {
 
         // Edge case: Single element
         testCase(
-                Arrays.asList(5),
+                List.of(5),
                 2,
                 10,
                 "Single element test"
@@ -103,7 +103,7 @@ public class QualityScoreCalculator {
 
         // Edge case: Zero elements
         testCase(
-                Arrays.asList(0),
+                List.of(0),
                 5,
                 0,
                 "Zero element test"

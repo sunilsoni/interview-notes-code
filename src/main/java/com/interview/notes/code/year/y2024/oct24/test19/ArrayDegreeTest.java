@@ -9,13 +9,13 @@ public class ArrayDegreeTest {
         // Test cases
         test(Arrays.asList(4, 1, 1, 2, 2, 1, 3, 3), Arrays.asList(1, 1, 2, 2, 1));
         test(Arrays.asList(5, 1, 2, 2, 3, 1), Arrays.asList(2, 2));
-        test(Arrays.asList(1, 1, 1, 1, 1), Arrays.asList(1));
-        test(Arrays.asList(1), Arrays.asList(1));
+        test(Arrays.asList(1, 1, 1, 1, 1), List.of(1));
+        test(List.of(1), List.of(1));
         test(generateLargeInput(1000000), null); // Performance test
     }
 
     public static List<Integer> solve(List<Integer> a) {
-        if (a.size() == 1) return Arrays.asList(a.get(0));
+        if (a.size() == 1) return Collections.singletonList(a.get(0));
 
         // Store frequency and position data
         Map<Integer, Integer> freq = new HashMap<>();
@@ -29,7 +29,7 @@ public class ArrayDegreeTest {
         });
 
         // Handle all same elements case
-        if (positions.size() == 1) return Arrays.asList(a.get(0));
+        if (positions.size() == 1) return Collections.singletonList(a.get(0));
 
         // Find max frequency
         int maxFreq = freq.values().stream().max(Integer::compareTo).get();

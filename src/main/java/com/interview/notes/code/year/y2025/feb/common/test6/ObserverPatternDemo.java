@@ -19,7 +19,7 @@ interface Subject {
 
 // Concrete Subject
 class NewsAgency implements Subject {
-    private List<Observer> observers = new ArrayList<>();
+    private final List<Observer> observers = new ArrayList<>();
     private String news;
 
     @Override
@@ -50,7 +50,7 @@ class NewsAgency implements Subject {
 
 // Concrete Observer
 class NewsChannel implements Observer {
-    private String name;
+    private final String name;
 
     public NewsChannel(String name) {
         this.name = name;

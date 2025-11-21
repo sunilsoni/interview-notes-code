@@ -14,7 +14,7 @@ import java.util.Random;
  * songlist = [a,b,c,d,e, f, g,h]
  */
 public class UniqueShuffleSongs {
-    private static List<String> history = new ArrayList<>();
+    private static final List<String> history = new ArrayList<>();
 
     public static void uniqueShuffle(String[] songList) {
         Random random = new Random();

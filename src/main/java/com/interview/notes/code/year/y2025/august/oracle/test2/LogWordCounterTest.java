@@ -6,7 +6,10 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-/*
+/**
+ * @param key   word
+ * @param value frequency
+ */ /*
 
 
 **Question:**
@@ -32,14 +35,7 @@ List<Pair<String, Integer>> topK(int k)       // top-k words by frequency, stabl
 
  */
 // A simple Pair class to hold word and frequency
-class Pair<K, V> {
-    public final K key;   // word
-    public final V value; // frequency
-
-    public Pair(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
+record Pair<K, V>(K key, V value) {
 
     @Override
     public String toString() {
@@ -104,7 +100,7 @@ public class LogWordCounterTest {
         List<Pair<String, Integer>> top3 = log.topK(3);
         boolean test1 = log.count("disk") == 3
                 && log.count("error") == 2
-                && top3.get(0).key.equals("disk");
+                && top3.get(0).key().equals("disk");
 
         System.out.println("Test 1 (basic logs) -> " + (test1 ? "PASS" : "FAIL") + " | " + top3);
 
@@ -113,7 +109,7 @@ public class LogWordCounterTest {
         log2.ingest("alpha beta");
         log2.ingest("gamma beta");
         List<Pair<String, Integer>> top2 = log2.topK(2);
-        boolean test2 = top2.get(0).key.equals("beta") && top2.get(1).key.equals("alpha");
+        boolean test2 = top2.get(0).key().equals("beta") && top2.get(1).key().equals("alpha");
         System.out.println("Test 2 (stable tie) -> " + (test2 ? "PASS" : "FAIL") + " | " + top2);
 
         // ===== Test Case 3: Empty Input =====
@@ -128,7 +124,7 @@ public class LogWordCounterTest {
             log4.ingest("server log error disk cpu memory");
         }
         boolean test4 = log4.count("server") == 100000
-                && log4.topK(1).get(0).key.equals("server");
+                && log4.topK(1).get(0).key().equals("server");
         System.out.println("Test 4 (large input) -> " + (test4 ? "PASS" : "FAIL"));
 
         // ===== Test Case 5: Case Insensitivity =====

@@ -39,6 +39,6 @@ public class MostCommonNumberFinder {
             }
         }
 
-        System.out.println("The most common number in order is: " + result.toString());
+        System.out.println("The most common number in order is: " + result);
     }
 }

@@ -40,8 +40,8 @@ public class ATMQueueSolution {
                 Arrays.asList(2, 3, 5, 4, 1, 6));
 
         runTestCase(3, "Edge Case - Single Person",
-                5, Arrays.asList(3),
-                Arrays.asList(1));
+                5, List.of(3),
+                List.of(1));
 
         runTestCase(4, "Large Amounts Test",
                 1000000, Arrays.asList(999999999, 999999998, 999999997),

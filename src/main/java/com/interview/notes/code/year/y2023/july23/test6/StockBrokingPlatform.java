@@ -14,7 +14,7 @@ import java.util.Map;
  * Group by Account, calculate total price for each account and display
  */
 public class StockBrokingPlatform {
-    private Map<Integer, Account> accounts;
+    private final Map<Integer, Account> accounts;
 
     public StockBrokingPlatform() {
         this.accounts = new HashMap<>();

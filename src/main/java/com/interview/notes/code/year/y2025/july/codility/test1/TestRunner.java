@@ -8,14 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 // A tiny helper to bundle input→expected
-class TestCase<I, E> {
-    final I input;
-    final E expected;
-
-    TestCase(I input, E expected) {
-        this.input = input;
-        this.expected = expected;
-    }
+record TestCase<I, E>(I input, E expected) {
 }
 
 public class TestRunner {
@@ -37,10 +30,10 @@ public class TestRunner {
 
         System.out.println("=== reverseString() ===");
         tests.forEach(tc -> {
-            String out = BasicStringManipulation.reverseString(tc.input);
+            String out = BasicStringManipulation.reverseString(tc.input());
             printResult("reverseString",
-                    tc.input,
-                    tc.expected,
+                    tc.input(),
+                    tc.expected(),
                     out);
         });
 
@@ -64,10 +57,10 @@ public class TestRunner {
 
         System.out.println("=== reverseWordsInString() ===");
         tests.forEach(tc -> {
-            String out = BasicStringManipulation.reverseWordsInString(tc.input);
+            String out = BasicStringManipulation.reverseWordsInString(tc.input());
             printResult("reverseWordsInString",
-                    "\"" + tc.input + "\"",
-                    "\"" + tc.expected + "\"",
+                    "\"" + tc.input() + "\"",
+                    "\"" + tc.expected() + "\"",
                     "\"" + out + "\"");
         });
     }
@@ -82,12 +75,12 @@ public class TestRunner {
         System.out.println("=== reverseKGroup(head, 2) ===");
         tests.forEach(tc -> {
             // build
-            ListNode head = ReverseNodes.createLinkedList(tc.input);
+            ListNode head = ReverseNodes.createLinkedList(tc.input());
             ListNode outHead = ReverseNodes.reverseKGroup(head, 2);
             String outStr = ReverseNodes.linkedListToString(outHead);
             printResult("reverseKGroup",
-                    Arrays.toString(tc.input),
-                    tc.expected,
+                    Arrays.toString(tc.input()),
+                    tc.expected(),
                     outStr);
         });
     }

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
-    private int accountId;
-    private List<Stock> stocks;
+    private final int accountId;
+    private final List<Stock> stocks;
 
     public Account(int accountId) {
         this.accountId = accountId;

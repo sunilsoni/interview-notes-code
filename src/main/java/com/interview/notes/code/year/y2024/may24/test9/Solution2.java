@@ -39,7 +39,7 @@ class Solution2 {
         }
 
         // Combine the first half, middle character if any, and the reverse of the first half
-        return firstHalf.toString() + mid.toString() + firstHalf.reverse().toString();
+        return firstHalf.toString() + mid + firstHalf.reverse();
     }
 }
 /**

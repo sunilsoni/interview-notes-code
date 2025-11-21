@@ -21,7 +21,7 @@ public class MergingMapsWithUniqueElements {
 
         // Merging maps and sorting by value
         Map<String, Integer> sortedMap = Stream.concat(map1.entrySet().stream(), map2.entrySet().stream())
-                .sorted(Map.Entry.<String, Integer>comparingByValue())
+                .sorted(Map.Entry.comparingByValue())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 
         System.out.println(sortedMap);

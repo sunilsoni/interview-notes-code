@@ -60,29 +60,22 @@ enum Topping {
     }  // expose price for calculation
 }
 
-// Domain class representing a pizza order
-class Pizza {
-    private final PizzaSize size;            // size of pizza
-    private final CrustType crust;           // crust type
-    private final List<Topping> toppings;    // list of toppings
-
+/**
+ * @param size     size of pizza
+ * @param crust    crust type
+ * @param toppings list of toppings
+ */ // Domain class representing a pizza order
+record Pizza(PizzaSize size, CrustType crust, List<Topping> toppings) {
     // Constructor enforces immutability
-    public Pizza(PizzaSize size, CrustType crust, List<Topping> toppings) {
+    Pizza(PizzaSize size, CrustType crust, List<Topping> toppings) {
         this.size = size;
         this.crust = crust;
         // defensively copy list to prevent external mutation
         this.toppings = new ArrayList<>(toppings);
     }
 
-    public PizzaSize getSize() {
-        return size;
-    }
-
-    public CrustType getCrust() {
-        return crust;
-    }
-
-    public List<Topping> getToppings() {
+    @Override
+    public List<Topping> toppings() {
         return Collections.unmodifiableList(toppings);
     }
 }
@@ -91,9 +84,9 @@ class Pizza {
 class PriceCalculator {
     public static double calculate(Pizza pizza) {
         // Sum size price + crust price + sum of topping prices via Stream
-        double sizePrice = pizza.getSize().getPrice();   // base size cost
-        double crustPrice = pizza.getCrust().getPrice(); // crust extra cost
-        double toppingsPrice = pizza.getToppings().stream()
+        double sizePrice = pizza.size().getPrice();   // base size cost
+        double crustPrice = pizza.crust().getPrice(); // crust extra cost
+        double toppingsPrice = pizza.toppings().stream()
                 .mapToDouble(Topping::getPrice)               // extract each topping cost
                 .sum();                                       // sum all topping costs
         return sizePrice + crustPrice + toppingsPrice;   // total price

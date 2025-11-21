@@ -8,6 +8,7 @@ import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 
 // No other imports beyond the list you provided
 /*
@@ -157,7 +158,7 @@ public class FinestFood {
         int bestVotes = -1;
 
         // URL-encode city
-        String cityEnc = URLEncoder.encode(city, "UTF-8");
+        String cityEnc = URLEncoder.encode(city, StandardCharsets.UTF_8);
         int page = 1, totalPages;
 
         do {

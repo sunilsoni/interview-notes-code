@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class Solution {
     public static void main(String[] args) {
@@ -51,7 +52,7 @@ public class Solution {
         try {
             // Construct the API URL with the encoded country name
             String baseUrl = "https://jsonmock.hackerrank.com/api/countries?name=";
-            String encodedCountry = URLEncoder.encode(country, "UTF-8");
+            String encodedCountry = URLEncoder.encode(country, StandardCharsets.UTF_8);
             String urlString = baseUrl + encodedCountry;
 
             // Create a URL and open a connection

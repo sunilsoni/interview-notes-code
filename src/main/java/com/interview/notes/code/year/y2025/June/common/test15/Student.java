@@ -1,9 +1,9 @@
 package com.interview.notes.code.year.y2025.June.common.test15;
 
 class Student {
-    private String name;
-    private String branch;
-    private int totalMarks;
+    private final String name;
+    private final String branch;
+    private final int totalMarks;
 
     // Constructor, Getters, Setters, toString()
     public Student(String name, String branch, int totalMarks) {

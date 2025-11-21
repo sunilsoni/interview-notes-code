@@ -228,16 +228,15 @@ public class DeliveryScheduler {  // define a public class to hold our solution 
         System.out.printf("LargeData: n=%d -> value=%d | time=%.2f ms | PASS (performance)%n", N, got, ms);  // print outcome
     }
 
-    // A small immutable record-like class to store each delivery's start, end, and pay.
-    private static final class Job {  // make it private and final to encapsulate and ensure no subclassing
-        final int s;  // start time of the delivery
-        final int e;  // end time of the delivery
-        final int p;  // pay for completing the delivery
-
-        Job(int s, int e, int p) {  // constructor to set fields
-            this.s = s;  // assign start time
-            this.e = e;  // assign end time
-            this.p = p;  // assign pay
-        }
+    /**
+     * @param s start time of the delivery
+     * @param e end time of the delivery
+     * @param p pay for completing the delivery
+     */ // A small immutable record-like class to store each delivery's start, end, and pay.
+        private record Job(int s, int e, int p) {  // make it private and final to encapsulate and ensure no subclassing
+        // constructor to set fields
+        // assign start time
+        // assign end time
+        // assign pay
     }
 }

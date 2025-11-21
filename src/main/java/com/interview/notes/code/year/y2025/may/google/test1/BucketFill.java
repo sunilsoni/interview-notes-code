@@ -213,15 +213,8 @@ public class BucketFill {
     }
 
     /**
-     * A simple helper class to hold each test case.
-     */
-    private static class TestCase {
-        final List<String> picture;
-        final int expected;
-
-        TestCase(List<String> picture, int expected) {
-            this.picture = picture;
-            this.expected = expected;
-        }
+         * A simple helper class to hold each test case.
+         */
+        private record TestCase(List<String> picture, int expected) {
     }
 }

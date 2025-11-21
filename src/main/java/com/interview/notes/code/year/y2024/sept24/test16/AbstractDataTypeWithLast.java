@@ -5,8 +5,8 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public class AbstractDataTypeWithLast<K, V> {
-    private Map<K, V> map;              // To store key-value pairs
-    private LinkedList<K> accessOrder;  // To track the order of accessed keys
+    private final Map<K, V> map;              // To store key-value pairs
+    private final LinkedList<K> accessOrder;  // To track the order of accessed keys
 
     public AbstractDataTypeWithLast() {
         map = new HashMap<>();

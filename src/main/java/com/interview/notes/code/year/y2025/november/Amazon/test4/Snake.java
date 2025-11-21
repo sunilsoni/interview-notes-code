@@ -8,7 +8,7 @@ public class Snake extends Jump {
             throw new IllegalArgumentException("Snake must go down: start must be > end");
         }
     }
-    
+
     @Override
     public String getJumpType() {
         return "SNAKE";

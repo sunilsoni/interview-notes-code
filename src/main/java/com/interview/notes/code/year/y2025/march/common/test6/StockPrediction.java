@@ -2,8 +2,8 @@ package com.interview.notes.code.year.y2025.march.common.test6;
 
 public class StockPrediction {
     // Class attributes
-    private double gain;
-    private double stockPrice;
+    private final double gain;
+    private final double stockPrice;
 
     // Constructor
     public StockPrediction(double gain, double stockPrice) {

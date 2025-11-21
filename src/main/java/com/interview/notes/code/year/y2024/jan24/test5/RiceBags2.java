@@ -17,7 +17,6 @@ public class RiceBags2 {
     public static void main(String[] args) {
         int[] riceBags = { /* Your array of rice bags */};
         int queryWeight = 1;/* Your query weight */
-        ;
         System.out.println(checkRiceBags(riceBags, queryWeight));
     }
 }

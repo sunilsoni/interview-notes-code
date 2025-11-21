@@ -2,7 +2,7 @@ package com.interview.notes.code.year.y2023.Oct23.test12;
 
 public class Player {
 
-    private String name;
+    private final String name;
     private int currentPosition;
 
     public Player() {

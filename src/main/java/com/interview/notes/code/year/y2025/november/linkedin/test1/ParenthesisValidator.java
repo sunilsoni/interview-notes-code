@@ -27,9 +27,9 @@ public class ParenthesisValidator {
         StringBuilder largeBuilder = new StringBuilder();
 
         // Append 500,000 open brackets
-        for(int i=0; i<500000; i++) largeBuilder.append("(");
+        for (int i = 0; i < 500000; i++) largeBuilder.append("(");
         // Append 500,000 close brackets
-        for(int i=0; i<500000; i++) largeBuilder.append(")");
+        for (int i = 0; i < 500000; i++) largeBuilder.append(")");
 
         String largeInput = largeBuilder.toString();
         runTest(solver, largeInput, true, "Large Dataset (1M chars)");
@@ -60,7 +60,7 @@ public class ParenthesisValidator {
 
         // Output the result in a structured format
         System.out.printf("[%s] Test: %-30s | Input: %-15s | Expected: %-5s | Actual: %-5s | Time: %d ms%n",
-            status, testName, displayInput, expected, result, (endTime - startTime));
+                status, testName, displayInput, expected, result, (endTime - startTime));
     }
 
     /**
@@ -81,28 +81,28 @@ public class ParenthesisValidator {
 
         // Convert the String into a Stream of characters (IntStream)
         s.chars()
-         // Filter: Keep only '(' or ')' characters. This ignores numbers, letters, and other symbols.
-         .filter(c -> c == '(' || c == ')')
-         // Iterate through the filtered stream of brackets
-         .forEach(c -> {
-             // Optimization: If we already marked it as failed (state[1] == 1), do nothing.
-             if (state[1] == 1) return;
+                // Filter: Keep only '(' or ')' characters. This ignores numbers, letters, and other symbols.
+                .filter(c -> c == '(' || c == ')')
+                // Iterate through the filtered stream of brackets
+                .forEach(c -> {
+                    // Optimization: If we already marked it as failed (state[1] == 1), do nothing.
+                    if (state[1] == 1) return;
 
-             // Logic: If character is '(', we increment the balance counter
-             if (c == '(') {
-                 state[0]++;
-             }
-             // Logic: If character is ')', we decrement the balance counter
-             else {
-                 state[0]--;
-             }
+                    // Logic: If character is '(', we increment the balance counter
+                    if (c == '(') {
+                        state[0]++;
+                    }
+                    // Logic: If character is ')', we decrement the balance counter
+                    else {
+                        state[0]--;
+                    }
 
-             // Critical Rule: If balance drops below zero, it means we have a ')' before a '('.
-             // Example: "))((" -> starts with negative balance immediately.
-             if (state[0] < 0) {
-                 state[1] = 1; // Mark as failed
-             }
-         });
+                    // Critical Rule: If balance drops below zero, it means we have a ')' before a '('.
+                    // Example: "))((" -> starts with negative balance immediately.
+                    if (state[0] < 0) {
+                        state[1] = 1; // Mark as failed
+                    }
+                });
 
         // Final Validation:
         // 1. state[0] == 0: Means every open bracket was closed (count is zero).

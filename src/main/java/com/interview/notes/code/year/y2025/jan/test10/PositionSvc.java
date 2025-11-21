@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class PositionSvc {
-    private List<Position> positions;
+    private final List<Position> positions;
 
     public PositionSvc() {
         this.positions = new ArrayList<>();

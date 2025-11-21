@@ -15,7 +15,7 @@ class Result2 {
         // We don't need the right half, we will recreate it by mirroring the left half
 
         // Check if simply mirroring the left half will create a palindrome greater than 'n'
-        String palindrome = leftHalf + middle + new StringBuilder(leftHalf).reverse().toString();
+        String palindrome = leftHalf + middle + new StringBuilder(leftHalf).reverse();
 
         // If the newly formed palindrome is greater than 'n', we're done
         if (Long.parseLong(palindrome) > n) {
@@ -27,14 +27,14 @@ class Result2 {
             int middleNum = Integer.parseInt(middle) + 1; // Increment the middle digit
             // If incrementing the middle digit doesn't cause it to exceed 9, we use it
             if (middleNum <= 9) {
-                palindrome = leftHalf + middleNum + new StringBuilder(leftHalf).reverse().toString();
+                palindrome = leftHalf + middleNum + new StringBuilder(leftHalf).reverse();
             } else {
                 // If the middle digit was '9' and now is '10', we have a carry over situation
                 long leftNum = Long.parseLong(leftHalf + "0") + 1; // Treat the middle digit as '0' and carry over the increment
                 // Take the appropriate number of digits from the incremented left half (ignore the overflow)
                 String newLeftHalf = Long.toString(leftNum).substring(0, leftHalf.length());
                 // Build the new palindrome with the incremented left half and '0' as the middle
-                palindrome = newLeftHalf + "0" + new StringBuilder(newLeftHalf).reverse().toString();
+                palindrome = newLeftHalf + "0" + new StringBuilder(newLeftHalf).reverse();
             }
         } else {
             // If there's no middle digit, we simply increment the left half and mirror it
@@ -42,7 +42,7 @@ class Result2 {
             // Convert the incremented left half back to a string
             String newLeftHalf = Long.toString(leftNum);
             // Create the new palindrome
-            palindrome = newLeftHalf + new StringBuilder(newLeftHalf).reverse().toString();
+            palindrome = newLeftHalf + new StringBuilder(newLeftHalf).reverse();
         }
 
         // Return the new palindrome as an integer

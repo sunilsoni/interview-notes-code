@@ -9,7 +9,7 @@ public class Main {
         System.out.println(reduceGifts(prices6, k6, threshold6)); // Adjusted approach
     }
 
-    public static int reduceGifts(int prices[], int k, int threshold) {
+    public static int reduceGifts(int[] prices, int k, int threshold) {
         // Sort the array in ascending order
         for (int i = 0; i < prices.length - 1; i++) {
             for (int j = 0; j < prices.length - i - 1; j++) {

@@ -29,9 +29,7 @@ public class SecondLargestNumber {
 
         // Create a copy of the input array to avoid modifying the original
         int[] result = new int[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            result[i] = nums[i];
-        }
+        System.arraycopy(nums, 0, result, 0, nums.length);
 
         // Sort the array in descending order (largest possible number)
         Arrays.sort(result);

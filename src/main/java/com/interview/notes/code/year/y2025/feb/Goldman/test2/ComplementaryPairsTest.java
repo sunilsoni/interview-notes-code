@@ -47,7 +47,7 @@ public class ComplementaryPairsTest {
 
         // Edge cases
         test(new ArrayList<>(), 0, "Empty List");
-        test(Arrays.asList("a"), 0, "Single Element");
+        test(List.of("a"), 0, "Single Element");
 
         // Large input test
         List<String> largeTest = new ArrayList<>();

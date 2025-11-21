@@ -34,8 +34,8 @@ public class HelloWorld {
     }
 
     public static class Person {
-        private String name;
-        private Integer age;
+        private final String name;
+        private final Integer age;
 
         public Person(String name, Integer age) {
             this.name = name;

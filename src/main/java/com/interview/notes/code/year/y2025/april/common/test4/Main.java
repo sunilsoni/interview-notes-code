@@ -5,14 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 // First, assuming you have this Person class
-class Person {
-    final String name;
-    final double salary;
-
-    Person(String name, double salary) {
-        this.name = name;
-        this.salary = salary;
-    }
+record Person(String name, double salary) {
 }
 
 // Now, here's how to find the person with third-highest salary using Stream API
@@ -29,14 +22,14 @@ public class Main {
 
         // Method 1: Using skip and findFirst
         Person thirdHighestSalary = persons.stream()
-                .sorted((p1, p2) -> Double.compare(p2.salary, p1.salary)) // Sort in descending order
+                .sorted((p1, p2) -> Double.compare(p2.salary(), p1.salary())) // Sort in descending order
                 .skip(2) // Skip first two highest salaries
                 .findFirst() // Get the third one
                 .orElse(null); // Handle case if list has less than 3 elements
 
         // Method 2: Using limit and skip
         Person thirdHighestSalary2 = persons.stream()
-                .sorted(Comparator.comparingDouble(p -> -p.salary)) // Sort in descending order
+                .sorted(Comparator.comparingDouble(p -> -p.salary())) // Sort in descending order
                 .limit(3) // Take first 3
                 .skip(2) // Skip 2 to get the third one
                 .findFirst()

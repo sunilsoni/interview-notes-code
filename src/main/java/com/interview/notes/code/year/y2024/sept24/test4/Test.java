@@ -24,7 +24,7 @@ class Derived extends Base {
 public class Test {
     public static void main(String[] args) {
         Base obj1 = new Derived();
-        obj1.display(); // Calls Base class's static method (class method binding)
+        Base.display(); // Calls Base class's static method (class method binding)
         obj1.print();   // Calls Derived class's instance method (dynamic method dispatch)
     }
 }

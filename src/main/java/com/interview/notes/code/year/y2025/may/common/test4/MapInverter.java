@@ -62,12 +62,6 @@ public class MapInverter {
     }
 
     // simple struct for tests
-    private static class TestCase {
-        final Map<String, String> input, expected;
-
-        TestCase(Map<String, String> in, Map<String, String> exp) {
-            this.input = in;
-            this.expected = exp;
-        }
+        private record TestCase(Map<String, String> input, Map<String, String> expected) {
     }
 }

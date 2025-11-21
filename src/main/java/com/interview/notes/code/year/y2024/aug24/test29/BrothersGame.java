@@ -66,7 +66,7 @@ public class BrothersGame {
         List<Integer> ar5 = Arrays.asList(1, 3, 2, 4);
         System.out.println(solve(ar5));  // Expected output: 0
 
-        List<Integer> ar6 = Arrays.asList(1);
+        List<Integer> ar6 = List.of(1);
         System.out.println(solve(ar6));  // Expected output: 0
     }
 }

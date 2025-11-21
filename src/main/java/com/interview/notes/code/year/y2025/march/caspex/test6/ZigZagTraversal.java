@@ -162,6 +162,6 @@ public class ZigZagTraversal {
                 sb.append(" ");
             }
         }
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 }

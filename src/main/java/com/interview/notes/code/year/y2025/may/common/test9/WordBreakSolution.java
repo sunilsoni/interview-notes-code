@@ -54,7 +54,7 @@ public class WordBreakSolution {
         // Test Case 1: Trading suspicious message
         String s1 = "stockgodown";
         List<String> dict1 = Arrays.asList("stock", "go", "down", "money");
-        testCase("Test 1", s1, dict1, Arrays.asList("stock go down"));
+        testCase("Test 1", s1, dict1, List.of("stock go down"));
 
         // Test Case 2: Normal message
         String s2 = "pineapplepenapple";
@@ -70,7 +70,7 @@ public class WordBreakSolution {
         for (int i = 0; i < 100; i++) {
             largeInput.append("stock");
         }
-        List<String> largeDict = Arrays.asList("stock");
+        List<String> largeDict = List.of("stock");
         testCase("Test 4 (Large Input)", largeInput.toString(), largeDict, null);
     }
 

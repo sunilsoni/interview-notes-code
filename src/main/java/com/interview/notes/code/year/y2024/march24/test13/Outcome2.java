@@ -1,14 +1,13 @@
 package com.interview.notes.code.year.y2024.march24.test13;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 class Outcome2 {
     public static int solve(Integer[] doll) {
         Set<Integer> seen = new HashSet<>();
-        for (Integer size : doll) {
-            seen.add(size);
-        }
+        Collections.addAll(seen, doll);
         return seen.size();
     }
 

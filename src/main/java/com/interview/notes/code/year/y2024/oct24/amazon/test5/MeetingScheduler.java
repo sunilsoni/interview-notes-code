@@ -41,15 +41,15 @@ public class MeetingScheduler {
     public void runTests() {
         // Test case 1
         int[][] meetings1 = {{0, 30}, {5, 10}, {15, 20}};
-        System.out.println("Test 1: " + (canAttendMeetings(meetings1) == false ? "PASS" : "FAIL"));
+        System.out.println("Test 1: " + (!canAttendMeetings(meetings1) ? "PASS" : "FAIL"));
 
         // Test case 2
         int[][] meetings2 = {{7, 10}, {2, 4}};
-        System.out.println("Test 2: " + (canAttendMeetings(meetings2) == true ? "PASS" : "FAIL"));
+        System.out.println("Test 2: " + (canAttendMeetings(meetings2) ? "PASS" : "FAIL"));
 
         // Test case 3 (Invalid interval, [45,10] is reversed)
         int[][] meetings3 = {{0, 30}, {45, 10}, {15, 20}};
-        System.out.println("Test 3: " + (canAttendMeetings(meetings3) == false ? "PASS" : "FAIL"));
+        System.out.println("Test 3: " + (!canAttendMeetings(meetings3) ? "PASS" : "FAIL"));
 
         // Large test case
         int[][] largeMeetings = new int[100000][2];
@@ -57,10 +57,10 @@ public class MeetingScheduler {
             largeMeetings[i][0] = i * 10;
             largeMeetings[i][1] = (i * 10) + 9;
         }
-        System.out.println("Test 4 (Large Data): " + (canAttendMeetings(largeMeetings) == true ? "PASS" : "FAIL"));
+        System.out.println("Test 4 (Large Data): " + (canAttendMeetings(largeMeetings) ? "PASS" : "FAIL"));
 
         // Edge test case: No meetings
         int[][] noMeetings = {};
-        System.out.println("Test 5 (No meetings): " + (canAttendMeetings(noMeetings) == true ? "PASS" : "FAIL"));
+        System.out.println("Test 5 (No meetings): " + (canAttendMeetings(noMeetings) ? "PASS" : "FAIL"));
     }
 }

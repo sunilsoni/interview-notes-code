@@ -85,9 +85,9 @@ public class MinimalReproSolution {
     // ----------- Services ----------- //
 
     static class Position {
-        private String accountId;
-        private String symbol;
-        private long numShares;
+        private final String accountId;
+        private final String symbol;
+        private final long numShares;
 
         Position(String positionStr) {
             String[] tokens = positionStr.split(",");
@@ -116,8 +116,8 @@ public class MinimalReproSolution {
     }
 
     static class Quote {
-        private String symbol;
-        private BigDecimal price;
+        private final String symbol;
+        private final BigDecimal price;
 
         Quote(String quoteStr) {
             String[] tokens = quoteStr.split(",");
@@ -142,7 +142,7 @@ public class MinimalReproSolution {
     // ----------- Main logic ----------- //
 
     static class PositionSvc {
-        private List<Position> positions;
+        private final List<Position> positions;
 
         PositionSvc() {
             this.positions = new ArrayList<>();
@@ -164,7 +164,7 @@ public class MinimalReproSolution {
     }
 
     static class QuoteSvc {
-        private List<Quote> previousCloseQuotes;
+        private final List<Quote> previousCloseQuotes;
 
         QuoteSvc() {
             this.previousCloseQuotes = new ArrayList<>();

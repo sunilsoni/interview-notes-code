@@ -70,7 +70,7 @@ class Reconciler {
         Stream<PendingTransaction> reconciled = reconciler.reconcile(pendingTransactions, processedTransactions);
 
         // Print out the IDs of the reconciled transactions
-        reconciled.map(PendingTransaction::getId).forEach(System.out::println);
+        reconciled.map(PendingTransaction::id).forEach(System.out::println);
     }
 
     Stream<PendingTransaction> reconcile(Stream<PendingTransaction> pending, Stream<Stream<ProcessedTransaction>> processed) {
@@ -84,16 +84,16 @@ class Reconciler {
 
         // Create a map of processed transactions with their IDs for efficient lookup
         Map<String, ProcessedTransaction> processedMap = flatProcessed
-                .filter(pt -> pt.getId() != null && !pt.getId().isEmpty())
-                .collect(Collectors.toMap(ProcessedTransaction::getId, pt -> pt));
+                .filter(pt -> pt.id() != null && !pt.id().isEmpty())
+                .collect(Collectors.toMap(ProcessedTransaction::id, pt -> pt));
 
         // If pending is null return an empty stream, otherwise filter transactions
         return pending == null ? Stream.empty() : pending
                 .filter(p -> {
-                    ProcessedTransaction correspondingPT = processedMap.get(String.valueOf(p.getId()));
+                    ProcessedTransaction correspondingPT = processedMap.get(String.valueOf(p.id()));
                     return correspondingPT != null
-                            && correspondingPT.getStatus().isPresent()
-                            && "done".equalsIgnoreCase(correspondingPT.getStatus().get());
+                            && correspondingPT.status().isPresent()
+                            && "done".equalsIgnoreCase(correspondingPT.status().get());
                 });
     }
 }

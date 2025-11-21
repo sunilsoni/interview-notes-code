@@ -47,16 +47,7 @@ public class SearchValueTest {
      * Simple harness to run test cases and print PASS/FAIL.
      */
     public static void main(String[] args) {
-        class Test {
-            final List<Integer> input;
-            final int value;
-            final List<Integer> expected;
-
-            Test(List<Integer> input, int value, List<Integer> expected) {
-                this.input = input;
-                this.value = value;
-                this.expected = expected;
-            }
+        record Test(List<Integer> input, int value, List<Integer> expected) {
         }
 
         List<Test> tests = new ArrayList<>();

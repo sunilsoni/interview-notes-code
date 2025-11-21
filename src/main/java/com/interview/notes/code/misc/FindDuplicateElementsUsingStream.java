@@ -49,9 +49,9 @@ public class FindDuplicateElementsUsingStream {
     }
 
     static class Employee {
-        private int id;
-        private String firstName;
-        private String lastName;
+        private final int id;
+        private final String firstName;
+        private final String lastName;
 
         public Employee(int id, String firstName, String lastName) {
             this.id = id;

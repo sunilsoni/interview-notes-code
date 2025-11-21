@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.interview.notes.code.year.y2023.dec23.DreamPayments.model.EntityType;
 
 public class EntityProcessor1 {
-    private int totalEntitiesProcessed = 0;
-    private int totalEntitiesValid = 0;
-    private int totalEntitiesInvalid = 0;
+    private final int totalEntitiesProcessed = 0;
+    private final int totalEntitiesValid = 0;
+    private final int totalEntitiesInvalid = 0;
 
     public EntityProcessor1() {
 

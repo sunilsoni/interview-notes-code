@@ -134,10 +134,8 @@ public class IslandDetector {
     // Test method
     public static void main(String[] args) {
         // Create test cases with different scenarios
-        List<char[][]> testGrids = Arrays.asList(
-                // Test case 1: Grid with 2 enclosed islands
-
-        );
+        // Test case 1: Grid with 2 enclosed islands
+        List<char[][]> testGrids = List.of();
 
         // Expected results for each test case
         List<String> expected = Arrays.asList("Count=2", "Count=0", "Count=0");

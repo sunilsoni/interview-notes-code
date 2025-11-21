@@ -79,9 +79,9 @@ public class RobotPositionSolver {
     public static void main(String[] args) {
         // Test case class to structure our tests
         class TestCase {
-            String commands;
-            String expected;
-            String description;
+            final String commands;
+            final String expected;
+            final String description;
 
             TestCase(String commands, String expected, String description) {
                 this.commands = commands;

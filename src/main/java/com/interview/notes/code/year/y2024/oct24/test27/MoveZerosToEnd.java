@@ -127,8 +127,8 @@ public class MoveZerosToEnd {
 
         // Test Case 2: Single element
         totalTests++;
-        List<Integer> test2 = Arrays.asList(0);
-        List<Integer> expected2 = Arrays.asList(0);
+        List<Integer> test2 = List.of(0);
+        List<Integer> expected2 = List.of(0);
         if (runTest(new ArrayList<>(test2), expected2)) testsPassed++;
 
         // Test Case 3: No zeros

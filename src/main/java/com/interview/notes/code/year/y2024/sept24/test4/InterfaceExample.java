@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2024.sept24.test4;
 
 interface MyInterface1 {
-    public static final int num = 100;
+    int num = 100;
 
     default void display() {
         System.out.println("display method of MyInterface1");
@@ -9,7 +9,7 @@ interface MyInterface1 {
 }
 
 interface MyInterface2 {
-    public static final int num = 1000;
+    int num = 1000;
 
     default void display() {
         System.out.println("display method of MyInterface2");

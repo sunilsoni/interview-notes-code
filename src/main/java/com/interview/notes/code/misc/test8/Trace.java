@@ -17,7 +17,7 @@ public class Trace {
 
     public void execute() {
 
-        int primes[] = {2, 3, 5, 7};
+        int[] primes = {2, 3, 5, 7};
         int total = 0;
 
         for (int i = 0; i < primes.length; i++) {

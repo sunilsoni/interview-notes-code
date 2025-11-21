@@ -11,8 +11,8 @@ public class Battleship {
     private static final char HIT = 'X';
     private static final char MISS = 'O';
 
-    private char[][] grid;
-    private List<Ship> ships;
+    private final char[][] grid;
+    private final List<Ship> ships;
 
     public Battleship() {
         grid = new char[GRID_SIZE][GRID_SIZE];
@@ -147,15 +147,6 @@ public class Battleship {
         }
     }
 
-    public static class HitResult {
-        public final boolean isHit;
-        public final boolean isSunk;
-        public final boolean isGameOver;
-
-        public HitResult(boolean isHit, boolean isSunk, boolean isGameOver) {
-            this.isHit = isHit;
-            this.isSunk = isSunk;
-            this.isGameOver = isGameOver;
-        }
+    public record HitResult(boolean isHit, boolean isSunk, boolean isGameOver) {
     }
 }

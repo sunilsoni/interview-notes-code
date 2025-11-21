@@ -4,11 +4,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 class Student {
-    private int id;
-    private String name;
-    private String className;
-    private int marks;
-    private String stream;
+    private final int id;
+    private final String name;
+    private final String className;
+    private final int marks;
+    private final String stream;
 
     // Constructor
     public Student(int id, String name, String className, int marks, String stream) {

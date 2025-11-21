@@ -50,7 +50,7 @@ public class MatrixYSolution {
             // Left diagonal
             if (i == j) return true;
             // Right diagonal
-            if (i + j == n - 1) return true;
+            return i + j == n - 1;
         }
 
         return false;

@@ -5,7 +5,7 @@ interface High {
         System.out.println("Method 1");
     }
 
-    public abstract void Method2();
+    void Method2();
 }
 
 class Middle implements High {
@@ -35,9 +35,9 @@ public class Question305 extends Middle {
 
         //  High.Method2();  // This will not compile as static reference is not allowed
 
-        test.Method3();
+        Method3();
         //High.Method2 () ;
-        test.Method3();
+        Method3();
         // High.Method2 () ;
 //   test.Method4 () ;
         // Middle.Method2 () ;

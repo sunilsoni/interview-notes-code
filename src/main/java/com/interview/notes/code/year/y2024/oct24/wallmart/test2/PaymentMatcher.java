@@ -67,10 +67,10 @@ albert@test.com l OneEco
 5 |
  */
 class User {
-    private String name;
-    private String email;
-    private String purchaseType;
-    private int quantity;
+    private final String name;
+    private final String email;
+    private final String purchaseType;
+    private final int quantity;
 
     public User(String name, String email, String purchaseType, int quantity) {
         this.name = name;
@@ -97,9 +97,9 @@ class User {
 }
 
 class Payment {
-    private int id;
-    private String email;
-    private int amount;
+    private final int id;
+    private final String email;
+    private final int amount;
 
     public Payment(int id, String email, int amount) {
         this.id = id;

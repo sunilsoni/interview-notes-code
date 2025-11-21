@@ -32,7 +32,7 @@ class Van extends Vehicle {
 
 // Spot class representing a parking spot
 class Spot {
-    private VehicleSize size;
+    private final VehicleSize size;
     private boolean isAvailable;
 
     public Spot(VehicleSize size) {
@@ -63,7 +63,7 @@ class Spot {
 
 // Level class representing a parking level
 class Level {
-    private List<Spot> spots;
+    private final List<Spot> spots;
 
     public Level(int motorcycleSpots, int carSpots, int largeSpots) {
         spots = new ArrayList<>();
@@ -99,7 +99,7 @@ class Level {
 
 // ParkingLot class representing the entire parking structure
 class ParkingLot {
-    private List<Level> levels;
+    private final List<Level> levels;
 
     public ParkingLot(List<Level> levels) {
         this.levels = levels;

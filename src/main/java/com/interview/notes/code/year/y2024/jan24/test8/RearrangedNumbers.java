@@ -1,9 +1,6 @@
 package com.interview.notes.code.year.y2024.jan24.test8;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Given an• list-of• numbers, return the list with numbers rearranged in order of number of occurrences in• descending order. •If multiple numbers occur the same number of times, the order of these numbers in • the • input list-should-be maintained.|
@@ -46,7 +43,7 @@ class RearrangedNumbers {
                 .sorted((n1, n2) -> {
                     int freqCompare = frequencyMap.get(n2).compareTo(frequencyMap.get(n1));
                     if (freqCompare == 0)
-                        return Arrays.asList(reqArray).indexOf(n1) - Arrays.asList(reqArray).indexOf(n2);
+                        return List.of(reqArray).indexOf(n1) - List.of(reqArray).indexOf(n2);
                     else
                         return freqCompare;
                 })

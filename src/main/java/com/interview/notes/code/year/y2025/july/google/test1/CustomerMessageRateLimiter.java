@@ -11,9 +11,9 @@ public class CustomerMessageRateLimiter {
         Map<String, Integer> lastDeliveryTime = new HashMap<>();
 
         for (Triple<Integer, String, Integer> message : messages) {
-            int currentTime = message.getFirst();      // timestamp
-            String content = message.getSecond();      // message content
-            int customerId = message.getThird();       // customer ID
+            int currentTime = message.first();      // timestamp
+            String content = message.second();      // message content
+            int customerId = message.third();       // customer ID
 
             // Create unique key combining customer ID and message content
             String key = customerId + ":" + content;
@@ -69,27 +69,6 @@ public class CustomerMessageRateLimiter {
     }
 
     // Triple class to hold timestamp, message content, and customer ID
-    static class Triple<T, U, V> {
-        private final T first;
-        private final U second;
-        private final V third;
-
-        public Triple(T first, U second, V third) {
-            this.first = first;
-            this.second = second;
-            this.third = third;
-        }
-
-        public T getFirst() {
-            return first;
-        }
-
-        public U getSecond() {
-            return second;
-        }
-
-        public V getThird() {
-            return third;
-        }
+        record Triple<T, U, V>(T first, U second, V third) {
     }
 }

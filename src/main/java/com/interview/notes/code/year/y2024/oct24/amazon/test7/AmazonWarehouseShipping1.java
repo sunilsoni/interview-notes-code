@@ -3,8 +3,8 @@ package com.interview.notes.code.year.y2024.oct24.amazon.test7;
 import java.util.*;
 
 class AmazonWarehouseShipping1 {
-    private Map<String, List<Warehouse>> regionWarehouses;
-    private Map<String, Map<String, Integer>> warehouseItems;
+    private final Map<String, List<Warehouse>> regionWarehouses;
+    private final Map<String, Map<String, Integer>> warehouseItems;
 
     public AmazonWarehouseShipping1() {
         regionWarehouses = new HashMap<>();

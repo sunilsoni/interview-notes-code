@@ -7,10 +7,10 @@ import java.util.Map;
 
 // Book class to store book information
 class Book {
-    private String isbn;
-    private String title;
-    private String author;
-    private int totalCopies;
+    private final String isbn;
+    private final String title;
+    private final String author;
+    private final int totalCopies;
     private int availableCopies;
 
     public Book(String isbn, String title, String author, int totalCopies) {
@@ -49,8 +49,8 @@ class Book {
 
 // Main Library Management System class
 class LibrarySystem {
-    private Map<String, Book> booksByIsbn;
-    private Map<String, List<String>> borrowedBooks; // userId -> List of ISBNs
+    private final Map<String, Book> booksByIsbn;
+    private final Map<String, List<String>> borrowedBooks; // userId -> List of ISBNs
 
     public LibrarySystem() {
         this.booksByIsbn = new HashMap<>();

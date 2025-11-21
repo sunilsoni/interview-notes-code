@@ -181,7 +181,7 @@ public class MaxQualityFinder {
 
         // Edge case: Single packet
         totalTests++;
-        if (runTest(Arrays.asList(10), 1, 10)) passedTests++;
+        if (runTest(List.of(10), 1, 10)) passedTests++;
 
         // Large data test
         List<Integer> largeInput = new ArrayList<>();

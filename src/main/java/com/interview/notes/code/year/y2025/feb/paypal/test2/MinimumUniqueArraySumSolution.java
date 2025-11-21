@@ -116,7 +116,7 @@ public class MinimumUniqueArraySumSolution {
                 // Example from the description.
                 new TestCase(Arrays.asList(3, 2, 1, 2, 7), 17),
                 // Edge case: single element.
-                new TestCase(Arrays.asList(1), 1),
+                new TestCase(List.of(1), 1),
                 // Edge case: all elements are duplicates.
                 new TestCase(Arrays.asList(1, 1, 1, 1), 10), // Expected: 1,2,3,4 => 10
                 // Additional case: mixed duplicates.

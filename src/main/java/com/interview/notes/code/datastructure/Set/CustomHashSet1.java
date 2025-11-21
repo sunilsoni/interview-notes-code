@@ -3,11 +3,11 @@ package com.interview.notes.code.datastructure.Set;
 import java.util.Arrays;
 
 public class CustomHashSet1<T> {
+    private final int countForConvert = 5;
+    private final int countForBack = 4;
     private int capacity = 16;
     private double loadFactor = 0.75d;
     private int size = 0;
-    private int countForConvert = 5;
-    private int countForBack = 4;
     private NodeSet[] buckets;
 
     public CustomHashSet1() {
@@ -27,23 +27,23 @@ public class CustomHashSet1<T> {
 
     public static void main(String[] args) {
         CustomHashSet1<Integer> set = new CustomHashSet1<>(4);
-        set.add(new Integer(3));
+        set.add(Integer.valueOf(3));
         set.debug();
-        set.add(new Integer(3));
+        set.add(Integer.valueOf(3));
         set.debug();
-        set.add(new Integer(10));
+        set.add(Integer.valueOf(10));
         set.debug();
-        set.add(new Integer(5));
+        set.add(Integer.valueOf(5));
         set.debug();
-        set.add(new Integer(111));
+        set.add(Integer.valueOf(111));
         set.debug();
-        set.add(new Integer(50));
+        set.add(Integer.valueOf(50));
         set.debug();
         set.delete(5);
         set.debug();
         set.add(null);
         set.debug();
-        set.add(new Integer(23));
+        set.add(Integer.valueOf(23));
         set.debug();
         set.add(null);
         set.debug();
@@ -245,7 +245,7 @@ public class CustomHashSet1<T> {
                     countForTree++;
                 }
             }
-            if (isEqual == false) { // если не нашли совпадений, то нужно добавлять в список (в голову), проверив количество для перестройки в дерево. Нужно проверить первый на null, чтобы его не потерять в итоге (если бакет нулевой)
+            if (!isEqual) { // если не нашли совпадений, то нужно добавлять в список (в голову), проверив количество для перестройки в дерево. Нужно проверить первый на null, чтобы его не потерять в итоге (если бакет нулевой)
                 if (countForTree < this.countForConvert) {
                     if (buckets[index].value == null) {
                         NodeSet<T> buf = new NodeSet<>(elem, null);

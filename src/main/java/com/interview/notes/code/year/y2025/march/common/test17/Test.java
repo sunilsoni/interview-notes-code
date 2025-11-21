@@ -14,7 +14,7 @@ public class Test {
         System.out.println("Constructor");
     }
 
-    public static void main(String arg[]) {
+    public static void main(String[] arg) {
         new Test().method10();
     }
 

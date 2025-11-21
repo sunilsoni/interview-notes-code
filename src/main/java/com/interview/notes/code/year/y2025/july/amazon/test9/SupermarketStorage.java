@@ -9,10 +9,10 @@ import java.util.Map;
 
 public class SupermarketStorage {
     // Store product batches with their details
-    private Map<String, List<Batch>> productBatches = new HashMap<>();
+    private final Map<String, List<Batch>> productBatches = new HashMap<>();
 
     // Track first order time for each product
-    private Map<String, LocalDateTime> firstOrderTime = new HashMap<>();
+    private final Map<String, LocalDateTime> firstOrderTime = new HashMap<>();
 
     public static void main(String[] args) {
         SupermarketStorage storage = new SupermarketStorage();

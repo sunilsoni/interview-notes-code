@@ -22,7 +22,7 @@ public class SongPairFinder {
             songMap.put(seconds, title);
         }
 
-        return Arrays.asList();
+        return List.of();
     }
 
     private static int convertToSeconds(String time) {

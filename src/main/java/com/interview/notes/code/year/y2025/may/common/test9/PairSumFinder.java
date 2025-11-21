@@ -54,13 +54,13 @@ public class PairSumFinder {
                         )
                 ),
                 new TestCase(new int[]{5, 5, 5}, 10,
-                        Arrays.asList(new AbstractMap.SimpleEntry<>(5, 5))
+                        List.of(new AbstractMap.SimpleEntry<>(5, 5))
                 ),
                 new TestCase(new int[]{1, 2, 3}, 7, Collections.emptyList()),
                 new TestCase(new int[]{}, 5, Collections.emptyList()),
                 // Large input test: all zeros, target 0 → many zeros collapsed to one pair
                 new TestCase(IntStream.range(0, 1000000).map(i -> 0).toArray(), 0,
-                        Arrays.asList(new AbstractMap.SimpleEntry<>(0, 0)))
+                        List.of(new AbstractMap.SimpleEntry<>(0, 0)))
         );
 
         for (TestCase tc : tests) {

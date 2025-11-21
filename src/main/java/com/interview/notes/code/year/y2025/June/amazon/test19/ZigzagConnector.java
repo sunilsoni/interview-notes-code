@@ -108,8 +108,7 @@ public class ZigzagConnector {
         Node start = levels.get(1).get(1);                       // node 3
         if (start.val != 3) return false;
         if (start.next != levels.get(1).get(0)) return false;    // 3.next must be 2
-        if (start.next.next != null) return false;               // then null
-        return true;
+        return start.next.next == null;               // then null
     }
 
     /**

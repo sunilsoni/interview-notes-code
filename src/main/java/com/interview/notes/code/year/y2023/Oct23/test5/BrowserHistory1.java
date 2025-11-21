@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BrowserHistory1 {
     // List to maintain the browser history
-    private List<String> history;
+    private final List<String> history;
     // Integer to keep track of the current index
     private int currentIndex;
 

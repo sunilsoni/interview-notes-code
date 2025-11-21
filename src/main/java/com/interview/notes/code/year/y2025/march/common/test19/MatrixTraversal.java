@@ -47,7 +47,7 @@ public class MatrixTraversal {
         result.append(matrix[2][3]).append(" | ");
         result.append(matrix[2][2]);
 
-        System.out.println(result.toString());
+        System.out.println(result);
     }
 
     public static void main(String[] args) {

@@ -56,7 +56,7 @@ class SharedPrinter {
 }
 
 class FirstNamePrinter implements Runnable {
-    private SharedPrinter printer;
+    private final SharedPrinter printer;
 
     FirstNamePrinter(SharedPrinter printer) {
         this.printer = printer;
@@ -77,7 +77,7 @@ class FirstNamePrinter implements Runnable {
 }
 
 class LastNamePrinter implements Runnable {
-    private SharedPrinter printer;
+    private final SharedPrinter printer;
 
     LastNamePrinter(SharedPrinter printer) {
         this.printer = printer;

@@ -1,8 +1,8 @@
 package com.interview.notes.code.year.y2024.oct24.amazon.test20;
 
 class Employee {
-    private String name;
-    private double salary;
+    private final String name;
+    private final double salary;
 
     public Employee(String name, double salary) {
         this.name = name;

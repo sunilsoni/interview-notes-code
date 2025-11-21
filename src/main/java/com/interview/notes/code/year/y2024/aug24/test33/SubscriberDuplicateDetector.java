@@ -4,10 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 class Subscriber {
-    private int lineNum;
-    private int subscriberId;
-    private String firstNameVal;
-    private String lastNameVal;
+    private final int lineNum;
+    private final int subscriberId;
+    private final String firstNameVal;
+    private final String lastNameVal;
 
     // Constructor
     public Subscriber(int lineNum, int subscriberId, String firstNameVal, String lastNameVal) {

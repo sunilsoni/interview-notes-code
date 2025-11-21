@@ -9,7 +9,7 @@ public class Test {
         System.out.println("a = " + a + " b = " + b);
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         byte a = 10;
         byte b = 15;
         Test test = new Test(a, b);

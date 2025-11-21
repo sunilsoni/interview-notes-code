@@ -53,7 +53,7 @@ public class Solution {
                 Arrays.asList(3, 5),
                 Arrays.asList(3, 5),
                 Arrays.asList(2, 4),
-                Arrays.asList(2)
+                List.of(2)
         );
         int[] expected = {1, 2, -1, 1, -1};
 

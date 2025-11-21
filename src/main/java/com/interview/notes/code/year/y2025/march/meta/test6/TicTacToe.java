@@ -1,9 +1,9 @@
 package com.interview.notes.code.year.y2025.march.meta.test6;
 
 public class TicTacToe {
-    private int n;           // size of the board (n x n)
-    private int[] rows;      // track sum of moves in each row
-    private int[] cols;      // track sum of moves in each column
+    private final int n;           // size of the board (n x n)
+    private final int[] rows;      // track sum of moves in each row
+    private final int[] cols;      // track sum of moves in each column
     private int diagonal;    // track sum of moves in main diagonal
     private int antiDiagonal; // track sum of moves in anti-diagonal
 

@@ -92,7 +92,6 @@ public class RequestProcessorStreams {
                         Map.Entry::getValue,
                         (e1, e2) -> e1,
                         LinkedHashMap::new))
-                .toString()
                 + "... (" + result.size() + " total clients)";
     }
 

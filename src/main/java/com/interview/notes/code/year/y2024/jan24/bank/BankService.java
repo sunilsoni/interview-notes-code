@@ -2,7 +2,7 @@ package com.interview.notes.code.year.y2024.jan24.bank;
 
 // BankService class
 class BankService {
-    private AccountFactory accountFactory;
+    private final AccountFactory accountFactory;
 
     public BankService(AccountFactory accountFactory) {
         this.accountFactory = accountFactory;

@@ -39,10 +39,10 @@ public class Solution {
     }
 
     public static class Employee {
-        private String name;
-        private String title;
-        private String department;
-        private Double salary;
+        private final String name;
+        private final String title;
+        private final String department;
+        private final Double salary;
 
         public Employee(String name, String title, String department, Double salary) {
             this.name = name;

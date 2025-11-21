@@ -22,7 +22,8 @@ public class SumWaysCalculator {
     }
 
     public static void main(String[] args) {
-        record TestCase(int total, int k, int expected) {}
+        record TestCase(int total, int k, int expected) {
+        }
         List<TestCase> tests = List.of(
                 new TestCase(4, 2, 3),
                 new TestCase(5, 3, 5),

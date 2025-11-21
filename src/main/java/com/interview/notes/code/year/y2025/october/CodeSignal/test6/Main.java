@@ -31,7 +31,9 @@ public class Main {
         System.out.println(name + ": " + (ok ? "PASS" : "FAIL") + " -> " + ans);
     }
 
-    static int[] arr(int... a) { return a; }
+    static int[] arr(int... a) {
+        return a;
+    }
 
     public static void main(String[] args) {
         run("Ex1", arr(7, 5, 2, 11), arr(3, 4, 1, 3), 1);

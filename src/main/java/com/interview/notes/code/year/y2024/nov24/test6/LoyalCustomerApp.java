@@ -60,7 +60,7 @@ public class LoyalCustomerApp {
     /* Helper Classes */
 
     public static class CustomerId {
-        private String id;
+        private final String id;
 
         public CustomerId(String id) {
             this.id = id;
@@ -90,7 +90,7 @@ public class LoyalCustomerApp {
     }
 
     public static class PageId {
-        private String id;
+        private final String id;
 
         public PageId(String id) {
             this.id = id;
@@ -120,8 +120,8 @@ public class LoyalCustomerApp {
     }
 
     public static class PageView {
-        private CustomerId customerId;
-        private PageId pageId;
+        private final CustomerId customerId;
+        private final PageId pageId;
 
         public PageView(CustomerId customerId, PageId pageId) {
             this.customerId = customerId;

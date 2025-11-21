@@ -97,9 +97,9 @@ public class MovieRecommender {
 
         // Define test cases
         Map<String, List<String>> testCases = new LinkedHashMap<>();
-        testCases.put("Charlie", Arrays.asList("Mad Max"));
+        testCases.put("Charlie", List.of("Mad Max"));
         testCases.put("Bob", Arrays.asList("Inception", "Topsy-Turvy"));
-        testCases.put("Dennis", Arrays.asList("Lost In Translation"));
+        testCases.put("Dennis", List.of("Lost In Translation"));
         testCases.put("Alice", Collections.emptyList());
         testCases.put("Franz", Arrays.asList("All About Eve", "Inception", "Topsy-Turvy"));
 
@@ -181,7 +181,7 @@ public class MovieRecommender {
         largeRatings = Arrays.copyOf(largeRatings, 10010);
         largeRatings[10000] = new String[]{"TargetUser", "UniqueMovie", "3"};
         largeRatings[10001] = new String[]{"SimilarUser", "AnotherMovie", "5"};
-        List<String> expected3 = Arrays.asList("AnotherMovie");
+        List<String> expected3 = List.of("AnotherMovie");
         List<String> actual3 = recommendations("TargetUser", largeRatings);
         if (actual3.equals(expected3)) {
             System.out.println("Additional Test - Large dataset: PASS");

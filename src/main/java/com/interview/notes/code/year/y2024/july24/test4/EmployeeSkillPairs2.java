@@ -50,9 +50,9 @@ public class EmployeeSkillPairs2 {
 
                 // If left and right meet and are the same, adjust the count
                 if (left == right) {
-                    count += (countLeft * (countLeft - 1)) / 2;
+                    count += ((long) countLeft * (countLeft - 1)) / 2;
                 } else {
-                    count += countLeft * countRight;
+                    count += (long) countLeft * countRight;
                 }
 
                 // Move pointers past the current numbers

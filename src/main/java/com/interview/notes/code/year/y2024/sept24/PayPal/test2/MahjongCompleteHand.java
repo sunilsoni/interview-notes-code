@@ -7,24 +7,24 @@ public class MahjongCompleteHand {
 
     // Main method to run the test cases
     public static void main(String[] args) {
-        System.out.println("Test Case 1: " + (complete("88844") == true ? "Passed" : "Failed"));
-        System.out.println("Test Case 2: " + (complete("99") == true ? "Passed" : "Failed"));
-        System.out.println("Test Case 3: " + (complete("55555") == true ? "Passed" : "Failed"));
-        System.out.println("Test Case 4: " + (complete("22333333") == true ? "Passed" : "Failed"));
-        System.out.println("Test Case 5: " + (complete("73797439949499477339977777997394947947477993") == true ? "Passed" : "Failed"));
-        System.out.println("Test Case 6: " + (complete("111333555") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 7: " + (complete("42") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 8: " + (complete("888") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 9: " + (complete("100100000") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 10: " + (complete("346664366") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 11: " + (complete("8999998999898") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 12: " + (complete("17610177") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 13: " + (complete("600061166") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 14: " + (complete("6996999") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 15: " + (complete("03799449") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 16: " + (complete("64444333355556") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 17: " + (complete("7") == false ? "Passed" : "Failed"));
-        System.out.println("Test Case 18: " + (complete("776655") == false ? "Passed" : "Failed"));
+        System.out.println("Test Case 1: " + (complete("88844") ? "Passed" : "Failed"));
+        System.out.println("Test Case 2: " + (complete("99") ? "Passed" : "Failed"));
+        System.out.println("Test Case 3: " + (complete("55555") ? "Passed" : "Failed"));
+        System.out.println("Test Case 4: " + (complete("22333333") ? "Passed" : "Failed"));
+        System.out.println("Test Case 5: " + (complete("73797439949499477339977777997394947947477993") ? "Passed" : "Failed"));
+        System.out.println("Test Case 6: " + (!complete("111333555") ? "Passed" : "Failed"));
+        System.out.println("Test Case 7: " + (!complete("42") ? "Passed" : "Failed"));
+        System.out.println("Test Case 8: " + (!complete("888") ? "Passed" : "Failed"));
+        System.out.println("Test Case 9: " + (!complete("100100000") ? "Passed" : "Failed"));
+        System.out.println("Test Case 10: " + (!complete("346664366") ? "Passed" : "Failed"));
+        System.out.println("Test Case 11: " + (!complete("8999998999898") ? "Passed" : "Failed"));
+        System.out.println("Test Case 12: " + (!complete("17610177") ? "Passed" : "Failed"));
+        System.out.println("Test Case 13: " + (!complete("600061166") ? "Passed" : "Failed"));
+        System.out.println("Test Case 14: " + (!complete("6996999") ? "Passed" : "Failed"));
+        System.out.println("Test Case 15: " + (!complete("03799449") ? "Passed" : "Failed"));
+        System.out.println("Test Case 16: " + (!complete("64444333355556") ? "Passed" : "Failed"));
+        System.out.println("Test Case 17: " + (!complete("7") ? "Passed" : "Failed"));
+        System.out.println("Test Case 18: " + (!complete("776655") ? "Passed" : "Failed"));
     }
 
     /**

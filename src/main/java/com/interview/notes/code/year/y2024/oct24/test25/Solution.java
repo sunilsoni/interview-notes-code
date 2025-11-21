@@ -104,10 +104,10 @@ public class Solution {
         // Additional Test Cases
 
         // TestCase4: Single element, already organized
-        testCases.add(new TestCase(Arrays.asList(1), 0));
+        testCases.add(new TestCase(List.of(1), 0));
 
         // TestCase5: Single element, needs to be even
-        testCases.add(new TestCase(Arrays.asList(3), 0)); // Correct expectation: 0
+        testCases.add(new TestCase(List.of(3), 0)); // Correct expectation: 0
 
         // TestCase6: All even, need to adjust every second element
         testCases.add(new TestCase(Arrays.asList(2, 4, 6, 8, 10), 3)); // Correct expectation:3

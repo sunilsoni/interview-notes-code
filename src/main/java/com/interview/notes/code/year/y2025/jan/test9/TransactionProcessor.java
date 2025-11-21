@@ -6,9 +6,9 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 class Transaction {
-    private int accountNo;
-    private String date;
-    private double amountTrans;
+    private final int accountNo;
+    private final String date;
+    private final double amountTrans;
 
     public Transaction(int accountNo, String date, double amountTrans) {
         this.accountNo = accountNo;

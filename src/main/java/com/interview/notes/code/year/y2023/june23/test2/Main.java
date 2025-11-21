@@ -2,9 +2,9 @@ package com.interview.notes.code.year.y2023.june23.test2;
 
 class EvenOddThread implements Runnable {
 
-    private int[] numbers;
-    private int start;
-    private int end;
+    private final int[] numbers;
+    private final int start;
+    private final int end;
 
     public EvenOddThread(int[] numbers, int start, int end) {
         this.numbers = numbers;

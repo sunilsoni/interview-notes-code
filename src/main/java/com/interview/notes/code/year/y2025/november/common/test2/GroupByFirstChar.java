@@ -10,7 +10,7 @@ public class GroupByFirstChar {
         List<String> fruits = Arrays.asList("apple", "banana", "orange", "apricot", "blueberry", "avocado");
 
         Map<Character, List<String>> grouped = fruits.stream()
-            .collect(Collectors.groupingBy(s -> Character.toLowerCase(s.charAt(0))));
+                .collect(Collectors.groupingBy(s -> Character.toLowerCase(s.charAt(0))));
 
         grouped.forEach((k, v) -> System.out.println(k + " → " + v));
     }

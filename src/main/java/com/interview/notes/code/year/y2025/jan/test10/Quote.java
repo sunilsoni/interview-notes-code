@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 // Quote class
 class Quote {
-    private String symbol;
-    private BigDecimal price;
+    private final String symbol;
+    private final BigDecimal price;
 
     public Quote(String quoteStr) {
         String[] tokens = quoteStr.split(",");

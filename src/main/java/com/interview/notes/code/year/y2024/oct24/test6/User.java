@@ -12,7 +12,7 @@ public class User {
         this.password = password;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         User user = new User("Jack", generatePassword());
         System.out.println("User is " + user.name + " and password is " + user.password);
     }

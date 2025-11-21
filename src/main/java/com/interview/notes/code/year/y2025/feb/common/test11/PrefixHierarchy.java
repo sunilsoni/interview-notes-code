@@ -170,8 +170,8 @@ public class PrefixHierarchy {
 
         // Test Case 4: Case with duplicate names
         List<String> names4 = Arrays.asList("test", "testing", "test", "tester");
-        List<String> query4 = Arrays.asList("test");
-        List<Integer> expected4 = Arrays.asList(2);
+        List<String> query4 = List.of("test");
+        List<Integer> expected4 = List.of(2);
 
         testCase(names4, query4, expected4, "Duplicate Names");
 

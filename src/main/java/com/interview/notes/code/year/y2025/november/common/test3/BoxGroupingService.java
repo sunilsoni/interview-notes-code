@@ -11,8 +11,8 @@ class BoxGroupingService {
         }
 
         List<Integer> sorted = boxSizes.stream()
-            .sorted()
-            .collect(Collectors.toList());
+                .sorted()
+                .collect(Collectors.toList());
 
         int groups = 1;
         for (int i = 1; i < sorted.size(); i++) {

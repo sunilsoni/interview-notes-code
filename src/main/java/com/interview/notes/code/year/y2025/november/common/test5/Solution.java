@@ -18,14 +18,14 @@ public class Solution {
      * Uses dynamic programming with memoization to avoid recalculating subproblems.
      *
      * @param total The target sum to achieve
-     * @param k The maximum integer value to consider (range: 1 to k)
+     * @param k     The maximum integer value to consider (range: 1 to k)
      * @return The number of ways to achieve the target sum, modulo 10^9 + 7
      */
     public static int ways(int total, int k) {
         // Create a memoization map to store computed results for subproblems
         // Key: total value, Value: number of ways to achieve that total
         Map<Integer, Integer> memo = new HashMap<>();
-        
+
         // Call the recursive helper function to solve the problem
         return waysHelper(total, k, memo);
     }
@@ -35,8 +35,8 @@ public class Solution {
      * This function breaks down the problem into smaller subproblems.
      *
      * @param remaining The remaining sum to achieve
-     * @param k The maximum integer value to consider
-     * @param memo The memoization map storing previously computed results
+     * @param k         The maximum integer value to consider
+     * @param memo      The memoization map storing previously computed results
      * @return The number of ways to achieve the remaining sum
      */
     private static int waysHelper(int remaining, int k, Map<Integer, Integer> memo) {
@@ -44,30 +44,30 @@ public class Solution {
         if (remaining == 0) {
             return 1;
         }
-        
+
         // Base case: if remaining sum is negative, no valid way exists
         if (remaining < 0) {
             return 0;
         }
-        
+
         // Check if this subproblem has already been solved
         if (memo.containsKey(remaining)) {
             return memo.get(remaining);
         }
-        
+
         // Initialize the count of ways for this subproblem
         int count = 0;
-        
+
         // Try using each integer from 1 to k
         for (int i = 1; i <= k; i++) {
             // Recursively find the number of ways to achieve the remaining sum
             // after using integer i
             count = (count + waysHelper(remaining - i, k, memo)) % MOD;
         }
-        
+
         // Store the result in memoization map for future use
         memo.put(remaining, count);
-        
+
         // Return the computed result
         return count;
     }

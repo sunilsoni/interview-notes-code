@@ -31,9 +31,9 @@ interface BookmarkService {
  * Represents a visited browser page with URL, title, and timestamp.
  */
 class BrowserPage {
-    private String url;
-    private String title;
-    private long timestamp;
+    private final String url;
+    private final String title;
+    private final long timestamp;
 
     public BrowserPage(String url, String title) {
         this.url = url;
@@ -61,8 +61,7 @@ class BrowserPage {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof BrowserPage)) return false;
-        BrowserPage that = (BrowserPage) o;
+        if (!(o instanceof BrowserPage that)) return false;
         return Objects.equals(url, that.url) &&
                 Objects.equals(title, that.title);
     }
@@ -77,8 +76,8 @@ class BrowserPage {
  * Keeps track of back/forward stacks of BrowserPage.
  */
 class BrowserHistory implements NavigationService {
-    private Deque<BrowserPage> backStack = new ArrayDeque<>();
-    private Deque<BrowserPage> forwardStack = new ArrayDeque<>();
+    private final Deque<BrowserPage> backStack = new ArrayDeque<>();
+    private final Deque<BrowserPage> forwardStack = new ArrayDeque<>();
     private BrowserPage currentPage = null;
 
     @Override
@@ -116,7 +115,7 @@ class BrowserHistory implements NavigationService {
  * Stores bookmarks in insertion order, ignores duplicates.
  */
 class BrowserBookmarkService implements BookmarkService {
-    private Set<BrowserPage> bookmarks = new LinkedHashSet<>();
+    private final Set<BrowserPage> bookmarks = new LinkedHashSet<>();
 
     @Override
     public void addBookmark(BrowserPage page) {

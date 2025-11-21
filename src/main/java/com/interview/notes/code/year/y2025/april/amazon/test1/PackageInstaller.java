@@ -4,9 +4,9 @@ import java.util.*;
 
 
 public class PackageInstaller {
-    private Map<String, Package> packages = new HashMap<>();
-    private Set<String> installed = new HashSet<>();
-    private Set<String> visiting = new HashSet<>();
+    private final Map<String, Package> packages = new HashMap<>();
+    private final Set<String> installed = new HashSet<>();
+    private final Set<String> visiting = new HashSet<>();
 
     // Main method for testing
     public static void main(String[] args) {
@@ -18,8 +18,8 @@ public class PackageInstaller {
             installer = new PackageInstaller();
             installer.addPackage("A", Arrays.asList("B", "C"));
             installer.addPackage("B", Arrays.asList("D", "E", "F"));
-            installer.addPackage("C", Arrays.asList("F"));
-            installer.addPackage("D", Arrays.asList("G"));
+            installer.addPackage("C", List.of("F"));
+            installer.addPackage("D", List.of("G"));
             installer.addPackage("E", new ArrayList<>());
             installer.addPackage("F", new ArrayList<>());
             installer.addPackage("G", new ArrayList<>());
@@ -35,8 +35,8 @@ public class PackageInstaller {
         System.out.println("\nTest Case 2: Circular Dependency");
         try {
             installer = new PackageInstaller();
-            installer.addPackage("X", Arrays.asList("Y"));
-            installer.addPackage("Y", Arrays.asList("X"));
+            installer.addPackage("X", List.of("Y"));
+            installer.addPackage("Y", List.of("X"));
             installer.install("X");
             System.out.println("FAIL: Should detect circular dependency");
         } catch (Exception e) {

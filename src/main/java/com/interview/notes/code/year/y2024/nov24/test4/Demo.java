@@ -5,7 +5,7 @@ import java.util.function.BiFunction;
 public class Demo {
     BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         System.out.print("a");
         try {
             System.out.print("b");

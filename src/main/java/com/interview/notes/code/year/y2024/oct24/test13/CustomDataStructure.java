@@ -21,8 +21,8 @@ class Node<K, V> {
  * CustomHashMap class implements a simple hash map with custom methods.
  */
 class CustomHashMap<K, V> {
-    private int capacity = 16; // Initial capacity
-    private Node<K, V>[] buckets;
+    private final int capacity = 16; // Initial capacity
+    private final Node<K, V>[] buckets;
 
     @SuppressWarnings("unchecked")
     public CustomHashMap() {
@@ -133,7 +133,7 @@ public class CustomDataStructure {
     // Dummy value to associate with keys
     private static final Object DUMMY = new Object();
     // Map to store elements with custom methods
-    private CustomHashMap<String, Object> elementsMap;
+    private final CustomHashMap<String, Object> elementsMap;
 
     /**
      * Constructor initializes the data structure.
@@ -163,13 +163,13 @@ public class CustomDataStructure {
         System.out.println("Elements after insertion: " + ds.getElements());
 
         // Test search operation
-        assert ds.search("a") == true : "Test search 'a' failed";
-        assert ds.search("abc") == true : "Test search 'abc' failed";
-        assert ds.search("c") == false : "Test search 'c' failed";
+        assert ds.search("a") : "Test search 'a' failed";
+        assert ds.search("abc") : "Test search 'abc' failed";
+        assert !ds.search("c") : "Test search 'c' failed";
 
         // Test delete operation
         ds.delete("a");
-        assert ds.search("a") == false : "Test delete 'a' failed";
+        assert !ds.search("a") : "Test delete 'a' failed";
         ds.delete("d"); // Deleting non-existent element should do nothing
 
         // Expected elements after deletion: ["abc", "b"]

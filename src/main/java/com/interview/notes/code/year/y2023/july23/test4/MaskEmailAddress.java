@@ -17,6 +17,6 @@ public class MaskEmailAddress {
         }
         matcher.appendTail(sb);
 
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 }

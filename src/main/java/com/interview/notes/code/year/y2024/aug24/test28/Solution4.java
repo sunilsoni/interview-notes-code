@@ -4,8 +4,8 @@ public class Solution4 {
     private int[][] matrix;
     private boolean[][] visited;
     private int rows, cols;
-    private int[] dx = {-1, 1, 0, 0};
-    private int[] dy = {0, 0, -1, 1};
+    private final int[] dx = {-1, 1, 0, 0};
+    private final int[] dy = {0, 0, -1, 1};
 
     // Main method for testing
     public static void main(String[] args) {

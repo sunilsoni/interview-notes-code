@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 class DigitalWallet {
-    private String id;
-    private String name;
+    private final String id;
+    private final String name;
     private String accessCode;
     private int balance;
-    private boolean isAuthenticationRequired;
+    private final boolean isAuthenticationRequired;
 
     public DigitalWallet(String id, String name) {
         this.id = id;
@@ -78,7 +78,7 @@ class DigitalWalletTransaction {
 }
 
 class TransactionException extends Exception {
-    private String errorCode;
+    private final String errorCode;
 
     public TransactionException(String message, String errorCode) {
         super(message);

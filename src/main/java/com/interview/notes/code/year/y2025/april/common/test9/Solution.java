@@ -15,7 +15,7 @@ public class Solution {
                         sub, computeScore(sub, prefixString, suffixString)))
                 .max(Comparator
                         .comparing(Map.Entry<String, Integer>::getValue)
-                        .thenComparing(Map.Entry<String, Integer>::getKey,
+                        .thenComparing(Map.Entry::getKey,
                                 Comparator.reverseOrder()))
                 .get()
                 .getKey();

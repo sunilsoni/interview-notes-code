@@ -128,7 +128,7 @@ public class RisingSequenceSolver {
         // Edge case: single element (already rising)
         tests.add(new HashMap<String, Object>() {{
             put("B", 10);
-            put("ar", Arrays.asList(100));
+            put("ar", List.of(100));
             put("expected", 0);
         }});
 

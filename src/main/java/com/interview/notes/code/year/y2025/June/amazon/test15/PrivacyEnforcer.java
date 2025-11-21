@@ -3,42 +3,18 @@ package com.interview.notes.code.year.y2025.June.amazon.test15;
 import java.util.*;
 import java.util.stream.Collectors;
 
-// Represents a single action rule under a jurisdiction
-class Rule {
-    private final String action;            // the action name
-    private final boolean requiresConsent;  // whether consent is required
-
-    public Rule(String action, boolean requiresConsent) {
-        this.action = action;
-        this.requiresConsent = requiresConsent;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public boolean isRequiresConsent() {
-        return requiresConsent;
-    }
+/**
+ * @param action          the action name
+ * @param requiresConsent whether consent is required
+ */ // Represents a single action rule under a jurisdiction
+record Rule(String action, boolean requiresConsent) {
 }
 
-// Holds all rules for a given jurisdiction
-class JurisdictionRules {
-    private final String jurisdiction;  // e.g. "US-CA"
-    private final List<Rule> rules;     // list of action rules
-
-    public JurisdictionRules(String jurisdiction, List<Rule> rules) {
-        this.jurisdiction = jurisdiction;
-        this.rules = rules;
-    }
-
-    public String getJurisdiction() {
-        return jurisdiction;
-    }
-
-    public List<Rule> getRules() {
-        return rules;
-    }
+/**
+ * @param jurisdiction e.g. "US-CA"
+ * @param rules        list of action rules
+ */ // Holds all rules for a given jurisdiction
+record JurisdictionRules(String jurisdiction, List<Rule> rules) {
 }
 
 public class PrivacyEnforcer {
@@ -53,12 +29,12 @@ public class PrivacyEnforcer {
         this.rulesByJurisdiction = config.stream()
                 // key = jurisdiction code; value = map of its rules
                 .collect(Collectors.toMap(
-                        JurisdictionRules::getJurisdiction,
-                        jr -> jr.getRules().stream()
+                        JurisdictionRules::jurisdiction,
+                        jr -> jr.rules().stream()
                                 // for each Rule, map action→requiresConsent
                                 .collect(Collectors.toMap(
-                                        Rule::getAction,
-                                        Rule::isRequiresConsent
+                                        Rule::action,
+                                        Rule::requiresConsent
                                 ))
                 ));
     }
@@ -89,9 +65,10 @@ public class PrivacyEnforcer {
 
         // --- 2) Define test cases ---
         class Test {
-            String loc, action;
-            Set<String> consents;
-            boolean expected;
+            final String loc;
+            final String action;
+            final Set<String> consents;
+            final boolean expected;
 
             Test(String loc, String action, Set<String> consents, boolean expected) {
                 this.loc = loc;

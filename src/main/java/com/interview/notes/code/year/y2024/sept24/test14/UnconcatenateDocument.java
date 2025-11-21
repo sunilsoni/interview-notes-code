@@ -4,10 +4,10 @@ import java.util.*;
 
 public class UnconcatenateDocument {
     // Set to hold dictionary words for O(1) look-up
-    private static Set<String> dictionary = new HashSet<>();
+    private static final Set<String> dictionary = new HashSet<>();
 
     // Memoization map to store computed results
-    private static Map<Integer, Result> memo = new HashMap<>();
+    private static final Map<Integer, Result> memo = new HashMap<>();
 
     public static void main(String[] args) {
         // Initialize the dictionary

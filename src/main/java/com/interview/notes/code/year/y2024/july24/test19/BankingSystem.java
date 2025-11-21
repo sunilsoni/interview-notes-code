@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class BankingSystem {
-    private Map<String, Double> accounts;
-    private Map<String, Double> activityIndicators;
+    private final Map<String, Double> accounts;
+    private final Map<String, Double> activityIndicators;
 
     public BankingSystem() {
         this.accounts = new HashMap<>();

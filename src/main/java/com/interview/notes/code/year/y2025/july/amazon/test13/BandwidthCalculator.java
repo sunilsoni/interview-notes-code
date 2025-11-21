@@ -4,7 +4,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/*
+/**
+ * @param start     Start time (e.g., epoch seconds)
+ * @param end       End time (must be ≥ start)
+ * @param bandwidth Bandwidth required during this segment
+ */ /*
  Problem Statement
 
 You have a local cable company with digital cable running to all your subscribers' houses. This cable carries all of the channels simultaneously, and the subscribers have a box in their house that peels off the channel they want to see.
@@ -20,44 +24,21 @@ Your goal is to **find the maximum total bandwidth usage at any point during the
 
  */
 // Class to hold one TV segment's data
-class Segment {
-    private final long start;            // Start time (e.g., epoch seconds)
-    private final long end;              // End time (must be ≥ start)
-    private final long bandwidth;        // Bandwidth required during this segment
-
+record Segment(long start, long end, long bandwidth) {
     // Constructor to initialize all fields
-    public Segment(long start, long end, long bandwidth) {
-        this.start = start;              // Set start time
-        this.end = end;                  // Set end time
-        this.bandwidth = bandwidth;      // Set bandwidth requirement
-    }
-
-    // Getter for start time
-    public long getStart() {
-        return start;                    // Return stored start time
-    }
-
-    // Getter for end time
-    public long getEnd() {
-        return end;                      // Return stored end time
-    }
-
-    // Getter for bandwidth
-    public long getBandwidth() {
-        return bandwidth;                // Return stored bandwidth
-    }
+    // Set start time
+    // Set end time
+    // Set bandwidth requirement
 }
 
-// Class to represent a sweep‐line event (start or end of a segment)
-class Event {
-    public final long time;               // Timestamp of this event
-    public final long delta;              // +bandwidth for start, –bandwidth for end
-
+/**
+ * @param time  Timestamp of this event
+ * @param delta +bandwidth for start, –bandwidth for end
+ */ // Class to represent a sweep‐line event (start or end of a segment)
+record Event(long time, long delta) {
     // Constructor sets time and bandwidth change
-    public Event(long time, long delta) {
-        this.time = time;                 // Set event time
-        this.delta = delta;               // Set how much to add/subtract
-    }
+    // Set event time
+    // Set how much to add/subtract
 }
 
 public class BandwidthCalculator {
@@ -67,10 +48,10 @@ public class BandwidthCalculator {
         // Convert each segment to two events, then sort all events by time
         List<Event> events = segments.stream()
                 .flatMap(s -> Stream.of(
-                        new Event(s.getStart(), s.getBandwidth()),    // Start event: add bandwidth
-                        new Event(s.getEnd(), -s.getBandwidth())     // End event: subtract bandwidth
+                        new Event(s.start(), s.bandwidth()),    // Start event: add bandwidth
+                        new Event(s.end(), -s.bandwidth())     // End event: subtract bandwidth
                 ))                                                 // Flatten into one stream of Event
-                .sorted(Comparator.comparingLong(e -> e.time))    // Sort by event time ascending
+                .sorted(Comparator.comparingLong(e -> e.time()))    // Sort by event time ascending
                 .collect(Collectors.toList());                    // Gather into a List
 
         long current = 0;   // Tracks bandwidth in effect at current sweep position
@@ -78,7 +59,7 @@ public class BandwidthCalculator {
 
         // Process all events in time order
         for (Event e : events) {
-            current += e.delta;                // Update running bandwidth
+            current += e.delta();                // Update running bandwidth
             if (current > maximum) {           // If we have a new peak
                 maximum = current;             // Record it as the maximum
             }
@@ -95,7 +76,7 @@ public class BandwidthCalculator {
 
                 // Test 2: one segment → bandwidth itself
                 new AbstractMap.SimpleEntry<>(
-                        Arrays.asList(new Segment(10, 20, 5)), 5L
+                        List.of(new Segment(10, 20, 5)), 5L
                 ),
 
                 // Test 3: non-overlapping segments → max is the largest single

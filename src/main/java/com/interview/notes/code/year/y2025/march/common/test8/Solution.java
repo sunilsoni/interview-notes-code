@@ -175,10 +175,10 @@ public class Solution {
      */
     static class StockPrediction {
         // 'gain' represents the profit or loss to add to 'stockPrice'
-        private int gain;
+        private final int gain;
 
         // 'stockPrice' represents the base price of the stock
-        private int stockPrice;
+        private final int stockPrice;
 
         /**
          * Constructor to initialize 'gain' and 'stockPrice'.

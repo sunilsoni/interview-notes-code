@@ -5,28 +5,13 @@ import java.util.Collections;
 import java.util.List;
 
 // Create the Student class here as provided in the question.
-class Student {
-    private final String id;
-    private final String name;
-
-    public Student(String id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
+record Student(String id, String name) {
 }
 
 // Create the RegistrationPortal class here.
 class RegistrationPortal {
     private static RegistrationPortal instance;
-    private List<Student> registeredStudents = Collections.synchronizedList(new ArrayList<>());
+    private final List<Student> registeredStudents = Collections.synchronizedList(new ArrayList<>());
 
     private RegistrationPortal() {
         // Private constructor to prevent instantiation.

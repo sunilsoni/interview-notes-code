@@ -11,10 +11,7 @@ public class TikTokStringChallenge2 {
         int mismatchCount = 0;
 
         for (int i = 0; i < chars.length; i++) {
-            boolean mismatch = true;
-            if (i > 0 && chars[i] == chars[i - 1]) {
-                mismatch = false;
-            }
+            boolean mismatch = i <= 0 || chars[i] != chars[i - 1];
             if (i < chars.length - 1 && chars[i] == chars[i + 1]) {
                 mismatch = false;
             }

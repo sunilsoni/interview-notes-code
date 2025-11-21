@@ -22,7 +22,7 @@ class Package {
 public class PackageInstaller {
 
     // Set to keep track of installed packages and avoid repetition
-    private Set<String> installed = new LinkedHashSet<>();
+    private final Set<String> installed = new LinkedHashSet<>();
 
     // Main method to test the installation logic
     public static void main(String[] args) {

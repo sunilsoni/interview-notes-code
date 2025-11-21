@@ -134,7 +134,7 @@ public class Result {
                 " (Expected: 4, Got: " + result3 + ")");
 
         // Test case 4: Single element
-        List<Integer> test4 = Arrays.asList(1);
+        List<Integer> test4 = List.of(1);
         int result4 = countStudents(test4);
         System.out.println("Test 4: " + (result4 == 0 ? "PASS" : "FAIL") +
                 " (Expected: 0, Got: " + result4 + ")");

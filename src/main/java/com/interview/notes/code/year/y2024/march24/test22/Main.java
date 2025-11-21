@@ -2,10 +2,10 @@ package com.interview.notes.code.year.y2024.march24.test22;
 
 // Car class with optional parameters
 class Car {
-    private String model;
-    private String color;
-    private int year;
-    private double price;
+    private final String model;
+    private final String color;
+    private final int year;
+    private final double price;
 
     // Private constructor to prevent direct instantiation
     private Car(Builder builder) {

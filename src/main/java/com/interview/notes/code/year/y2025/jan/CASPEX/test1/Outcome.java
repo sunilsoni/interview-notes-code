@@ -135,7 +135,7 @@ public class Outcome {
         // Test cases
         runTest(Arrays.asList(7, 3, 6, 5, 6, 0, 7), 15, "Test 1: Given example");
         runTest(Arrays.asList(9, 1, 1, 9), 9, "Test 2: Example with equal ends");
-        runTest(Arrays.asList(1), 1, "Test 3: Single element");
+        runTest(List.of(1), 1, "Test 3: Single element");
         runTest(Arrays.asList(2, 2, 2), 6, "Test 4: Equal heights");
         runTest(Arrays.asList(1, 2, 3, 4), 6, "Test 5: Increasing heights");
 

@@ -5,7 +5,7 @@ class Bank {
     private int account_no;
     private float balance;
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Bank bankObj = new Bank(); // Created an object of Bank class since non-static methods are being accessed
         bankObj.getData();
         bankObj.deposit(1500);

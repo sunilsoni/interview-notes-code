@@ -1,8 +1,8 @@
 package com.interview.notes.code.year.y2023.dec23.test6;
 
 public class Interval {
-    private double start;
-    private double end;
+    private final double start;
+    private final double end;
 
     public Interval(double start, double end) {
         if (start > end) {

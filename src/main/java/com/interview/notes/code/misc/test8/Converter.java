@@ -16,15 +16,15 @@ public class Converter {
     public static NumberFormat thetaFormat = new DecimalFormat("##0.0000000");
 
     // GEO Constants for the Earth and Florida
-    private static double littleA = 6378137.0;
-    private static double littleE = 0.081819191;
-    private static double littleE2 = POW(littleE, 2);
-    private static double phiZero = Math.toRadians(24.000000);
-    private static double lambdaZero = Math.toRadians(-84.000000);
-    private static double falseEast = 400000.0;
-    private static double falseNorth = 0.0;
-    private static double phiOne = Math.toRadians(24.000000);
-    private static double phiTwo = Math.toRadians(31.500000);
+    private static final double littleA = 6378137.0;
+    private static final double littleE = 0.081819191;
+    private static final double littleE2 = POW(littleE, 2);
+    private static final double phiZero = Math.toRadians(24.000000);
+    private static final double lambdaZero = Math.toRadians(-84.000000);
+    private static final double falseEast = 400000.0;
+    private static final double falseNorth = 0.0;
+    private static final double phiOne = Math.toRadians(24.000000);
+    private static final double phiTwo = Math.toRadians(31.500000);
 
     // URL related
     // shorthand routines for the java Math package
@@ -135,8 +135,8 @@ public class Converter {
         int lon_dd = (int) Math.floor(longitude);
         int lon_mm = (int) ((longitude - lon_dd) * 60.0);
         longitude = longitude - lon_dd;
-        longitude = longitude - (double) (lon_mm / 60.0);
-        double lon_ss = (double) (longitude * 3600);
+        longitude = longitude - (lon_mm / 60.0);
+        double lon_ss = longitude * 3600;
 
         lat_dd = lat_dd * latSign;
         lon_dd = lon_dd * lonSign;

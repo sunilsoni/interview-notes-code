@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 class BadgeAccessSystem {
-    private Map<String, Employee> employees;
+    private final Map<String, Employee> employees;
 
     public BadgeAccessSystem() {
         this.employees = new HashMap<>();

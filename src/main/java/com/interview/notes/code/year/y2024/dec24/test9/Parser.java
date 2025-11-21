@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
 public class Parser {
-    private File file;
+    private final File file;
 
     // 1. Consider making file final and initializing in constructor
     public Parser(File file) {

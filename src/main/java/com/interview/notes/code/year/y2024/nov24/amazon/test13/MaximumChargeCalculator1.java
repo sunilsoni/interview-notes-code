@@ -40,7 +40,7 @@ public class MaximumChargeCalculator1 {
         testCase(Arrays.asList(-3, 1, 4, -1, 5, -9), 5, "Basic Test 3");
 
         // Edge cases
-        testCase(Arrays.asList(1), 1, "Single Element");
+        testCase(List.of(1), 1, "Single Element");
         testCase(Arrays.asList(-1, -1), -1, "All Negative");
         testCase(Arrays.asList(0, 0, 0), 0, "All Zeros");
         testCase(Arrays.asList(Integer.MAX_VALUE, -1, -2), Integer.MAX_VALUE, "Max Integer");

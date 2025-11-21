@@ -12,7 +12,7 @@ interface Answerer {
 
 // Represents a question that can be asked with a yes/no answer
 class Question {
-    private String text;
+    private final String text;
 
     public Question(String text) {
         this.text = text;
@@ -26,8 +26,8 @@ class Question {
 
 // Represents a person with known answers to questions
 class Person implements Answerer {
-    private String name;
-    private Map<Question, Boolean> answers;
+    private final String name;
+    private final Map<Question, Boolean> answers;
 
     public Person(String name, Map<Question, Boolean> answers) {
         this.name = name;
@@ -47,8 +47,8 @@ class Person implements Answerer {
 
 // Main solution class that implements the guessing logic
 class PersonGuesser {
-    private List<Person> persons;
-    private List<Question> questions;
+    private final List<Person> persons;
+    private final List<Question> questions;
 
     public PersonGuesser(List<Person> persons, List<Question> questions) {
         this.persons = new ArrayList<>(persons);

@@ -5,11 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-class SparseVector {
-    private final int[] indices;
-    private final double[] values;
-
-    public SparseVector(int[] indices, double[] values) {
+record SparseVector(int[] indices, double[] values) {
+    SparseVector(int[] indices, double[] values) {
         if (indices.length != values.length) {
             throw new IllegalArgumentException("Indices and values must be the same length");
         }
@@ -28,14 +25,6 @@ class SparseVector {
         }
     }
 
-    public int[] getIndices() {
-        return indices;
-    }
-
-    public double[] getValues() {
-        return values;
-    }
-
     private static class Entry {
         int index;
         double value;
@@ -50,10 +39,10 @@ class SparseVector {
 class DotProductCalculator {
     public static double dotProduct(SparseVector a, SparseVector b) {
         double sum = 0.0;
-        int[] aIndices = a.getIndices();
-        double[] aValues = a.getValues();
-        int[] bIndices = b.getIndices();
-        double[] bValues = b.getValues();
+        int[] aIndices = a.indices();
+        double[] aValues = a.values();
+        int[] bIndices = b.indices();
+        double[] bValues = b.values();
 
         int i = 0, j = 0;
         while (i < aIndices.length && j < bIndices.length) {

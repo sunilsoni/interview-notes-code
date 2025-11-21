@@ -190,17 +190,12 @@ public class Solution {
     private record Interval(int startTime, int endTime, int price) {
     }
 
-    // record to represent an event in the sweep: time, isStart, and price
-    private static class Event {
-        final int time;       // the point in time of this event
-        final boolean start;  // true=start of an interval, false=end
-        final int price;      // the vendor price
-
+    /**
+     * @param time  the point in time of this event
+     * @param start true=start of an interval, false=end
+     * @param price the vendor price
+     */ // record to represent an event in the sweep: time, isStart, and price
+        private record Event(int time, boolean start, int price) {
         // constructor
-        Event(int time, boolean start, int price) {
-            this.time = time;
-            this.start = start;
-            this.price = price;
-        }
     }
 }

@@ -30,7 +30,7 @@ CA', rate=$100, eventType: Wedding
 public class PhotographerApp {
 
     // In-memory data store
-    private static List<PhotographerProfile> profiles = new ArrayList<>();
+    private static final List<PhotographerProfile> profiles = new ArrayList<>();
 
     // Save photographer profile
     public static void saveProfile(PhotographerProfile profile) {
@@ -60,7 +60,7 @@ public class PhotographerApp {
         // Sample input profiles
         List<String> events1 = new ArrayList<>(Arrays.asList("Wedding", "Rehearsal Dinner", "Bridal Shower"));
         List<String> events2 = new ArrayList<>(Arrays.asList("Wedding", "Reception"));
-        List<String> events3 = new ArrayList<>(Arrays.asList("Wedding"));
+        List<String> events3 = new ArrayList<>(List.of("Wedding"));
 
         saveProfile(new PhotographerProfile("Dream Weddings", "San Jose, CA", 150, events1));
         saveProfile(new PhotographerProfile("Memorable Moments", "San Jose, CA", 180, events2));

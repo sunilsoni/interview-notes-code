@@ -80,10 +80,10 @@ public class EmployeeSolution {
 }
 
 class Employee {
-    private String firstName;
-    private String lastName;
-    private Integer age;
-    private Double salary;
+    private final String firstName;
+    private final String lastName;
+    private final Integer age;
+    private final Double salary;
     private Department department;
     private List<Employee> subordinates;
     private Employee manager;

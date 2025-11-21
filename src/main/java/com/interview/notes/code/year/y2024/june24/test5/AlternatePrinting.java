@@ -21,7 +21,7 @@ public class AlternatePrinting {
 
     // Runnable implementation for printing numbers
     static class NumberPrinter implements Runnable {
-        private int n;
+        private final int n;
 
         public NumberPrinter(int n) {
             this.n = n;
@@ -43,7 +43,7 @@ public class AlternatePrinting {
 
     // Runnable implementation for printing alphabets
     static class AlphabetPrinter implements Runnable {
-        private int n;
+        private final int n;
 
         public AlphabetPrinter(int n) {
             this.n = n;

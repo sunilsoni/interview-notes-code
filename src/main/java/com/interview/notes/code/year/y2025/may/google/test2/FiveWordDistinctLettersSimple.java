@@ -267,14 +267,10 @@ public class FiveWordDistinctLettersSimple {
      * A helper class that pairs a 5-letter word with its Set<Character>.
      * We use this so that, during DFS, we can quickly check letter-overlap
      * by calling set operations, rather than recomputing characters each time.
+     *
+     * @param word    the 5-letter word itself
+     * @param letters a Set of its 5 distinct letters
      */
-    private static class WordLetters {
-        final String word;               // the 5-letter word itself
-        final Set<Character> letters;    // a Set of its 5 distinct letters
-
-        WordLetters(String w, Set<Character> letters) {
-            this.word = w;
-            this.letters = letters;
-        }
+        private record WordLetters(String word, Set<Character> letters) {
     }
 }

@@ -12,10 +12,10 @@ public class Main {
         // Test Case 1: Sample Input 1
         testCases.add(new TestCase(
                 Arrays.asList(3, 6, 10, 15, 20),
-                Arrays.asList(
+                List.of(
                         Arrays.asList(2, 4)
                 ),
-                Arrays.asList(8L)
+                List.of(8L)
         ));
 
         // Test Case 2: Sample Input 0
@@ -31,28 +31,28 @@ public class Main {
         // Test Case 3: All warehouses connected to first hub
         testCases.add(new TestCase(
                 Arrays.asList(1, 2, 3, 4, 5),
-                Arrays.asList(
+                List.of(
                         Arrays.asList(0, 4)
                 ),
-                Arrays.asList(10L)
+                List.of(10L)
         ));
 
         // Test Case 4: All warehouses connected to second hub
         testCases.add(new TestCase(
                 Arrays.asList(1, 2, 3, 4, 5),
-                Arrays.asList(
+                List.of(
                         Arrays.asList(0, 4)
                 ),
-                Arrays.asList(10L)
+                List.of(10L)
         ));
 
         // Test Case 5: Edge case with minimum n and q
         testCases.add(new TestCase(
                 Arrays.asList(0, 0, 0),
-                Arrays.asList(
+                List.of(
                         Arrays.asList(0, 2)
                 ),
-                Arrays.asList(0L)
+                List.of(0L)
         ));
 
         // Test Case 6: Large Input

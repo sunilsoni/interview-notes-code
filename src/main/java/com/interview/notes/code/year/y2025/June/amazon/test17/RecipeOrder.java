@@ -56,7 +56,7 @@ public class RecipeOrder {
                 new TestCase(3, Arrays.asList(new int[]{1, 0}, new int[]{2, 1}), Arrays.asList(0, 1, 2)),
                 new TestCase(4, Arrays.asList(new int[]{1, 0}, new int[]{2, 0}, new int[]{3, 1}), null), // any valid topol. ordering
                 new TestCase(2, Arrays.asList(new int[]{0, 1}, new int[]{1, 0}), Collections.emptyList()), // cycle
-                new TestCase(1, Collections.emptyList(), Arrays.asList(0))
+                new TestCase(1, Collections.emptyList(), List.of(0))
         );
 
         for (int i = 0; i < tests.size(); i++) {

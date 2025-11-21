@@ -25,8 +25,8 @@ public class SecondLargestNumber {
                 Arrays.asList(3, 5, 7, 2, 8, 1, 4, 10, 6),
                 Arrays.asList(1, 2, 3, 4, 5),
                 Arrays.asList(5, 5, 5, 5, 5),
-                Arrays.asList(10),
-                Arrays.asList(),
+                List.of(10),
+                List.of(),
                 null,
                 Arrays.asList(Integer.MAX_VALUE, Integer.MAX_VALUE - 1, Integer.MAX_VALUE - 2)
         );

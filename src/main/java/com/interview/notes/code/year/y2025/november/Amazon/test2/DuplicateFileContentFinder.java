@@ -63,7 +63,7 @@ public final class DuplicateFileContentFinder {       // Define a final class to
         // Filter to keep only true duplicates (two or more files per hash)
         return byHash.entrySet().stream()                                // Stream hash -> files
                 .filter(e -> e.getValue().size() > 1)                    // Keep groups with duplicates
-                .collect(Collectors.toMap(                               
+                .collect(Collectors.toMap(
                         Map.Entry::getKey,                                // Key stays the hash
                         Map.Entry::getValue,                              // Value stays the list of files
                         (a, b) -> a,                                      // Merge function (not used)
@@ -93,7 +93,7 @@ public final class DuplicateFileContentFinder {       // Define a final class to
     public static List<Path> chooseOneRepresentativePerGroup(Map<String, List<Path>> duplicateGroups) { // Alternative output
         return duplicateGroups.values().stream()                        // Stream each group of same-content files
                 .map(list -> list.stream()                              // Stream within the group
-                        .sorted(Comparator                              
+                        .sorted(Comparator
                                 .comparing(DuplicateFileContentFinder::safeLastModified) // Sort by oldest first
                                 .thenComparing(Path::toString))          // Then by path for stability
                         .findFirst().get())                              // Take the first as representative

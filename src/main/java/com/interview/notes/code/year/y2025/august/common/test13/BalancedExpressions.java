@@ -105,7 +105,7 @@ public class BalancedExpressions {  // define class to contain solution and test
         boolean ok = canBalance(expr, maxr);                 // run the core function
         long end = System.nanoTime();                        // end timer
 
-        System.out.println("\nSuite 5 - Large data (" + length + " chars) -> " + (ok ? "Computed" : "Computed"));
+        System.out.println("\nSuite 5 - Large data (" + length + " chars) -> " + ("Computed"));
         System.out.printf("Time: %.3f ms%n", (end - start) / 1_000_000.0); // print millis
         // Note: we don't have a ground-truth expected for random input; objective here is speed/stability.
     }

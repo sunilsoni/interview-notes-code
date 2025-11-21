@@ -77,8 +77,8 @@ public class CardShuffler {
 
         // Test Case 5: Single card
         runTest("Single card",
-                Arrays.asList("A♠"),
-                Arrays.asList("A♠")
+                List.of("A♠"),
+                List.of("A♠")
         );
 
         // Test Case 6: Null input

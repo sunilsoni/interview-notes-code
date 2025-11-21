@@ -51,7 +51,7 @@ class Result {
         System.out.println("Test Case 3: " + (getMinimumOffBulbs(brightness3) == 4 ? "PASS" : "FAIL"));
 
         // Additional test case 4: Only one bulb
-        List<Integer> brightness4 = Arrays.asList(10);
+        List<Integer> brightness4 = List.of(10);
         System.out.println("Test Case 4: " + (getMinimumOffBulbs(brightness4) == 0 ? "PASS" : "FAIL"));
 
         // Additional test case 5: Large input with increasing brightness

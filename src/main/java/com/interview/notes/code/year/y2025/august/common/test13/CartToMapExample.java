@@ -13,7 +13,7 @@ public class CartToMapExample {
 
         Cart c1 = new Cart(101L, "CartA", Arrays.asList(t1, t2, t3));
         Cart c2 = new Cart(102L, "CartB", null);   // null trays
-        Cart c3 = new Cart(103L, "CartC", Arrays.asList(new Tray(5L, "T5")));
+        Cart c3 = new Cart(103L, "CartC", List.of(new Tray(5L, "T5")));
 
         List<Cart> carts = Arrays.asList(c1, c2, c3);
 
@@ -35,9 +35,9 @@ public class CartToMapExample {
 }
 
 class Cart {
-    private Long id;
-    private String name;
-    private List<Tray> trays;
+    private final Long id;
+    private final String name;
+    private final List<Tray> trays;
 
     public Cart(Long id, String name, List<Tray> trays) {
         this.id = id;
@@ -59,8 +59,8 @@ class Cart {
 }
 
 class Tray {
-    private Long id;
-    private String name;
+    private final Long id;
+    private final String name;
 
     public Tray(Long id, String name) {
         this.id = id;

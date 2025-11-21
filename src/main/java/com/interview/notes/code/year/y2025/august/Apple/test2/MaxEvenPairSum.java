@@ -182,13 +182,6 @@ public class MaxEvenPairSum {
     }
 
     // Simple holder for test cases
-    private static class TestCase {
-        final int[] input;
-        final int expected;
-
-        TestCase(int[] input, int expected) {
-            this.input = input;
-            this.expected = expected;
-        }
+        private record TestCase(int[] input, int expected) {
     }
 }

@@ -201,7 +201,7 @@ public class IncreasingSegments {
         testCase(Arrays.asList(6, 5, 7, 8, 10), 3, 2, "Example Case");
         testCase(Arrays.asList(1, 2, 3, 4, 5), 2, 4, "All Increasing");
         testCase(Arrays.asList(5, 4, 3, 2, 1), 2, 0, "All Decreasing");
-        testCase(Arrays.asList(1), 1, 1, "Single Element");
+        testCase(List.of(1), 1, 1, "Single Element");
 
         // Large data case
         List<Integer> largeList = new ArrayList<>();

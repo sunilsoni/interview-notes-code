@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Directory {
-    private String name;
-    private List<File> files;
-    private List<Directory> subDirectories;
+    private final String name;
+    private final List<File> files;
+    private final List<Directory> subDirectories;
 
     public Directory(String name) {
         this.name = name;

@@ -6,7 +6,7 @@ import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 
 public class BankingComponent1 {
-    private WebClient webClient;
+    private final WebClient webClient;
 
     public BankingComponent1() {
         this.webClient = WebClient.create();

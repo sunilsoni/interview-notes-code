@@ -42,9 +42,9 @@ public class AmazonStockAnalyzer {
             cumulativePnL += value;
 
             // If the value is positive and can be negated
-            if (value > 0 && cumulativePnL - 2 * value > 0) {
+            if (value > 0 && cumulativePnL - 2L * value > 0) {
                 maxHeap.offer(value);
-                cumulativePnL -= 2 * value;
+                cumulativePnL -= 2L * value;
                 maxNegatives++;
             }
         }

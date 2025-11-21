@@ -10,7 +10,7 @@ public class Solution {
         int[] twoSumArray = {5, 2, -3, 3, 4};
         twoSum(twoSumArray, 5);
 
-        System.out.println("");
+        System.out.println();
 
         // Example for sortArr method
         System.out.println("Sorted 0s, 1s, and 2s Problem:");

@@ -9,21 +9,21 @@ public class DuplicateFrequencyFinder {
     public static Map<Integer, Long> findDuplicatesWithFrequency(List<Integer> numbers) {
         // Step 1: Group numbers and count how many times each appears
         Map<Integer, Long> frequencyMap = numbers.stream()
-            .collect(Collectors.groupingBy(
-                num -> num,                      // Group by the number itself
-                LinkedHashMap::new,              // Use LinkedHashMap to keep order
-                Collectors.counting()            // Count how many times each number appears
-            ));
+                .collect(Collectors.groupingBy(
+                        num -> num,                      // Group by the number itself
+                        LinkedHashMap::new,              // Use LinkedHashMap to keep order
+                        Collectors.counting()            // Count how many times each number appears
+                ));
 
         // Step 2: Filter only those numbers that appear more than once (duplicates)
         Map<Integer, Long> duplicates = frequencyMap.entrySet().stream()
-            .filter(entry -> entry.getValue() > 1) // Keep only entries with count > 1
-            .collect(Collectors.toMap(
-                Map.Entry::getKey,                 // Key is the number
-                Map.Entry::getValue,               // Value is the frequency
-                (e1, e2) -> e1,                    // Merge function (not needed here)
-                LinkedHashMap::new                 // Keep insertion order
-            ));
+                .filter(entry -> entry.getValue() > 1) // Keep only entries with count > 1
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,                 // Key is the number
+                        Map.Entry::getValue,               // Value is the frequency
+                        (e1, e2) -> e1,                    // Merge function (not needed here)
+                        LinkedHashMap::new                 // Keep insertion order
+                ));
 
         // Step 3: Return the final map of duplicates with their frequency
         return duplicates;

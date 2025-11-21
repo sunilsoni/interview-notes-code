@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2024.aug24.test10;
 
 public class TestMath {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         // First Interface
         Math1 myMath1 = (Valuel, Value2) -> Valuel + Value2;
         System.out.println("Math1:");
@@ -55,7 +55,7 @@ public class TestMath {
         int DoMath(int Valuel, int Value2);
 
         default String Truncate(Integer Valuel, Integer Value2) {
-            return new Integer(Integer.sum(Valuel, Value2)).toString();
+            return Integer.toString(Integer.sum(Valuel, Value2));
         }
     }
 

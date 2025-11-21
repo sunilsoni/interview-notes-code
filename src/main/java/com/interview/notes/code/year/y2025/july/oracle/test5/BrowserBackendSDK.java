@@ -31,8 +31,8 @@ interface BookmarkService {
  * Implements NavigationService using two stacks and a currentPage pointer.
  */
 class BrowserNavigationService implements NavigationService {
-    private Deque<String> backStack = new ArrayDeque<>();    // pages you can go back to
-    private Deque<String> forwardStack = new ArrayDeque<>(); // pages you can go forward to
+    private final Deque<String> backStack = new ArrayDeque<>();    // pages you can go back to
+    private final Deque<String> forwardStack = new ArrayDeque<>(); // pages you can go forward to
     private String currentPage = null;                       // the page you're on now
 
     @Override
@@ -74,7 +74,7 @@ class BrowserNavigationService implements NavigationService {
  * Implements BookmarkService using a LinkedHashSet to preserve insertion order.
  */
 class BrowserBookmarkService implements BookmarkService {
-    private Set<String> bookmarks = new LinkedHashSet<>();
+    private final Set<String> bookmarks = new LinkedHashSet<>();
 
     @Override
     public void addBookmark(String url) {

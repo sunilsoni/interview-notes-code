@@ -131,22 +131,14 @@ public class FactorialChallenge {
      * of the full range [1,100].
      */
     public static void main(String[] args) {
-        class TestCase {
-            final int m, n;
-            final List<Integer> expected;
-
-            TestCase(int m, int n, List<Integer> e) {
-                this.m = m;
-                this.n = n;
-                this.expected = e;
-            }
+        record TestCase(int m, int n, List<Integer> expected) {
         }
 
         List<TestCase> tests = Arrays.asList(
                 new TestCase(1, 10, Arrays.asList(2, 3, 4, 8)),
                 new TestCase(5, 7, Collections.emptyList()),
-                new TestCase(10, 10, Arrays.asList()),          // 10! = 3628800 → starts with '3'
-                new TestCase(8, 9, Arrays.asList(8))           // 8! starts '4', 9! starts '3'
+                new TestCase(10, 10, List.of()),          // 10! = 3628800 → starts with '3'
+                new TestCase(8, 9, List.of(8))           // 8! starts '4', 9! starts '3'
         );
 
         for (TestCase tc : tests) {

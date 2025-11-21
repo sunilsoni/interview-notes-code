@@ -1,14 +1,14 @@
 package com.interview.notes.code.year.y2023.july23.test4;
 
 interface DI1 {
-    public default void display() {
+    default void display() {
         System.out.println("DI1");
     }
 
 }
 
 interface DI2 {
-    public default void display() {
+    default void display() {
 
         System.out.println("DI2");
     }
@@ -16,7 +16,7 @@ interface DI2 {
 }
 
 public class DemoClass implements DI1, DI2 {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         DemoClass obj = new DemoClass();
 

@@ -142,7 +142,7 @@ public class DuplicateFileFinder {
                         Paths.get("test_files/file2.txt"),
                         Paths.get("test_files/file1_copy.txt")
                 ),
-                Arrays.asList(
+                List.of(
                         Arrays.asList(Paths.get("test_files/file1.txt"), Paths.get("test_files/file1_copy.txt"))
                 )
         ));
@@ -154,7 +154,7 @@ public class DuplicateFileFinder {
                         Paths.get("test_files/file1_copy1.txt"),
                         Paths.get("test_files/file1_copy2.txt")
                 ),
-                Arrays.asList(
+                List.of(
                         Arrays.asList(
                                 Paths.get("test_files/file1.txt"),
                                 Paths.get("test_files/file1_copy1.txt"),
@@ -170,7 +170,7 @@ public class DuplicateFileFinder {
                         Paths.get("test_files/empty2.txt"),
                         Paths.get("test_files/non_empty.txt")
                 ),
-                Arrays.asList(
+                List.of(
                         Arrays.asList(
                                 Paths.get("test_files/empty1.txt"),
                                 Paths.get("test_files/empty2.txt")
@@ -185,7 +185,7 @@ public class DuplicateFileFinder {
                         Paths.get("test_files/large2.bin"),
                         Paths.get("test_files/large1_copy.bin")
                 ),
-                Arrays.asList(
+                List.of(
                         Arrays.asList(
                                 Paths.get("test_files/large1.bin"),
                                 Paths.get("test_files/large1_copy.bin")

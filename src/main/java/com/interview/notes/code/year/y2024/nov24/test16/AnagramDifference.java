@@ -89,9 +89,9 @@ public class AnagramDifference {
             sb2.append('b');
         }
         testCases.add(new TestCase(
-                Arrays.asList(sb1.toString()),
-                Arrays.asList(sb2.toString()),
-                Arrays.asList(10000)
+                List.of(sb1.toString()),
+                List.of(sb2.toString()),
+                List.of(10000)
         ));
 
         // Run test cases

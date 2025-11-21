@@ -300,7 +300,7 @@ public class Main {
 
     // Speaker implementation with role
     public static class SimpleSpeaker implements Speaker {
-        private String role;
+        private final String role;
 
         public SimpleSpeaker(String role) {
             this.role = role;
@@ -320,7 +320,7 @@ public class Main {
 
     // Display implementation with role
     public static class SimpleDisplay implements Display {
-        private String role;
+        private final String role;
 
         public SimpleDisplay(String role) {
             this.role = role;
@@ -340,8 +340,8 @@ public class Main {
 
     // Battery implementation
     public static class SimpleBattery implements Battery {
-        private int batteryLevel;
-        private boolean charging;
+        private final int batteryLevel;
+        private final boolean charging;
 
         public SimpleBattery(int batteryLevel, boolean charging) {
             this.batteryLevel = batteryLevel;
@@ -372,11 +372,11 @@ public class Main {
 
     // Device class composed of various capabilities
     public static class Device {
-        private String deviceName;
-        private List<Speaker> speakers;
-        private List<Display> displays;
-        private Battery battery;
-        private Boolean pluggedIn; // For devices without battery
+        private final String deviceName;
+        private final List<Speaker> speakers;
+        private final List<Display> displays;
+        private final Battery battery;
+        private final Boolean pluggedIn; // For devices without battery
 
         // Constructor for devices with battery
         public Device(String deviceName, List<Speaker> speakers, List<Display> displays, Battery battery) {

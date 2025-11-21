@@ -65,7 +65,7 @@ public class FindDuplicates {
 
         // Test Case 3: All numbers are duplicates (each should appear once in the result)
         List<Integer> test3 = Arrays.asList(2, 2, 2, 2, 2);
-        List<Integer> expected3 = Arrays.asList(2);
+        List<Integer> expected3 = List.of(2);
         runTest("Test Case 3 (All Duplicates)", test3, expected3);
 
         // Test Case 4: Edge case with an empty list

@@ -8,7 +8,7 @@ import java.util.*;
 public class TopKPopularItems {
 
     // Map to store the count of purchases for each itemId
-    private Map<String, Integer> itemPurchaseCounts = new HashMap<>();
+    private final Map<String, Integer> itemPurchaseCounts = new HashMap<>();
 
     /**
      * Main method to run test cases.

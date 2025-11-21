@@ -40,10 +40,10 @@ public class MinimumOperations {
     public static void main(String[] args) {
 
         class TestCase {
-            String s;
-            int m;
-            int k;
-            int expected;
+            final String s;
+            final int m;
+            final int k;
+            final int expected;
 
             TestCase(String s, int m, int k, int expected) {
                 this.s = s;

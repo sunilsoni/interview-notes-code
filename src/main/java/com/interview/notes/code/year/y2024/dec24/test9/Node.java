@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2024.dec24.test9;
 
 public class Node {
-    private Integer value;
+    private final Integer value;
     private Node nextNode;
 
     public Node(Integer value, Node nextNode) {
@@ -72,25 +72,25 @@ class Solution {
         System.out.println("\nTest Case 1: Linear lists with no overlap");
         Node list1 = new Node(1, new Node(2, new Node(3, null)));
         Node list2 = new Node(4, new Node(5, null));
-        System.out.println("Result: " + (overlap(list1, list2) == false ? "PASS" : "FAIL"));
+        System.out.println("Result: " + (!overlap(list1, list2) ? "PASS" : "FAIL"));
 
         // Test Case 2: Lists with overlap
         System.out.println("\nTest Case 2: Lists with overlap");
         Node commonNode = new Node(6, null);
         Node head1 = new Node(1, new Node(2, new Node(3, commonNode)));
         Node head2 = new Node(4, new Node(5, commonNode));
-        System.out.println("Result: " + (overlap(head1, head2) == true ? "PASS" : "FAIL"));
+        System.out.println("Result: " + (overlap(head1, head2) ? "PASS" : "FAIL"));
 
         // Test Case 3: Cyclic list
         System.out.println("\nTest Case 3: Cyclic list");
         Node cycleNode = new Node(7, null);
         cycleNode.setNext(new Node(8, new Node(9, cycleNode)));
         Node head3 = new Node(10, cycleNode);
-        System.out.println("Result: " + (overlap(cycleNode, head3) == true ? "PASS" : "FAIL"));
+        System.out.println("Result: " + (overlap(cycleNode, head3) ? "PASS" : "FAIL"));
 
         // Test Case 4: Null inputs
         System.out.println("\nTest Case 4: Null inputs");
-        System.out.println("Result: " + (overlap(null, null) == false ? "PASS" : "FAIL"));
+        System.out.println("Result: " + (!overlap(null, null) ? "PASS" : "FAIL"));
 
         // Test Case 5: Large lists with overlap
         System.out.println("\nTest Case 5: Large lists with overlap");
@@ -98,7 +98,7 @@ class Solution {
         Node largeList2 = createLargeList(1000);
         Node commonLargeNode = largeList1.getNext().getNext();
         attachToEnd(largeList2, commonLargeNode);
-        System.out.println("Result: " + (overlap(largeList1, largeList2) == true ? "PASS" : "FAIL"));
+        System.out.println("Result: " + (overlap(largeList1, largeList2) ? "PASS" : "FAIL"));
 
         // Test Case 6: List with cycle but no shared nodes
         System.out.println("\nTest Case 6: List with cycle but no shared nodes");
@@ -120,7 +120,7 @@ class Solution {
         System.out.println("List 1: 1 -> 2 -> 3 -> 4 -┐");
         System.out.println("         ^-----------------|");
         System.out.println("List 2: 5 -> 6 -> 7 -> 8");
-        System.out.println("Result: " + (overlap(cycleList, separateList) == false ? "PASS" : "FAIL"));
+        System.out.println("Result: " + (!overlap(cycleList, separateList) ? "PASS" : "FAIL"));
 
         // Verify list structures
         System.out.println("\nVerifying list structures:");

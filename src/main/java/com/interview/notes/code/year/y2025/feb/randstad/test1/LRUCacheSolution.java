@@ -228,8 +228,8 @@ public class LRUCacheSolution {
     }
 
     static class LRUCache {
-        private int capacity;
-        private LinkedHashMap<Integer, Integer> map;
+        private final int capacity;
+        private final LinkedHashMap<Integer, Integer> map;
 
         public LRUCache(int capacity) {
             this.capacity = capacity;

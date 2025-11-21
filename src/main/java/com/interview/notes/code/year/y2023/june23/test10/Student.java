@@ -29,11 +29,9 @@ class Student {
 
     public boolean equals(Object o) {
 
-        if (o instanceof Student) {
+        if (o instanceof Student s) {
 
-            Student s = (Student) o;
-
-            return s.id == this.id ? true : false;
+            return s.id == this.id;
 
         }
 

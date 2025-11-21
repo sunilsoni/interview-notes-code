@@ -169,7 +169,7 @@ public class RiskAwarePartitionSolution {
                 new TestCase(Arrays.asList(1, 2, 3, 4), 3, 5),
                 new TestCase(Arrays.asList(5, 5, 5, 5), 2, 10),      // partition [5,5] + [5,5]
                 new TestCase(Arrays.asList(5, 5, 5, 5), 4, 5),       // partition all in one group
-                new TestCase(Arrays.asList(10), 1, 10),             // single element
+                new TestCase(List.of(10), 1, 10),             // single element
                 new TestCase(Arrays.asList(2, 2, 2), 2, 4)          // partition [2,2] + [2] => 2 + 2 = 4
         );
 

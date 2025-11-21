@@ -11,7 +11,7 @@ interface myInterface {
 }
 
 public class IntervalCoverage implements myInterface {
-    private TreeMap<Integer, Integer> intervalMap;
+    private final TreeMap<Integer, Integer> intervalMap;
 
     // Constructor
     public IntervalCoverage() {

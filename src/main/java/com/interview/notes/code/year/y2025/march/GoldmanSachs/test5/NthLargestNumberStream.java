@@ -53,8 +53,8 @@ Output: null → null → 2 → 2 → 4
  */
 public class NthLargestNumberStream {
 
-    private PriorityQueue<Integer> minHeap;
-    private int n;
+    private final PriorityQueue<Integer> minHeap;
+    private final int n;
 
     public NthLargestNumberStream(int n) {
         this.n = n;

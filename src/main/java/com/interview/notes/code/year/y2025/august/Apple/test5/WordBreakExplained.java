@@ -95,7 +95,7 @@ public class WordBreakExplained {
 
         // Additional essential cases
         tests.add(new TestCase("", Arrays.asList("a", "b"), true)); // Empty string is segmentable by zero words
-        tests.add(new TestCase("a", Arrays.asList(), false)); // No dictionary for non-empty s
+        tests.add(new TestCase("a", List.of(), false)); // No dictionary for non-empty s
         tests.add(new TestCase("leetcode", Arrays.asList("leet", "code"), true)); // Standard classic case
         tests.add(new TestCase("aaaaaaa", Arrays.asList("aaaa", "aaa"), true)); // Overlapping words should succeed
         tests.add(new TestCase("aaaaaaa", Arrays.asList("aaaa", "aa"), false)); // Greedy fails; DP correctly finds false
@@ -132,18 +132,16 @@ public class WordBreakExplained {
      * }
      * return dp[n];
      * }
+     *
+     * @param s        The input string to segment
+     * @param dict     The dictionary of words
+     * @param expected The expected boolean result
      */
 
-    // Simple holder for test cases to keep main method tidy
-    private static class TestCase {
-        final String s;       // The input string to segment
-        final List<String> dict; // The dictionary of words
-        final boolean expected;  // The expected boolean result
-
-        TestCase(String s, List<String> dict, boolean expected) {
-            this.s = s;             // Assign given string
-            this.dict = dict;       // Assign given dictionary
-            this.expected = expected; // Assign expected outcome
-        }
+        // Simple holder for test cases to keep main method tidy
+        private record TestCase(String s, List<String> dict, boolean expected) {
+        // Assign given string
+        // Assign given dictionary
+        // Assign expected outcome
     }
 }

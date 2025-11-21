@@ -4,7 +4,7 @@ import java.util.*;
 
 class VehicleTrackingService implements IVehicleTrackingService {
     private final long speedLimit; // in km/h
-    private Map<Integer, Vehicle> vehicles;
+    private final Map<Integer, Vehicle> vehicles;
 
     public VehicleTrackingService(long M) {
         this.speedLimit = M;

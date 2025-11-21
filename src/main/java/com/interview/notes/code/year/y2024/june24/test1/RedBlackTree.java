@@ -118,7 +118,7 @@ public class RedBlackTree {
     }
 
     private class Node {
-        private int key;
+        private final int key;
         private Color color;
         private Node left;
         private Node right;

@@ -9,7 +9,7 @@ public class RainWaterTrapDetailed {
     /**
      * This method calculates how much rainwater can be trapped
      * between buildings of different heights after it rains.
-     *
+     * <p>
      * Input: an array of building heights
      * Output: total trapped water units (integer)
      */

@@ -60,7 +60,7 @@ public class CardShuffler1 {
         testShuffle(deck4);
 
         // Test Case 5: Single card
-        List<String> deck5 = Arrays.asList("A♠");
+        List<String> deck5 = List.of("A♠");
         testShuffle(deck5);
     }
 }

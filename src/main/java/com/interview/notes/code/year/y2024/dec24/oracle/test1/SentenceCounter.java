@@ -57,13 +57,13 @@ public class SentenceCounter {
 
         // Test Case 2: Edge case with single character words
         List<String> wordSet2 = Arrays.asList("a", "b", "ab", "ba");
-        List<String> sentences2 = Arrays.asList("a b ab");
-        testAndPrint("Test Case 2", wordSet2, sentences2, Arrays.asList(2L));
+        List<String> sentences2 = List.of("a b ab");
+        testAndPrint("Test Case 2", wordSet2, sentences2, List.of(2L));
 
         // Test Case 3: Large input simulation
         List<String> wordSet3 = generateLargeWordSet();
-        List<String> sentences3 = Arrays.asList("stop post tops");
-        testAndPrint("Test Case 3 (Large Input)", wordSet3, sentences3, Arrays.asList(6L));
+        List<String> sentences3 = List.of("stop post tops");
+        testAndPrint("Test Case 3 (Large Input)", wordSet3, sentences3, List.of(6L));
     }
 
     private static List<String> generateLargeWordSet() {

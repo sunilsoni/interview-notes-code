@@ -1,9 +1,9 @@
 package com.interview.notes.code.year.y2024.nov24.test15;
 
 public class ArrayStack {
-    private int maxSize;    // Maximum size of the stack
+    private final int maxSize;    // Maximum size of the stack
     private int top;        // Index of the top element
-    private int[] stackArray;
+    private final int[] stackArray;
 
     // Constructor to initialize the stack
     public ArrayStack(int size) {

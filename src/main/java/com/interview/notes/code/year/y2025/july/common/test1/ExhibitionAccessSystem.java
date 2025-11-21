@@ -29,8 +29,7 @@ public class ExhibitionAccessSystem {
     }
 
     public void exit(IAccess card) {
-        if (card instanceof CardTapCounter) {
-            CardTapCounter counter = (CardTapCounter) card;
+        if (card instanceof CardTapCounter counter) {
             System.out.println("Card was tapped " + counter.getTapCount() + " times");
         }
         // Additional exit processing...

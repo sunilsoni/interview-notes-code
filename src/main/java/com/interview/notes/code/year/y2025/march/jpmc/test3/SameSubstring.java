@@ -48,6 +48,6 @@ public class SameSubstring {
     private static void test(String s, String t, int K, int expected) {
         int result = sameSubstring(s, t, K);
         String status = (result == expected) ? "PASS" : "FAIL";
-        System.out.println(String.format("Test case s='%s', t='%s', K=%d: %s (Output: %d, Expected: %d)", s, t, K, status, result, expected));
+        System.out.printf("Test case s='%s', t='%s', K=%d: %s (Output: %d, Expected: %d)%n", s, t, K, status, result, expected);
     }
 }

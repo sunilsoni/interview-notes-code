@@ -95,7 +95,7 @@ public class SubarrayMaxLength {
         test(Arrays.asList(1, 2, 3), 4, 2, "Basic case");
 
         // Test case 2: Single element
-        test(Arrays.asList(5), 4, 0, "Single element > k");
+        test(List.of(5), 4, 0, "Single element > k");
 
         // Test case 3: All elements valid
         test(Arrays.asList(1, 1, 1), 5, 3, "All elements valid");

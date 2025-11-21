@@ -134,7 +134,7 @@ public class GroupAnagrams {
         // Test case 1 from the problem statement
         String[] strs1 = {"eat", "tea", "tan", "ate", "nat", "bat"};
         List<List<String>> expected1 = Arrays.asList(
-                Arrays.asList("bat"),
+                List.of("bat"),
                 Arrays.asList("nat", "tan"),
                 Arrays.asList("ate", "eat", "tea")
         );
@@ -142,22 +142,22 @@ public class GroupAnagrams {
 
         // Test case 2 from the problem statement
         String[] strs2 = {""};
-        List<List<String>> expected2 = Arrays.asList(Arrays.asList(""));
+        List<List<String>> expected2 = List.of(List.of(""));
         testGroupAnagrams(strs2, expected2, "Test Case 2");
 
         // Test case 3 from the problem statement
         String[] strs3 = {"a"};
-        List<List<String>> expected3 = Arrays.asList(Arrays.asList("a"));
+        List<List<String>> expected3 = List.of(List.of("a"));
         testGroupAnagrams(strs3, expected3, "Test Case 3");
 
         // Edge case: empty array
         String[] strs4 = {};
-        List<List<String>> expected4 = Arrays.asList();
+        List<List<String>> expected4 = List.of();
         testGroupAnagrams(strs4, expected4, "Edge Case: Empty Array");
 
         // Edge case: null array
         String[] strs5 = null;
-        List<List<String>> expected5 = Arrays.asList();
+        List<List<String>> expected5 = List.of();
         testGroupAnagrams(strs5, expected5, "Edge Case: Null Array");
 
         // Large input test

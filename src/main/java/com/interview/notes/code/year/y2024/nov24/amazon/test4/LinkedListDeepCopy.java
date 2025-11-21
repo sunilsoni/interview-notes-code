@@ -95,7 +95,7 @@ public class LinkedListDeepCopy {
             } else {
                 Integer randomIndex1 = map1.get(current1.random);
                 Integer randomIndex2 = map2.get(current2.random);
-                if (randomIndex1 == null || randomIndex2 == null || !randomIndex1.equals(randomIndex2)) {
+                if (randomIndex1 == null || !randomIndex1.equals(randomIndex2)) {
                     return false;
                 }
             }

@@ -35,7 +35,7 @@ public class InventoryShipmentSolution {
 
         // Quick edge case: if origin == destination, no carrier needed.
         if (origin == destination) {
-            return new Result(0, Arrays.asList(origin));
+            return new Result(0, List.of(origin));
         }
 
         // Convert each route into a Set of stops for quick membership checks
@@ -89,7 +89,7 @@ public class InventoryShipmentSolution {
 
         // Enqueue starting routes
         for (int startRoute : originRoutes) {
-            queue.offer(new RouteState(startRoute, new ArrayList<>(Arrays.asList(startRoute))));
+            queue.offer(new RouteState(startRoute, new ArrayList<>(List.of(startRoute))));
             visited.add(startRoute);
         }
 
@@ -250,7 +250,7 @@ public class InventoryShipmentSolution {
         System.out.println("Test 2 result: " + result2);
         if (result2 != null
                 && result2.getCarrierCount() == 0
-                && result2.getStops().equals(Arrays.asList(5))) {
+                && result2.getStops().equals(List.of(5))) {
             System.out.println("Test 2: PASS");
         } else {
             System.out.println("Test 2: FAIL");

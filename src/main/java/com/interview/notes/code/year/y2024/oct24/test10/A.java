@@ -7,7 +7,7 @@ public class A {
 
     public static void main(String[] args) {
         A obj = new B();
-        obj.display();
+        display();
     }
 
     public static class B extends A {

@@ -81,15 +81,6 @@ public class PaymentTest {
         }
     }
 
-    static class TestCase {
-        final String name;
-        final String[] input;
-        final String[] expected;
-
-        TestCase(String name, String[] input, String[] expected) {
-            this.name = name;
-            this.input = input;
-            this.expected = expected;
-        }
+    record TestCase(String name, String[] input, String[] expected) {
     }
 }

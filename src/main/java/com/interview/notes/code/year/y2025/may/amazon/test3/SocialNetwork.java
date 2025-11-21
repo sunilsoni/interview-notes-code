@@ -5,7 +5,7 @@ import java.util.*;
 public class SocialNetwork {
 
     // Represents the social network with a map of profile names to their friends list
-    private static Map<String, List<String>> friendGraph = new HashMap<>();
+    private static final Map<String, List<String>> friendGraph = new HashMap<>();
 
     // BFS to find the shortest path between two profiles
     public static List<String> findConnectionPath(String start, String end) {
@@ -15,7 +15,7 @@ public class SocialNetwork {
         Set<String> visited = new HashSet<>();
 
         // initialize BFS with starting profile
-        queue.offer(Arrays.asList(start));
+        queue.offer(Collections.singletonList(start));
         visited.add(start);
 
         while (!queue.isEmpty()) {
@@ -48,10 +48,10 @@ public class SocialNetwork {
         // Setup graph
         friendGraph.put("Gordon", Arrays.asList("Shantel", "Tom"));
         friendGraph.put("Shantel", Arrays.asList("Maria", "Gordon"));
-        friendGraph.put("Maria", Arrays.asList("David"));
-        friendGraph.put("David", Arrays.asList("Stephen"));
-        friendGraph.put("Tom", Arrays.asList("Alice"));
-        friendGraph.put("Alice", Arrays.asList("Stephen"));
+        friendGraph.put("Maria", List.of("David"));
+        friendGraph.put("David", List.of("Stephen"));
+        friendGraph.put("Tom", List.of("Alice"));
+        friendGraph.put("Alice", List.of("Stephen"));
         friendGraph.put("Stephen", Collections.emptyList()); // No friends
 
         testConnection("Gordon", "Stephen"); // Expected: ["Gordon", "Shantel", "Maria", "David", "Stephen"]

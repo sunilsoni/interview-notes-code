@@ -25,9 +25,9 @@ public class FibonacciSequence {
 
         // Simple PASS/FAIL test for large data check
         long[] fib10 = Stream.iterate(new long[]{0, 1}, f -> new long[]{f[1], f[0] + f[1]})
-                             .limit(10)
-                             .mapToLong(f -> f[0])
-                             .toArray();
+                .limit(10)
+                .mapToLong(f -> f[0])
+                .toArray();
 
         long expectedLast = 34; // 10th term (0-indexed sequence)
         if (fib10[fib10.length - 1] == expectedLast) {

@@ -78,7 +78,7 @@ public class LargestSquareInSkyscrapers {
         // a) Single skyscraper
         int[] single = {10};
         long resSingle = solution(single);
-        long expSingle = 1L * 1L; // side is min(10, 1) = 1 => area = 1
+        long expSingle = 1L; // side is min(10, 1) = 1 => area = 1
         System.out.println("Test Single: " + (resSingle == expSingle ? "PASS" : "FAIL")
                 + " (got " + resSingle + ", expected " + expSingle + ")");
 

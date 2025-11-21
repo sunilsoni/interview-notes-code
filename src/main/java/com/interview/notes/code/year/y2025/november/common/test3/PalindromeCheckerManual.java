@@ -31,12 +31,12 @@ public class PalindromeCheckerManual {
     public static void main(String[] args) {
         // Define test cases with expected results
         String[] inputs = {
-            "MADAM", "RaceCar", "hello", "A man a plan a canal Panama",
-            "", "a", "No lemon no melon"
+                "MADAM", "RaceCar", "hello", "A man a plan a canal Panama",
+                "", "a", "No lemon no melon"
         };
         boolean[] expected = {
-            true, true, false, true,
-            true, true, true
+                true, true, false, true,
+                true, true, true
         };
 
         // Generate a large palindrome string (1 million characters)
@@ -62,8 +62,8 @@ public class PalindromeCheckerManual {
 
             // Print result with PASS/FAIL
             System.out.println("Input: " + (input.length() > 50 ? "[Large Input]" : "\"" + input + "\"")
-                + " → Expected: " + allExpected[i] + ", Actual: " + result
-                + " → " + (pass ? "PASS" : "FAIL"));
+                    + " → Expected: " + allExpected[i] + ", Actual: " + result
+                    + " → " + (pass ? "PASS" : "FAIL"));
         }
     }
 }

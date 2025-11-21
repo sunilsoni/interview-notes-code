@@ -10,7 +10,7 @@ public class DependencyOrderer {
         test1.put("A", new HashSet<>(Arrays.asList("B", "C")));     // A depends on B and C
         test1.put("B", new HashSet<>(Arrays.asList("C", "D")));     // B depends on C and D
         test1.put("C", new HashSet<>(Arrays.asList("B", "D")));     // C depends on B and D
-        test1.put("D", new HashSet<>(Arrays.asList("E")));          // D depends on E
+        test1.put("D", new HashSet<>(List.of("E")));          // D depends on E
         test1.put("E", new HashSet<>());                            // E has no dependencies
 
         // Create orderer instance
@@ -40,7 +40,7 @@ public class DependencyOrderer {
         // Create a large circular dependency chain
         for (int i = 0; i < 10000; i++) {
             largeTest.put("Comp" + i, new HashSet<>(
-                    Arrays.asList("Comp" + (i + 1 % 10000))));
+                    List.of("Comp" + (i + 1 % 10000))));
         }
 
         // Measure performance

@@ -13,7 +13,7 @@ public class SegmentSizeAnalyzer {
         SetOfRanges ranges = null;//new SetOfRanges(segmentSize);
 
         // Memory usage before
-        long memBefore = 0l;//getMemoryUsage();
+        long memBefore = 0L;//getMemoryUsage();
 
         // Add typical range patterns
         for (int i = 0; i < 1000; i++) {
@@ -24,7 +24,7 @@ public class SegmentSizeAnalyzer {
         }
 
         // Memory usage after
-        long memAfter = 0l;//getMemoryUsage();
+        long memAfter = 0L;//getMemoryUsage();
 
         // Performance test
         long startTime = System.nanoTime();

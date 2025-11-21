@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2025.feb.Amazon.test4;
 import java.util.*;
 
 public class FlightPathFinder {
-    private Map<String, Set<String>> flightMap;
+    private final Map<String, Set<String>> flightMap;
 
     public FlightPathFinder() {
         flightMap = new HashMap<>();

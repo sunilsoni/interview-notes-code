@@ -53,14 +53,14 @@ public class NumberExtractor {
         // Test Case 2: Empty array
         testCase(
                 new String[]{},
-                Arrays.asList(),
+                List.of(),
                 "Empty Array Test"
         );
 
         // Test Case 3: No numbers
         testCase(
                 new String[]{"ABC", "DEF"},
-                Arrays.asList(),
+                List.of(),
                 "No Numbers Test"
         );
 

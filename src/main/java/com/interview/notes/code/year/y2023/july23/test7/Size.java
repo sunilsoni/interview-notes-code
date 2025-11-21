@@ -12,9 +12,9 @@ interface Shipping {
 }
 
 class Product {
-    private int id;
-    private String title;
-    private Size size;
+    private final int id;
+    private final String title;
+    private final Size size;
 
     public Product(int id, String title, Size size) {
         this.id = id;
@@ -63,8 +63,8 @@ class InternationalShipping implements Shipping {
 }
 
 class Cart {
-    private List<Product> products = new ArrayList<>();
-    private Shipping shipping;
+    private final List<Product> products = new ArrayList<>();
+    private final Shipping shipping;
 
     public Cart(Shipping shipping) {
         this.shipping = shipping;

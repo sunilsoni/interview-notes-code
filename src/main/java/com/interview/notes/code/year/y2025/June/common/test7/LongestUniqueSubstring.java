@@ -53,9 +53,9 @@ public class LongestUniqueSubstring {
             int expected = Integer.parseInt(t[1]);
             int actual = lengthOfLongestSubstring(input);
             String status = (actual == expected) ? "PASS" : "FAIL";
-            System.out.println(String.format(
-                    "Input: %-10s  Expected: %d  Actual: %d  -> %s",
-                    "\"" + input + "\"", expected, actual, status));
+            System.out.printf(
+                    "Input: %-10s  Expected: %d  Actual: %d  -> %s%n",
+                    "\"" + input + "\"", expected, actual, status);
         });
 
         // Large-data sanity check: 100 000 unique chars (prints length only)

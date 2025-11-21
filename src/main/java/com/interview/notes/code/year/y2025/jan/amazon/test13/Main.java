@@ -183,8 +183,8 @@ public class Main {
 
     // EchoShow device with speaker and display
     public static class EchoShow extends Device implements Speaker, Display, BatteryPowered {
-        private int batteryLevel;
-        private boolean charging;
+        private final int batteryLevel;
+        private final boolean charging;
 
         public EchoShow(String deviceName, int batteryLevel, boolean charging) {
             super(deviceName);
@@ -226,8 +226,8 @@ public class Main {
 
     // Tablet device with speaker, display, and battery
     public static class Tablet extends Device implements Speaker, Display, BatteryPowered {
-        private int batteryLevel;
-        private boolean charging;
+        private final int batteryLevel;
+        private final boolean charging;
 
         public Tablet(String deviceName, int batteryLevel, boolean charging) {
             super(deviceName);
@@ -267,7 +267,7 @@ public class Main {
 
     // EchoDot device with speaker only, no battery
     public static class EchoDot extends Device implements Speaker {
-        private boolean pluggedIn;
+        private final boolean pluggedIn;
 
         public EchoDot(String deviceName, boolean pluggedIn) {
             super(deviceName);
@@ -290,7 +290,7 @@ public class Main {
 
     // Microwave device with display only, no battery
     public static class Microwave extends Device implements Display {
-        private boolean pluggedIn;
+        private final boolean pluggedIn;
 
         public Microwave(String deviceName, boolean pluggedIn) {
             super(deviceName);

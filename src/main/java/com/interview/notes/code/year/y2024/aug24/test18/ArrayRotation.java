@@ -16,9 +16,7 @@ public class ArrayRotation {
         int[] temp = new int[n];
 
         // Copy the first n elements to temp array
-        for (int i = 0; i < n; i++) {
-            temp[i] = arr[i];
-        }
+        System.arraycopy(arr, 0, temp, 0, n);
 
         // Shift the remaining elements to the left
         for (int i = n; i < length; i++) {
@@ -26,9 +24,7 @@ public class ArrayRotation {
         }
 
         // Copy the elements from temp back to the end of arr
-        for (int i = 0; i < n; i++) {
-            arr[length - n + i] = temp[i];
-        }
+        System.arraycopy(temp, 0, arr, length - n + 0, n);
     }
 
 

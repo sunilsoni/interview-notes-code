@@ -52,15 +52,15 @@ public class CandyCrush1D {
     public static void main(String[] args) {
         // List of test cases: input and expected output
         List<TestCase> tests = Arrays.asList(
-            new TestCase("aaabbbacd", "acd"),
-            new TestCase("aabbbacd", "aacd"),
-            new TestCase("aaabbbccc", ""),
-            new TestCase("abcdddcba", "abccba"),
-            new TestCase("a", "a"),
-            new TestCase("aaa", ""),
-            new TestCase("aabbaaa", "aabb"),
-            new TestCase("aabbaaacccddd", "aabb"),
-            new TestCase(generateLargeInput(), "") // large input test
+                new TestCase("aaabbbacd", "acd"),
+                new TestCase("aabbbacd", "aacd"),
+                new TestCase("aaabbbccc", ""),
+                new TestCase("abcdddcba", "abccba"),
+                new TestCase("a", "a"),
+                new TestCase("aaa", ""),
+                new TestCase("aabbaaa", "aabb"),
+                new TestCase("aabbaaacccddd", "aabb"),
+                new TestCase(generateLargeInput(), "") // large input test
         );
 
         // Run each test and print result
@@ -88,6 +88,7 @@ public class CandyCrush1D {
     static class Pair {
         char ch;
         int count;
+
         Pair(char ch, int count) {
             this.ch = ch;
             this.count = count;
@@ -98,6 +99,7 @@ public class CandyCrush1D {
     static class TestCase {
         String input;
         String expected;
+
         TestCase(String input, String expected) {
             this.input = input;
             this.expected = expected;

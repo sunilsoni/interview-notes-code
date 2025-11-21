@@ -6,33 +6,18 @@ import java.util.PriorityQueue;
 
 enum TransactionType {P2P, P2M, SELF}
 
-class TransactionSummary {
-    private final int transactionId;
-    private final boolean isSenderEligibleForReward;
-
-    public TransactionSummary(int transactionId, boolean isSenderEligibleForReward) {
-        this.transactionId = transactionId;
-        this.isSenderEligibleForReward = isSenderEligibleForReward;
-    }
-
-    public int getTransactionId() {
-        return transactionId;
-    }
-
-    public boolean isSenderEligibleForReward() {
-        return isSenderEligibleForReward;
-    }
+record TransactionSummary(int transactionId, boolean isSenderEligibleForReward) {
 }
 
 class Payment {
-    private Map<Integer, Integer> p2pCount = new HashMap<>();
-    private Map<Integer, Integer> p2mCount = new HashMap<>();
-    private Map<Integer, Integer> selfCount = new HashMap<>();
-    private Map<Integer, Long> p2mSum = new HashMap<>();
+    private final Map<Integer, Integer> p2pCount = new HashMap<>();
+    private final Map<Integer, Integer> p2mCount = new HashMap<>();
+    private final Map<Integer, Integer> selfCount = new HashMap<>();
+    private final Map<Integer, Long> p2mSum = new HashMap<>();
 
     // Min-heap to track top 100 users by P2M sum
-    private PriorityQueue<User> heap = new PriorityQueue<>();
-    private Map<Integer, User> userMap = new HashMap<>();
+    private final PriorityQueue<User> heap = new PriorityQueue<>();
+    private final Map<Integer, User> userMap = new HashMap<>();
 
     public TransactionSummary makePayment(int transactionId, int senderId, int amount, TransactionType transactionType) {
         if (transactionType == TransactionType.P2P) {
@@ -96,13 +81,13 @@ public class TestPayment {
         Payment payment = new Payment();
         // Sample test cases
         TransactionSummary ts0 = payment.makePayment(0, 2, 100, TransactionType.P2P);
-        System.out.println(ts0.getTransactionId() + " " + ts0.isSenderEligibleForReward());
+        System.out.println(ts0.transactionId() + " " + ts0.isSenderEligibleForReward());
 
         TransactionSummary ts1 = payment.makePayment(1, 4, 18, TransactionType.P2M);
-        System.out.println(ts1.getTransactionId() + " " + ts1.isSenderEligibleForReward());
+        System.out.println(ts1.transactionId() + " " + ts1.isSenderEligibleForReward());
 
         TransactionSummary ts2 = payment.makePayment(2, 2, 50, TransactionType.P2M);
-        System.out.println(ts2.getTransactionId() + " " + ts2.isSenderEligibleForReward());
+        System.out.println(ts2.transactionId() + " " + ts2.isSenderEligibleForReward());
 
         int countP2P = payment.getNumberOfTransactions(2, TransactionType.P2P);
         System.out.println(countP2P);

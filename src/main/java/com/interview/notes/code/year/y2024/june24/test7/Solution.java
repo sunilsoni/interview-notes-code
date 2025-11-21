@@ -34,7 +34,7 @@ public class Solution {
         if (middleSet) {
             result.append(middle);
         }
-        result.append(half.reverse().toString());
+        result.append(half.reverse());
 
         return result.toString();
     }

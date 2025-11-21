@@ -28,11 +28,7 @@ public class FileSearcher {
         List<String> result = new ArrayList<>();
 
         try (Stream<Path> stream = Files.find(startDir, Integer.MAX_VALUE, (path, attr) -> {
-            boolean matches = true;
-
-            if (fileName != null && !path.getFileName().toString().equals(fileName)) {
-                matches = false;
-            }
+            boolean matches = fileName == null || path.getFileName().toString().equals(fileName);
 
             if (matches && attr.isRegularFile()) {
                 if (minSize >= 0 && attr.size() < minSize) {

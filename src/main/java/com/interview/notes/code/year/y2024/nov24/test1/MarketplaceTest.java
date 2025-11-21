@@ -183,13 +183,13 @@ public class MarketplaceTest {
  */
 class JobPosting {
     private static int idCounter = 1;
-    private int id;
-    private String description;
-    private String requirements;
-    private String posterName;
-    private String posterContact;
+    private final int id;
+    private final String description;
+    private final String requirements;
+    private final String posterName;
+    private final String posterContact;
     private double lowestBidAmount;
-    private List<Bid> bids;
+    private final List<Bid> bids;
     private LocalDateTime expirationDate;
     private boolean isClosed;
     private Bid winner;
@@ -277,11 +277,11 @@ class JobPosting {
  * Represents a bid in the Marketplace system.
  */
 class Bid {
-    private int bidId;
-    private String bidderName;
-    private String bidderContact;
-    private double bidAmount;
-    private int jobId;
+    private final int bidId;
+    private final String bidderName;
+    private final String bidderContact;
+    private final double bidAmount;
+    private final int jobId;
 
     public Bid(int bidId, String bidderName, String bidderContact, double bidAmount, int jobId) {
         this.bidId = bidId;

@@ -11,7 +11,7 @@ Sample log file entries:
 Means USD is worth 1.32 GBP
  */
 public class CurrencyConverter {
-    private Map<String, Map<String, Double>> conversionRates = new HashMap<>();
+    private final Map<String, Map<String, Double>> conversionRates = new HashMap<>();
 
     public static void main(String[] args) {
         CurrencyConverter converter = new CurrencyConverter();

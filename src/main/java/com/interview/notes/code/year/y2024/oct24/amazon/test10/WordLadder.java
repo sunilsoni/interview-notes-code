@@ -37,7 +37,7 @@ public class WordLadder {
         // Test Case 3 (Begin word equals end word)
         String beginWord3 = "hit";
         String endWord3 = "hit";
-        List<String> wordList3 = Arrays.asList("hit");
+        List<String> wordList3 = List.of("hit");
         int expected3 = 1;
         int result3 = solver.ladderLength(beginWord3, endWord3, wordList3);
         if (result3 == expected3) {

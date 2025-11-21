@@ -12,10 +12,8 @@ public class FibonacciSequence {
         // Handle edge cases
         if (n == 1) {
             System.out.println(first);
-            return;
         } else if (n == 2) {
             System.out.println(first + ", " + second);
-            return;
         } else {
             System.out.print(first + ", " + second); // Print the first two terms
 

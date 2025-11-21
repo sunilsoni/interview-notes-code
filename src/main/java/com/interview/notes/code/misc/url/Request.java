@@ -11,14 +11,14 @@ public class Request implements GetInterface {
         Class getInterface = GetInterface.class;
         for (Method method : getInterface.getMethods()) {
             endpoint = "";
-            Get getAnnotation = (Get) method.getAnnotation(Get.class);
+            Get getAnnotation = method.getAnnotation(Get.class);
             if (getAnnotation != null) {
                 System.out.println(" Method Name : " + method.getName());
                 System.out.println(" Get : " + getAnnotation.value());
                 endpoint = baseUrl + getAnnotation.value();
             }
 
-            Field fieldAnnotation = (Field) method.getParameters()[0].getAnnotation(Field.class);
+            Field fieldAnnotation = method.getParameters()[0].getAnnotation(Field.class);
             if (fieldAnnotation != null) {
                 System.out.println(" Field : " + fieldAnnotation.value());
                 endpoint = baseUrl + getAnnotation.value() + "?" + fieldAnnotation.value() + "=";

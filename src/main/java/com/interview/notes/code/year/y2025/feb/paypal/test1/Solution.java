@@ -41,7 +41,7 @@ public class Solution {
         List<TestCase> testCases = Arrays.asList(
                 new TestCase(Arrays.asList(1, 2, 2), 6, "Sample Test Case"),
                 new TestCase(Arrays.asList(3, 2, 1, 2, 7), 17, "Example Test Case"),
-                new TestCase(Arrays.asList(1), 1, "Single Element Test"),
+                new TestCase(List.of(1), 1, "Single Element Test"),
                 new TestCase(Arrays.asList(2, 2, 2, 2), 2 + 3 + 4 + 5, "All Duplicates Test"),
                 new TestCase(Arrays.asList(1, 2, 3, 4), 10, "Already Unique Test")
         );

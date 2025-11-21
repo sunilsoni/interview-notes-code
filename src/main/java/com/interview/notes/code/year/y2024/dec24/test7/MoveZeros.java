@@ -104,8 +104,8 @@ public class MoveZeros {
 
         // Test case 2: Single element
         testCases.add(new TestCase(
-                Arrays.asList(0),
-                Arrays.asList(0)
+                List.of(0),
+                List.of(0)
         ));
 
         // Test case 3: No zeros

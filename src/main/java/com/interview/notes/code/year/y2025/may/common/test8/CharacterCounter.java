@@ -62,11 +62,7 @@ public class CharacterCounter {
             return true;
         }
 
-        if (result.vowels + result.consonants <= input.length()) {
-            return true;
-        }
-
-        return false;
+        return result.vowels + result.consonants <= input.length();
     }
 
     // Simple class to hold results

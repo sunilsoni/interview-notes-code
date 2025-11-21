@@ -93,7 +93,7 @@ public class MoveZeros {
         List<TestCase> tests = Arrays.asList(
                 new TestCase(Arrays.asList(0, 1, 0, 3, 12),
                         Arrays.asList(1, 3, 12, 0, 0)),
-                new TestCase(Arrays.asList(0),
+                new TestCase(List.of(0),
                         Collections.singletonList(0)),
                 new TestCase(Arrays.asList(1, 2, 3),
                         Arrays.asList(1, 2, 3)),
@@ -122,7 +122,7 @@ public class MoveZeros {
         final int LARGE_N = 100_000;
         List<Integer> large = new Random(0)
                 .ints(LARGE_N, 0, 10)          // 10% zeros on average
-                .map(i -> i == 0 ? 0 : i)      // make exactly zero or non-zero
+                .map(i -> i)      // make exactly zero or non-zero
                 .boxed()
                 .collect(Collectors.toList());
 
@@ -134,12 +134,6 @@ public class MoveZeros {
     }
 
     // simple holder for our tests
-    private static class TestCase {
-        final List<Integer> input, expected;
-
-        TestCase(List<Integer> in, List<Integer> exp) {
-            this.input = in;
-            this.expected = exp;
-        }
+        private record TestCase(List<Integer> input, List<Integer> expected) {
     }
 }

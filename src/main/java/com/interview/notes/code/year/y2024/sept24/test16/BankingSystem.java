@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class BankingSystem {
 
     // HashMap to store account balances
-    private HashMap<String, Integer> accounts;
+    private final HashMap<String, Integer> accounts;
 
     // Constructor to initialize the banking system
     public BankingSystem() {

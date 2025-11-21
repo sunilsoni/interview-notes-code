@@ -22,7 +22,7 @@ class AccountData {
 }
 
 public class BankAccountAPI {
-    private Map<Integer, AccountData> accounts = new HashMap<>();
+    private final Map<Integer, AccountData> accounts = new HashMap<>();
 
     // Simple main method tests (no JUnit)
     public static void main(String[] args) {

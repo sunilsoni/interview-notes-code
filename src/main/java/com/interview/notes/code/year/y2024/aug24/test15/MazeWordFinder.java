@@ -79,20 +79,11 @@ public class MazeWordFinder {
         paths.add(path);
     }
 
-    public static class Cell {
-        public final int row;
-        public final int col;
-        public final char value;
-
-        public Cell(int row, int col, char value) {
-            this.row = row;
-            this.col = col;
-            this.value = value;
-        }
+    public record Cell(int row, int col, char value) {
 
         @Override
-        public String toString() {
-            return "(" + row + "," + col + ")=" + value;
+            public String toString() {
+                return "(" + row + "," + col + ")=" + value;
+            }
         }
-    }
 }

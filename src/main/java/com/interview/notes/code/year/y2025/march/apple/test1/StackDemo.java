@@ -3,9 +3,9 @@ package com.interview.notes.code.year.y2025.march.apple.test1;
 import java.util.ArrayList;
 
 class CustomStack<T> {
-    private ArrayList<T> stack;
+    private final ArrayList<T> stack;
     private int top; // keeps track of the top element
-    private int maxSize;
+    private final int maxSize;
 
     // Constructor
     public CustomStack(int size) {

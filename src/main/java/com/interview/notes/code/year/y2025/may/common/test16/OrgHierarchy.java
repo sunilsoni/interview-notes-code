@@ -55,6 +55,6 @@ public class OrgHierarchy {
     }
 
     // Test case holder
-    public static record TestCase(Employee e1, Employee e2, Employee expected) {
+    public record TestCase(Employee e1, Employee e2, Employee expected) {
     }
 }

@@ -15,7 +15,7 @@ class Person {
 }
 
 class SimpleIntuitMusicBackend implements IntuitMusicBackend {
-    private Map<String, List<String>> userFavorites = new HashMap<>();
+    private final Map<String, List<String>> userFavorites = new HashMap<>();
 
     public void setFavorites(Person person, List<String> favorites) {
         userFavorites.put(person.name, favorites);
@@ -38,10 +38,10 @@ class SongEntry {
 }
 
 class IntuitPartyDJ {
-    private IntuitMusicBackend intuitMusic;
-    private Set<Person> currentParty;
-    private Map<String, Integer> globalFreq;
-    private PriorityQueue<SongEntry> maxHeap;
+    private final IntuitMusicBackend intuitMusic;
+    private final Set<Person> currentParty;
+    private final Map<String, Integer> globalFreq;
+    private final PriorityQueue<SongEntry> maxHeap;
 
     public IntuitPartyDJ(IntuitMusicBackend backend) {
         this.intuitMusic = backend;

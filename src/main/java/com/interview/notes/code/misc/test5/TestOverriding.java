@@ -1,7 +1,7 @@
 package com.interview.notes.code.misc.test5;
 
 public class TestOverriding {
-    public static void main(String str[]) {
+    public static void main(String[] str) {
         TestT1 t = new Fest();
         t.tests();
     }

@@ -59,9 +59,9 @@ public class Main {                    // Main class containing everything
 
     // Define Student class with id, name, and marks
     static class Student {
-        private int id;                  // Field to store student ID
-        private String name;             // Field to store student name
-        private double marks;            // Field to store student marks
+        private final int id;                  // Field to store student ID
+        private final String name;             // Field to store student name
+        private final double marks;            // Field to store student marks
 
         // Constructor to create a Student object from id, name, and marks
         public Student(int id, String name, double marks) {

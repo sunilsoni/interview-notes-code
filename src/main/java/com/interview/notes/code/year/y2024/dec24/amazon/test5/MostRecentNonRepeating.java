@@ -41,11 +41,11 @@ At **time 4**, even though "a" is repeated, "c" remains the most recent **non-re
  */
 public class MostRecentNonRepeating {
     // Head and tail of our linked list of unique characters
-    private Node head = new Node('\0');
-    private Node tail = new Node('\0');
+    private final Node head = new Node('\0');
+    private final Node tail = new Node('\0');
     // Maps to track counts and positions
-    private Map<Character, Integer> countMap = new HashMap<>();
-    private Map<Character, Node> nodeMap = new HashMap<>();
+    private final Map<Character, Integer> countMap = new HashMap<>();
+    private final Map<Character, Node> nodeMap = new HashMap<>();
 
     public MostRecentNonRepeating() {
         head.next = tail;

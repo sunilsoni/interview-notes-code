@@ -260,7 +260,7 @@ public class TikTokCollaborations {
 
         // Edge Case 3: Single creator
         testCases.add(new TestCase(
-                Arrays.asList(100),
+                List.of(100),
                 1,
                 50L,
                 1,

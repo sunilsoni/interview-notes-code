@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class StockPriceCalculator {
-    private TreeMap<Long, Double> stockPrices;
+    private final TreeMap<Long, Double> stockPrices;
 
     public StockPriceCalculator() {
         stockPrices = new TreeMap<>();

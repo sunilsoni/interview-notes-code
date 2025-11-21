@@ -24,7 +24,6 @@ public class LargestNumberWithPrimeDigits {
         else
             s.setCharAt(i, '7');
 
-        return;
     }
 
     public static String primeDigits(StringBuilder s) {

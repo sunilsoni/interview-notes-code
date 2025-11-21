@@ -197,7 +197,7 @@ public class FindPassableLanesSolution {
         //   - Column 4 has '0 0 0 0', all '0' => passable
         //   - Column 5 has '0 0 0 0', all '0' => passable
         // So expected passable columns = [4, 5]
-        List<Integer> expectedRows1 = Arrays.asList();
+        List<Integer> expectedRows1 = List.of();
         List<Integer> expectedCols1 = Arrays.asList(4, 5);
 
         checkResult("board1 rows", rows1, expectedRows1);
@@ -271,8 +271,8 @@ public class FindPassableLanesSolution {
         // passable columns => none
         List<Integer> rows4 = findPassableRows(board4);
         List<Integer> cols4 = findPassableColumns(board4);
-        List<Integer> expectedRows4 = Arrays.asList();
-        List<Integer> expectedCols4 = Arrays.asList();
+        List<Integer> expectedRows4 = List.of();
+        List<Integer> expectedCols4 = List.of();
 
         checkResult("board4 rows", rows4, expectedRows4);
         checkResult("board4 cols", cols4, expectedCols4);
@@ -285,8 +285,8 @@ public class FindPassableLanesSolution {
         // passable columns => [0]
         List<Integer> rows5 = findPassableRows(board5);
         List<Integer> cols5 = findPassableColumns(board5);
-        List<Integer> expectedRows5 = Arrays.asList(0);
-        List<Integer> expectedCols5 = Arrays.asList(0);
+        List<Integer> expectedRows5 = List.of(0);
+        List<Integer> expectedCols5 = List.of(0);
 
         checkResult("board5 rows", rows5, expectedRows5);
         checkResult("board5 cols", cols5, expectedCols5);

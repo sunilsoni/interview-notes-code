@@ -3,8 +3,8 @@ package com.interview.notes.code.year.y2023.nov23.test2;
 import java.util.Stack;
 
 public class QueueUsingStacks<T> {
-    private Stack<T> stackNewestOnTop = new Stack<>(); // Stack to push new elements
-    private Stack<T> stackOldestOnTop = new Stack<>(); // Stack to pop elements from the queue
+    private final Stack<T> stackNewestOnTop = new Stack<>(); // Stack to push new elements
+    private final Stack<T> stackOldestOnTop = new Stack<>(); // Stack to pop elements from the queue
 
     public static void main(String[] args) {
         QueueUsingStacks<Integer> queue = new QueueUsingStacks<>();

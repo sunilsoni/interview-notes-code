@@ -22,7 +22,7 @@ interface Bank {
 
 // Implementation for PersonalLoanDept that processes client loans.
 class PersonalLoanDept implements Bank {
-    private int[] loanAmounts;  // Array to store loan amounts for clients
+    private final int[] loanAmounts;  // Array to store loan amounts for clients
 
     // Constructor: initializes the loanAmounts array for given number of clients.
     public PersonalLoanDept(int clients) {
@@ -33,9 +33,7 @@ class PersonalLoanDept implements Bank {
     // Only as many values as possible are assigned; remaining stay 0.
     @Override
     public void assignLoans(int[] loans) {
-        for (int i = 0; i < Math.min(loans.length, loanAmounts.length); i++) {
-            loanAmounts[i] = loans[i];
-        }
+        System.arraycopy(loans, 0, loanAmounts, 0, Math.min(loans.length, loanAmounts.length));
         System.out.println("Loans for clients processed");
     }
 
@@ -46,7 +44,7 @@ class PersonalLoanDept implements Bank {
                 .average()
                 .orElse(0.0);
         // Print the average formatted to two decimal places.
-        System.out.println(String.format("Average loan amount for clients is %.2f", avg));
+        System.out.printf("Average loan amount for clients is %.2f%n", avg);
     }
 
     // Finds and prints the maximum loan amount among clients.
@@ -70,7 +68,7 @@ class PersonalLoanDept implements Bank {
 
 // Implementation for BusinessLoanDept that processes business loans.
 class BusinessLoanDept implements Bank {
-    private int[] loanAmounts;  // Array to store loan amounts for businesses
+    private final int[] loanAmounts;  // Array to store loan amounts for businesses
 
     // Constructor: initializes the loanAmounts array for given number of businesses.
     public BusinessLoanDept(int businesses) {
@@ -80,9 +78,7 @@ class BusinessLoanDept implements Bank {
     // Copies values from the input array to the loanAmounts array.
     @Override
     public void assignLoans(int[] loans) {
-        for (int i = 0; i < Math.min(loans.length, loanAmounts.length); i++) {
-            loanAmounts[i] = loans[i];
-        }
+        System.arraycopy(loans, 0, loanAmounts, 0, Math.min(loans.length, loanAmounts.length));
         System.out.println("Loans for businesses processed");
     }
 
@@ -92,7 +88,7 @@ class BusinessLoanDept implements Bank {
         double avg = Arrays.stream(loanAmounts)
                 .average()
                 .orElse(0.0);
-        System.out.println(String.format("Average loan amount for businesses is %.2f", avg));
+        System.out.printf("Average loan amount for businesses is %.2f%n", avg);
     }
 
     // Finds and prints the maximum loan amount among businesses.

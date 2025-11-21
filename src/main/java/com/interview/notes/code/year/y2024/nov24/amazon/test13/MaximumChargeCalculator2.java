@@ -22,7 +22,7 @@ public class MaximumChargeCalculator2 {
 
         // Find the maximum individual charge.
         for (int c : charge) {
-            maxCharge = Math.max(maxCharge, (long) c);
+            maxCharge = Math.max(maxCharge, c);
         }
 
         // Find the maximum sum of any two adjacent charges.
@@ -63,7 +63,7 @@ public class MaximumChargeCalculator2 {
 
         // Single Element
         testCases.add(new TestCase(
-                Arrays.asList(10),
+                List.of(10),
                 10 // Expected Output: 10
         ));
 

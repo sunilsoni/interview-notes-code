@@ -25,10 +25,7 @@ public class MinimumOperations {
                 // Check if it's exactly m zeros
                 if (count == m) {
                     // Verify it's bounded by 1s or string boundaries
-                    boolean validSegment = true;
-                    if (start > 0 && s.charAt(start - 1) == '0') {
-                        validSegment = false;
-                    }
+                    boolean validSegment = start <= 0 || s.charAt(start - 1) != '0';
                     if (i < n && s.charAt(i) == '0') {
                         validSegment = false;
                     }
@@ -89,8 +86,7 @@ public class MinimumOperations {
                 }
 
                 if (count == m) {
-                    boolean bounded = true;
-                    if (start > 0 && s.charAt(start - 1) == '0') bounded = false;
+                    boolean bounded = start <= 0 || s.charAt(start - 1) != '0';
                     if (i < n && s.charAt(i) == '0') bounded = false;
 
                     if (bounded) return true;

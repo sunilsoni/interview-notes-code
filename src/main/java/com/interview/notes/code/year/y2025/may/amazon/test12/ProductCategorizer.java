@@ -19,7 +19,7 @@ public class ProductCategorizer {
         testCase(2, pairs2, 0);
 
         // Test Case 3: Single pair
-        List<int[]> pairs3 = Arrays.asList(new int[]{1, 2});
+        List<int[]> pairs3 = List.of(new int[]{1, 2});
         testCase(3, pairs3, 2);
 
         // Test Case 4: Large dataset simulation
@@ -72,8 +72,8 @@ public class ProductCategorizer {
 
     // DisjointSet class for tracking connected components
     static class DisjointSet {
-        private int[] parent;
-        private int[] rank;
+        private final int[] parent;
+        private final int[] rank;
 
         public DisjointSet(int size) {
             parent = new int[size];

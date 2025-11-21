@@ -31,16 +31,7 @@ public class AmazonErrorMinimizer {
     }
 
     public static void main(String[] args) {
-        class Test {
-            final String s;
-            final int x, y, exp;
-
-            Test(String s, int x, int y, int exp) {
-                this.s = s;
-                this.x = x;
-                this.y = y;
-                this.exp = exp;
-            }
+        record Test(String s, int x, int y, int exp) {
         }
         List<Test> tests = Arrays.asList(
                 new Test("0!1!1!", 2, 3, 10),

@@ -160,14 +160,14 @@ public class BrothersGame {
 
         // Edge Case: Single Element - 0
         testCases.add(new TestCase(
-                Arrays.asList(0),
+                List.of(0),
                 1,
                 "Single Element - 0"
         ));
 
         // Edge Case: Single Element - 1
         testCases.add(new TestCase(
-                Arrays.asList(1),
+                List.of(1),
                 0,
                 "Single Element - 1"
         ));

@@ -133,10 +133,10 @@ public class BrothersGame {
         runTest("Edge Case - All ones", Arrays.asList(1, 1, 1, 1), 3);
 
         // Edge Case: Single element, 0
-        runTest("Edge Case - Single 0", Arrays.asList(0), 1);
+        runTest("Edge Case - Single 0", List.of(0), 1);
 
         // Edge Case: Single element, 1
-        runTest("Edge Case - Single 1", Arrays.asList(1), 0);
+        runTest("Edge Case - Single 1", List.of(1), 0);
 
         // Random Test: Mixed small case
         runTest("Mixed Test", Arrays.asList(1, 0, 1, 0, 1, 0), 4);

@@ -43,10 +43,10 @@ public class FindDuplicates {
 
         List<List<Integer>> expectedResults = Arrays.asList(
                 Arrays.asList(2, 3),
-                Arrays.asList(1),
-                Arrays.asList(),
-                Arrays.asList(),
-                Arrays.asList(5)
+                List.of(1),
+                List.of(),
+                List.of(),
+                List.of(5)
         );
 
         // Large test case: 1 million elements with duplicates at the end

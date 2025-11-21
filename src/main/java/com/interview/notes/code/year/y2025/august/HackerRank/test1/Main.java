@@ -20,7 +20,7 @@ class AdditionMagic {
 
     // 1) double + String -> String, with trimmed double representation
     public String add(double a, String b) {
-        return formatDoubleTrim(a) + String.valueOf(b);
+        return formatDoubleTrim(a) + b;
     }
 
     // 2) double + double -> String, rounded HALF_UP to 2 decimals
@@ -33,7 +33,7 @@ class AdditionMagic {
 
     // 3) String + String -> String
     public String add(String a, String b) {
-        return String.valueOf(a) + String.valueOf(b);
+        return a + b;
     }
 }
 
@@ -78,7 +78,7 @@ public class Main {
         // String-format trimming checks
         printers.add(() -> assertEquals("Trim: 10.0 + \"x\"", "10x", () -> am.add(10.0, "x")));
         printers.add(() -> assertEquals("Trim: 10.5000 + \"y\"", "10.5y", () -> am.add(10.5, "y")));
-        printers.add(() -> assertEquals("Concat: null + \"a\"", "nulla", () -> am.add((String) null, "a")));
+        printers.add(() -> assertEquals("Concat: null + \"a\"", "nulla", () -> am.add(null, "a")));
 
         // Edge numbers
         printers.add(() -> assertEquals("Edge: big double sum", "20000000000.00", () -> am.add(1e10, 1e10)));

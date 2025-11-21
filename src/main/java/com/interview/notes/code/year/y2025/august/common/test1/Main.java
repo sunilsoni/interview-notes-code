@@ -3,7 +3,7 @@ package com.interview.notes.code.year.y2025.august.common.test1;
 import java.util.ArrayList;
 
 class Generic<T> {
-    private T value;
+    private final T value;
 
     public Generic(T value) {
         this.value = value;

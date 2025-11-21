@@ -31,7 +31,7 @@ public class Solution {
         allPassed &= runTest("Test Case 2", new ArrayList<>(), 0);
 
         // Test Case 3: Single element
-        allPassed &= runTest("Test Case 3", Arrays.asList(5), 5);
+        allPassed &= runTest("Test Case 3", List.of(5), 5);
 
         // Test Case 4: Large data input
         List<Integer> largeData = IntStream.rangeClosed(1, 1000000)

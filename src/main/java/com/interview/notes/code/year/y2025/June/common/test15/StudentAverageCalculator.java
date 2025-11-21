@@ -68,7 +68,7 @@ public class StudentAverageCalculator {
         // Example with error handling
         try {
             // Creating an empty list to demonstrate error handling
-            List<Student> emptyList = Arrays.asList();
+            List<Student> emptyList = List.of();
             double averageWithError = emptyList.stream()
                     .mapToInt(Student::getMarks)
                     .average()
@@ -80,8 +80,8 @@ public class StudentAverageCalculator {
 
     // Student class
     static class Student {
-        private String name;
-        private int marks;
+        private final String name;
+        private final int marks;
 
         public Student(String name, int marks) {
             this.name = name;

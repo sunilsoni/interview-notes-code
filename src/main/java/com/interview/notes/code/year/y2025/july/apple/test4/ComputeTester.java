@@ -62,20 +62,11 @@ public class ComputeTester {
         System.out.println("All random tests passed (" + N + " cases).");
     }
 
-    private static class TestCase {
-        final int a, b, c;
-        final String expected;
-
-        TestCase(int a, int b, int c, String expected) {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-            this.expected = expected;
-        }
+    private record TestCase(int a, int b, int c, String expected) {
 
         @Override
-        public String toString() {
-            return String.format("(%d + %d -> %d)", a, b, c);
+            public String toString() {
+                return String.format("(%d + %d -> %d)", a, b, c);
+            }
         }
-    }
 }

@@ -92,17 +92,8 @@ public class BoundingRectangleTest {
     }
 
     /**
-     * Simple holder for a test case.
-     */
-    static class TestCase {
-        final String name;
-        final List<List<Integer>> input;
-        final List<Integer> expected;
-
-        TestCase(String name, List<List<Integer>> input, List<Integer> expected) {
-            this.name = name;
-            this.input = input;
-            this.expected = expected;
-        }
+         * Simple holder for a test case.
+         */
+        record TestCase(String name, List<List<Integer>> input, List<Integer> expected) {
     }
 }

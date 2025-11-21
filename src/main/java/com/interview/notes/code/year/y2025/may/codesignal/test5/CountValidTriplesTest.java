@@ -23,7 +23,7 @@ public class CountValidTriplesTest {
                 // And existing triples where x fills z or y position
                 count += (long) freq.getOrDefault(x + diff, 0) * freq.getOrDefault(x + 2 * diff, 0);
                 // Also y in middle
-                count += freq.getOrDefault(x + diff, 0) * freq.getOrDefault(x - diff, 0);
+                count += (long) freq.getOrDefault(x + diff, 0) * freq.getOrDefault(x - diff, 0);
                 freq.put(x, freq.getOrDefault(x, 0) + 1);
             } else {
                 // Removing all occurrences of x: rebuild count naively

@@ -123,7 +123,7 @@ class Book implements IBook {
 }
 
 class LibrarySystem implements ILibrarySystem {
-    private Map<IBook, Integer> _books = new HashMap<>();
+    private final Map<IBook, Integer> _books = new HashMap<>();
 
     public void addBook(IBook book, int quantity) {
         _books.put(book, _books.getOrDefault(book, 0) + quantity);

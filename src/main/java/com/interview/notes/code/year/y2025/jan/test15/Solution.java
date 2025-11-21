@@ -6,8 +6,7 @@ public class Solution {
      * A sample document for testing (same as before).
      * Make sure it matches exactly the text the tests expect.
      */
-    private static final String DOCUMENT = ""
-            + "In publishing and graphic design, lorem ipsum is a "
+    private static final String DOCUMENT = "In publishing and graphic design, lorem ipsum is a "
             + "filler text commonly used to demonstrate the graphic elements of a "
             + "document or visual presentation. Replacing meaningful content that "
             + "could be distracting with placeholder text may allow viewers to focus "

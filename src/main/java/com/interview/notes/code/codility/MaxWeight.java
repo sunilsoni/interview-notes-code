@@ -104,8 +104,8 @@ public class MaxWeight {
         Scanner sc = new Scanner(System.in);
         // INPUT [uncomment & modify if required]
         int N = sc.nextInt();
-        int X[] = new int[N];
-        int Y[] = new int[N];
+        int[] X = new int[N];
+        int[] Y = new int[N];
         for (int i = 0; i < N; i++) {
             X[i] = sc.nextInt();
             Y[i] = sc.nextInt();

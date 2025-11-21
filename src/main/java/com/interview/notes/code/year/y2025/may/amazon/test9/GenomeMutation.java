@@ -49,16 +49,7 @@ public class GenomeMutation {
     }
 
     public static void main(String[] args) {
-        class Test {
-            final String g;
-            final char m;
-            final int e;
-
-            Test(String g, char m, int e) {
-                this.g = g;
-                this.m = m;
-                this.e = e;
-            }
+        record Test(String g, char m, int e) {
         }
         List<Test> tests = Arrays.asList(
                 new Test("tamem", 'm', 2),
