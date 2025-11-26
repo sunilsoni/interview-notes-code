@@ -1,14 +1,13 @@
 package com.interview.notes.code.year.y2023.Oct23.test2;
 
-import javax.persistence.criteria.Root;
-import java.util.ArrayList;
+ import java.util.ArrayList;
 import java.util.List;
 
 public class Tree {
     private final List<Branch> branches;
     private final List<Leaf> leaves;
-    private Trunk trunk;
     private final List<Root> roots;
+    private Trunk trunk;
     private Bark bark;
 
     public Tree() {
