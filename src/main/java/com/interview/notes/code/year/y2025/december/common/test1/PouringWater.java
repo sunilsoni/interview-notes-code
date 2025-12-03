@@ -1,4 +1,4 @@
-package com.interview.notes.code.year.y2025.december.common;
+package com.interview.notes.code.year.y2025.december.common.test1;
 
 public class PouringWater {
 
