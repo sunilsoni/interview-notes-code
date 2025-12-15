@@ -1,137 +1,204 @@
 package com.interview.notes.code.year.y2025.december.common.test2;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
-import java.util.Random;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-class Solution {
+interface Bank {
+    void assignLoans(int[] loans);
+    void averageLoan();
+    void maxLoan();
+    void minLoan();
+}
 
-    public static int bestAverageGrade(String[][] scores) {
-        if (scores == null || scores.length == 0) return 0;
-
-        return Arrays.stream(scores)
-                .collect(Collectors.groupingBy(
-                        e -> e[0],
-                        Collectors.averagingDouble(e -> Integer.parseInt(e[1]))
-                ))
-                .values()
-                .stream()
-                .mapToInt(avg -> (int) Math.floor(avg))
-                .max()
-                .orElse(0);
+abstract class LoanDepartment implements Bank {
+    protected int[] loanAmounts;
+    protected abstract String entityType();
+    
+    public void assignLoans(int[] loans) {
+        System.arraycopy(loans, 0, loanAmounts, 0, Math.min(loans.length, loanAmounts.length));
+        System.out.println("Loans for " + entityType() + " processed");
     }
+    
+    public void averageLoan() {
+        double avg = Arrays.stream(loanAmounts).average().orElse(0);
+        System.out.println("Average loan amount for " + entityType() + " is " + String.format("%.2f", avg));
+    }
+    
+    public void maxLoan() {
+        int max = Arrays.stream(loanAmounts).max().orElse(0);
+        System.out.println("Maximum loan amount amongst " + entityType() + " is " + max);
+    }
+    
+    public void minLoan() {
+        int min = Arrays.stream(loanAmounts).min().orElse(0);
+        System.out.println("Minimum loan amount amongst " + entityType() + " is " + min);
+    }
+}
 
-    public static boolean doTestsPass() {
-        boolean allPass = true;
+class PersonalLoanDept extends LoanDepartment {
+    PersonalLoanDept(int clients) {
+        loanAmounts = new int[clients];
+    }
+    
+    protected String entityType() {
+        return "clients";
+    }
+}
 
-        String[][] tc1 = {
-                {"Bobby", "87"},
-                {"Charles", "100"},
-                {"Eric", "64"},
-                {"Charles", "22"}
-        };
-        int result1 = bestAverageGrade(tc1);
-        boolean pass1 = (result1 == 87);
-        System.out.println("Test 1: " + (pass1 ? "PASS" : "FAIL") + " Expected:87 Got:" + result1);
-        allPass &= pass1;
+class BusinessLoanDept extends LoanDepartment {
+    BusinessLoanDept(int businesses) {
+        loanAmounts = new int[businesses];
+    }
+    
+    protected String entityType() {
+        return "businesses";
+    }
+}
 
-        String[][] tc2 = {};
-        int result2 = bestAverageGrade(tc2);
-        boolean pass2 = (result2 == 0);
-        System.out.println("Test 2: " + (pass2 ? "PASS" : "FAIL") + " Expected:0 Got:" + result2);
-        allPass &= pass2;
-
-        int result3 = bestAverageGrade(null);
-        boolean pass3 = (result3 == 0);
-        System.out.println("Test 3: " + (pass3 ? "PASS" : "FAIL") + " Expected:0 Got:" + result3);
-        allPass &= pass3;
-
-        String[][] tc4 = {{"Alice", "95"}};
-        int result4 = bestAverageGrade(tc4);
-        boolean pass4 = (result4 == 95);
-        System.out.println("Test 4: " + (pass4 ? "PASS" : "FAIL") + " Expected:95 Got:" + result4);
-        allPass &= pass4;
-
-        String[][] tc5 = {
-                {"John", "-10"},
-                {"Jane", "-5"},
-                {"John", "-20"}
-        };
-        int result5 = bestAverageGrade(tc5);
-        boolean pass5 = (result5 == -5);
-        System.out.println("Test 5: " + (pass5 ? "PASS" : "FAIL") + " Expected:-5 Got:" + result5);
-        allPass &= pass5;
-
-        String[][] tc6 = {
-                {"Tom", "90"},
-                {"Tom", "91"},
-                {"Jim", "89"}
-        };
-        int result6 = bestAverageGrade(tc6);
-        boolean pass6 = (result6 == 90);
-        System.out.println("Test 6: " + (pass6 ? "PASS" : "FAIL") + " Expected:90 Got:" + result6);
-        allPass &= pass6;
-
-        String[][] tc7 = {
-                {"Mike", "-10"},
-                {"Mike", "-11"},
-                {"Sara", "-12"}
-        };
-        int result7 = bestAverageGrade(tc7);
-        boolean pass7 = (result7 == -11);
-        System.out.println("Test 7: " + (pass7 ? "PASS" : "FAIL") + " Expected:-11 Got:" + result7);
-        allPass &= pass7;
-
-        System.out.println("Test 8 - Large data running...");
-        int numStudents = 1000;
-        int scoresPerStudent = 100;
-        int totalEntries = numStudents * scoresPerStudent;
-        String[][] tc8 = new String[totalEntries][2];
-        Random random = new Random(42);
-        int index = 0;
-
-        for (int i = 0; i < numStudents; i++) {
-            String name = "Student_" + i;
-            for (int j = 0; j < scoresPerStudent; j++) {
-                tc8[index][0] = name;
-                tc8[index][1] = String.valueOf(random.nextInt(101));
-                index++;
+public class Solution {
+    public static void main(String[] args) {
+        runTests();
+    }
+    
+    static void runTests() {
+        System.out.println("=== RUNNING TESTS ===\n");
+        
+        test("Test 1", 4, 4, 
+            new int[]{2348, 929, 1284, 5543}, 
+            new int[]{3117, 5196, 3352, 7068},
+            new String[]{
+                "Loans for clients processed",
+                "Loans for businesses processed",
+                "Average loan amount for clients is 2526.00",
+                "Maximum loan amount amongst clients is 5543",
+                "Minimum loan amount amongst clients is 929",
+                "Average loan amount for businesses is 4683.25",
+                "Maximum loan amount amongst businesses is 7068",
+                "Minimum loan amount amongst businesses is 3117"
+            });
+        
+        test("Test 2", 5, 5,
+            new int[]{9238, 79, 5588, 2490, 6993},
+            new int[]{9861, 1055, 8498, 2387, 3283},
+            new String[]{
+                "Loans for clients processed",
+                "Loans for businesses processed",
+                "Average loan amount for clients is 4877.60",
+                "Maximum loan amount amongst clients is 9238",
+                "Minimum loan amount amongst clients is 79",
+                "Average loan amount for businesses is 5016.80",
+                "Maximum loan amount amongst businesses is 9861",
+                "Minimum loan amount amongst businesses is 1055"
+            });
+        
+        test("Test 3 - Partial Fill", 5, 3,
+            new int[]{100, 200},
+            new int[]{500, 600, 700},
+            new String[]{
+                "Loans for clients processed",
+                "Loans for businesses processed",
+                "Average loan amount for clients is 60.00",
+                "Maximum loan amount amongst clients is 200",
+                "Minimum loan amount amongst clients is 0",
+                "Average loan amount for businesses is 600.00",
+                "Maximum loan amount amongst businesses is 700",
+                "Minimum loan amount amongst businesses is 500"
+            });
+        
+        test("Test 4 - Single Element", 1, 1,
+            new int[]{5000},
+            new int[]{3000},
+            new String[]{
+                "Loans for clients processed",
+                "Loans for businesses processed",
+                "Average loan amount for clients is 5000.00",
+                "Maximum loan amount amongst clients is 5000",
+                "Minimum loan amount amongst clients is 5000",
+                "Average loan amount for businesses is 3000.00",
+                "Maximum loan amount amongst businesses is 3000",
+                "Minimum loan amount amongst businesses is 3000"
+            });
+        
+        testLargeData();
+        
+        System.out.println("\n=== ALL TESTS COMPLETE ===");
+    }
+    
+    static void test(String name, int n, int m, int[] clients, int[] business, String[] expected) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream old = System.out;
+        System.setOut(new PrintStream(baos));
+        
+        Bank personal = new PersonalLoanDept(n);
+        Bank biz = new BusinessLoanDept(m);
+        personal.assignLoans(clients);
+        biz.assignLoans(business);
+        personal.averageLoan();
+        personal.maxLoan();
+        personal.minLoan();
+        biz.averageLoan();
+        biz.maxLoan();
+        biz.minLoan();
+        
+        System.setOut(old);
+        
+        String[] actual = baos.toString().trim().split("\n");
+        boolean pass = true;
+        
+        if (actual.length != expected.length) {
+            pass = false;
+        } else {
+            for (int i = 0; i < expected.length; i++) {
+                if (!actual[i].trim().equals(expected[i].trim())) {
+                    pass = false;
+                    break;
+                }
             }
         }
-
-        long start = System.currentTimeMillis();
-        int result8 = bestAverageGrade(tc8);
-        long end = System.currentTimeMillis();
-        boolean pass8 = (result8 >= 0 && result8 <= 100);
-        System.out.println("Test 8: " + (pass8 ? "PASS" : "FAIL") + " Result:" + result8 + " Time:" + (end - start) + "ms");
-        allPass &= pass8;
-
-        String[][] tc9 = {
-                {"Dan", "50"},
-                {"Dan", "50"},
-                {"Eve", "50"}
-        };
-        int result9 = bestAverageGrade(tc9);
-        boolean pass9 = (result9 == 50);
-        System.out.println("Test 9: " + (pass9 ? "PASS" : "FAIL") + " Expected:50 Got:" + result9);
-        allPass &= pass9;
-
-        String[][] tc10 = {
-                {"Zero", "0"},
-                {"Zero", "0"},
-                {"One", "1"}
-        };
-        int result10 = bestAverageGrade(tc10);
-        boolean pass10 = (result10 == 1);
-        System.out.println("Test 10: " + (pass10 ? "PASS" : "FAIL") + " Expected:1 Got:" + result10);
-        allPass &= pass10;
-
-        return allPass;
+        
+        if (pass) {
+            System.out.println(name + ": PASS");
+        } else {
+            System.out.println(name + ": FAIL");
+            System.out.println("Expected lines: " + expected.length + ", Actual lines: " + actual.length);
+            for (int i = 0; i < Math.max(expected.length, actual.length); i++) {
+                String exp = i < expected.length ? expected[i] : "N/A";
+                String act = i < actual.length ? actual[i].trim() : "N/A";
+                String status = exp.equals(act) ? "OK" : "DIFF";
+                System.out.println("Line " + (i+1) + " [" + status + "]");
+                System.out.println("  Exp: [" + exp + "]");
+                System.out.println("  Act: [" + act + "]");
+            }
+        }
     }
-
-    public static void main(String[] args) {
-        System.out.println("Running Tests...");
-        boolean ok = doTestsPass();
-        System.out.println(ok ? "All tests PASSED" : "Some tests FAILED");
+    
+    static void testLargeData() {
+        int[] largeClients = IntStream.rangeClosed(1, 10000).toArray();
+        int[] largeBusiness = IntStream.rangeClosed(10001, 20000).toArray();
+        
+        Bank p = new PersonalLoanDept(10000);
+        Bank b = new BusinessLoanDept(10000);
+        
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream old = System.out;
+        System.setOut(new PrintStream(baos));
+        
+        p.assignLoans(largeClients);
+        b.assignLoans(largeBusiness);
+        p.averageLoan();
+        p.maxLoan();
+        p.minLoan();
+        b.averageLoan();
+        b.maxLoan();
+        b.minLoan();
+        
+        System.setOut(old);
+        
+        String[] lines = baos.toString().trim().split("\n");
+        boolean pass = lines.length == 8;
+        
+        System.out.println("Test 5 - Large Data (10000 elements): " + (pass ? "PASS" : "FAIL"));
     }
 }
