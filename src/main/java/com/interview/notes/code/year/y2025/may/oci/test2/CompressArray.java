@@ -187,14 +187,14 @@ public class CompressArray {
     }
 
     /**
-         * A simple container for test cases.
-         */
-        private record TestCase(List<Integer> inputArray, int k, int expected) {
+     * A simple container for test cases.
+     */
+    private record TestCase(List<Integer> inputArray, int k, int expected) {
 
         // Runs this test case, returns true if output matches expected.
-            boolean run() {
-                int result = getMinLength(inputArray, k);
-                return result == expected;
-            }
+        boolean run() {
+            int result = getMinLength(inputArray, k);
+            return result == expected;
         }
+    }
 }

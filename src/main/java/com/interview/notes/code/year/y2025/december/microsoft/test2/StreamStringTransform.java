@@ -8,8 +8,8 @@ public class StreamStringTransform {
         List<String> names = Arrays.asList("sunil", "renu", "ravi", "aspira");
 
         names.stream()
-             .map(str -> new StringBuilder(str).reverse().toString()) // reverse string
-             .map(str -> str.substring(0,1).toUpperCase() + str.substring(1)) // capitalize first char
-             .forEach(System.out::println); // print result
+                .map(str -> new StringBuilder(str).reverse().toString()) // reverse string
+                .map(str -> str.substring(0, 1).toUpperCase() + str.substring(1)) // capitalize first char
+                .forEach(System.out::println); // print result
     }
 }

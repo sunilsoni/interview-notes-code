@@ -82,8 +82,8 @@ public class MazeWordFinder {
     public record Cell(int row, int col, char value) {
 
         @Override
-            public String toString() {
-                return "(" + row + "," + col + ")=" + value;
-            }
+        public String toString() {
+            return "(" + row + "," + col + ")=" + value;
         }
+    }
 }

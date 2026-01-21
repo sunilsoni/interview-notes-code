@@ -69,8 +69,8 @@ public class BrothersGame {
     }
 
     /**
-         * simple holder for test cases
-         */
-        private record Test(List<Integer> input, int expected) {
+     * simple holder for test cases
+     */
+    private record Test(List<Integer> input, int expected) {
     }
 }

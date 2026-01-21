@@ -1,6 +1,5 @@
 package com.interview.notes.code.year.y2025.july.oracle.test3;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 

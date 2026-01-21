@@ -78,7 +78,7 @@ public class TimestampedMapExample {
     }
 
     // Inner class to hold value and timestamp
-        private record Entry(String value, Long timestamp) {
+    private record Entry(String value, Long timestamp) {
     }
 
     public static class TimestampedMap {

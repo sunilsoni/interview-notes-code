@@ -323,6 +323,6 @@ public class GroceryDepartmentVisitSaver {
      * @param shoppingList  Ordered shopping list.
      * @param expectedSaved Expected time saved; null means auto-calc via reference.
      */
-        private record TestCase(String name, String[][] catalog, List<String> shoppingList, Integer expectedSaved) {
+    private record TestCase(String name, String[][] catalog, List<String> shoppingList, Integer expectedSaved) {
     }
 }

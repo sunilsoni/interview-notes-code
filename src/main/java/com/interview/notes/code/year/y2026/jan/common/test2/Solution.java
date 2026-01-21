@@ -8,15 +8,16 @@ public class Solution {
 
     /**
      * Hybrid Solution: Loop for parsing + Map.merge for aggregation.
+     *
      * @param input 2D array {Ticker, Price, Qty}
      * @return Ticker with highest investment
      */
     private static String topStock(String[][] input) {
         // Handle empty/null inputs gracefully
         if (input == null || input.length == 0) return "";
-        
+
         // 'var' reduces type declaration verbosity (Java 10+)
-        var map = new HashMap<String, Double>(); 
+        var map = new HashMap<String, Double>();
 
         // Enhanced loop is cleaner than Stream mapping for array indices
         for (var order : input) {

@@ -36,12 +36,12 @@ public class CoinChange {
     public static void main(String[] args) {
         // Define test cases as a list of inputs and expected outputs
         List<TestCase> testCases = Arrays.asList(
-            new TestCase(new int[]{1, 5, 10, 25}, 67, 6),     // Example from problem
-            new TestCase(new int[]{2}, 3, -1),                // No solution case
-            new TestCase(new int[]{1, 2, 5}, 11, 3),          // Standard case
-            new TestCase(new int[]{1}, 0, 0),                 // Zero amount
-            new TestCase(new int[]{1}, 10000, 10000),         // Large input case
-            new TestCase(IntStream.rangeClosed(1, 100).toArray(), 9999, 100) // Stress test
+                new TestCase(new int[]{1, 5, 10, 25}, 67, 6),     // Example from problem
+                new TestCase(new int[]{2}, 3, -1),                // No solution case
+                new TestCase(new int[]{1, 2, 5}, 11, 3),          // Standard case
+                new TestCase(new int[]{1}, 0, 0),                 // Zero amount
+                new TestCase(new int[]{1}, 10000, 10000),         // Large input case
+                new TestCase(IntStream.rangeClosed(1, 100).toArray(), 9999, 100) // Stress test
         );
 
         // Loop through each test case and check result

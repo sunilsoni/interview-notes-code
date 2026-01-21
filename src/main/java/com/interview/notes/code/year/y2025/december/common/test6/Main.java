@@ -49,12 +49,12 @@ public class Main {
 
     public static void main(String[] args) {
         test("sample",
-                new String[]{"eat","tea","tan","ate","nat","bat"},
-                List.of(List.of("eat","tea","ate"), List.of("tan","nat"), List.of("bat")));
+                new String[]{"eat", "tea", "tan", "ate", "nat", "bat"},
+                List.of(List.of("eat", "tea", "ate"), List.of("tan", "nat"), List.of("bat")));
 
         test("empty", new String[]{}, List.of());
         test("single", new String[]{"abc"}, List.of(List.of("abc")));
-        test("duplicates", new String[]{"a","a","a"}, List.of(List.of("a","a","a")));
+        test("duplicates", new String[]{"a", "a", "a"}, List.of(List.of("a", "a", "a")));
 
         var n = 200_000;
         var big = new String[n];

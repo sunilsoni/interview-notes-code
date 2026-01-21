@@ -138,8 +138,8 @@ public class WordBreakExplained {
      * @param expected The expected boolean result
      */
 
-        // Simple holder for test cases to keep main method tidy
-        private record TestCase(String s, List<String> dict, boolean expected) {
+    // Simple holder for test cases to keep main method tidy
+    private record TestCase(String s, List<String> dict, boolean expected) {
         // Assign given string
         // Assign given dictionary
         // Assign expected outcome

@@ -9,12 +9,12 @@ public class ServerFaultDetector {
     public static int countFaults(int n, List<String> logs) {
         var replacements = 0;
         var errorCounts = new HashMap<String, Integer>();
-        
+
         for (var log : logs) {
             var parts = log.split(" ");
             var id = parts[0];
             var status = parts[1];
-            
+
             if (status.equals("error")) {
                 var count = errorCounts.getOrDefault(id, 0) + 1;
                 if (count == 3) {
@@ -34,7 +34,7 @@ public class ServerFaultDetector {
 
         // Test Case 0: Provided Example
         var logs0 = List.of(
-            "s1 error", "s1 error", "s2 error", "s1 error", "s1 error", "s2 success"
+                "s1 error", "s1 error", "s2 error", "s1 error", "s1 error", "s2 success"
         );
         runTestCase(0, 2, logs0, 1);
 
@@ -65,11 +65,11 @@ public class ServerFaultDetector {
         var start = System.nanoTime();
         var result = countFaults(n, logs);
         var end = System.nanoTime();
-        
+
         var status = (result == expected) ? "PASS" : "FAIL";
         var logSize = logs.size();
-        
-        System.out.printf("Case %d: [%s] N=%d, Logs=%d -> Expected: %d, Got: %d (Time: %.3f ms)%n", 
-            id, status, n, logSize, expected, result, (end - start) / 1e6);
+
+        System.out.printf("Case %d: [%s] N=%d, Logs=%d -> Expected: %d, Got: %d (Time: %.3f ms)%n",
+                id, status, n, logSize, expected, result, (end - start) / 1e6);
     }
 }

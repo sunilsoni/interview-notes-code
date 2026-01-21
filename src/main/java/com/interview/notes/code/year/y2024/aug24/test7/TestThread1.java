@@ -10,8 +10,8 @@ class TestThread1 {
 }
 
 class threadDemo implements Runnable {
-    private Thread t;
     private final String tName;
+    private Thread t;
 
     threadDemo(String name) {
         tName = name;

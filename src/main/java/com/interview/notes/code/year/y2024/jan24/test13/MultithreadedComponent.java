@@ -4,8 +4,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 class SharedResource {
-    private int count;
     private final Lock lock;
+    private int count;
 
     public SharedResource() {
         count = 0;

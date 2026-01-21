@@ -66,6 +66,6 @@ public class Solution {
     }
 
     /* ---------- simple test harness ---------- */
-        private record TestCase(List<Integer> data, int expected) {
+    private record TestCase(List<Integer> data, int expected) {
     }
 }

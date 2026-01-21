@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AutomatedTestSuite {
-    
+
     // Store all test results for summary
     private static final List<TestResult> allResults = new ArrayList<>();
-    
+
     // ============================================================
     // THE FUNCTION WE ARE TESTING
     // ============================================================
@@ -54,12 +54,12 @@ public class AutomatedTestSuite {
 
         return result.toString();
     }
-    
+
     // ============================================================
     // TEST RUNNER - Core testing method
     // ============================================================
     public static boolean runTest(String category, String name,
-                                   String input, String expected) {
+                                  String input, String expected) {
 
         // Record start time for performance tracking
         long startTime = System.currentTimeMillis();
@@ -81,7 +81,7 @@ public class AutomatedTestSuite {
 
         // Store result for later summary
         allResults.add(new TestResult(category, name, passed,
-                                      input, expected, actual, duration));
+                input, expected, actual, duration));
 
         // Print immediate feedback
         String status = passed ? "[PASS]" : "[FAIL]";
@@ -96,7 +96,7 @@ public class AutomatedTestSuite {
 
         return passed;
     }
-    
+
     // Helper to format strings for display
     public static String formatStr(String s) {
         if (s == null) return "null";
@@ -105,7 +105,7 @@ public class AutomatedTestSuite {
         }
         return "\"" + s.replace("\n", "\\n") + "\"";
     }
-    
+
     // CATEGORY 1: Happy Path Tests
     // These test normal, expected usage
     public static void runHappyPathTests() {
@@ -132,11 +132,11 @@ public class AutomatedTestSuite {
                 "a/*1*/b//2\nc/*3*/d",
                 "ab\ncd");
     }
-    
+
     // ============================================================
     // TEST CATEGORIES
     // ============================================================
-    
+
     // CATEGORY 2: Edge Case Tests
     // These test boundary conditions
     public static void runEdgeCaseTests() {
@@ -193,7 +193,7 @@ public class AutomatedTestSuite {
                 "a/**/b",
                 "ab");
     }
-    
+
     // CATEGORY 3: Error/Invalid Input Tests
     // These test how function handles bad input
     public static void runErrorTests() {
@@ -230,7 +230,7 @@ public class AutomatedTestSuite {
                 "hello world",
                 "hello world");
     }
-    
+
     // CATEGORY 4: Large Data Tests
     // These test performance with big inputs
     public static void runLargeDataTests() {
@@ -279,7 +279,7 @@ public class AutomatedTestSuite {
                 large4.toString(),
                 expected4.toString());
     }
-    
+
     // CATEGORY 5: Regression Tests
     // These test previously found bugs
     public static void runRegressionTests() {
@@ -307,7 +307,7 @@ public class AutomatedTestSuite {
                 "",
                 "");
     }
-    
+
     // ============================================================
     // SUMMARY REPORT
     // ============================================================
@@ -347,7 +347,7 @@ public class AutomatedTestSuite {
             if (catTotal > 0) {
                 String status = (catFailed == 0) ? "✓" : "✗";
                 System.out.printf("║  %s %-12s: %3d/%3d passed                      ║%n",
-                                  status, cat, catPassed, catTotal);
+                        status, cat, catPassed, catTotal);
             }
         }
 
@@ -357,9 +357,9 @@ public class AutomatedTestSuite {
         double percentage = (total > 0) ? (totalPassed * 100.0 / total) : 0;
 
         System.out.printf("║  TOTAL: %d/%d tests passed (%.1f%%)                   ║%n",
-                          totalPassed, total, percentage);
+                totalPassed, total, percentage);
         System.out.printf("║  TIME:  %d ms total execution                        ║%n",
-                          totalTime);
+                totalTime);
         System.out.println("╠══════════════════════════════════════════════════════╣");
 
         if (totalFailed == 0) {
@@ -380,7 +380,7 @@ public class AutomatedTestSuite {
             }
         }
     }
-    
+
     // ============================================================
     // MAIN - Run all tests
     // ============================================================
@@ -401,7 +401,7 @@ public class AutomatedTestSuite {
         // Print final summary
         printSummary();
     }
-    
+
     // Class to hold test result information
     static class TestResult {
         String category;      // Which category this test belongs to

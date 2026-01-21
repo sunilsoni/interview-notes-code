@@ -28,16 +28,13 @@ class ServiceScheduler {
     // Queues for storing VIP and Regular customers.
     private final Queue<Customer> vipQueue = new LinkedList<>();
     private final Queue<Customer> regularQueue = new LinkedList<>();
-
+    // Mode flag - if true use 2:1 ratio scheduling else use strict VIP-first scheduling.
+    private final boolean useRatioScheduling;
     // Counter to generate unique service numbers
     private int nextServiceNumber = 1;
-
     // Counter used for 2:1 ratio scheduling (Part 3).
     // It counts processed customers in the current cycle.
     private int cycleCount = 0;
-
-    // Mode flag - if true use 2:1 ratio scheduling else use strict VIP-first scheduling.
-    private final boolean useRatioScheduling;
 
     // Constructor to set the scheduling mode.
     public ServiceScheduler(boolean useRatioScheduling) {

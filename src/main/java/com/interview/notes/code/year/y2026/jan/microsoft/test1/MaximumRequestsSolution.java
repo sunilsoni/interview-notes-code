@@ -16,9 +16,9 @@ public class MaximumRequestsSolution {
 
         // Iterate through the timestamps using 'right' as the expanding boundary
         for (int right = 0; right < timestamps.size(); right++) {
-            
+
             // Current time at the right pointer
-            int currentTime = timestamps.get(right); 
+            int currentTime = timestamps.get(right);
 
             // While the time gap is too large (current time - start time >= window)
             // We shrink the window from the left side
@@ -61,7 +61,7 @@ public class MaximumRequestsSolution {
 
         // Test Case 5: Window size 1 (Only 1 request max possible unless duplicates exist)
         runTest("Minimum Window", 1, Arrays.asList(1, 5, 9), 1);
-        
+
         // Test Case 6: Large Data (Performance Check)
         testLargeData();
 
@@ -76,17 +76,17 @@ public class MaximumRequestsSolution {
 
         boolean pass = result == expected;
         String status = pass ? "PASS" : "FAIL (Got " + result + ", Expected " + expected + ")";
-        
+
         System.out.printf("[%s] %s | Time: %d ns%n", status, testName, (endTime - startTime));
     }
 
     // Helper method to generate and test large dataset
     private static void testLargeData() {
         System.out.println("\nRunning Large Data Test...");
-        
+
         int n = 200_000; // Max constraint for N
         List<Integer> largeList = new ArrayList<>(n);
-        
+
         // Generate sorted timestamps: 0, 10, 20, 30...
         // This makes gaps uniform. Window of size 100 should fit ~10 items.
         for (int i = 0; i < n; i++) {
@@ -96,7 +96,7 @@ public class MaximumRequestsSolution {
         int window = 100; // Window covers range 0 to 99
         // Logic: range [0, 90] includes 0, 10...90 (10 items). 
         // 100 is excluded (100 - 0 >= 100). So expected is 10.
-        int expected = 10; 
+        int expected = 10;
 
         long startTime = System.currentTimeMillis();
         int result = maximumRequests(window, largeList);

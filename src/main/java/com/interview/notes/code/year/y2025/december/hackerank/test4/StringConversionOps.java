@@ -20,32 +20,32 @@ public class StringConversionOps {
 
     public static void main(String[] args) {
         List<String> tests = List.of(
-            "1111",
-            "0000",
-            "101",
-            "1",
-            "01",
-            "10",
-            "1100",
-            "10001",
-            "111111",
-            "0101010101",
-            "0".repeat(100000),
-            IntStream.range(0,100000).mapToObj(i->(i%2==0)?"1":"0").collect(Collectors.joining())
+                "1111",
+                "0000",
+                "101",
+                "1",
+                "01",
+                "10",
+                "1100",
+                "10001",
+                "111111",
+                "0101010101",
+                "0".repeat(100000),
+                IntStream.range(0, 100000).mapToObj(i -> (i % 2 == 0) ? "1" : "0").collect(Collectors.joining())
         );
         List<Integer> expected = List.of(
-            2,
-            0,
-            4,
-            -1,
-            2,
-            2,
-            2,
-            8,
-            6,
-            10,
-            0,
-            -1
+                2,
+                0,
+                4,
+                -1,
+                2,
+                2,
+                2,
+                8,
+                6,
+                10,
+                0,
+                -1
         );
 
         int pass = 0, fail = 0;
@@ -55,7 +55,8 @@ public class StringConversionOps {
             int exp = expected.get(i);
             boolean ok = got == exp;
             System.out.println("Case " + i + ": " + (ok ? "PASS" : "FAIL") + " | got=" + got + " exp=" + exp + " | len=" + s.length());
-            if (ok) pass++; else fail++;
+            if (ok) pass++;
+            else fail++;
         }
         System.out.println("Summary: PASS=" + pass + " FAIL=" + fail);
     }

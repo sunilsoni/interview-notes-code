@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 class LRUCache {
     private final HashMap<Integer, DLinkedNode> cache = new HashMap<>();
-    private int size;
     private final int capacity;
     private final DLinkedNode head;
     private final DLinkedNode tail;
+    private int size;
 
     public LRUCache(int capacity) {
         this.size = 0;

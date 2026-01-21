@@ -158,5 +158,6 @@ public class Main {                        // Program entry class.
     }
 
     // Test record (Java 21 feature).
-    record T(long in, long expected) {}      // Holds one test case.
+    record T(long in, long expected) {
+    }      // Holds one test case.
 }

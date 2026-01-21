@@ -240,10 +240,10 @@ class Solution {
         // Print the test name, input, expected, and actual for clarity.
         System.out.println(
                 "Test: " + testName +
-                " | Input: " + Arrays.toString(input) +
-                " | Expected: " + expected +
-                " | Actual: " + actual +
-                " | Result: " + (pass ? "PASS" : "FAIL")
+                        " | Input: " + Arrays.toString(input) +
+                        " | Expected: " + expected +
+                        " | Actual: " + actual +
+                        " | Result: " + (pass ? "PASS" : "FAIL")
         );
 
         // Return whether this test passed.

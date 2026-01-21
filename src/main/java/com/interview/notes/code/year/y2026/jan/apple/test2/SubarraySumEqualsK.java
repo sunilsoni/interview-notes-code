@@ -34,13 +34,13 @@ public class SubarraySumEqualsK { // Class wrapper so we can run from command li
 
     public static void main(String[] args) { // Entry point; runs all tests without JUnit.
         var tests = List.of( // Store multiple test cases in a list for easy iteration.
-            new TestCase("Example1 [1,1,1], k=2", new int[]{1, 1, 1}, 2, 2), // Known expected result is 2.
-            new TestCase("Example2 [1,2,3], k=3", new int[]{1, 2, 3}, 3, 2), // Subarrays: [1,2] and [3].
-            new TestCase("Negatives [1,-1,0], k=0", new int[]{1, -1, 0}, 0, 3), // [1,-1], [0], [1,-1,0].
-            new TestCase("All zeros [0,0,0], k=0", new int[]{0, 0, 0}, 0, 6), // n=3 => 3*4/2 = 6 zero-sum subarrays.
-            new TestCase("Empty array, k=0", new int[]{}, 0, 0), // No subarrays exist, answer is 0.
-            new TestCase("Single hit [5], k=5", new int[]{5}, 5, 1), // Only one subarray equals k.
-            new TestCase("Single miss [5], k=0", new int[]{5}, 0, 0) // No subarray equals 0.
+                new TestCase("Example1 [1,1,1], k=2", new int[]{1, 1, 1}, 2, 2), // Known expected result is 2.
+                new TestCase("Example2 [1,2,3], k=3", new int[]{1, 2, 3}, 3, 2), // Subarrays: [1,2] and [3].
+                new TestCase("Negatives [1,-1,0], k=0", new int[]{1, -1, 0}, 0, 3), // [1,-1], [0], [1,-1,0].
+                new TestCase("All zeros [0,0,0], k=0", new int[]{0, 0, 0}, 0, 6), // n=3 => 3*4/2 = 6 zero-sum subarrays.
+                new TestCase("Empty array, k=0", new int[]{}, 0, 0), // No subarrays exist, answer is 0.
+                new TestCase("Single hit [5], k=5", new int[]{5}, 5, 1), // Only one subarray equals k.
+                new TestCase("Single miss [5], k=0", new int[]{5}, 0, 0) // No subarray equals 0.
         ); // End of fixed tests list.
 
         long pass = tests.stream().filter(SubarraySumEqualsK::runTest).count(); // Stream API: run tests, count passes.
@@ -55,5 +55,6 @@ public class SubarraySumEqualsK { // Class wrapper so we can run from command li
         System.out.println("Large test n=" + n + ", k=" + k + " => result=" + result + ", time=" + ms + "ms"); // Print performance info.
     }
 
-    record TestCase(String name, int[] nums, int k, long expected) {} // Record keeps test data compact (Java 21 feature).
+    record TestCase(String name, int[] nums, int k, long expected) {
+    } // Record keeps test data compact (Java 21 feature).
 }

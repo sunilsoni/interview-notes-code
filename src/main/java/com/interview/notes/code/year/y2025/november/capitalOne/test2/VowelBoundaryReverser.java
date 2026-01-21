@@ -83,5 +83,6 @@ public class VowelBoundaryReverser {
         return "aeiouAEIOU".indexOf(c) >= 0;
     }
 
-    private record TestCase(String name, String[] input, String[] expected) {}
+    private record TestCase(String name, String[] input, String[] expected) {
+    }
 }

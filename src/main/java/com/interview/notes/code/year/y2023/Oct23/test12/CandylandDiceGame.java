@@ -5,8 +5,8 @@ import java.util.Random;
 public class CandylandDiceGame {
     private final int[] board = {1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6};
     private final int[] playerPositions = {0, 0};
-    private int currentPlayer = 0;
     private final Random random = new Random();
+    private int currentPlayer = 0;
 
     public static void main(String[] args) {
         CandylandDiceGame game = new CandylandDiceGame();

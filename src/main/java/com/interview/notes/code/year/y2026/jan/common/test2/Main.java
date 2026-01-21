@@ -24,10 +24,10 @@ public class Main {                               // Main class name kept simple
         boolean got = isPalindromeNumber(tc.input());                // Compute actual result.
         boolean ok = (got == tc.expected());                         // Compare with expected.
         System.out.println(
-            (ok ? "PASS" : "FAIL") + " | " + tc.name() +             // Print status + test name.
-            " | input=" + tc.input() +                               // Show the input used.
-            " | expected=" + tc.expected() +                         // Show expected answer.
-            " | got=" + got                                          // Show actual answer.
+                (ok ? "PASS" : "FAIL") + " | " + tc.name() +             // Print status + test name.
+                        " | input=" + tc.input() +                               // Show the input used.
+                        " | expected=" + tc.expected() +                         // Show expected answer.
+                        " | got=" + got                                          // Show actual answer.
         );
         return ok;                                                   // Return test result for final summary.
     }
@@ -51,14 +51,14 @@ public class Main {                               // Main class name kept simple
 
     public static void main(String[] args) {                         // Main method: runs all tests.
         List<TestCase> tests = List.of(                              // Basic and edge tests.
-            new TestCase("pal_121", "121", true),                    // Classic palindrome.
-            new TestCase("not_123", "123", false),                   // Classic non-palindrome.
-            new TestCase("single_digit", "7", true),                 // Single digit always palindrome.
-            new TestCase("zero", "0", true),                         // Zero is palindrome.
-            new TestCase("ends_with_zero", "10", false),             // "10" reversed is "01".
-            new TestCase("negative", "-121", false),                 // Negative rejected.
-            new TestCase("spaces_ok", "  1221  ", true),             // Trimming should still work.
-            new TestCase("not_a_number", "12a21", false)             // Non-digit should fail.
+                new TestCase("pal_121", "121", true),                    // Classic palindrome.
+                new TestCase("not_123", "123", false),                   // Classic non-palindrome.
+                new TestCase("single_digit", "7", true),                 // Single digit always palindrome.
+                new TestCase("zero", "0", true),                         // Zero is palindrome.
+                new TestCase("ends_with_zero", "10", false),             // "10" reversed is "01".
+                new TestCase("negative", "-121", false),                 // Negative rejected.
+                new TestCase("spaces_ok", "  1221  ", true),             // Trimming should still work.
+                new TestCase("not_a_number", "12a21", false)             // Non-digit should fail.
         );
 
         int pass = 0;                                                // Count of passing tests.
@@ -81,5 +81,6 @@ public class Main {                               // Main class name kept simple
     }
 
     // Java 21 record: small immutable holder for a test case (name, input, expected).
-    record TestCase(String name, String input, boolean expected) { }  // We store test data cleanly.
+    record TestCase(String name, String input, boolean expected) {
+    }  // We store test data cleanly.
 }

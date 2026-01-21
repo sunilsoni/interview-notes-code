@@ -7,18 +7,18 @@ import java.util.Map;
 import java.util.stream.IntStream;
 
 public class BankingSystem {
-    
+
     // Map to store account id and their balance
     // Key = accountId, Value = balance amount
     private final Map<String, Long> accounts;
-    
+
     // Constructor to initialize the banking system
     public BankingSystem() {
         // Create empty HashMap to store accounts
         // Using HashMap for O(1) lookup time
         this.accounts = new HashMap<>();
     }
-    
+
     // Main method for testing
     public static void main(String[] args) {
         // Counter for tracking test results
@@ -90,10 +90,10 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 5: Multiple Deposits ===");
         BankingSystem bank5 = new BankingSystem();
         String[] ops5 = {
-            "CREATE_ACCOUNT acc1",
-            "DEPOSIT acc1 100",
-            "DEPOSIT acc1 200",
-            "DEPOSIT acc1 50"
+                "CREATE_ACCOUNT acc1",
+                "DEPOSIT acc1 100",
+                "DEPOSIT acc1 200",
+                "DEPOSIT acc1 50"
         };
         List<String> expected5 = List.of("true", "100", "300", "350");
         List<String> result5 = bank5.processOperations(ops5);
@@ -110,12 +110,12 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 6: Mixed Operations ===");
         BankingSystem bank6 = new BankingSystem();
         String[] ops6 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 500",
-            "DEPOSIT acc2 300",
-            "CREATE_ACCOUNT acc1",
-            "DEPOSIT acc3 100"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 500",
+                "DEPOSIT acc2 300",
+                "CREATE_ACCOUNT acc1",
+                "DEPOSIT acc3 100"
         };
         List<String> expected6 = List.of("true", "true", "500", "300", "false", "-1");
         List<String> result6 = bank6.processOperations(ops6);
@@ -134,8 +134,8 @@ public class BankingSystem {
         int numAccounts = 100000;
         // Create array of operations for many accounts
         String[] ops7 = IntStream.range(0, numAccounts)
-            .mapToObj(i -> "CREATE_ACCOUNT acc" + i)
-            .toArray(String[]::new);
+                .mapToObj(i -> "CREATE_ACCOUNT acc" + i)
+                .toArray(String[]::new);
         long startTime = System.currentTimeMillis();
         List<String> result7 = bank7.processOperations(ops7);
         long endTime = System.currentTimeMillis();
@@ -156,8 +156,8 @@ public class BankingSystem {
         bank8.createAccount("bigAccount");
         int numDeposits = 100000;
         String[] ops8 = IntStream.range(0, numDeposits)
-            .mapToObj(i -> "DEPOSIT bigAccount 1")
-            .toArray(String[]::new);
+                .mapToObj(i -> "DEPOSIT bigAccount 1")
+                .toArray(String[]::new);
         startTime = System.currentTimeMillis();
         List<String> result8 = bank8.processOperations(ops8);
         endTime = System.currentTimeMillis();
@@ -176,8 +176,8 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 9: Large Amount Deposit ===");
         BankingSystem bank9 = new BankingSystem();
         String[] ops9 = {
-            "CREATE_ACCOUNT rich",
-            "DEPOSIT rich 9999999999999"
+                "CREATE_ACCOUNT rich",
+                "DEPOSIT rich 9999999999999"
         };
         List<String> expected9 = List.of("true", "9999999999999");
         List<String> result9 = bank9.processOperations(ops9);
@@ -194,9 +194,9 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 10: Zero Deposit ===");
         BankingSystem bank10 = new BankingSystem();
         String[] ops10 = {
-            "CREATE_ACCOUNT zero",
-            "DEPOSIT zero 0",
-            "DEPOSIT zero 100"
+                "CREATE_ACCOUNT zero",
+                "DEPOSIT zero 0",
+                "DEPOSIT zero 100"
         };
         List<String> expected10 = List.of("true", "0", "100");
         List<String> result10 = bank10.processOperations(ops10);
@@ -221,7 +221,7 @@ public class BankingSystem {
             System.out.println("STATUS: SOME TESTS FAILED!");
         }
     }
-    
+
     // Method to create a new account
     // Returns "true" if account created successfully
     // Returns "false" if account already exists
@@ -238,7 +238,7 @@ public class BankingSystem {
         // Return true as account was created successfully
         return "true";
     }
-    
+
     // Method to deposit money into an account
     // Returns new balance after deposit
     // Returns -1 if account does not exist
@@ -258,7 +258,7 @@ public class BankingSystem {
         // Return the new balance after deposit
         return newBalance;
     }
-    
+
     // Method to process operations from string array
     // Each string contains operation and parameters
     public List<String> processOperations(String[] operations) {

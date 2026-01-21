@@ -76,6 +76,6 @@ public class KthMostFrequentChar {
     }
 
     // Simple holder for test cases
-        private record TestCase(List<Character> list, int k, char expected) {
+    private record TestCase(List<Character> list, int k, char expected) {
     }
 }

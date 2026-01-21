@@ -3,8 +3,8 @@ package com.interview.notes.code.year.y2024.nov24.test16;
 // Generic Array-Based Stack Implementation
 public class ArrayStack<T> {
     private final int maxSize;    // Maximum size of the stack
-    private int top;        // Index of the top element
     private final T[] stackArray;
+    private int top;        // Index of the top element
 
     // Constructor to initialize the stack
     @SuppressWarnings("unchecked")

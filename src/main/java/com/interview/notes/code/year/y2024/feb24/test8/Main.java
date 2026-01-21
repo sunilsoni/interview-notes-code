@@ -6,9 +6,9 @@ import java.util.Map;
 class DigitalWallet {
     private final String id;
     private final String name;
+    private final boolean isAuthenticationRequired;
     private String accessCode;
     private int balance;
-    private final boolean isAuthenticationRequired;
 
     public DigitalWallet(String id, String name) {
         this.id = id;

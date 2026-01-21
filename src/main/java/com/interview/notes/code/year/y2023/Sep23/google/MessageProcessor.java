@@ -45,7 +45,6 @@ public class MessageProcessor {
     public static void main(String[] args) throws InterruptedException {
         // Create a mock StatusReceiver
         StatusReceiver mockReceiver = new StatusReceiver() {
-            private int index = 0;
             private final Status[] statuses = {
                     new Status(10, "solar panel activated"),
                     new Status(11, "low battery warning"),
@@ -55,6 +54,7 @@ public class MessageProcessor {
                     new Status(21, "solar panel activated"),
                     new Status(35, "solar panel activated")
             };
+            private int index = 0;
 
             @Override
             public Status getRawMessage() {

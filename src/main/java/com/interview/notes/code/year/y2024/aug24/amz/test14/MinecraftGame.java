@@ -155,8 +155,8 @@ class Animal extends Entity implements IFriendly {
 
 class Character extends Entity implements IFriendly {
     private final String characterType;
-    private boolean friendly;
     private final String greetingPhrase;
+    private boolean friendly;
 
     public Character(String name, String characterType, Location location, int health, boolean friendly, String greetingPhrase) {
         super(name, location, health);

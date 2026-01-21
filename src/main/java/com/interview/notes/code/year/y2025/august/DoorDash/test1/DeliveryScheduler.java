@@ -184,7 +184,7 @@ public class DeliveryScheduler {
     /**
      * @param p start time, end time, pay
      */ // Inner class representing one delivery job
-        private record Job(int s, int e, int p) {
+    private record Job(int s, int e, int p) {
         // Constructor: store values for this job
     }
 }

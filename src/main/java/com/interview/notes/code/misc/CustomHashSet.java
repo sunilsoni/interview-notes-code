@@ -3,11 +3,11 @@ package com.interview.notes.code.misc;
 import java.util.Arrays;
 
 public class CustomHashSet<T> {
+    private final int countForConvert = 5;
+    private final int countForBack = 4;
     private int capacity = 16;
     private double loadFactor = 0.75d;
     private int size = 0;
-    private final int countForConvert = 5;
-    private final int countForBack = 4;
     private NodeSet[] buckets;
 
     public CustomHashSet() {

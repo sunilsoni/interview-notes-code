@@ -7,18 +7,18 @@ import java.util.Map;
 import java.util.stream.IntStream;
 
 public class BankingSystem {
-    
+
     // Map to store account id and their balance
     // Key = accountId, Value = balance amount
     private final Map<String, Long> accounts;
-    
+
     // Constructor to initialize the banking system
     public BankingSystem() {
         // Create empty HashMap to store accounts
         // Using HashMap for O(1) lookup time
         this.accounts = new HashMap<>();
     }
-    
+
     // Main method for testing
     public static void main(String[] args) {
         // Counter for tracking test results
@@ -90,10 +90,10 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 5: Basic Successful Transfer ===");
         BankingSystem bank5 = new BankingSystem();
         String[] ops5 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 500",
-            "TRANSFER acc1 acc2 200"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 500",
+                "TRANSFER acc1 acc2 200"
         };
         // After transfer: acc1 has 500-200=300, acc2 has 200
         List<String> expected5 = List.of("true", "true", "500", "300");
@@ -111,8 +111,8 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 6: Transfer from Non-Existing Account ===");
         BankingSystem bank6 = new BankingSystem();
         String[] ops6 = {
-            "CREATE_ACCOUNT acc2",
-            "TRANSFER acc1 acc2 100"
+                "CREATE_ACCOUNT acc2",
+                "TRANSFER acc1 acc2 100"
         };
         List<String> expected6 = List.of("true", "-1");
         List<String> result6 = bank6.processOperations(ops6);
@@ -129,9 +129,9 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 7: Transfer to Non-Existing Account ===");
         BankingSystem bank7 = new BankingSystem();
         String[] ops7 = {
-            "CREATE_ACCOUNT acc1",
-            "DEPOSIT acc1 500",
-            "TRANSFER acc1 acc2 100"
+                "CREATE_ACCOUNT acc1",
+                "DEPOSIT acc1 500",
+                "TRANSFER acc1 acc2 100"
         };
         List<String> expected7 = List.of("true", "500", "-1");
         List<String> result7 = bank7.processOperations(ops7);
@@ -148,9 +148,9 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 8: Transfer to Same Account ===");
         BankingSystem bank8 = new BankingSystem();
         String[] ops8 = {
-            "CREATE_ACCOUNT acc1",
-            "DEPOSIT acc1 500",
-            "TRANSFER acc1 acc1 100"
+                "CREATE_ACCOUNT acc1",
+                "DEPOSIT acc1 500",
+                "TRANSFER acc1 acc1 100"
         };
         List<String> expected8 = List.of("true", "500", "-1");
         List<String> result8 = bank8.processOperations(ops8);
@@ -167,10 +167,10 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 9: Transfer with Insufficient Funds ===");
         BankingSystem bank9 = new BankingSystem();
         String[] ops9 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 100",
-            "TRANSFER acc1 acc2 200"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 100",
+                "TRANSFER acc1 acc2 200"
         };
         List<String> expected9 = List.of("true", "true", "100", "-1");
         List<String> result9 = bank9.processOperations(ops9);
@@ -187,13 +187,13 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 10: Multiple Transfers ===");
         BankingSystem bank10 = new BankingSystem();
         String[] ops10 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "CREATE_ACCOUNT acc3",
-            "DEPOSIT acc1 1000",
-            "TRANSFER acc1 acc2 300",
-            "TRANSFER acc1 acc3 200",
-            "TRANSFER acc2 acc3 100"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "CREATE_ACCOUNT acc3",
+                "DEPOSIT acc1 1000",
+                "TRANSFER acc1 acc2 300",
+                "TRANSFER acc1 acc3 200",
+                "TRANSFER acc2 acc3 100"
         };
         // acc1: 1000 -> 700 -> 500
         // acc2: 0 -> 300 -> 200
@@ -213,10 +213,10 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 11: Transfer Exact Balance ===");
         BankingSystem bank11 = new BankingSystem();
         String[] ops11 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 500",
-            "TRANSFER acc1 acc2 500"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 500",
+                "TRANSFER acc1 acc2 500"
         };
         // acc1 should have 0 after transfer
         List<String> expected11 = List.of("true", "true", "500", "0");
@@ -234,10 +234,10 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 12: Transfer Zero Amount ===");
         BankingSystem bank12 = new BankingSystem();
         String[] ops12 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 500",
-            "TRANSFER acc1 acc2 0"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 500",
+                "TRANSFER acc1 acc2 0"
         };
         // Zero transfer should work, balance remains 500
         List<String> expected12 = List.of("true", "true", "500", "500");
@@ -255,14 +255,14 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 13: Mixed Operations ===");
         BankingSystem bank13 = new BankingSystem();
         String[] ops13 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 1000",
-            "DEPOSIT acc2 500",
-            "TRANSFER acc1 acc2 300",
-            "CREATE_ACCOUNT acc1",
-            "DEPOSIT acc1 200",
-            "TRANSFER acc2 acc1 400"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 1000",
+                "DEPOSIT acc2 500",
+                "TRANSFER acc1 acc2 300",
+                "CREATE_ACCOUNT acc1",
+                "DEPOSIT acc1 200",
+                "TRANSFER acc2 acc1 400"
         };
         // acc1: 1000 -> 700 -> 900 -> 1300
         // acc2: 500 -> 800 -> 400
@@ -283,8 +283,8 @@ public class BankingSystem {
         int numAccounts = 50000;
         // Create many accounts
         String[] createOps = IntStream.range(0, numAccounts)
-            .mapToObj(i -> "CREATE_ACCOUNT acc" + i)
-            .toArray(String[]::new);
+                .mapToObj(i -> "CREATE_ACCOUNT acc" + i)
+                .toArray(String[]::new);
         long startTime = System.currentTimeMillis();
         List<String> createResults = bank14.processOperations(createOps);
         long endTime = System.currentTimeMillis();
@@ -310,8 +310,8 @@ public class BankingSystem {
         // Create many transfer operations
         int numTransfers = 10000;
         String[] transferOps = IntStream.range(0, numTransfers)
-            .mapToObj(i -> "TRANSFER sender receiver 1")
-            .toArray(String[]::new);
+                .mapToObj(i -> "TRANSFER sender receiver 1")
+                .toArray(String[]::new);
         startTime = System.currentTimeMillis();
         List<String> transferResults = bank15.processOperations(transferOps);
         endTime = System.currentTimeMillis();
@@ -331,10 +331,10 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 16: Large Amount Transfer ===");
         BankingSystem bank16 = new BankingSystem();
         String[] ops16 = {
-            "CREATE_ACCOUNT rich",
-            "CREATE_ACCOUNT lucky",
-            "DEPOSIT rich 9999999999999",
-            "TRANSFER rich lucky 5000000000000"
+                "CREATE_ACCOUNT rich",
+                "CREATE_ACCOUNT lucky",
+                "DEPOSIT rich 9999999999999",
+                "TRANSFER rich lucky 5000000000000"
         };
         // rich: 9999999999999 - 5000000000000 = 4999999999999
         List<String> expected16 = List.of("true", "true", "9999999999999", "4999999999999");
@@ -352,14 +352,14 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 17: Chain Transfer ===");
         BankingSystem bank17 = new BankingSystem();
         String[] ops17 = {
-            "CREATE_ACCOUNT a",
-            "CREATE_ACCOUNT b",
-            "CREATE_ACCOUNT c",
-            "CREATE_ACCOUNT d",
-            "DEPOSIT a 1000",
-            "TRANSFER a b 1000",
-            "TRANSFER b c 1000",
-            "TRANSFER c d 1000"
+                "CREATE_ACCOUNT a",
+                "CREATE_ACCOUNT b",
+                "CREATE_ACCOUNT c",
+                "CREATE_ACCOUNT d",
+                "DEPOSIT a 1000",
+                "TRANSFER a b 1000",
+                "TRANSFER b c 1000",
+                "TRANSFER c d 1000"
         };
         // a:1000->0, b:0->1000->0, c:0->1000->0, d:0->1000
         List<String> expected17 = List.of("true", "true", "true", "true", "1000", "0", "0", "0");
@@ -377,7 +377,7 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 18: Both Accounts Don't Exist ===");
         BankingSystem bank18 = new BankingSystem();
         String[] ops18 = {
-            "TRANSFER acc1 acc2 100"
+                "TRANSFER acc1 acc2 100"
         };
         List<String> expected18 = List.of("-1");
         List<String> result18 = bank18.processOperations(ops18);
@@ -394,11 +394,11 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 19: Transfer After Failed Transfer ===");
         BankingSystem bank19 = new BankingSystem();
         String[] ops19 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 100",
-            "TRANSFER acc1 acc2 200",
-            "TRANSFER acc1 acc2 50"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 100",
+                "TRANSFER acc1 acc2 200",
+                "TRANSFER acc1 acc2 50"
         };
         // First transfer fails (insufficient), second should succeed
         // acc1: 100 -> 100 -> 50
@@ -463,7 +463,7 @@ public class BankingSystem {
             System.out.println("STATUS: SOME TESTS FAILED!");
         }
     }
-    
+
     // Method to create a new account
     // Returns "true" if account created successfully
     // Returns "false" if account already exists
@@ -480,7 +480,7 @@ public class BankingSystem {
         // Return true as account was created successfully
         return "true";
     }
-    
+
     // Method to deposit money into an account
     // Returns new balance after deposit
     // Returns -1 if account does not exist
@@ -500,7 +500,7 @@ public class BankingSystem {
         // Return the new balance after deposit
         return newBalance;
     }
-    
+
     // Method to transfer money between accounts
     // Returns balance of fromId after successful transfer
     // Returns -1 if transfer fails for any reason
@@ -556,7 +556,7 @@ public class BankingSystem {
         // Return the new balance of source account
         return newFromBalance;
     }
-    
+
     // Method to process operations from string array
     // Each string contains operation and parameters
     public List<String> processOperations(String[] operations) {

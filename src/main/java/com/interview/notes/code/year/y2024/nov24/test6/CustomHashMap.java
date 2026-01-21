@@ -3,10 +3,9 @@ package com.interview.notes.code.year.y2024.nov24.test6;
 public class CustomHashMap<K, V> {
     private static final int DEFAULT_CAPACITY = 16;
     private static final float DEFAULT_LOAD_FACTOR = 0.75f;
-
+    private final float loadFactor;
     private Entry<K, V>[] buckets;
     private int size;
-    private final float loadFactor;
 
     public CustomHashMap() {
         this(DEFAULT_CAPACITY, DEFAULT_LOAD_FACTOR);

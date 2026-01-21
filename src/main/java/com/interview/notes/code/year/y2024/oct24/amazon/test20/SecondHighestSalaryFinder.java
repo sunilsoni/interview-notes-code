@@ -104,6 +104,6 @@ class SecondHighestSalaryFinder {
     }
 
     // Test case class using record (Java 14+) or standard class
-        private record TestCase(String name, List<Employee> input, Double expectedOutput) {
+    private record TestCase(String name, List<Employee> input, Double expectedOutput) {
     }
 }

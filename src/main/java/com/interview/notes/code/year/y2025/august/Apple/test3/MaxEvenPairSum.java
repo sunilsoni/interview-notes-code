@@ -183,7 +183,7 @@ public class MaxEvenPairSum {
      * @param input    the test array
      * @param expected expected answer for this test
      */
-        private record TestCase(int[] input, int expected) {
+    private record TestCase(int[] input, int expected) {
         // set the input field
         // set the expected field
     }

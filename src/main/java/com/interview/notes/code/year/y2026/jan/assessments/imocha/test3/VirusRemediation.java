@@ -16,9 +16,9 @@ public class VirusRemediation {
         }
 
         int totalPairs = frequencyMap.values().stream()
-                                     .mapToInt(count -> count / 2)
-                                     .sum();
-        
+                .mapToInt(count -> count / 2)
+                .sum();
+
         return totalPairs * X + (N - totalPairs * 2) * Y;
     }
 
@@ -37,7 +37,7 @@ public class VirusRemediation {
         int[] largeInput = new int[largeN];
         // Fill with pairs of 1s and 2s
         for (int i = 0; i < largeN; i++) {
-            largeInput[i] = (i % 2) + 1; 
+            largeInput[i] = (i % 2) + 1;
         }
         // 25000 of '1' and 25000 of '2'. Total pairs = 25000. 
         // X=2, Y=5. Cost = 25000 * 2 = 50000.
@@ -50,7 +50,7 @@ public class VirusRemediation {
         long endTime = System.currentTimeMillis();
 
         String status = (actual == expected) ? "PASS" : "FAIL";
-        System.out.printf("[%s] %s | Expected: %d | Actual: %d | Time: %dms%n", 
-            status, testName, expected, actual, (endTime - startTime));
+        System.out.printf("[%s] %s | Expected: %d | Actual: %d | Time: %dms%n",
+                status, testName, expected, actual, (endTime - startTime));
     }
 }

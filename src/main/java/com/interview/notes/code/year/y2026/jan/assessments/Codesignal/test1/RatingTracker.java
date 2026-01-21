@@ -33,10 +33,10 @@ public class RatingTracker {
         var result = tracker.solution(input);
         boolean pass = Arrays.equals(result, expected);
         System.out.printf("%-15s: %s [Expected: %s, Got: %s]%n",
-            testName,
-            pass ? "PASS" : "FAIL",
-            Arrays.toString(expected),
-            Arrays.toString(result)
+                testName,
+                pass ? "PASS" : "FAIL",
+                Arrays.toString(expected),
+                Arrays.toString(result)
         );
     }
 

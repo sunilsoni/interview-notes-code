@@ -16,10 +16,10 @@ public class Solution {
 
         // Core Logic: Stream -> Sort Descending -> Take Top 2 -> Sum
         return list.stream()                              // Convert List to Stream source
-                   .sorted(Comparator.reverseOrder())     // Sort elements: High to Low (O(N log N))
-                   .limit(2)                              // Optimization: We only need the top 2 items
-                   .mapToInt(Integer::intValue)           // Unbox Integer object to primitive int
-                   .sum();                                // Terminal operation: Calculate total sum
+                .sorted(Comparator.reverseOrder())     // Sort elements: High to Low (O(N log N))
+                .limit(2)                              // Optimization: We only need the top 2 items
+                .mapToInt(Integer::intValue)           // Unbox Integer object to primitive int
+                .sum();                                // Terminal operation: Calculate total sum
     }
 
     // Main method to run tests directly (No JUnit required)

@@ -32,11 +32,11 @@ public class CarAssemblyScheduler {
 
     public static void main(String[] args) {
         Map<String, Boolean> r = new LinkedHashMap<>();
-        r.put("EX1", check(new int[]{1,6,2}, new int[]{3,2,5}, 2, 1, 8));
-        r.put("EX2", check(new int[]{2,11,4,4}, new int[]{9,2,5,11}, 8, 4, 21));
-        r.put("EX3", check(new int[]{1,10,1}, new int[]{10,1,10}, 1, 5, 9));
-        r.put("EX4", check(new int[]{8,3,3}, new int[]{6,1,10}, 4, 3, 13));
+        r.put("EX1", check(new int[]{1, 6, 2}, new int[]{3, 2, 5}, 2, 1, 8));
+        r.put("EX2", check(new int[]{2, 11, 4, 4}, new int[]{9, 2, 5, 11}, 8, 4, 21));
+        r.put("EX3", check(new int[]{1, 10, 1}, new int[]{10, 1, 10}, 1, 5, 9));
+        r.put("EX4", check(new int[]{8, 3, 3}, new int[]{6, 1, 10}, 4, 3, 13));
         r.put("LARGE", large());
-        r.forEach((k,v)->System.out.println(k+" : "+(v?"PASS":"FAIL")));
+        r.forEach((k, v) -> System.out.println(k + " : " + (v ? "PASS" : "FAIL")));
     }
 }

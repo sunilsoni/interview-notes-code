@@ -98,8 +98,8 @@ public class ComputeTester {
     private record TestCase(int a, int b, int c, String want) {
 
         @Override
-            public String toString() {
-                return String.format("(%d + %d → %d)", a, b, c);
-            }
+        public String toString() {
+            return String.format("(%d + %d → %d)", a, b, c);
         }
+    }
 }

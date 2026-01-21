@@ -10,9 +10,9 @@ import java.util.Scanner;
 public class ATM {
     private static final ATM instance = new ATM();
     private final List<ATMObserver> observers = new ArrayList<>();
+    private final Scanner scanner;
     private BankService bankService;
     private Account currentAccount;
-    private final Scanner scanner;
 
     private ATM() {
         AccountFactory accountFactory = new AccountFactory();

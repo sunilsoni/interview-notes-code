@@ -1,6 +1,6 @@
 package com.interview.notes.code.year.y2023.Oct23.test2;
 
- import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tree {

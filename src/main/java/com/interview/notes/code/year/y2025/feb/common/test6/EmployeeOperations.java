@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 class Employee {
     private final int id;
     private final String name;
-    private double salary;
     private final String department;
+    private double salary;
 
     public Employee(int id, String name, double salary, String department) {
         this.id = id;

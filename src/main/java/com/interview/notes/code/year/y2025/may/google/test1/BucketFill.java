@@ -213,8 +213,8 @@ public class BucketFill {
     }
 
     /**
-         * A simple helper class to hold each test case.
-         */
-        private record TestCase(List<String> picture, int expected) {
+     * A simple helper class to hold each test case.
+     */
+    private record TestCase(List<String> picture, int expected) {
     }
 }

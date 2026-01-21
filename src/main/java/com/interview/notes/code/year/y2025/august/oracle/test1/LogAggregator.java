@@ -123,11 +123,11 @@ public class LogAggregator {
     }
 
     // Simple Pair class for word-count pairs
-        record Pair<K, V>(K key, V value) {
+    record Pair<K, V>(K key, V value) {
 
         @Override
-            public String toString() {
-                return "(" + key + ", " + value + ")";
-            }
+        public String toString() {
+            return "(" + key + ", " + value + ")";
         }
+    }
 }

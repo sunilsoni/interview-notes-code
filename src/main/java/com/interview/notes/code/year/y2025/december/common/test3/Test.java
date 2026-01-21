@@ -8,7 +8,7 @@ record Transaction(String type, BigDecimal amount, String customerId) {
     // Constructor and getters
 }
 
-  class TransactionProcessor {
+class TransactionProcessor {
 
     // Main method to test both approaches
     public static void main(String[] args) {

@@ -17,7 +17,10 @@ public class Main {
             while (j < n && Node[j] == v) j++;
             int len = j - i;
             if ((len & 1) == 0) hasEven = true;
-            else if (!hasEven && len < minOdd) { minOdd = len; minOddVal = v; }
+            else if (!hasEven && len < minOdd) {
+                minOdd = len;
+                minOddVal = v;
+            }
             i = j;
         }
 
@@ -34,7 +37,10 @@ public class Main {
         }
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < p; i++) { if (i > 0) sb.append(' '); sb.append(out[i]); }
+        for (int i = 0; i < p; i++) {
+            if (i > 0) sb.append(' ');
+            sb.append(out[i]);
+        }
         System.out.print(sb);
         return 0;
     }
@@ -48,7 +54,10 @@ public class Main {
             while (j < n && a[j] == v) j++;
             int len = j - i;
             if ((len & 1) == 0) hasEven = true;
-            else if (!hasEven && len < minOdd) { minOdd = len; minOddVal = v; }
+            else if (!hasEven && len < minOdd) {
+                minOdd = len;
+                minOddVal = v;
+            }
             i = j;
         }
 
@@ -87,7 +96,10 @@ public class Main {
                 else if (((mask >> i) & 1) == 1) keep += len;
             }
             if (keep == 0) continue;
-            if (keep < best) { best = keep; bestMask = mask; }
+            if (keep < best) {
+                best = keep;
+                bestMask = mask;
+            }
         }
 
         int[] out = new int[n];
@@ -114,19 +126,28 @@ public class Main {
             int n = 1 + r.nextInt(14);
             int[] a = new int[n];
             int v = 1;
-            for (int i = 0; i < n; i++) { if (i > 0 && r.nextInt(3) == 0) v++; a[i] = v; }
+            for (int i = 0; i < n; i++) {
+                if (i > 0 && r.nextInt(3) == 0) v++;
+                a[i] = v;
+            }
             int[] got = fastKeep(a);
             int[] b = bruteKeep(a);
             total++;
             if (Arrays.equals(got, b)) ok++;
-            else { System.out.println("FAIL rnd"); return; }
+            else {
+                System.out.println("FAIL rnd");
+                return;
+            }
         }
         System.out.println((ok == total ? "PASS" : "FAIL") + " " + ok + "/" + total);
     }
 
     public static void main(String[] args) throws Exception {
         FastIn fs = new FastIn(System.in);
-        if (!fs.hasNext()) { selfTest(); return; }
+        if (!fs.hasNext()) {
+            selfTest();
+            return;
+        }
         int n = fs.nextInt();
         int[] a = new int[n];
         for (int i = 0; i < n; i++) a[i] = fs.nextInt();
@@ -138,28 +159,50 @@ public class Main {
         private final byte[] buf = new byte[1 << 16];
         private int len, ptr, pushed = -1;
 
-        FastIn(InputStream in) { this.in = in; }
+        FastIn(InputStream in) {
+            this.in = in;
+        }
 
         private int read() throws IOException {
-            if (pushed != -1) { int t = pushed; pushed = -1; return t; }
-            if (ptr >= len) { len = in.read(buf); ptr = 0; if (len < 0) return -1; }
+            if (pushed != -1) {
+                int t = pushed;
+                pushed = -1;
+                return t;
+            }
+            if (ptr >= len) {
+                len = in.read(buf);
+                ptr = 0;
+                if (len < 0) return -1;
+            }
             return buf[ptr++];
         }
 
         boolean hasNext() throws IOException {
             int c;
-            do { c = read(); if (c == -1) return false; } while (c <= 32);
+            do {
+                c = read();
+                if (c == -1) return false;
+            } while (c <= 32);
             pushed = c;
             return true;
         }
 
         int nextInt() throws IOException {
             int c;
-            do { c = read(); if (c == -1) return Integer.MIN_VALUE; } while (c <= 32);
+            do {
+                c = read();
+                if (c == -1) return Integer.MIN_VALUE;
+            } while (c <= 32);
             int s = 1;
-            if (c == '-') { s = -1; c = read(); }
+            if (c == '-') {
+                s = -1;
+                c = read();
+            }
             int v = 0;
-            while (c > 32 && c != -1) { v = v * 10 + (c - '0'); c = read(); }
+            while (c > 32 && c != -1) {
+                v = v * 10 + (c - '0');
+                c = read();
+            }
             return v * s;
         }
     }

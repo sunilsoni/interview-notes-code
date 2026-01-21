@@ -17,8 +17,8 @@ public interface RateLimiter {
 
 class SlidingWindowRateLimiter implements RateLimiter {
     private final long windowSizeInMillis = 1000; // 1 second
-    private int requestLimit;
     private final Queue<Long> requestTimestamps;
+    private int requestLimit;
 
     public SlidingWindowRateLimiter(int perSecondLimit) {
         setRequestLimit(perSecondLimit);

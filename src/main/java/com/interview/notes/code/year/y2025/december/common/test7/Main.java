@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {                          // Main class so we can run with `java Main`.
-    
+
     static String key(String s) {            // Helper to build an anagram signature key for a word.
         var a = s.toCharArray();             // Convert word to char[] so we can sort letters.
         Arrays.sort(a);                      // Sort letters; anagrams become identical after sorting.
@@ -42,8 +42,8 @@ public class Main {                          // Main class so we can run with `j
 
     public static void main(String[] args) {      // Main method as you requested (no JUnit).
         test("sample",
-                new String[]{"eat","tea","tan","ate","nat","bat"},  // Given sample input.
-                List.of(List.of("eat","tea","ate"), List.of("tan","nat"), List.of("bat"))); // Expected.
+                new String[]{"eat", "tea", "tan", "ate", "nat", "bat"},  // Given sample input.
+                List.of(List.of("eat", "tea", "ate"), List.of("tan", "nat"), List.of("bat"))); // Expected.
 
         test("empty",
                 new String[]{},                  // Empty input case.
@@ -54,8 +54,8 @@ public class Main {                          // Main class so we can run with `j
                 List.of(List.of("abc")));        // One group with that word.
 
         test("duplicates",
-                new String[]{"a","a","a"},       // Duplicates.
-                List.of(List.of("a","a","a")));  // All stay together.
+                new String[]{"a", "a", "a"},       // Duplicates.
+                List.of(List.of("a", "a", "a")));  // All stay together.
 
         // Large data test (performance + memory sanity check)
         var n = 200_000;                         // Size big enough to stress test.

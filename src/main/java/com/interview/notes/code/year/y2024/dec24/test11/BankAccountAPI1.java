@@ -153,9 +153,9 @@ public class BankAccountAPI1 {
      */
     static class BankAccount {
         private final int accountId;
-        private long currentBalance;
         // Using TreeMap to store transactions sorted by timestamp for efficient range queries
         private final TreeMap<Long, Long> transactions; // key: timestamp, value: net change at that timestamp
+        private long currentBalance;
 
         public BankAccount(int accountId) {
             this.accountId = accountId;

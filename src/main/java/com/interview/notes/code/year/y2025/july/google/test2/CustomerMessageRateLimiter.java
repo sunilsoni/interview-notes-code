@@ -60,6 +60,6 @@ public class CustomerMessageRateLimiter {
     }
 
     // Triple class remains the same
-        record Triple<T, U, V>(T first, U second, V third) {
+    record Triple<T, U, V>(T first, U second, V third) {
     }
 }

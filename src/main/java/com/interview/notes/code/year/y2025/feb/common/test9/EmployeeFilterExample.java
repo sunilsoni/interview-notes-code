@@ -35,9 +35,9 @@ public class EmployeeFilterExample {
 // Sample Employee class
 class Employee {
     private final int id;
-    private String firstName;
     private final String lastName;
     private final String designation;
+    private String firstName;
 
     public Employee(int id, String firstName, String lastName, String designation) {
         this.id = id;

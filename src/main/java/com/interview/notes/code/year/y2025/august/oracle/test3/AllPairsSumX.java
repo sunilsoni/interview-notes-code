@@ -166,13 +166,13 @@ public class AllPairsSumX {                              // Main public class to
      * @param a Store first value of the pair
      * @param b Store second value of the pair
      */ // Simple immutable pair to hold results cleanly and print nicely
-        record Pair(int a, int b) {                            // Define a small helper class representing a pair (a, b)
+    record Pair(int a, int b) {                            // Define a small helper class representing a pair (a, b)
         // Constructor to set both fields
 
         @Override
-            public String toString() {             // Override toString for readable output
-                return "(" + a + "," + b + ")";              // Format pair as (a,b)
-            }
+        public String toString() {             // Override toString for readable output
+            return "(" + a + "," + b + ")";              // Format pair as (a,b)
+        }
 
     }
 }

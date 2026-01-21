@@ -29,14 +29,14 @@ public class LetterStats {
         // Use var for type inference (Java 10+) to keep code short
         // Convert string to IntStream of char codes
         var counts = text.chars()
-            // Map int codes to Character objects for processing
-            .mapToObj(c -> (char) c)
-            // Filter: Keep only English letters, drop numbers/symbols
-            .filter(Character::isLetter)
-            // Normalize: Convert all to lowercase to ignore case sensitivity
-            .map(Character::toLowerCase)
-            // Collect: Group by character and count occurrences into a Map
-            .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+                // Map int codes to Character objects for processing
+                .mapToObj(c -> (char) c)
+                // Filter: Keep only English letters, drop numbers/symbols
+                .filter(Character::isLetter)
+                // Normalize: Convert all to lowercase to ignore case sensitivity
+                .map(Character::toLowerCase)
+                // Collect: Group by character and count occurrences into a Map
+                .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
 
         // Guard clause: Handle empty valid input (avoid crash)
         if (counts.isEmpty()) return new Result('?', 0, '?', 0);
@@ -72,5 +72,6 @@ public class LetterStats {
 
     // Record to hold result data concisely (Java 16+ feature standard in 21)
     // Minimizes boilerplate like getters/setters/constructors
-    record Result(char maxChar, long maxCount, char minChar, long minCount) {}
+    record Result(char maxChar, long maxCount, char minChar, long minCount) {
+    }
 }

@@ -33,12 +33,12 @@ public class SegmentProcessor {
         int[] largeInput = new int[largeSize];
         Arrays.fill(largeInput, 0, 99998, 1);
         Arrays.fill(largeInput, 99998, 100000, 2);
-        
+
         // Construct expected output for validation
         StringBuilder sb = new StringBuilder();
-        for(int i=0; i<99998; i++) sb.append("1 ");
+        for (int i = 0; i < 99998; i++) sb.append("1 ");
         sb.append("2 2");
-        
+
         runTest("Large Data Input", largeSize, largeInput, sb.toString());
     }
 
@@ -47,11 +47,11 @@ public class SegmentProcessor {
             long startTime = System.currentTimeMillis();
             String result = removeNodes(n, input);
             long endTime = System.currentTimeMillis();
-            
+
             boolean isPassed = result.trim().equals(expected.trim());
-            System.out.printf("[%s] Test %s: %s (Time: %d ms)%n", 
-                isPassed ? "PASS" : "FAIL", testName, isPassed ? "Success" : "Failed", (endTime - startTime));
-            
+            System.out.printf("[%s] Test %s: %s (Time: %d ms)%n",
+                    isPassed ? "PASS" : "FAIL", testName, isPassed ? "Success" : "Failed", (endTime - startTime));
+
         } catch (Exception e) {
             System.out.println("[FAIL] " + testName + " Exception: " + e.getMessage());
         }

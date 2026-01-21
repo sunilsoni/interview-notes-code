@@ -47,6 +47,6 @@ public class ParenthesesBalancer {
         long time = System.currentTimeMillis() - start;
         String status = result == expected ? "PASS" : "FAIL";
         System.out.printf("Test %d: %s | Expected: %d, Got: %d | Time: %dms%n",
-                          testNum, status, expected, result, time);
+                testNum, status, expected, result, time);
     }
 }

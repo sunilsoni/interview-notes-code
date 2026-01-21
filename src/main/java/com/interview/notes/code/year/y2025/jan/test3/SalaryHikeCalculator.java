@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 class Employee {
     private final String name;
-    private double salary;
     private final int yearsOfExperience;
+    private double salary;
 
     // Constructor
     public Employee(String name, double salary, int yearsOfExperience) {

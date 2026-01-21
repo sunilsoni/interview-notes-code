@@ -7,57 +7,57 @@ public class MinimumTimeWithRest {
     /**
      * Finds minimum time for all buses to complete totalTrips.
      * Each bus must rest after completing limit[i] consecutive trips.
-     * 
+     * <p>
      * Uses Binary Search on time.
-     * 
-     * @param time - time[i] = time for bus i to complete one trip
-     * @param limit - limit[i] = max consecutive trips before rest
-     * @param rest - rest[i] = mandatory rest time after limit[i] trips
+     *
+     * @param time       - time[i] = time for bus i to complete one trip
+     * @param limit      - limit[i] = max consecutive trips before rest
+     * @param rest       - rest[i] = mandatory rest time after limit[i] trips
      * @param totalTrips - total trips needed across all buses
      * @return minimum time to complete all trips
      */
     public static long minimumTimeWithRest(int[] time, int[] limit, int[] rest, int totalTrips) {
-        
+
         // Number of buses
         int n = time.length;
-        
+
         // Find the bus with best "effective rate"
         // We need upper bound for binary search
         // Worst case: slowest effective bus does all trips
         long maxTime = 0;
-        
+
         // Calculate upper bound
         for (int i = 0; i < n; i++) {
             // For each bus, calculate time to do totalTrips alone
             // This gives us a safe upper bound
             long cycleTime = (long) time[i] * limit[i] + rest[i];  // One full cycle time
             long tripsPerCycle = limit[i];                          // Trips per cycle
-            
+
             // Cycles needed to complete totalTrips
             long cyclesNeeded = (totalTrips + tripsPerCycle - 1) / tripsPerCycle;  // Ceiling division
-            
+
             // Time for this bus alone (upper bound)
             long timeForThisBus = cyclesNeeded * cycleTime;
-            
+
             // Track minimum upper bound across all buses
             if (maxTime == 0 || timeForThisBus < maxTime) {
                 maxTime = timeForThisBus;
             }
         }
-        
+
         // Binary search boundaries
         long left = 1;           // Minimum possible time
         long right = maxTime;    // Maximum possible time (calculated above)
-        
+
         // Binary search for minimum time
         while (left < right) {
-            
+
             // Calculate middle point
             long mid = left + (right - left) / 2;
-            
+
             // Count total trips all buses can make in 'mid' time
             long tripsInMidTime = countTripsWithRest(time, limit, rest, mid);
-            
+
             // Check if we have enough trips
             if (tripsInMidTime >= totalTrips) {
                 // Enough trips, try to find smaller time
@@ -67,88 +67,88 @@ public class MinimumTimeWithRest {
                 left = mid + 1;
             }
         }
-        
+
         // When left == right, we found our answer
         return left;
     }
-    
+
     /**
      * Counts total trips all buses can make in given time.
      * Accounts for rest periods after every limit[i] trips.
-     * 
-     * @param time - time per trip for each bus
-     * @param limit - max consecutive trips before rest
-     * @param rest - rest duration after limit trips
+     *
+     * @param time      - time per trip for each bus
+     * @param limit     - max consecutive trips before rest
+     * @param rest      - rest duration after limit trips
      * @param givenTime - total time available
      * @return total trips all buses can make
      */
     private static long countTripsWithRest(int[] time, int[] limit, int[] rest, long givenTime) {
-        
+
         long totalTrips = 0;  // Accumulator for all trips
-        
+
         // Process each bus
         for (int i = 0; i < time.length; i++) {
-            
+
             // Calculate trips for bus i
             long tripsForBus = countTripsForOneBus(time[i], limit[i], rest[i], givenTime);
-            
+
             // Add to total
             totalTrips += tripsForBus;
         }
-        
+
         return totalTrips;
     }
-    
+
     /**
      * Counts trips for a single bus in given time.
-     * 
+     * <p>
      * Pattern: [work limit trips] -> [rest] -> [work limit trips] -> [rest] -> ...
-     * 
-     * @param tripTime - time to complete one trip
+     *
+     * @param tripTime  - time to complete one trip
      * @param tripLimit - max trips before mandatory rest
-     * @param restTime - rest duration
+     * @param restTime  - rest duration
      * @param givenTime - total time available
      * @return number of trips this bus can make
      */
     private static long countTripsForOneBus(int tripTime, int tripLimit, int restTime, long givenTime) {
-        
+
         // Time for one full work cycle (limit trips)
         long workTime = (long) tripTime * tripLimit;
-        
+
         // Time for one complete cycle (work + rest)
         long fullCycleTime = workTime + restTime;
-        
+
         // How many FULL cycles fit in given time?
         long fullCycles = givenTime / fullCycleTime;
-        
+
         // Trips from full cycles
         long tripsFromFullCycles = fullCycles * tripLimit;
-        
+
         // Remaining time after all full cycles
         long remainingTime = givenTime - (fullCycles * fullCycleTime);
-        
+
         // Extra trips possible in remaining time
         // Bus can make trips until it hits limit OR runs out of time
         long possibleExtraTrips = remainingTime / tripTime;  // Max trips if no limit
         long extraTrips = Math.min(possibleExtraTrips, tripLimit);  // Capped by limit
-        
+
         // Total trips for this bus
         return tripsFromFullCycles + extraTrips;
     }
-    
+
     /**
      * Test runner - checks if actual result matches expected.
      */
-    public static void runTest(String testName, int[] time, int[] limit, int[] rest, 
+    public static void runTest(String testName, int[] time, int[] limit, int[] rest,
                                int totalTrips, long expected) {
-        
+
         // Get actual result
         long actual = minimumTimeWithRest(time, limit, rest, totalTrips);
-        
+
         // Check pass/fail
         boolean passed = actual == expected;
         String status = passed ? "PASS ✓" : "FAIL ✗";
-        
+
         // Print results
         System.out.println(testName + ": " + status);
         System.out.println("  time  = " + Arrays.toString(time));
@@ -158,16 +158,16 @@ public class MinimumTimeWithRest {
         System.out.println("  Expected: " + expected + ", Actual: " + actual);
         System.out.println();
     }
-    
+
     /**
      * Main method - runs all test cases.
      */
     public static void main(String[] args) {
-        
+
         System.out.println("=============================================");
         System.out.println("  MINIMUM TIME WITH REST - TEST CASES        ");
         System.out.println("=============================================\n");
-        
+
         // Test 1: Simple case - one bus, no effective rest needed
         // Bus: time=2, limit=5, rest=3
         // Need 3 trips (less than limit, so no rest needed)
@@ -178,7 +178,7 @@ public class MinimumTimeWithRest {
                 new int[]{3},       // rest
                 3,                  // totalTrips
                 6);                 // expected: 3 trips * 2 time = 6
-        
+
         // Test 2: One bus with rest
         // Bus: time=2, limit=3, rest=5
         // Need 5 trips
@@ -196,7 +196,7 @@ public class MinimumTimeWithRest {
                 new int[]{5},
                 5,
                 15);
-        
+
         // Test 3: Two buses
         // Bus 0: time=1, limit=2, rest=3 -> cycle=5, gives 2 trips
         // Bus 1: time=2, limit=3, rest=2 -> cycle=8, gives 3 trips
@@ -207,7 +207,7 @@ public class MinimumTimeWithRest {
                 new int[]{3, 2},
                 10,
                 calculateExpected(new int[]{1, 2}, new int[]{2, 3}, new int[]{3, 2}, 10));
-        
+
         // Test 4: No rest scenario (very high limit)
         // If limit is very high, behaves like original problem
         // Bus 0: time=1, limit=1000000, rest=100
@@ -230,7 +230,7 @@ public class MinimumTimeWithRest {
                 new int[]{100, 100},
                 5,
                 4);
-        
+
         // Test 5: All buses same
         // 3 buses, each: time=5, limit=2, rest=10
         // Cycle = 10 + 10 = 20 time, gives 2*3 = 6 trips
@@ -245,7 +245,7 @@ public class MinimumTimeWithRest {
                 new int[]{10, 10, 10},
                 12,
                 30);
-        
+
         // Test 6: Single trip needed
         // Fastest bus takes 3 time for 1 trip
         runTest("Test 6 - Single trip",
@@ -254,7 +254,7 @@ public class MinimumTimeWithRest {
                 new int[]{10, 10, 10},
                 1,
                 3);
-        
+
         // Test 7: Large number of trips
         // Bus: time=1, limit=100, rest=50
         // Cycle = 100 + 50 = 150 time, gives 100 trips
@@ -269,7 +269,7 @@ public class MinimumTimeWithRest {
                 new int[]{50},
                 1000,
                 1450);
-        
+
         // Test 8: Multiple buses, large data
         int[] largeTime = new int[100];
         int[] largeLimit = new int[100];
@@ -292,7 +292,7 @@ public class MinimumTimeWithRest {
                 largeRest,
                 5000,
                 70);
-        
+
         // Test 9: Stress test - very large values
         runTest("Test 9 - Stress test",
                 new int[]{1000},
@@ -300,7 +300,7 @@ public class MinimumTimeWithRest {
                 new int[]{1000},
                 10000,
                 calculateExpected(new int[]{1000}, new int[]{1000}, new int[]{1000}, 10000));
-        
+
         // Test 10: Edge case - limit of 1 (rest after every trip)
         // Bus: time=2, limit=1, rest=3
         // Pattern: 2 time trip, 3 time rest, 2 time trip, 3 time rest...
@@ -315,12 +315,12 @@ public class MinimumTimeWithRest {
                 new int[]{3},
                 4,
                 17);
-        
+
         System.out.println("=============================================");
         System.out.println("           ALL TESTS COMPLETED               ");
         System.out.println("=============================================");
     }
-    
+
     /**
      * Helper to calculate expected value for complex test cases.
      * Uses our own solution (for verification during development).

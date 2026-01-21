@@ -1,11 +1,11 @@
 package com.interview.notes.code.year.y2024.aug24.test28;
 
 public class Solution4 {
+    private final int[] dx = {-1, 1, 0, 0};
+    private final int[] dy = {0, 0, -1, 1};
     private int[][] matrix;
     private boolean[][] visited;
     private int rows, cols;
-    private final int[] dx = {-1, 1, 0, 0};
-    private final int[] dy = {0, 0, -1, 1};
 
     // Main method for testing
     public static void main(String[] args) {

@@ -62,10 +62,10 @@ class Payment {
 
 class User {
     private final String username;
-    private double balance;
     private final List<String> creditCards;
     private final Set<String> friends;
     private final List<Payment> payments;
+    private double balance;
 
     public User(String username) throws UsernameException {
         if (validateUsername(username)) {

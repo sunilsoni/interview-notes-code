@@ -167,8 +167,8 @@ public class Interview {
 
         // Create map using Streams: Convert chars -> Boxed -> Group -> Count
         var counts = str.chars()
-            .mapToObj(c -> (char) c) // Convert IntStream to Stream<Character>
-            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())); // Count occurrences
+                .mapToObj(c -> (char) c) // Convert IntStream to Stream<Character>
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())); // Count occurrences
 
         // Print the map contents clearly
         System.out.println("Counts: " + counts);

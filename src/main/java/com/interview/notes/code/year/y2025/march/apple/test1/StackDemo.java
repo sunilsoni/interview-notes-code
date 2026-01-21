@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 class CustomStack<T> {
     private final ArrayList<T> stack;
-    private int top; // keeps track of the top element
     private final int maxSize;
+    private int top; // keeps track of the top element
 
     // Constructor
     public CustomStack(int size) {

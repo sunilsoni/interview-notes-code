@@ -26,9 +26,9 @@ public class BinaryStringOptimizer {
         runTestCase(2, "101", 4);
         runTestCase(3, "111", 3);
         runTestCase(4, "110", 1);
-        
+
         var largeSb = new StringBuilder();
-        for (int k = 0; k < 50000; k++) largeSb.append("10"); 
+        for (int k = 0; k < 50000; k++) largeSb.append("10");
         runTestCase(5, largeSb.toString(), 100000);
 
         System.out.println("Testing Complete.");
@@ -38,11 +38,11 @@ public class BinaryStringOptimizer {
         var start = System.nanoTime();
         var result = getMinimumOperations(input);
         var end = System.nanoTime();
-        
+
         var status = (result == expected) ? "PASS" : "FAIL";
         var displayInput = input.length() > 20 ? "Large Input (Len: " + input.length() + ")" : input;
-        
-        System.out.printf("Case %d: [%s] Input: %s -> Expected: %d, Got: %d (Time: %.3f ms)%n", 
-            id, status, displayInput, expected, result, (end - start) / 1e6);
+
+        System.out.printf("Case %d: [%s] Input: %s -> Expected: %d, Got: %d (Time: %.3f ms)%n",
+                id, status, displayInput, expected, result, (end - start) / 1e6);
     }
 }

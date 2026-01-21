@@ -100,9 +100,9 @@ public class PopulationCalculator {
      * @param name       The name of the state (e.g. "California")
      * @param population The population of the state as a long integer
      */ // ──────────────────────────────────────────────────────────────────────────────
-        // Nested class representing a US State and its population
-        // ──────────────────────────────────────────────────────────────────────────────
-        public record State(String name, long population) {
+    // Nested class representing a US State and its population
+    // ──────────────────────────────────────────────────────────────────────────────
+    public record State(String name, long population) {
         /**
          * Constructor for State.
          *
@@ -114,26 +114,26 @@ public class PopulationCalculator {
             // Assign the provided population to this.population
         }
 
-            /**
-             * Getter for population.
-             *
-             * @return the population of this state
-             */
-            @Override
-            public long population() {
-                // Return the stored population value
-                return population;
-            }
-
-            /**
-             * Getter for name.
-             *
-             * @return the name of this state
-             */
-            @Override
-            public String name() {
-                // Return the stored name value
-                return name;
-            }
+        /**
+         * Getter for population.
+         *
+         * @return the population of this state
+         */
+        @Override
+        public long population() {
+            // Return the stored population value
+            return population;
         }
+
+        /**
+         * Getter for name.
+         *
+         * @return the name of this state
+         */
+        @Override
+        public String name() {
+            // Return the stored name value
+            return name;
+        }
+    }
 }

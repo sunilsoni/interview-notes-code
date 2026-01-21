@@ -14,10 +14,10 @@ public class BracketStabilizer {
 
     public static void main(String[] args) {
         var tests = java.util.Map.of(
-            "(()))", 1,
-            "))((", 4,
-            "((", 2,
-            "))", 2
+                "(()))", 1,
+                "))((", 4,
+                "((", 2,
+                "))", 2
         );
 
         tests.forEach((in, exp) -> {

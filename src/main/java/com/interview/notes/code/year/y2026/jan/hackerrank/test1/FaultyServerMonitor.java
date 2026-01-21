@@ -32,19 +32,19 @@ public class FaultyServerMonitor {
 
     public static void main(String[] args) {
         runTestCase(1, 2, List.of(
-            "s1 error", "s1 error", "s2 error", "s1 error", "s1 error", "s2 success"
+                "s1 error", "s1 error", "s2 error", "s1 error", "s1 error", "s2 success"
         ), 1);
 
         runTestCase(2, 5, List.of(
-            "s1 error", "s1 error", "s1 error", "s1 error", "s1 error", "s1 error"
+                "s1 error", "s1 error", "s1 error", "s1 error", "s1 error", "s1 error"
         ), 2);
 
         runTestCase(3, 3, List.of(
-            "s1 error", "s1 error", "s1 success", "s1 error", "s1 error", "s1 error"
+                "s1 error", "s1 error", "s1 success", "s1 error", "s1 error", "s1 error"
         ), 1);
 
         runTestCase(4, 3, List.of(
-            "s1 success", "s2 success", "s3 success"
+                "s1 success", "s2 success", "s3 success"
         ), 0);
 
         List<String> largeLog = new ArrayList<>();
@@ -57,9 +57,9 @@ public class FaultyServerMonitor {
         long startTime = System.nanoTime();
         int result = countFaults(n, logs);
         long endTime = System.nanoTime();
-        
+
         String status = (result == expected) ? "PASS" : "FAIL";
-        System.out.printf("Test Case %d: %s (Expected: %d, Got: %d) - Time: %.3f ms%n", 
-            id, status, expected, result, (endTime - startTime) / 1e6);
+        System.out.printf("Test Case %d: %s (Expected: %d, Got: %d) - Time: %.3f ms%n",
+                id, status, expected, result, (endTime - startTime) / 1e6);
     }
 }

@@ -93,6 +93,6 @@ public class OrgChart {
     /**
      * @param mid may be null
      */ // ---------- simple POJO ----------
-        record Emp(int id, String name, Integer mid) {
+    record Emp(int id, String name, Integer mid) {
     }
 }

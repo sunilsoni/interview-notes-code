@@ -41,5 +41,6 @@ public class VisitTargetIndexFinder {
         return -1;
     }
 
-    private record TestCase(int[] visits, int target, int expected) {}
+    private record TestCase(int[] visits, int target, int expected) {
+    }
 }

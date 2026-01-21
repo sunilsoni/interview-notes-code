@@ -19,7 +19,7 @@ public class Solution {
             // Parse strings to double for calculation
             double price = Double.parseDouble(order[1]);
             double qty = Double.parseDouble(order[2]);
-            
+
             // Calculate current order value
             double cost = price * qty;
 
@@ -58,16 +58,16 @@ public class Solution {
         // Case 1: Provided Example
         // AAPL total: (120.3*3) + (110.8*4) = 804.1 (Winner)
         String[][] t1 = {
-            {"AAPL", "120.3", "3"}, {"GOOGL", "190.9", "4"}, 
-            {"AAPL", "110.8", "4"}, {"AMZN", "790.3", "1"}
+                {"AAPL", "120.3", "3"}, {"GOOGL", "190.9", "4"},
+                {"AAPL", "110.8", "4"}, {"AMZN", "790.3", "1"}
         };
         check("Test 1 (Base)", t1, "AAPL");
 
         // Case 2: Large Data (High volume)
         // TSLA: 1000.5 * 50000 = 50,025,000.0 (Winner)
         String[][] t2 = {
-            {"TSLA", "1000.50", "50000"}, 
-            {"NVDA", "400.20", "10000"}
+                {"TSLA", "1000.50", "50000"},
+                {"NVDA", "400.20", "10000"}
         };
         check("Test 2 (Large Data)", t2, "TSLA");
 

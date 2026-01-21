@@ -69,6 +69,6 @@ public class CustomerMessageRateLimiter {
     }
 
     // Triple class to hold timestamp, message content, and customer ID
-        record Triple<T, U, V>(T first, U second, V third) {
+    record Triple<T, U, V>(T first, U second, V third) {
     }
 }

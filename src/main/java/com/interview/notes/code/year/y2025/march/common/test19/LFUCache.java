@@ -6,9 +6,9 @@ import java.util.Map;
 
 public class LFUCache<K, V> {
     private final int capacity;
-    private int minFreq;
     private final Map<K, Node> keyToNode;
     private final Map<Integer, LinkedHashSet<Node>> freqToNodes;
+    private int minFreq;
 
     // Constructor
     public LFUCache(int capacity) {

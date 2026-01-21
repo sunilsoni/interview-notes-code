@@ -110,9 +110,9 @@ public class PopulationCalculatorExecutor {
      * @param name       state name
      * @param population state population
      */ // ──────────────────────────────────────────────────────────────────────────────
-        // Simple POJO for a State
-        // ──────────────────────────────────────────────────────────────────────────────
-        public record State(String name, long population) {
+    // Simple POJO for a State
+    // ──────────────────────────────────────────────────────────────────────────────
+    public record State(String name, long population) {
         // store the name
         // store the population
     }

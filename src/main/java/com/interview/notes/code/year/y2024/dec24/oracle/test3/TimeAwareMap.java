@@ -158,8 +158,8 @@ public class TimeAwareMap {
     private record TimestampedValue(String value, long timestamp) {
 
         @Override
-            public String toString() {
-                return "TimestampedValue{value='" + value + "', timestamp=" + timestamp + "}";
-            }
+        public String toString() {
+            return "TimestampedValue{value='" + value + "', timestamp=" + timestamp + "}";
         }
+    }
 }

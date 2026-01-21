@@ -31,13 +31,13 @@ public class AssemblyLineOptimizer {
 
     public static void main(String[] args) {
         Map<String, Boolean> results = new LinkedHashMap<>();
-        results.put("T1", test(new int[]{1,6,2}, new int[]{3,2,5}, 2, 1, 8));
-        results.put("T2", test(new int[]{2,11,4,4}, new int[]{9,2,5,11}, 8, 4, 21));
-        results.put("T3", test(new int[]{1,10,1}, new int[]{10,1,10}, 1, 5, 9));
-        results.put("T4", test(new int[]{8,3,3}, new int[]{6,1,10}, 4, 3, 13));
+        results.put("T1", test(new int[]{1, 6, 2}, new int[]{3, 2, 5}, 2, 1, 8));
+        results.put("T2", test(new int[]{2, 11, 4, 4}, new int[]{9, 2, 5, 11}, 8, 4, 21));
+        results.put("T3", test(new int[]{1, 10, 1}, new int[]{10, 1, 10}, 1, 5, 9));
+        results.put("T4", test(new int[]{8, 3, 3}, new int[]{6, 1, 10}, 4, 3, 13));
         results.put("LARGE", largeTest());
 
-        results.forEach((k,v) ->
+        results.forEach((k, v) ->
                 System.out.println(k + " : " + (v ? "PASS" : "FAIL")));
     }
 }

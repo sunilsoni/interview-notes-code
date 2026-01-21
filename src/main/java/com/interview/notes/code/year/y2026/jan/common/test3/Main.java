@@ -13,8 +13,13 @@ class Project {
         this.hours = hours;
     }
 
-    String getName() { return name; }
-    int getHours() { return hours; }
+    String getName() {
+        return name;
+    }
+
+    int getHours() {
+        return hours;
+    }
 }
 
 class Emp {
@@ -33,28 +38,28 @@ public class Main {
     public static void main(String[] args) {
 
         List<Emp> employees = List.of(
-            new Emp(List.of(
-                new Project("Kafka", 10),
-                new Project("Spring", 20)
-            )),
-            new Emp(List.of(
-                new Project("Kafka", 15),
-                new Project("AWS", 25)
-            )),
-            new Emp(List.of(
-                new Project("Spring", 5),
-                new Project("AWS", 10)
-            ))
+                new Emp(List.of(
+                        new Project("Kafka", 10),
+                        new Project("Spring", 20)
+                )),
+                new Emp(List.of(
+                        new Project("Kafka", 15),
+                        new Project("AWS", 25)
+                )),
+                new Emp(List.of(
+                        new Project("Spring", 5),
+                        new Project("AWS", 10)
+                ))
         );
 
         // Group by technology name and sum total hours
         Map<String, Integer> totalHoursByTech =
-            employees.stream()
-                     .flatMap(e -> e.getProjects().stream())
-                     .collect(Collectors.groupingBy(
-                         Project::getName,
-                         Collectors.summingInt(Project::getHours)
-                     ));
+                employees.stream()
+                        .flatMap(e -> e.getProjects().stream())
+                        .collect(Collectors.groupingBy(
+                                Project::getName,
+                                Collectors.summingInt(Project::getHours)
+                        ));
 
         System.out.println(totalHoursByTech); // {Kafka=25, Spring=25, AWS=35}
     }

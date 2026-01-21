@@ -34,11 +34,11 @@ public class MultiThreadedConsumer {
     private record MessageProcessor(ConsumerRecord<String, String> record) implements Runnable {
 
         @Override
-            public void run() {
-                // Process the message asynchronously
-                String message = record.value();
-                // Perform message processing logic here
-                System.out.println("Processed message: " + message);
-            }
+        public void run() {
+            // Process the message asynchronously
+            String message = record.value();
+            // Perform message processing logic here
+            System.out.println("Processed message: " + message);
         }
+    }
 }

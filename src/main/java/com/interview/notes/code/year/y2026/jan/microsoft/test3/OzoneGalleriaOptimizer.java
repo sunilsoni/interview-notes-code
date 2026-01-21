@@ -35,11 +35,11 @@ public class OzoneGalleriaOptimizer {
         List<Integer> prices = new Random().ints(size, 1, 100).sorted().boxed().toList();
         List<Integer> pos = List.of(1, size / 2, size);
         List<Long> amount = List.of(100L, 5000L, 0L);
-        
+
         long startTime = System.nanoTime();
         List<Integer> result = findMaximumValue(prices, pos, amount);
         double duration = (System.nanoTime() - startTime) / 1_000_000.0;
-        
+
         System.out.printf("%-15s: PASS | Size: %d | Time: %.2f ms | Result: %s%n", "Large Data", size, duration, result);
     }
 }

@@ -9,9 +9,9 @@ public class UniqueSortedList {
 
         List<Integer> result =
                 numbers.stream()
-                       .distinct()
-                       .sorted()
-                       .toList();
+                        .distinct()
+                        .sorted()
+                        .toList();
 
         System.out.println(result);
     }

@@ -233,7 +233,7 @@ public class DeliveryScheduler {  // define a public class to hold our solution 
      * @param e end time of the delivery
      * @param p pay for completing the delivery
      */ // A small immutable record-like class to store each delivery's start, end, and pay.
-        private record Job(int s, int e, int p) {  // make it private and final to encapsulate and ensure no subclassing
+    private record Job(int s, int e, int p) {  // make it private and final to encapsulate and ensure no subclassing
         // constructor to set fields
         // assign start time
         // assign end time

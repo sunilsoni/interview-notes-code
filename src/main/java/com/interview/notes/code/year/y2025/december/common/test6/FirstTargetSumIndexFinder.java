@@ -27,11 +27,11 @@ public class FirstTargetSumIndexFinder {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5,6,9,8,7,6,5,4,3,2};
+        int[] arr = {1, 2, 3, 4, 5, 6, 9, 8, 7, 6, 5, 4, 3, 2};
 
-        test("Basic", arr, 9, new int[]{3,4});
-        test("NoMatch", arr, 100, new int[]{-1,-1});
-        test("Immediate", new int[]{4,5,1,2}, 9, new int[]{0,1});
+        test("Basic", arr, 9, new int[]{3, 4});
+        test("NoMatch", arr, 100, new int[]{-1, -1});
+        test("Immediate", new int[]{4, 5, 1, 2}, 9, new int[]{0, 1});
 
         int[] large = IntStream.range(0, 1_000_000).toArray();
         test("LargeData", large, 1_999_997, new int[]{999_998, 999_999});

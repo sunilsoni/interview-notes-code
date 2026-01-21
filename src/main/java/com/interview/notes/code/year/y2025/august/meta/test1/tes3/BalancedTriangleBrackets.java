@@ -232,13 +232,13 @@ public class BalancedTriangleBrackets {
      * @param s      input string
      * @param expect expected validity
      */ // Utility: A tiny record to hold a test case for Part A (validity)
-        record ValidCase(String s, boolean expect) {
+    record ValidCase(String s, boolean expect) {
     }
 
     /**
      * @param s      input string
      * @param expect expected minimal insertions
      */ // Utility: A tiny record to hold a test case for Part B (min additions)
-        record AddCase(String s, int expect) {
+    record AddCase(String s, int expect) {
     }
 }

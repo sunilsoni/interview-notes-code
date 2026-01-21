@@ -25,10 +25,10 @@ public class SecondLargestSolver {
 
         // --- Test Case 5: Large Data (Simulation) ---
         // Generating 1 million numbers
-        int[] largeInput = IntStream.range(0, 1_000_000).toArray(); 
+        int[] largeInput = IntStream.range(0, 1_000_000).toArray();
         // Largest is 999999, 2nd Largest is 999998
         runTestCase(largeInput, 999_998, "Large Data Set");
-        
+
         // --- Test Case 6: Edge Case (Too few elements) ---
         // This expects an exception or specific handling. 
         // For simplicity in this logic, we catch the exception to PASS.
@@ -44,9 +44,9 @@ public class SecondLargestSolver {
     private static void runTestCase(int[] arr, int expected, String testName) {
         try {
             long startTime = System.currentTimeMillis(); // Start timer
-            
+
             int actual = findSecondLargest(arr); // Execute logic
-            
+
             long endTime = System.currentTimeMillis(); // End timer
 
             if (actual == expected) {
@@ -68,6 +68,6 @@ public class SecondLargestSolver {
                 .skip(1)                    // 5. Skip the first element (the largest)
                 .findFirst()                // 6. Grab the next element (the 2nd largest)
                 .orElseThrow(() ->          // 7. If no element exists (array too small), throw error
-                     new IllegalArgumentException("Array needs at least 2 distinct numbers"));
+                        new IllegalArgumentException("Array needs at least 2 distinct numbers"));
     }
 }

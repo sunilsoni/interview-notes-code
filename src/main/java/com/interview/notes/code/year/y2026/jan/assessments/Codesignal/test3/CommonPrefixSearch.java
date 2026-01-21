@@ -7,7 +7,7 @@ import java.util.Set;
 public class CommonPrefixSearch {
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3};
+        int[] arr = {1, 2, 3};
         int[] newArr = new int[arr.length + 1];
         System.arraycopy(arr, 0, newArr, 0, arr.length);
         newArr[arr.length] = 4;   // add 4 at the end
@@ -50,10 +50,10 @@ public class CommonPrefixSearch {
     private static void runTest(CommonPrefixSearch s, int[] a, int[] b, int expected, String name) {
         int result = s.solution(a, b);
         System.out.printf("%-15s: %s [Expected: %d, Got: %d]%n",
-            name,
-            result == expected ? "PASS" : "FAIL",
-            expected,
-            result
+                name,
+                result == expected ? "PASS" : "FAIL",
+                expected,
+                result
         );
     }
 

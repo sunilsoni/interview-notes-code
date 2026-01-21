@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ParticipantScoresScalable {
-    
+
     // ============================================================
     // METHOD 1: Get points for difficulty level
     // ============================================================
@@ -15,13 +15,17 @@ public class ParticipantScoresScalable {
     // E=2, M=5, H=7
     public static int getPoints(char difficulty) {
         switch (difficulty) {
-            case 'E': return 2;  // Easy
-            case 'M': return 5;  // Medium
-            case 'H': return 7;  // Hard
-            default: return 0;  // Invalid
+            case 'E':
+                return 2;  // Easy
+            case 'M':
+                return 5;  // Medium
+            case 'H':
+                return 7;  // Hard
+            default:
+                return 0;  // Invalid
         }
     }
-    
+
     // ============================================================
     // METHOD 2: Calculate score for a single participant
     // ============================================================
@@ -32,25 +36,25 @@ public class ParticipantScoresScalable {
         if (problems == null || problems.isEmpty()) {
             return 0;
         }
-        
+
         // Use Stream to process each character
         return problems.chars()                    // Convert to IntStream
                 .map(ch -> getPoints((char) ch))   // Map to points
                 .sum();                            // Sum all
     }
-    
+
     // ============================================================
     // METHOD 3: Find winner(s) - SCALABLE VERSION
     // ============================================================
     // Input: Map of participant names to their problem strings
     // Output: Winner name(s) or "Tie"
     public static String findWinner(Map<String, String> participants) {
-        
+
         // Step 1: Handle empty input
         if (participants == null || participants.isEmpty()) {
             return "No participants";
         }
-        
+
         // Step 2: Calculate score for each participant
         // Create new map: Name -> Score
         Map<String, Integer> scores = participants.entrySet()  // Get all entries
@@ -59,14 +63,14 @@ public class ParticipantScoresScalable {
                         entry -> entry.getKey(),                // Key = Name
                         entry -> calculateScore(entry.getValue()) // Value = Score
                 ));
-        
+
         // Step 3: Find maximum score
         int maxScore = scores.values()   // Get all scores
                 .stream()                 // Create stream
                 .mapToInt(Integer::intValue)  // Convert to IntStream
                 .max()                    // Find max
                 .orElse(0);               // Default 0 if empty
-        
+
         // Step 4: Find all participants with max score
         List<String> winners = scores.entrySet()  // Get all entries
                 .stream()                          // Create stream
@@ -74,7 +78,7 @@ public class ParticipantScoresScalable {
                 .map(entry -> entry.getKey())      // Get names only
                 .sorted()                          // Sort alphabetically
                 .collect(Collectors.toList());     // Collect to list
-        
+
         // Step 5: Return result based on number of winners
         if (winners.size() == 1) {
             // Single winner
@@ -89,7 +93,7 @@ public class ParticipantScoresScalable {
                     .collect(Collectors.joining(", "));
         }
     }
-    
+
     // ============================================================
     // METHOD 4: Overloaded method for 3 participants (backward compatible)
     // ============================================================
@@ -100,10 +104,10 @@ public class ParticipantScoresScalable {
         participants.put("Alex", alex);
         participants.put("Bob", bob);
         participants.put("Eve", eve);
-        
+
         return findWinner(participants);
     }
-    
+
     // ============================================================
     // METHOD 5: Helper to create participant map easily
     // ============================================================
@@ -111,23 +115,23 @@ public class ParticipantScoresScalable {
     // Example: createParticipants("Alex", "MHH", "Bob", "EMH")
     public static Map<String, String> createParticipants(String... args) {
         Map<String, String> participants = new HashMap<>();
-        
+
         // Process pairs: name1, problems1, name2, problems2, ...
         for (int i = 0; i < args.length - 1; i += 2) {
             String name = args[i];        // First of pair is name
             String problems = args[i + 1]; // Second of pair is problems
             participants.put(name, problems);
         }
-        
+
         return participants;
     }
-    
+
     // ============================================================
     // METHOD 6: Print scores for all participants
     // ============================================================
     public static void printScores(Map<String, String> participants) {
         System.out.println("  Participant Scores:");
-        
+
         participants.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByKey())  // Sort by name
@@ -138,21 +142,21 @@ public class ParticipantScoresScalable {
                     System.out.println("    " + name + ": \"" + problems + "\" = " + score + " points");
                 });
     }
-    
+
     // ============================================================
     // METHOD 7: Run test case
     // ============================================================
     public static void runTest(int testNum, Map<String, String> participants, String expected) {
         String actual = findWinner(participants);
         boolean passed = actual.equals(expected);
-        
+
         System.out.println("Test " + testNum + ": " + (passed ? "PASS ✓" : "FAIL ✗"));
         printScores(participants);
         System.out.println("  Expected: " + expected);
         System.out.println("  Actual:   " + actual);
         System.out.println();
     }
-    
+
     // ============================================================
     // METHOD 8: Generate large data for testing
     // ============================================================
@@ -161,13 +165,13 @@ public class ParticipantScoresScalable {
         IntStream.range(0, length).forEach(i -> sb.append(ch));
         return sb.toString();
     }
-    
+
     // ============================================================
     // MAIN METHOD: Run all tests
     // ============================================================
     public static void main(String[] args) {
         System.out.println("=== Scalable Participant Scores Tests ===\n");
-        
+
         // ----------------------------------------------------------
         // Test 1: Original 3 participants - Alex wins
         // ----------------------------------------------------------
@@ -177,7 +181,7 @@ public class ParticipantScoresScalable {
                 "Eve", "EMM"     // 2+5+5 = 12
         );
         runTest(1, test1, "Alex");
-        
+
         // ----------------------------------------------------------
         // Test 2: 3 participants - Two way tie
         // ----------------------------------------------------------
@@ -187,7 +191,7 @@ public class ParticipantScoresScalable {
                 "Eve", "E"       // 2
         );
         runTest(2, test2, "Alex, Bob");
-        
+
         // ----------------------------------------------------------
         // Test 3: 3 participants - All tie
         // ----------------------------------------------------------
@@ -197,7 +201,7 @@ public class ParticipantScoresScalable {
                 "Eve", "M"       // 5
         );
         runTest(3, test3, "Tie");
-        
+
         // ----------------------------------------------------------
         // Test 4: 4 participants - Single winner
         // ----------------------------------------------------------
@@ -208,7 +212,7 @@ public class ParticipantScoresScalable {
                 "Dave", "HHH"    // 21 - Winner!
         );
         runTest(4, test4, "Dave");
-        
+
         // ----------------------------------------------------------
         // Test 5: 4 participants - Two way tie
         // ----------------------------------------------------------
@@ -219,7 +223,7 @@ public class ParticipantScoresScalable {
                 "Dave", "EE"     // 4
         );
         runTest(5, test5, "Alex, Bob");
-        
+
         // ----------------------------------------------------------
         // Test 6: 5 participants - Three way tie
         // ----------------------------------------------------------
@@ -231,7 +235,7 @@ public class ParticipantScoresScalable {
                 "Frank", "EE"    // 4
         );
         runTest(6, test6, "Alex, Bob, Eve");
-        
+
         // ----------------------------------------------------------
         // Test 7: 5 participants - All tie
         // ----------------------------------------------------------
@@ -243,7 +247,7 @@ public class ParticipantScoresScalable {
                 "Frank", "M"     // 5
         );
         runTest(7, test7, "Tie");
-        
+
         // ----------------------------------------------------------
         // Test 8: 6 participants - Single winner
         // ----------------------------------------------------------
@@ -256,7 +260,7 @@ public class ParticipantScoresScalable {
                 "Grace", "HHH"   // 21 - Winner!
         );
         runTest(8, test8, "Grace");
-        
+
         // ----------------------------------------------------------
         // Test 9: 2 participants only
         // ----------------------------------------------------------
@@ -265,7 +269,7 @@ public class ParticipantScoresScalable {
                 "Bob", "MMM"     // 15
         );
         runTest(9, test9, "Alex");
-        
+
         // ----------------------------------------------------------
         // Test 10: 2 participants - Tie
         // ----------------------------------------------------------
@@ -274,7 +278,7 @@ public class ParticipantScoresScalable {
                 "Bob", "HH"      // 14
         );
         runTest(10, test10, "Tie");
-        
+
         // ----------------------------------------------------------
         // Test 11: Single participant
         // ----------------------------------------------------------
@@ -282,7 +286,7 @@ public class ParticipantScoresScalable {
                 "Alex", "MHH"    // 19 - Only participant wins
         );
         runTest(11, test11, "Alex");
-        
+
         // ----------------------------------------------------------
         // Test 12: 10 participants - Complex
         // ----------------------------------------------------------
@@ -299,7 +303,7 @@ public class ParticipantScoresScalable {
                 "Jack", "E"       // 2
         );
         runTest(12, test12, "Alex, Bob, Charlie");
-        
+
         // ----------------------------------------------------------
         // Test 13: Large data - 5 participants
         // ----------------------------------------------------------
@@ -310,7 +314,7 @@ public class ParticipantScoresScalable {
         test13.put("Eve", generateLargeString('E', 10000));    // 20000
         test13.put("Dave", generateLargeString('H', 9000));    // 63000
         test13.put("Frank", generateLargeString('H', 10001));  // 70007 - Winner!
-        
+
         String result13 = findWinner(test13);
         System.out.println("  Alex: 10000 H = 70000");
         System.out.println("  Bob: 10000 M = 50000");
@@ -320,7 +324,7 @@ public class ParticipantScoresScalable {
         System.out.println("  Expected: Frank");
         System.out.println("  Actual:   " + result13);
         System.out.println("  Result: " + (result13.equals("Frank") ? "PASS ✓" : "FAIL ✗") + "\n");
-        
+
         // ----------------------------------------------------------
         // Test 14: Backward compatibility - Old method signature
         // ----------------------------------------------------------
@@ -330,7 +334,7 @@ public class ParticipantScoresScalable {
         System.out.println("  Expected: Alex");
         System.out.println("  Actual:   " + result14);
         System.out.println("  Result: " + (result14.equals("Alex") ? "PASS ✓" : "FAIL ✗") + "\n");
-        
+
         // ----------------------------------------------------------
         // Test 15: Empty participants
         // ----------------------------------------------------------
@@ -340,7 +344,7 @@ public class ParticipantScoresScalable {
         System.out.println("  Expected: No participants");
         System.out.println("  Actual:   " + result15);
         System.out.println("  Result: " + (result15.equals("No participants") ? "PASS ✓" : "FAIL ✗") + "\n");
-        
+
         System.out.println("=== All Tests Completed ===");
     }
 }

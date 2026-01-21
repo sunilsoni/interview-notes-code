@@ -27,7 +27,7 @@ public class ArrayTransformationOptimizer {
 
         long totalOps = 0;
         long currentPrefixContrib = 0;
-        
+
         for (int i = 1; i < n; i++) {
             long diff = req[i] - req[i - 1];
             if (diff > 0) {
@@ -40,7 +40,7 @@ public class ArrayTransformationOptimizer {
         }
 
         long remaining = req[0] - currentPrefixContrib;
-        
+
         if (remaining < 0) {
             return -1;
         }
@@ -90,13 +90,13 @@ public class ArrayTransformationOptimizer {
         List<Long> sourceLarge = new ArrayList<>(size);
         List<Long> targetLarge = new ArrayList<>(size);
         Random rand = new Random();
-        
+
         // Construct a guaranteed valid large case to ensure logic holds
         // Base arrays
         long[] validReq = new long[size];
-        long prefixOps = 0; 
+        long prefixOps = 0;
         long suffixOps = 0;
-        
+
         for (int i = 0; i < size; i++) {
             sourceLarge.add((long) rand.nextInt(100));
             // Create a valid pattern
@@ -106,15 +106,15 @@ public class ArrayTransformationOptimizer {
             // answer should be 10
             targetLarge.add(sourceLarge.get(i) + 10);
         }
-        
+
         long start = System.currentTimeMillis();
         long result = getMinimumOperations(sourceLarge, targetLarge);
         long end = System.currentTimeMillis();
-        
+
         if (result == 10) {
-             System.out.println("PASS (Time: " + (end - start) + "ms)");
+            System.out.println("PASS (Time: " + (end - start) + "ms)");
         } else {
-             System.out.println("FAIL (Expected 10, Got " + result + ")");
+            System.out.println("FAIL (Expected 10, Got " + result + ")");
         }
     }
 

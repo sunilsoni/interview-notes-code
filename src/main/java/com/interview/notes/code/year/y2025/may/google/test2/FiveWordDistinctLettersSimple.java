@@ -271,6 +271,6 @@ public class FiveWordDistinctLettersSimple {
      * @param word    the 5-letter word itself
      * @param letters a Set of its 5 distinct letters
      */
-        private record WordLetters(String word, Set<Character> letters) {
+    private record WordLetters(String word, Set<Character> letters) {
     }
 }

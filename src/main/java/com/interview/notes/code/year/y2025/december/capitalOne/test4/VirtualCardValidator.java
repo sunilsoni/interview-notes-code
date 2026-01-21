@@ -17,52 +17,62 @@ public class VirtualCardValidator {
         // Test Case 1: Visa, merchant-bound, not multi-use -> VALID
         var t1 = validate("1234567890123010", "12345600", 50.0);
         results.add(check("TC1: Visa merchant-bound not-multiuse", t1, true));
-        if (t1) passed++; else failed++;
+        if (t1) passed++;
+        else failed++;
 
         // Test Case 2: Visa, not merchant-bound, online, charge, amt<100 -> VALID
         var t2 = validate("1234567890123000", "12345611", 99.0);
         results.add(check("TC2: Visa online charge <$100", t2, true));
-        if (t2) passed++; else failed++;
+        if (t2) passed++;
+        else failed++;
 
         // Test Case 3: Visa, online, authorization, amt<100 -> INVALID (authorization fails)
         var t3 = validate("1234567890123000", "12345601", 50.0);
         results.add(check("TC3: Visa online authorization", t3, false));
-        if (!t3) passed++; else failed++;
+        if (!t3) passed++;
+        else failed++;
 
         // Test Case 4: Mastercard, not merchant-bound, online, amt<100 -> VALID
         var t4 = validate("1234567890123100", "12345611", 50.0);
         results.add(check("TC4: MC not-merchant-bound <$100", t4, true));
-        if (t4) passed++; else failed++;
+        if (t4) passed++;
+        else failed++;
 
         // Test Case 5: Mastercard, merchant-bound, amt>100 -> VALID
         var t5 = validate("1234567890123101", "12345611", 150.0);
         results.add(check("TC5: MC merchant-bound >$100", t5, true));
-        if (t5) passed++; else failed++;
+        if (t5) passed++;
+        else failed++;
 
         // Test Case 6: Mastercard, not merchant-bound, amt>=100 -> INVALID
         var t6 = validate("1234567890123100", "12345611", 100.0);
         results.add(check("TC6: MC not-merchant-bound =$100", t6, false));
-        if (!t6) passed++; else failed++;
+        if (!t6) passed++;
+        else failed++;
 
         // Test Case 7: Mastercard, merchant-bound, amt<=100 -> INVALID
         var t7 = validate("1234567890123101", "12345611", 100.0);
         results.add(check("TC7: MC merchant-bound =$100", t7, false));
-        if (!t7) passed++; else failed++;
+        if (!t7) passed++;
+        else failed++;
 
         // Test Case 8: Visa, offline, not merchant-bound -> INVALID
         var t8 = validate("1234567890123000", "12345610", 50.0);
         results.add(check("TC8: Visa offline not-merchant-bound", t8, false));
-        if (!t8) passed++; else failed++;
+        if (!t8) passed++;
+        else failed++;
 
         // Test Case 9: Visa, merchant-bound, multi-use, offline -> INVALID
         var t9 = validate("1234567890123011", "12345610", 50.0);
         results.add(check("TC9: Visa merchant-bound multi-use", t9, false));
-        if (!t9) passed++; else failed++;
+        if (!t9) passed++;
+        else failed++;
 
         // Test Case 10: Large data - process 10000 transactions
         var t10 = testLargeData();
         results.add(check("TC10: Large data 10000 txns", t10, true));
-        if (t10) passed++; else failed++;
+        if (t10) passed++;
+        else failed++;
 
         // Print all results
         results.forEach(System.out::println);
@@ -132,7 +142,7 @@ public class VirtualCardValidator {
     static String check(String name, boolean actual, boolean expected) {
         var status = actual == expected ? "PASS ✓" : "FAIL ✗";
         return String.format("%-40s | Expected: %-5s | Actual: %-5s | %s",
-            name, expected, actual, status);
+                name, expected, actual, status);
     }
 
     // Large data test - validates 10000 transactions
@@ -140,19 +150,20 @@ public class VirtualCardValidator {
 
         // Generate and validate 10000 random transactions
         var count = IntStream.range(0, 10000)
-            .mapToObj(i -> {
-                // Create valid Visa merchant-bound transaction
-                var vcn = "1234567890123010";
-                var txn = "12345611";
-                return validate(vcn, txn, 50.0);
-            })
-            .filter(b -> b) // count valid ones
-            .count();
+                .mapToObj(i -> {
+                    // Create valid Visa merchant-bound transaction
+                    var vcn = "1234567890123010";
+                    var txn = "12345611";
+                    return validate(vcn, txn, 50.0);
+                })
+                .filter(b -> b) // count valid ones
+                .count();
 
         // All should be valid
         return count == 10000;
     }
 
     // Record to hold parsed transaction data - Java 21 feature for compact data classes
-    record TxnData(boolean online, boolean charge, boolean merchantBound, boolean visa, boolean multiUse, double amt) {}
+    record TxnData(boolean online, boolean charge, boolean merchantBound, boolean visa, boolean multiUse, double amt) {
+    }
 }

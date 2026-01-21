@@ -195,7 +195,7 @@ public class Solution {
      * @param start true=start of an interval, false=end
      * @param price the vendor price
      */ // record to represent an event in the sweep: time, isStart, and price
-        private record Event(int time, boolean start, int price) {
+    private record Event(int time, boolean start, int price) {
         // constructor
     }
 }

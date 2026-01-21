@@ -75,6 +75,6 @@ public class MessageRateLimiter {
     }
 
     // Simple pair class to hold timestamp and message content
-        record Pair<T, U>(T first, U second) {
+    record Pair<T, U>(T first, U second) {
     }
 }

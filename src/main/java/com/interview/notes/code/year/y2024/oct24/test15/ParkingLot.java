@@ -5,8 +5,8 @@ class ParkingLot {
     private final int motorcycleSpots;
     private final int carSpots;
     private final int largeSpots;
-    private int currentLevel;
     private final int[][] spots;
+    private int currentLevel;
 
     public ParkingLot(int levels, int motorcycleSpots, int carSpots, int largeSpots) {
         this.levels = levels;

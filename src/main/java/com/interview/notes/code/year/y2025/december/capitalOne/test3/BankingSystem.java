@@ -4,15 +4,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class BankingSystem {
-    
+
     // Map to store account id and their balance
     // Key = accountId, Value = balance amount
     private final Map<String, Long> accounts;
-    
+
     // Map to store activity indicator for each account
     // Key = accountId, Value = total activity (absolute sum of all transactions)
     private final Map<String, Long> activityTracker;
-    
+
     // Constructor to initialize the banking system
     public BankingSystem() {
         // Create empty HashMap to store accounts
@@ -22,7 +22,7 @@ public class BankingSystem {
         // Activity tracks sum of deposits and successful transfers
         this.activityTracker = new HashMap<>();
     }
-    
+
     // Main method for testing
     public static void main(String[] args) {
         // Counter for tracking test results
@@ -49,11 +49,11 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 2: Basic Top Activity ===");
         BankingSystem bank2 = new BankingSystem();
         String[] ops2 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 100",
-            "DEPOSIT acc2 200",
-            "TOP_ACTIVITY 2"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 100",
+                "DEPOSIT acc2 200",
+                "TOP_ACTIVITY 2"
         };
         // acc2 has activity 200, acc1 has activity 100
         List<String> expected2 = List.of("true", "true", "100", "200", "acc2(200), acc1(100)");
@@ -71,13 +71,13 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 3: Top Activity with Transfers ===");
         BankingSystem bank3 = new BankingSystem();
         String[] ops3 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "CREATE_ACCOUNT acc3",
-            "DEPOSIT acc1 500",
-            "TRANSFER acc1 acc2 200",
-            "TRANSFER acc1 acc3 100",
-            "TOP_ACTIVITY 3"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "CREATE_ACCOUNT acc3",
+                "DEPOSIT acc1 500",
+                "TRANSFER acc1 acc2 200",
+                "TRANSFER acc1 acc3 100",
+                "TOP_ACTIVITY 3"
         };
         // acc1: 500 (deposit) + 200 (sent) + 100 (sent) = 800
         // acc2: 200 (received) = 200
@@ -97,13 +97,13 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 4: Tie Breaker Alphabetical ===");
         BankingSystem bank4 = new BankingSystem();
         String[] ops4 = {
-            "CREATE_ACCOUNT charlie",
-            "CREATE_ACCOUNT alice",
-            "CREATE_ACCOUNT bob",
-            "DEPOSIT charlie 100",
-            "DEPOSIT alice 100",
-            "DEPOSIT bob 100",
-            "TOP_ACTIVITY 3"
+                "CREATE_ACCOUNT charlie",
+                "CREATE_ACCOUNT alice",
+                "CREATE_ACCOUNT bob",
+                "DEPOSIT charlie 100",
+                "DEPOSIT alice 100",
+                "DEPOSIT bob 100",
+                "TOP_ACTIVITY 3"
         };
         // All have same activity 100, sort alphabetically: alice, bob, charlie
         List<String> expected4 = List.of("true", "true", "true", "100", "100", "100", "alice(100), bob(100), charlie(100)");
@@ -121,10 +121,10 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 5: N Greater Than Accounts ===");
         BankingSystem bank5 = new BankingSystem();
         String[] ops5 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 100",
-            "TOP_ACTIVITY 5"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 100",
+                "TOP_ACTIVITY 5"
         };
         // Only 2 accounts, return all sorted by activity then alphabetically
         List<String> expected5 = List.of("true", "true", "100", "acc1(100), acc2(0)");
@@ -142,11 +142,11 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 6: Failed Transfers Not Counted ===");
         BankingSystem bank6 = new BankingSystem();
         String[] ops6 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 100",
-            "TRANSFER acc1 acc2 200",
-            "TOP_ACTIVITY 2"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 100",
+                "TRANSFER acc1 acc2 200",
+                "TOP_ACTIVITY 2"
         };
         // Transfer fails (insufficient funds), not counted
         // acc1: 100 only, acc2: 0
@@ -165,11 +165,11 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 7: Top Activity N=1 ===");
         BankingSystem bank7 = new BankingSystem();
         String[] ops7 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 500",
-            "DEPOSIT acc2 300",
-            "TOP_ACTIVITY 1"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 500",
+                "DEPOSIT acc2 300",
+                "TOP_ACTIVITY 1"
         };
         // Only return top 1 account
         List<String> expected7 = List.of("true", "true", "500", "300", "acc1(500)");
@@ -187,13 +187,13 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 8: Multiple Deposits ===");
         BankingSystem bank8 = new BankingSystem();
         String[] ops8 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "DEPOSIT acc1 100",
-            "DEPOSIT acc1 200",
-            "DEPOSIT acc1 300",
-            "DEPOSIT acc2 500",
-            "TOP_ACTIVITY 2"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "DEPOSIT acc1 100",
+                "DEPOSIT acc1 200",
+                "DEPOSIT acc1 300",
+                "DEPOSIT acc2 500",
+                "TOP_ACTIVITY 2"
         };
         // acc1: 100+200+300 = 600, acc2: 500
         List<String> expected8 = List.of("true", "true", "100", "300", "600", "500", "acc1(600), acc2(500)");
@@ -211,10 +211,10 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 9: Transfer to Non-Existing Not Counted ===");
         BankingSystem bank9 = new BankingSystem();
         String[] ops9 = {
-            "CREATE_ACCOUNT acc1",
-            "DEPOSIT acc1 500",
-            "TRANSFER acc1 acc2 100",
-            "TOP_ACTIVITY 1"
+                "CREATE_ACCOUNT acc1",
+                "DEPOSIT acc1 500",
+                "TRANSFER acc1 acc2 100",
+                "TOP_ACTIVITY 1"
         };
         // Transfer fails (acc2 doesn't exist), only deposit counts
         List<String> expected9 = List.of("true", "500", "-1", "acc1(500)");
@@ -232,10 +232,10 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 10: Transfer to Self Not Counted ===");
         BankingSystem bank10 = new BankingSystem();
         String[] ops10 = {
-            "CREATE_ACCOUNT acc1",
-            "DEPOSIT acc1 500",
-            "TRANSFER acc1 acc1 100",
-            "TOP_ACTIVITY 1"
+                "CREATE_ACCOUNT acc1",
+                "DEPOSIT acc1 500",
+                "TRANSFER acc1 acc1 100",
+                "TOP_ACTIVITY 1"
         };
         // Self transfer fails, only deposit counts
         List<String> expected10 = List.of("true", "500", "-1", "acc1(500)");
@@ -253,15 +253,15 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 11: Complex Mixed Operations ===");
         BankingSystem bank11 = new BankingSystem();
         String[] ops11 = {
-            "CREATE_ACCOUNT acc1",
-            "CREATE_ACCOUNT acc2",
-            "CREATE_ACCOUNT acc3",
-            "DEPOSIT acc1 1000",
-            "DEPOSIT acc2 500",
-            "TRANSFER acc1 acc2 300",
-            "TRANSFER acc2 acc3 400",
-            "TRANSFER acc1 acc3 200",
-            "TOP_ACTIVITY 3"
+                "CREATE_ACCOUNT acc1",
+                "CREATE_ACCOUNT acc2",
+                "CREATE_ACCOUNT acc3",
+                "DEPOSIT acc1 1000",
+                "DEPOSIT acc2 500",
+                "TRANSFER acc1 acc2 300",
+                "TRANSFER acc2 acc3 400",
+                "TRANSFER acc1 acc3 200",
+                "TOP_ACTIVITY 3"
         };
         // acc1: 1000 + 300 + 200 = 1500
         // acc2: 500 + 300 + 400 = 1200
@@ -281,10 +281,10 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 12: Zero Activity Tie ===");
         BankingSystem bank12 = new BankingSystem();
         String[] ops12 = {
-            "CREATE_ACCOUNT zeta",
-            "CREATE_ACCOUNT alpha",
-            "CREATE_ACCOUNT beta",
-            "TOP_ACTIVITY 3"
+                "CREATE_ACCOUNT zeta",
+                "CREATE_ACCOUNT alpha",
+                "CREATE_ACCOUNT beta",
+                "TOP_ACTIVITY 3"
         };
         // All have 0 activity, sort alphabetically
         List<String> expected12 = List.of("true", "true", "true", "alpha(0), beta(0), zeta(0)");
@@ -358,10 +358,10 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 15: Deposit to Non-Existing Not Counted ===");
         BankingSystem bank15 = new BankingSystem();
         String[] ops15 = {
-            "CREATE_ACCOUNT acc1",
-            "DEPOSIT acc1 100",
-            "DEPOSIT acc2 500",
-            "TOP_ACTIVITY 1"
+                "CREATE_ACCOUNT acc1",
+                "DEPOSIT acc1 100",
+                "DEPOSIT acc2 500",
+                "TOP_ACTIVITY 1"
         };
         // acc2 doesn't exist, deposit fails
         List<String> expected15 = List.of("true", "100", "-1", "acc1(100)");
@@ -379,20 +379,20 @@ public class BankingSystem {
         System.out.println("\n=== TEST CASE 16: Mixed Tie and Different Activity ===");
         BankingSystem bank16 = new BankingSystem();
         String[] ops16 = {
-            "CREATE_ACCOUNT delta",
-            "CREATE_ACCOUNT alpha",
-            "CREATE_ACCOUNT gamma",
-            "CREATE_ACCOUNT beta",
-            "DEPOSIT delta 100",
-            "DEPOSIT alpha 200",
-            "DEPOSIT gamma 100",
-            "DEPOSIT beta 200",
-            "TOP_ACTIVITY 4"
+                "CREATE_ACCOUNT delta",
+                "CREATE_ACCOUNT alpha",
+                "CREATE_ACCOUNT gamma",
+                "CREATE_ACCOUNT beta",
+                "DEPOSIT delta 100",
+                "DEPOSIT alpha 200",
+                "DEPOSIT gamma 100",
+                "DEPOSIT beta 200",
+                "TOP_ACTIVITY 4"
         };
         // alpha:200, beta:200, delta:100, gamma:100
         // Sort: alpha(200), beta(200), delta(100), gamma(100)
         List<String> expected16 = List.of("true", "true", "true", "true", "100", "200", "100", "200",
-            "alpha(200), beta(200), delta(100), gamma(100)");
+                "alpha(200), beta(200), delta(100), gamma(100)");
         List<String> result16 = bank16.processOperations(ops16);
         if (result16.equals(expected16)) {
             System.out.println("PASS");
@@ -415,7 +415,7 @@ public class BankingSystem {
             System.out.println("STATUS: SOME TESTS FAILED!");
         }
     }
-    
+
     // Method to create a new account
     // Returns "true" if account created successfully
     // Returns "false" if account already exists
@@ -435,7 +435,7 @@ public class BankingSystem {
         // Return true as account was created successfully
         return "true";
     }
-    
+
     // Method to deposit money into an account
     // Returns new balance after deposit
     // Returns -1 if account does not exist
@@ -463,7 +463,7 @@ public class BankingSystem {
         // Return the new balance after deposit
         return newBalance;
     }
-    
+
     // Method to transfer money between accounts
     // Returns balance of fromId after successful transfer
     // Returns -1 if transfer fails for any reason
@@ -534,7 +534,7 @@ public class BankingSystem {
         // Return the new balance of source account
         return newFromBalance;
     }
-    
+
     // Method to get top n most active accounts
     // Returns array of formatted strings with accountId and activity
     // Format: ["accountId1(activity1)", "accountId2(activity2)", ...]
@@ -545,27 +545,27 @@ public class BankingSystem {
         // Step 3: Limit to top n accounts
         // Step 4: Format each entry as "accountId(activity)"
         List<String> result = activityTracker.entrySet()  // Get all account-activity pairs
-            .stream()  // Convert to stream for functional processing
-            .sorted(  // Sort the stream
-                // Create comparator for sorting
-                // First: compare by activity value in descending order
-                Comparator.<Map.Entry<String, Long>>comparingLong(
-                    entry -> entry.getValue()  // Get activity value for comparison
+                .stream()  // Convert to stream for functional processing
+                .sorted(  // Sort the stream
+                        // Create comparator for sorting
+                        // First: compare by activity value in descending order
+                        Comparator.<Map.Entry<String, Long>>comparingLong(
+                                        entry -> entry.getValue()  // Get activity value for comparison
+                                )
+                                .reversed()  // Reverse to make it descending order (highest first)
+                                // Second: if activity is same (tie), compare by accountId
+                                .thenComparing(
+                                        entry -> entry.getKey()  // Get accountId for alphabetical comparison
+                                )
                 )
-                .reversed()  // Reverse to make it descending order (highest first)
-                // Second: if activity is same (tie), compare by accountId
-                .thenComparing(
-                    entry -> entry.getKey()  // Get accountId for alphabetical comparison
-                )
-            )
-            .limit(n)  // Take only top n accounts (or all if less than n exist)
-            .map(entry -> entry.getKey() + "(" + entry.getValue() + ")")  // Format output
-            .collect(Collectors.toList());  // Collect results into a list
+                .limit(n)  // Take only top n accounts (or all if less than n exist)
+                .map(entry -> entry.getKey() + "(" + entry.getValue() + ")")  // Format output
+                .collect(Collectors.toList());  // Collect results into a list
 
         // Return the list of formatted activity strings
         return result;
     }
-    
+
     // Method to process operations from string array
     // Each string contains operation and parameters
     public List<String> processOperations(String[] operations) {

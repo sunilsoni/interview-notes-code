@@ -85,18 +85,18 @@ public class PairSumFinderJava7 {
     }
 
     // Simple Pair class to hold two integers and support equality
-        record Pair(int first, int second) {
+    record Pair(int first, int second) {
 
         @Override
-            public boolean equals(Object o) {
-                if (this == o) return true;
-                if (!(o instanceof Pair p)) return false;
-                return first == p.first && second == p.second;
-            }
-
-        @Override
-            public String toString() {
-                return "(" + first + ", " + second + ")";
-            }
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Pair p)) return false;
+            return first == p.first && second == p.second;
         }
+
+        @Override
+        public String toString() {
+            return "(" + first + ", " + second + ")";
+        }
+    }
 }

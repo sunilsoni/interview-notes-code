@@ -13,8 +13,6 @@ import java.text.NumberFormat;
  */
 public class Converter {
 
-    public static NumberFormat thetaFormat = new DecimalFormat("##0.0000000");
-
     // GEO Constants for the Earth and Florida
     private static final double littleA = 6378137.0;
     private static final double littleE = 0.081819191;
@@ -25,6 +23,7 @@ public class Converter {
     private static final double falseNorth = 0.0;
     private static final double phiOne = Math.toRadians(24.000000);
     private static final double phiTwo = Math.toRadians(31.500000);
+    public static NumberFormat thetaFormat = new DecimalFormat("##0.0000000");
 
     // URL related
     // shorthand routines for the java Math package

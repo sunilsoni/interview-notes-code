@@ -1,6 +1,9 @@
 package com.interview.notes.code.year.y2024.dec24.amazon.test7;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /*
@@ -116,14 +119,14 @@ public class ParkingGarage {
     }
 
     // Ticket class to store ticket information
-        record Ticket(int id, Size size) {
+    record Ticket(int id, Size size) {
 
         @Override
-            public boolean equals(Object obj) {
-                if (this == obj) return true;
-                if (!(obj instanceof Ticket other)) return false;
-                return this.id == other.id && this.size == other.size;
-            }
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (!(obj instanceof Ticket other)) return false;
+            return this.id == other.id && this.size == other.size;
+        }
 
     }
 

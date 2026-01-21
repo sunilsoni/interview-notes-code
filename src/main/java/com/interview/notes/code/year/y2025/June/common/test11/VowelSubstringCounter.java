@@ -71,6 +71,6 @@ public class VowelSubstringCounter {
     }
 
     /* ---------- simple test harness (no JUnit) ---------- */
-        private record Case(String in, long exp) {
+    private record Case(String in, long exp) {
     }
 }

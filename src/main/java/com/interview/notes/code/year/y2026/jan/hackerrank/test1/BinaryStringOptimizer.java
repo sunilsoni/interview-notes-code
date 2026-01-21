@@ -9,7 +9,7 @@ public class BinaryStringOptimizer {
             if (chars[i] == '1') {
                 if (i + 1 < chars.length && chars[i + 1] == '1') {
                     operations += 1;
-                    i++; 
+                    i++;
                 } else {
                     operations += 2;
                 }
@@ -25,10 +25,10 @@ public class BinaryStringOptimizer {
         runTest("Odd Length", "111", 3);
         runTest("Mixed", "1101", 3);
         runTest("Edge Min", "10", 2);
-        
+
         // Large Data Test
         var sb = new StringBuilder();
-        for(int i=0; i<100000; i++) sb.append("1");
+        for (int i = 0; i < 100000; i++) sb.append("1");
         runTest("Large Input (All 1s)", sb.toString(), 50000);
     }
 
@@ -36,9 +36,9 @@ public class BinaryStringOptimizer {
         long start = System.nanoTime();
         int result = getMinimumOperations(input);
         double timeMs = (System.nanoTime() - start) / 1_000_000.0;
-        
+
         String status = (result == expected) ? "PASS" : "FAIL";
         System.out.printf("%-20s | Status: %-4s | Expected: %-5d | Got: %-5d | Time: %.4f ms%n",
-            testName, status, expected, result, timeMs);
+                testName, status, expected, result, timeMs);
     }
 }

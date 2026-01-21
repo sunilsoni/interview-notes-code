@@ -31,11 +31,11 @@ public class LinkedListNodeReducer {
     public static void main(String[] args) {
         boolean ok = true;
 
-        ok &= test(new int[]{1,1,2,2,2,3,4,4,5}, "1 1 4 4");
+        ok &= test(new int[]{1, 1, 2, 2, 2, 3, 4, 4, 5}, "1 1 4 4");
         ok &= test(new int[]{1}, "");
-        ok &= test(new int[]{2,2}, "2 2");
-        ok &= test(new int[]{3,3,3}, "");
-        ok &= test(new int[]{5,5,5,5}, "5 5 5 5");
+        ok &= test(new int[]{2, 2}, "2 2");
+        ok &= test(new int[]{3, 3, 3}, "");
+        ok &= test(new int[]{5, 5, 5, 5}, "5 5 5 5");
 
         int[] large = new int[100000];
         Arrays.fill(large, 7);

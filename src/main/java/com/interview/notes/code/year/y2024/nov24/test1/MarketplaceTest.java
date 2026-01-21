@@ -188,8 +188,8 @@ class JobPosting {
     private final String requirements;
     private final String posterName;
     private final String posterContact;
-    private double lowestBidAmount;
     private final List<Bid> bids;
+    private double lowestBidAmount;
     private LocalDateTime expirationDate;
     private boolean isClosed;
     private Bid winner;

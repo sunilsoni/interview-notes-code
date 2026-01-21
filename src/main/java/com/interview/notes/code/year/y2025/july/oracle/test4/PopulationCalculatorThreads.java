@@ -107,9 +107,9 @@ public class PopulationCalculatorThreads {
      * @param name       the state's name (e.g. "California")
      * @param population the state's population
      */ // ──────────────────────────────────────────────────────────────────────────────
-        // Simple POJO representing a US state and its population
-        // ──────────────────────────────────────────────────────────────────────────────
-        public record State(String name, long population) {
+    // Simple POJO representing a US state and its population
+    // ──────────────────────────────────────────────────────────────────────────────
+    public record State(String name, long population) {
         /**
          * Constructor to initialize the state.
          *
@@ -121,24 +121,24 @@ public class PopulationCalculatorThreads {
             // store the provided population
         }
 
-            /**
-             * Getter for the state's population.
-             *
-             * @return the population value
-             */
-            @Override
-            public long population() {
-                return population;             // return the stored population
-            }
-
-            /**
-             * Getter for the state's name.
-             *
-             * @return the name value
-             */
-            @Override
-            public String name() {
-                return name;                   // return the stored name
-            }
+        /**
+         * Getter for the state's population.
+         *
+         * @return the population value
+         */
+        @Override
+        public long population() {
+            return population;             // return the stored population
         }
+
+        /**
+         * Getter for the state's name.
+         *
+         * @return the name value
+         */
+        @Override
+        public String name() {
+            return name;                   // return the stored name
+        }
+    }
 }

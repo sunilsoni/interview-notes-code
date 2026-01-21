@@ -13,10 +13,10 @@ public class FruitCount {
 
         // Step 2: Use streams to group and count
         Map<String, Long> fruitCount = fruits.stream()
-            .collect(Collectors.groupingBy(
-                Function.identity(),   // key = element itself
-                Collectors.counting()  // value = count of occurrences
-            ));
+                .collect(Collectors.groupingBy(
+                        Function.identity(),   // key = element itself
+                        Collectors.counting()  // value = count of occurrences
+                ));
 
         // Step 3: Print the result
         System.out.println(fruitCount);

@@ -55,28 +55,28 @@ public class DoubleEvaluator {
         System.out.println("--- Double Evaluator Tests ---");
 
         var tests = new LinkedHashMap<String, Double>();
-        
+
         // Basic Decimal Cases
         tests.put("1.5 + 2.5", 4.0);            // Simple decimal addition
         tests.put("3.5 * 2", 7.0);              // Decimal multiplication
         tests.put("1 / 2", 0.5);                // Float division (Crucial change from int version)
         tests.put("4 * 3 + 1 / 2 - 5", 7.5);    // 12 + 0.5 - 5 = 7.5
         tests.put("10.5 + 2.5 * 2", 15.5);      // Precedence: 10.5 + 5.0
-        
+
         // Large Data Test: Sum of 0.5 repeated 100,000 times -> Should be 50,000.0
         String largeInput = IntStream.range(0, 100000)
-                                     .mapToObj(i -> "0.5")
-                                     .collect(Collectors.joining("+"));
+                .mapToObj(i -> "0.5")
+                .collect(Collectors.joining("+"));
         tests.put(largeInput, 50000.0);
 
         tests.forEach((input, expected) -> {
             double result = evaluate(input);
             // Use a small epsilon for double comparison logic
             String status = Math.abs(result - expected) < 0.0001 ? "PASS" : "FAIL";
-            
+
             String shortInput = input.length() > 20 ? "Large Data..." : input;
-            System.out.printf("Test: %-15s | Exp: %-8.1f | Got: %-8.1f | %s%n", 
-                shortInput, expected, result, status);
+            System.out.printf("Test: %-15s | Exp: %-8.1f | Got: %-8.1f | %s%n",
+                    shortInput, expected, result, status);
         });
     }
 }

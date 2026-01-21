@@ -10,21 +10,21 @@ import java.util.stream.IntStream;
 
 /**
  * Thread-Safe LRU Cache Implementation
- * 
+ * <p>
  * Design:
  * - ConcurrentHashMap: Thread-safe O(1) key lookup
  * - Doubly Linked List: O(1) insertion/deletion for order tracking
  * - ReentrantReadWriteLock: Allows multiple readers OR single writer
- * 
+ * <p>
  * Time Complexity: O(1) for both get and put
  * Space Complexity: O(capacity)
  */
 public class ThreadSafeLRUCache<K, V> {
-    
+
     // ==================== INNER CLASS: NODE ====================
     // Maximum number of entries cache can hold
     private final int capacity;
-    
+
     // ==================== INSTANCE VARIABLES ====================
     // Thread-safe map for O(1) key-to-node lookup
     private final ConcurrentHashMap<K, Node<K, V>> cacheMap;
@@ -43,9 +43,10 @@ public class ThreadSafeLRUCache<K, V> {
     private final AtomicInteger hitCount;
     // Counter for cache misses (for statistics)
     private final AtomicInteger missCount;
-    
+
     /**
      * Initialize thread-safe LRU Cache
+     *
      * @param capacity maximum entries (must be positive)
      * @throws IllegalArgumentException if capacity <= 0
      */
@@ -95,9 +96,9 @@ public class ThreadSafeLRUCache<K, V> {
         // Initialize miss counter to zero
         this.missCount = new AtomicInteger(0);
     }
-    
+
     // ==================== CONSTRUCTOR ====================
-    
+
     public static void main(String[] args) {
 
         // Initialize test counters
@@ -137,7 +138,7 @@ public class ThreadSafeLRUCache<K, V> {
             // Print result
             System.out.println("  Expected: get(1)=Apple, get(2)=Banana, get(3)=Cherry, size=3");
             System.out.println("  Actual:   get(1)=" + cache.get(1) + ", get(2)=" + cache.get(2) +
-                             ", get(3)=" + cache.get(3) + ", size=" + cache.size());
+                    ", get(3)=" + cache.get(3) + ", size=" + cache.size());
             System.out.println("  Result: " + (testPassed ? "PASS ✓" : "FAIL ✗"));
 
             if (testPassed) passedTests++;
@@ -416,7 +417,7 @@ public class ThreadSafeLRUCache<K, V> {
 
             // Insert 100000 entries using Stream API
             IntStream.range(0, totalEntries)
-                     .forEach(i -> cache.put(i, "Value_" + i));
+                    .forEach(i -> cache.put(i, "Value_" + i));
 
             // Record end time for puts
             long putTime = System.currentTimeMillis() - startTime;
@@ -433,7 +434,7 @@ public class ThreadSafeLRUCache<K, V> {
             // Test gets performance
             startTime = System.currentTimeMillis();
             IntStream.range(totalEntries - cacheCapacity, totalEntries)
-                     .forEach(i -> cache.get(i));
+                    .forEach(i -> cache.get(i));
             long getTime = System.currentTimeMillis() - startTime;
 
             boolean testPassed = sizeCorrect && oldEvicted && recentPresent;
@@ -441,7 +442,7 @@ public class ThreadSafeLRUCache<K, V> {
             System.out.println("  Scenario: Insert 100,000 entries into cache of size 10,000");
             System.out.println("  Expected: size=10000, old keys evicted, recent keys present");
             System.out.println("  Actual:   size=" + cache.size() + ", get(0)=" + cache.get(0) +
-                             ", get(99999)=" + cache.get(99999));
+                    ", get(99999)=" + cache.get(99999));
             System.out.println("  Performance: PUT time=" + putTime + "ms, GET time=" + getTime + "ms");
             System.out.println("  Result: " + (testPassed ? "PASS ✓" : "FAIL ✗"));
 
@@ -597,7 +598,7 @@ public class ThreadSafeLRUCache<K, V> {
             System.out.println("  Scenario: 10 reader threads + 10 writer threads, 500 ops each");
             System.out.println("  Expected: No errors, all operations complete");
             System.out.println("  Actual:   Reads=" + readOps.get() + ", Writes=" + writeOps.get() +
-                             ", Errors=" + errors.get());
+                    ", Errors=" + errors.get());
             System.out.println("  Performance: " + totalTime + "ms total");
             System.out.println("  Result: " + (testPassed ? "PASS ✓" : "FAIL ✗"));
 
@@ -640,7 +641,7 @@ public class ThreadSafeLRUCache<K, V> {
             System.out.println("  Scenario: put(A), put(B), put(C), get(A), put(D)");
             System.out.println("  Expected: B evicted (LRU after get(A)), A,C,D present");
             System.out.println("  Actual:   B=" + cache.get("B") + ", A=" + aPresent +
-                             ", C=" + cPresent + ", D=" + dPresent);
+                    ", C=" + cPresent + ", D=" + dPresent);
             System.out.println("  Result: " + (testPassed ? "PASS ✓" : "FAIL ✗"));
 
             if (testPassed) passedTests++;
@@ -684,7 +685,7 @@ public class ThreadSafeLRUCache<K, V> {
             System.out.println("  Scenario: 3 cache hits, 2 cache misses");
             System.out.println("  Expected: hits=3, misses=2, ratio=0.6");
             System.out.println("  Actual:   hits=" + cache.getHitCount() + ", misses=" + cache.getMissCount() +
-                             ", ratio=" + String.format("%.2f", cache.getHitRatio()));
+                    ", ratio=" + String.format("%.2f", cache.getHitRatio()));
             System.out.println("  Result: " + (testPassed ? "PASS ✓" : "FAIL ✗"));
 
             if (testPassed) passedTests++;
@@ -729,8 +730,8 @@ public class ThreadSafeLRUCache<K, V> {
             System.out.println("  Scenario: put(null, value), put(key, null), get(null)");
             System.out.println("  Expected: Exceptions for null key/value in put, null for get(null)");
             System.out.println("  Actual:   nullKey exception=" + nullKeyExceptionCaught +
-                             ", nullValue exception=" + nullValueExceptionCaught +
-                             ", get(null)=" + (nullGetReturnsNull ? "null" : "not null"));
+                    ", nullValue exception=" + nullValueExceptionCaught +
+                    ", get(null)=" + (nullGetReturnsNull ? "null" : "not null"));
             System.out.println("  Result: " + (testPassed ? "PASS ✓" : "FAIL ✗"));
 
             if (testPassed) passedTests++;
@@ -757,16 +758,16 @@ public class ThreadSafeLRUCache<K, V> {
 
             // Use parallel stream for stress test
             IntStream.range(0, totalOperations)
-                     .parallel()
-                     .forEach(i -> {
-                         // Mix of put and get operations
-                         if (i % 3 == 0) {
-                             cache.get((long) (i % 50000));
-                         } else {
-                             cache.put((long) i, "Value_" + i);
-                         }
-                         completedOps.incrementAndGet();
-                     });
+                    .parallel()
+                    .forEach(i -> {
+                        // Mix of put and get operations
+                        if (i % 3 == 0) {
+                            cache.get((long) (i % 50000));
+                        } else {
+                            cache.put((long) i, "Value_" + i);
+                        }
+                        completedOps.incrementAndGet();
+                    });
 
             long totalTime = System.currentTimeMillis() - startTime;
 
@@ -780,7 +781,7 @@ public class ThreadSafeLRUCache<K, V> {
             System.out.println("  Expected: All operations complete, cache size <= 50000");
             System.out.println("  Actual:   Completed=" + completedOps.get() + ", Cache size=" + cache.size());
             System.out.println("  Performance: " + totalTime + "ms (" +
-                             (totalOperations / (totalTime / 1000.0)) + " ops/sec)");
+                    (totalOperations / (totalTime / 1000.0)) + " ops/sec)");
             System.out.println("  Result: " + (testPassed ? "PASS ✓" : "FAIL ✗"));
 
             if (testPassed) passedTests++;
@@ -809,268 +810,268 @@ public class ThreadSafeLRUCache<K, V> {
 
         System.out.println("╚══════════════════════════════════════════════════════════════╝");
     }
-    
+
     // ==================== CORE OPERATIONS ====================
-    
+
     /**
      * Get value from cache by key
      * Thread-safe: Uses read lock initially, upgrades to write for reordering
-     * 
+     *
      * @param key the key to lookup
      * @return value if found, null if not present
      */
     public V get(K key) {
-        
+
         // Null keys not allowed
         if (key == null) {
             // Return null for null key
             return null;
         }
-        
+
         // Acquire write lock (need to modify list order on access)
         writeLock.lock();
-        
+
         try {
             // Lookup node in map - O(1) operation
             Node<K, V> node = cacheMap.get(key);
-            
+
             // Check if key was found
             if (node == null) {
                 // Key not in cache - increment miss count
                 missCount.incrementAndGet();
-                
+
                 // Return null to indicate cache miss
                 return null;
             }
-            
+
             // Key found - increment hit count
             hitCount.incrementAndGet();
-            
+
             // Move accessed node to front (most recently used)
             // This maintains LRU order
             moveToFront(node);
-            
+
             // Return the cached value
             return node.value;
-            
+
         } finally {
             // ALWAYS release lock in finally block
             // This ensures lock is released even if exception occurs
             writeLock.unlock();
         }
     }
-    
+
     /**
      * Put key-value pair into cache
      * Thread-safe: Uses write lock for modification
-     * 
+     * <p>
      * If key exists: Update value and move to front
      * If key new and cache full: Evict LRU item first
-     * 
+     *
      * @param key   the key (cannot be null)
      * @param value the value to cache (cannot be null)
      */
     public void put(K key, V value) {
-        
+
         // Validate key - null not allowed
         if (key == null) {
             // Throw exception for null key
             throw new IllegalArgumentException("Key cannot be null");
         }
-        
+
         // Validate value - null not allowed
         if (value == null) {
             // Throw exception for null value
             throw new IllegalArgumentException("Value cannot be null");
         }
-        
+
         // Acquire write lock for thread-safe modification
         writeLock.lock();
-        
+
         try {
             // Check if key already exists in cache
             Node<K, V> existingNode = cacheMap.get(key);
-            
+
             if (existingNode != null) {
                 // Key exists - update the value
                 existingNode.value = value;
-                
+
                 // Move to front (mark as most recently used)
                 moveToFront(existingNode);
-                
+
             } else {
                 // Key is new - check if we need to evict
                 if (cacheMap.size() >= capacity) {
                     // Cache is full - must evict LRU item
                     evictLeastRecentlyUsed();
                 }
-                
+
                 // Create new node with key-value pair
                 Node<K, V> newNode = new Node<>(key, value);
-                
+
                 // Add node to front of linked list
                 addToFront(newNode);
-                
+
                 // Add to map for O(1) lookup
                 cacheMap.put(key, newNode);
             }
-            
+
         } finally {
             // ALWAYS release write lock in finally
             writeLock.unlock();
         }
     }
-    
+
     /**
      * Remove key from cache if present
      * Thread-safe operation
-     * 
+     *
      * @param key the key to remove
      * @return removed value, or null if key not found
      */
     public V remove(K key) {
-        
+
         // Null check for key
         if (key == null) {
             return null;
         }
-        
+
         // Acquire write lock for modification
         writeLock.lock();
-        
+
         try {
             // Get node from map
             Node<K, V> node = cacheMap.get(key);
-            
+
             // Check if key exists
             if (node == null) {
                 // Key not found - return null
                 return null;
             }
-            
+
             // Remove from linked list
             removeNode(node);
-            
+
             // Remove from map
             cacheMap.remove(key);
-            
+
             // Return the removed value
             return node.value;
-            
+
         } finally {
             // Release write lock
             writeLock.unlock();
         }
     }
-    
+
     // ==================== HELPER METHODS (Private) ====================
-    
+
     /**
      * Move existing node to front of list
      * Called when node is accessed (get) or updated (put)
-     * 
+     *
      * @param node the node to move to front
      */
     private void moveToFront(Node<K, V> node) {
-        
+
         // First: Remove node from current position
         removeNode(node);
-        
+
         // Second: Add node to front (after head)
         addToFront(node);
     }
-    
+
     /**
      * Remove node from its current position in doubly linked list
      * Does NOT remove from map - just unlinks from list
-     * 
+     *
      * @param node the node to unlink
      */
     private void removeNode(Node<K, V> node) {
-        
+
         // Get reference to node before current
         Node<K, V> prevNode = node.prev;
-        
+
         // Get reference to node after current
         Node<K, V> nextNode = node.next;
-        
+
         // Connect previous to next (skip over current node)
         // Before: prev <-> current <-> next
         // After:  prev <-> next
         prevNode.next = nextNode;
-        
+
         // Connect next back to previous
         nextNode.prev = prevNode;
-        
+
         // Clear current node's pointers (optional but clean)
         node.prev = null;
         node.next = null;
     }
-    
+
     /**
      * Add node to front of list (right after head sentinel)
      * Front = most recently used position
-     * 
+     *
      * @param node the node to add
      */
     private void addToFront(Node<K, V> node) {
-        
+
         // Get current first real node (node after head)
         Node<K, V> firstNode = head.next;
-        
+
         // Point head to new node
         // head -> newNode
         head.next = node;
-        
+
         // Point new node back to head
         // head <-> newNode
         node.prev = head;
-        
+
         // Point new node to old first node
         // head <-> newNode -> firstNode
         node.next = firstNode;
-        
+
         // Point old first node back to new node
         // head <-> newNode <-> firstNode
         firstNode.prev = node;
     }
-    
+
     /**
      * Evict the least recently used item from cache
      * LRU item is at tail.prev (just before tail sentinel)
      */
     private void evictLeastRecentlyUsed() {
-        
+
         // Get LRU node (node just before tail)
         Node<K, V> lruNode = tail.prev;
-        
+
         // Safety check - don't remove head sentinel
         if (lruNode == head) {
             // Cache is empty - nothing to evict
             return;
         }
-        
+
         // Remove from linked list
         removeNode(lruNode);
-        
+
         // Remove from map using stored key
         // This is why we store key in node
         cacheMap.remove(lruNode.key);
     }
-    
+
     // ==================== UTILITY METHODS ====================
-    
+
     /**
      * Get current number of entries in cache
      * Thread-safe read operation
-     * 
+     *
      * @return current cache size
      */
     public int size() {
-        
+
         // Acquire read lock for consistent read
         readLock.lock();
-        
+
         try {
             // Return map size
             return cacheMap.size();
@@ -1079,19 +1080,19 @@ public class ThreadSafeLRUCache<K, V> {
             readLock.unlock();
         }
     }
-    
+
     /**
      * Check if cache contains given key
      * Thread-safe read operation
-     * 
+     *
      * @param key the key to check
      * @return true if key exists in cache
      */
     public boolean containsKey(K key) {
-        
+
         // Acquire read lock
         readLock.lock();
-        
+
         try {
             // Check map for key
             return cacheMap.containsKey(key);
@@ -1100,95 +1101,100 @@ public class ThreadSafeLRUCache<K, V> {
             readLock.unlock();
         }
     }
-    
+
     /**
      * Check if cache is empty
+     *
      * @return true if cache has no entries
      */
     public boolean isEmpty() {
-        
+
         readLock.lock();
-        
+
         try {
             return cacheMap.isEmpty();
         } finally {
             readLock.unlock();
         }
     }
-    
+
     /**
      * Clear all entries from cache
      * Thread-safe operation
      */
     public void clear() {
-        
+
         // Acquire write lock for modification
         writeLock.lock();
-        
+
         try {
             // Clear the map
             cacheMap.clear();
-            
+
             // Reset linked list to empty state
             head.next = tail;
             tail.prev = head;
-            
+
             // Reset statistics
             hitCount.set(0);
             missCount.set(0);
-            
+
         } finally {
             // Release write lock
             writeLock.unlock();
         }
     }
-    
+
     /**
      * Get cache hit count for statistics
+     *
      * @return number of cache hits
      */
     public int getHitCount() {
         return hitCount.get();
     }
-    
+
     /**
      * Get cache miss count for statistics
+     *
      * @return number of cache misses
      */
     public int getMissCount() {
         return missCount.get();
     }
-    
+
     /**
      * Calculate cache hit ratio
+     *
      * @return hit ratio (0.0 to 1.0)
      */
     public double getHitRatio() {
-        
+
         // Get total accesses
         int hits = hitCount.get();
         int misses = missCount.get();
         int total = hits + misses;
-        
+
         // Avoid division by zero
         if (total == 0) {
             return 0.0;
         }
-        
+
         // Calculate and return ratio
         return (double) hits / total;
     }
-    
+
     /**
      * Get maximum capacity of cache
+     *
      * @return capacity
      */
     public int getCapacity() {
         return capacity;
     }
-    
+
     // ==================== MAIN METHOD - TEST SUITE ====================
-    
+
     /**
      * Node represents single cache entry in doubly linked list
      * Stores key (for map removal), value, and navigation pointers
@@ -1209,6 +1215,7 @@ public class ThreadSafeLRUCache<K, V> {
 
         /**
          * Constructor creates node with key-value pair
+         *
          * @param key   the cache key
          * @param value the cached value
          */

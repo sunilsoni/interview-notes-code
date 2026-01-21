@@ -210,7 +210,7 @@ public class MinimumWindowSubstring {
      * @param t      input string t
      * @param expect expected result
      */ // Simple container to hold a test case: s, t, expected answer, and a name/label.
-        record TestCase(String name, String s, String t, String expect) {
+    record TestCase(String name, String s, String t, String expect) {
         // Constructor to initialize all fields.
         // assign label
         // assign s

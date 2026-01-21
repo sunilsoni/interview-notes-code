@@ -11,11 +11,11 @@ public class VirusSolver {
         if (X >= 2 * Y) return N * Y;
 
         Map<Integer, Long> counts = Arrays.stream(damages)
-            .boxed()
-            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                .boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
         long maxFreq = counts.values().stream().mapToLong(v -> v).max().orElse(0);
-        
+
         long pairs, singles;
 
         if (maxFreq > N / 2) {
@@ -57,7 +57,7 @@ public class VirusSolver {
 
     private static void runTest(String name, int N, int X, int Y, int[] dmg, int exp) {
         int act = virusResolving(N, X, Y, dmg);
-        System.out.printf("[%s] %s | Exp: %d | Act: %d%n", 
-            act == exp ? "PASS" : "FAIL", name, exp, act);
+        System.out.printf("[%s] %s | Exp: %d | Act: %d%n",
+                act == exp ? "PASS" : "FAIL", name, exp, act);
     }
 }

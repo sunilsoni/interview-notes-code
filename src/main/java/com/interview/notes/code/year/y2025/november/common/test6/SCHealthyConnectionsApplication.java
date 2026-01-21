@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  * This class handles dynamic form generation and validation based on JSON schema
  */
 public class SCHealthyConnectionsApplication {
-    
+
     /**
      * Creates sample form schema matching the provided JSON structure
      * Builds complete form definition programmatically
@@ -43,8 +43,8 @@ public class SCHealthyConnectionsApplication {
         // Create gender field as optional select
         FormField gender = new FormField("gender", "select", "Gender");
         gender.setOptions(Arrays.asList(
-            new Option("Male", "male"),      // Male option
-            new Option("Female", "female")   // Female option
+                new Option("Male", "male"),      // Male option
+                new Option("Female", "female")   // Female option
         ));
         gender.setValidations(Map.of("required", false));  // Optional field
         step1.addField(gender);  // Add field to step
@@ -57,8 +57,8 @@ public class SCHealthyConnectionsApplication {
         // Create citizenship question as radio button
         FormField citizen = new FormField("isCitizen", "radio", "Are you a U.S. Citizen?");
         citizen.setOptions(Arrays.asList(
-            new Option("Yes", true),   // Yes option with boolean value
-            new Option("No", false)     // No option with boolean value
+                new Option("Yes", true),   // Yes option with boolean value
+                new Option("No", false)     // No option with boolean value
         ));
         citizen.setValidations(Map.of("required", true));  // Required question
         step2.addField(citizen);  // Add field to step
@@ -66,18 +66,18 @@ public class SCHealthyConnectionsApplication {
         // Create pregnancy question as radio button
         FormField pregnant = new FormField("isPregnant", "radio", "Are you pregnant?");
         pregnant.setOptions(Arrays.asList(
-            new Option("Yes", true),   // Yes option with boolean value
-            new Option("No", false)    // No option with boolean value
+                new Option("Yes", true),   // Yes option with boolean value
+                new Option("No", false)    // No option with boolean value
         ));
         pregnant.setValidations(Map.of("required", true));  // Required question
         step2.addField(pregnant);  // Add field to step
 
         // Create foster care question as radio button
         FormField foster = new FormField("isFosterCare", "radio",
-            "Are you currently in foster care or were you previously?");
+                "Are you currently in foster care or were you previously?");
         foster.setOptions(Arrays.asList(
-            new Option("Yes", true),   // Yes option with boolean value
-            new Option("No", false)    // No option with boolean value
+                new Option("Yes", true),   // Yes option with boolean value
+                new Option("No", false)    // No option with boolean value
         ));
         foster.setValidations(Map.of("required", true));  // Required question
         step2.addField(foster);  // Add field to step
@@ -89,10 +89,10 @@ public class SCHealthyConnectionsApplication {
 
         // Create household members question as radio button
         FormField household = new FormField("hasOtherMembers", "radio",
-            "Is anyone else in your household applying for coverage?");
+                "Is anyone else in your household applying for coverage?");
         household.setOptions(Arrays.asList(
-            new Option("Yes", true),   // Yes option triggers member addition
-            new Option("No", false)    // No option completes application
+                new Option("Yes", true),   // Yes option triggers member addition
+                new Option("No", false)    // No option completes application
         ));
         household.setValidations(Map.of("required", true));  // Required question
         step3.addField(household);  // Add field to step
@@ -117,8 +117,8 @@ public class SCHealthyConnectionsApplication {
         // Create income amount field
         FormField amount = new FormField("amount", "number", "Monthly Amount");
         amount.setValidations(Map.of(
-            "required", true,   // Required field
-            "min", 0           // Minimum value of 0
+                "required", true,   // Required field
+                "min", 0           // Minimum value of 0
         ));
         amount.setErrorMessages(Map.of("required", "Amount is required."));
         incomeStep.addField(amount);  // Add field to step
@@ -133,9 +133,9 @@ public class SCHealthyConnectionsApplication {
         // Create resource type field
         FormField resourceType = new FormField("type", "select", "Resource Type");
         resourceType.setOptions(Arrays.asList(
-            new Option("Bank Account", "bank_account"),  // Bank account option
-            new Option("Vehicle", "vehicle"),            // Vehicle option
-            new Option("Property", "property")           // Property option
+                new Option("Bank Account", "bank_account"),  // Bank account option
+                new Option("Vehicle", "vehicle"),            // Vehicle option
+                new Option("Property", "property")           // Property option
         ));
         resourceType.setValidations(Map.of("required", true));  // Required field
         resourceType.setErrorMessages(Map.of("required", "Type is required."));
@@ -144,8 +144,8 @@ public class SCHealthyConnectionsApplication {
         // Create resource value field
         FormField value = new FormField("value", "number", "Value ($)");
         value.setValidations(Map.of(
-            "required", true,   // Required field
-            "min", 0           // Minimum value of 0
+                "required", true,   // Required field
+                "min", 0           // Minimum value of 0
         ));
         value.setErrorMessages(Map.of("required", "Value is required."));
         resourceStep.addField(value);  // Add field to step
@@ -155,7 +155,7 @@ public class SCHealthyConnectionsApplication {
 
         return schema;  // Return completed schema
     }
-    
+
     /**
      * Main method - Entry point for testing
      * Contains all test cases including edge cases and large data tests
@@ -283,23 +283,23 @@ public class SCHealthyConnectionsApplication {
 
         // Generate 100 household members using Stream API
         List<Map<String, Object>> largeFamily = IntStream.range(0, 100)
-            .mapToObj(i -> {
-                Map<String, Object> member = new HashMap<>();
-                member.put("firstName", "Member" + i);       // Unique first name
-                member.put("lastName", "LargeFamily");      // Same family name
-                member.put("isPregnant", false);
+                .mapToObj(i -> {
+                    Map<String, Object> member = new HashMap<>();
+                    member.put("firstName", "Member" + i);       // Unique first name
+                    member.put("lastName", "LargeFamily");      // Same family name
+                    member.put("isPregnant", false);
 
-                // Add varying income for each member
-                List<Map<String, Object>> incomes = new ArrayList<>();
-                Map<String, Object> income = new HashMap<>();
-                income.put("source", "wage");
-                income.put("amount", 1000.0 + (i * 10));   // Varying amounts
-                incomes.add(income);
-                member.put("incomes", incomes);
+                    // Add varying income for each member
+                    List<Map<String, Object>> incomes = new ArrayList<>();
+                    Map<String, Object> income = new HashMap<>();
+                    income.put("source", "wage");
+                    income.put("amount", 1000.0 + (i * 10));   // Varying amounts
+                    incomes.add(income);
+                    member.put("incomes", incomes);
 
-                return member;
-            })
-            .collect(Collectors.toList());
+                    return member;
+                })
+                .collect(Collectors.toList());
 
         largeApplication.put("householdMembers", largeFamily);
 
@@ -380,7 +380,7 @@ public class SCHealthyConnectionsApplication {
         System.out.println("  - Boundary conditions (zero income) ✓");
         System.out.println("\nAll test cases completed successfully!");
     }
-    
+
     /**
      * FormField class represents a single field in the form
      * Contains all field properties and validation rules
@@ -416,13 +416,13 @@ public class SCHealthyConnectionsApplication {
                 if (value == null) {
                     // Add required field error message or default message
                     errors.add(errorMessages.getOrDefault("required",
-                        label + " is required."));
+                            label + " is required."));
                 }
                 // Check for empty string value
                 else if (value instanceof String && ((String) value).trim().isEmpty()) {
                     // Add required field error for empty strings
                     errors.add(errorMessages.getOrDefault("required",
-                        label + " is required."));
+                            label + " is required."));
                 }
             }
 
@@ -444,20 +444,37 @@ public class SCHealthyConnectionsApplication {
         }
 
         // Getters and setters for all properties
-        public String getKey() { return key; }
-        public String getType() { return type; }
-        public String getLabel() { return label; }
-        public List<Option> getOptions() { return options; }
+        public String getKey() {
+            return key;
+        }
 
-        public void setOptions(List<Option> options) { this.options = options; }
+        public String getType() {
+            return type;
+        }
 
-        public Map<String, Object> getValidations() { return validations; }
+        public String getLabel() {
+            return label;
+        }
+
+        public List<Option> getOptions() {
+            return options;
+        }
+
+        public void setOptions(List<Option> options) {
+            this.options = options;
+        }
+
+        public Map<String, Object> getValidations() {
+            return validations;
+        }
 
         public void setValidations(Map<String, Object> validations) {
             this.validations = validations;
         }
 
-        public Map<String, String> getErrorMessages() { return errorMessages; }
+        public Map<String, String> getErrorMessages() {
+            return errorMessages;
+        }
 
         public void setErrorMessages(Map<String, String> errorMessages) {
             this.errorMessages = errorMessages;
@@ -471,12 +488,12 @@ public class SCHealthyConnectionsApplication {
      * @param label Display text for the option
      * @param value Actual value to be stored
      */
-        record Option(String label, Object value) {
+    record Option(String label, Object value) {
         // Constructor initializes option properties
         // Set display label
         // Set data value
     }
-    
+
     /**
      * FormStep class represents a single step in multi-step form
      * Groups related fields together for better UX
@@ -498,30 +515,37 @@ public class SCHealthyConnectionsApplication {
         public Map<String, List<String>> validateStep(Map<String, Object> data) {
             // Use Stream API to process all fields and collect validation errors
             return fields.stream()
-                .map(field -> {
-                    // Get value for current field from data map
-                    Object value = data.get(field.getKey());
-                    // Validate the field value
-                    List<String> errors = field.validate(value);
-                    // Return entry only if there are errors
-                    return errors.isEmpty() ? null :
-                        new AbstractMap.SimpleEntry<>(field.getKey(), errors);
-                })
-                .filter(Objects::nonNull)  // Filter out null entries (fields without errors)
-                .collect(Collectors.toMap(  // Collect into map
-                    Map.Entry::getKey,       // Use field key as map key
-                    Map.Entry::getValue      // Use error list as map value
-                ));
+                    .map(field -> {
+                        // Get value for current field from data map
+                        Object value = data.get(field.getKey());
+                        // Validate the field value
+                        List<String> errors = field.validate(value);
+                        // Return entry only if there are errors
+                        return errors.isEmpty() ? null :
+                                new AbstractMap.SimpleEntry<>(field.getKey(), errors);
+                    })
+                    .filter(Objects::nonNull)  // Filter out null entries (fields without errors)
+                    .collect(Collectors.toMap(  // Collect into map
+                            Map.Entry::getKey,       // Use field key as map key
+                            Map.Entry::getValue      // Use error list as map value
+                    ));
         }
 
         // Getters for step properties
-        public String getLabel() { return label; }
-        public List<FormField> getFields() { return fields; }
+        public String getLabel() {
+            return label;
+        }
+
+        public List<FormField> getFields() {
+            return fields;
+        }
 
         // Method to add field to step
-        public void addField(FormField field) { fields.add(field); }
+        public void addField(FormField field) {
+            fields.add(field);
+        }
     }
-    
+
     /**
      * FormSchema class represents the complete form structure
      * Contains all steps and nested schemas for complex fields
@@ -551,7 +575,7 @@ public class SCHealthyConnectionsApplication {
                 Map<String, List<String>> stepErrors = step.validateStep(data);
                 // Add all step errors to result
                 stepErrors.forEach((key, errors) ->
-                    errors.forEach(error -> result.addError(key, error))
+                        errors.forEach(error -> result.addError(key, error))
                 );
             });
 
@@ -560,14 +584,27 @@ public class SCHealthyConnectionsApplication {
         }
 
         // Getters and setters for schema properties
-        public String getTitle() { return title; }
-        public List<FormStep> getSteps() { return steps; }
-        public Map<String, FormSchema> getSchemas() { return schemas; }
+        public String getTitle() {
+            return title;
+        }
 
-        public void addStep(FormStep step) { steps.add(step); }
-        public void addSchema(String key, FormSchema schema) { schemas.put(key, schema); }
+        public List<FormStep> getSteps() {
+            return steps;
+        }
+
+        public Map<String, FormSchema> getSchemas() {
+            return schemas;
+        }
+
+        public void addStep(FormStep step) {
+            steps.add(step);
+        }
+
+        public void addSchema(String key, FormSchema schema) {
+            schemas.put(key, schema);
+        }
     }
-    
+
     /**
      * ValidationResult class holds validation results
      * Tracks if validation passed and collects all errors
@@ -584,24 +621,28 @@ public class SCHealthyConnectionsApplication {
         }
 
         // Check if validation passed
-        public boolean isValid() { return valid; }
+        public boolean isValid() {
+            return valid;
+        }
 
         // Get all errors
-        public Map<String, List<String>> getErrors() { return errors; }
+        public Map<String, List<String>> getErrors() {
+            return errors;
+        }
 
         // Get formatted error message for display
         public String getErrorMessage() {
             // Use Stream API to format all errors into readable string
             return errors.entrySet().stream()
-                .flatMap(entry ->
-                    // For each field, format its errors
-                    entry.getValue().stream()
-                        .map(error -> entry.getKey() + ": " + error)
-                )
-                .collect(Collectors.joining(", "));  // Join all errors with comma
+                    .flatMap(entry ->
+                            // For each field, format its errors
+                            entry.getValue().stream()
+                                    .map(error -> entry.getKey() + ": " + error)
+                    )
+                    .collect(Collectors.joining(", "));  // Join all errors with comma
         }
     }
-    
+
     /**
      * ApplicationProcessor handles the main business logic
      * Processes applications and manages household members
@@ -651,9 +692,9 @@ public class SCHealthyConnectionsApplication {
             result.setSuccess(true);
             result.setMessage(eligible ? "Application approved" : "Application requires review");
             result.setData(Map.of(
-                "totalIncome", totalIncome,
-                "householdSize", householdMembers.size() + 1,
-                "eligible", eligible
+                    "totalIncome", totalIncome,
+                    "householdSize", householdMembers.size() + 1,
+                    "eligible", eligible
             ));
 
             return result;  // Return processing result
@@ -671,7 +712,7 @@ public class SCHealthyConnectionsApplication {
             if (data.containsKey("householdMembers")) {
                 // Cast to list of member maps
                 List<Map<String, Object>> members =
-                    (List<Map<String, Object>>) data.get("householdMembers");
+                        (List<Map<String, Object>>) data.get("householdMembers");
                 // Add all members to processor's list
                 householdMembers.addAll(members);
             }
@@ -684,23 +725,23 @@ public class SCHealthyConnectionsApplication {
         private double calculateTotalHouseholdIncome() {
             // Stream through all household members
             return householdMembers.stream()
-                // Extract income lists from each member
-                .flatMap(member -> {
-                    // Get incomes array from member data
-                    List<Map<String, Object>> incomes =
-                        (List<Map<String, Object>>) member.get("incomes");
-                    // Return stream of incomes or empty stream if null
-                    return incomes != null ? incomes.stream() : Stream.empty();
-                })
-                // Map each income to its amount value
-                .mapToDouble(income -> {
-                    // Get amount from income map
-                    Object amount = income.get("amount");
-                    // Convert to double, default to 0 if null
-                    return amount instanceof Number ?
-                        ((Number) amount).doubleValue() : 0.0;
-                })
-                .sum();  // Sum all income amounts
+                    // Extract income lists from each member
+                    .flatMap(member -> {
+                        // Get incomes array from member data
+                        List<Map<String, Object>> incomes =
+                                (List<Map<String, Object>>) member.get("incomes");
+                        // Return stream of incomes or empty stream if null
+                        return incomes != null ? incomes.stream() : Stream.empty();
+                    })
+                    // Map each income to its amount value
+                    .mapToDouble(income -> {
+                        // Get amount from income map
+                        Object amount = income.get("amount");
+                        // Convert to double, default to 0 if null
+                        return amount instanceof Number ?
+                                ((Number) amount).doubleValue() : 0.0;
+                    })
+                    .sum();  // Sum all income amounts
         }
 
         /**
@@ -710,15 +751,15 @@ public class SCHealthyConnectionsApplication {
         private boolean determineEligibility(Map<String, Object> data, double totalIncome) {
             // Check special eligibility conditions using Stream API
             boolean specialEligibility = Stream.of(
-                Boolean.TRUE.equals(data.get("isPregnant")),     // Pregnant women
-                Boolean.TRUE.equals(data.get("isFosterCare")),   // Foster care
-                totalIncome < 20000  // Income below threshold
+                    Boolean.TRUE.equals(data.get("isPregnant")),     // Pregnant women
+                    Boolean.TRUE.equals(data.get("isFosterCare")),   // Foster care
+                    totalIncome < 20000  // Income below threshold
             ).anyMatch(condition -> condition);  // Any condition makes eligible
 
             return specialEligibility;  // Return eligibility status
         }
     }
-    
+
     /**
      * ProcessResult class holds processing results
      * Contains success status, message, data, and errors
@@ -736,16 +777,36 @@ public class SCHealthyConnectionsApplication {
         }
 
         // Getters and setters for all properties
-        public boolean isSuccess() { return success; }
-        public void setSuccess(boolean success) { this.success = success; }
+        public boolean isSuccess() {
+            return success;
+        }
 
-        public String getMessage() { return message; }
-        public void setMessage(String message) { this.message = message; }
+        public void setSuccess(boolean success) {
+            this.success = success;
+        }
 
-        public Map<String, Object> getData() { return data; }
-        public void setData(Map<String, Object> data) { this.data = data; }
+        public String getMessage() {
+            return message;
+        }
 
-        public Map<String, List<String>> getErrors() { return errors; }
-        public void setErrors(Map<String, List<String>> errors) { this.errors = errors; }
+        public void setMessage(String message) {
+            this.message = message;
+        }
+
+        public Map<String, Object> getData() {
+            return data;
+        }
+
+        public void setData(Map<String, Object> data) {
+            this.data = data;
+        }
+
+        public Map<String, List<String>> getErrors() {
+            return errors;
+        }
+
+        public void setErrors(Map<String, List<String>> errors) {
+            this.errors = errors;
+        }
     }
 }

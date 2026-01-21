@@ -6,8 +6,8 @@ import java.util.Scanner;
 class ATM {
     private static final ATM instance = new ATM();
     private final BankService bankService;
-    private Account currentAccount;
     private final Scanner scanner;
+    private Account currentAccount;
 
     private ATM() {
         AccountFactory accountFactory = new AccountFactory();

@@ -27,13 +27,13 @@ public class ParenthesesBalanceChecker {
         test("() (( )( )) )", "not balanced");
         test(")) ((", "not balanced");
         test(")() () )(", "not balanced");
-        
+
         var largeBalanced = "(".repeat(50000) + ")".repeat(50000);
         test(largeBalanced, "balanced");
-        
+
         var largeUnbalanced = "(".repeat(50000) + ")".repeat(50001);
         test(largeUnbalanced, "not balanced");
-        
+
         var alternating = "() ".repeat(33333);
         test(alternating, "balanced");
     }

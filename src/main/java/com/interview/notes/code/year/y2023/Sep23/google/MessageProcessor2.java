@@ -14,7 +14,6 @@ class MessageProcessor2 implements Runnable {
     public static void main(String[] args) {
         // Example implementation of the StatusReceiver for demonstration
         StatusReceiver receiver = new StatusReceiver() {
-            private int counter = 0;
             private final String[] testMessages = {
                     "solar panel activated",
                     "low battery warning",
@@ -25,6 +24,7 @@ class MessageProcessor2 implements Runnable {
                     "solar panel activated"
             };
             private final int[] testTimestamps = {10, 11, 12, 13, 14, 21, 35};
+            private int counter = 0;
 
             @Override
             public Status getRawMessage() {

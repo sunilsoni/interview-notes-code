@@ -134,6 +134,6 @@ public class MoveZeros {
     }
 
     // simple holder for our tests
-        private record TestCase(List<Integer> input, List<Integer> expected) {
+    private record TestCase(List<Integer> input, List<Integer> expected) {
     }
 }

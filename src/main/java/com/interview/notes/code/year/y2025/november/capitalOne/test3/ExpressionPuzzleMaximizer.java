@@ -3,6 +3,7 @@ package com.interview.notes.code.year.y2025.november.capitalOne.test3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
+
 //FInal working
 public class ExpressionPuzzleMaximizer {
 
@@ -123,5 +124,6 @@ public class ExpressionPuzzleMaximizer {
         return c - '0';
     }
 
-    private record TestCase(String name, char[][] input, int expected) {}
+    private record TestCase(String name, char[][] input, int expected) {
+    }
 }

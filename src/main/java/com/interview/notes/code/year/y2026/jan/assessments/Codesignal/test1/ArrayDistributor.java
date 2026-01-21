@@ -33,8 +33,8 @@ public class ArrayDistributor {
         int[] result = d.solution(input);
         boolean pass = Arrays.equals(result, expected);
         System.out.printf("%-15s: %s [Expected: %s, Got: %s]%n",
-            name, pass ? "PASS" : "FAIL",
-            Arrays.toString(expected), Arrays.toString(result));
+                name, pass ? "PASS" : "FAIL",
+                Arrays.toString(expected), Arrays.toString(result));
     }
 
     int[] solution(int[] numbers) {
@@ -64,7 +64,7 @@ public class ArrayDistributor {
         }
 
         return Stream.concat(first.stream(), second.stream())
-                     .mapToInt(Integer::intValue)
-                     .toArray();
+                .mapToInt(Integer::intValue)
+                .toArray();
     }
 }

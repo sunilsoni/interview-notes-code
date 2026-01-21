@@ -24,17 +24,17 @@ public class NodeSegmentProcessor {
     public static void main(String[] args) {
         runTest("Sample Case", new int[]{1, 1, 2, 2, 2, 3, 4, 4, 5}, "1 1 4 4");
         runTest("All Pairs", new int[]{10, 10, 20, 20}, "10 10 20 20");
-        runTest("Single Odd Segment", new int[]{5, 5, 5}, ""); 
-        
+        runTest("Single Odd Segment", new int[]{5, 5, 5}, "");
+
         int largeSize = 100_000;
         int[] largeData = new int[largeSize];
-        Arrays.fill(largeData, 0, 50000, 1); 
-        Arrays.fill(largeData, 50000, 100000, 2); 
-        
+        Arrays.fill(largeData, 0, 50000, 1);
+        Arrays.fill(largeData, 50000, 100000, 2);
+
         long start = System.currentTimeMillis();
         String res = processSegments(largeSize, largeData);
         long end = System.currentTimeMillis();
-        
+
         boolean largePass = res.length() > 0 && (end - start) < 200;
         System.out.println("Large Data (10^5 elements): " + (largePass ? "PASS" : "FAIL") + " [" + (end - start) + "ms]");
     }

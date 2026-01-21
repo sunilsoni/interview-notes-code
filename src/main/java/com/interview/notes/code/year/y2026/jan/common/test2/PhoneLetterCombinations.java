@@ -8,10 +8,10 @@ public class PhoneLetterCombinations {    // Main class
 
     // Static map for digit → letters mapping
     static final Map<Character, String> MAP = Map.of(
-        '2', "abc", '3', "def",            // Phone keypad mapping
-        '4', "ghi", '5', "jkl",
-        '6', "mno", '7', "pqrs",
-        '8', "tuv", '9', "wxyz"
+            '2', "abc", '3', "def",            // Phone keypad mapping
+            '4', "ghi", '5', "jkl",
+            '6', "mno", '7', "pqrs",
+            '8', "tuv", '9', "wxyz"
     );
 
     // Method to generate letter combinations
@@ -29,8 +29,8 @@ public class PhoneLetterCombinations {    // Main class
             // Expand previous results using Stream API
             result = result.stream()                       // Stream existing strings
                     .flatMap(s -> MAP.get(d)               // Get letters for digit
-                    .chars()                               // Convert letters to stream
-                    .mapToObj(c -> s + (char) c))          // Append each letter
+                            .chars()                               // Convert letters to stream
+                            .mapToObj(c -> s + (char) c))          // Append each letter
                     .toList();                              // Collect as list
         }
 
@@ -49,9 +49,9 @@ public class PhoneLetterCombinations {    // Main class
 
         // Print test result
         System.out.println(
-            "Input: " + input + " => " +
-            (pass ? "PASS" : "FAIL") +
-            " | Output size: " + actual.size()
+                "Input: " + input + " => " +
+                        (pass ? "PASS" : "FAIL") +
+                        " | Output size: " + actual.size()
         );
     }
 
@@ -60,22 +60,22 @@ public class PhoneLetterCombinations {    // Main class
 
         // Provided test cases
         test("23", List.of(
-            "ad","ae","af","bd","be","bf","cd","ce","cf"
+                "ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"
         ));
 
-        test("2", List.of("a","b","c"));
+        test("2", List.of("a", "b", "c"));
 
         // Edge case: minimum input
-        test("9", List.of("w","x","y","z"));
+        test("9", List.of("w", "x", "y", "z"));
 
         // Large input case (max length = 4)
         List<String> large = letterCombinations("2349");
 
         // Validate large input size (3×3×3×4 = 108)
         System.out.println(
-            "Large Input Test => " +
-            (large.size() == 108 ? "PASS" : "FAIL") +
-            " | Size: " + large.size()
+                "Large Input Test => " +
+                        (large.size() == 108 ? "PASS" : "FAIL") +
+                        " | Size: " + large.size()
         );
     }
 }

@@ -54,7 +54,7 @@ public class VirusComputerOptimizer {
         var largeData = new int[50000];
         Arrays.fill(largeData, 1);
         runTest("Large Data (Uniform)", 50000, 2, 3, largeData, 150000);
-        
+
         System.out.println("--- All Tests Completed ---");
     }
 
@@ -62,9 +62,9 @@ public class VirusComputerOptimizer {
         long startTime = System.currentTimeMillis();
         int actual = virusResolving(N, X, Y, damages);
         long endTime = System.currentTimeMillis();
-        
+
         String status = (actual == expected) ? "PASS" : "FAIL";
-        System.out.printf("%-20s | %-4s | Expected: %-6d | Actual: %-6d | Time: %dms%n", 
-            testName, status, expected, actual, (endTime - startTime));
+        System.out.printf("%-20s | %-4s | Expected: %-6d | Actual: %-6d | Time: %dms%n",
+                testName, status, expected, actual, (endTime - startTime));
     }
 }

@@ -154,8 +154,8 @@ public class RisingSequence {
     }
 
     /**
-         * ---------- Simple test harness ----------
-         */
-        private record Case(int B, List<Integer> ar, int expected) {
+     * ---------- Simple test harness ----------
+     */
+    private record Case(int B, List<Integer> ar, int expected) {
     }
 }
