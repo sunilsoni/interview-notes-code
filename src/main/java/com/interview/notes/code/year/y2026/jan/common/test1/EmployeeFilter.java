@@ -13,24 +13,24 @@ public class EmployeeFilter {
 
         // Create an immutable list of 5 employees using List.of (Java 9+)
         var employees = List.of(
-            new Employee("Alice", 25, "F"), // Age < 50
-            new Employee("Bob", 55, "M"),   // Age > 50 (Target)
-            new Employee("Charlie", 62, "M"), // Age > 50 (Target)
-            new Employee("Diana", 45, "F"), // Age < 50
-            new Employee("Eve", 51, "F")    // Age > 50 (Target)
+                new Employee("Alice", 25, "F"), // Age < 50
+                new Employee("Bob", 55, "M"),   // Age > 50 (Target)
+                new Employee("Charlie", 62, "M"), // Age > 50 (Target)
+                new Employee("Diana", 45, "F"), // Age < 50
+                new Employee("Eve", 51, "F")    // Age > 50 (Target)
         );
 
         // Core Logic: Stream the list -> Filter by age > 50 -> Collect to List
         // Java 16+ allows .toList() directly on stream, reducing code vs .collect(Collectors.toList())
         var result = employees.stream()         // Convert list to stream source
-            .filter(e -> e.age() > 50)          // Lambda: Keep if employee age is > 50
-            .toList();                          // Terminate stream and return unmodifiable List
+                .filter(e -> e.age() > 50)          // Lambda: Keep if employee age is > 50
+                .toList();                          // Terminate stream and return unmodifiable List
 
         // define expected output manually for validation
         var expected = List.of(
-            new Employee("Bob", 55, "M"),
-            new Employee("Charlie", 62, "M"),
-            new Employee("Eve", 51, "F")
+                new Employee("Bob", 55, "M"),
+                new Employee("Charlie", 62, "M"),
+                new Employee("Eve", 51, "F")
         );
 
         // Verify Test Case 1
@@ -54,15 +54,15 @@ public class EmployeeFilter {
         // Generate 1 million employees using IntStream
         // Half are 20 (Fail), Half are 60 (Pass)
         var largeData = IntStream.range(0, 1_000_000) // Loop 0 to 1M
-            .mapToObj(i -> new Employee("Name" + i, i % 2 == 0 ? 60 : 20, "M")) // Even index = 60yo, Odd = 20yo
-            .toList(); // Collect to list
+                .mapToObj(i -> new Employee("Name" + i, i % 2 == 0 ? 60 : 20, "M")) // Even index = 60yo, Odd = 20yo
+                .toList(); // Collect to list
 
         long startTime = System.currentTimeMillis(); // Start timer
 
         // Process large data
         var largeResultCount = largeData.stream() // Stream 1M items
-            .filter(e -> e.age() > 50)            // Filter logic
-            .count();                             // Count matches (should be 500k)
+                .filter(e -> e.age() > 50)            // Filter logic
+                .count();                             // Count matches (should be 500k)
 
         long endTime = System.currentTimeMillis(); // End timer
 
@@ -85,5 +85,6 @@ public class EmployeeFilter {
 
     // Java 21 Record: Define Employee data structure in one line (name, age, gender)
     // Records automatically generate constructor, getters, equals(), hashCode(), and toString()
-    record Employee(String name, int age, String gender) {}
+    record Employee(String name, int age, String gender) {
+    }
 }

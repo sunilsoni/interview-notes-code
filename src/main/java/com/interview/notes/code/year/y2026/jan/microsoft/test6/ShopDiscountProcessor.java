@@ -43,7 +43,7 @@ public class ShopDiscountProcessor {
         test("Sample 0", List.of(5, 1, 3, 4, 6, 2), "14\n1 5");
         test("Sample 1", List.of(1, 3, 3, 2, 5), "9\n0 3 4");
         test("Example 3", List.of(2, 3, 1, 2, 4, 2), "8\n2 5");
-        
+
         List<Integer> largeData = IntStream.range(0, 100000)
                 .mapToObj(i -> 1000000)
                 .toList();

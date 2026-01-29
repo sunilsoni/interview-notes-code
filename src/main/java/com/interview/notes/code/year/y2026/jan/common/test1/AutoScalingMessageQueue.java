@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.stream.IntStream;
 
 public class AutoScalingMessageQueue {
-    
+
     // Test 1: Verify latency-based scaling
     static boolean testLatencyTriggeredScaling() {
         System.out.println("\n--- Test 1: Latency Triggered Scaling ---");
@@ -29,7 +29,7 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 2: Verify queue-fill-based scaling
     static boolean testQueueFillTriggeredScaling() {
         System.out.println("\n--- Test 2: Queue Fill Triggered Scaling ---");
@@ -40,7 +40,7 @@ public class AutoScalingMessageQueue {
         // fill queue to 85% (above 80% threshold)
         long now = System.currentTimeMillis();
         IntStream.range(0, 85)
-            .forEach(i -> queue.enqueue(new Message("m" + i, "payload", now, 1)));
+                .forEach(i -> queue.enqueue(new Message("m" + i, "payload", now, 1)));
 
         var decision = queue.checkAndScale();
 
@@ -52,7 +52,7 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 3: Verify no scaling when conditions not met
     static boolean testNoScalingWhenHealthy() {
         System.out.println("\n--- Test 3: No Scaling When Healthy ---");
@@ -63,7 +63,7 @@ public class AutoScalingMessageQueue {
         // add few fresh messages (low fill, low latency)
         long now = System.currentTimeMillis();
         IntStream.range(0, 50) // 50% fill
-            .forEach(i -> queue.enqueue(new Message("m" + i, "payload", now, 1)));
+                .forEach(i -> queue.enqueue(new Message("m" + i, "payload", now, 1)));
 
         var decision = queue.checkAndScale();
 
@@ -76,7 +76,7 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 4: Verify scale down when load reduces
     static boolean testScaleDown() {
         System.out.println("\n--- Test 4: Scale Down When Load Reduces ---");
@@ -87,19 +87,20 @@ public class AutoScalingMessageQueue {
         // first, trigger scale up
         long oldTime = System.currentTimeMillis() - 2000;
         IntStream.range(0, 85)
-            .forEach(i -> queue.enqueue(new Message("m" + i, "payload", oldTime, 1)));
+                .forEach(i -> queue.enqueue(new Message("m" + i, "payload", oldTime, 1)));
 
         queue.checkAndScale(); // scale up
         int workersAfterScaleUp = queue.getCurrentWorkers();
         System.out.println("Workers after scale up: " + workersAfterScaleUp);
 
         // clear queue (simulate messages processed)
-        while (queue.dequeue() != null) {}
+        while (queue.dequeue() != null) {
+        }
 
         // add few fresh messages (low load)
         long now = System.currentTimeMillis();
         IntStream.range(0, 10) // only 10% fill
-            .forEach(i -> queue.enqueue(new Message("m" + i, "payload", now, 1)));
+                .forEach(i -> queue.enqueue(new Message("m" + i, "payload", now, 1)));
 
         var decision = queue.checkAndScale();
 
@@ -111,9 +112,9 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // ==================== TEST METHODS ====================
-    
+
     // Test 5: Large data test - handles 100K messages
     static boolean testLargeDataHandling() {
         System.out.println("\n--- Test 5: Large Data Handling (100K messages) ---");
@@ -126,8 +127,8 @@ public class AutoScalingMessageQueue {
         // enqueue 100K messages
         long oldTime = System.currentTimeMillis() - 1000;
         int enqueued = (int) IntStream.range(0, 100000)
-            .filter(i -> queue.enqueue(new Message("m" + i, "payload-" + i, oldTime, i % 5)))
-            .count();
+                .filter(i -> queue.enqueue(new Message("m" + i, "payload-" + i, oldTime, i % 5)))
+                .count();
 
         long enqueueTime = System.currentTimeMillis() - start;
         System.out.println("Enqueued " + enqueued + " messages in " + enqueueTime + "ms");
@@ -146,7 +147,7 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 6: Edge case - empty queue
     static boolean testEmptyQueue() {
         System.out.println("\n--- Test 6: Empty Queue ---");
@@ -165,7 +166,7 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 7: Verify max worker limit respected
     static boolean testMaxWorkerLimit() {
         System.out.println("\n--- Test 7: Max Worker Limit Respected ---");
@@ -177,9 +178,10 @@ public class AutoScalingMessageQueue {
         for (int i = 0; i < 10; i++) {
             long oldTime = System.currentTimeMillis() - 100;
             IntStream.range(0, 80)
-                .forEach(j -> queue.enqueue(new Message("m" + j, "p", oldTime, 1)));
+                    .forEach(j -> queue.enqueue(new Message("m" + j, "p", oldTime, 1)));
             queue.checkAndScale();
-            while (queue.dequeue() != null) {} // clear
+            while (queue.dequeue() != null) {
+            } // clear
         }
 
         System.out.println("Final workers: " + queue.getCurrentWorkers());
@@ -189,7 +191,7 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Main method - runs all tests
     public static void main(String[] args) {
         System.out.println("========================================");
@@ -198,13 +200,13 @@ public class AutoScalingMessageQueue {
 
         // collect all test results
         List<Boolean> results = List.of(
-            testLatencyTriggeredScaling(),
-            testQueueFillTriggeredScaling(),
-            testNoScalingWhenHealthy(),
-            testScaleDown(),
-            testLargeDataHandling(),
-            testEmptyQueue(),
-            testMaxWorkerLimit()
+                testLatencyTriggeredScaling(),
+                testQueueFillTriggeredScaling(),
+                testNoScalingWhenHealthy(),
+                testScaleDown(),
+                testLargeDataHandling(),
+                testEmptyQueue(),
+                testMaxWorkerLimit()
         );
 
         // count passed tests
@@ -223,33 +225,36 @@ public class AutoScalingMessageQueue {
             System.out.println("SOME TESTS FAILED!");
         }
     }
-    
+
     // Record for Message - immutable data carrier (Java 21 feature)
     // Holds message data with timestamp for latency calculation
     record Message(
-        String id,           // unique identifier for tracking
-        String payload,      // actual message content
-        long timestamp,      // when message entered queue (for latency calc)
-        int priority         // message priority level
-    ) {}
-    
+            String id,           // unique identifier for tracking
+            String payload,      // actual message content
+            long timestamp,      // when message entered queue (for latency calc)
+            int priority         // message priority level
+    ) {
+    }
+
     // Record for scaling configuration - defines scaling thresholds
     // These params control when auto-scaling triggers
     record ScalingConfig(
-        long maxLatencyMs,    // max allowed message wait time in ms
-        double fillThreshold, // queue fill percentage (0.0 to 1.0) to trigger scale
-        int minWorkers,       // minimum workers to maintain
-        int maxWorkers        // maximum workers allowed
-    ) {}
-    
+            long maxLatencyMs,    // max allowed message wait time in ms
+            double fillThreshold, // queue fill percentage (0.0 to 1.0) to trigger scale
+            int minWorkers,       // minimum workers to maintain
+            int maxWorkers        // maximum workers allowed
+    ) {
+    }
+
     // Record to hold scaling decision result
     // Tells us whether to scale and by how much
     record ScaleDecision(
-        boolean shouldScale,  // true if scaling needed
-        int targetWorkers,    // desired worker count
-        String reason         // why scaling triggered
-    ) {}
-    
+            boolean shouldScale,  // true if scaling needed
+            int targetWorkers,    // desired worker count
+            String reason         // why scaling triggered
+    ) {
+    }
+
     // Main Message Queue class with auto-scaling capability
     static class ScalableMessageQueue {
 
@@ -301,9 +306,9 @@ public class AutoScalingMessageQueue {
             // stream through all messages, find max wait time
             // if empty queue, return 0 latency
             return queue.stream()
-                .mapToLong(m -> now - m.timestamp) // calc each message's wait
-                .max()                              // get maximum
-                .orElse(0);                         // default if empty
+                    .mapToLong(m -> now - m.timestamp) // calc each message's wait
+                    .max()                              // get maximum
+                    .orElse(0);                         // default if empty
         }
 
         // Core auto-scaling logic - decides if scaling needed
@@ -323,14 +328,14 @@ public class AutoScalingMessageQueue {
             if (latencyBreached || queueFilling) {
                 // calculate new worker count (increase by 50%, at least 1)
                 int newWorkers = Math.min(
-                    config.maxWorkers,                           // don't exceed max
-                    currentWorkers + Math.max(1, currentWorkers / 2) // add 50%
+                        config.maxWorkers,                           // don't exceed max
+                        currentWorkers + Math.max(1, currentWorkers / 2) // add 50%
                 );
 
                 // build reason string for logging
                 String reason = latencyBreached
-                    ? "Latency=" + maxLatency + "ms > " + config.maxLatencyMs + "ms"
-                    : "QueueFill=" + String.format("%.1f%%", fillPct * 100);
+                        ? "Latency=" + maxLatency + "ms > " + config.maxLatencyMs + "ms"
+                        : "QueueFill=" + String.format("%.1f%%", fillPct * 100);
 
                 // only scale if actually increasing workers
                 if (newWorkers > currentWorkers) {
@@ -345,8 +350,8 @@ public class AutoScalingMessageQueue {
             if (canScaleDown && currentWorkers > config.minWorkers) {
                 // reduce workers by 25%
                 int newWorkers = Math.max(
-                    config.minWorkers,               // don't go below min
-                    currentWorkers - currentWorkers / 4 // reduce by 25%
+                        config.minWorkers,               // don't go below min
+                        currentWorkers - currentWorkers / 4 // reduce by 25%
                 );
 
                 if (newWorkers < currentWorkers) {
@@ -360,8 +365,16 @@ public class AutoScalingMessageQueue {
         }
 
         // Getters for testing
-        int getCurrentWorkers() { return currentWorkers; }
-        int getQueueSize() { return queue.size(); }
-        ScalingConfig getConfig() { return config; }
+        int getCurrentWorkers() {
+            return currentWorkers;
+        }
+
+        int getQueueSize() {
+            return queue.size();
+        }
+
+        ScalingConfig getConfig() {
+            return config;
+        }
     }
 }

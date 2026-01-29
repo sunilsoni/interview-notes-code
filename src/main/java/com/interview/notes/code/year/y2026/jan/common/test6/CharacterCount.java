@@ -9,11 +9,11 @@ public class CharacterCount {
         String str = "abcdABCDabcd";
 
         Map<Character, Long> result = str.chars()
-            .mapToObj(c -> (char) c)
-            .collect(Collectors.groupingBy(
-                Function.identity(), 
-                Collectors.counting()
-            ));
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        Collectors.counting()
+                ));
 
         System.out.println(result);
     }

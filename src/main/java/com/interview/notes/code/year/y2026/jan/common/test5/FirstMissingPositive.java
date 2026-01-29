@@ -10,12 +10,12 @@ public class FirstMissingPositive {
         // 1. Define Test Cases including Edge Cases and a Large Data Case
         // We use Stream.of to organize tests clearly using Java 8+ Stream API
         Stream.of(
-            new TestCase(new int[]{9, -3, -1, 10, 0}, 1, "User Example"),
-            new TestCase(new int[]{1, 2, 0}, 3, "Simple Sequence"),
-            new TestCase(new int[]{3, 4, -1, 1}, 2, "Unsorted with Gap"),
-            new TestCase(new int[]{7, 8, 9, 11, 12}, 1, "All numbers > length"),
-            new TestCase(new int[]{1, 1, 2, 2}, 3, "Duplicates"), // Edge case: duplicates
-            createLargeTestCase() // Large Data generation
+                new TestCase(new int[]{9, -3, -1, 10, 0}, 1, "User Example"),
+                new TestCase(new int[]{1, 2, 0}, 3, "Simple Sequence"),
+                new TestCase(new int[]{3, 4, -1, 1}, 2, "Unsorted with Gap"),
+                new TestCase(new int[]{7, 8, 9, 11, 12}, 1, "All numbers > length"),
+                new TestCase(new int[]{1, 1, 2, 2}, 3, "Duplicates"), // Edge case: duplicates
+                createLargeTestCase() // Large Data generation
         ).forEach(FirstMissingPositive::runTest); // Process each test using method reference
     }
 
@@ -40,11 +40,11 @@ public class FirstMissingPositive {
 
         // Use Java 15+ Text Blocks and formatted printing for clear output
         System.out.printf("[%s] %s -> Expected: %d, Got: %d (Time: %.3f ms)\n",
-            passed ? "PASS" : "FAIL",
-            test.description,
-            test.expected,
-            actual,
-            time
+                passed ? "PASS" : "FAIL",
+                test.description,
+                test.expected,
+                actual,
+                time
         );
     }
 
@@ -112,5 +112,6 @@ public class FirstMissingPositive {
 
     // Record is a Java feature (standard in Java 16+) for immutable data carriers.
     // We use it here to define Test Cases concisely.
-    record TestCase(int[] input, int expected, String description) {}
+    record TestCase(int[] input, int expected, String description) {
+    }
 }

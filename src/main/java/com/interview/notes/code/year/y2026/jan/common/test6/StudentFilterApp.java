@@ -35,13 +35,13 @@ public class StudentFilterApp {
         if (input == null) return List.of();
 
         return input.stream() // Convert list to a stream for processing
-            .filter(s -> s.marks() != null && s.marks().size() > 3) // Check if marks exist and count is greater than 3
-            .filter(s -> s.marks().stream() // Create a sub-stream of the marks integers
-                .mapToInt(Integer::intValue) // Convert Integer objects to primitive ints for math
-                .average() // Calculate the average
-                .orElse(0.0) > 50) // If marks list is empty use 0.0, then check if avg > 50
-            .sorted(Comparator.comparing(Student::name)) // Sort the remaining students by Name alphabetically
-            .toList(); // Java 16+: Collect results directly into a list (Unmodifiable)
+                .filter(s -> s.marks() != null && s.marks().size() > 3) // Check if marks exist and count is greater than 3
+                .filter(s -> s.marks().stream() // Create a sub-stream of the marks integers
+                        .mapToInt(Integer::intValue) // Convert Integer objects to primitive ints for math
+                        .average() // Calculate the average
+                        .orElse(0.0) > 50) // If marks list is empty use 0.0, then check if avg > 50
+                .sorted(Comparator.comparing(Student::name)) // Sort the remaining students by Name alphabetically
+                .toList(); // Java 16+: Collect results directly into a list (Unmodifiable)
     }
 
     // Simple Test Framework
@@ -61,7 +61,7 @@ public class StudentFilterApp {
         printTestResult("Excludes Charlie (Low Avg)", !hasCharlie);
 
         // Test 4: Sorting Order (Alice should be before Zara)
-        boolean isSorted = result.get(0).name().equals("Alice") && result.get(result.size()-1).name().equals("Zara");
+        boolean isSorted = result.get(0).name().equals("Alice") && result.get(result.size() - 1).name().equals("Zara");
         printTestResult("Is Sorted Correctly", isSorted);
     }
 
@@ -94,5 +94,6 @@ public class StudentFilterApp {
 
     // Java Record: A concise way to define the data carrier (Available in modern Java)
     // This automatically creates constructor, accessors, toString, etc.
-    record Student(String name, List<Integer> marks) {}
+    record Student(String name, List<Integer> marks) {
+    }
 }

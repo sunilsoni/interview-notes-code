@@ -1,7 +1,7 @@
 package com.interview.notes.code.year.y2026.jan.common.test2;
 
 public class AutoScalingMessageQueue {
-    
+
     // Test 1: latency triggers scaling
     static boolean testLatencyTriggeredScaling() {
         System.out.println("\n--- Test 1: Latency Triggered Scaling ---");
@@ -23,13 +23,13 @@ public class AutoScalingMessageQueue {
 
         // verify: should scale up due to latency > 100ms
         boolean pass = decision.shouldScale() &&
-                       decision.targetWorkers() > 1 &&
-                       decision.reason().contains("Latency");
+                decision.targetWorkers() > 1 &&
+                decision.reason().contains("Latency");
 
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 2: queue fill triggers scaling
     static boolean testQueueFillTriggeredScaling() {
         System.out.println("\n--- Test 2: Queue Fill Triggered Scaling ---");
@@ -51,12 +51,12 @@ public class AutoScalingMessageQueue {
 
         // verify: should scale up due to fill > 80%
         boolean pass = decision.shouldScale() &&
-                       decision.reason().contains("QueueFill");
+                decision.reason().contains("QueueFill");
 
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 3: no scaling when healthy
     static boolean testNoScalingWhenHealthy() {
         System.out.println("\n--- Test 3: No Scaling When Healthy ---");
@@ -82,7 +82,7 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 4: scale down when load reduces
     static boolean testScaleDown() {
         System.out.println("\n--- Test 4: Scale Down When Load Reduces ---");
@@ -120,7 +120,7 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 5: large data handling
     static boolean testLargeDataHandling() {
         System.out.println("\n--- Test 5: Large Data Handling (100K messages) ---");
@@ -157,7 +157,7 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 6: empty queue handling
     static boolean testEmptyQueue() {
         System.out.println("\n--- Test 6: Empty Queue ---");
@@ -174,12 +174,12 @@ public class AutoScalingMessageQueue {
 
         // verify: no crash, no unnecessary scaling
         boolean pass = !decision.shouldScale() &&
-                       queue.getCurrentWorkers() == 2;
+                queue.getCurrentWorkers() == 2;
 
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 7: max worker limit respected
     static boolean testMaxWorkerLimit() {
         System.out.println("\n--- Test 7: Max Worker Limit Respected ---");
@@ -206,9 +206,9 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // ==================== TEST METHODS ====================
-    
+
     // Test 8: custom queue basic operations
     static boolean testCustomQueueOperations() {
         System.out.println("\n--- Test 8: Custom Queue Basic Operations ---");
@@ -235,13 +235,13 @@ public class AutoScalingMessageQueue {
 
         // verify FIFO and capacity limits
         boolean pass = e1 && e2 && e3 && e4 && e5 && !e6 &&  // capacity check
-                       d1 == 1 && d2 == 2 &&                   // FIFO check
-                       q.size() == 3;                          // size check
+                d1 == 1 && d2 == 2 &&                   // FIFO check
+                q.size() == 3;                          // size check
 
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 9: multiple scale cycles
     static boolean testMultipleScaleCycles() {
         System.out.println("\n--- Test 9: Multiple Scale Cycles ---");
@@ -283,7 +283,7 @@ public class AutoScalingMessageQueue {
         // verify: workers changed during cycles
         boolean hasChanges = false;
         for (int i = 1; i < workerHistory.size(); i++) {
-            if (!workerHistory.get(i).equals(workerHistory.get(i-1))) {
+            if (!workerHistory.get(i).equals(workerHistory.get(i - 1))) {
                 hasChanges = true;
                 break;
             }
@@ -293,7 +293,7 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // Test 10: concurrent-like access simulation
     static boolean testConcurrentAccess() {
         System.out.println("\n--- Test 10: Concurrent Access Simulation ---");
@@ -326,7 +326,7 @@ public class AutoScalingMessageQueue {
         System.out.println("Result: " + (pass ? "PASS" : "FAIL"));
         return pass;
     }
-    
+
     // ==================== MAIN METHOD ====================
     public static void main(String[] args) {
         System.out.println("================================================");
@@ -335,16 +335,16 @@ public class AutoScalingMessageQueue {
 
         // run all tests and collect results
         boolean[] results = {
-            testLatencyTriggeredScaling(),
-            testQueueFillTriggeredScaling(),
-            testNoScalingWhenHealthy(),
-            testScaleDown(),
-            testLargeDataHandling(),
-            testEmptyQueue(),
-            testMaxWorkerLimit(),
-            testCustomQueueOperations(),
-            testMultipleScaleCycles(),
-            testConcurrentAccess()
+                testLatencyTriggeredScaling(),
+                testQueueFillTriggeredScaling(),
+                testNoScalingWhenHealthy(),
+                testScaleDown(),
+                testLargeDataHandling(),
+                testEmptyQueue(),
+                testMaxWorkerLimit(),
+                testCustomQueueOperations(),
+                testMultipleScaleCycles(),
+                testConcurrentAccess()
         };
 
         // count passed tests
@@ -365,7 +365,7 @@ public class AutoScalingMessageQueue {
             System.out.println("SOME TESTS FAILED!");
         }
     }
-    
+
     // ==================== CUSTOM NODE CLASS ====================
     // Node represents single element in our linked list queue
     // Each node holds data and pointer to next node
@@ -379,7 +379,7 @@ public class AutoScalingMessageQueue {
             this.next = null;   // initially no next node
         }
     }
-    
+
     // ==================== CUSTOM THREAD-SAFE QUEUE ====================
     // Custom queue implementation using linked list
     // Thread-safe using synchronized keyword
@@ -487,34 +487,37 @@ public class AutoScalingMessageQueue {
             // garbage collector will clean up orphaned nodes
         }
     }
-    
+
     // ==================== MESSAGE RECORD ====================
     // Immutable message data holder
     // Using record for concise syntax (Java 21)
     record Message(
-        String id,        // unique message identifier
-        String payload,   // message content/body
-        long timestamp,   // when message was created (epoch ms)
-        int priority      // message priority (higher = more urgent)
-    ) {}
-    
+            String id,        // unique message identifier
+            String payload,   // message content/body
+            long timestamp,   // when message was created (epoch ms)
+            int priority      // message priority (higher = more urgent)
+    ) {
+    }
+
     // ==================== SCALING CONFIG RECORD ====================
     // Holds all auto-scaling configuration parameters
     record ScalingConfig(
-        long maxLatencyMs,     // max allowed wait time before scaling
-        double fillThreshold,  // queue fill % that triggers scaling (0.0-1.0)
-        int minWorkers,        // minimum workers to maintain
-        int maxWorkers         // maximum workers allowed
-    ) {}
-    
+            long maxLatencyMs,     // max allowed wait time before scaling
+            double fillThreshold,  // queue fill % that triggers scaling (0.0-1.0)
+            int minWorkers,        // minimum workers to maintain
+            int maxWorkers         // maximum workers allowed
+    ) {
+    }
+
     // ==================== SCALE DECISION RECORD ====================
     // Result of scaling evaluation
     record ScaleDecision(
-        boolean shouldScale,   // true if scaling action needed
-        int targetWorkers,     // desired worker count after scaling
-        String reason          // explanation for the decision
-    ) {}
-    
+            boolean shouldScale,   // true if scaling action needed
+            int targetWorkers,     // desired worker count after scaling
+            String reason          // explanation for the decision
+    ) {
+    }
+
     // ==================== CUSTOM ARRAY LIST ====================
     // Simple dynamic array for storing messages temporarily
     static class CustomArrayList<T> {
@@ -567,7 +570,7 @@ public class AutoScalingMessageQueue {
             elements = newArray;  // replace old array
         }
     }
-    
+
     // ==================== SCALABLE MESSAGE QUEUE ====================
     // Main class combining queue with auto-scaling logic
     static class ScalableMessageQueue {
@@ -636,10 +639,10 @@ public class AutoScalingMessageQueue {
 
             // stream approach for cleaner code
             return java.util.Arrays.stream(messages)
-                .map(obj -> (Message) obj)                    // cast each
-                .mapToLong(m -> now - m.timestamp())          // calc latency
-                .max()                                         // find max
-                .orElse(0);                                    // default if empty
+                    .map(obj -> (Message) obj)                    // cast each
+                    .mapToLong(m -> now - m.timestamp())          // calc latency
+                    .max()                                         // find max
+                    .orElse(0);                                    // default if empty
         }
 
         // core auto-scaling decision logic
@@ -662,8 +665,8 @@ public class AutoScalingMessageQueue {
                 // increase by 50%, minimum increase of 1
                 int increase = Math.max(1, currentWorkers / 2);
                 int newWorkers = Math.min(
-                    config.maxWorkers(),           // don't exceed max
-                    currentWorkers + increase      // add workers
+                        config.maxWorkers(),           // don't exceed max
+                        currentWorkers + increase      // add workers
                 );
 
                 // build reason string
@@ -691,8 +694,8 @@ public class AutoScalingMessageQueue {
                 // reduce by 25% (gradual reduction)
                 int decrease = Math.max(1, currentWorkers / 4);
                 int newWorkers = Math.max(
-                    config.minWorkers(),           // don't go below min
-                    currentWorkers - decrease      // reduce workers
+                        config.minWorkers(),           // don't go below min
+                        currentWorkers - decrease      // reduce workers
                 );
 
                 if (newWorkers < currentWorkers) {
@@ -711,12 +714,25 @@ public class AutoScalingMessageQueue {
         }
 
         // getters for testing
-        int getCurrentWorkers() { return currentWorkers; }
-        int getQueueSize() { return queue.size(); }
-        int getMaxCapacity() { return queue.getMaxCapacity(); }
-        ScalingConfig getConfig() { return config; }
+        int getCurrentWorkers() {
+            return currentWorkers;
+        }
+
+        int getQueueSize() {
+            return queue.size();
+        }
+
+        int getMaxCapacity() {
+            return queue.getMaxCapacity();
+        }
+
+        ScalingConfig getConfig() {
+            return config;
+        }
 
         // clear queue (for testing)
-        void clear() { queue.clear(); }
+        void clear() {
+            queue.clear();
+        }
     }
 }

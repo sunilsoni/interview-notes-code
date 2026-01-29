@@ -20,7 +20,7 @@ public class PhoneDialer {
 
         // Test Case 4: Large Data/Stress Test (5 digits = 3^5 = 243 combinations)
         // We verify the size logic rather than printing all 243 items
-        runStressTest("23456", 243); 
+        runStressTest("23456", 243);
     }
 
     // Core Solution Logic
@@ -36,13 +36,13 @@ public class PhoneDialer {
         // 3. Map string "ABC" to List of chars ['A','B','C']
         // 4. Reduce: Start with [""] and progressively combine lists
         return digits.chars()                                                            // Stream of int (ASCII values of digits)
-            .mapToObj(d -> map[d - '0'])                                                 // Convert ASCII '2' to index 2 -> get "ABC"
-            .map(s -> s.chars().mapToObj(c -> (String.valueOf((char)c))).toList())       // Convert "ABC" to List["A","B","C"]
-            .reduce(List.of(""),                                                         // Initial accumulator: List with one empty string
-                (acc, letters) -> acc.stream()                                           // Stream current combinations (e.g. ["A","B"...])
-                    .flatMap(prefix -> letters.stream().map(l -> prefix + l))            // Combine every prefix with every new letter
-                    .toList(),                                                           // Collect results to a new List (Java 16+)
-                (a, b) -> a);                                                            // Combiner (needed for syntax, unused in sequential)
+                .mapToObj(d -> map[d - '0'])                                                 // Convert ASCII '2' to index 2 -> get "ABC"
+                .map(s -> s.chars().mapToObj(c -> (String.valueOf((char) c))).toList())       // Convert "ABC" to List["A","B","C"]
+                .reduce(List.of(""),                                                         // Initial accumulator: List with one empty string
+                        (acc, letters) -> acc.stream()                                           // Stream current combinations (e.g. ["A","B"...])
+                                .flatMap(prefix -> letters.stream().map(l -> prefix + l))            // Combine every prefix with every new letter
+                                .toList(),                                                           // Collect results to a new List (Java 16+)
+                        (a, b) -> a);                                                            // Combiner (needed for syntax, unused in sequential)
     }
 
     // Helper method to verify results
@@ -50,7 +50,7 @@ public class PhoneDialer {
         var result = letterCombinations(input);                                          // Run logic
         var pass = result.equals(expected);                                              // Compare lists
         System.out.printf("Input: '%-4s' | Status: %-4s | Got: %s%n",                    // Print formatted status
-             input, (pass ? "PASS" : "FAIL"), (result.size() > 9 ? result.size() + " items" : result));
+                input, (pass ? "PASS" : "FAIL"), (result.size() > 9 ? result.size() + " items" : result));
     }
 
     // Helper for large data logic check
@@ -59,6 +59,6 @@ public class PhoneDialer {
         var result = letterCombinations(input);                                          // Run logic
         boolean pass = result.size() == expectedSize;                                    // Check size correctness
         System.out.printf("Input: '%-4s' | Status: %-4s | Size: %d | Time: %.2fms%n",    // Print performance stats
-            input, (pass ? "PASS" : "FAIL"), result.size(), (System.nanoTime() - startTime) / 1e6);
+                input, (pass ? "PASS" : "FAIL"), result.size(), (System.nanoTime() - startTime) / 1e6);
     }
 }

@@ -8,18 +8,18 @@ public class HighestAvgSalary {
     public static void main(String[] args) {
         // --- Test Case 1: Standard Scenario ---
         List<Employee> data1 = List.of( // Create immutable list of employees
-            new Employee(1, "Alice", 50000, "IT"), // IT Avg: 55k
-            new Employee(2, "Bob", 60000, "IT"),
-            new Employee(3, "Charlie", 40000, "HR"), // HR Avg: 42.5k
-            new Employee(4, "David", 45000, "HR"),
-            new Employee(5, "Eve", 70000, "Finance") // Finance Avg: 70k (Highest)
+                new Employee(1, "Alice", 50000, "IT"), // IT Avg: 55k
+                new Employee(2, "Bob", 60000, "IT"),
+                new Employee(3, "Charlie", 40000, "HR"), // HR Avg: 42.5k
+                new Employee(4, "David", 45000, "HR"),
+                new Employee(5, "Eve", 70000, "Finance") // Finance Avg: 70k (Highest)
         );
         test("Standard Case", data1, "Finance"); // Verify if result matches "Finance"
 
         // --- Test Case 2: One Department ---
         List<Employee> data2 = List.of(
-            new Employee(1, "A", 1000, "Sales"),
-            new Employee(2, "B", 2000, "Sales")
+                new Employee(1, "A", 1000, "Sales"),
+                new Employee(2, "B", 2000, "Sales")
         );
         test("Single Dept", data2, "Sales"); // Should return the only department present
 
@@ -44,15 +44,15 @@ public class HighestAvgSalary {
         if (employees == null || employees.isEmpty()) return null; // Edge case: Handle empty/null inputs immediately
 
         return employees.stream() // Convert list to Stream to enable functional operations
-            .collect(Collectors.groupingBy( // Group data by a specific key
-                Employee::department, // Key mapper: Group by department name
-                Collectors.averagingDouble(Employee::salary) // Downstream collector: Calculate average of salary field
-            )) // Result is now Map<String, Double> (Dept -> AvgSalary)
-            .entrySet() // Convert Map to Set<Entry> to stream over the results
-            .stream() // Stream the entries
-            .max(Map.Entry.comparingByValue()) // Find max entry based on the value (Average Salary)
-            .map(Map.Entry::getKey) // Extract the key (Department Name) from the max entry
-            .orElse(null); // Return null if logic fails (safeguard)
+                .collect(Collectors.groupingBy( // Group data by a specific key
+                        Employee::department, // Key mapper: Group by department name
+                        Collectors.averagingDouble(Employee::salary) // Downstream collector: Calculate average of salary field
+                )) // Result is now Map<String, Double> (Dept -> AvgSalary)
+                .entrySet() // Convert Map to Set<Entry> to stream over the results
+                .stream() // Stream the entries
+                .max(Map.Entry.comparingByValue()) // Find max entry based on the value (Average Salary)
+                .map(Map.Entry::getKey) // Extract the key (Department Name) from the max entry
+                .orElse(null); // Return null if logic fails (safeguard)
     }
 
     // --- Helper Method for Pass/Fail Testing ---
@@ -66,14 +66,15 @@ public class HighestAvgSalary {
 
         // Print formatted result: PASS/FAIL, Name, Result, and Execution Time
         System.out.printf("[%s] %s | Expected: %s, Got: %s | Time: %dms%n",
-            passed ? "PASS" : "FAIL", // Conditional print for status
-            testName, // Test case name
-            expected, // What we wanted
-            actual, // What we got
-            (endTime - startTime) // How long it took
+                passed ? "PASS" : "FAIL", // Conditional print for status
+                testName, // Test case name
+                expected, // What we wanted
+                actual, // What we got
+                (endTime - startTime) // How long it took
         );
     }
 
     // Java 21 Record: Immutable data carrier, reduces boilerplate (no getters/setters/constructors needed)
-    record Employee(int id, String name, double salary, String department) {}
+    record Employee(int id, String name, double salary, String department) {
+    }
 }

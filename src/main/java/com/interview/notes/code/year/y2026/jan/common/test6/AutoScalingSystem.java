@@ -45,7 +45,7 @@ public class AutoScalingSystem {
 
         // Print clean output
         System.out.printf("[%s] %s | Expected: %s, Got: %s | Time: %dns%n",
-            status, testName, expected, result, (endTime - startTime));
+                status, testName, expected, result, (endTime - startTime));
     }
 
     public static void main(String[] args) {
@@ -66,8 +66,8 @@ public class AutoScalingSystem {
         // --- TEST CASE 2: Queue Filling Up (Capacity Trigger) ---
         Queue<Message> q2 = new LinkedList<>();
         // Add 6 messages (Threshold is 5)
-        for(int i=0; i<6; i++) {
-            q2.add(new Message("msg"+i, System.currentTimeMillis()));
+        for (int i = 0; i < 6; i++) {
+            q2.add(new Message("msg" + i, System.currentTimeMillis()));
         }
         // Expect TRUE because 6 > 5
         runTest("Test 2: Capacity Breached", true, q2, defaultPolicy);
@@ -95,8 +95,8 @@ public class AutoScalingSystem {
         // Let's use a loop.
         long now = System.currentTimeMillis();
         // Add 10,000 messages (Simulating load)
-        for(int i=0; i<10_000; i++) {
-             qHuge.add(new Message("bulk"+i, now));
+        for (int i = 0; i < 10_000; i++) {
+            qHuge.add(new Message("bulk" + i, now));
         }
         // Policy allows 5, we have 10,000.
         // Expect TRUE.
@@ -107,9 +107,11 @@ public class AutoScalingSystem {
 
     // Java 21 Record: Simple data carrier for a Message.
     // 'entryTime' stores when the message arrived in the queue.
-    record Message(String id, long entryTime) {}
+    record Message(String id, long entryTime) {
+    }
 
     // Java 21 Record: Simulates the "Table" row for scaling rules.
     // Holds the limits: max allowable latency and max queue depth.
-    record ScalingPolicy(long maxLatencyMs, int queueThreshold) {}
+    record ScalingPolicy(long maxLatencyMs, int queueThreshold) {
+    }
 }

@@ -1,9 +1,10 @@
 package com.interview.notes.code.year.y2026.jan.cognizant.test1;
 
 // Define a record
-public record Person(String name, int age) { }
+public record Person(String name, int age) {
+}
 
-  class RecordDemo {
+class RecordDemo {
     public static void main(String[] args) {
         // Create instances of the record
         Person p1 = new Person("Sunil", 35);

@@ -54,12 +54,12 @@ public class HashMapMutableKeyDemo {
 
         @Override
         public boolean equals(Object o) {
-          return true;
+            return true;
         }
 
         @Override
         public int hashCode() {
-              return 1;
+            return 1;
         }
     }
 }

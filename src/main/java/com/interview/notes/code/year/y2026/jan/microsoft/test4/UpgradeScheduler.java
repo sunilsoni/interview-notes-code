@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
 /*
 Approach: The "Frame and Fill" Strategy (Greedy Calculation)
 Count Frequencies: We first count how many times each machine needs an upgrade.
@@ -29,6 +30,7 @@ public class UpgradeScheduler {
     /**
      * Calculates the minimum time required to complete all upgrades.
      * * @param requests List of tenant IDs (e.g., "T1", "T2")
+     *
      * @param bakeTime The cool-down time in hours per machine
      * @return Minimum hours required
      */
@@ -41,19 +43,19 @@ public class UpgradeScheduler {
         // Logic: Count how many times each machine appears in the request list.
         // Uses Java Stream to group by Identity and count occurrences.
         Map<String, Long> freqMap = requests.stream()
-            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())); // Create a frequency map: T1->3, T2->2
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())); // Create a frequency map: T1->3, T2->2
 
         // Logic: Find the highest frequency (the busiest machine).
         // We stream the values of the map and find the max.
         long maxFreq = freqMap.values().stream()
-            .max(Long::compare) // Find the maximum value in the collection
-            .orElse(0L); // Default to 0 if map is somehow empty
+                .max(Long::compare) // Find the maximum value in the collection
+                .orElse(0L); // Default to 0 if map is somehow empty
 
         // Logic: Count how many machines share this maximum frequency.
         // Example: If T1 has 3 and T2 has 3, this count is 2. This affects the tail of the schedule.
         long countOfMaxFreq = freqMap.values().stream()
-            .filter(f -> f == maxFreq) // Filter only counts that match the max
-            .count(); // Count them
+                .filter(f -> f == maxFreq) // Filter only counts that match the max
+                .count(); // Count them
 
         // Logic: Calculate the number of "intervals" or gaps required by the busiest machine.
         // If maxFreq is 3 (A _ _ A _ _ A), there are 2 main intervals.
@@ -96,7 +98,7 @@ public class UpgradeScheduler {
         // T1:2 (needs 1 gap of size 2). Skeleton: T1 _ _ T1 (size 4).
         // Total tasks: 6. Since 6 > 4, we assume perfect packing. Answer 6.
         runTest("TC4_Overflow", List.of("T1", "T1", "A", "B", "C", "D"), 2, 6);
-        
+
         // Test Case 5: Zero Bake Time
         // Should just be the size of the list.
         runTest("TC5_Zero_Bake", List.of("T1", "T1", "T2"), 0, 3);
@@ -110,12 +112,12 @@ public class UpgradeScheduler {
         List<String> largeInput = new ArrayList<>(); // Use ArrayList for mutable build
         int size = 100_000;
         // Fill list with T1, T2, T3 repeating
-        IntStream.range(0, size).forEach(i -> largeInput.add("T" + (i % 3))); 
-        
+        IntStream.range(0, size).forEach(i -> largeInput.add("T" + (i % 3)));
+
         // If bake time is 2, since we have 3 unique tasks (T0, T1, T2), we can cycle perfectly T0,T1,T2...
         // So no idle time expected. Result should be size (100,000).
         runTest("TC6_Large_Data_Perfect_Cycle", largeInput, 2, 100_000);
-        
+
         // If bake time is 10. We have to wait. 
         // MaxFreq for T0 is 33334.
         // MinTime = (33333 * 11) + 1 (since 33334 items have max freq, actually all 3 do?).

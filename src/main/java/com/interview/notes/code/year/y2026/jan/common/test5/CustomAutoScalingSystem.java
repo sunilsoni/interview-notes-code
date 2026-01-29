@@ -13,7 +13,7 @@ public class CustomAutoScalingSystem {
         MyQueue q1 = new MyQueue();
         long now = System.currentTimeMillis();
         // Add 6 items (Limit is 5)
-        for(int i=0; i<6; i++) q1.add(new Message("m"+i, now));
+        for (int i = 0; i < 6; i++) q1.add(new Message("m" + i, now));
 
         runTest("Capacity Breach", true, q1, policy);
 
@@ -34,8 +34,8 @@ public class CustomAutoScalingSystem {
         MyQueue qHuge = new MyQueue();
         // Add 1 Million items
         // Since our 'add' and 'size' are O(1), this is very fast.
-        for(int i=0; i<1_000_000; i++) {
-            qHuge.add(new Message("load"+i, now));
+        for (int i = 0; i < 1_000_000; i++) {
+            qHuge.add(new Message("load" + i, now));
         }
 
         runTest("1 Million Items", true, qHuge, policy);
@@ -49,15 +49,17 @@ public class CustomAutoScalingSystem {
 
         String status = (actual == expected) ? "PASS" : "FAIL";
         System.out.printf("[%s] %-15s | Exp: %-5s Act: %-5s | Time: %d ns%n",
-            status, name, expected, actual, (end - start));
+                status, name, expected, actual, (end - start));
     }
 
     // 1. DATA MODEL (Java 21 Record)
     // Simple carrier for message data.
-    record Message(String id, long entryTime) {}
+    record Message(String id, long entryTime) {
+    }
 
     // Configuration for scaling limits.
-    record ScalingPolicy(long maxLatencyMs, int queueThreshold) {}
+    record ScalingPolicy(long maxLatencyMs, int queueThreshold) {
+    }
 
     // 2. CUSTOM QUEUE IMPLEMENTATION (No built-in libraries)
     // We implement a simple Singly Linked List.
@@ -102,7 +104,10 @@ public class CustomAutoScalingSystem {
         private static class Node {
             Message data;
             Node next;
-            Node(Message d) { this.data = d; }
+
+            Node(Message d) {
+                this.data = d;
+            }
         }
     }
 

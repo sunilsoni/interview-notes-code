@@ -35,10 +35,10 @@ public class SimplePhoneDialer {
 
         // 4. Loop through every number in the input string (e.g., '2', then '3')
         for (char digit : digits.toCharArray()) {
-            
+
             // 5. Create a temp list for the NEW combinations we are about to make
             List<String> temp = new ArrayList<>();
-            
+
             // 6. Get the letters for the current number (e.g., '2' -> "ABC")
             String letters = map[digit - '0'];
 
@@ -50,7 +50,7 @@ public class SimplePhoneDialer {
                     temp.add(currentStr + letter);
                 }
             }
-            
+
             // 10. Update our main result to be the new list we just built
             result = temp;
         }

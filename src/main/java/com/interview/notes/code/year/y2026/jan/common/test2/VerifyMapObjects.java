@@ -23,8 +23,8 @@ public class VerifyMapObjects {
         // 2️⃣ Verify each entry (proves separate nodes)
         for (Map.Entry<StringWrapper, String> e : dataMap.entrySet()) {
             System.out.println(
-                "Key object = " + System.identityHashCode(e.getKey())
-                + ", Value = " + e.getValue()
+                    "Key object = " + System.identityHashCode(e.getKey())
+                            + ", Value = " + e.getValue()
             );
         }
     }

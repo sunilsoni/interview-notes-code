@@ -96,7 +96,10 @@ public class AutoScalingMessageQueue {
         }
 
         // wait for latency to build
-        try { Thread.sleep(100); } catch (InterruptedException e) {}
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+        }
 
         queue.checkAndScale();
         int workersAfterUp = queue.getCurrentWorkers();
@@ -184,7 +187,10 @@ public class AutoScalingMessageQueue {
             for (int i = 0; i < 80; i++) {
                 queue.enqueue(new Message("m" + i, "p", System.currentTimeMillis(), 1));
             }
-            try { Thread.sleep(20); } catch (InterruptedException e) {}
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {
+            }
             queue.checkAndScale();
             queue.clear();
         }
@@ -238,10 +244,16 @@ public class AutoScalingMessageQueue {
 
         // add messages with delays between them
         queue.enqueue(new Message("m1", "p", System.currentTimeMillis(), 1));
-        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+        }
 
         queue.enqueue(new Message("m2", "p", System.currentTimeMillis(), 1));
-        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+        }
 
         queue.enqueue(new Message("m3", "p", System.currentTimeMillis(), 1));
 
@@ -301,7 +313,10 @@ public class AutoScalingMessageQueue {
             for (int i = 0; i < 75; i++) {
                 queue.enqueue(new Message("m" + i, "p", System.currentTimeMillis(), 1));
             }
-            try { Thread.sleep(50); } catch (InterruptedException e) {}
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+            }
             queue.checkAndScale();
             history.add(queue.getCurrentWorkers());
 
@@ -324,7 +339,7 @@ public class AutoScalingMessageQueue {
         // verify workers changed
         boolean hasChanges = false;
         for (int i = 1; i < history.size(); i++) {
-            if (!history.get(i).equals(history.get(i-1))) {
+            if (!history.get(i).equals(history.get(i - 1))) {
                 hasChanges = true;
                 break;
             }
@@ -749,7 +764,8 @@ public class AutoScalingMessageQueue {
             long minLatencyMs,     // shortest wait time
             long maxLatencyMs,     // longest wait time
             long avgLatencyMs      // average wait time
-    ) {}
+    ) {
+    }
 
     // ==================== MESSAGE RECORD ====================
     // Immutable message data holder
@@ -758,7 +774,8 @@ public class AutoScalingMessageQueue {
             String payload,        // message content
             long createdTime,      // when message was CREATED (not queued)
             int priority           // message priority level
-    ) {}
+    ) {
+    }
 
     // ==================== SCALING CONFIG RECORD ====================
     // Auto-scaling configuration parameters
@@ -767,7 +784,8 @@ public class AutoScalingMessageQueue {
             double fillThreshold,  // queue fill % trigger (0.0-1.0)
             int minWorkers,        // minimum workers to maintain
             int maxWorkers         // maximum workers allowed
-    ) {}
+    ) {
+    }
 
     // ==================== SCALE DECISION RECORD ====================
     // Result of scaling evaluation
@@ -775,7 +793,8 @@ public class AutoScalingMessageQueue {
             boolean shouldScale,   // true if scaling needed
             int targetWorkers,     // desired worker count
             String reason          // explanation for decision
-    ) {}
+    ) {
+    }
 
     // ==================== CUSTOM ARRAY LIST ====================
     // Simple dynamic array for storing results
@@ -941,12 +960,25 @@ public class AutoScalingMessageQueue {
         }
 
         // getters
-        int getCurrentWorkers() { return currentWorkers; }
-        int getQueueSize() { return queue.size(); }
-        int getMaxCapacity() { return queue.getMaxCapacity(); }
-        ScalingConfig getConfig() { return config; }
+        int getCurrentWorkers() {
+            return currentWorkers;
+        }
+
+        int getQueueSize() {
+            return queue.size();
+        }
+
+        int getMaxCapacity() {
+            return queue.getMaxCapacity();
+        }
+
+        ScalingConfig getConfig() {
+            return config;
+        }
 
         // clear queue
-        void clear() { queue.clear(); }
+        void clear() {
+            queue.clear();
+        }
     }
 }

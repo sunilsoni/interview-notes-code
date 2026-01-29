@@ -5,7 +5,7 @@ public class Snippet2 {
     public static void main(String[] args) {
 
         try {
-            char[] array = { 'T', 'E', 'S', 'T' };
+            char[] array = {'T', 'E', 'S', 'T'};
             int index = array.length;
 
             while (index > 0) {

@@ -23,10 +23,10 @@ public class OrderedFrequency {
     // Helper to check if two maps are equal AND preserve order (for the test)
     private static boolean verifyOrderAndContent(Map<Character, Long> result, List<Character> expectedOrder) {
         if (result.size() != expectedOrder.size()) return false;
-        
+
         // Convert result keys to a list to check their sequence
         List<Character> resultKeys = new ArrayList<>(result.keySet());
-        
+
         // strict check: Are the keys in the exact same order?
         return resultKeys.equals(expectedOrder);
     }
@@ -37,10 +37,10 @@ public class OrderedFrequency {
         // --- Test Case 1: "communication" (Check specific order) ---
         // Input string starts with 'c', so 'c' must be first in the map
         String input1 = "communication";
-        
+
         // Execute Logic
         var result1 = getOrderedFrequency(input1); // 'var' is Java 10+ feature for less code words
-        
+
         // Define exact expected order of keys: c, o, m, u, n, i, a, t
         var expectedOrder = List.of('c', 'o', 'm', 'u', 'n', 'i', 'a', 't');
 
@@ -60,16 +60,16 @@ public class OrderedFrequency {
         // --- Test Case 3: Large Data (Performance & Order) ---
         // Create 1 million chars: "abcabc..." repeated
         StringBuilder sb = new StringBuilder();
-        for(int i=0; i<333333; i++) sb.append("abc"); 
+        for (int i = 0; i < 333333; i++) sb.append("abc");
         String input3 = sb.toString();
-        
+
         long start = System.currentTimeMillis();
         var result3 = getOrderedFrequency(input3);
         long end = System.currentTimeMillis();
-        
+
         // Verify order is strictly a, b, c
         boolean pass3 = verifyOrderAndContent(result3, List.of('a', 'b', 'c'));
-        
+
         System.out.println("\nTest 3 (Large Data): " + (pass3 ? "PASS" : "FAIL"));
         System.out.println("Time: " + (end - start) + "ms");
     }

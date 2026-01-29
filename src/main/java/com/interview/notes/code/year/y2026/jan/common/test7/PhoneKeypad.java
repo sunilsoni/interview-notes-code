@@ -7,15 +7,15 @@ public class PhoneKeypad {
 
     // Mapping digits to letters (phone keypad)
     static final Map<Character, String> MAP = Map.of(
-        '2', "ABC", '3', "DEF", '4', "GHI",
-        '5', "JKL", '6', "MNO",
-        '7', "PQRS", '8', "TUV", '9', "WXYZ"
+            '2', "ABC", '3', "DEF", '4', "GHI",
+            '5', "JKL", '6', "MNO",
+            '7', "PQRS", '8', "TUV", '9', "WXYZ"
     );
 
     public static void main(String[] args) {
 
         // Test cases array (small + edge + large)
-        String[] tests = { "2", "23", "79", "", "201", "234567" };
+        String[] tests = {"2", "23", "79", "", "201", "234567"};
 
         // Loop through each test input
         for (String input : tests) {
@@ -65,9 +65,9 @@ public class PhoneKeypad {
 
             // Combine existing strings with new letters using Stream API
             result = result.stream()
-                .flatMap(s -> letters.chars()
-                    .mapToObj(c -> s + (char) c))
-                .toList(); // Java 21 immutable list
+                    .flatMap(s -> letters.chars()
+                            .mapToObj(c -> s + (char) c))
+                    .toList(); // Java 21 immutable list
         }
 
         // Return final combinations

@@ -36,6 +36,7 @@ public class Snippet6 {
 
     public interface TargetHolder<T> {
         void injectTarget(T target);
+
         T getTarget();
     }
 

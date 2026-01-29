@@ -8,19 +8,19 @@ public class HighestSalaryPerDept {
     public static void main(String[] args) {
         // --- Test Case 1: Standard Data ---
         List<Employee> data1 = List.of( // Create immutable list of employees
-            new Employee(1, "Alice", 50000, "IT"), // IT: Low
-            new Employee(2, "Bob", 80000, "IT"),   // IT: High (Winner)
-            new Employee(3, "Charlie", 40000, "HR"), // HR: Low
-            new Employee(4, "David", 60000, "HR"),   // HR: High (Winner)
-            new Employee(5, "Eve", 70000, "Finance") // Finance: Only one
+                new Employee(1, "Alice", 50000, "IT"), // IT: Low
+                new Employee(2, "Bob", 80000, "IT"),   // IT: High (Winner)
+                new Employee(3, "Charlie", 40000, "HR"), // HR: Low
+                new Employee(4, "David", 60000, "HR"),   // HR: High (Winner)
+                new Employee(5, "Eve", 70000, "Finance") // Finance: Only one
         );
         // We expect Bob (IT), David (HR), Eve (Finance)
         test("Standard Case", data1, 3); // Check if we got 3 departments back
 
         // --- Test Case 2: Duplicate Top Salaries ---
         List<Employee> data2 = List.of(
-            new Employee(1, "A", 90000, "Sales"),
-            new Employee(2, "B", 90000, "Sales") // Same salary
+                new Employee(1, "A", 90000, "Sales"),
+                new Employee(2, "B", 90000, "Sales") // Same salary
         );
         test("Duplicate Max", data2, 1); // Should return 1 dept (Sales), picks first found usually
 
@@ -42,13 +42,13 @@ public class HighestSalaryPerDept {
         if (list == null || list.isEmpty()) return Collections.emptyMap(); // Fast exit if input is null/empty
 
         return list.stream() // Start streaming the list elements
-            .collect(Collectors.groupingBy( // Group elements by a key
-                Employee::department, // Key: Department Name
-                Collectors.collectingAndThen( // Finish the collection with a final transformation
-                    Collectors.maxBy(Comparator.comparingDouble(Employee::salary)), // Find max salary in group
-                    Optional::get // Unwrap Optional (safe here as groupingBy only makes groups for existing items)
-                )
-            ));
+                .collect(Collectors.groupingBy( // Group elements by a key
+                        Employee::department, // Key: Department Name
+                        Collectors.collectingAndThen( // Finish the collection with a final transformation
+                                Collectors.maxBy(Comparator.comparingDouble(Employee::salary)), // Find max salary in group
+                                Optional::get // Unwrap Optional (safe here as groupingBy only makes groups for existing items)
+                        )
+                ));
     }
 
     // --- Helper for Testing ---
@@ -61,7 +61,7 @@ public class HighestSalaryPerDept {
 
         // Print result in simple format: PASS/FAIL | Test Name | Time
         System.out.printf("[%s] %s | Found: %d | Time: %dms%n",
-            pass ? "PASS" : "FAIL", name, result.size(), (end - start));
+                pass ? "PASS" : "FAIL", name, result.size(), (end - start));
 
         // Optional: Print actual winners for small datasets only
         if (input.size() < 10 && pass) {
@@ -70,5 +70,6 @@ public class HighestSalaryPerDept {
     }
 
     // Java 21 Record: Immutable data carrier. Automatic constructor, getters, equals/hashcode.
-    record Employee(int id, String name, double salary, String department) {}
+    record Employee(int id, String name, double salary, String department) {
+    }
 }
