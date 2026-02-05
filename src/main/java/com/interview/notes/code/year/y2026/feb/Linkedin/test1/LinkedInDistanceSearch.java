@@ -5,6 +5,7 @@ import java.util.*;
 // 1. Define the Interface for Member as per requirements
 interface Member {
     String getName(); // Method to get member's name
+
     int getMemberId(); // Method to get unique ID
 }
 
@@ -21,16 +22,27 @@ interface FindConnectionDistance {
 // Concrete implementation of Member using Java Records (Java 14+) reduces boilerplate
 // This replaces the need for a class with fields, constructor, getters, and equals/hashCode
 record SimpleMember(String name, int id) implements Member {
-    @Override public String getName() { return name; } // Getter implementation
-    @Override public int getMemberId() { return id; } // Getter implementation
-    @Override public String toString() { return name; } // For pretty printing in tests
+    @Override
+    public String getName() {
+        return name;
+    } // Getter implementation
+
+    @Override
+    public int getMemberId() {
+        return id;
+    } // Getter implementation
+
+    @Override
+    public String toString() {
+        return name;
+    } // For pretty printing in tests
 }
 
 // Main Solution Class
 public class LinkedInDistanceSearch implements FindConnectionDistance {
 
     // Dependency injection for the data source (the graph)
-    private final MemberConnections graph; 
+    private final MemberConnections graph;
 
     // Constructor to inject the connection data
     public LinkedInDistanceSearch(MemberConnections graph) {
@@ -106,7 +118,7 @@ public class LinkedInDistanceSearch implements FindConnectionDistance {
         String status = (result == expected) ? "PASS" : "FAIL"; // Determine status
         // Print formatted result
         System.out.printf("[%s] %s -> %s | Exp: %d, Act: %d | Time: %d us | Status: %s%n",
-            testName, m1.getName(), m2.getName(), expected, result, duration, status);
+                testName, m1.getName(), m2.getName(), expected, result, duration, status);
     }
 
     // Method to simulate large data input
@@ -118,7 +130,7 @@ public class LinkedInDistanceSearch implements FindConnectionDistance {
         // This is the worst case for BFS depth
         for (int i = 0; i < size; i++) {
             Member current = new SimpleMember("User" + i, i);
-            Member next = new SimpleMember("User" + (i+1), i+1);
+            Member next = new SimpleMember("User" + (i + 1), i + 1);
             if (i < size - 1) {
                 hugeGraph.put(current.getMemberId(), List.of(next)); // Link current to next
             }

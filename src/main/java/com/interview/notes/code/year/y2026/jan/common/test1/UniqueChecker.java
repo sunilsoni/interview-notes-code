@@ -10,8 +10,8 @@ public class UniqueChecker {
 
         // Test Case 2: Large data input (1 million items)
         List<String> largeInput = IntStream.range(0, 1_000_000)
-                                           .mapToObj(i -> "Item" + (i % 10)) // Repeats 10 items
-                                           .toList();
+                .mapToObj(i -> "Item" + (i % 10)) // Repeats 10 items
+                .toList();
         runTest("Large Input", largeInput, List.of("Item0", "Item1", "Item2", "Item3", "Item4", "Item5", "Item6", "Item7", "Item8", "Item9"));
     }
 
@@ -20,8 +20,8 @@ public class UniqueChecker {
      */
     public static List<String> getUnique(List<String> input) {
         return input.stream()          // Convert list to a flow of data
-                    .distinct()       // Remove duplicates using internal Hash hashing
-                    .toList();        // Java 16+ shorthand to collect into unmodifiable list
+                .distinct()       // Remove duplicates using internal Hash hashing
+                .toList();        // Java 16+ shorthand to collect into unmodifiable list
     }
 
     /**
@@ -30,10 +30,10 @@ public class UniqueChecker {
     private static void runTest(String name, List<String> input, List<String> expected) {
         // Process the input
         List<String> result = getUnique(input);
-        
+
         // Check if result matches expectation (order matters for List.equals)
         boolean passed = result.equals(expected);
-        
+
         // Print result with simple pass/fail flag
         System.out.println(name + " -> " + (passed ? "PASS" : "FAIL"));
     }

@@ -59,8 +59,8 @@ public class GitAutomator {
 
             // Check if commit was successful or if there was nothing to commit
             if (commit.exitCode() != 0 && !commit.output().contains("nothing to commit")) {
-                 System.out.println("Git Commit Failed.");
-                 return false;
+                System.out.println("Git Commit Failed.");
+                return false;
             }
 
             return true; // Workflow completed successfully
@@ -106,5 +106,6 @@ public class GitAutomator {
 
     // Java 21 Record to hold the result of a command execution
     // 'exitCode' 0 means success. 'output' holds logs.
-    record CommandResult(int exitCode, String output) {}
+    record CommandResult(int exitCode, String output) {
+    }
 }

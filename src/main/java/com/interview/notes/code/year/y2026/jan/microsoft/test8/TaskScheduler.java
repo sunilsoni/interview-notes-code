@@ -73,9 +73,9 @@ public class TaskScheduler {
         // Test Case 1: Simple Linear Dependency
         // A needs B, B needs C. Order should be: C -> B -> A
         var case1 = List.of(
-            new Task("A", List.of("B")),
-            new Task("B", List.of("C")),
-            new Task("C", List.of())
+                new Task("A", List.of("B")),
+                new Task("B", List.of("C")),
+                new Task("C", List.of())
         );
         runTest("Linear Dependency", case1, false);
 
@@ -83,18 +83,18 @@ public class TaskScheduler {
         // D depends on B and C. B depends on A. C depends on A.
         // Valid Orders: A->B->C->D OR A->C->B->D
         var case2 = List.of(
-            new Task("D", List.of("B", "C")),
-            new Task("B", List.of("A")),
-            new Task("C", List.of("A")),
-            new Task("A", List.of())
+                new Task("D", List.of("B", "C")),
+                new Task("B", List.of("A")),
+                new Task("C", List.of("A")),
+                new Task("A", List.of())
         );
         runTest("Diamond Graph", case2, false);
 
         // Test Case 3: Circular Dependency (FAIL CASE)
         // A needs B, B needs A. Should throw exception.
         var case3 = List.of(
-            new Task("A", List.of("B")),
-            new Task("B", List.of("A"))
+                new Task("A", List.of("B")),
+                new Task("B", List.of("A"))
         );
         runTest("Circular Dependency", case3, true);
 
@@ -125,9 +125,9 @@ public class TaskScheduler {
             } else {
                 // Verify order logic broadly (simply checking if not null and sizes match)
                 System.out.printf("[%s] PASS: Order generated: %s... (Size: %d)\n",
-                    testName,
-                    result.stream().limit(5).toList(), // Show only first 5 for brevity
-                    result.size());
+                        testName,
+                        result.stream().limit(5).toList(), // Show only first 5 for brevity
+                        result.size());
             }
         } catch (IllegalStateException e) {
             if (expectException) {
@@ -142,5 +142,6 @@ public class TaskScheduler {
 
     // Java 21 Record: A concise, immutable data carrier for input
     // "id" is the task name, "dependencies" is the list of tasks it needs before starting
-    record Task(String id, List<String> dependencies) {}
+    record Task(String id, List<String> dependencies) {
+    }
 }

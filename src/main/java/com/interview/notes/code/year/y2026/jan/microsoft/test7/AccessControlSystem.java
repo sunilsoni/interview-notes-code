@@ -89,7 +89,8 @@ public class AccessControlSystem {
     }
 
     // User Record: Holds name and a REFERENCE to a Role object
-    public record User(String name, Role role) {}
+    public record User(String name, Role role) {
+    }
 
     public static class SecurityService {
 

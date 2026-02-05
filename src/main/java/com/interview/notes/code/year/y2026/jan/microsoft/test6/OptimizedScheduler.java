@@ -13,7 +13,7 @@ public class OptimizedScheduler {
      * Uses Parallel Streams to utilize multiple CPU cores for checking bookings.
      */
     public static List<Integer> scheduleMeetingsOptimized(int reqStart, int reqEnd, int m, List<List<Integer>> bookings) {
-        
+
         // OPTIMIZATION 1: BitSet
         // Uses 1 bit per room. 200,000 rooms = only ~25KB of RAM (fits in L1 Cache).
         // Default is 0 (false/available). We will flip bits to 1 (true/occupied).
@@ -24,7 +24,7 @@ public class OptimizedScheduler {
         // Note: BitSet is NOT thread-safe, so we need synchronization.
         // For pure speed on <1M items, a standard 'for' loop is actually often faster due to lock overhead.
         // But here is the lock-free parallel approach using a concurrent collector if strict parallelism is required.
-        
+
         // PRACTICAL APPROACH: 
         // For N=100,000, a simple loop with BitSet is the absolute fastest (Zero locking overhead).
         for (var booking : bookings) {
@@ -42,14 +42,14 @@ public class OptimizedScheduler {
         for (int i = 1; i <= m; i++) {
             // Find next available room starting at index i
             int freeRoom = occupied.nextClearBit(i);
-            
+
             // If the next free room is beyond our max room m, we are done
             if (freeRoom > m) break;
-            
+
             availableRooms.add(freeRoom);
             i = freeRoom; // Fast forward loop to this room
         }
-        
+
         return availableRooms;
     }
 
@@ -58,12 +58,12 @@ public class OptimizedScheduler {
         int m = 100_000;      // 100k Rooms
         int n = 500_000;      // 500k Bookings
         List<List<Integer>> hugeData = new ArrayList<>(n);
-        
+
         // Fill with dummy data
         Random rand = new Random();
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             // Random room 1 to m
-            int r = rand.nextInt(m) + 1; 
+            int r = rand.nextInt(m) + 1;
             // Most meetings are [0, 100], request is [200, 300] (No overlap)
             // We add occasional overlaps
             int start = rand.nextInt(500);
@@ -72,12 +72,12 @@ public class OptimizedScheduler {
         }
 
         System.out.println("Processing " + n + " bookings for " + m + " rooms...");
-        
+
         long t1 = System.currentTimeMillis();
         List<Integer> result = scheduleMeetingsOptimized(200, 300, m, hugeData);
         long t2 = System.currentTimeMillis();
 
-        System.out.println("Time taken: " + (t2 - t1) + "ms"); 
+        System.out.println("Time taken: " + (t2 - t1) + "ms");
         System.out.println("Available rooms found: " + result.size());
     }
 }

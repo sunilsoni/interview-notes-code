@@ -36,7 +36,7 @@ public class StockProfit {
             // Standard approach: hold = Math.max(hold, cash - prices[i]);
             hold = Math.max(hold, cash - prices[i]);
         }
-        
+
         // The result is 'cash' because we want to end up with no stock to maximize realized profit.
         return cash;
     }
@@ -47,22 +47,23 @@ public class StockProfit {
         System.out.println("Running Tests...");
 
         // Define test cases using a simple Record (Java 14+) for data holding
-        record TestCase(int[] prices, int fee, int expected, String desc) {}
+        record TestCase(int[] prices, int fee, int expected, String desc) {
+        }
 
         // Create a stream of test cases
         Stream.of(
-            new TestCase(new int[]{1, 3, 2, 8, 4, 9}, 2, 8, "Example Case from Screenshot"),
-            new TestCase(new int[]{1, 3, 7, 5, 10, 3}, 3, 6, "General Case"),
-            new TestCase(new int[]{1, 1, 1, 1}, 0, 0, "Flat Prices"),
-            new TestCase(new int[]{9, 8, 7, 1}, 2, 0, "Descending Prices (Loss avoidance)"),
-            new TestCase(generateLargeData(1_000_000), 2, -1, "Large Data (1M items)") // -1 indicates we calculate dynamically
+                new TestCase(new int[]{1, 3, 2, 8, 4, 9}, 2, 8, "Example Case from Screenshot"),
+                new TestCase(new int[]{1, 3, 7, 5, 10, 3}, 3, 6, "General Case"),
+                new TestCase(new int[]{1, 1, 1, 1}, 0, 0, "Flat Prices"),
+                new TestCase(new int[]{9, 8, 7, 1}, 2, 0, "Descending Prices (Loss avoidance)"),
+                new TestCase(generateLargeData(1_000_000), 2, -1, "Large Data (1M items)") // -1 indicates we calculate dynamically
         ).forEach(test -> {
             // Start timer for performance check
             var start = System.currentTimeMillis();
-            
+
             // Execute logic
             var actual = maxProfit(test.prices, test.fee);
-            
+
             // Calculate duration
             var time = System.currentTimeMillis() - start;
 
@@ -71,8 +72,8 @@ public class StockProfit {
             var status = passed ? "PASS" : "FAIL";
 
             // Print concise report
-            System.out.printf("[%s] %-30s | Fee: %d | Exp: %-4s | Act: %-4d | Time: %dms%n", 
-                status, test.desc, test.fee, (test.expected == -1 ? "N/A" : test.expected), actual, time);
+            System.out.printf("[%s] %-30s | Fee: %d | Exp: %-4s | Act: %-4d | Time: %dms%n",
+                    status, test.desc, test.fee, (test.expected == -1 ? "N/A" : test.expected), actual, time);
         });
     }
 
@@ -80,7 +81,7 @@ public class StockProfit {
     private static int[] generateLargeData(int size) {
         // Generates 'size' random integers between 1 and 100
         return IntStream.generate(() -> new Random().nextInt(100) + 1)
-                        .limit(size)
-                        .toArray();
+                .limit(size)
+                .toArray();
     }
 }

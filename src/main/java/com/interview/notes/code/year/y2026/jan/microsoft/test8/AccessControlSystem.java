@@ -97,7 +97,8 @@ public class AccessControlSystem {
     // --- TESTING FRAMEWORK (No JUnit, Simple Main) ---
 
     // Record for User: Holds the user's name and their assigned Role
-    public record User(String name, Role role) {}
+    public record User(String name, Role role) {
+    }
 
     // The service class that manages the logic
     public static class SecurityService {

@@ -36,14 +36,14 @@ public class AnagramCheck {
     public static void main(String[] args) {
         String word1 = "Listen";
         String word2 = "Silent";
-        
-        System.out.println("Are '" + word1 + "' and '" + word2 + "' anagrams? " 
-                           + isAnagram(word1, word2)); // Output: true
+
+        System.out.println("Are '" + word1 + "' and '" + word2 + "' anagrams? "
+                + isAnagram(word1, word2)); // Output: true
 
         String word3 = "Hello";
         String word4 = "World";
-        
-        System.out.println("Are '" + word3 + "' and '" + word4 + "' anagrams? " 
-                           + isAnagram(word3, word4)); // Output: false
+
+        System.out.println("Are '" + word3 + "' and '" + word4 + "' anagrams? "
+                + isAnagram(word3, word4)); // Output: false
     }
 }

@@ -7,7 +7,9 @@ import java.util.stream.IntStream;
 // 1. Interface (Simple)
 interface TreeNode {
     int getValue(); // Get numeric value
+
     void setValue(int v); // Set numeric value
+
     Map<String, TreeNode> getChildren(); // Get child map
 }
 
@@ -16,10 +18,21 @@ class Node implements TreeNode {
     final Map<String, TreeNode> children = new HashMap<>(); // Stores children. HashMap is O(1).
     int val; // Stores the value
 
-    public Node(int v) { this.val = v; } // Constructor
-    public int getValue() { return val; } // Getter
-    public void setValue(int v) { this.val = v; } // Setter
-    public Map<String, TreeNode> getChildren() { return children; } // Getter for map
+    public Node(int v) {
+        this.val = v;
+    } // Constructor
+
+    public int getValue() {
+        return val;
+    } // Getter
+
+    public void setValue(int v) {
+        this.val = v;
+    } // Setter
+
+    public Map<String, TreeNode> getChildren() {
+        return children;
+    } // Getter for map
 }
 
 public class MergeTreesManual {
@@ -31,13 +44,15 @@ public class MergeTreesManual {
 
         // TEST 1: Standard Scenario from Image
         var src = new Node(22); // Source Root
-        var sW = new Node(2); src.getChildren().put("W", sW); // Add W
+        var sW = new Node(2);
+        src.getChildren().put("W", sW); // Add W
         src.getChildren().put("K", new Node(16)); // Add K
         src.getChildren().put("C", new Node(4)); // Add C
         sW.getChildren().put("V", new Node(3)); // Add V to W
 
         var tgt = new Node(20); // Target Root
-        var tW = new Node(5); tgt.getChildren().put("W", tW); // Add W
+        var tW = new Node(5);
+        tgt.getChildren().put("W", tW); // Add W
         tgt.getChildren().put("K", new Node(2)); // Add K
         tgt.getChildren().put("R", new Node(13)); // Add R
         tW.getChildren().put("M", new Node(5)); // Add M to W
@@ -75,8 +90,8 @@ public class MergeTreesManual {
         // Even index 'n0': Source(1) + Target(1) = 2
         // Odd index 'n1': Source(1) + Target(0) = 1 (Copied)
         boolean pass2 = lTgt.getChildren().get("n0").getValue() == 2
-                     && lTgt.getChildren().get("n1").getValue() == 1
-                     && lTgt.getChildren().size() == 100_000;
+                && lTgt.getChildren().get("n1").getValue() == 1
+                && lTgt.getChildren().size() == 100_000;
 
         System.out.println("Test 2 Result: " + (pass2 ? "PASS" : "FAIL"));
         System.out.println("Time taken: " + time + "ms");

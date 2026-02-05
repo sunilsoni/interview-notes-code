@@ -37,9 +37,9 @@ public class MergeKSortedLists {
         // Test Case 1: Standard Example (1->4->5, 1->3->4, 2->6)
         // Creating lists using a helper method for conciseness.
         ListNode[] input1 = {
-            createList(1, 4, 5),
-            createList(1, 3, 4),
-            createList(2, 6)
+                createList(1, 4, 5),
+                createList(1, 3, 4),
+                createList(2, 6)
         };
         // Expected result: 1->1->2->3->4->4->5->6
         int[] expected1 = {1, 1, 2, 3, 4, 4, 5, 6};
@@ -50,7 +50,7 @@ public class MergeKSortedLists {
         runTest("TC2: Empty Input", input2, new int[]{}); // Expect empty result.
 
         // Test Case 3: Lists with nulls/empty lists inside
-        ListNode[] input3 = { null, createList(1) }; // Mixed valid and null lists.
+        ListNode[] input3 = {null, createList(1)}; // Mixed valid and null lists.
         runTest("TC3: Mixed Nulls", input3, new int[]{1}); // Should handle null gracefully.
 
         // Test Case 4: Large Data Input (Stress Test)
@@ -60,7 +60,7 @@ public class MergeKSortedLists {
         ListNode[] largeInput = new ListNode[numLists]; // Array to hold large input.
 
         // Generate sorted data: List i contains multiples of i (just to have sorted data).
-        for(int i = 0; i < numLists; i++) {
+        for (int i = 0; i < numLists; i++) {
             int start = i; // Start value.
             // Create a simple sorted list for this index.
             largeInput[i] = createList(IntStream.range(0, nodesPerList).map(n -> start + n * 10).toArray());
@@ -147,6 +147,9 @@ public class MergeKSortedLists {
     static class ListNode {
         int val; // Value of the node.
         ListNode next; // Reference to the next node.
-        ListNode(int val) { this.val = val; } // Constructor to initialize value.
+
+        ListNode(int val) {
+            this.val = val;
+        } // Constructor to initialize value.
     }
 }

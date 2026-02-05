@@ -8,9 +8,13 @@ import java.util.stream.IntStream;
 interface TreeNode {
     // Standard getters and setters for the node's data
     String getKey(); // Get the unique identifier of the node
+
     int getValue(); // Get the numerical value
+
     void setValue(int v); // Update the numerical value
+
     Map<String, TreeNode> getChildren(); // Get the map of child nodes
+
     void addChild(TreeNode node); // Helper to add a child
 }
 
@@ -27,16 +31,27 @@ class Node implements TreeNode {
     }
 
     // Implementing interface methods
-    public String getKey() { return key; } // Return key
-    public int getValue() { return value; } // Return value
-    public void setValue(int v) { this.value = v; } // Set value
-    public Map<String, TreeNode> getChildren() { return children; } // Return child map
-    
+    public String getKey() {
+        return key;
+    } // Return key
+
+    public int getValue() {
+        return value;
+    } // Return value
+
+    public void setValue(int v) {
+        this.value = v;
+    } // Set value
+
+    public Map<String, TreeNode> getChildren() {
+        return children;
+    } // Return child map
+
     // Helper to add a child node to the map using its key
     public void addChild(TreeNode node) {
         children.put(node.getKey(), node); // Put node in map
     }
-    
+
     // toString for easier debugging and printing results
     public String toString() {
         return key + ":" + value; // Format: Key:Value
@@ -54,18 +69,26 @@ public class MergeTwoTrees {
 
         // Construct Source Tree
         Node srcRoot = new Node("ROOT", 22); // Create Source Root
-        Node sw = new Node("W", 2); srcRoot.addChild(sw); // Add W to Source
-        Node sk = new Node("K", 16); srcRoot.addChild(sk); // Add K to Source
-        Node sc = new Node("C", 4); srcRoot.addChild(sc); // Add C to Source
+        Node sw = new Node("W", 2);
+        srcRoot.addChild(sw); // Add W to Source
+        Node sk = new Node("K", 16);
+        srcRoot.addChild(sk); // Add K to Source
+        Node sc = new Node("C", 4);
+        srcRoot.addChild(sc); // Add C to Source
         sw.addChild(new Node("V", 3)); // Add V under W
-        Node skE = new Node("E", 6); sk.addChild(skE); // Add E under K
-        Node skF = new Node("F", 7); sk.addChild(skF); // Add F under K
+        Node skE = new Node("E", 6);
+        sk.addChild(skE); // Add E under K
+        Node skF = new Node("F", 7);
+        sk.addChild(skF); // Add F under K
 
         // Construct Target Tree
         Node tgtRoot = new Node("ROOT", 20); // Create Target Root
-        Node tw = new Node("W", 5); tgtRoot.addChild(tw); // Add W to Target
-        Node tk = new Node("K", 2); tgtRoot.addChild(tk); // Add K to Target
-        Node tr = new Node("R", 13); tgtRoot.addChild(tr); // Add R to Target
+        Node tw = new Node("W", 5);
+        tgtRoot.addChild(tw); // Add W to Target
+        Node tk = new Node("K", 2);
+        tgtRoot.addChild(tk); // Add K to Target
+        Node tr = new Node("R", 13);
+        tgtRoot.addChild(tr); // Add R to Target
         tw.addChild(new Node("M", 5)); // Add M under W
         tk.addChild(new Node("M", 2)); // Add M under K
         tk.addChild(new Node("P", 13)); // Add P under K

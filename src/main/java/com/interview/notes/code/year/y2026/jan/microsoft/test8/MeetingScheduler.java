@@ -9,16 +9,17 @@ public class MeetingScheduler {
     /**
      * Identifies available meeting rooms that do not conflict with the requested time window.
      * * @param requestedStartTime Start of the new meeting
-     * @param requestedEndTime   End of the new meeting
-     * @param m                  Total number of rooms (IDs 1 to m)
-     * @param existingBookings   List of existing bookings [roomID, start, end]
+     *
+     * @param requestedEndTime End of the new meeting
+     * @param m                Total number of rooms (IDs 1 to m)
+     * @param existingBookings List of existing bookings [roomID, start, end]
      * @return Sorted list of available room IDs
      */
     public static List<Integer> scheduleMeetings(int requestedStartTime, int requestedEndTime, int m, List<List<Integer>> existingBookings) {
         // Create a boolean array to track room availability. 
         // We use size 'm + 1' to handle 1-based room IDs directly (indices 1 to m).
         // By default, all values are 'false', meaning we assume rooms are free initially.
-        boolean[] isOccupied = new boolean[m + 1]; 
+        boolean[] isOccupied = new boolean[m + 1];
 
         // Iterate through every existing booking to find conflicts.
         // We use an enhanced for-loop which works efficiently for any List implementation.
@@ -60,7 +61,7 @@ public class MeetingScheduler {
         input1.add(List.of(1, 3, 5));
         input1.add(List.of(1, 1, 2));
         input1.add(List.of(2, 2, 6));
-        
+
         // Expected: [1, 3, 4] (Room 1 is free 5-10, Room 2 overlaps at 5, Rooms 3&4 empty)
         runTest("Example Case", 5, 10, 4, input1, List.of(1, 3, 4));
 
@@ -73,7 +74,7 @@ public class MeetingScheduler {
         input2.add(List.of(1, 0, 5));   // Room 1: touches start
         input2.add(List.of(2, 10, 15)); // Room 2: touches end
         input2.add(List.of(3, 6, 9));   // Room 3: inside -> Occupied
-        
+
         runTest("Edge Contact", 5, 10, 3, input2, List.of(1, 2));
 
 
@@ -83,11 +84,11 @@ public class MeetingScheduler {
         int largeM = 10_000; // Using 10k for quick console demo, scalable to 200k
         List<List<Integer>> largeInput = new ArrayList<>();
         List<Integer> expectedLarge = new ArrayList<>();
-        
+
         for (int i = 1; i <= largeM; i++) {
             if (i % 2 == 0) {
                 // Block even rooms: [5, 10] overlaps with request [5, 10]
-                largeInput.add(List.of(i, 5, 10)); 
+                largeInput.add(List.of(i, 5, 10));
             } else {
                 expectedLarge.add(i); // Odd rooms remain free
             }
@@ -96,7 +97,7 @@ public class MeetingScheduler {
         long t1 = System.currentTimeMillis();
         List<Integer> resultLarge = scheduleMeetings(5, 10, largeM, largeInput);
         long t2 = System.currentTimeMillis();
-        
+
         boolean passLarge = resultLarge.equals(expectedLarge);
         System.out.println("Large Data: " + (passLarge ? "PASS" : "FAIL") + " (Time: " + (t2 - t1) + "ms)");
     }

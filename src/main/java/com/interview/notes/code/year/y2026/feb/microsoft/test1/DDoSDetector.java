@@ -6,9 +6,10 @@ public class DDoSDetector {
 
     /**
      * Detects DDoS attackers using a sliding window approach.
-     * @param logs Stream of log entries sorted by time
+     *
+     * @param logs   Stream of log entries sorted by time
      * @param window Time window in seconds (M)
-     * @param limit Packet count threshold (N)
+     * @param limit  Packet count threshold (N)
      * @return Map of {CustomerId -> Timestamp they first exceeded limit}
      */
     public static Map<String, Integer> detect(List<Log> logs, int window, int limit) {
@@ -54,23 +55,23 @@ public class DDoSDetector {
 
         // --- Test Case 1: Normal Traffic (Should Pass - No Detection) ---
         var logs1 = List.of(
-            new Log(1, "UserA"), new Log(2, "UserA"), new Log(5, "UserA")
+                new Log(1, "UserA"), new Log(2, "UserA"), new Log(5, "UserA")
         );
         // Window=10s, Threshold=5. UserA has 3. Should stay empty.
         test("Normal Traffic", logs1, 10, 5, Map.of());
 
         // --- Test Case 2: DDoS Detection (Should Pass - Detect UserA) ---
         var logs2 = List.of(
-            new Log(1, "UserA"), new Log(2, "UserA"),
-            new Log(3, "UserA"), new Log(4, "UserA")
+                new Log(1, "UserA"), new Log(2, "UserA"),
+                new Log(3, "UserA"), new Log(4, "UserA")
         );
         // Window=10s, Threshold=3. UserA sends 4. Detect at t=4.
         test("Simple Attack", logs2, 10, 3, Map.of("UserA", 4));
 
         // --- Test Case 3: Mixed Users & Edge Logic (Should Pass) ---
         var logs3 = List.of(
-            new Log(1, "GoodUser"), new Log(2, "BadUser"),
-            new Log(2, "BadUser"), new Log(3, "BadUser") // BadUser hits 3 in 2s
+                new Log(1, "GoodUser"), new Log(2, "BadUser"),
+                new Log(2, "BadUser"), new Log(3, "BadUser") // BadUser hits 3 in 2s
         );
         // Window=5s, Threshold=2. BadUser exceeds at t=3. GoodUser safe.
         test("Mixed Traffic", logs3, 5, 2, Map.of("BadUser", 3));
@@ -79,8 +80,8 @@ public class DDoSDetector {
         // User sends packets at t=1, t=2... then waits... then t=20.
         // Old packets should expire.
         var logs4 = List.of(
-            new Log(1, "UserB"), new Log(2, "UserB"),
-            new Log(20, "UserB"), new Log(21, "UserB") // Window slides, counts reset effectively
+                new Log(1, "UserB"), new Log(2, "UserB"),
+                new Log(20, "UserB"), new Log(21, "UserB") // Window slides, counts reset effectively
         );
         // Window=5s, Threshold=3. Even with 4 total logs, never >3 inside 5s window.
         test("Window Expiration", logs4, 5, 3, Map.of());
@@ -89,9 +90,9 @@ public class DDoSDetector {
         System.out.print("Test 5: Large Data (1 Million Logs)... ");
         var hugeLogs = new ArrayList<Log>();
         // Simulate "Attacker" sending 2000 packets at second 500
-        for(int i=0; i<2000; i++) hugeLogs.add(new Log(500, "Attacker"));
+        for (int i = 0; i < 2000; i++) hugeLogs.add(new Log(500, "Attacker"));
         // Simulate "SafeUser" sending 1 packet every second for 1000 seconds
-        for(int i=0; i<1000; i++) hugeLogs.add(new Log(i, "SafeUser"));
+        for (int i = 0; i < 1000; i++) hugeLogs.add(new Log(i, "SafeUser"));
 
         // Sort by time to mimic stream
         hugeLogs.sort(Comparator.comparingInt(Log::time));
@@ -115,5 +116,6 @@ public class DDoSDetector {
     }
 
     // Java 21 Record: Concise, immutable data carrier for Log entries
-    record Log(int time, String id) {}
+    record Log(int time, String id) {
+    }
 }

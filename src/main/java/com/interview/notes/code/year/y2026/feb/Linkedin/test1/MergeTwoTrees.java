@@ -6,8 +6,11 @@ import java.util.Map;
 // Interface defining the structure of our tree nodes
 interface TreeNode {
     String getKey(); // Get unique identifier for the node
+
     int getValue(); // Get the numeric value
+
     void setValue(int value); // Update the numeric value
+
     Map<String, TreeNode> getChildren(); // Get child nodes mapped by key
 }
 
@@ -17,11 +20,26 @@ class MyTreeNode implements TreeNode {
     private final Map<String, TreeNode> children = new LinkedHashMap<>(); // Maintain insertion order
     private int value; // Aggregated sum
 
-    public MyTreeNode(String key, int value) { this.key = key; this.value = value; }
-    public String getKey() { return key; }
-    public int getValue() { return value; }
-    public void setValue(int value) { this.value = value; }
-    public Map<String, TreeNode> getChildren() { return children; }
+    public MyTreeNode(String key, int value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public Map<String, TreeNode> getChildren() {
+        return children;
+    }
 }
 
 public class MergeTwoTrees {
@@ -58,9 +76,9 @@ public class MergeTwoTrees {
         // TEST CASE 2: Large Data Input (Wide Tree)
         TreeNode bigSrc = new MyTreeNode("ROOT", 0);
         TreeNode bigTgt = new MyTreeNode("ROOT", 0);
-        for(int i = 0; i < 10000; i++) {
-            bigSrc.getChildren().put("Node"+i, new MyTreeNode("Node"+i, 1));
-            bigTgt.getChildren().put("Node"+i, new MyTreeNode("Node"+i, 1));
+        for (int i = 0; i < 10000; i++) {
+            bigSrc.getChildren().put("Node" + i, new MyTreeNode("Node" + i, 1));
+            bigTgt.getChildren().put("Node" + i, new MyTreeNode("Node" + i, 1));
         }
         engine.merge(bigSrc, bigTgt);
         System.out.println("Test Case 2 (Large Scale 10k nodes): " + (bigTgt.getValue() == 20000 ? "PASS" : "FAIL"));

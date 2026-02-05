@@ -12,9 +12,9 @@ public class DDoSDefense {
         // Window: 5s. Current Time: 10. (Window is 5 to 10).
         // 8 is inside [5-10], so it should count!
         var unsortedLogs = List.of(
-            new Log(10, "UserA"), // Sets global time to 10
-            new Log(8, "UserA"),  // Late packet! Should be accepted.
-            new Log(9, "UserA")   // Another packet. Total 3 in window.
+                new Log(10, "UserA"), // Sets global time to 10
+                new Log(8, "UserA"),  // Late packet! Should be accepted.
+                new Log(9, "UserA")   // Another packet. Total 3 in window.
         );
         // Window 5, Limit 2. UserA has 3 valid packets (8, 9, 10). Should Fail.
         runTest("Unsorted Late Packet", unsortedLogs, 5, 2, Map.of("UserA", 9));
@@ -24,9 +24,9 @@ public class DDoSDefense {
         // Window 5. Valid range: 5-10.
         // Packet 2 is < 5. It should be discarded immediately.
         var expiredLogs = List.of(
-            new Log(10, "UserB"), // Global time = 10
-            new Log(2, "UserB"),  // Ancient packet. Ignored.
-            new Log(9, "UserB")   // Valid. Count = 2 (10, 9).
+                new Log(10, "UserB"), // Global time = 10
+                new Log(2, "UserB"),  // Ancient packet. Ignored.
+                new Log(9, "UserB")   // Valid. Count = 2 (10, 9).
         );
         // Limit 2. Count is 2. No Attack.
         runTest("Expired Late Packet", expiredLogs, 5, 2, Map.of());
@@ -96,5 +96,6 @@ public class DDoSDefense {
     }
 
     // Java 21 Record: Concise data carrier for stream entries
-    record Log(int time, String id) {}
+    record Log(int time, String id) {
+    }
 }
