@@ -49,6 +49,7 @@ public class TreeDiameter {
 
     /**
      * Finds the greatest distance between any two nodes in the tree.
+     *
      * @param root The root node of the N-ary tree.
      * @return The maximum distance found.
      */

@@ -42,7 +42,7 @@ class EnrollmentRegistry {
                 .forEach(i -> largeList.add(new EnrollmentRegistry("Student" + i)));
 
         boolean pass = largeList.size() == limit &&
-                       largeList.get(limit - 1).toString().equals("1000: Student1000");
+                largeList.get(limit - 1).toString().equals("1000: Student1000");
 
         System.out.println("Large Data (" + limit + "): " + (pass ? "PASS" : "FAIL"));
     }

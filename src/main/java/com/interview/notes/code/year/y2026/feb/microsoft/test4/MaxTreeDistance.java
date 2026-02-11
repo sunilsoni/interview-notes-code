@@ -149,7 +149,9 @@ public class MaxTreeDistance {
             total++;
             Node root = new Node(0);
             Node a = new Node(1), b = new Node(2), c = new Node(3), d = new Node(4);
-            a.children.add(b); b.children.add(c); c.children.add(d);
+            a.children.add(b);
+            b.children.add(c);
+            c.children.add(d);
             root.children.addAll(List.of(a, new Node(100)));
             long result = solve(root);
             boolean pass = result == 110;

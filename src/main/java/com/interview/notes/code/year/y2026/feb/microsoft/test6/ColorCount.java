@@ -18,12 +18,12 @@ public class ColorCount {
     public static void main(String[] args) {
 
         // test case 1: small list
-        List<String> list = Arrays.asList("red","blue","red","yellow");
+        List<String> list = Arrays.asList("red", "blue", "red", "yellow");
 
         Map<String, Long> result = countColors(list);
 
         // expected result
-        Map<String, Long> expected = Map.of("red",2L,"blue",1L,"yellow",1L);
+        Map<String, Long> expected = Map.of("red", 2L, "blue", 1L, "yellow", 1L);
 
         // check pass/fail
         System.out.println(result.equals(expected) ? "PASS" : "FAIL");

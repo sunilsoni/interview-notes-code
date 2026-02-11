@@ -30,7 +30,7 @@ public class UniqueWindowStream {
 
         // Use IntStream to iterate indices from 0 to Length-1
         IntStream.range(0, arr.length).forEach(i -> {
-            
+
             // 1. Add current element to window (Java 8 'merge' is cleaner than 'put')
             // If key exists, add 1. If not, set to 1.
             map.merge(arr[i], 1, Integer::sum);
@@ -46,12 +46,12 @@ public class UniqueWindowStream {
             if (i >= k - 1) {
                 // Get the current window sub-array for printing
                 var window = Arrays.copyOfRange(arr, i - k + 1, i + 1);
-                
+
                 // Format array to string: "10,20,30"
                 String winStr = Arrays.stream(window)
-                                      .mapToObj(String::valueOf)
-                                      .collect(Collectors.joining(","));
-                
+                        .mapToObj(String::valueOf)
+                        .collect(Collectors.joining(","));
+
                 // Print final formatted string
                 System.out.println("{" + winStr + "} - distinct elements size = " + map.size());
             }
@@ -65,12 +65,12 @@ public class UniqueWindowStream {
         Arrays.fill(hugeData, 1); // Fill with dummy data
 
         long start = System.currentTimeMillis();
-        
+
         // Run logic (Capturing output to prevent console flood, just checking speed)
         // We modify solve slightly for silent run or just trust the logic
         // For this demo, we run it but you can comment out the Print inside 'solve' for true speed test
         // To keep code minimal, we just print start/end time.
-        
+
         System.out.println("Processing " + size + " elements...");
         // Running logic... (We use a modified minimal loop here to prove O(N) without printing 1M lines)
         var map = new HashMap<Integer, Integer>();

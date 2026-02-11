@@ -28,7 +28,7 @@ public class MaxProductSubarray {
 
             // Update maxSoFar: either start new subarray at curr, or extend previous
             maxSoFar = Math.max(curr, maxSoFar * curr);
-            
+
             // Update minSoFar: either start new subarray at curr, or extend previous
             minSoFar = Math.min(curr, minSoFar * curr);
 
@@ -42,17 +42,17 @@ public class MaxProductSubarray {
     // Simple custom testing method (No JUnit)
     public static void runTest(String testName, int[] input, int expected) {
         long startTime = System.nanoTime(); // Start timer for performance check
-        
+
         var actual = maxProduct(input); // Execute logic
-        
+
         long endTime = System.nanoTime(); // End timer
-        
+
         // Check if actual matches expected
-        var status = (actual == expected) ? "PASS" : "FAIL"; 
-        
+        var status = (actual == expected) ? "PASS" : "FAIL";
+
         // Print result in a clean format
-        System.out.printf("[%s] Case: %-15s | Exp: %d | Act: %d | Time: %d ns%n", 
-            status, testName, expected, actual, (endTime - startTime));
+        System.out.printf("[%s] Case: %-15s | Exp: %d | Act: %d | Time: %d ns%n",
+                status, testName, expected, actual, (endTime - startTime));
     }
 
     public static void main(String[] args) {
@@ -74,10 +74,10 @@ public class MaxProductSubarray {
         int largeSize = 1_000_000; // Define large size
         int[] largeData = new int[largeSize]; // Allocate array
         Arrays.fill(largeData, 1); // Fill with 1s
-        
+
         // Add a "2" in the middle so the answer should be 2
-        largeData[500000] = 2; 
-        
+        largeData[500000] = 2;
+
         runTest("Large Data (1M)", largeData, 2); // Should pass quickly
     }
 }

@@ -7,7 +7,7 @@ public class NumberCombinations {
     // ans: the combination we have built so far
     public static void printPermutations(String str, String ans) {
         // Base Case: If the input string is empty, we have used all digits
-        if (str.isEmpty()) { 
+        if (str.isEmpty()) {
             System.out.print(ans + " "); // Print the final formed number combination
             return; // Exit this recursive step
         }
@@ -15,13 +15,13 @@ public class NumberCombinations {
         // Loop through the current string to pick each character once
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i); // Get the character at the current index 'i'
-            
+
             // Form the rest of the string excluding the character we just picked
             // substring(0, i) gets parts before 'i', substring(i+1) gets parts after 'i'
             String restOfString = str.substring(0, i) + str.substring(i + 1);
-            
+
             // Recursive Call: Pass the remaining string and add picked char to answer
-            printPermutations(restOfString, ans + ch); 
+            printPermutations(restOfString, ans + ch);
         }
     }
 
@@ -42,7 +42,7 @@ public class NumberCombinations {
         System.out.println("Combinations for: " + b); // Label the output
         printPermutations(String.valueOf(b), ""); // Start recursion
         System.out.println("\n-----------------------------"); // formatting line
-        
+
         // Test Case 3: Smallest valid input
         int c = 1; // Single digit
         System.out.println("Combinations for: " + c); // Label output

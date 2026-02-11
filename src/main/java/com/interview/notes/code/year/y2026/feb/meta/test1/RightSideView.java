@@ -12,15 +12,15 @@ public class RightSideView {
         // --- Test Case 1: The First Example from your image ---
         // Constructing tree: 1 -> (2 -> (null, 5), 3)
         var root1 = new TreeNode(1,
-            new TreeNode(2, null, new TreeNode(5, null, null)),
-            new TreeNode(3, null, null));
+                new TreeNode(2, null, new TreeNode(5, null, null)),
+                new TreeNode(3, null, null));
         runTest("Test Case 1 (Standard)", root1, List.of(1, 3, 5));
 
         // --- Test Case 2: The Second Example from your image ---
         // Constructing tree where 4 blocks 5
         var root2 = new TreeNode(1,
-            new TreeNode(2, null, new TreeNode(5, null, null)),
-            new TreeNode(3, null, new TreeNode(4, null, null)));
+                new TreeNode(2, null, new TreeNode(5, null, null)),
+                new TreeNode(3, null, new TreeNode(4, null, null)));
         runTest("Test Case 2 (Overlapping)", root2, List.of(1, 3, 4));
 
         // --- Test Case 3: Left Skewed Tree (Right side missing) ---
@@ -36,7 +36,7 @@ public class RightSideView {
         var largeRoot = generateLargeTree(10000);
         // We expect to see every node [0, 1, 2... 9999] because it's a straight line
         List<Integer> expectedLarge = new ArrayList<>();
-        for(int i=0; i<10000; i++) expectedLarge.add(i);
+        for (int i = 0; i < 10000; i++) expectedLarge.add(i);
         runTest("Test Case 5 (Large Data)", largeRoot, expectedLarge);
     }
 
@@ -73,9 +73,9 @@ public class RightSideView {
 
         // Print status using Java formatted strings
         System.out.printf("%-25s : %s [%.2f ms]%n",
-            testName,
-            (pass ? "PASS" : "FAIL Expected: " + expected + " Got: " + actual),
-            (end - start) / 1_000_000.0);
+                testName,
+                (pass ? "PASS" : "FAIL Expected: " + expected + " Got: " + actual),
+                (end - start) / 1_000_000.0);
     }
 
     // --- Helper to generate large data ---
@@ -87,8 +87,9 @@ public class RightSideView {
         }
         return head; // Return top of the large tree
     }
-    
+
     // A simple record class for the Tree Node (Java 14+ feature to reduce boilerplate code)
     // This replaces the lengthy "class TreeNode { int val; TreeNode left... }" definition
-    record TreeNode(int val, TreeNode left, TreeNode right) {}
+    record TreeNode(int val, TreeNode left, TreeNode right) {
+    }
 }

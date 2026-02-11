@@ -21,7 +21,7 @@ public class AgeCensus {
             runTest("Boundary 50", "key=test, age=50", 1);
             runTest("Below 50", "key=test, age=49", 0);
             runTest("Empty", "", 0);
-            
+
             // Large Data Simulation
             var sb = new StringBuilder();
             for (int i = 0; i < 50000; i++) sb.append("key=L, age=" + (i % 100) + ", ");

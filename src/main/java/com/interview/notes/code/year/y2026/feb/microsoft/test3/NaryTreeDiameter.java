@@ -26,10 +26,10 @@ public class NaryTreeDiameter {
         // 2. Sort results in descending order (Largest paths first)
         // 3. Keep only the top 2 (since diameter uses at most 2 branches)
         var paths = node.children.stream()
-            .map(NaryTreeDiameter::calculateHeight) // Recurse: Get max depth of child
-            .sorted(Comparator.reverseOrder())      // Sort: O(K log K)
-            .limit(2)                               // Optimization: Only need top 2
-            .toList();                              // Convert to list for access
+                .map(NaryTreeDiameter::calculateHeight) // Recurse: Get max depth of child
+                .sorted(Comparator.reverseOrder())      // Sort: O(K log K)
+                .limit(2)                               // Optimization: Only need top 2
+                .toList();                              // Convert to list for access
 
         // Get the longest branch (or 0 if no children)
         long max1 = paths.isEmpty() ? 0 : paths.get(0);
@@ -89,7 +89,7 @@ public class NaryTreeDiameter {
         var bigRoot = new Node(0);
 
         // Add 100,000 children with small random weights
-        for(int i=0; i<100_000; i++) {
+        for (int i = 0; i < 100_000; i++) {
             bigRoot.children.add(new Node(1));
         }
 
@@ -115,6 +115,8 @@ public class NaryTreeDiameter {
     // 'val' acts as the edge weight from its parent.
     record Node(int val, List<Node> children) {
         // Compact constructor to initialize the list automatically
-        Node(int val) { this(val, new ArrayList<>()); }
+        Node(int val) {
+            this(val, new ArrayList<>());
+        }
     }
 }

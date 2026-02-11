@@ -4,22 +4,22 @@ class MinStackTokensSolver {
     public static void main(String[] args) {
         MinStackTokensSolver solver = new MinStackTokensSolver();
 
-        var tests = new Object[][] {
-            {new int[]{2, 3}, 1},
-            {new int[]{1, 0, 4, 1}, 1},
-            {new int[]{5}, 2},
-            {new int[]{4, 0, 3, 0}, 3},
-            {new int[]{0}, 0},
-            {new int[]{1}, 1},
-            {new int[]{2}, 1},
-            {new int[]{3}, 2},
-            {new int[]{100000}, 3},
-            {new int[]{1000000}, 6},
-            {new int[]{3, 3, 3, 3}, 2},
-            {new int[]{1, 1, 1, 1, 1}, 1},
-            {new int[]{7, 15, 31}, 5},
-            {new int[]{0, 0, 0, 0, 0}, 0},
-            {new int[]{999999, 999999}, 6}
+        var tests = new Object[][]{
+                {new int[]{2, 3}, 1},
+                {new int[]{1, 0, 4, 1}, 1},
+                {new int[]{5}, 2},
+                {new int[]{4, 0, 3, 0}, 3},
+                {new int[]{0}, 0},
+                {new int[]{1}, 1},
+                {new int[]{2}, 1},
+                {new int[]{3}, 2},
+                {new int[]{100000}, 3},
+                {new int[]{1000000}, 6},
+                {new int[]{3, 3, 3, 3}, 2},
+                {new int[]{1, 1, 1, 1, 1}, 1},
+                {new int[]{7, 15, 31}, 5},
+                {new int[]{0, 0, 0, 0, 0}, 0},
+                {new int[]{999999, 999999}, 6}
         };
 
         int pass = 0, fail = 0;
@@ -38,7 +38,7 @@ class MinStackTokensSolver {
 
         System.out.println("\n" + pass + " passed, " + fail + " failed out of " + tests.length);
     }
-    
+
     public int solution(int[] A) {
         long total = 0;
         for (int x : A) total += x;

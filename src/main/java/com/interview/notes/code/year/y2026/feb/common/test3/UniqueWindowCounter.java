@@ -11,22 +11,22 @@ public class UniqueWindowCounter {
     public static List<Integer> countDistinct(int[] arr, int k) {
         // Use var for type inference (Java 10+)
         var result = new ArrayList<Integer>(); // List to store the answer for each window
-        
+
         // HashMap to store Number -> Frequency. Size of map = count of unique items
-        var map = new HashMap<Integer, Integer>(); 
+        var map = new HashMap<Integer, Integer>();
 
         // Loop through the entire array once (Linear Time O(N))
         for (int i = 0; i < arr.length; i++) {
-            
+
             // Add current element to map. 'merge' updates count cleanly (Java 8+)
             // If key exists, add 1 to old value. If not, put 1.
-            map.merge(arr[i], 1, Integer::sum); 
+            map.merge(arr[i], 1, Integer::sum);
 
             // Logic to remove the element sliding out of the window
             // We only start removing after the window is fully formed (index >= k)
             if (i >= k) {
                 int elementToRemove = arr[i - k]; // Identify the element leaving the window
-                
+
                 // Decrease count. If count becomes 0, remove key entirely.
                 // computeIfPresent simplifies the "check and remove" logic
                 map.computeIfPresent(elementToRemove, (key, count) -> count > 1 ? count - 1 : null);
@@ -41,7 +41,7 @@ public class UniqueWindowCounter {
     }
 
     // --- Simple Test Framework (No JUnit) ---
-    
+
     public static void main(String[] args) {
         System.out.println("--- Starting Tests ---");
 
@@ -67,7 +67,7 @@ public class UniqueWindowCounter {
         // Window [5,5,5] -> Unique: 5 (Size 1)
         List<Integer> expected3 = List.of(1, 1);
         runTest("Test Case 3 (Identical)", input3, k3, expected3);
-        
+
         // Test Case 4: Large Data Simulation
         runLargeDataTest();
     }
@@ -85,17 +85,17 @@ public class UniqueWindowCounter {
         System.out.print("Test Case 4 (Large Data 1M elements)... ");
         int size = 1_000_000;
         int[] largeInput = new int[size];
-        
+
         // Fill with random data
         Arrays.fill(largeInput, 1); // Worst case for collisions or simple fills
-        
+
         long start = System.currentTimeMillis(); // Start timer
         var result = countDistinct(largeInput, 1000); // Run with k=1000
         long end = System.currentTimeMillis(); // End timer
-        
+
         // Validation: Logic should not crash and return correct result size
         boolean passed = result.size() == (size - 1000 + 1);
-        
+
         System.out.println(passed ? "PASS" : "FAIL");
         System.out.println("   Time taken: " + (end - start) + "ms");
     }
