@@ -19,10 +19,10 @@ public class Solution {
         // Step 1: Count occurrences of each IP using Stream API
         // 'var' reduces verbosity (Java 10+ feature)
         var ipCounts = Arrays.stream(lines)
-            // Extract IP (substring to first space) to avoid storing full log lines
-            .map(line -> line.substring(0, line.indexOf(' ')))
-            // Group by IP and count frequency -> Map<String, Long>
-            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                // Extract IP (substring to first space) to avoid storing full log lines
+                .map(line -> line.substring(0, line.indexOf(' ')))
+                // Group by IP and count frequency -> Map<String, Long>
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
         // Guard clause: if map is empty after processing
         if (ipCounts.isEmpty()) return "";
@@ -33,14 +33,14 @@ public class Solution {
 
         // Step 3: Filter IPs that match the max count and join them
         return ipCounts.entrySet().stream()
-            // Keep only entries where the count equals the maximum found
-            .filter(entry -> entry.getValue() == maxVal)
-            // Extract just the IP key from the map entry
-            .map(Map.Entry::getKey)
-            // Sort to ensure deterministic output (e.g., "1.1, 2.2" vs "2.2, 1.1")
-            .sorted()
-            // Join strings with a comma separator
-            .collect(Collectors.joining(","));
+                // Keep only entries where the count equals the maximum found
+                .filter(entry -> entry.getValue() == maxVal)
+                // Extract just the IP key from the map entry
+                .map(Map.Entry::getKey)
+                // Sort to ensure deterministic output (e.g., "1.1, 2.2" vs "2.2, 1.1")
+                .sorted()
+                // Join strings with a comma separator
+                .collect(Collectors.joining(","));
     }
 
     /**
@@ -65,19 +65,19 @@ public class Solution {
 
         // --- Test 1: Standard Case (Single Winner) ---
         String[] lines1 = {
-            "10.0.0.1 - frank [10/Dec/2000] GET 200",
-            "10.0.0.1 - frank [10/Dec/2000] GET 200",
-            "10.0.0.2 - nancy [10/Dec/2000] GET 200"
+                "10.0.0.1 - frank [10/Dec/2000] GET 200",
+                "10.0.0.1 - frank [10/Dec/2000] GET 200",
+                "10.0.0.2 - nancy [10/Dec/2000] GET 200"
         };
         // Expect only 10.0.0.1
         allPassed &= runTest("Standard Case", lines1, "10.0.0.1");
 
         // --- Test 2: Tie Case (Multiple Winners) ---
         String[] lines2 = {
-            "10.0.0.1 - log data...",
-            "10.0.0.1 - log data...",
-            "10.0.0.2 - log data...",
-            "10.0.0.2 - log data..."
+                "10.0.0.1 - log data...",
+                "10.0.0.1 - log data...",
+                "10.0.0.2 - log data...",
+                "10.0.0.2 - log data..."
         };
         // Both IPs appear twice. Expect "10.0.0.1,10.0.0.2" (Sorted order)
         allPassed &= runTest("Tie Case", lines2, "10.0.0.1,10.0.0.2");
@@ -90,7 +90,7 @@ public class Solution {
             if (i < 500_000) largeData[i] = "192.168.1.1 - log...";
             else largeData[i] = "10.0.0.5 - log...";
         }
-        
+
         long start = System.currentTimeMillis();
         // Expect sorted comma separated string: "10.0.0.5,192.168.1.1"
         boolean largePass = runTest("Large Data Tie", largeData, "10.0.0.5,192.168.1.1");
@@ -106,8 +106,8 @@ public class Solution {
     private static boolean runTest(String name, String[] input, String expected) {
         String result = findTopIpaddress(input);
         boolean pass = result.equals(expected);
-        System.out.println("Test: " + name + " -> " + (pass ? "PASS" : "FAIL") + 
-                           " [Expected: " + expected + ", Got: " + result + "]");
+        System.out.println("Test: " + name + " -> " + (pass ? "PASS" : "FAIL") +
+                " [Expected: " + expected + ", Got: " + result + "]");
         return pass;
     }
 }

@@ -44,7 +44,7 @@ public class CacheOptimizer {
     public static void main(String[] args) {
         test(1, List.of(10, 8, 12, 4, 5, 25), List.of(1, 0, 1, 1, 0, 1), List.of(1, 0, 1, 0, 1, 1), 3, 31);
         test(2, List.of(3, 2, 4, 1, 5), List.of(0, 0, 0, 0, 1), List.of(1, 1, 0, 1, 1), 2, -1);
-        
+
         List<Integer> largePayload = IntStream.range(0, 200000).map(i -> 1000).boxed().toList();
         List<Integer> largeA = IntStream.range(0, 200000).map(i -> 1).boxed().toList();
         List<Integer> largeB = IntStream.range(0, 200000).map(i -> 1).boxed().toList();

@@ -25,10 +25,10 @@ public class BestRestaurantFinder {
             do {
                 String encodedCity = URLEncoder.encode(city, StandardCharsets.UTF_8);
                 String url = "https://jsonmock.hackerrank.com/api/food_outlets?city=" + encodedCity + "&page=" + page;
-                
+
                 var request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
                 var response = client.send(request, HttpResponse.BodyHandlers.ofString());
-                
+
                 var jsonObject = new Gson().fromJson(response.body(), JsonObject.class);
                 totalPages = jsonObject.get("total_pages").getAsInt();
                 JsonArray data = jsonObject.getAsJsonArray("data");
@@ -65,10 +65,10 @@ public class BestRestaurantFinder {
 
         test("Sample Case 0", "Seattle", 500, "Cafe Juanita");
         test("Sample Case 1", "Miami", 1000, "Pirates of Grill");
-        
+
         // Large Data / Edge Cases
-        test("Non-Existent City", "Atlantis", 100, ""); 
-        test("High Vote Threshold", "Seattle", 200000, ""); 
+        test("Non-Existent City", "Atlantis", 100, "");
+        test("High Vote Threshold", "Seattle", 200000, "");
 
         System.out.println("Testing Complete.");
     }
@@ -77,11 +77,11 @@ public class BestRestaurantFinder {
         long start = System.currentTimeMillis();
         String result = finestFoodOutlet(city, votes);
         long end = System.currentTimeMillis();
-        
+
         boolean pass = result.equals(expected);
         String status = pass ? "PASS" : "FAIL";
-        
-        System.out.printf("[%s] %s | Input: %s, %d | Expected: '%s', Got: '%s' | Time: %dms%n", 
-            status, testName, city, votes, expected, result, (end - start));
+
+        System.out.printf("[%s] %s | Input: %s, %d | Expected: '%s', Got: '%s' | Time: %dms%n",
+                status, testName, city, votes, expected, result, (end - start));
     }
 }

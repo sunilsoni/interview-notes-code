@@ -11,15 +11,15 @@ public class RemoveAllDuplicates {
     // Logic: Only keep items that appear EXACTLY once
     public static List<String> solve(List<String> list1, List<String> list2) {
         return Stream.concat(list1.stream(), list2.stream()) // 1. Combine lists
-            .collect(Collectors.groupingBy( // 2. Group items map
-                Function.identity(),        // Key = the string itself
-                Collectors.counting()       // Value = how many times it appears
-            ))
-            .entrySet().stream()            // 3. Process the map entries
-            .filter(e -> e.getValue() == 1) // 4. Keep ONLY if count is exactly 1
-            .map(Map.Entry::getKey)         // 5. Extract the string key
-            .sorted()                       // 6. Sort alphabetically
-            .toList();                      // 7. Output result
+                .collect(Collectors.groupingBy( // 2. Group items map
+                        Function.identity(),        // Key = the string itself
+                        Collectors.counting()       // Value = how many times it appears
+                ))
+                .entrySet().stream()            // 3. Process the map entries
+                .filter(e -> e.getValue() == 1) // 4. Keep ONLY if count is exactly 1
+                .map(Map.Entry::getKey)         // 5. Extract the string key
+                .sorted()                       // 6. Sort alphabetically
+                .toList();                      // 7. Output result
     }
 
     // Main Method: Tests
@@ -35,7 +35,7 @@ public class RemoveAllDuplicates {
 
         // --- Test 2: Internal Duplicates ---
         // 'a' appears twice in l3. It should be gone.
-        var l3 = List.of("a", "a", "b"); 
+        var l3 = List.of("a", "a", "b");
         var l4 = List.of("c");
         var expected2 = List.of("b", "c"); // 'a' is gone
         runTest("Internal Duplicates Removed", l3, l4, expected2);
@@ -58,22 +58,22 @@ public class RemoveAllDuplicates {
         List<String> d1 = java.util.stream.IntStream.range(0, 1000).mapToObj(String::valueOf).toList();
         // Create list 500-1499
         List<String> d2 = java.util.stream.IntStream.range(500, 1500).mapToObj(String::valueOf).toList();
-        
+
         // 0-499 appear ONCE (Keep)
         // 500-999 appear TWICE (Remove completely)
         // 1000-1499 appear ONCE (Keep)
         // Result size should be 500 + 500 = 1000
-        
+
         long start = System.currentTimeMillis();
         var res = solve(d1, d2);
         long end = System.currentTimeMillis();
 
         boolean sizeOk = res.size() == 1000;
         // 500 should NOT be there
-        boolean duplicateRemoved = !res.contains("500"); 
+        boolean duplicateRemoved = !res.contains("500");
 
         if (sizeOk && duplicateRemoved) {
-            System.out.println("[PASS] Large Data (Processed in " + (end-start) + "ms)");
+            System.out.println("[PASS] Large Data (Processed in " + (end - start) + "ms)");
         } else {
             System.out.println("[FAIL] Large Data. Size: " + res.size());
         }

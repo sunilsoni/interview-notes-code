@@ -45,7 +45,10 @@ public class HitCounter {
         // Example 3: Boundary Inclusion (The "61" Case)
         // ---------------------------------------------------------
         var c3 = new HitCounter();
-        c3.hit(1); c3.hit(1); c3.hit(1); c3.hit(1); // 4 hits at 1
+        c3.hit(1);
+        c3.hit(1);
+        c3.hit(1);
+        c3.hit(1); // 4 hits at 1
         c3.getHits(2); // Intermediate call (ignore result for this test step)
         c3.hit(61);
         c3.hit(61);
@@ -59,7 +62,10 @@ public class HitCounter {
         // Example 4: Expiration (The "63" Case)
         // ---------------------------------------------------------
         var c4 = new HitCounter();
-        c4.hit(1); c4.hit(1); c4.hit(1); c4.hit(1);
+        c4.hit(1);
+        c4.hit(1);
+        c4.hit(1);
+        c4.hit(1);
         c4.hit(61);
         c4.hit(62);
         // Window [63-60, 63] -> [3, 63].
@@ -86,7 +92,7 @@ public class HitCounter {
     private static void printResult(String testName, int expected, int actual) {
         String status = (expected == actual) ? "✅ PASS" : "❌ FAIL";
         System.out.printf("%-10s | %-35s | Expected: %-3d | Got: %-3d%n",
-            status, testName, expected, actual);
+                status, testName, expected, actual);
     }
 
     /* -------------------------------------------------------------------------- */

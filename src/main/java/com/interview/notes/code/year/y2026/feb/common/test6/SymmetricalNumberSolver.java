@@ -23,13 +23,13 @@ public class SymmetricalNumberSolver {
 
     public static String findNextSymmetrical(int k) {
         return String.valueOf(
-            LongStream.iterate((long) k + 1, n -> n + 1)
-                .filter(n -> {
-                    var s = String.valueOf(n);
-                    return s.contentEquals(new StringBuilder(s).reverse());
-                })
-                .findFirst()
-                .getAsLong()
+                LongStream.iterate((long) k + 1, n -> n + 1)
+                        .filter(n -> {
+                            var s = String.valueOf(n);
+                            return s.contentEquals(new StringBuilder(s).reverse());
+                        })
+                        .findFirst()
+                        .getAsLong()
         );
     }
 }

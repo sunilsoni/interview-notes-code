@@ -17,18 +17,18 @@ class Main {
 
     public static String codeHere(StringBuilder inputData) {
         return Arrays.stream(inputData.toString().trim().split("\\n"))
-            .skip(1)
-            .map(String::trim)
-            .filter(s -> !s.isEmpty())
-            .map(Long::parseLong)
-            .map(k -> java.util.stream.LongStream.iterate(k + 1, n -> n + 1)
-                .filter(n -> {
-                    String s = String.valueOf(n);
-                    return s.contentEquals(new StringBuilder(s).reverse());
-                })
-                .findFirst()
-                .getAsLong())
-            .map(String::valueOf)
-            .collect(java.util.stream.Collectors.joining("\n"));
+                .skip(1)
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .map(Long::parseLong)
+                .map(k -> java.util.stream.LongStream.iterate(k + 1, n -> n + 1)
+                        .filter(n -> {
+                            String s = String.valueOf(n);
+                            return s.contentEquals(new StringBuilder(s).reverse());
+                        })
+                        .findFirst()
+                        .getAsLong())
+                .map(String::valueOf)
+                .collect(java.util.stream.Collectors.joining("\n"));
     }
 }

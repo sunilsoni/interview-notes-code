@@ -20,27 +20,27 @@ public class MostFrequentWord {
         // 3. Split: Divide the string into an array of words based on whitespace
         // 4. Stream: Create a Stream<String> to process the words functionally
         return Arrays.stream(paragraph.toLowerCase().replaceAll("[^a-z]+", " ").split(" "))
-                
+
                 // Remove empty strings that might result from multiple spaces or punctuation
-                .filter(word -> !word.isEmpty()) 
-                
+                .filter(word -> !word.isEmpty())
+
                 // Exclude words that are present in the bannedSet
-                .filter(word -> !bannedSet.contains(word)) 
-                
+                .filter(word -> !bannedSet.contains(word))
+
                 // Group words by themselves and count occurrences (Result: Map<String, Long>)
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())) 
-                
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+
                 // Convert the Map to a Set of Entries to process key-value pairs
-                .entrySet().stream() 
-                
+                .entrySet().stream()
+
                 // Find the entry with the maximum value (highest frequency count)
-                .max(Map.Entry.comparingByValue()) 
-                
+                .max(Map.Entry.comparingByValue())
+
                 // Extract the word (key) from the map entry found
-                .map(Map.Entry::getKey) 
-                
+                .map(Map.Entry::getKey)
+
                 // Return an empty string as a fallback if no word is found (though problem guarantees one)
-                .orElse(""); 
+                .orElse("");
     }
 
     // --- TEST METHOD ---
@@ -71,7 +71,7 @@ public class MostFrequentWord {
         String p4 = sb.toString();
         String[] b4 = {"banana"}; // Ban 'banana', so 'apple' should win
         runTest("4. Large Data Input", p4, b4, "apple");
-        
+
         System.out.println("\n=== All Tests Completed ===");
     }
 
@@ -80,21 +80,21 @@ public class MostFrequentWord {
      */
     private static void runTest(String testName, String p, String[] b, String expected) {
         long startTime = System.currentTimeMillis(); // Capture start time for performance check
-        
+
         String result = solve(p, b); // Execute the logic
-        
+
         long endTime = System.currentTimeMillis(); // Capture end time
-        
+
         // Check if result matches expected value
-        boolean pass = result.equals(expected); 
-        
+        boolean pass = result.equals(expected);
+
         // Print formatted output using Java formatted strings
-        System.out.printf("[%s] -> %s | Expected: %s, Got: %s | Time: %dms%n", 
-            pass ? "PASS" : "FAIL", 
-            testName, 
-            expected, 
-            result,
-            (endTime - startTime)
+        System.out.printf("[%s] -> %s | Expected: %s, Got: %s | Time: %dms%n",
+                pass ? "PASS" : "FAIL",
+                testName,
+                expected,
+                result,
+                (endTime - startTime)
         );
     }
 }

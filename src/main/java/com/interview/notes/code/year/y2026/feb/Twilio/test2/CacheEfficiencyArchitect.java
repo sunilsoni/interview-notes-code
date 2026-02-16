@@ -49,7 +49,7 @@ public class CacheEfficiencyArchitect {
     public static void main(String[] args) {
         run(1, List.of(10, 8, 12, 4, 5, 25), List.of(1, 0, 1, 1, 0, 1), List.of(1, 0, 1, 0, 1, 1), 3, 31);
         run(2, List.of(3, 2, 4, 1, 5), List.of(0, 0, 0, 0, 1), List.of(1, 1, 0, 1, 1), 2, -1);
-        
+
         int largeN = 200000;
         List<Integer> lp = new ArrayList<>(Collections.nCopies(largeN, 1000));
         List<Integer> la = new ArrayList<>(Collections.nCopies(largeN, 1));

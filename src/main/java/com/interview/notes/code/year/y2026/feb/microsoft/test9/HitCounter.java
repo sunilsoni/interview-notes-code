@@ -7,8 +7,12 @@ public class HitCounter {
         var counter = new HitCounter();
 
         // Example Trace: Hit(1)x4, Hit(61)x2, GetHits(61)
-        counter.hit(1); counter.hit(1); counter.hit(1); counter.hit(1); // Bucket[1] = 4 hits
-        counter.hit(61); counter.hit(61); // Bucket[1] resets because 61 != 1. Bucket[1] = 2 hits.
+        counter.hit(1);
+        counter.hit(1);
+        counter.hit(1);
+        counter.hit(1); // Bucket[1] = 4 hits
+        counter.hit(61);
+        counter.hit(61); // Bucket[1] resets because 61 != 1. Bucket[1] = 2 hits.
 
         System.out.println("Hits at 61: " + counter.getHits(61)); // Expect 2
     }

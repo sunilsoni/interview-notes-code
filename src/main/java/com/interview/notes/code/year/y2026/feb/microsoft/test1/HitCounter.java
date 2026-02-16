@@ -42,7 +42,10 @@ public class HitCounter {
         var c2 = new HitCounter();
 
         // 1. Four hits at timestamp 1
-        c2.hit(1); c2.hit(1); c2.hit(1); c2.hit(1);
+        c2.hit(1);
+        c2.hit(1);
+        c2.hit(1);
+        c2.hit(1);
         // Bucket status: index[1] has time=1, count=4.
 
         // 2. Get hits at timestamp 2
@@ -80,7 +83,7 @@ public class HitCounter {
     private static void printResult(String testName, int expected, int actual) {
         String status = (expected == actual) ? "✅ PASS" : "❌ FAIL";
         System.out.printf("%-10s | %-35s | Expected: %-3d | Got: %-3d%n",
-            status, testName, expected, actual);
+                status, testName, expected, actual);
     }
 
     /**

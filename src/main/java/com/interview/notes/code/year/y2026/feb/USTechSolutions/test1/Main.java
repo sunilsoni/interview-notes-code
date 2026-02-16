@@ -1,15 +1,24 @@
 package com.interview.notes.code.year.y2026.feb.USTechSolutions.test1;
 
 class Parent {
-    static { System.out.println("4. Static "); }
-    { System.out.println("5. Instance Initialization Block "); }
+    static {
+        System.out.println("4. Static ");
+    }
+
+    {
+        System.out.println("5. Instance Initialization Block ");
+    }
 }
 
 public class Main extends Parent {
 
-    static { System.out.println("1. Static "); }
+    static {
+        System.out.println("1. Static ");
+    }
 
-    { System.out.println("2. Instance Initialization Block"); }
+    {
+        System.out.println("2. Instance Initialization Block");
+    }
 
     public Main() {
         System.out.println("3. Constructor");

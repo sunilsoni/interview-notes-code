@@ -12,11 +12,11 @@ public class PalindromePartition {
         System.out.println("Test Case 1: Standard Input");
         var input1 = List.of("radar", "level", "java", "stream", "madam");
         // Expected: true=[radar, level, madam], false=[java, stream]
-        runTest(input1, 3, 2); 
+        runTest(input1, 3, 2);
 
         // --- Test Case 2: Edge Cases (Empty strings, single letters) ---
         System.out.println("\nTest Case 2: Edge Cases");
-        var input2 = List.of("", "a", "bb", "abc"); 
+        var input2 = List.of("", "a", "bb", "abc");
         // Expected: true=["", "a", "bb"], false=["abc"] (Empty string & single char are palindromes)
         runTest(input2, 3, 1);
 
@@ -32,12 +32,12 @@ public class PalindromePartition {
     // Helper method to run logic and print PASS/FAIL
     // We use 'var' (Java 10+) to keep code clean and short
     private static void runTest(List<String> input, int expectedPalindromeCount, int expectedNonPalindromeCount) {
-        
+
         // --- CORE LOGIC STARTS HERE ---
         Map<Boolean, List<String>> result = input.stream() // 1. Convert list to a Stream to process data
-            .collect(Collectors.partitioningBy(word ->     // 2. Split data into two groups (true/false)
-                new StringBuilder(word).reverse().toString().equals(word) // 3. Condition: Create reversed version and check equality
-            ));
+                .collect(Collectors.partitioningBy(word ->     // 2. Split data into two groups (true/false)
+                        new StringBuilder(word).reverse().toString().equals(word) // 3. Condition: Create reversed version and check equality
+                ));
         // --- CORE LOGIC ENDS HERE ---
 
         // Extracting sizes for verification
@@ -49,7 +49,7 @@ public class PalindromePartition {
             System.out.println("Result: PASS");
             System.out.println("Palindromes Found: " + palindromes.size());
             // Printing first few items to verify visually without spamming console
-            System.out.println("Sample Output: " + result); 
+            System.out.println("Sample Output: " + result);
         } else {
             System.out.println("Result: FAIL");
             System.out.println("Expected " + expectedPalindromeCount + " palindromes, but got " + palindromes.size());

@@ -18,7 +18,7 @@ public class StringDecompressor {
         // We create a large expected string dynamically to verify logic handles size
         String heavyInput = "a1000b1000";
         test(heavyInput, "a".repeat(1000) + "b".repeat(1000), "Large Data 2000 chars");
-        
+
         // 5. Empty Case
         test("", "", "Empty String");
     }
@@ -28,29 +28,29 @@ public class StringDecompressor {
      */
     public static String decompress(String input) {
         // Handle null or empty input immediately to avoid errors
-        if (input == null || input.isEmpty()) return ""; 
+        if (input == null || input.isEmpty()) return "";
 
         StringBuilder sb = new StringBuilder(); // Efficiently builds the result string
         int length = input.length(); // Cache length to avoid calling it repeatedly
-        
+
         int i = 0; // Pointer to traverse the string
         while (i < length) { // Loop until we reach end of string
             char charToRepeat = input.charAt(i); // Step 1: Get the character (e.g., 'a')
             i++; // Move pointer to the next character (which should be a number)
-            
+
             // Step 2: Extract the full number (handles multi-digits like 12, 100)
             int start = i; // Mark where the number starts
             while (i < length && Character.isDigit(input.charAt(i))) { // Keep moving while we see digits
                 i++; // Advance pointer
             }
-            
+
             // Parse the substring of digits into an Integer
-            int count = Integer.parseInt(input.substring(start, i)); 
-            
+            int count = Integer.parseInt(input.substring(start, i));
+
             // Step 3: Append the character 'count' times using Java 11+ feature
-            sb.append(String.valueOf(charToRepeat).repeat(count)); 
+            sb.append(String.valueOf(charToRepeat).repeat(count));
         }
-        
+
         return sb.toString(); // Convert builder back to string
     }
 

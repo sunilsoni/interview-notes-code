@@ -6,7 +6,7 @@ public class CountryFormatter {
 
     // Main method to run tests and execute logic
     public static void main(String[] args) {
-        
+
         // --- Test Case 1: Standard Data ---
         var input1 = Arrays.asList("India", "America", "Australia", "Japan"); // Create standard input list
         var expected1 = Arrays.asList("A-America", "A-Australia", "I-India", "J-Japan"); // Define expected output
@@ -28,7 +28,7 @@ public class CountryFormatter {
         long startTime = System.currentTimeMillis(); // Start timer
         var result = formatCountries(largeInput); // Process large data
         long endTime = System.currentTimeMillis(); // End timer
-        
+
         // Manually checking large data result size
         if (result.size() == 1_000_000) { // Check if all items processed
             System.out.println("Test Case: Large Data [PASS] - Time: " + (endTime - startTime) + "ms"); // Print pass
@@ -40,34 +40,34 @@ public class CountryFormatter {
     // Core Business Logic Method
     public static List<String> formatCountries(List<String> countries) {
         // Check if the main list is null to avoid NullPointerException immediately
-        if (countries == null) return new ArrayList<>(); 
+        if (countries == null) return new ArrayList<>();
 
         // Start the Stream pipeline to process data
-        return countries.stream() 
-            // Filter out null objects to prevent errors in later steps
-            .filter(Objects::nonNull) 
-            // Filter out empty strings so we don't process blank names
-            .filter(c -> !c.isEmpty()) 
-            // Sort the countries alphabetically (Natural Order)
-            .sorted() 
-            // Transform: Take 1st char, add hyphen, add original name (e.g., "I-India")
-            .map(c -> c.charAt(0) + "-" + c) 
-            // Collect the stream results back into a concrete List
-            .toList(); // Java 16+ feature (cleaner than Collectors.toList())
+        return countries.stream()
+                // Filter out null objects to prevent errors in later steps
+                .filter(Objects::nonNull)
+                // Filter out empty strings so we don't process blank names
+                .filter(c -> !c.isEmpty())
+                // Sort the countries alphabetically (Natural Order)
+                .sorted()
+                // Transform: Take 1st char, add hyphen, add original name (e.g., "I-India")
+                .map(c -> c.charAt(0) + "-" + c)
+                // Collect the stream results back into a concrete List
+                .toList(); // Java 16+ feature (cleaner than Collectors.toList())
     }
 
     // Helper method to run tests and print PASS/FAIL status
     public static void runTest(String testName, List<String> input, List<String> expected) {
         // Call the main logic method with input
-        var actual = formatCountries(input); 
-        
+        var actual = formatCountries(input);
+
         // Compare the actual result with expected result
-        if (actual.equals(expected)) { 
+        if (actual.equals(expected)) {
             // If they match exactly, print PASS
-            System.out.println("Test Case: " + testName + " [PASS]"); 
+            System.out.println("Test Case: " + testName + " [PASS]");
         } else {
             // If they don't match, print FAIL with details
-            System.out.println("Test Case: " + testName + " [FAIL]"); 
+            System.out.println("Test Case: " + testName + " [FAIL]");
             System.out.println("   Expected: " + expected); // Show what we wanted
             System.out.println("   Actual:   " + actual);   // Show what we got
         }

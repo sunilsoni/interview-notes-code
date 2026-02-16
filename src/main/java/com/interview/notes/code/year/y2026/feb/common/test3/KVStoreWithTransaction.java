@@ -13,7 +13,7 @@ public class KVStoreWithTransaction {
     // Transactional storage (Staging area)
     // In a real server, these would be ThreadLocal to handle multiple users. 
     // For this simple interview problem, we assume one active transaction sequence.
-    private Map<String, String> tempStore = null; 
+    private Map<String, String> tempStore = null;
     private Set<String> deletedKeys = null;
     private boolean isTransactionActive = false;
 

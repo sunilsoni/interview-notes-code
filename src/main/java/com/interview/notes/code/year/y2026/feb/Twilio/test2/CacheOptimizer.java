@@ -60,38 +60,38 @@ public class CacheOptimizer {
         System.out.println("Running Tests...");
 
         // Test Case 1: Example 1
-        test("Example 1", 
-            List.of(10, 8, 12, 4, 5, 25), 
-            List.of(1, 0, 1, 1, 0, 1), 
-            List.of(1, 0, 1, 0, 1, 1), 
-            3, 31L);
+        test("Example 1",
+                List.of(10, 8, 12, 4, 5, 25),
+                List.of(1, 0, 1, 1, 0, 1),
+                List.of(1, 0, 1, 0, 1, 1),
+                3, 31L);
 
         // Test Case 2: Example 2 (Impossible)
-        test("Example 2", 
-            List.of(3, 2, 4, 1, 5), 
-            List.of(0, 0, 0, 0, 1), 
-            List.of(1, 1, 0, 1, 1), 
-            2, -1L);
+        test("Example 2",
+                List.of(3, 2, 4, 1, 5),
+                List.of(0, 0, 0, 0, 1),
+                List.of(1, 1, 0, 1, 1),
+                2, -1L);
 
         // Test Case 3: Only A and B, no Both
-        test("Disjoint Sets", 
-            List.of(10, 20, 30, 40), 
-            List.of(1, 1, 0, 0), 
-            List.of(0, 0, 1, 1), 
-            2, 100L); // 10+20 + 30+40
+        test("Disjoint Sets",
+                List.of(10, 20, 30, 40),
+                List.of(1, 1, 0, 0),
+                List.of(0, 0, 1, 1),
+                2, 100L); // 10+20 + 30+40
 
         // Test Case 4: All Both
-        test("All Both", 
-            List.of(5, 10, 15), 
-            List.of(1, 1, 1), 
-            List.of(1, 1, 1), 
-            2, 15L); // 5+10
+        test("All Both",
+                List.of(5, 10, 15),
+                List.of(1, 1, 1),
+                List.of(1, 1, 1),
+                2, 15L); // 5+10
 
         // Test Case 5: Large Data Simulation
         List<Integer> largeP = new ArrayList<>();
         List<Integer> largeA = new ArrayList<>();
         List<Integer> largeB = new ArrayList<>();
-        for(int i=0; i<10000; i++) {
+        for (int i = 0; i < 10000; i++) {
             largeP.add(100);
             largeA.add(1);
             largeB.add(1);

@@ -10,7 +10,7 @@ public class MaxProductSolver {
      */
     public static long solve(int[] nums) {
         // Edge case: if array is empty, return 0
-        if (nums == null || nums.length == 0) return 0; 
+        if (nums == null || nums.length == 0) return 0;
 
         // Initialize max and min tracking variables with the first element
         // We use 'double' or 'long' here to handle large product results safely
@@ -57,11 +57,11 @@ public class MaxProductSolver {
 
         // Test Case 2: Array with zero
         // Logic: Subarrays are [2, 3] = 6, or [4] = 4. 0 resets.
-        test(new int[]{2, 3, -2, 4}, 6); 
+        test(new int[]{2, 3, -2, 4}, 6);
 
         // Test Case 3: All negatives
         // Logic: -2 * -3 = 6 is the max.
-        test(new int[]{-2, 0, -1}, 0); 
+        test(new int[]{-2, 0, -1}, 0);
 
         // Test Case 4: Edge case single element
         test(new int[]{-5}, -5);
@@ -72,7 +72,7 @@ public class MaxProductSolver {
 
         // Test Case 6: Alternating signs
         // 2*-5 = -10; -10*-2 = 20; 20*-4 = -80; -80*3 = -240. Max is 20.
-        test(new int[]{2, -5, -2, -4, 3}, 20); 
+        test(new int[]{2, -5, -2, -4, 3}, 20);
 
         System.out.println("--- All Tests Completed ---");
     }
@@ -83,9 +83,9 @@ public class MaxProductSolver {
     private static void test(int[] input, long expected) {
         long result = solve(input); // Execute logic
         String status = (result == expected) ? "PASS" : "FAIL"; // Determine status
-        
+
         // Print clear summary using Java formatted strings
-        System.out.printf("Input: %s | Expected: %d | Actual: %d | Status: %s%n", 
-            Arrays.toString(input), expected, result, status);
+        System.out.printf("Input: %s | Expected: %d | Actual: %d | Status: %s%n",
+                Arrays.toString(input), expected, result, status);
     }
 }

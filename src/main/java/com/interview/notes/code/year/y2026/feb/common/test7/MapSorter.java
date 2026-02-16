@@ -39,17 +39,17 @@ public class MapSorter {
         for (int i = 0; i < size; i++) {
             largeInput.put("Key" + i, i);
         }
-        
+
         // Run the logic on large data
         long startTime = System.currentTimeMillis(); // Start timer
         Map<String, Integer> sortedLarge = sortMapByValueDesc(largeInput);
         long endTime = System.currentTimeMillis(); // End timer
-        
+
         // Manual validation for large data
         // First entry value should be 99999, Last entry value should be 0
         var entries = new ArrayList<>(sortedLarge.entrySet());
-        boolean largeTestPass = entries.get(0).getValue() == (size - 1) && 
-                                entries.get(entries.size() - 1).getValue() == 0;
+        boolean largeTestPass = entries.get(0).getValue() == (size - 1) &&
+                entries.get(entries.size() - 1).getValue() == 0;
 
         String status = largeTestPass ? "PASS" : "FAIL";
         System.out.println("Test Case: Large Data (" + size + " items) -> " + status);
@@ -60,14 +60,14 @@ public class MapSorter {
     public static Map<String, Integer> sortMapByValueDesc(Map<String, Integer> map) {
         // Return result immediately; 'var' infers the type automatically
         return map.entrySet() // Get a Set view of the mappings contained in this map
-                  .stream() // Convert the set of entries into a Stream to process them
-                  .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()) // Sort stream by Value in Descending (reversed) order
-                  .collect(Collectors.toMap( // Start collecting the sorted results back into a Map
-                      Map.Entry::getKey, // Function to extract the Key for the new Map
-                      Map.Entry::getValue, // Function to extract the Value for the new Map
-                      (oldValue, newValue) -> oldValue, // Merge function (not needed here but required by syntax, handles duplicates)
-                      LinkedHashMap::new // IMPORTANT: Use LinkedHashMap to preserve the sorted order we just created
-                  ));
+                .stream() // Convert the set of entries into a Stream to process them
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()) // Sort stream by Value in Descending (reversed) order
+                .collect(Collectors.toMap( // Start collecting the sorted results back into a Map
+                        Map.Entry::getKey, // Function to extract the Key for the new Map
+                        Map.Entry::getValue, // Function to extract the Value for the new Map
+                        (oldValue, newValue) -> oldValue, // Merge function (not needed here but required by syntax, handles duplicates)
+                        LinkedHashMap::new // IMPORTANT: Use LinkedHashMap to preserve the sorted order we just created
+                ));
     }
 
     // --- Helper Method for Testing ---
@@ -81,7 +81,7 @@ public class MapSorter {
 
         // Print simple PASS/FAIL status
         System.out.println("Test Case: " + testName + " -> " + (isPass ? "PASS" : "FAIL"));
-        
+
         // If it failed, print details for debugging
         if (!isPass) {
             System.out.println("   Expected: " + expected);
