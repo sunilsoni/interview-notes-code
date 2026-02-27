@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Course Registration</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            width: 350px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .success-message {
+            display: none;
+            color: green;
+            background: #e6ffe6;
+            border: 1px solid green;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input.error {
+            border-color: red;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(to right, #4CAF50, #2E8B57);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #45a049, #276b4f);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Course Registration</h2>
+
+    <div class="success-message" id="successMessage">
+        Registration successful!
+    </div>
+
+    <form id="registrationForm" novalidate>
+
+        <div class="form-group">
+            <label for="studentId">Student ID</label>
+            <input id="studentId" type="text" />
+            <div class="error-message" id="studentIdError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="text" />
+            <div class="error-message" id="emailError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" />
+            <div class="error-message" id="passwordError"></div>
+        </div>
+
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById("registrationForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const studentId = document.getElementById("studentId");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+
+        const studentIdError = document.getElementById("studentIdError");
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
+
+        studentIdError.textContent = "";
+        emailError.textContent = "";
+        passwordError.textContent = "";
+
+        studentId.classList.remove("error");
+        email.classList.remove("error");
+        password.classList.remove("error");
+
+        successMessage.style.display = "none";
+
+        let isValid = true;
+
+        if (studentId.value.trim() === "") {
+            studentIdError.textContent = "Student ID is required.";
+            studentId.classList.add("error");
+            isValid = false;
+        } else if (!/^[a-zA-Z0-9]+$/.test(studentId.value)) {
+            studentIdError.textContent = "Student ID can only contain letters and numbers.";
+            studentId.classList.add("error");
+            isValid = false;
+        }
+
+        if (email.value.trim() === "") {
+            emailError.textContent = "Email is required.";
+            email.classList.add("error");
+            isValid = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+            emailError.textContent = "Please enter a valid email address.";
+            email.classList.add("error");
+            isValid = false;
+        }
+
+        if (password.value.trim() === "") {
+            passwordError.textContent = "Password is required.";
+            password.classList.add("error");
+            isValid = false;
+        } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(password.value)) {
+            passwordError.textContent =
+                "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+            password.classList.add("error");
+            isValid = false;
+        }
+
+        if (isValid) {
+            successMessage.style.display = "block";
+            form.reset();
+        }
+    });
+</script>
+
+</body>
+</html>
