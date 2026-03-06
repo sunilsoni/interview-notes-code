@@ -22,16 +22,16 @@ class Employee {
 public class Main {
     public static void main(String[] args) {
 
-        List<Employee> employees = Arrays.asList(
-                new Employee("A", 50000),
-                new Employee("B", 70000),
-                new Employee("C", 60000),
-                new Employee("D", 70000)
+        List<Employee1> employee1s = Arrays.asList(
+                new Employee1("A", 50000),
+                new Employee1("B", 70000),
+                new Employee1("C", 60000),
+                new Employee1("D", 70000)
         );
 
         Optional<Double> secondHighest =
-                employees.stream()
-                        .map(Employee::getSalary)
+                employee1s.stream()
+                        .map(Employee1::getSalary)
                         .distinct()
                         .sorted(Comparator.reverseOrder())
                         .skip(1)
