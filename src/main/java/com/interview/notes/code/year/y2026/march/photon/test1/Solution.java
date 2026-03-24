@@ -1,4 +1,4 @@
-package com.interview.notes.code.year.y2026.march.phton.test1;
+package com.interview.notes.code.year.y2026.march.photon.test1;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

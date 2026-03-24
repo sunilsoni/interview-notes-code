@@ -1,4 +1,4 @@
-package com.interview.notes.code.year.y2026.march.amaozn.test;
+package com.interview.notes.code.year.y2026.march.amazon.test;
 
 import java.util.Arrays;
 import java.util.List;

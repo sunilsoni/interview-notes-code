@@ -1,4 +1,4 @@
-package com.interview.notes.code.year.y2026.march.amaozn.test1;
+package com.interview.notes.code.year.y2026.march.amazon.test1;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
