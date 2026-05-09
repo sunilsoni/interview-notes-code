@@ -1,11 +1,11 @@
-package com.interview.notes.code.year.y2026.may.common.test2;
+package com.interview.notes.code.year.y2026.may.assessments.test3;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class LogStreamProcessorFast { // Declares the optimized processor class.
+class LogStreamProcessorFast { // Declares the optimized processor class.
 
     // Uses a Map to link each username to a Set of unique users they've talked with.
     private final Map<String, Set<String>> network = new HashMap<>();
